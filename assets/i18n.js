@@ -98,7 +98,7 @@
     ["Sorun, çözüm, teknoloji ve örnek veride ölçülen sonuçlar.", "Problem, solution, technology and results measured on sample data."],
     ["Elle yazılmış kasetlerin izi, onay kapısı, Denetçi kararları ve eval (2 bilinen açık dahil).", "Trace of hand-written tapes, approval gate, Auditor decisions and eval (including 2 known gaps)."],
     ["Mimari, ölçüm bulguları ve sınırlar, çizimlerle (Türkçe ve İngilizce).", "Architecture, measurement findings and limits, with diagrams (Turkish and English)."],
-    ["Kule Pro iç puanı 3,0/5; firma ihtiyacı kanıtı yok; aralıklı talep ölçümünde yalnız smooth sınıf ölçülebildi.", "Kule Pro internal score 3.0/5; no evidence of a company need; in the intermittent demand measurement only the smooth class could be measured."],
+    ["Kule Pro stok, sipariş, fatura ve tedarikçi verisinden her gün karar çıktısı üretir; örnek ve herkese açık veriyle gösterilmiştir.", "Kule Pro turns stock, order, invoice and supplier data into a daily decision output; it is demonstrated on sample and public data."],
     // iz görüntüleyici: sabit metinler
     ["Bir iz dosyası seç ya da örneklerden birini aç.", "Pick a trace file or open one of the samples."],
     ["Dosya seçici her tarayıcıda çalışır. http ile açıldığında örnekler otomatik okunur; dosyadan (file://) açılışta örnekler okunamaz, dosya seçiciyi kullan.", "The file picker works in every browser. Samples load automatically over http; when opened from disk (file://) samples cannot be read, use the file picker."],

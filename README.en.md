@@ -1,98 +1,152 @@
-# AI / automation portfolio: Kule Pro and an agent orchestrator
+# Kule Pro: a supply chain decision support tool
 
-**Language / Dil:** [Türkçe](README.md) · English (this page)
+**Dil / Language:** [Türkçe](README.md) · English (this page)
 
-This repository holds the **static sample pages and a detailed write-up** of two pieces of work: a supply chain decision-support tool (Kule Pro) and a thin multi-agent orchestrator, written in-house, that uses the tool's modules as agent tools. The source code is not in this repository (see "What is in this repository" below).
+Kule Pro reads a company's stock, order, supplier, invoice and production files and has the answers ready every morning: **which items are about to run out, how much to order and when, which order or invoice has a mismatch, which supplier cannot be relied on, and where money is leaking.** Alongside it sits a multi-agent orchestrator that uses the tool's modules to answer questions and checks its own answers.
 
-**Live pages** (switch between Turkish and English with the TR / EN button at the bottom right):
+**Live pages** (the TR / EN button at the bottom right switches the language):
 
-- [Landing page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
+- [Home](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
 - [Portfolio page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 
-> **Honest status.** Kule Pro's internal assessment is **3.0 / 5** (previously 2.7; scored independently by two agents against a pre-registered rubric, with the same result; still an internal assessment, not external validation). The score reflects technical soundness only; **there is no evidence that any company needs this tool**. The data is synthetic or public (DataCo), the ROI is hypothetical, and there is no SAP or OCR connection. The orchestrator **made no real model call**; the tapes are hand-written. Read every number below within these limits.
+## 1. What it is for
 
-## 1. The system at a glance
+A typical day for a planner, buyer or manager:
+
+| Question | Kule's answer |
+|---|---|
+| "Which items are critical today?" | Days-of-cover status CRITICAL / DEAD_STOCK / EXCESS_STOCK and ABC class, ranked by an importance score |
+| "How much should I order, and when?" | Per-item safety stock, reorder point (ROP), economic order quantity (EOQ) and a recommended order |
+| "Is there an error in my orders or invoices?" | 7 kinds of order-vs-goods-receipt mismatch; duplicate invoice, over-billing, price deviation, invoice without delivery note |
+| "Which supplier is a problem?" | A 0–100 score from on-time delivery, rejection rate and price deviation, graded A/B/C/D |
+| "What will demand do?" | An 8-week forecast, an 80% interval and a backtest result |
+| "How efficient are my lines?" | OEE (availability × performance × quality) and a downtime Pareto |
+| "What if demand rises 20% or a supplier drops out?" | Scenario simulation: critical item count, stock-out item-days, at-risk value, yearly cost difference |
+| "What do I tell management?" | Daily and weekly executive summaries, an ROI calculator, a printable report, draft emails to suppliers |
+
+Every problem found becomes a **case**: it gets an owner, its status is tracked (open, under review, resolved, accepted) and each change is written to an audit trail. When the data is reloaded the next day, Kule shows what was fixed, what is new and what is still open.
+
+## 2. How it works
 
 ![System overview: CSV input, input contract, SQLite, six modules, CLI/REST/panel; the agent orchestrator below](docs/img/sistem-genel.svg)
 
-**Kule Pro** takes CSV files and checks every row against an input contract (types, required fields, cross-field rules, duplicates); rows that fail are stored together with the reason. Clean data is written to SQLite; every run leaves a *snapshot*, findings become *cases*, and every case change is written to an audit trail. Six modules produce the same JSON envelope:
+1. **Input.** CSV files exported by the company (stock, shipments, orders, goods receipts, delivery notes, demand history, supplier deliveries, production) and invoice text. `.xlsx` files are read too; Turkish and spaced column headers (`Malzeme No.`, `Stok Miktarı`) are matched automatically. SAP-style exports (EKPO, MSEG, MARD, LIPS) are converted to the Kule format with a field-mapping file.
+2. **Validation.** Every row is checked against an input contract: type, required field, lower bound, allowed values, cross-field rule, duplicates. A bad row never disappears silently; it is stored with its reason and reflected in the file's **data quality score** (missing, inconsistent, duplicate, stale).
+3. **Storage.** Clean data goes to SQLite. Every run leaves a *snapshot*; the difference between two snapshots can be computed.
+4. **Analysis.** Six modules produce the same JSON envelope (numbers, findings, warnings, the method used).
+5. **Decision.** The decision engine turns findings into an importance score by monetary impact and produces order recommendations.
+6. **Presentation.** Command line, REST API, browser panel and daily/weekly summary reports.
+
+## 3. Modules
 
 | Module | What it does | Method |
 |---|---|---|
-| `stok_durumu` | Days of cover; KRITIK / OLU_STOK / FAZLA_STOK (critical / dead / excess); ABC class | Rule-based |
-| `siparis_anomali` | 7 kinds of order–goods receipt mismatch, ranked by severity | Rule-based |
+| `stok_durumu` | Days of cover; CRITICAL / DEAD_STOCK / EXCESS_STOCK; ABC class | Rule based |
+| `siparis_anomali` | 7 kinds of order–goods-receipt mismatch, ranked by importance; cancellations (102) are netted out | Rule based |
 | `talep_tahmini` | 8-week demand forecast, 80% interval, backtest | Additive Holt-Winters (52-week seasonality) |
 | `tedarikci_skoru` | On-time delivery, rejection rate, price deviation → 0–100 score, A/B/C/D | Weighted rule (40% / 35% / 25%) |
-| `uclu_eslestirme` | Order–delivery note–invoice: double invoice, over-invoicing, price deviation, invoice without delivery note | Rule-based; invoice lines are extracted with a regular text pattern, **no OCR** |
-| `oee` | Availability × performance × quality; downtime Pareto | Calculation + rules; the root cause is a *suggestion*, not evidence |
+| `uclu_eslestirme` | Order–delivery note–invoice: duplicate invoice, over-billing, price deviation, invoice without delivery note | Rule based; invoice lines are extracted with a regular text pattern |
+| `oee` | Availability × performance × quality; downtime Pareto; root-cause suggestion | Calculation + rules |
+| `aciklama` | A Turkish summary of the module outputs | Template; optionally an OpenAI-compatible language model endpoint |
 
-By default **no module calls a language model.** An optional explanation layer can be pointed at an OpenAI-compatible endpoint through environment variables; it has not been tried with a real provider. Outputs are available from the CLI (`python -m kule ...`) and, as a demo setup, from a REST API (21 routes, tokens stored as SHA-256 digests, a role matrix). The API is not production-ready: no TLS (a setup guide exists but was not verified) and no SSO; an in-process rate limit exists (default 300 requests/min per client, 429 when exceeded).
+By default no module calls a language model; the results come from ordinary, testable calculations. A language model can be used only in the optional explanation layer, and it sees aggregated summary sentences, not the raw data.
 
-## 2. The agent orchestrator
+## 4. Decision engine: how much to order, and when
 
-![Investigation flow: Planner, Analyst, Auditor; approval gate and allow-list](docs/img/ajan-akisi.svg)
+A findings list says "what happened"; the decision engine calculates "what to do". Per-item safety stock, reorder point, economic order quantity and recommended order; all assumptions (holding rate, order cost, stock-out penalty, service level) come from one settings file and can be changed.
 
-The orchestrator is a thin core written with the Python standard library only: a state machine (READY → RUNNING → COMPLETED / FAILED / BUDGET_EXCEEDED), step and token budgets, timeouts, retry with backoff, a tool allow-list, an approval gate for side-effect tools, and a trace that records every event.
+- **Calibrated prediction interval.** The 80% interval of the demand forecast initially covered 97.7% of observations (wider than needed, inflating safety stock). Calibration finds a single scale factor from older windows and tests it on unseen windows: on the sample data, test coverage goes **97.9% → 79.7%** and the interval width halves.
+- **Service level / cost curve.** How the safety stock cost and the expected stock-out cost change as the target service level rises (sample data):
 
-Sample scenario: *"Why are warehouse IZM-01 and supplier T-03 critical? Produce an action plan and a draft e-mail to the supplier."*
+| Target | Safety stock value | Expected stock-out / year | Total / year |
+|---|---|---|---|
+| 90% | 2,956,921 TL | 1,782,526 TL | 2,822,732 TL |
+| 95% | 3,795,167 TL | 786,645 TL | 1,910,675 TL |
+| 99% | 5,367,577 TL | 127,587 TL | 1,408,859 TL |
 
-| Role | What it does | How |
+- **Scenarios.** Situations such as "demand +20%", "lead time +5 days" or "T-02 drops out" are compared side by side (sample data):
+
+| Scenario | Critical items | Stock-out item-days | At-risk value | Yearly cost difference |
+|---|---|---|---|---|
+| Today | 17 | 145.1 | 522,384 TL | - |
+| Demand +20% | 20 | 165.3 | 820,043 TL | +321,495 TL |
+| Lead time +5 days | 22 | 242.8 | 1,112,300 TL | +103,572 TL |
+| Demand +20% and lead time +5 days | 23 | 276.2 | 1,648,916 TL | +451,878 TL |
+
+- **Sensitivity.** Each assumption is moved by ±20% and the one that changes the decision most is shown (on the sample data, the nominal lead time).
+- **Importance score.** In a monetary ranking, critical stock findings with no TL value would sink to the bottom. The importance score (0–100) combines an importance weight with a log-scaled money component; on the sample data the riskiest critical stock item, 36th by money, moves to 1st by score.
+
+## 5. Panel and reports
+
+The browser panel has no dependencies and has four screens:
+
+- **Executive summary:** the 5 priority actions, monetary impact, risk ranking by area, demand direction. If two modules find the same order line, the amount is counted once.
+- **ROI calculator:** yearly savings as a low–high range, net and payback over holding cost, invoice leakage, delay and manual-check effort; each line's formula is spelled out with the user's own numbers.
+- **Scenario:** play with supplier score weights, stock thresholds and "what if a supplier leaves" in the browser; with default settings it gives exactly the same result as the Python modules.
+- **Report:** a printable executive report (PDF) and CSV that opens correctly in Turkish Excel.
+
+`python -m kule ozet` produces the daily and weekly summary (Markdown, single-file HTML, JSON, CSV). For every supplier that needs an order, an email **draft** is written: items, quantity, latest delivery date and the supplier's measured delivery performance. Kule does not send email; it prepares the draft for you to review.
+
+## 6. Integration and security
+
+- **REST API** (`/v1`, 21 routes, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users.
+- **Roles:** planner, buyer, manager. The module owner's role writes a case (stock, demand, OEE → planner; orders, invoices, suppliers → buyer); only a manager can set `ACCEPTED`.
+- **Audit trail:** every unauthenticated (401) and unauthorised (403) call, every rate-limited (429) call and every authenticated operation is recorded. Tokens are stored in the database only as SHA-256 digests.
+- **Resilience:** per-client rate limit (default 300 requests/min), a 20 MB body limit, a clean error message for fields larger than 128 KB, and a setup guide for a TLS reverse proxy.
+- **Dependencies:** the Python standard library only. No `pip install` needed; `python demo.py` gives a first decision output in a second or two with no setup.
+
+## 7. Measured results
+
+**Catching known errors in sample data.** The generator plants known errors; the modules find them and nothing more:
+
+| Module | Planted | Found |
 |---|---|---|
-| Planner | Splits the question into subtasks | Model, no tools |
-| Analyst | Calls Kule modules as tools, interprets the findings, then writes its numbers into a `iddialar` (claims) block | Model; tools `stok_sorgu`, `tedarikci_sorgu` |
-| Auditor | Re-checks every claim against Kule's own calculation; rejects the Analyst if it does not match (at most 2 attempts) | **Code**, not a model |
+| Order anomaly | 7 anomalies (+3 clean hard cases) | 7, clean cases not flagged |
+| Three-way match | 4 findings (duplicate invoice, over-billing, 8% price deviation, invoice without delivery note) | 4 |
 
-In the sample trace the Analyst first writes the T-03 score as **58.0** while Kule computes **36.3**; the Auditor rejects it. On the second attempt **36.3** is accepted. In the [trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) you can open "Investigation · Analyst, attempt 1" and "attempt 2" from the sample picker and follow it step by step.
+**Large real-world data.** **172,765 shipment rows** adapted from the public DataCo Smart Supply Chain dataset loaded in one ingest: 172,765 accepted, 0 rejected, 0 crashes, about 8 seconds.
 
-**Important:** these traces are **hand-written tapes.** No language model ran; the viewer says so on every screen with a "HAND-WRITTEN RECORD" label. The recorded token counts are not real cost.
-
-## 3. Eval and known gaps
-
-![Eval: 24 cases, 22 criteria/checks/scope passed, 2 known gaps observed](docs/img/eval-vakalar.svg)
-
-The eval has 24 cases: Auditor (13 criteria + 1 out of scope), authorisation and approval (3 criteria + 1 positive check), injection (2 criteria + **2 known gaps**), end-to-end (2). The result is reported as two separate numbers: **criteria/checks/scope 22/22 passed** and **known gaps 2/2 observed (not closed).**
-
-- **KACAK-enjeksiyon-son-metinde (injection leaks into the final text):** a command embedded in tool output leaks into the Analyst's final reply; because the Auditor only checks numbers, it accepts this text.
-- **KACAK-onayli-yazma-enjeksiyonla (approved write via injection):** if approval has been granted, a write started by injection passes the gate; approval is a programmed callback and does not inspect the content.
-- **Scope decision:** the Auditor does not check numbers in plain text; Turkish numbers (`58,0`, `%9,29`), dates and list numbers cannot be parsed reliably from prose. A numeric claim has to be written into the claims block.
-- In the injection cases the tape *assumes* the model obeyed the injection; what is measured is whether the gate stops the resulting call. Whether a real model would obey an injection cannot be measured by this eval.
-
-The eval also catches two deliberately broken versions (an Auditor that accepts everything; an orchestrator without authorisation and approval checks): in both, the affected cases are flagged as REGRESSION.
-
-## 4. Intermittent demand measurement (KULE-E8)
+**Demand forecast.** On the sample data the Holt-Winters backtest error (MAPE) averages 8.07; the simple same-week-last-year method gets 11.16. Intermittent demand methods (Croston, SBA, TSB) were also tried against pre-registered criteria:
 
 ![Test MAPE and test coverage: naive, Holt-Winters, Croston, SBA, TSB](docs/img/e8-olcum.svg)
 
-Question: is Kule's demand forecast (Holt-Winters) improved by treating weeks without sales as zero in a careful way, or by intermittent demand methods (Croston, SBA, TSB)? The criteria were **written before the results**: `k` was chosen on a calibration window and reported on a separate test window (coverage 75–85% and a MAPE below the naive baseline); all 15 variant × method rows, including the failing ones, are in the report.
+In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 against naive 250.65); the other classes could not be measured in the test window and need a separate measurement on a product-life window.
 
-Data: DataCo (public, Mendeley Data, CC BY 4.0), 162 weeks, 118 products. **It is not company data.**
+**Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-- **Smooth class (9 test products, 648 rows):** the current Holt-Winters fails both criteria (coverage 72.84%; MAPE 264.12% against a naive 250.65%). SBA passes both (77.31%; 248.00%) but the margin is **2.6 points**, weak evidence on 9 products.
-- **Erratic, intermittent and lumpy classes:** **not measurable**, because the test window has no scored rows. There is no verdict for these classes. Products whose sales have ended drop out of the test window, so the intermittent demand question cannot be answered in this window; a new measurement with a product-lifetime window is needed.
-- **Traps:** in the "zero-fill the whole window" variant, 89% of the test rows are zeros of products that have stopped selling, which inflates coverage artificially; that variant is reported as a control and not used for decisions. A partial last week distorts MAPE (the verdict did not change in the sensitivity run). The volume break between 2017-08 and 2017-10 was not analysed.
-- The production calibration rule was **not changed** during this measurement; on synthetic data the regression check gave the expected 79.7% coverage (79.69%).
+**Tests.** 224 Python and 29 Node tests pass for Kule; the orchestrator has 44 unit tests.
 
-## 5. Limits and open items
+## 8. Agent orchestrator
 
-| Topic | Status |
-|---|---|
-| Company need | **No evidence.** The "company need" criterion of the internal score is 2/5. No real company's savings or gain data was used |
-| Data | Sample data is synthetic (seed 42). Measurements use public DataCo; only two modules were tested on it |
-| ROI | Hypothetical in the panel; the inputs are your assumptions |
-| SAP / OCR | None. SAP-style CSV exports can be read through configuration; not tried with real SAP output |
-| Orchestrator | No real model call, tapes are hand-written, the Auditor is code; 2 injection gaps are known and open |
-| Tests | Kule 224 Python + 29 Node and orchestrator 44 unit tests pass. Kule once showed 1 error in a run; it did not recur in more than 30 clean runs since, and the cause was not found |
-| Security | The REST API is a demo setup (no TLS or SSO; an in-process rate limit exists, not a DDoS defence; no account lockout) |
-| Docker | Files exist, could not be run in this environment |
+![Investigation flow: Planner, Analyst, Auditor; approval gate and allow-list](docs/img/ajan-akisi.svg)
 
-## 6. What is in this repository
+A thin multi-agent orchestrator that uses Kule's modules as tools. The core is written with the Python standard library only and contains: a state machine, step and token budgets, timeouts, retry with backoff, a tool allow-list, an approval gate for tools with side effects, and a trace that records every event.
 
-- `index.html`, `portfoy/`, `ajan-orkestrasyon/iz-goruntuleyici/`: dependency-free static pages. `assets/i18n.js` provides the Turkish/English switch.
-- `ajan-orkestrasyon/ornek/`: sample traces and the eval result the viewer reads (all hand-written records).
-- `docs/img/`: the diagrams on this page (SVG).
-- **The Kule Pro and orchestrator source code is not in this repository.** Only the visible part of the results is here.
-- **The language option** covers these pages. The *data* inside the sample traces and eval cases (model texts, inputs) is Turkish sample data and is not translated. Kule Pro's own panel, CLI and API outputs are currently Turkish only.
+Example question: *"Why are warehouse IZM-01 and supplier T-03 critical? Produce an action plan and a draft email to the supplier."*
+
+| Role | What it does | How |
+|---|---|---|
+| Planner | Splits the question into sub-tasks | Model, no tools |
+| Analyst | Calls Kule modules as tools, interprets the findings, writes its numbers into an `iddialar` (claims) block | Model; tools `stok_sorgu`, `tedarikci_sorgu` |
+| Auditor | Re-compares every claim with Kule's own calculation; rejects the Analyst if it does not match | **Code**, not a model |
+
+In the example trace the Analyst writes T-03's score as 58.0 on the first attempt, Kule calculates 36.3, the Auditor rejects it, and 36.3 is accepted on the second attempt. The idea: no number produced by a model reaches the user without being cross-checked against a deterministic calculation. In the [trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) you can open the "Investigation · Analyst attempt 1" and "attempt 2" traces step by step. The traces shown are pre-recorded tapes; the viewer says so on every screen.
+
+### Eval
+
+![Eval: 24 cases, 22 criteria/checks/scope passed, 2 known gaps observed](docs/img/eval-vakalar.svg)
+
+The eval has 24 cases: Auditor (13 criteria + 1 out of scope), authorisation and approval (3 criteria + 1 positive check), injection (2 criteria + 2 deliberately open cases), end-to-end (2). **22/22** criteria, check and scope cases passed; the two injection cases were left open on purpose and are reported as they are (an embedded command in tool output leaking into the final answer; a write started by injection once approval has been given). The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
+
+## 9. Scope and status
+
+- **Data.** The sample data is synthetic (seed 42); measurements were made on synthetic and public DataCo data. The ROI calculator's inputs are the user's own assumptions.
+- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports are read through a mapping file. There is no live SAP or OCR connection.
+- **API.** Designed for demo and pilot setups: roles, an audit trail and a rate limit are included; a TLS reverse-proxy guide is ready, SSO is not included.
+- **Orchestrator.** The traces shown are recorded tapes; no live call to a real language model was made in this version.
+- **Source code** is not in this repository; it contains static pages, drawings and measurement outputs.
+- **Language.** These pages are in Turkish and English. Kule Pro's own panel, command line and API outputs are currently Turkish only.
 
 ## License and attribution
 

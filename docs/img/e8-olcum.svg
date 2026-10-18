@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="t d" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+<title id="t">KULE-E8 aralıklı talep ölçümü / KULE-E8 intermittent demand measurement</title>
+<desc id="d">Test MAPE ve test kapsaması: naif, Holt-Winters, Croston, SBA, TSB. Holt-Winters ölçütü geçmiyor; SBA zayıf marjla geçiyor. Test MAPE and test coverage for naive, Holt-Winters, Croston, SBA, TSB. Holt-Winters fails the criteria; SBA passes with a thin margin.</desc>
+<rect x="0.5" y="0.5" width="959" height="429" rx="8" fill="#fbfaf6" stroke="#d8d3c7"/>
+<text x="24" y="34" font-size="18" font-weight="700" fill="#1b1d1f">KULE-E8 · aralıklı talep ölçümü · intermittent demand measurement</text>
+<text x="24" y="56" font-size="12.5" fill="#4a4e52">DataCo (herkese açık, CC BY 4.0 · public) · ilk-son arası sıfır doldurma · 9 test ürünü, 648 satır · 9 test products, 648 rows</text>
+
+<g font-size="13" fill="#1b1d1f">
+<text x="24" y="92" font-weight="700">Test MAPE % (düşük iyi · lower is better)</text>
+<text x="500" y="92" font-weight="700">Test kapsaması % · coverage % (hedef / target 75–85)</text>
+</g>
+
+<g font-size="12.5" fill="#1b1d1f">
+<text x="24" y="130">naif · naive</text><rect x="130" y="116" width="217.2" height="20" fill="#8a8f94"/><text x="354" y="131">250,65</text>
+<text x="24" y="170">Holt-Winters</text><rect x="130" y="156" width="228.9" height="20" fill="#a12a2a"/><text x="366" y="171" fill="#a12a2a" font-weight="700">264,12 ✗</text>
+<text x="24" y="210">Croston</text><rect x="130" y="196" width="225.8" height="20" fill="#8a8f94"/><text x="362" y="211">260,57</text>
+<text x="24" y="250">SBA</text><rect x="130" y="236" width="214.9" height="20" fill="#1d6b57"/><text x="352" y="251" fill="#1d6b57" font-weight="700">248,00 ✓</text>
+<text x="24" y="290">TSB</text><rect x="130" y="276" width="225.8" height="20" fill="#8a8f94"/><text x="362" y="291">260,57</text>
+</g>
+<path d="M347.2 108V304" stroke="#1b1d1f" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="296" y="322" font-size="11.5" fill="#4a4e52">naif tabanı · naive baseline</text>
+
+<rect x="801" y="104" width="26" height="200" fill="#d9ece5"/>
+<g font-size="12.5" fill="#1b1d1f">
+<text x="500" y="130">naif · naive</text><rect x="606" y="116" width="190.2" height="20" fill="#8a8f94"/><text x="838" y="131" fill="#a12a2a">73,15 ✗</text>
+<text x="500" y="170">Holt-Winters</text><rect x="606" y="156" width="189.4" height="20" fill="#a12a2a"/><text x="838" y="171" fill="#a12a2a" font-weight="700">72,84 ✗</text>
+<text x="500" y="210">Croston</text><rect x="606" y="196" width="205.8" height="20" fill="#8a8f94"/><text x="838" y="211" fill="#1d6b57">79,17 ✓</text>
+<text x="500" y="250">SBA</text><rect x="606" y="236" width="201" height="20" fill="#1d6b57"/><text x="838" y="251" fill="#1d6b57" font-weight="700">77,31 ✓</text>
+<text x="500" y="290">TSB</text><rect x="606" y="276" width="195" height="20" fill="#8a8f94"/><text x="838" y="291" fill="#1d6b57">75,00 ✓</text>
+</g>
+<text x="760" y="322" font-size="11.5" fill="#4a4e52">hedef bandı · target band</text>
+
+<g font-size="12.5" font-weight="700">
+<text x="24" y="360" fill="#a12a2a">Mevcut Holt-Winters iki ölçütü de geçmiyor; kullanılmaması önerilir. · The current Holt-Winters fails both criteria.</text>
+<text x="24" y="380" fill="#8a5200">SBA geçti ama 9 üründe 2,6 puanlık zayıf marjla. · SBA passes, but with a thin 2.6-point margin on 9 products.</text>
+<text x="24" y="400" fill="#4a4e52">Erratic / intermittent / lumpy: test penceresinde puanlı satır yok → ölçülemedi. · no scored rows in the test window → not measurable.</text>
+</g>
+</svg>

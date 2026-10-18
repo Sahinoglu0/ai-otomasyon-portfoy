@@ -42,7 +42,7 @@
 <text x="34" y="316" font-weight="700">Ajan orkestratörü / Agent orchestrator</text>
 <text x="34" y="334" font-size="12" fill="#4a4e52">Durum makinesi, bütçe, zaman aşımı, izin listesi, onay kapısı, iz</text><text x="34" y="350" font-size="12" fill="#4a4e52">state machine, budget, timeout, allow-list, approval gate, trace</text>
 <text x="34" y="372" font-size="12.5">Planlayıcı → Analist → Denetçi   ·   Planner → Analyst → Auditor</text>
-<text x="34" y="396" font-size="12" fill="#8a5200" font-weight="700">Gerçek model çağrısı yok: kasetler elle yazılmıştır · No real model call: tapes are hand-written</text>
+<text x="34" y="396" font-size="12" fill="#8a5200" font-weight="700">Tek senaryo gerçek modelle koşuldu, diğer izler elle yazılmış kasettir · One scenario ran with a real model; other traces are hand-written tapes</text>
 </g>
 <path d="M672 290V196" stroke="#8a5200" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#a)" fill="none"/>
 <text x="682" y="262" font-size="12" fill="#8a5200">kule_araclari.py</text>

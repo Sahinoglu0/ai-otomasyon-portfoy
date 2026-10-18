@@ -112,7 +112,7 @@
     // giriş sayfası
     ["Statik örnek sayfalar; canlı API yok. Veriler sentetik ya da herkese açıktır, gerçek firma verisi değildir.", "Static sample pages; no live API. The data is synthetic or publicly available, not real company data."],
     ["Sorun, çözüm, teknoloji ve örnek veride ölçülen sonuçlar.", "Problem, solution, technology and results measured on sample data."],
-    ["Elle yazılmış kasetlerin izi, onay kapısı, Denetçi kararları ve eval (2 bilinen açık dahil).", "Trace of hand-written tapes, approval gate, Auditor decisions and eval (including 2 known gaps)."],
+    ["Gerçek model ve elle yazılmış kayıtların izi, onay kapısı, Denetçi kararları ve eval (2 bilinen açık dahil).", "Traces of real-model and hand-written records, approval gate, Auditor decisions and eval (including 2 known gaps)."],
     ["Mimari, ölçüm bulguları ve sınırlar, çizimlerle (Türkçe ve İngilizce).", "Architecture, measurement findings and limits, with diagrams (Turkish and English)."],
     ["Kule Pro stok, sipariş, fatura ve tedarikçi verisinden her gün karar çıktısı üretir; örnek ve herkese açık veriyle gösterilmiştir.", "Kule Pro turns stock, order, invoice and supplier data into a daily decision output; it is demonstrated on sample and public data."],
     // iz görüntüleyici: sabit metinler
@@ -123,7 +123,7 @@
     ["Veri yüklenmediyse ornek/eval/ klasöründen okunur (http ile açılışta).", "If no data is loaded, it is read from the ornek/eval/ folder (when opened over http)."],
     ["Kayıtlı jeton yalnız kaset adımlarını sayar ve kaset etiketlidir. Gerçek model maliyeti değildir.", "Recorded tokens only count tape steps and are labelled as tape. They are not real model cost."],
     ["Bu açıklar gizlenmez. Gözlendikleri için vaka \"geçti\" sayılır; kapanırlarsa ölçüte çevrilmeleri gerekir.", "These gaps are not hidden. Because they are observed, the case counts as \"passed\"; if they get closed they must be turned into criteria."],
-    ["Statik örnek: canlı API yok. Bu sayfa yalnız elle yazılmış kasetleri ve örnek izleri okur; hiçbir model çağırmaz.", "Static sample: no live API. This page only reads hand-written tapes and sample traces; it calls no model."],
+    ["Statik örnek: canlı API yok. Bu sayfa yalnız kayıtlı izleri (gerçek model kaydı ve elle yazılmış kasetler) okur; kendisi hiçbir model çağırmaz.", "Static sample: no live API. This page only reads recorded traces (real-model records and hand-written tapes); it calls no model itself."],
     ["Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez. Kule (cv-portfoy-kule) yalnız stil referansıdır, dokunulmadı.", "Single dependency-free page. Read-only; it does not change trace or eval files. Kule (cv-portfoy-kule) is only a style reference and was not touched."],
     // iz görüntüleyici: dinamik metinler
     ["Kaynak doğrulanamadı; gerçek model çıktısı olabilir ya da kaset olabilir.", "Source could not be verified; it may be real model output or a tape."],

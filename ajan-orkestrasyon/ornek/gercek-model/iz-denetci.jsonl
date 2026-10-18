@@ -1,0 +1,2 @@
+{"sira": 1, "zaman": "2026-10-18T21:37:31+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 1, "gecti": false, "uyusmazliklar": ["stok_durumu {'depo': 'IZM-01', 'durum': 'KRITIK'}: iddia M-1002, M-1005, M-1006, Kule 3", "stok_durumu {'depo': 'IZM-01', 'durum': 'FAZLA_STOK'}: iddia M-1001, M-1003, Kule 2"]}
+{"sira": 2, "zaman": "2026-10-18T21:38:10+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 2, "gecti": true, "uyusmazliklar": []}

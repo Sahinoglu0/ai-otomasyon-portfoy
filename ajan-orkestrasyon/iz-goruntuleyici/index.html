@@ -51,10 +51,13 @@ header.top h1{font-size:17px;margin:0;font-weight:600;letter-spacing:.2px;margin
 .honest .wrap{padding-top:10px;padding-bottom:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .honest strong{font-weight:600}
 .tag{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.4px;text-transform:uppercase;padding:5px 8px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
-.tag.elle{color:var(--wait);background:var(--surface)}
+.tag.elle{color:var(--wait);background:var(--surface);border-style:dashed}
+.tag.gercek{color:#fff;background:#1d6b57;border-color:#1d6b57}
+.tag.kod{color:var(--muted);background:var(--surface);border-color:var(--rule-strong)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.gercek{color:#0c0d0e;background:#5fb89c;border-color:#5fb89c}}
+:root[data-theme="dark"] .tag.gercek{color:#0c0d0e;background:#5fb89c;border-color:#5fb89c}
 .tag.kaset{color:var(--accent-ink);background:var(--surface)}
 .tag.yok{color:var(--bad);background:var(--surface)}
-.tag.gercek{color:var(--ok);background:var(--surface)}
 
 main{padding:16px 0 48px}
 section.card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px;margin-bottom:16px;box-shadow:0 1px 0 rgba(23,25,27,.04)}
@@ -284,7 +287,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
   const bolum = (ad) => h("h2", { text: ad });
 
   /* ---------- kaynaklar ---------- */
-  // Örnekler ornek/ klasöründen okunur. Etiket dosyanın kendi kosu_basladi.etiket alanından gelir; boşsa ETİKET YOK.
+  // Örnekler ornek/ klasöründen okunur. Rozet satırın kaynak alanından gelir; alan yoksa kaset sayılır.
   const ORNEKLER = [
     { ad: "Kaset koşusu (iz-kaset)", yol: "../ornek/iz-kaset.jsonl" },
     { ad: "Onaylı koşu (iz-onay)", yol: "../ornek/iz-onay.jsonl" },
@@ -292,28 +295,41 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
     { ad: "Soruşturma · Analist 1. deneme", yol: "../ornek/sorusturma/cikti/iz-analist-1.jsonl" },
     { ad: "Soruşturma · Analist 2. deneme", yol: "../ornek/sorusturma/cikti/iz-analist-2.jsonl" },
     { ad: "Soruşturma · Denetçi", yol: "../ornek/sorusturma/cikti/iz-denetci.jsonl" },
+    { ad: "Gerçek model · Planlayıcı", yol: "../ornek/gercek-model/iz-planlayici.jsonl" },
+    { ad: "Gerçek model · Analist 1. deneme", yol: "../ornek/gercek-model/iz-analist-1.jsonl" },
+    { ad: "Gerçek model · Analist 2. deneme", yol: "../ornek/gercek-model/iz-analist-2.jsonl" },
+    { ad: "Gerçek model · Denetçi", yol: "../ornek/gercek-model/iz-denetci.jsonl" },
   ];
   const EVAL_YOL = "../ornek/eval/eval-sonuc.json";
   const TABAN_YOL = "../ornek/eval/taban.json";
 
-  let iz = null;          // { ad, etiket, olaylar: [] }
+  let iz = null;          // { ad, kaynak, olaylar: [] }
   let sel = 0;            // seçili olay indeksi
   let evalVeri = null;    // eval-sonuc.json
   let tabanVeri = null;   // taban.json
 
-  /* ---------- etiket ---------- */
-  function etiketSinif(e) {
-    if (!e) return { sinif: "yok", metin: "ETİKET YOK", acik: "Kaynak doğrulanamadı; gerçek model çıktısı olabilir ya da kaset olabilir." };
-    if (/ELLE/i.test(e)) return { sinif: "elle", metin: "ELLE YAZILMIŞ KAYIT", acik: "KASET OYNATMA — gerçek model çıktısı değil." };
-    if (/GERÇEK/i.test(e)) return { sinif: "gercek", metin: "GERÇEK SAĞLAYICI KAYDI", acik: "Gerçek sağlayıcı yanıtlarından kaydedilmiş kaset; model kalitesi iddiası değildir." };
-    return { sinif: "yok", metin: e, acik: "Etiket tanınmadı; kaynağı doğrula." };
+  /* ---------- kaynak rozeti ---------- */
+  // Rozet satırın `kaynak` alanından gelir. Alan yoksa ya da gerçek model değilse kaset sayılır.
+  // Orkestratör her satıra kaynak yazar: "gercek-model", "kaset" ya da yalnız kod satırları için "kod".
+  function kaynakRozeti(kaynak) {
+    if (/ger[cç]ek|real/i.test(kaynak || "")) return { sinif: "gercek", metin: "GERÇEK MODEL KAYDI", acik: "Gerçek model yanıtlarından kaydedilmiş iz; model kalitesi iddiası değildir." };
+    if (kaynak === "kod") return { sinif: "kod", metin: "KOD SATIRI", acik: "Kod satırı: model çıktısı içermez." };
+    return { sinif: "elle", metin: "ELLE YAZILMIŞ KAYIT", acik: "KASET OYNATMA — gerçek model çıktısı değil." };
   }
-  function seritGuncelle(e, ek) {
-    const t = etiketSinif(e);
+  function rozetEtiketi(r) {
+    return h("span", { class: "tag " + r.sinif, text: r.metin });
+  }
+  function seritGuncelle(r, ek) {
     const tg = $("#etiket");
-    tg.className = "tag " + t.sinif;
-    tg.textContent = t.metin;
-    $("#etiket-metin").textContent = t.acik + (ek ? " " + ek : "");
+    if (!r) {
+      tg.className = "tag yok";
+      tg.textContent = "KAYNAK YÜKLENMEDİ";
+      $("#etiket-metin").textContent = "Bir iz dosyası seç ya da örneklerden birini aç.";
+      return;
+    }
+    tg.className = "tag " + r.sinif;
+    tg.textContent = r.metin;
+    $("#etiket-metin").textContent = r.acik + (ek ? " " + ek : "");
   }
 
   /* ---------- olay yardımcıları ---------- */
@@ -380,7 +396,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
   function renderIz() {
     const olaylar = iz.olaylar;
     const o = ozetle(olaylar);
-    seritGuncelle(iz.etiket, iz.ad ? "· " + iz.ad : "");
+    seritGuncelle(kaynakRozeti(iz.kaynak), iz.ad ? "· " + iz.ad : "");
 
     const kartlar = clear($("#ozet-kartlar"));
     const durum = o.bitti ? o.bitti.durum : "bitmedi";
@@ -399,7 +415,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
       const jeton = o.bitti ? o.bitti.jeton : null;
       bt.append(
         barKutu("Adım bütçesi", adim, o.butce.azami_adim, "adım"),
-        barKutu(etiketSinif(iz.etiket).sinif === "elle" ? "Kayıtlı jeton (kaset)" : "Jeton", jeton, o.butce.azami_jeton, "jeton")
+        barKutu(kaynakRozeti(iz.kaynak).sinif === "elle" ? "Kayıtlı jeton (kaset)" : "Jeton", jeton, o.butce.azami_jeton, "jeton")
       );
     } else {
       bt.append(h("p", { class: "note", text: "Bu dosyada koşu bütçesi yok (kosu_basladi olayı yok); yalnız denetçi kararları gösterilir." }));
@@ -478,6 +494,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
     const satirlar = [
       alanSatiri("Sıra", e.sira),
       alanSatiri("Olay", e.olay),
+      alanSatiri("Kaynak", e.kaynak),
       alanSatiri("Ajan", e.ajan),
       alanSatiri("Adım", e.adim),
       alanSatiri("Araç", e.arac),
@@ -493,7 +510,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
       alanSatiri("Uyuşmazlıklar", (e.uyusmazliklar || []).join("\n")),
     ].flat().filter(Boolean);
     kok.append(
-      h("p", { class: "row" }, h("span", { class: "badge b-info", text: olayEtiketi(e) })),
+      h("p", { class: "row" }, rozetEtiketi(kaynakRozeti(e.kaynak)), h("span", { class: "badge b-info", text: olayEtiketi(e) })),
       h("dl", null, ...satirlar),
       h("details", null, h("summary", { text: "Ham satır (JSON)" }), h("pre", { text: json(e) }))
     );
@@ -577,8 +594,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
   }
   function izYukle(olaylar, ad) {
     const basla = olaylar.find((e) => e.olay === "kosu_basladi");
-    const etiket = (basla && basla.etiket) || "";
-    iz = { ad, etiket, olaylar };
+    iz = { ad, kaynak: basla ? basla.kaynak : undefined, olaylar };
     sel = 0;
     hataGoster("#iz-hata", "");
     $("#iz-icerik").hidden = false;
@@ -661,10 +677,10 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
     $("#p-iz").hidden = !iz_;
     $("#p-eval").hidden = iz_;
     if (iz_) {
-      if (iz) seritGuncelle(iz.etiket, iz.ad ? "· " + iz.ad : "");
+      if (iz) seritGuncelle(kaynakRozeti(iz.kaynak), iz.ad ? "· " + iz.ad : "");
       else seritGuncelle(null, "");
     } else {
-      seritGuncelle("ELLE YAZILMIŞ KAYIT", "Eval skoru kasetten oynatıldı; model kalitesini ölçmez.");
+      seritGuncelle(kaynakRozeti(null), "Eval skoru kasetten oynatıldı; model kalitesini ölçmez.");
     }
   }
   $("#t-iz").addEventListener("click", () => sekme("iz"));

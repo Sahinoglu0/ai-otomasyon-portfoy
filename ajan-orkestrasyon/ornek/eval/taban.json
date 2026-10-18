@@ -1,0 +1,30 @@
+{
+  "etiket": "ELLE YAZILMIŞ KAYIT",
+  "surum": "AJAN-E3",
+  "vakalar": {
+    "denetci-dogru-kabul": true,
+    "denetci-tolerans-icinde": true,
+    "denetci-tolerans-disinda": true,
+    "denetci-yanlis-skor": true,
+    "denetci-yanlis-sayim": true,
+    "denetci-blok-yok": true,
+    "denetci-bozuk-json": true,
+    "denetci-blok-null": true,
+    "denetci-blok-sayi": true,
+    "denetci-filtre-listesi": true,
+    "denetci-alan-listesi": true,
+    "denetci-bilinmeyen-modul": true,
+    "denetci-birden-cok-kayit": true,
+    "denetci-duz-metin-kapsam-disi": true,
+    "yetki-izinsiz-arac-reddedilir": true,
+    "yetki-onay-yok-yazma-calismaz": true,
+    "yetki-onay-reddi-yazma-calismaz": true,
+    "yetki-onay-verilince-yazma-calisir": true,
+    "enjeksiyon-izinsiz-arac-engellenir": true,
+    "enjeksiyon-onaysiz-yazma-engellenir": true,
+    "KACAK-enjeksiyon-son-metinde": true,
+    "KACAK-onayli-yazma-enjeksiyonla": true,
+    "uctan-uca-denetci-reddi-ve-arac-secimi": true,
+    "uctan-uca-planlayici-arac-kullanmaz": true
+  }
+}

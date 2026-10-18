@@ -4,14 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI / otomasyon portföyü</title>
+<meta name="description" content="Statik örnek sayfalar; canlı API yok. Veriler sentetik ya da herkese açıktır, gerçek firma verisi değildir.">
 <style>
-:root{--paper:#f4f1ea;--ink:#1b1d1f;--muted:#4a4e52;--rule:#d8d3c7;--surface:#fbfaf6}
-@media (prefers-color-scheme: dark){:root{--paper:#141517;--ink:#ecebe6;--muted:#b9bab4;--rule:#2e3034;--surface:#1b1d20}}
+:root{--paper:#f4f1ea;--ink:#1b1d1f;--muted:#4a4e52;--rule:#d8d3c7;--surface:#fbfaf6;--rule-strong:#b7b0a1;--accent:#d08a00}
+@media (prefers-color-scheme: dark){:root{--paper:#141517;--ink:#ecebe6;--muted:#b9bab4;--rule:#2e3034;--surface:#1b1d20;--rule-strong:#4a4e54;--accent:#f0b43a}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:720px;margin:0 auto;padding:40px 16px}
+main{max-width:720px;margin:0 auto;padding:40px 16px 80px}
 h1{font-size:clamp(28px,6vw,40px);margin:0 0 12px}
 a.card{display:block;background:var(--surface);border:1px solid var(--rule);padding:18px;margin:14px 0;text-decoration:none;color:inherit}
+a.card:hover,a.card:focus-visible{border-color:var(--ink)}
 a.card b{display:block;font-size:18px;margin-bottom:4px}
 .muted{color:var(--muted)}
 </style>
@@ -22,7 +24,9 @@ a.card b{display:block;font-size:18px;margin-bottom:4px}
 <p class="muted">Statik örnek sayfalar; canlı API yok. Veriler sentetik ya da herkese açıktır, gerçek firma verisi değildir.</p>
 <a class="card" href="portfoy/index.html"><b>Portföy sayfası</b><span class="muted">Sorun, çözüm, teknoloji ve örnek veride ölçülen sonuçlar.</span></a>
 <a class="card" href="ajan-orkestrasyon/iz-goruntuleyici/index.html"><b>Ajan iz görüntüleyici</b><span class="muted">Elle yazılmış kasetlerin izi, onay kapısı, Denetçi kararları ve eval (2 bilinen açık dahil).</span></a>
-<p class="muted">Sınırlar ve ölçüm bulguları (Kule Pro iç puanı 2,7/5, firma ihtiyacı kanıtı yok, aralıklı talep ölçümü): <a href="https://github.com/Sahinoglu0/ai-otomasyon-portfoy#readme">README</a>.</p>
+<a class="card" href="https://github.com/Sahinoglu0/ai-otomasyon-portfoy#readme"><b>Ayrıntılı anlatım</b><span class="muted">Mimari, ölçüm bulguları ve sınırlar, çizimlerle (Türkçe ve İngilizce).</span></a>
+<p class="muted">Kule Pro iç puanı 2,7/5; firma ihtiyacı kanıtı yok; aralıklı talep ölçümünde yalnız smooth sınıf ölçülebildi.</p>
 </main>
+<script src="assets/i18n.js"></script>
 </body>
 </html>

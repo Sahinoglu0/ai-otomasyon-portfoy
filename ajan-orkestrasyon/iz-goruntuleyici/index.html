@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İz görüntüleyici</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b43a'/%3E%3Cpath d='M6 9h20v3H6zM6 16h14v3H6zM6 23h9v3H6z' fill='%2317191b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f3f0e8; --surface:#fbfaf6; --ink:#17191b; --muted:#5d6166;
+  --rule:#d6d0c3; --rule-strong:#b7b0a1; --accent:#d08a00; --accent-ink:#7a4e00;
+  --ok:#1d6b57; --ok-soft:#d9ece5; --wait:#8a5200; --wait-soft:#f4e4c8;
+  --bad:#a12a2a; --bad-soft:#f5dcd9; --info:#2b5c8a; --info-soft:#dce7f2;
+  --nav:#17191b; --nav-ink:#e9e6de; --nav-active:#f0b43a;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121315; --surface:#1a1c1f; --ink:#eceae4; --muted:#9aa0a6;
+    --rule:#34373c; --rule-strong:#4a4e54; --accent:#f0b43a; --accent-ink:#f0b43a;
+    --ok:#5fb89c; --ok-soft:#173a31; --wait:#e0a84a; --wait-soft:#3a2d14;
+    --bad:#e07a72; --bad-soft:#3d1d1b; --info:#8db8e3; --info-soft:#1b2e42;
+    --nav:#0c0d0e; --nav-ink:#eceae4; --nav-active:#f0b43a;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121315; --surface:#1a1c1f; --ink:#eceae4; --muted:#9aa0a6;
+  --rule:#34373c; --rule-strong:#4a4e54; --accent:#f0b43a; --accent-ink:#f0b43a;
+  --ok:#5fb89c; --ok-soft:#173a31; --wait:#e0a84a; --wait-soft:#3a2d14;
+  --bad:#e07a72; --bad-soft:#3d1d1b; --info:#8db8e3; --info-soft:#1b2e42;
+  --nav:#0c0d0e; --nav-ink:#eceae4; --nav-active:#f0b43a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font:15px/1.5 var(--sans);min-height:100vh;overflow-x:hidden}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* üst çubuk */
+header.top{background:var(--nav);color:var(--nav-ink)}
+header.top .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+header.top h1{font-size:17px;margin:0;font-weight:600;letter-spacing:.2px;margin-right:auto}
+.tabs{display:flex;gap:4px}
+.tab{background:transparent;border:1px solid transparent;border-radius:6px;padding:6px 12px;cursor:pointer;color:var(--nav-ink);opacity:.7}
+.tab[aria-selected="true"]{opacity:1;border-color:var(--nav-active);color:var(--nav-active)}
+.iconbtn{background:transparent;border:1px solid #4a4e54;border-radius:6px;padding:5px 10px;cursor:pointer;color:var(--nav-ink);font-size:13px}
+
+/* dürüstlük şeridi */
+.honest{background:var(--wait-soft);border-bottom:1px solid var(--rule-strong);color:var(--ink)}
+.honest .wrap{padding-top:10px;padding-bottom:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.honest strong{font-weight:600}
+.tag{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.4px;text-transform:uppercase;padding:5px 8px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.tag.elle{color:var(--wait);background:var(--surface)}
+.tag.kaset{color:var(--accent-ink);background:var(--surface)}
+.tag.yok{color:var(--bad);background:var(--surface)}
+.tag.gercek{color:var(--ok);background:var(--surface)}
+
+main{padding:16px 0 48px}
+section.card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px;margin-bottom:16px;box-shadow:0 1px 0 rgba(23,25,27,.04)}
+section.card > h2{font-size:15px;margin:0 0 12px;font-weight:600}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.mono{font-family:var(--mono);font-size:13px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+.picker{display:flex;gap:8px;flex-wrap:wrap;align-items:center;width:100%}
+select,.filebtn{background:var(--surface);border:1px solid var(--rule-strong);border-radius:6px;padding:7px 10px;max-width:100%}
+.filebtn{cursor:pointer}
+.filebtn input{display:none}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{border:1px solid var(--rule);border-radius:6px;padding:10px 12px;background:var(--paper)}
+.stat .k{font-size:12px;color:var(--muted)}
+.stat .v{font-size:20px;font-weight:600;margin-top:2px;word-break:break-word}
+.stat .s{font-size:12px;color:var(--muted)}
+
+.bar{height:10px;background:var(--rule);border-radius:5px;overflow:hidden;margin-top:6px}
+.bar > i{display:block;height:100%;background:var(--info)}
+.bar.warn > i{background:var(--wait)}
+.bar.over > i{background:var(--bad)}
+.budgets{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+
+.badge{display:inline-block;font:600 12px/1 var(--mono);padding:4px 7px;border-radius:4px;white-space:nowrap}
+.b-ok{background:var(--ok-soft);color:var(--ok)}
+.b-bad{background:var(--bad-soft);color:var(--bad)}
+.b-wait{background:var(--wait-soft);color:var(--wait)}
+.b-info{background:var(--info-soft);color:var(--info)}
+.b-muted{background:var(--rule);color:var(--ink)}
+
+/* ajan şeridi */
+.lanes-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+.lanes{display:grid;min-width:max-content;align-items:center}
+.lanes > div{height:40px;display:flex;align-items:center;justify-content:center}
+.lane-h,.lane-name{justify-content:flex-start;padding-left:10px;font-size:13px;color:var(--muted);position:sticky;left:0;background:var(--paper);z-index:1;border-right:1px solid var(--rule)}
+.lane-name{color:var(--ink);font-weight:600}
+.idx{font:12px var(--mono);color:var(--muted);border-bottom:1px solid var(--rule)}
+.cell{border-left:1px dashed var(--rule)}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--surface);cursor:pointer;padding:0;background:var(--muted);box-shadow:0 0 0 1px var(--rule-strong)}
+.dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dot.on{box-shadow:0 0 0 3px var(--accent)}
+.k-start{background:var(--ink)}
+.k-model{background:var(--info)}
+.k-call{background:var(--muted)}
+.k-ok{background:var(--ok)}
+.k-bad{background:var(--bad);border-radius:3px;transform:rotate(45deg)}
+.k-wait{background:var(--wait)}
+.k-other{background:var(--rule-strong)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+
+/* ayrıntı */
+.detail dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:0}
+.detail dt{color:var(--muted);font-size:13px}
+.detail dd{margin:0;min-width:0;word-break:break-word}
+pre{font:13px/1.45 var(--mono);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px;margin:0;white-space:pre-wrap;word-break:break-word;max-height:260px;overflow:auto}
+details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:10px}
+
+/* iki sütun → tek sütun */
+.grid2{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:860px){.grid2{grid-template-columns:1.1fr .9fr}}
+
+ul.plain{list-style:none;padding:0;margin:0}
+ul.plain li{padding:10px 0;border-bottom:1px solid var(--rule)}
+ul.plain li:last-child{border-bottom:0}
+
+/* eval kartları */
+.vaka{border:1px solid var(--rule);border-radius:6px;padding:12px;margin-bottom:10px;background:var(--paper)}
+.vaka.acik{border-left:4px solid var(--wait)}
+.vaka .ad{font:600 13px var(--mono);word-break:break-all}
+.vaka dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:8px 0 0;font-size:13px}
+.vaka dt{color:var(--muted)}
+.vaka dd{margin:0;word-break:break-word}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+
+.alert{border:1px solid var(--rule-strong);border-radius:6px;padding:12px;background:var(--wait-soft)}
+footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>İz görüntüleyici · AJAN-V1</h1>
+    <nav class="tabs" role="tablist" aria-label="Görünüm">
+      <button class="tab" role="tab" id="t-iz" aria-controls="p-iz" aria-selected="true">İz</button>
+      <button class="tab" role="tab" id="t-eval" aria-controls="p-eval" aria-selected="false">Eval</button>
+    </nav>
+    <button class="iconbtn" id="tema" type="button" aria-label="Temayı değiştir">Koyu / açık</button>
+  </div>
+</header>
+
+<div class="honest" id="serit" role="status">
+  <div class="wrap">
+    <span class="tag yok" id="etiket">KAYNAK YÜKLENMEDİ</span>
+    <span id="etiket-metin" class="small">Bir iz dosyası seç ya da örneklerden birini aç.</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- İZ -->
+  <div id="p-iz" role="tabpanel" aria-labelledby="t-iz">
+    <section class="card">
+      <div class="picker">
+        <select id="ornek" aria-label="Örnek iz dosyası">
+          <option value="">— örnek iz seç —</option>
+        </select>
+        <label class="filebtn small">Dosya seç (.jsonl)
+          <input type="file" id="iz-dosya" accept=".jsonl,.json,.txt">
+        </label>
+      </div>
+      <p class="note" id="iz-not">Dosya seçici her tarayıcıda çalışır. http ile açıldığında örnekler otomatik okunur; dosyadan (file://) açılışta örnekler okunamaz, dosya seçiciyi kullan.</p>
+    </section>
+
+    <div id="iz-hata" class="alert" hidden></div>
+
+    <div id="iz-icerik" hidden>
+      <section class="card">
+        <h2>Koşu özeti</h2>
+        <div class="cards" id="ozet-kartlar"></div>
+        <div class="budgets" id="butce"></div>
+      </section>
+
+      <section class="card">
+        <h2>Ajan şeridi ve zaman çizelgesi</h2>
+        <p class="note">Yatay eksen olay sırası (sıra). Bir noktaya dokunursan ayrıntı açılır. Mobilde şerit yana kayar.</p>
+        <div id="serit-alan"></div>
+        <div class="legend" aria-hidden="false">
+          <span><i class="k-start"></i>koşu başladı</span>
+          <span><i class="k-model"></i>model yanıtı</span>
+          <span><i class="k-call"></i>araç çağrısı</span>
+          <span><i class="k-ok"></i>onay / sonuç / kabul</span>
+          <span><i class="k-bad"></i>red / reddedildi</span>
+        </div>
+      </section>
+
+      <div class="grid2">
+        <section class="card detail" id="ayrinti-kart" aria-live="polite">
+          <h2>Adım ayrıntısı</h2>
+          <div id="ayrinti"></div>
+        </section>
+        <div>
+          <section class="card">
+            <h2>Onay kapısı</h2>
+            <p class="note">Yan etkili araçların kararı. Panel yalnız kararı gösterir; onaylanan içeriğin doğruluğunu denetlemez (bilinen açık, Eval sekmesi).</p>
+            <ul class="plain" id="kapi"></ul>
+          </section>
+          <section class="card">
+            <h2>Denetçi kararları</h2>
+            <ul class="plain" id="denetim"></ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVAL -->
+  <div id="p-eval" role="tabpanel" aria-labelledby="t-eval" hidden>
+    <section class="card">
+      <div class="picker">
+        <label class="filebtn small">Eval sonucu (eval-sonuc.json)
+          <input type="file" id="eval-dosya" accept=".json">
+        </label>
+        <label class="filebtn small">Taban (taban.json)
+          <input type="file" id="taban-dosya" accept=".json">
+        </label>
+      </div>
+      <p class="note" id="eval-not">Veri yüklenmediyse ornek/eval/ klasöründen okunur (http ile açılışta).</p>
+    </section>
+    <div id="eval-hata" class="alert" hidden></div>
+    <div id="eval-icerik" hidden>
+      <section class="card">
+        <h2>Skor</h2>
+        <div class="cards" id="eval-kartlar"></div>
+        <p class="note">Kayıtlı jeton yalnız kaset adımlarını sayar ve kaset etiketlidir. Gerçek model maliyeti değildir.</p>
+      </section>
+      <section class="card">
+        <h2>Bilinen enjeksiyon açıkları</h2>
+        <p class="note">Bu açıklar gizlenmez. Gözlendikleri için vaka "geçti" sayılır; kapanırlarsa ölçüte çevrilmeleri gerekir.</p>
+        <ul class="plain" id="aciklar"></ul>
+      </section>
+      <section class="card">
+        <h2>Vakalar ve regresyon</h2>
+        <div id="vakalar"></div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<footer class="wrap">
+  Statik örnek: canlı API yok. Bu sayfa yalnız elle yazılmış kasetleri ve örnek izleri okur; hiçbir model çağırmaz.
+  Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez. Kule (cv-portfoy-kule) yalnız stil referansıdır, dokunulmadı.
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ---------- yardımcılar: metin yalnız textContent ile yazılır ---------- */
+  const $ = (s) => document.querySelector(s);
+  function h(tag, attrs, ...kids) {
+    const n = document.createElement(tag);
+    if (attrs) for (const k of Object.keys(attrs)) {
+      const v = attrs[k];
+      if (v === false || v == null) continue;
+      if (k === "class") n.className = v;
+      else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? "" : v);
+    }
+    for (const c of kids.flat()) {
+      if (c == null || c === false) continue;
+      n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+    }
+    return n;
+  }
+  const clear = (n) => { while (n.firstChild) n.removeChild(n.firstChild); return n; };
+  const pct = (a, b) => (b > 0 ? Math.min(100, Math.round((a / b) * 100)) : 0);
+  const json = (v) => (v === undefined ? "" : JSON.stringify(v, null, 2));
+  const bolum = (ad) => h("h2", { text: ad });
+
+  /* ---------- kaynaklar ---------- */
+  // Örnekler ornek/ klasöründen okunur. Etiket dosyanın kendi kosu_basladi.etiket alanından gelir; boşsa ETİKET YOK.
+  const ORNEKLER = [
+    { ad: "Kaset koşusu (iz-kaset)", yol: "../ornek/iz-kaset.jsonl" },
+    { ad: "Onaylı koşu (iz-onay)", yol: "../ornek/iz-onay.jsonl" },
+    { ad: "Soruşturma · Planlayıcı", yol: "../ornek/sorusturma/cikti/iz-planlayici.jsonl" },
+    { ad: "Soruşturma · Analist 1. deneme", yol: "../ornek/sorusturma/cikti/iz-analist-1.jsonl" },
+    { ad: "Soruşturma · Analist 2. deneme", yol: "../ornek/sorusturma/cikti/iz-analist-2.jsonl" },
+    { ad: "Soruşturma · Denetçi", yol: "../ornek/sorusturma/cikti/iz-denetci.jsonl" },
+  ];
+  const EVAL_YOL = "../ornek/eval/eval-sonuc.json";
+  const TABAN_YOL = "../ornek/eval/taban.json";
+
+  let iz = null;          // { ad, etiket, olaylar: [] }
+  let sel = 0;            // seçili olay indeksi
+  let evalVeri = null;    // eval-sonuc.json
+  let tabanVeri = null;   // taban.json
+
+  /* ---------- etiket ---------- */
+  function etiketSinif(e) {
+    if (!e) return { sinif: "yok", metin: "ETİKET YOK", acik: "Kaynak doğrulanamadı; gerçek model çıktısı olabilir ya da kaset olabilir." };
+    if (/ELLE/i.test(e)) return { sinif: "elle", metin: "ELLE YAZILMIŞ KAYIT", acik: "KASET OYNATMA — gerçek model çıktısı değil." };
+    if (/GERÇEK/i.test(e)) return { sinif: "gercek", metin: "GERÇEK SAĞLAYICI KAYDI", acik: "Gerçek sağlayıcı yanıtlarından kaydedilmiş kaset; model kalitesi iddiası değildir." };
+    return { sinif: "yok", metin: e, acik: "Etiket tanınmadı; kaynağı doğrula." };
+  }
+  function seritGuncelle(e, ek) {
+    const t = etiketSinif(e);
+    const tg = $("#etiket");
+    tg.className = "tag " + t.sinif;
+    tg.textContent = t.metin;
+    $("#etiket-metin").textContent = t.acik + (ek ? " " + ek : "");
+  }
+
+  /* ---------- olay yardımcıları ---------- */
+  const ajanOf = (e) => e.ajan || "koşu";
+  function olayEtiketi(e) {
+    switch (e.olay) {
+      case "kosu_basladi": return "koşu başladı";
+      case "model_yaniti": return "model yanıtı (adım " + e.adim + ")";
+      case "arac_cagrisi": return "çağrı: " + e.arac;
+      case "arac_sonucu": return "sonuç: " + e.arac;
+      case "onay_verildi": return "onay verildi: " + e.arac;
+      case "onay_reddi": return "onay reddi: " + e.arac;
+      case "arac_reddi": return "araç reddi: " + e.arac;
+      case "denetim": return "denetim " + e.deneme + ": " + (e.gecti ? "kabul" : "REDDEDİLDİ");
+      case "kosu_bitti": return "koşu bitti: " + e.durum;
+      default: return e.olay;
+    }
+  }
+  function olayTuru(e) {
+    switch (e.olay) {
+      case "kosu_basladi": return "start";
+      case "model_yaniti": return "model";
+      case "arac_cagrisi": return "call";
+      case "arac_sonucu": return "ok";
+      case "onay_verildi": return "ok";
+      case "onay_reddi": case "arac_reddi": return "bad";
+      case "denetim": return e.gecti ? "ok" : "bad";
+      case "kosu_bitti": return e.durum === "tamamlandi" ? "ok" : "bad";
+      default: return "other";
+    }
+  }
+  function ozetle(olaylar) {
+    const basla = olaylar.find((e) => e.olay === "kosu_basladi");
+    const bitti = olaylar.filter((e) => e.olay === "kosu_bitti").at(-1);
+    const denetim = olaylar.filter((e) => e.olay === "denetim");
+    const kapilar = kapiKararlari(olaylar);
+    return {
+      basla, bitti,
+      butce: basla ? basla.butce : null,
+      sure: olaylar.filter((e) => e.olay === "model_yaniti").reduce((t, e) => t + (e.sure_sn || 0), 0),
+      denetim,
+      denetRed: denetim.filter((e) => !e.gecti).length,
+      kapilar,
+      aracRed: olaylar.filter((e) => e.olay === "arac_reddi").length,
+    };
+  }
+  // Her yan etkili çağrı için son onay kararı; çalışıp çalışmadığı bir sonraki sonuçtan anlaşılır.
+  function kapiKararlari(olaylar) {
+    const karar = {};
+    const cikti = [];
+    olaylar.forEach((e, i) => {
+      if (e.olay === "onay_verildi") karar[e.arac] = "onaylandı";
+      else if (e.olay === "onay_reddi") karar[e.arac] = "reddedildi";
+      else if (e.olay === "arac_cagrisi" && e.yan_etkili) {
+        const sonraki = olaylar.slice(i + 1).find((x) => x.olay === "arac_sonucu" && x.arac === e.arac);
+        cikti.push({ i, sira: e.sira, ajan: ajanOf(e), arac: e.arac, karar: karar[e.arac] || "karar yok", calisti: !!sonraki });
+        delete karar[e.arac];
+      }
+    });
+    return cikti;
+  }
+
+  /* ---------- iz görünümü ---------- */
+  function renderIz() {
+    const olaylar = iz.olaylar;
+    const o = ozetle(olaylar);
+    seritGuncelle(iz.etiket, iz.ad ? "· " + iz.ad : "");
+
+    const kartlar = clear($("#ozet-kartlar"));
+    const durum = o.bitti ? o.bitti.durum : "bitmedi";
+    kartlar.append(
+      stat("Durum", durum, o.bitti ? (o.bitti.hata ? "hata: " + o.bitti.hata : "") : "kosu_bitti olayı yok"),
+      stat("Olay", olaylar.length, "toplam satır"),
+      stat("Yan etkili çağrı", o.kapilar.length, o.kapilar.filter((k) => k.calisti).length + " çalıştı"),
+      stat("Araç reddi", o.aracRed, "izinli listede değil"),
+      stat("Denetçi reddi", o.denetRed + " / " + o.denetim.length, o.denetim.length ? "deneme başına" : "denetim olayı yok"),
+      stat("Model süresi", o.sure.toFixed(3) + " sn", "yerel kaset süresi")
+    );
+
+    const bt = clear($("#butce"));
+    if (o.butce) {
+      const adim = o.bitti ? o.bitti.adim : null;
+      const jeton = o.bitti ? o.bitti.jeton : null;
+      bt.append(
+        barKutu("Adım bütçesi", adim, o.butce.azami_adim, "adım"),
+        barKutu(etiketSinif(iz.etiket).sinif === "elle" ? "Kayıtlı jeton (kaset)" : "Jeton", jeton, o.butce.azami_jeton, "jeton")
+      );
+    } else {
+      bt.append(h("p", { class: "note", text: "Bu dosyada koşu bütçesi yok (kosu_basladi olayı yok); yalnız denetçi kararları gösterilir." }));
+    }
+
+    renderSerit(olaylar);
+    renderKapi(o.kapilar);
+    renderDenetim(o.denetim);
+    if (sel >= olaylar.length) sel = 0;
+    renderAyrinti(olaylar[sel], sel);
+  }
+  function stat(k, v, s) {
+    return h("div", { class: "stat" }, h("div", { class: "k", text: k }), h("div", { class: "v", text: String(v) }), h("div", { class: "s", text: s || "" }));
+  }
+  function barKutu(ad, deger, azami, birim) {
+    const yuzde = pct(deger || 0, azami || 0);
+    const sinif = deger == null ? "" : yuzde >= 100 ? "over" : yuzde >= 80 ? "warn" : "";
+    return h("div", null,
+      h("div", { class: "row small" }, h("strong", { text: ad }), h("span", { class: "muted", text: (deger ?? "—") + " / " + azami + " " + birim })),
+      h("div", { class: "bar " + sinif, role: "img", "aria-label": ad + " yüzde " + yuzde }, h("i", { style: "width:" + yuzde + "%" }))
+    );
+  }
+  function renderSerit(olaylar) {
+    const ajanlar = [...new Set(olaylar.map(ajanOf))];
+    const grid = h("div", { class: "lanes", style: "grid-template-columns:118px repeat(" + olaylar.length + ",44px)" });
+    grid.append(h("div", { class: "lane-h", text: "ajan / sıra" }));
+    olaylar.forEach((e, i) => grid.append(h("div", { class: "idx", text: String(e.sira ?? i + 1) })));
+    for (const aj of ajanlar) {
+      grid.append(h("div", { class: "lane-name", text: aj }));
+      olaylar.forEach((e, i) => {
+        const hucre = h("div", { class: "cell" });
+        if (ajanOf(e) === aj) {
+          const et = olayEtiketi(e);
+          hucre.append(h("button", {
+            class: "dot k-" + olayTuru(e) + (i === sel ? " on" : ""),
+            type: "button",
+            title: (e.sira ?? i + 1) + ". " + et,
+            "aria-label": (e.sira ?? i + 1) + ". " + et,
+            "aria-pressed": i === sel ? "true" : "false",
+            onclick: () => { sel = i; renderIz(); },
+          }));
+        }
+        grid.append(hucre);
+      });
+    }
+    clear($("#serit-alan")).append(h("div", { class: "lanes-wrap" }, grid));
+  }
+  function renderKapi(kapilar) {
+    const ul = clear($("#kapi"));
+    if (!kapilar.length) { ul.append(h("li", { class: "muted small", text: "Yan etkili çağrı yok; onay kapısı tetiklenmedi." })); return; }
+    for (const k of kapilar) {
+      const sinif = k.karar === "onaylandı" ? "b-ok" : k.karar === "reddedildi" ? "b-bad" : "b-wait";
+      ul.append(h("li", null,
+        h("div", { class: "row" }, h("span", { class: "badge " + sinif, text: k.karar.toUpperCase() }), h("span", { class: "mono", text: "sıra " + (k.sira ?? "?") + " · " + k.arac })),
+        h("div", { class: "small muted", text: k.ajan + " · " + (k.calisti ? "araç çalıştı (sonuç var)" : "araç çalışmadı") })
+      ));
+    }
+  }
+  function renderDenetim(denetim) {
+    const ul = clear($("#denetim"));
+    if (!denetim.length) { ul.append(h("li", { class: "muted small", text: "Bu dosyada denetim olayı yok." })); return; }
+    for (const d of denetim) {
+      ul.append(h("li", null,
+        h("div", { class: "row" }, h("span", { class: "badge " + (d.gecti ? "b-ok" : "b-bad"), text: d.gecti ? "KABUL" : "REDDEDİLDİ" }), h("span", { class: "mono", text: "deneme " + d.deneme })),
+        ...(d.uyusmazliklar || []).map((u) => h("div", { class: "small mono", text: u }))
+      ));
+    }
+  }
+  function alanSatiri(ad, deger) {
+    if (deger === undefined || deger === null || deger === "") return null;
+    return [h("dt", { text: ad }), h("dd", null, typeof deger === "string" ? h("span", { style: "white-space:pre-wrap", text: deger }) : h("pre", { text: json(deger) }))];
+  }
+  function renderAyrinti(e, i) {
+    const kok = clear($("#ayrinti"));
+    if (!e) return;
+    const satirlar = [
+      alanSatiri("Sıra", e.sira),
+      alanSatiri("Olay", e.olay),
+      alanSatiri("Ajan", e.ajan),
+      alanSatiri("Adım", e.adim),
+      alanSatiri("Araç", e.arac),
+      e.yan_etkili !== undefined ? alanSatiri("Yan etkili", e.yan_etkili ? "evet" : "hayır") : null,
+      alanSatiri("Girdi özeti", e.girdi_ozeti),
+      alanSatiri("Girdi", e.girdi),
+      alanSatiri("Sonuç", e.sonuc),
+      alanSatiri("Model metni", e.metin),
+      e.arac_cagrilari ? alanSatiri("Araç çağrıları", e.arac_cagrilari.map((c) => c.ad + " " + json(c.girdi)).join("\n")) : null,
+      e.giren_jeton !== undefined ? alanSatiri("Jeton (giren / çıkan)", e.giren_jeton + " / " + e.cikan_jeton) : null,
+      alanSatiri("Süre (sn)", e.sure_sn),
+      alanSatiri("Neden", e.neden),
+      alanSatiri("Uyuşmazlıklar", (e.uyusmazliklar || []).join("\n")),
+    ].flat().filter(Boolean);
+    kok.append(
+      h("p", { class: "row" }, h("span", { class: "badge b-info", text: olayEtiketi(e) })),
+      h("dl", null, ...satirlar),
+      h("details", null, h("summary", { text: "Ham satır (JSON)" }), h("pre", { text: json(e) }))
+    );
+  }
+
+  /* ---------- eval ---------- */
+  function regresyon(vaka) {
+    if (!tabanVeri) return { metin: "taban yok", sinif: "b-muted" };
+    const t = tabanVeri.vakalar ? tabanVeri.vakalar[vaka.ad] : undefined;
+    if (t === undefined) return { metin: "YENİ", sinif: "b-info" };
+    if (t && !vaka.gecti) return { metin: "REGRESYON", sinif: "b-bad" };
+    return { metin: "değişiklik yok", sinif: "b-ok" };
+  }
+  function renderEval() {
+    const vakalar = evalVeri.vakalar || [];
+    const gecen = vakalar.filter((v) => v.gecti).length;
+    const kayipAdlar = tabanVeri && tabanVeri.vakalar
+      ? Object.keys(tabanVeri.vakalar).filter((ad) => !vakalar.some((v) => v.ad === ad))
+      : [];
+    const regresyonSayi = vakalar.filter((v) => regresyon(v).metin === "REGRESYON").length;
+    const acikSayi = vakalar.filter((v) => v.tur === "bilinen açık").length;
+
+    // ozet yoksa (eski eval dosyası) eski gösterime düşer
+    const ozet = evalVeri.ozet && evalVeri.ozet.olcut_kontrol_kapsam && evalVeri.ozet.bilinen_acik ? evalVeri.ozet : null;
+    const kartlar = clear($("#eval-kartlar"));
+    kartlar.append(
+      stat("Vaka", vakalar.length, "toplam"),
+      ozet
+        ? stat("Ölçüt/kontrol/kapsam", ozet.olcut_kontrol_kapsam.gecen + " / " + ozet.olcut_kontrol_kapsam.toplam, "geçti")
+        : stat("Geçen", gecen + " / " + vakalar.length, vakalar.length - gecen + " başarısız"),
+      stat("Regresyon", regresyonSayi, tabanVeri ? "tabana göre" : "taban yüklenmedi"),
+      stat("Kayıp", kayipAdlar.length, "tabanda var, bu koşuda yok"),
+      ozet
+        ? stat("Bilinen açık gözlendi", ozet.bilinen_acik.gozlendi + " / " + ozet.bilinen_acik.toplam, "kapanmadı; gizlenmez")
+        : stat("Bilinen açık", acikSayi, "gözlenen kaçak, gizlenmez")
+    );
+
+    const ac = clear($("#aciklar"));
+    const acikVakalar = vakalar.filter((v) => v.tur === "bilinen açık");
+    if (!acikVakalar.length) ac.append(h("li", { class: "muted small", text: "Bu koşuda bilinen açık vakası yok." }));
+    for (const v of acikVakalar) {
+      ac.append(h("li", null,
+        h("div", { class: "row" }, h("span", { class: "badge b-wait", text: "BİLİNEN AÇIK" }), h("span", { class: "mono small", text: v.ad })),
+        h("div", { class: "small", text: v.beklenen }),
+        h("div", { class: "small muted", text: "Gözlenen: " + v.gozlenen })
+      ));
+    }
+
+    const kok = clear($("#vakalar"));
+    for (const v of vakalar) {
+      const reg = regresyon(v);
+      kok.append(h("article", { class: "vaka" + (v.tur === "bilinen açık" ? " acik" : "") },
+        h("div", { class: "row" },
+          h("span", { class: "badge " + (v.gecti ? "b-ok" : "b-bad"), text: v.gecti ? "GEÇTİ" : "KALDI" }),
+          h("span", { class: "badge " + reg.sinif, text: reg.metin }),
+          h("span", { class: "badge b-muted", text: v.kategori + " · " + v.tur })
+        ),
+        h("div", { class: "ad", style: "margin-top:8px", text: v.ad }),
+        h("dl", null,
+          h("dt", { text: "Beklenen" }), h("dd", { text: v.beklenen }),
+          h("dt", { text: "Gözlenen" }), h("dd", { text: v.gozlenen }),
+          h("dt", { text: "Kayıtlı jeton" }), h("dd", { text: String(v.jeton ?? 0) + " (kaset)" })
+        )
+      ));
+    }
+    if (kayipAdlar.length) {
+      kok.append(h("div", { class: "alert small", text: "KAYIP: tabanda olup bu koşuda bulunmayan vakalar: " + kayipAdlar.join(", ") }));
+    }
+  }
+
+  /* ---------- yükleme ---------- */
+  function jsonlAyristir(metin) {
+    return metin.split(/\r?\n/).filter((s) => s.trim()).map((s, i) => {
+      try { return JSON.parse(s); } catch (err) { throw new Error("satır " + (i + 1) + " okunamadı: " + err.message); }
+    });
+  }
+  function hataGoster(id, mesaj) {
+    const el = $(id);
+    el.textContent = mesaj;
+    el.hidden = !mesaj;
+  }
+  function izYukle(olaylar, ad) {
+    const basla = olaylar.find((e) => e.olay === "kosu_basladi");
+    const etiket = (basla && basla.etiket) || "";
+    iz = { ad, etiket, olaylar };
+    sel = 0;
+    hataGoster("#iz-hata", "");
+    $("#iz-icerik").hidden = false;
+    renderIz();
+  }
+  async function ornekYukle(ornek) {
+    try {
+      const yanit = await fetch(ornek.yol, { cache: "no-store" });
+      if (!yanit.ok) throw new Error("HTTP " + yanit.status);
+      izYukle(jsonlAyristir(await yanit.text()), ornek.ad);
+    } catch (err) {
+      $("#iz-icerik").hidden = true;
+      $("#ornek").value = "";   // yüklenemeyen örnek seçili görünmesin
+      hataGoster("#iz-hata", "Örnek dosyası açılamadı (" + ornek.yol + "): " + err.message + ". Dosyadan açılışta tarayıcı örnekleri okuyamaz; dosya seçiciyle bir iz dosyası yükle.");
+    }
+  }
+  async function dosyaOku(dosya) {
+    return await dosya.text();
+  }
+
+  $("#ornek").addEventListener("change", (ev) => {
+    const secili = ORNEKLER[Number(ev.target.value)];
+    if (secili) ornekYukle(secili);
+  });
+  $("#iz-dosya").addEventListener("change", async (ev) => {
+    const dosya = ev.target.files[0];
+    if (!dosya) return;
+    try {
+      const metin = await dosyaOku(dosya);
+      izYukle(jsonlAyristir(metin), dosya.name);
+    } catch (err) {
+      hataGoster("#iz-hata", "Dosya okunamadı: " + err.message);
+    }
+  });
+
+  async function evalDosyaYukle(metin, ad) {
+    const veri = JSON.parse(metin);
+    if (!Array.isArray(veri.vakalar)) throw new Error("bu dosyada vakalar listesi yok");
+    evalVeri = veri;
+    hataGoster("#eval-hata", "");
+    $("#eval-icerik").hidden = false;
+    renderEval();
+    return ad;
+  }
+  async function evalOtomatik() {
+    try {
+      const e = await fetch(EVAL_YOL, { cache: "no-store" });
+      if (!e.ok) throw new Error("HTTP " + e.status);
+      evalVeri = await e.json();
+      try {
+        const t = await fetch(TABAN_YOL, { cache: "no-store" });
+        if (t.ok) tabanVeri = await t.json();
+      } catch (_) { /* taban isteğe bağlı */ }
+      $("#eval-icerik").hidden = false;
+      renderEval();
+    } catch (err) {
+      hataGoster("#eval-hata", "Eval verisi okunamadı (" + err.message + "). Dosyadan açılışta eval-sonuc.json ve taban.json dosya seçiciyle yüklenmeli.");
+    }
+  }
+  $("#eval-dosya").addEventListener("change", async (ev) => {
+    const d = ev.target.files[0];
+    if (!d) return;
+    try { await evalDosyaYukle(await dosyaOku(d), d.name); }
+    catch (err) { hataGoster("#eval-hata", "Eval dosyası okunamadı: " + err.message); }
+  });
+  $("#taban-dosya").addEventListener("change", async (ev) => {
+    const d = ev.target.files[0];
+    if (!d) return;
+    try {
+      tabanVeri = JSON.parse(await dosyaOku(d));
+      if (evalVeri) renderEval();
+    } catch (err) { hataGoster("#eval-hata", "Taban dosyası okunamadı: " + err.message); }
+  });
+
+  /* ---------- sekmeler ve tema ---------- */
+  function sekme(ad) {
+    const iz_ = ad === "iz";
+    $("#t-iz").setAttribute("aria-selected", String(iz_));
+    $("#t-eval").setAttribute("aria-selected", String(!iz_));
+    $("#p-iz").hidden = !iz_;
+    $("#p-eval").hidden = iz_;
+    if (iz_) {
+      if (iz) seritGuncelle(iz.etiket, iz.ad ? "· " + iz.ad : "");
+      else seritGuncelle(null, "");
+    } else {
+      seritGuncelle("ELLE YAZILMIŞ KAYIT", "Eval skoru kasetten oynatıldı; model kalitesini ölçmez.");
+    }
+  }
+  $("#t-iz").addEventListener("click", () => sekme("iz"));
+  $("#t-eval").addEventListener("click", () => sekme("eval"));
+  $("#tema").addEventListener("click", () => {
+    const kok = document.documentElement;
+    const koyu = kok.getAttribute("data-theme") === "dark" || (!kok.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    kok.setAttribute("data-theme", koyu ? "light" : "dark");
+  });
+
+  /* ---------- başlangıç ---------- */
+  const sec = $("#ornek");
+  ORNEKLER.forEach((o, i) => sec.append(h("option", { value: String(i), text: o.ad })));
+  evalOtomatik();
+  ornekYukle(ORNEKLER[0]);
+  sec.value = "0";
+})();
+</script>
+</body>
+</html>

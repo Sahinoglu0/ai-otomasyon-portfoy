@@ -10,7 +10,7 @@ This repository holds the **static sample pages and a detailed write-up** of two
 - [Portfolio page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 
-> **Honest status.** Kule Pro's internal assessment is **2.7 / 5**. The score reflects technical soundness only; **there is no evidence that any company needs this tool**. The data is synthetic or public (DataCo), the ROI is hypothetical, and there is no SAP or OCR connection. The orchestrator **made no real model call**; the tapes are hand-written. Read every number below within these limits.
+> **Honest status.** Kule Pro's internal assessment is **3.0 / 5** (previously 2.7; scored independently by two agents against a pre-registered rubric, with the same result; still an internal assessment, not external validation). The score reflects technical soundness only; **there is no evidence that any company needs this tool**. The data is synthetic or public (DataCo), the ROI is hypothetical, and there is no SAP or OCR connection. The orchestrator **made no real model call**; the tapes are hand-written. Read every number below within these limits.
 
 ## 1. The system at a glance
 
@@ -27,7 +27,7 @@ This repository holds the **static sample pages and a detailed write-up** of two
 | `uclu_eslestirme` | Order–delivery note–invoice: double invoice, over-invoicing, price deviation, invoice without delivery note | Rule-based; invoice lines are extracted with a regular text pattern, **no OCR** |
 | `oee` | Availability × performance × quality; downtime Pareto | Calculation + rules; the root cause is a *suggestion*, not evidence |
 
-By default **no module calls a language model.** An optional explanation layer can be pointed at an OpenAI-compatible endpoint through environment variables; it has not been tried with a real provider. Outputs are available from the CLI (`python -m kule ...`) and, as a demo setup, from a REST API (21 routes, tokens stored as SHA-256 digests, a role matrix). The API is not production-ready: no TLS, rate limiting or SSO.
+By default **no module calls a language model.** An optional explanation layer can be pointed at an OpenAI-compatible endpoint through environment variables; it has not been tried with a real provider. Outputs are available from the CLI (`python -m kule ...`) and, as a demo setup, from a REST API (21 routes, tokens stored as SHA-256 digests, a role matrix). The API is not production-ready: no TLS (a setup guide exists but was not verified) and no SSO; an in-process rate limit exists (default 300 requests/min per client, 429 when exceeded).
 
 ## 2. The agent orchestrator
 
@@ -82,8 +82,8 @@ Data: DataCo (public, Mendeley Data, CC BY 4.0), 162 weeks, 118 products. **It i
 | ROI | Hypothetical in the panel; the inputs are your assumptions |
 | SAP / OCR | None. SAP-style CSV exports can be read through configuration; not tried with real SAP output |
 | Orchestrator | No real model call, tapes are hand-written, the Auditor is code; 2 injection gaps are known and open |
-| Tests | Kule 186 and orchestrator 44 unit tests pass. In one first run Kule showed 1 error; the next three runs were clean and the cause was not found |
-| Security | The REST API is a demo setup (no TLS, rate limiting or SSO) |
+| Tests | Kule 224 Python + 29 Node and orchestrator 44 unit tests pass. Kule once showed 1 error in a run; it did not recur in more than 30 clean runs since, and the cause was not found |
+| Security | The REST API is a demo setup (no TLS or SSO; an in-process rate limit exists, not a DDoS defence; no account lockout) |
 | Docker | Files exist, could not be run in this environment |
 
 ## 6. What is in this repository

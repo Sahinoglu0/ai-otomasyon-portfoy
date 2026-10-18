@@ -10,7 +10,7 @@ Bu depo iki çalışmanın **statik örnek sayfalarını ve ayrıntılı anlatı
 - [Portföy sayfası](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
 
-> **Dürüst durum özeti.** Kule Pro iç değerlendirmesi **2,7 / 5**. Puan teknik sağlamlığa dayanır; **bir firmanın bu araca ihtiyacı olduğuna dair kanıt yoktur**. Veriler sentetik ya da herkese açıktır (DataCo), ROI varsayımsaldır, SAP ve OCR bağlantısı yoktur. Orkestratörde **gerçek model çağrısı yapılmadı**; kasetler elle yazıldı. Aşağıdaki her sayı bu sınırlar içinde okunmalıdır.
+> **Dürüst durum özeti.** Kule Pro iç değerlendirmesi **3,0 / 5** (önceki 2,7; ön-kayıtlı rubrikle iki ayrı ajan bağımsız puanladı, ikisi de aynı sonuca vardı; yine de iç değerlendirmedir, dış doğrulama değildir). Puan teknik sağlamlığa dayanır; **bir firmanın bu araca ihtiyacı olduğuna dair kanıt yoktur**. Veriler sentetik ya da herkese açıktır (DataCo), ROI varsayımsaldır, SAP ve OCR bağlantısı yoktur. Orkestratörde **gerçek model çağrısı yapılmadı**; kasetler elle yazıldı. Aşağıdaki her sayı bu sınırlar içinde okunmalıdır.
 
 ## 1. Sistem bir bakışta
 
@@ -27,7 +27,7 @@ Bu depo iki çalışmanın **statik örnek sayfalarını ve ayrıntılı anlatı
 | `uclu_eslestirme` | Sipariş–irsaliye–fatura: çift fatura, fazla faturalama, fiyat sapması, irsaliyesiz fatura | Kural tabanlı; fatura satırları düzenli metin kalıbıyla çıkarılır, **OCR yok** |
 | `oee` | Kullanılabilirlik × performans × kalite; duruş Pareto'su | Hesap + kural; kök neden bir *öneridir*, kanıt değil |
 
-Varsayılanda **hiçbir modül dil modeli çağırmaz.** İsteğe bağlı açıklama katmanı, ortam değişkenleriyle bir OpenAI uyumlu uç noktaya bağlanabilir; gerçek bir sağlayıcıyla denenmedi. Çıktılara CLI (`python -m kule ...`) ve demo kurulum olarak bir REST API (21 rota, token'lar veritabanında SHA-256 özetiyle, rol matrisi) üzerinden ulaşılır. API üretime hazır değildir: TLS, hız sınırı ve SSO yoktur.
+Varsayılanda **hiçbir modül dil modeli çağırmaz.** İsteğe bağlı açıklama katmanı, ortam değişkenleriyle bir OpenAI uyumlu uç noktaya bağlanabilir; gerçek bir sağlayıcıyla denenmedi. Çıktılara CLI (`python -m kule ...`) ve demo kurulum olarak bir REST API (21 rota, token'lar veritabanında SHA-256 özetiyle, rol matrisi) üzerinden ulaşılır. API üretime hazır değildir: TLS (yalnız kurulum belgesi var, doğrulanmadı) ve SSO yoktur; süreç içi hız sınırı vardır (istemci başına varsayılan 300 istek/dk, aşılınca 429).
 
 ## 2. Ajan orkestratörü
 
@@ -82,8 +82,8 @@ Veri: DataCo (herkese açık, Mendeley Data, CC BY 4.0), 162 hafta, 118 ürün. 
 | ROI | Panelde varsayımsal; girdileri sizin varsayımınızdır |
 | SAP / OCR | Yok. SAP tarzı CSV dışa aktarımları yapılandırmayla okunur; gerçek SAP çıktısıyla denenmedi |
 | Orkestratör | Gerçek model çağrısı yok, kasetler elle yazıldı, Denetçi kod; 2 enjeksiyon açığı bilinen ve açık |
-| Testler | Kule 186, orkestratör 44 birim testi geçiyor. Kule'de bir ilk koşuda 1 hata görüldü, sonraki üç koşu temiz; kaynağı bulunamadı |
-| Güvenlik | REST API demo kurulumdur (TLS, hız sınırı, SSO yok) |
+| Testler | Kule 224 Python + 29 Node, orkestratör 44 birim testi geçiyor. Kule'de eskiden bir koşuda 1 hata görüldü; sonraki 30'dan fazla temiz koşuda tekrarlanmadı, kök nedeni bulunamadı |
+| Güvenlik | REST API demo kurulumdur (TLS ve SSO yok; süreç içi hız sınırı var, DDoS savunması değildir; hesap kilidi yok) |
 | Docker | Dosyaları var, bu ortamda koşulamadı |
 
 ## 6. Bu depoda ne var

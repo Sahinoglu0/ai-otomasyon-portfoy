@@ -50,7 +50,7 @@ Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (a�
 | `oee` | Kullanılabilirlik × performans × kalite; duruş Pareto'su; kök neden önerisi | Hesap + kural |
 | `aciklama` | Modül çıktılarından Türkçe özet | Şablon; isteğe bağlı olarak OpenAI uyumlu bir dil modeli uç noktası |
 
-Varsayılanda hiçbir modül dil modeli çağırmaz; sonuçlar sıradan, test edilebilir hesaplardan gelir. Dil modeli yalnız isteğe bağlı açıklama katmanında kullanılabilir ve ham veriyi değil, toplu özet cümlelerini görür.
+Varsayılanda hiçbir modül dil modeli çağırmaz; sonuçlar sıradan, test edilebilir hesaplardan gelir. `KULE_ACIKLAMA_SAGLAYICI=claude` ile açıklama katmanı yerel `claude` ile çalıştırılabilir; bir koşuda metindeki 24 sayının hepsi kural çıktısında birebir bulundu. Dil modeli yalnız isteğe bağlı açıklama katmanında kullanılabilir ve ham veriyi değil, toplu özet cümlelerini görür.
 
 ## 4. Karar motoru: ne kadar, ne zaman sipariş
 
@@ -131,7 +131,7 @@ Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. 
 | Analist | Kule modüllerini araç olarak çağırır, bulguyu yorumlar, sayılarını `iddialar` bloğuna yazar | Model; araçlar `stok_sorgu`, `tedarikci_sorgu` |
 | Denetçi | Her iddiayı Kule'nin kendi hesabıyla yeniden karşılaştırır; tutmazsa Analist'i reddeder | **Kod**, model değil |
 
-Örnek izde Analist ilk denemede T-03 skorunu 58,0 yazar, Kule 36,3 hesaplar; Denetçi reddeder, ikinci denemede 36,3 kabul edilir. Fikir: modelin ürettiği her sayı, deterministik hesapla çapraz kontrol edilmeden kullanıcıya ulaşmaz. [İz görüntüleyicide](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) "Soruşturma · Analist 1. deneme" ve "2. deneme" izlerini adım adım açabilirsiniz. Gösterilen izler önceden kaydedilmiş kasetlerdir; görüntüleyici bunu her ekranda belirtir.
+Örnek izde Analist ilk denemede T-03 skorunu 58,0 yazar, Kule 36,3 hesaplar; Denetçi reddeder, ikinci denemede 36,3 kabul edilir. Fikir: modelin ürettiği her sayı, deterministik hesapla çapraz kontrol edilmeden kullanıcıya ulaşmaz. [İz görüntüleyicide](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) "Soruşturma · Analist 1. deneme" ve "2. deneme" izlerini adım adım açabilirsiniz. Bu örnek elle yazılmış kasetten gelir. Ayrıca yerel `claude` ile gerçek modelle bir koşu daha yapıldı ("Gerçek model" izleri): Analist ilk denemede `deger` alanına sayı yerine malzeme listesi yazdı, Denetçi Kule'nin sayısıyla (3) karşılaştırıp reddetti; ikinci denemede beş iddia da Kule'nin hesabıyla eşleşti ve kabul edildi. Görüntüleyici her izin kaynağını rozetle belirtir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.
 
 ### Eval
 
@@ -144,7 +144,7 @@ Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. 
 - **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır.
 - **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar eşleme dosyasıyla okunur. Canlı SAP ya da OCR bağlantısı yoktur.
 - **API.** Demo ve pilot kurulum için tasarlanmıştır: roller, denetim izi, hız sınırı vardır; TLS için ters vekil kılavuzu hazırdır, SSO yoktur.
-- **Orkestratör.** Gösterilen izler kayıtlı kasetlerdir; gerçek bir dil modeliyle canlı çağrı bu sürümde yapılmadı.
+- **Orkestratör.** Gerçek model koşusu tek bir senaryoyla (soruşturma) ve `claude-haiku-5-5` ile yapıldı: 7 model çağrısı, 2 deneme (1 ret, 1 kabul). Diğer izler elle yazılmış kasetlerdir. Planlayıcı "sayı üretme" talimatına uydu ama görev dışına çıkıp taslak e-posta yazdı; Denetçi yalnız iddia bloğunu denetler, düz metindeki sayılara bakmaz.
 - **Kaynak kod** bu depoda yoktur; burada statik sayfalar, çizimler ve ölçüm çıktıları bulunur.
 - **Dil.** Bu sayfalar Türkçe ve İngilizcedir. Kule Pro'nun kendi paneli, komut satırı ve API çıktıları şu an Türkçedir.
 

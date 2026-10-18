@@ -1,0 +1,87 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IZM-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 2813,
+      "cikan_jeton": 246,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2047
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-03"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 4268,
+      "cikan_jeton": 314,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2824
+    },
+    {
+      "metin": "## Neden kritik?\n\n**IZM-01 deposu:** 12 kalemden 3'ü `KRITIK` durumda. Bunlar M-1002 (Koli 40x30x30, 3.3 gün kapsama), M-1005 (Çember PET 12mm, 3.8 gün kapsama, ABC sınıfı A, stok değeri 106.240 TL) ve M-1006 (Etiket rulosu 100x150, 4.1 gün kapsama). Özellikle M-1005 hem düşük kapsamlı hem de A sınıfı olduğu için öncelikli.\n\nAynı depoda M-1001 (249.6 gün) ve M-1003 (237.7 gün) `FAZLA_STOK` durumda. Yani sorun toplam stok eksikliği değil, dağılım dengesizliği olabilir.\n\n**T-03 tedarikçisi:** Skoru 36.3, seviye `D`. Siparişlerin %60'ı zamanında teslim ediliyor, ortalama gecikme 2.4 gün, red oranı %9.29, fiyat sapması %6.08 (40 sipariş üzerinden).\n\n**Bağlantı eksik:** Araç çıktıları T-03'ün hangi malzemeleri tedarik ettiğini göstermiyor. Dolayısıyla T-03 ile IZM-01'in kritik kalemleri arasındaki ilişkiyi doğrulayamıyorum. Bu bağlantıyı tedarikçi sipariş kayıtlarından teyit etmek gerekir.\n\n*Düzeltme:* Önceki yanıtımda elimde veri olmadığını söylemiştim. Araç sonuçları geldiği için bu ifade artık geçerli değil.\n\n## Aksiyon planı\n\n- **Hemen (0–2 gün):** M-1005, M-1002 ve M-1006 için açık siparişleri ve teslim tarihlerini kontrol et. M-1005'in 3.8 günlük kapsaması, T-03'ün ortalama 2.4 günlük gecikmesiyle karşılaştırıldığında kısa bir gecikmede bile tükenme riski doğurur. Bu kalemler için acil sevkiyat talep et.\n- **Kısa vade (1–2 hafta):** M-1001 ve M-1003 için yeni sipariş durdur. Stok fazlasını IZM-01'in kritik kalemleriyle dengelemek için transfer veya sipariş düzeltmesi değerlendir.\n- **Orta vade (1–3 ay):** T-03 için alternatif tedarikçi ön değerlendirmesi başlat. Özellikle M-1005 gibi A sınıfı kalemler için çift kaynak stratejisi kur. Sözleşmede teslim ve kalite hedeflerini (%60 zamanında teslim, %9.29 red) yeniden tanımla.\n- **Sürekli:** T-03 için haftalık teslimat takibi, IZM-01 kritik kalemleri için günlük stok izleme.\n\n## Tedarikçiye taslak e-posta\n\n**Konu:** T-03 – Teslimat Performansı ve Acil Sevkiyat Talebi\n\nSayın [Yetkili Adı],\n\nT-03 ile yürüttüğümüz siparişlerde son dönem teslimat performansını gözden geçirdik. Mevcut verilere göre zamanında teslim oranımız %60 seviyesinde, ortalama gecikme 2.4 gün ve red oranı %9.29 olarak kayıtlara geçmiş durumda.\n\nBu durum, IZM-01 deposunda [kalem kodları, ör. M-1005] kalemlerinde kısa vadeli stok riski yaratıyor. Aşağıdaki konularda yazılı dönüş almayı rica ediyoruz:\n\n1. [Kalem kodları] için açık siparişlerin güncel teslim tarihleri ve sevk durumu\n2. Bu kalemler için acil sevkiyat mümkünlüğü ve en erken teslim tarihi\n3. Gecikmelerin nedenleri ve zamanında teslim oranını iyileştirmek için planınız\n4. Red oranını düşürmeye yönelik kalite önlemleri\n\n[X] iş günü içinde yazılı geri dönüş almayı önemsiyoruz. Konuyu görüşmek üzere bir toplantı için uygun zaman önerebilir misiniz?\n\nSaygılarımla,\n[Ad Soyad]\n[Unvan / Departman]\n[İletişim Bilgisi]\n\n## İddialar\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": \"M-1002, M-1005, M-1006\"},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"FAZLA_STOK\"}, \"deger\": \"M-1001, M-1003\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"skor\", \"deger\": 36.3},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"seviye\", \"deger\": \"D\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"zamaninda_pct\", \"deger\": 60.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"red_pct\", \"deger\": 9.29},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"fiyat_sapma_pct\", \"deger\": 6.08}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 4445,
+      "cikan_jeton": 3955,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 18917
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IZM-01",
+            "durum": "KRITIK"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 2980,
+      "cikan_jeton": 222,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 3555
+    },
+    {
+      "metin": "Denetçinin işaret ettiği FAZLA_STOK kaydını araçtan yeniden sorguluyorum. Önceki KRITIK sonucu da araç çıktısıyla doğrulamak için bu adımdan sonra iddia bloğunu yazacağım.",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IZM-01",
+            "durum": "FAZLA_STOK"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 3400,
+      "cikan_jeton": 494,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4902
+    },
+    {
+      "metin": "Denetçinin işaret ettiği iki sorgunun sonuçlarını araç çıktısından yeniden inceledim. Sayılar önceki çağrılardan gelen araç sonuçlarıyla aynı.\n\n**IZM-01 – KRITIK (3 kalem)**\n\n| Malzeme | Ad | Stok | Birim | Kapsama (gün) | ABC | Stok değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1002 | Koli 40x30x30 | 76.0 | AD | 3.3 | C | 494.0 |\n| M-1005 | Çember (PET) 12mm | 166.0 | RL | 3.8 | A | 106240.0 |\n| M-1006 | Etiket rulosu 100x150 | 150.0 | RL | 4.1 | C | 14250.0 |\n\n**IZM-01 – FAZLA_STOK (2 kalem)**\n\n| Malzeme | Ad | Stok | Birim | Kapsama (gün) | ABC | Stok değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1001 | Streç film 23 mikron | 1297.0 | RL | 249.6 | C | 110245.0 |\n| M-1003 | Euro palet 80x120 | 3906.0 | AD | 237.7 | B | 1640520.0 |\n\nKritiklik nedeni olarak araçlardan doğrulanabilen tek bilgi, üç KRITIK kalemin 3.3–4.1 günlük kapsamasıdır. Bu, stokların yaklaşık bir hafta içinde tükeneceği anlamına gelmez; yalnızca mevcut stokun kaç gün yettiğini gösterir. T-03 tedarikçisinin bu kalemlerle ilişkisi ve kritikliğe etkisi henüz sorgulanmadı, bu yüzden doğrulanmış bir neden olarak yazamam. İsterseniz `tedarikci_sorgu` ile T-03 kaydını çekebilirim.\n\nDüzeltilmiş iddia bloğu (yalnız araç çıktısındaki kayıt sayıları):\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": 3},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"FAZLA_STOK\"}, \"deger\": 2}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3815,
+      "cikan_jeton": 2613,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 13724
+    }
+  ]
+}

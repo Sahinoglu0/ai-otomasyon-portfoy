@@ -5,9 +5,10 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
-## 2026-10-22 (sonraki sürümler: v0.2.0, v0.2.1, v0.3.0, v0.4.0)
+## 2026-10-22 (sonraki sürümler: v0.2.0, v0.2.1, v0.3.0, v0.4.0, v0.4.1)
 
-- **v0.4.0 (bu güncelleme):** iki ayrı video (tanıtım 2 dk 45 sn, kullanım 4 dk 42 sn; sessiz, TR ve EN altyazılı, MP4/.srt/.vtt), oynatıcı sayfası (`video/`, `noindex`), README'ye video ve ekran görüntüsü bölümleri, canlı sayfalardan 4 ekran görüntüsü. Yeni ölçüm yok; sayılar v0.3.0 ile aynı. Raporlar: PORTFOY-V4, V5.
+- **v0.4.1 (bu güncelleme):** kanıt sayfasındaki SHA-256 doğrulaması düzeltildi. `kanit/SHA256SUMS` ve `paket.json` özetleri Windows'ta CRLF olarak çıkmış dosyalardan hesaplanmıştı; yayındaki dosyalar LF olduğundan Linux/macOS'ta `sha256sum -c` 9 dosyadan 8'inde FAILED veriyordu (dış analizle bildirildi, canlıda doğrulandı). Özetler yayındaki baytlardan yeniden üretildi, `.gitattributes` ile `kanit/*` için `eol=lf` sabitlendi, yayın kapısına özet ve satır sonu kontrolü eklendi. Raporlar: ARASTIRMA-KULE-01, ARASTIRMA-KULE-02.
+- **v0.4.0 (`e301249`):** iki ayrı video (tanıtım 2 dk 45 sn, kullanım 4 dk 42 sn; sessiz, TR ve EN altyazılı, MP4/.srt/.vtt), oynatıcı sayfası (`video/`, `noindex`), README'ye video ve ekran görüntüsü bölümleri, canlı sayfalardan 4 ekran görüntüsü. Yeni ölçüm yok; sayılar v0.3.0 ile aynı. Raporlar: PORTFOY-V4, V5.
 - **v0.3.0 (`83857f8`):** açık veri denemeleri eklendi. Mendeley *Retail Inventory Data* (model örnek verisi, 30/30 satır kabul) ve UCI *Online Retail II* (1.067.371 satır, vekil eşleme, yalnız ingest dayanıklılığı). `stok_durumu` gerçek veriyle koşulamadı; mal kabul, irsaliye, fatura ve üretim için açık gerçek veri bulunamadı. DataCo lisans notu güncellendi. Raporlar: ARASTIRMA-VERI-01, VERI-E1, VERI-T1, VERI-Y1.
 - **v0.2.1 (`80c1bf7`):** iz görüntüleyiciye gerçek model koşularından 4 örnek iz, ana sayfada ve portföy sayfasında 4 kartlık okuma sırası, README özeti. Gerçek model koşu sayısı düzeltildi: 38 koşu yapıldı, 37'si tamamlandı, 1'i kotada kesildi. Rapor: PORTFOY-S2.
 - **v0.2.0 (`42c5af4`):** test kanıtı sayfası (`kanit/`), 345 maddelik test kataloğu, SHA-256 manifesti, statik demo (`demo/`, MIT dışı), tohum bandı ve ROI varsayım tablosu (`olcum/`), `noindex`. Raporlar: PORTFOY-K2, K3, K4, O2.

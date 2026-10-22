@@ -15,64 +15,64 @@
     },
     {
       "yol": "eval-sonuc.json",
-      "sha256": "4a682dae25d626737309c15d43d01c4b5406681a8f9fe75a49e40d7567b2388b",
-      "bayt": 9462,
+      "sha256": "8d65096383d49d5545c725f3ee739396cb611e6620982f7a05e59df79f057236",
+      "bayt": 9173,
       "kaynak": "kaset",
       "aciklama_tr": "Ajan eval sonucu: 34 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
       "aciklama_en": "Agent eval result: 34 cases, criteria results on tape-replayed responses."
     },
     {
       "yol": "olcum-talep-kapsam.json",
-      "sha256": "3176b6a5274fb9a3507be615b75a686879e4742fdecda50c1e6a44fc5afe10b2",
-      "bayt": 255,
+      "sha256": "8ab38c301920fb18c3e085d7643485872dcdbcf7fcb5be66f3d8585b1d4d6153",
+      "bayt": 244,
       "kaynak": "kosu",
       "aciklama_tr": "Talep tahmini kapsam ölçümü.",
       "aciklama_en": "Demand forecast coverage measurement."
     },
     {
       "yol": "olcum-anomali.json",
-      "sha256": "27c4edd4a952d581e38e1d04f11f1bb984ece84a3e1ff94361b2ef3f01ff16c8",
-      "bayt": 1133,
+      "sha256": "04c0668a5df7180431bc126acd0d21230a43c2e6e0017e32bc9fbc6099c095c0",
+      "bayt": 1078,
       "kaynak": "kosu",
       "aciklama_tr": "Sipariş anomali ölçümü.",
       "aciklama_en": "Order anomaly measurement."
     },
     {
       "yol": "olcum-dataco.json",
-      "sha256": "6d18db26303404b39f5fb0b9f5964ab2c47f60530bda0562f0ac817464d5e882",
-      "bayt": 302,
+      "sha256": "29e0c8e658d30317523dd70177de3213c1c3446d2f30b15302f0ac63327b88cc",
+      "bayt": 293,
       "kaynak": "kosu",
       "aciklama_tr": "Dış veri seti içe aktarma özeti.",
       "aciklama_en": "External dataset import summary."
     },
     {
       "yol": "olcum-tohum-bandi.json",
-      "sha256": "009ce4085a3b7d2121a7928e88a18cfbb5a6566be2c1f76fe7731b33b04db081",
-      "bayt": 4965,
+      "sha256": "48f6b5b7cd5f8215eb5dd93071135852afb78243030437a950707ea832103b85",
+      "bayt": 4727,
       "kaynak": "kosu",
       "aciklama_tr": "Tohum bandı ölçümü.",
       "aciklama_en": "Seed band measurement."
     },
     {
       "yol": "test-katalogu.tr.md",
-      "sha256": "e6e060517b19eba922afdbe991587a3d0fc3251b2d59408180a5c2d00bac31c8",
-      "bayt": 23992,
+      "sha256": "9245bcac5e7572ec18d4f6e0dd81c3681c53782215fc569f1ae9326e48caadde",
+      "bayt": 23417,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (Türkçe).",
       "aciklama_en": "Test behaviour catalogue (Turkish)."
     },
     {
       "yol": "test-katalogu.en.md",
-      "sha256": "54aae9bdebcc4ca5981d422db41d68f45d48877f4ff294750ea55bc37083455a",
-      "bayt": 24990,
+      "sha256": "3ded401826a1652e0f69230f481a7ba7c3bb2fb1e52fcf1b55a0d20f7976e1e5",
+      "bayt": 24415,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (İngilizce).",
       "aciklama_en": "Test behaviour catalogue (English)."
     },
     {
       "yol": "test-ozeti.json",
-      "sha256": "ffe9981e4bb925bafb0e2471b9da4001e28fb61c07c1ec36e6a107ca4f361462",
-      "bayt": 974,
+      "sha256": "5ac0fad7c22b553d47df93621500e771c73656ca74585ec1e3800197bd7986a6",
+      "bayt": 931,
       "kaynak": "kosu",
       "aciklama_tr": "Test koşusu özeti: sayı, süre, sürüm.",
       "aciklama_en": "Test run summary: counts, duration, version."

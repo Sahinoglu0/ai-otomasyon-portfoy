@@ -1,0 +1,53 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1770,
+      "cikan_jeton": 80,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1439
+    },
+    {
+      "metin": "## T-05 performans özeti\n\nTek bir kayıt aldım (`tedarikci_sorgu`, 40 sipariş):\n\n| Ölçüt | Değer |\n|---|---|\n| Skor | 47.7 |\n| Seviye | D |\n| Zamanında teslim | %75.0 |\n| Ortalama gecikme | 0.93 gün |\n| Red oranı | %4.95 |\n| Fiyat sapması | %12.02 |\n\n**Ne görünüyor:**\n- **Fiyat sapması** kayıttaki en yüksek olumsuz değer: %12.02. Bu, skoru düşüren en belirgin sinyal gibi duruyor. Ancak araç ağırlıkları vermediği için bunu kesin bir neden olarak söyleyemem.\n- **Teslim** tarafında siparişlerin yaklaşık dörtte biri (%25.0) zamanında gelmiyor. Ortalama gecikme 0.93 gün; yani gecikmeler büyük değil, ama sık.\n- **Red oranı** %4.95, fiyat sapmasına göre daha düşük.\n- **Seviye D**, skor 47.7 ile tutarlı görünüyor. Seviye tanımını ve eşik değerlerini araç çıktısında görmediğim için bunu doğrulayamıyorum.\n\n**Neden-sonuç hakkında sınırlar:**\n- Skor ağırlıkları, dönemsel teslim geçmişi, sipariş bazında kayıtlar ve diğer tedarikçilerle karşılaştırma verisi bu sorguda yok. Bu yüzden zayıflığın tekrarlayan mı yoksa belirli bir döneme ya da siparişe özgü mü olduğunu ayıramıyorum.\n- Skor hesabında eksik veya hatalı kayıt olup olmadığını da doğrulayamıyorum.\n\n**İyileştirme önerileri:**\n1. **Fiyat sapmasını inceleyin.** %12.02'lik sapmanın hangi kalemlerden ve hangi dönemlerden kaynaklandığını belirlemek için sipariş bazında fiyat kayıtlarını çıkarın. Ardından fiyat maddelerini sözleşmeyle karşılaştırın.\n2. **Gecikme nedenlerini kaydedin.** Gecikmelerin tedarikçi kaynaklı mı, lojistik kaynaklı mı, yoksa onay sürecinden mi geldiğini ayırmak için neden alanı gerekli.\n3. **Teslim hedefi üzerinde görüşün.** %75.0 oranını yükseltmek için tedarikçiyle zamanında teslim hedefi ve buna bağlı bir iyileştirme planı konuşulabilir.\n4. **Karşılaştırma yapın.** Aynı kategorideki tedarikçilerin skor ve fiyat sapması değerlerini alın. Böylece T-05'in sorunu sektör ortalamasının üstünde mi, yoksa tedarikçiye özgü mü olduğu netleşir.\n\n**İhtiyaç duyulan ek veri:**\n- Skor ağırlıkları ve seviye eşikleri\n- Son 6–12 aylık dönemsel teslim kayıtları (sipariş tarihi, beklenen ve gerçek teslim tarihi)\n- Sipariş bazında fiyat ve red kayıtları\n- Aynı kategorideki diğer tedarikçilerin kayıtları\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"skor\", \"deger\": 47.7},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"seviye\", \"deger\": \"D\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"zamaninda_pct\", \"deger\": 75.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"ortalama_gecikme_gun\", \"deger\": 0.93},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"red_pct\", \"deger\": 4.95},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"fiyat_sapma_pct\", \"deger\": 12.02}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 1947,
+      "cikan_jeton": 2395,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 11872
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1856,
+      "cikan_jeton": 156,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1737
+    },
+    {
+      "metin": "## T-05 performans özeti\n\nAracın verdiği kayıt (tedarikci_sorgu, T-05):\n\n| Ölçüt | Değer |\n|---|---|\n| Skor | 47.7 |\n| Seviye | D |\n| Zamanında teslim oranı | %75.0 |\n| Ortalama gecikme | 0.93 gün |\n| Red oranı | %4.95 |\n| Fiyat sapması | %12.02 |\n| Sipariş sayısı | 40 |\n\n**Neden zayıf?** Kayıtta en belirgin sorunlar şunlar:\n\n- **Teslim:** Siparişlerin %75.0'i zamanında teslim edilmiş. Kalan %25'lik kısım gecikmeli veya başka biçimde zamanında olmayan teslimatlardan oluşuyor. Ortalama gecikme 0.93 gün.\n- **Fiyat:** Fiyat sapması %12.02. Bu, skoru en çok etkileyebilecek ölçütlerden biri gibi görünüyor, ama ağırlık bilgisi olmadığı için bunu kesin olarak söyleyemem.\n- **Kalite:** Red oranı %4.95. Teslim ve fiyata göre daha düşük, ama yine de dikkate değer.\n\nSkor 47.7 ile seviye D, performansın genel olarak zayıf olduğunu gösteriyor. Hangi ölçütün skoru ne kadar düşürdüğünü ise belirleyemiyorum, çünkü araç ölçüt ağırlıklarını ve hesaplama ayrıntısını döndürmedi.\n\n**Sınırlamalar:** Aşağıdakiler için araçta veri yok, bu yüzden bu analizleri yapamadım:\n- Dönemsel teslim geçmişi (tekrarlayan mı, belirli bir döneme mi özgü?)\n- Aynı kategorideki diğer tedarikçilerle kıyas\n- Sipariş bazlı kayıtlar ve veri eksikliği/hata kontrolü\n- Skor ağırlıkları\n\n**İyileştirme önerileri:**\n- Önce fiyat sapmasını ele almak, çünkü yüksek sapma hem maliyet hem skor açısından öncelikli görünüyor. Fiyat ve sözleşme koşullarının yeniden görüşülmesi kısa vadede yapılabilir.\n- Zamanında teslim oranını artırmak için gecikmelerin nedenlerini (üretim, lojistik, sipariş planlaması) sipariş bazında incelemek gerekiyor.\n- Kesin bir neden-sonuç ilişkisi kurmak için şu verilere ihtiyaç var: skor ağırlıkları, aylık/çeyreklik teslim kırılımı, gecikmeli siparişlerin listesi, red nedenleri ve kategori içi tedarikçi karşılaştırma tablosu.\n\n```iddialar```\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"skor\", \"deger\": 47.7},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"seviye\", \"deger\": \"D\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"zamaninda_pct\", \"deger\": 75.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"ortalama_gecikme_gun\", \"deger\": 0.93},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"red_pct\", \"deger\": 4.95},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"fiyat_sapma_pct\", \"deger\": 12.02},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"siparis_sayisi\", \"deger\": 40}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 2033,
+      "cikan_jeton": 2260,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 10933
+    }
+  ]
+}

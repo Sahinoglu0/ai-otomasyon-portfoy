@@ -1,0 +1,29 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Önce IST-01 deposunun stok durumunu araçla sorgulamam gerekiyor.",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IST-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1751,
+      "cikan_jeton": 75,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1732
+    },
+    {
+      "metin": "IST-01 deposunda 12 kalem var. Araç sonucuna göre:\n\n**Kritik stok (5 kalem)**\n\n| Malzeme no | Açıklama | Stok | Birim | Kapsama (gün) | ABC |\n|---|---|---|---|---|---|\n| M-1002 | Koli 40x30x30 | 37 | AD | 3.4 | C |\n| M-1003 | Euro palet 80x120 | 24 | AD | 5.0 | C |\n| M-1005 | Çember (PET) 12mm | 176 | RL | 5.3 | A |\n| M-1007 | Köşebent karton 35mm | 37 | AD | 4.6 | C |\n| M-1010 | Big bag 1 ton | 165 | AD | 4.4 | A |\n\nBu kalemlerin kapsama süreleri kısa; yeniden sipariş kararının yakın vadede verilmesi gerekiyor. M-1005 ve M-1010 A sınıfı kalemler.\n\n**Fazla stok (1 kalem)**\n\n| Malzeme no | Açıklama | Stok | Birim | Kapsama (gün) | Stok değeri (TL) |\n|---|---|---|---|---|---|\n| M-1004 | Koli bandı 45mm | 9476 | AD | 355.5 | 170568.0 |\n\n**Kontrol notları**\n\n- Aracın verdiği kayıtlarda tutarsızlık görmedim: her kalemin durumu, kapsama süresiyle uyumlu görünüyor.\n- Çıktıda emniyet stoku, yeniden sipariş noktası, açık sipariş, rezerve miktar, son hareket tarihi ve kayıt tarihi alanları yok. Bu yüzden plandaki 2, 3 ve 6. adımları (eşleştirme, emniyet stoku/sipariş noktası karşılaştırması ve hareketsiz kalem tespiti) yapamadım. \"Kritik\" ve \"fazla stok\" etiketleri yalnızca aracın durum alanına dayanıyor.\n- Kayıt tarihini doğrulayamadığım için stok verisinin güncelliğini teyit edemiyorum.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"KRITIK\"}, \"deger\": 5},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"FAZLA_STOK\"}, \"deger\": 1},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"FAZLA_STOK\"}, \"alan\": \"kapsama_gun\", \"deger\": 355.5}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3219,
+      "cikan_jeton": 2259,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 9653
+    }
+  ]
+}

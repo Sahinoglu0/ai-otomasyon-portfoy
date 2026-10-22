@@ -1,0 +1,18 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "ANK-01 deposunda kritik stok var mı? Kritik kalemleri listele ve aksiyon planı öner.",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

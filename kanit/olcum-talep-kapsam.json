@@ -1,0 +1,11 @@
+{
+  "benchmark_mape_pct": 11.16,
+  "etiket": "ORNEK_VERI",
+  "girdi_kayit_sayisi": 1248,
+  "kapsama_80_pct": 97.66,
+  "ortalama_mape_pct": 8.07,
+  "reddedilen": 0,
+  "ufuk_hafta": 8,
+  "urun_sayisi": 8,
+  "yontem": "Holt-Winters (toplamsal)"
+}

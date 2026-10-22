@@ -1,0 +1,12 @@
+{
+  "etiket": "ELLE YAZILMIŞ KAYIT",
+  "aciklama": "Planlayıcı için elle yazılmış tek yanıt. Gerçek model çıktısı DEĞİLDİR.",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. IZM-01 deposunda KRITIK durumdaki kalemleri say (stok_sorgu).\n2. T-03 tedarikçisinin skorunu ve bileşenlerini al (tedarikci_sorgu).\n3. Analist bulguları yorumlar ve aksiyon planı yazar; sayılar Denetçi tarafından Kule çıktısıyla karşılaştırılır.\n4. Tedarikçi için yalnız taslak e-posta üretilir; gönderim yoktur.",
+      "arac_cagrilari": [],
+      "giren_jeton": 140,
+      "cikan_jeton": 65
+    }
+  ]
+}

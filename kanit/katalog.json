@@ -1,0 +1,2314 @@
+{
+  "sema": "kanit-katalog/1",
+  "alanlar": [
+    {
+      "kimlik": "kule_python-intermittent-demand-methods",
+      "ad_tr": "Aralıklı talep yöntemleri",
+      "ad_en": "Intermittent demand methods",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aralıklı talep tahminleri negatif çıkmaz.",
+          "en": "Intermittent demand forecasts never come out negative.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hiç talep yoksa tahmin sıfır olur.",
+          "en": "If there is no demand at all, the forecast is zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Talep sabitse iki aralıklı yöntem de aynı değeri verir.",
+          "en": "When demand is constant, both intermittent methods return the same value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Düzeltilmiş yöntem tahmini bilinen bir oranda aşağı çeker.",
+          "en": "The corrected method pulls the forecast down by a known factor.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-filling-gaps-in-a-series",
+      "ad_tr": "Seri boşluklarının doldurulması",
+      "ad_en": "Filling gaps in a series",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Uzun süren gerçek bir boşluk doldurulmaz.",
+          "en": "A genuine long gap in the series is left unfilled.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik değerler yalnız seri içindeki boşlukları doldurur; baş ve son dokunulmaz.",
+          "en": "Missing values are filled only inside the series; the start and end are left alone.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tam pencere seçildiğinde bütün eksik noktalar doldurulur.",
+          "en": "When the full window is selected, every missing point is filled.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-demand-classes",
+      "ad_tr": "Talep sınıfları",
+      "ad_en": "Demand classes",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Büyüklüğü dalgalanan talep kendi sınıfına girer.",
+          "en": "Demand with erratic sizes is classified in its own category.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Seyrek ve kümeli talep kendi sınıflarında ayrılır.",
+          "en": "Intermittent and lumpy demand are separated into their own classes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Düzgün talep düzgün sınıfına girer.",
+          "en": "Steady demand is classified as smooth.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hiç talep görmeyen kalem talepsiz sınıfına girer.",
+          "en": "An item with no demand is classified as demand-free.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-calibration-and-measurement",
+      "ad_tr": "Kalibrasyon ve ölçüm",
+      "ad_en": "Calibration and measurement",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Kalibrasyon katsayısı ve güven değeri tanımlı kurallara göre hesaplanır.",
+          "en": "The calibration factor and confidence value are computed by the stated rules.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hata oranı yalnız pozitif gözlemler üzerinden ölçülür.",
+          "en": "The error rate is measured only on positive observations.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tahmin satırları gelecekteki değerlere bakmadan üretilir.",
+          "en": "Forecast rows are produced without looking at future values.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-end-to-end-measurement",
+      "ad_tr": "Uçtan uca ölçüm",
+      "ad_en": "End-to-end measurement",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Ölçüm çıktısının yapısı ve karar özeti birlikte doğrulanır.",
+          "en": "The shape of the measurement output and its decision summary are checked together.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-row-reading",
+      "ad_tr": "Satır okuma",
+      "ad_en": "Row reading",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Çok büyük bir alan, hangi satırda olduğu belirtilerek reddedilir.",
+          "en": "An oversized field is rejected and the report names the line where it occurs.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik alan boş bırakılır, fazla alan atılır.",
+          "en": "A missing field is left empty and extra fields are dropped.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Noktalı virgül ayraçlı dosyalar doğru okunur.",
+          "en": "Files separated by semicolons are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hata satır numarası, yorum satırları da sayılarak bulunur.",
+          "en": "The line number of an error counts comment lines too.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yorum ve boş satırlar atlanır, başlıktaki fazla boşluklar temizlenir.",
+          "en": "Comment and blank lines are skipped and extra spaces in the header are trimmed.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-method-selection",
+      "ad_tr": "Yöntem seçimi",
+      "ad_en": "Method selection",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aday yöntem basit yöntemden iyiyse ya da eşitse seçilir.",
+          "en": "The candidate method is chosen when it is at least as good as the simple one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aday yöntem basit yöntemden kötüyse basit yöntem kalır.",
+          "en": "When the candidate is worse than the simple method, the simple method stays.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aralıklı talepte aday, düzeltilmiş aralıklı yöntem olur.",
+          "en": "For intermittent demand, the candidate is the corrected intermittent method.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Uygun durumda düzeltilmiş yöntem ve basit yöntem aynı sabit tahmini verir.",
+          "en": "Where it applies, the corrected method and the simple method give the same flat forecast.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sıfır gözlem olsa da aday yöntem korunur.",
+          "en": "The candidate stays even when there are zero observations.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçmiş yetersizse basit yöntem taban olarak kullanılır.",
+          "en": "With too little history, the simple method is used as the baseline.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-shipment-data-adaptation",
+      "ad_tr": "Sevkiyat verisinin uyarlanması",
+      "ad_en": "Shipment data adaptation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Dışlanan kayıt durumları çıktı dosyalarına girmez.",
+          "en": "Excluded record statuses do not appear in the output files.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sütun eşleştirmesi ve türetilen tarihler doğru hesaplanır.",
+          "en": "Column matching and derived dates are computed correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Haftalık toplamlar pazartesi günü başlayan haftalara göre alınır.",
+          "en": "Weekly totals are grouped into weeks that start on Monday.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İptal edilen teslimatta gerçekleşen miktar boş kalır.",
+          "en": "For a cancelled delivery, the realized quantity is left empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kişisel veri çıktı dosyalarında yer almaz.",
+          "en": "Personal data does not appear in the output files.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Uyarlanan veri sevkiyat veri sözleşmesinden geçer.",
+          "en": "The adapted data passes the shipment data contract.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çıktı sütunları sözleşmedeki kümeyle tam olarak aynıdır.",
+          "en": "The output columns match the contract's column set exactly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-demo",
+      "ad_tr": "Demo",
+      "ad_en": "Demo",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Demo, kurulum gerektirmeden baştan sona çalışır.",
+          "en": "The demo runs from start to finish without any setup.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-carrying-over-audit-records",
+      "ad_tr": "Denetim kayıtlarının taşınması",
+      "ad_en": "Carrying over audit records",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Göç sırasında eski denetim kayıtları korunur; hız sınırı reddi de geçerli bir kayıt olarak okunur.",
+          "en": "During migration, older audit records are kept, and a rate-limit rejection is still read as a valid record.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-request-rate-limit",
+      "ad_tr": "İstek hız sınırı",
+      "ad_en": "Request rate limit",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Hız sınırı aşıldığında denetim kaydına hız reddi olarak yazılır.",
+          "en": "When the rate limit is exceeded, the audit record notes a rate-limit rejection.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sınırı aşan istek çok istek yanıtı alır.",
+          "en": "A request over the limit receives a too-many-requests response.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-rate-limit-rules",
+      "ad_tr": "Hız sınırı kuralları",
+      "ad_en": "Rate limit rules",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Geçersiz hız sınırı değerleri reddedilir.",
+          "en": "Invalid rate limit values are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Her istemcinin hız sayacı ayrıdır.",
+          "en": "Each client has its own rate counter.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hız sayacı süresiz büyümez.",
+          "en": "The rate counter does not grow without limit.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sınır aşılınca istek reddedilir; zaman penceresi geçince yeniden açılır.",
+          "en": "Requests are rejected once the limit is exceeded and reopen when the time window passes.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-command-line",
+      "ad_tr": "Komut satırı",
+      "ad_en": "Command line",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Komut çalıştırıldığında dört çıktı dosyası üretilir.",
+          "en": "Running the command produces four output files.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi yoksa komut anlaşılır bir hatayla kullanım hatası kodu döner.",
+          "en": "When there is no input, the command stops with a clear error and a usage error code.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-order-anomalies",
+      "ad_tr": "Sipariş anomalileri",
+      "ad_en": "Order anomalies",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Çift kayıt tek bulgu üretir ve net miktar fazlaya dönüşmez.",
+          "en": "A duplicate record produces one finding, and the net quantity does not turn into an excess.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gecikme toleransı aşılınca teslimat geç olarak işaretlenir.",
+          "en": "When the delay tolerance is exceeded, the delivery is marked late.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İptal ve düzeltme kayıtları temiz sayılır, sahte bulgu üretmez.",
+          "en": "Cancellation and correction records are treated as clean and produce no false finding.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride beklenen anomaliler eksiksiz ve fazlasız bulunur.",
+          "en": "In the sample data, the expected anomalies are found, with none missing and none extra.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Parçalı teslimat temiz sayılır.",
+          "en": "A split delivery is treated as clean.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Planlanan tarihi olmayan kayıt eksik bulgu üretmez.",
+          "en": "A record without a planned date produces no incomplete-data finding.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Siparişi olmayan iptalin net etkisi sıfırdır.",
+          "en": "A cancellation with no matching order has no net effect.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Temiz ama zor durumlar işaretlenmez.",
+          "en": "Clean but difficult cases are not flagged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tolerans sınırındaki değer kabul edilir, sınırı aşan değer işaretlenir.",
+          "en": "A value exactly at the tolerance limit is accepted; values above it are flagged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tutar etkisi birim fiyata göre hesaplanır.",
+          "en": "The amount impact is calculated from the unit price.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-data-contract",
+      "ad_tr": "Veri sözleşmesi",
+      "ad_en": "Data contract",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bozuk veri zarfı çıktı olarak yazılmaz.",
+          "en": "A malformed data envelope is not written to the output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Zarfta eksik bir alan varsa bu açıkça bildirilir.",
+          "en": "A missing field in the envelope is reported clearly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kayıtta eksik bir anahtar olduğunda bu bildirilir.",
+          "en": "A record with a missing key is reported.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli kullanım bayrağı doğru bir değer değilse reddedilir.",
+          "en": "A model-usage flag that is not a true or false value is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli kullanım bayrağı doğru değerdeyse sözleşmeye uygundur.",
+          "en": "A model-usage flag set to true is valid under the contract.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Özet eksik bir anahtar içeriyorsa bu bildirilir.",
+          "en": "A summary missing a key is reported.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tüm modül çıktıları etiketli olur ve dil modeli kullanılmaz.",
+          "en": "All module outputs are labeled, and no language model is used.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Üretilen zarf sözleşmeye uygundur.",
+          "en": "A generated envelope conforms to the contract.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-stock-status",
+      "ad_tr": "Stok durumu",
+      "ad_en": "Stock status",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Stok kalemleri birikimli değer eşiklerine göre sınıflanır.",
+          "en": "Stock items are classified by cumulative value thresholds.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veriye bilerek eklenen kritik stok bulunur.",
+          "en": "Critical stock deliberately added to the sample data is found.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veriye bilerek eklenen ölü stok bulunur.",
+          "en": "Dead stock deliberately added to the sample data is found.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Negatif stok miktarı reddedilir.",
+          "en": "A negative stock quantity is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Stok özeti kayıtlarla tutarlıdır.",
+          "en": "The stock summary is consistent with the records.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-demand-forecasting",
+      "ad_tr": "Talep tahmini",
+      "ad_en": "Demand forecasting",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Geriye dönük test ve taban karşılaştırması raporlanır.",
+          "en": "A backtest and a baseline comparison are reported.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çok kısa geçmişi olan kalem için tahmin reddedilir.",
+          "en": "A forecast is rejected for an item with too short a history.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Talep tahmini mevsimselliği ve eğilimi yakalar.",
+          "en": "The demand forecast captures seasonality and trend.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Pencere geçmişi ve aralık sırası doğru tutulur.",
+          "en": "The window history and interval order are kept correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tahmin haftaları ardışık pazartesi günlerinden oluşur.",
+          "en": "Forecast weeks are consecutive Mondays.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-supplier-score",
+      "ad_tr": "Tedarikçi skoru",
+      "ad_en": "Supplier score",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Örnek veride tedarikçi sıralaması beklenen sırayı verir.",
+          "en": "In the sample data, the supplier ranking gives the expected order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Red miktarı teslim miktarından büyükse satır reddedilir.",
+          "en": "A row is rejected when the rejected quantity is greater than the delivered quantity.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi seviyesi sınır değerlerinde doğru atanır.",
+          "en": "The supplier level is assigned correctly at the boundary values.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi puanı tanımlı formüle göre hesaplanır.",
+          "en": "The supplier score is calculated with the defined formula.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Düşük fiyat tek başına tedarikçiyi cezalandırmaz.",
+          "en": "A low price alone does not penalize a supplier.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sample-data-generation",
+      "ad_tr": "Örnek veri üretimi",
+      "ad_en": "Sample data generation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aynı tohum değeri aynı örnek veriyi üretir.",
+          "en": "The same seed produces the same sample data.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veri beklenen yedi tür anomali içerir.",
+          "en": "The sample data contains the expected seven kinds of anomaly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-data-loading",
+      "ad_tr": "Veri yükleme",
+      "ad_en": "Data loading",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Eksik sütun açık bir hata verir.",
+          "en": "A missing column produces a clear error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketi olmayan dosya gerçek veri sayılır.",
+          "en": "A file without a label is treated as real data.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek etiketli dosya sentetik veri sayılır.",
+          "en": "A file labeled as sample is treated as synthetic data.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yorum satırları yüklemede atlanır.",
+          "en": "Comment lines are skipped during loading.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-concurrent-access",
+      "ad_tr": "Eşzamanlı erişim",
+      "ad_en": "Concurrent access",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aynı anda yapılan yazma ve okumalarda kayıt kaybı olmaz.",
+          "en": "Simultaneous writes and reads lose no records.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-request-size-limit",
+      "ad_tr": "İstek boyutu sınırı",
+      "ad_en": "Request size limit",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Boyut sınırı aşılınca mesaj her denemede eksiksiz ulaşır.",
+          "en": "When the size limit is exceeded, the message arrives in full on every attempt.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-identity-and-audit",
+      "ad_tr": "Kimlik ve denetim",
+      "ad_en": "Identity and audit",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Başarılı istekler de denetim kaydında kişi ve yetkisiyle yer alır.",
+          "en": "Successful requests also appear in the audit record with the person and their permission.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kullanıcı oluşturulur, kullanılır ve iptal edilir.",
+          "en": "A user can be created, used and revoked.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Erişim anahtarı ve istek içeriği denetim kaydına ya da veritabanına yazılmaz.",
+          "en": "Access keys and request content are not written to the audit record or the database.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anahtarsız, geçersiz ya da iptal edilmiş istekler yetkisiz olarak reddedilir ve kaydedilir.",
+          "en": "Requests without a key, with an invalid key or with a revoked key are rejected as unauthorized and recorded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anahtarsız olarak bilinmeyen bir adrese gelen istek yetkisiz döner; adres listesi sızdırılmaz.",
+          "en": "A request to an unknown address without a key is refused as unauthorized, and the list of addresses is not exposed.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-documentation",
+      "ad_tr": "Belgeleme",
+      "ad_en": "Documentation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Belge denetimi eksik ya da yanlış tipteki alanları yakalar.",
+          "en": "The documentation check catches missing or wrongly typed fields.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belgedeki rol tablosu koddakiyle birebir aynıdır.",
+          "en": "The role table in the documentation matches the code exactly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belgedeki arayüz tanımı günceldir.",
+          "en": "The interface description in the documentation is up to date.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Her uç nokta belgelenmiştir ve belgedeki bağlantılar çözülür.",
+          "en": "Every endpoint is documented and the links in the documentation resolve.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vaka durumları ve hata kodları belgede ve kodda aynıdır.",
+          "en": "Case statuses and error codes are the same in the documentation and in the code.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-packaging",
+      "ad_tr": "Paketleme",
+      "ad_en": "Packaging",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Kapsayıcı paketleme dosyaları eksiksiz ve birbiriyle tutarlıdır.",
+          "en": "The container packaging files are complete and consistent with each other.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Paket tanımı ve paket verisi tutarlıdır.",
+          "en": "The package definition and the packaged data are consistent.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-panel-files",
+      "ad_tr": "Panel dosyaları",
+      "ad_en": "Panel files",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Gömülü yedek sayfa ve canlı betikler doğru sırayla yüklenir.",
+          "en": "The embedded fallback page and the live scripts load in the right order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panel dışındaki dosyalar ve kaynak dosyalar kullanıcıya sunulmaz.",
+          "en": "Files outside the panel and source files are not served to users.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panel dosyaları kullanıcıya sunulur.",
+          "en": "The panel files are served to users.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eski sürüm adresleri panelden ayrı tutulur.",
+          "en": "Old-version addresses are kept separate from the panel.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-roles-and-permissions",
+      "ad_tr": "Rol ve yetki",
+      "ad_en": "Roles and permissions",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Kullanıcının kendi izinleri rol tablosuyla aynıdır.",
+          "en": "A user's own permissions match the role table.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Her modülün sahibi tanımlıdır.",
+          "en": "Every module has a defined owner.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Her uç noktaya hangi rollerin erişebildiği tabloyla aynıdır.",
+          "en": "Which roles can reach each endpoint matches the table.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sap-data-intake",
+      "ad_tr": "SAP veri alımı",
+      "ad_en": "SAP data intake",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "SAP kaynaklı veri alımı başarıyla kabul edilir.",
+          "en": "Data received from SAP is accepted successfully.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sap-mapping",
+      "ad_tr": "SAP eşleme",
+      "ad_en": "SAP mapping",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "SAP alanları Kule alanlarına doğru çevrilir.",
+          "en": "SAP fields are converted correctly into Kule fields.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bağlantı kodu yoksa bu açıkça belirtilir.",
+          "en": "When a connection code is missing, this is stated clearly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çevrilemeyen bir değer tahmin edilmez; veri alımı reddedilir.",
+          "en": "A value that cannot be converted is not guessed; the intake is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik SAP sütununun adı hata mesajında yer alır.",
+          "en": "The name of a missing SAP column appears in the error message.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eşleme dosyası kullanılmadan önce doğrulanır.",
+          "en": "The mapping file is checked before it is used.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "SAP komutu, sonucuna uygun çıkış kodunu döner.",
+          "en": "The SAP command returns an exit code that matches its outcome.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "SAP üzerinden gelen veriyle aynı bulgular çıkar.",
+          "en": "Data coming through SAP produces the same findings.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayı ve tarih değerleri doğru biçimde çevrilir.",
+          "en": "Number and date values are converted in the correct format.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-interface-contract",
+      "ad_tr": "Arayüz sözleşmesi",
+      "ad_en": "Interface contract",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Açık olması gereken adresler anahtarsız da erişilebilir.",
+          "en": "Addresses meant to be open can be reached without a key.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bilinmeyen adres ya da yöntem uygun şekilde reddedilir.",
+          "en": "An unknown address or method is rejected appropriately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bulgu sayısı vaka sayısıyla tutarlıdır ve örnek veri etiketlidir.",
+          "en": "The number of findings matches the number of cases, and the sample data is labeled.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Negatif içerik uzunluğu sistemi takılmadan reddedilir.",
+          "en": "A negative content length is rejected without blocking the system.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Haftalık özet doğru üretilir ve hatalı tarih bildirilir.",
+          "en": "The weekly summary is produced correctly and an invalid date is reported.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri alımında büyük bir alan işlenmeden reddedilir.",
+          "en": "In data intake, an oversized field is rejected without being processed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri alımı dosya adını ve içeriğini denetler.",
+          "en": "Data intake checks the file name and its content.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri alımı iki gün arasındaki farkı doğru hesaplar.",
+          "en": "Data intake calculates the difference between two days correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kabul yalnız yönetici tarafından yapılabilir ve gerekçe zorunludur.",
+          "en": "Acceptance can be done only by a manager, and a reason is required.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Okuma istekleri belgelenmiş yanıt biçimine uyar.",
+          "en": "Read requests return responses in the documented format.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Simülasyon varsayılan ve özel ayarlarla çalışır.",
+          "en": "The simulation runs with default and custom settings.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Taslak ve tuhaf kimlikli istekler hatalı istek olarak reddedilir ve kaydedilir.",
+          "en": "Draft requests and requests with strange identifiers are rejected as bad requests and recorded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vaka akışında işlemi yapan kişi, anahtarın sahibidir.",
+          "en": "In the case flow, the person acting is the owner of the key.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-explanation-generation",
+      "ad_tr": "Açıklama üretimi",
+      "ad_en": "Explanation generation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Anahtar verildiğinde dil modeli kullanılır ama anahtar çıktıda görünmez.",
+          "en": "When a key is provided, the language model is used but the key does not appear in the output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anahtar yoksa hazır şablon kullanılır ve uyarı verilir.",
+          "en": "Without a key, a template is used and a warning is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli hata verirse şablona dönülür.",
+          "en": "If the language model returns an error, the template is used instead.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli, ayarlanan model seçeneğiyle belirlenir.",
+          "en": "The language model is chosen by the configured model setting.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli kipi açıkça istenirse gerçek model adı ve jeton sayısı kaydedilir.",
+          "en": "When the model mode is explicitly requested, the real model name and token count are recorded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli yoksa şablona dönülür ve nedeni uyarıda yazılır.",
+          "en": "If the language model is unavailable, the template is used and the reason is stated in the warning.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik ortam ayarı bir uyarı üretir.",
+          "en": "A missing environment setting produces a warning.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dil modeli hatasında şablona dönülür ve anahtar gizlenir.",
+          "en": "On a language model error, the template is used and the key is masked.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Varsayılan ayarda dil modeli çağrılmaz.",
+          "en": "With default settings, the language model is not called.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-invoice-extraction",
+      "ad_tr": "Fatura çıkarımı",
+      "ad_en": "Invoice extraction",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Başlığı olmayan satır reddedilir.",
+          "en": "A line without a header is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalıba uyan satır ve ondalık virgüllü tutar doğru okunur.",
+          "en": "A row matching the pattern and an amount with a decimal comma are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalıba uymayan satır reddedilir, diğer satırlar işlenir.",
+          "en": "A row that does not match the pattern is rejected, and the other rows are processed.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-production-efficiency",
+      "ad_tr": "Üretim verimliliği",
+      "ad_en": "Production efficiency",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Verimlilik formülleri bilinen değerlerle doğru sonuç verir.",
+          "en": "The efficiency formulas give the correct result for known values.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kök neden, baskın nedene göre belirlenir.",
+          "en": "The root cause is identified by the dominant reason.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride en düşük verimli hat beklenen hattır.",
+          "en": "In the sample data, the least efficient line is the expected one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Pareto listesi azalan sırada ilerler ve birikimli yüzde yüze ulaşır.",
+          "en": "The Pareto list descends and its cumulative percentage reaches one hundred.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tutarsız üretim kaydı reddedilir.",
+          "en": "An inconsistent production record is rejected.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-three-way-matching",
+      "ad_tr": "Üçlü eşleştirme",
+      "ad_en": "Three-way matching",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Çift fatura, fazla miktarı ikinci kez saymaz.",
+          "en": "A duplicate invoice does not count the excess quantity a second time.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Fatura miktarı irsaliyenin altındaysa kalan miktar faturalanmamış sayılır.",
+          "en": "When the invoiced quantity is below the delivery note, the remainder counts as not yet invoiced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Fatura irsaliyeyi aşarsa fazla kısım işaretlenir.",
+          "en": "When an invoice exceeds the delivery note, the excess is flagged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Fiyat farkı tolerans sınırındaysa kabul edilir.",
+          "en": "A price difference at the tolerance limit is accepted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İrsaliyesi olmayan fatura yalnız irsaliyesiz fatura olarak işaretlenir.",
+          "en": "An invoice without a delivery note is flagged only as an invoice without a delivery note.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride beklenen üçlü eşleştirme bulguları eksiksiz çıkar.",
+          "en": "In the sample data, the expected three-way matching findings all appear.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Siparişi olmayan fatura işaretlenir.",
+          "en": "An invoice with no order is flagged.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-additional-sample-data-generation",
+      "ad_tr": "Ek örnek veri üretimi",
+      "ad_en": "Additional sample data generation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Ek örnek veri dosyaları üretilir.",
+          "en": "Additional sample data files are produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ek örnek veri üretimi her seferinde aynı sonucu verir.",
+          "en": "Additional sample data generation gives the same result every time.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-settings",
+      "ad_tr": "Ayarlar",
+      "ad_en": "Settings",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Ayar dosyası ve komut satırı değerleri birleşir; hatalı değer komut satırında bildirilir.",
+          "en": "Settings from the file and the command line are merged, and an invalid value is reported on the command line.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz ayar değerleri reddedilir.",
+          "en": "Invalid setting values are rejected.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-output-encoding",
+      "ad_tr": "Çıktı kodlaması",
+      "ad_en": "Output encoding",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Çıktı yönlendirildiğinde Türkçe karakterler doğru kodlanır.",
+          "en": "When output is redirected, Turkish characters are encoded correctly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-decision-formulas",
+      "ad_tr": "Karar formülleri",
+      "ad_en": "Decision formulas",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Durum eşikleri sınır değerlerinde doğru sınıfı verir.",
+          "en": "Status thresholds give the right class at their limits.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Stok dışı durum ve öneri doğru üretilir.",
+          "en": "Out-of-stock status and recommendations are produced correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Emniyet stoku, yeniden sipariş noktası ve ekonomik sipariş miktarı doğru hesaplanır.",
+          "en": "Safety stock, reorder point and economic order quantity are calculated correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Talep ve tedarik süresi hesabı doğrudur.",
+          "en": "The demand and lead-time calculation is correct.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Talebi olmayan kalem için karar üretilmez.",
+          "en": "No decision is produced for an item with no demand.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yedek parça miktarı tahmine dayanır.",
+          "en": "The spare part quantity is based on the forecast.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yıllık maliyet doğru hesaplanır.",
+          "en": "The annual cost is calculated correctly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-data-acceptance",
+      "ad_tr": "Veri kabulü",
+      "ad_en": "Data acceptance",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bozuk veri veritabanına kabul edilmez.",
+          "en": "Corrupt data is not accepted into the database.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Farklı tohum değerleri farklı ama geçerli sonuçlar verir.",
+          "en": "Different seed values produce different but valid results.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veritabanı yoksa anlaşılır bir hata verilir.",
+          "en": "When the database is missing, a clear error is given.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-calibration",
+      "ad_tr": "Kalibrasyon",
+      "ad_en": "Calibration",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Kalibrasyon test penceresindeki veriyi görmez; son 24 hafta değişse de katsayı sabit kalır.",
+          "en": "Calibration does not see the data in the test window; the factor stays the same even if the last 24 weeks change.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kısa geçmişi olan kalem kalibre edilmez.",
+          "en": "An item with a short history is not calibrated.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalibrasyon önce geniş aralıkta, sonra hedef aralıkta yapılır.",
+          "en": "Calibration is done first over a wide range, then over the target range.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-calibration-input",
+      "ad_tr": "Kalibrasyon girdisi",
+      "ad_en": "Calibration input",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Veritabanındaki talepten, stok bilgisi olmadan kalibrasyon yapılabilir.",
+          "en": "Calibration can be done from the demand in the database without stock data.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Talep verisi olmayan girdi anlaşılır bir hata verir.",
+          "en": "Input without demand data gives a clear error.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-importance-score",
+      "ad_tr": "Önem puanı",
+      "ad_en": "Importance score",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Önem puanı tanımlı formüle göre hesaplanır.",
+          "en": "The importance score is calculated with the defined formula.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Değeri sıfır olsa da kritik stok önem listesinin dibinde kalmaz.",
+          "en": "Even with a value of zero, critical stock does not sink to the bottom of the importance ranking.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sample-data-scenarios",
+      "ad_tr": "Örnek veri senaryoları",
+      "ad_en": "Sample data scenarios",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Örnek veri, değişmemesi gereken kuralları korur.",
+          "en": "The sample data keeps the rules that must not change.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veri, girdi değişince sonuçların da değiştiğini gösterir.",
+          "en": "The sample data shows that results respond to changes in input.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride kalemler ve bilerek eklenen durumlar yer alır.",
+          "en": "The sample data includes items and the cases added on purpose.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek senaryolar birbiriyle tutarlıdır.",
+          "en": "The sample scenarios are consistent with each other.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Servis düzeyi eğrisi artan yönde ilerler.",
+          "en": "The service level curve rises steadily.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Simülasyon tablosu beklenen biçimde üretilir.",
+          "en": "The simulation table is produced in the expected form.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir tedarikçi çıkarılırsa talep alternatif tedarikçiye geçer.",
+          "en": "If a supplier is removed, demand moves to an alternative supplier.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-management-summary",
+      "ad_tr": "Yönetici özeti",
+      "ad_en": "Management summary",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Özet dosyaları yazılır.",
+          "en": "The summary files are written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "E-posta yalnız taslak olarak hazırlanır.",
+          "en": "The email is prepared only as a draft.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Özet beklenen bölümleri içerir.",
+          "en": "The summary includes the expected sections.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kodda e-postayı gönderen bir yol yoktur.",
+          "en": "The code has no route that sends the email.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-accepting-consecutive-views",
+      "ad_tr": "Ardışık görüntü kabulü",
+      "ad_en": "Accepting consecutive views",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "İki günlük veri ardışık olarak kabul edilir.",
+          "en": "Two days of data are accepted in sequence.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Reddedilen sipariş satırına dokunan bulgu veri şüphesi taşır.",
+          "en": "A finding that touches a rejected order line carries a data doubt.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-breaking-test",
+      "ad_tr": "Bozma deneyi",
+      "ad_en": "Breaking test",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bozma deneyi, sabit bir tohumla tekrarlanabilir sonuç verir.",
+          "en": "The breaking test gives repeatable results with a fixed seed.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-database-migration",
+      "ad_tr": "Veritabanı göçü",
+      "ad_en": "Database migration",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Boş veritabanı son sürüme getirilir; yeniden göç boş geçer.",
+          "en": "An empty database is brought to the latest version, and repeating the migration does nothing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Daha yeni bir şema sürümü reddedilir.",
+          "en": "A newer schema version is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eski sürümden göç veriyi korur.",
+          "en": "Migrating from an older version keeps the data.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tablo sütunları girdi sözleşmesiyle aynıdır.",
+          "en": "The table columns match the input contract.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-command-line-errors",
+      "ad_tr": "Komut satırı hataları",
+      "ad_en": "Command line errors",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Büyük alan içeren girdiyle komut çalıştırılınca girdi hatası kodu döner.",
+          "en": "Running the command with an oversized field returns the input error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük alan içeren girdi karar komutunda hata kodu döner.",
+          "en": "An oversized input in the decision command returns the error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük alan içeren SAP örneğinde hata kodu döner.",
+          "en": "An oversized field in the SAP sample returns the error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük alan içeren SAP uyarlamasında hata kodu döner.",
+          "en": "An oversized field in the SAP adaptation returns the error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük alan içeren veri alımı isteğinde hata kodu döner.",
+          "en": "An oversized field in a data intake request returns the error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük alan içeren SAP veri alımında hata kodu döner.",
+          "en": "An oversized field in SAP data intake returns the error code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tablo dosyasında alan sınırı aşılınca hata kodu döner.",
+          "en": "When a table file exceeds the field limit, the error code is returned.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri alımı, vaka ve fark komutları beklenen sonuçları verir.",
+          "en": "The intake, case and difference commands give the expected results.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Olmayan girdi klasörü hata koduyla bildirilir.",
+          "en": "A missing input folder is reported with the error code.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-case-lifecycle",
+      "ad_tr": "Vaka yaşam döngüsü",
+      "ad_en": "Case lifecycle",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Çözülmüş bir vaka, bulgu yeniden ortaya çıkarsa yeniden açılır.",
+          "en": "A resolved case is reopened if its finding reappears.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vaka elle ilerletilir ve her adım denetim izinde kalır.",
+          "en": "A case is moved forward by hand and each step stays in the audit trail.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz durum geçişi ve gerekçesiz kabul reddedilir.",
+          "en": "An invalid status change and an acceptance without a reason are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kabul edilen vaka, bulgu sürse de yeniden açılmaz.",
+          "en": "An accepted case is not reopened even if the finding persists.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kaybolan bulgu otomatik çözülür; ancak ilgili modül çalışmadıysa vaka kapanmaz.",
+          "en": "A vanished finding is resolved automatically, but the case stays open if its module did not run.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vakalar filtrelenip sıralanarak listelenir.",
+          "en": "Cases can be listed, filtered and sorted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Önem değişimi izlenir.",
+          "en": "Changes in importance are tracked.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tekrarlayan bulgu aynı vakaya birleşir.",
+          "en": "A recurring finding merges into the same case.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yeni bir bulgu vaka açar; süre hedefi önemine göre belirlenir.",
+          "en": "A new finding opens a case; the time target is set by its importance.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-data-loading-checks",
+      "ad_tr": "Veri yükleme denetimi",
+      "ad_en": "Data loading checks",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Alanlar arasındaki tutarsızlık yakalanır.",
+          "en": "Inconsistencies between fields are caught.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eski tarihli dosya işaretlenir.",
+          "en": "An out-of-date file is flagged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik sütunlu dosya yapı hatası sayılır; ilgili modül atlanır, diğerleri çalışır.",
+          "en": "A file with a missing column counts as a structure error; its module is skipped and the others run.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hatalı satırlar reddedilir, dosyanın geri kalanı yüklenir.",
+          "en": "Faulty rows are rejected and the rest of the file is loaded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Temiz örnek veride hiç red olmaz.",
+          "en": "The clean sample data has no rejections at all.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veritabanı üzerinden elde edilen modül sonuçları, dosyalardan doğrudan okunanlarla aynıdır.",
+          "en": "Module results obtained through the database match those read directly from the files.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-table-header-matching",
+      "ad_tr": "Tablo başlığı eşleme",
+      "ad_en": "Table header matching",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Belirsiz bir başlık açık bir uyarı verir; sessizce seçim yapılmaz.",
+          "en": "An ambiguous header produces a clear warning; no choice is made silently.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsizlik uyarısı başlık eşleştirmesiyle birlikte gösterilir.",
+          "en": "The ambiguity warning is shown together with the header matching.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir sütun iki alana uyarsa, ikinci alan için uyarı verilir.",
+          "en": "If one column fits two fields, a warning is given for the second field.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tablo, sütun adlarıyla eşleşir ve yinelenen sütun ayrılır.",
+          "en": "A table is matched by column names, and duplicate columns are separated.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik sütun tahmin edilmeden yapı hatası olarak bildirilir.",
+          "en": "A missing column is reported as a structure error without being guessed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe ve boşluklu başlıklar veri alımında doğru eşleşir.",
+          "en": "Turkish headers and headers with spaces are matched correctly during intake.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-table-file-loading",
+      "ad_tr": "Tablo dosyası yükleme",
+      "ad_en": "Table file loading",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Tablo dosyası yüklenir ve sentetik veri olarak kalır.",
+          "en": "A table file is loaded and stays marked as synthetic data.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-reading-table-files",
+      "ad_tr": "Tablo dosyası okuma",
+      "ad_en": "Reading table files",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Boyut sınırı açıkça aşılırsa dosya okunmaz.",
+          "en": "If the size limit is clearly exceeded, the file is not read.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı kaynak iki alana birden gitmez.",
+          "en": "The same source does not feed two fields at once.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Başlık eşleştirmesi takma adları ve belirsizliği ele alır.",
+          "en": "Header matching handles alternative names and ambiguity.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Standart, Türkçe ve boşluklu başlıklar okunur.",
+          "en": "Standard, Turkish and spaced headers are read.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş dosya boş sonuç verir.",
+          "en": "An empty file gives an empty result.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk tablo dosyası açık bir hata verir.",
+          "en": "A corrupt table file gives a clear error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik sayfa içeren tablo dosyası hata verir.",
+          "en": "A table file with a missing sheet part gives an error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ortak metinler, satır içi metinler, sayılar ve boş hücreler doğru okunur.",
+          "en": "Shared text, inline text, numbers and empty cells are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sütun adresi doğru çözülür.",
+          "en": "Column addresses are resolved correctly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-live-model-query",
+      "ad_tr": "Gerçek model sorgusu",
+      "ad_en": "Live model query",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Gerçek modda yanlış sayı reddedilir, doğru yanıt kabul edilir ve kayıt yazılır.",
+          "en": "In live mode, a wrong number is rejected, a correct answer is accepted, and a record is written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek model hatası düzgün bir başarısızlık raporu üretir.",
+          "en": "A live model error produces a clean failure report.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kayıt bandı modu, elle yazılmış etiketle değişmeden çalışır.",
+          "en": "Tape mode runs with a hand-written label, unchanged.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "Kayıt dosyası sonradan aynen yeniden oynatılabilir.",
+          "en": "The recording file can be replayed exactly later.",
+          "kaynak": "kaset"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-agent-and-provider-together",
+      "ad_tr": "Ajan ve sağlayıcı birlikte",
+      "ad_en": "Agent and provider together",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Araç döngüsü gerçek sağlayıcıyla tamamlanır ve izde model bilgisi bulunur.",
+          "en": "The tool loop completes with the live provider, and the trace carries the model information.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-model-provider",
+      "ad_tr": "Model sağlayıcısı",
+      "ad_en": "Model provider",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Çok istek yanıtı geçici bir hata olarak sınıflanır.",
+          "en": "A too-many-requests response is classified as a temporary error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Araç bloğu bir çağrıya dönüşür ve metinden ayrılır.",
+          "en": "A tool block becomes a call and is separated from the text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Komut satırı araçları ve harici araç sunucuları kapalı tutulur; girdi standart girişten gider.",
+          "en": "Command-line tools and external tool servers are kept off, and input goes through standard input.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk araç bloğu kalıcı bir hata olarak bildirilir.",
+          "en": "A corrupt tool block is reported as a permanent error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Model komutu yoksa açık bir hata verilir.",
+          "en": "If the model command is missing, a clear error is given.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Döküm, araç sonucunu ve önceki çağrıyı gösterir.",
+          "en": "The transcript shows the tool result and the previous call.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Düz metin yanıtından model, jeton sayısı ve gecikme okunur.",
+          "en": "From a plain text reply, the model, token count and delay are read.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yapılandırılmamış çıktı kalıcı bir hata sayılır.",
+          "en": "Output that is not in the expected structure counts as a permanent error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Model belirtilmezse model seçeneği eklenmez.",
+          "en": "If no model is specified, no model option is added.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Oturum hatası kalıcı bir hata olur ve mesaj kısa tutulur.",
+          "en": "A session error is a permanent error and the message is kept short.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-tool-output-leakage",
+      "ad_tr": "Araç çıktısı sızıntısı",
+      "ad_en": "Tool output leakage",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Araç çıktısındaki gömülü bir komut son yanıta sızarsa denetçi yanıtı reddeder.",
+          "en": "If an embedded command from tool output leaks into the final reply, the checker rejects the reply.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İddia bloğundaki yapılandırılmış kopya sızıntı sayılmaz.",
+          "en": "A structured copy inside the claim block does not count as a leak.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız sayılardan oluşan yanıt kabul edilir.",
+          "en": "A reply made only of numbers is accepted.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-approval-summary",
+      "ad_tr": "Onay özeti",
+      "ad_en": "Approval summary",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Basit bir onay, yazma işlemini açmaz.",
+          "en": "A simple approval does not unlock writing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Onaylanan özet, çalıştırılan girdiyle uyuşmazsa yazma yapılmaz.",
+          "en": "If the approved summary does not match the executed input, nothing is written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Onaylanan özet eşleşirse yazma yapılır.",
+          "en": "If the approved summary matches, the write goes ahead.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Özet, anahtarların sırasından bağımsızdır.",
+          "en": "The summary does not depend on the order of its keys.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-measuring-known-gaps",
+      "ad_tr": "Bilinen açıkların ölçümü",
+      "ad_en": "Measuring known gaps",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Bilinen bir açık kapanırsa ilgili ölçüm vakası başarısız olur.",
+          "en": "If a known gap is closed, the related measurement case fails.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Onay olayı olmasa da açık gözlemlenir.",
+          "en": "The gap is observed even without an approval event.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-evaluation-command",
+      "ad_tr": "Değerlendirme komutu",
+      "ad_en": "Evaluation command",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Değerlendirme komutu sağlam bir taban üzerinde başarıyla tamamlanır.",
+          "en": "The evaluation command completes successfully on a sound baseline.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-evaluation-cases",
+      "ad_tr": "Değerlendirme vakaları",
+      "ad_en": "Evaluation cases",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Enjeksiyon metni döngüye girer ve aracın çalışması engellenir.",
+          "en": "An injected text enters the loop and the tool is blocked from running.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kapanan açıklar ölçüt olarak sayılır.",
+          "en": "Closed gaps are counted as criteria.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kapsam ve sızıntı vakaları gözlemi belgeler.",
+          "en": "The scope and leak cases document what is observed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kayıtlı jeton sayısı model adımlarından gelir.",
+          "en": "The recorded token count comes from the model steps.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Özet, ölçüt sayılarını ve bilinen açık sayılarını ayrı verir.",
+          "en": "The summary gives criteria counts and known-gap counts separately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Özet satırı, bilinen bir açığı geçti olarak saymaz.",
+          "en": "The summary line does not count a known gap as a pass.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sağlam kodda bütün vakalar geçer.",
+          "en": "On sound code, all cases pass.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-regression-check",
+      "ad_tr": "Gerileme kontrolü",
+      "ad_en": "Regression check",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Bozuk denetçi bir gerileme olarak yakalanır.",
+          "en": "A broken checker is caught as a regression.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk onay kapısı enjeksiyon vakalarında yakalanır.",
+          "en": "A broken approval gate is caught by the injection cases.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karşılaştırmada önceden geçen bir vakanın artık geçmemesi gerileme sayılır.",
+          "en": "In a comparison, a case that used to pass and no longer does is counted as a regression.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sağlam bir taban ile komut başarı kodu döner.",
+          "en": "With a sound baseline, the command returns a success code.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-recording-and-playback",
+      "ad_tr": "Kayıt ve oynatma",
+      "ad_en": "Recording and playback",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Kayıt modu bandı yazar ve gerçek etiketi taşır.",
+          "en": "Record mode writes the tape and carries the live label.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "Yanıtlar sırayla oynar; bant bitince hata verilir.",
+          "en": "Replies play in order, and an error is given when the tape runs out.",
+          "kaynak": "kaset"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-compatible-interface",
+      "ad_tr": "Uyumlu arayüz",
+      "ad_en": "Compatible interface",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Anahtar yoksa açık bir hata verilir; sahte yanıt üretilmez.",
+          "en": "Without a key, a clear error is given and no fake reply is produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Araç sonucu, araç rolüne karşılık gelir.",
+          "en": "A tool result is mapped to the tool role.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çok istek yanıtı geçici, hatalı istek yanıtı kalıcı sayılır.",
+          "en": "A too-many-requests response counts as temporary, and a bad-request response as permanent.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İstek ve yanıt doğru eşleşir.",
+          "en": "Requests and replies are matched correctly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-agent-loop",
+      "ad_tr": "Ajan döngüsü",
+      "ad_en": "Agent loop",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Adım bütçesi aşılınca durum bütçe aşıldı olarak işaretlenir.",
+          "en": "When the step budget is exceeded, the status is marked as budget exceeded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Araç hatası çalışmayı düşürmez; model hatayı sonuç olarak görür.",
+          "en": "A tool error does not stop the run; the model sees the error as the result.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz durum geçişi reddedilir.",
+          "en": "An invalid status change is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçici hatada bekleyerek yeniden denenir.",
+          "en": "A temporary error is retried after a wait.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yeniden deneme hakkı tükenince çalışma başarısız olur.",
+          "en": "When the retry allowance runs out, the run fails.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İzinsiz araç reddedilir, çalıştırılmaz ve izlenir.",
+          "en": "An unauthorized tool is rejected, not run, and logged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Jeton bütçesi aşılınca çalışma durur.",
+          "en": "When the token budget is exceeded, the run stops.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalıcı hata yeniden denenmez.",
+          "en": "A permanent error is not retried.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yan etkisi olan araç onay olmadan çalışmaz, onayla birlikte çalışır.",
+          "en": "A tool with side effects does not run without approval, and runs with it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Zaman aşımı geçici hata sayılır.",
+          "en": "A timeout counts as a temporary error.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-end-to-end-scenarios",
+      "ad_tr": "Uçtan uca senaryolar",
+      "ad_en": "End-to-end scenarios",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Basit onay, senaryoda da yazmayı açmaz.",
+          "en": "A simple approval does not unlock writing in the scenario either.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Canlı modda anahtar yoksa komut açık bir hata verir.",
+          "en": "In live mode without a key, the command gives a clear error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bant modunda komut, beklenen çıkış kodlarını döner.",
+          "en": "In tape mode, the command returns the expected exit codes.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "İzdeki araç sonucu elle değişirse yeniden oynatma farkı bildirir.",
+          "en": "If a tool result in the trace is changed by hand, the replay reports the difference.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İz üzerinden yeniden oynatma aynı sonucu üretir.",
+          "en": "Replaying from the trace produces the same result.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bant koşusu tamamlanır ve yetkisiz araç çalışmaz.",
+          "en": "The tape run completes and an unauthorized tool does not run.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "Onay verilirse dosya yazılır.",
+          "en": "If approval is given, the file is written.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-checker",
+      "ad_tr": "Denetçi",
+      "ad_en": "Checker",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Biçimi bozuk iddialar çökme yaratmadan reddedilir.",
+          "en": "Claims with a broken format are rejected without a crash.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bilinmeyen bir kaynağa dayanan iddia reddedilir.",
+          "en": "A claim resting on an unknown source is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş iddia bloğu reddedilir.",
+          "en": "An empty claim block is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk iddia bloğu reddedilir.",
+          "en": "A broken claim block is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Doğru iddialar kabul edilir.",
+          "en": "Correct claims are accepted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İddia bloğu yoksa yanıt reddedilir.",
+          "en": "A reply without a claim block is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek olmayan kayıt alanına dair iddia reddedilir.",
+          "en": "A claim about a field that is not a single record is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yanlış sayı reddedilir ve uyuşmazlık kaydedilir.",
+          "en": "A wrong number is rejected and the mismatch is recorded.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-plain-text-checks",
+      "ad_tr": "Düz metin denetimi",
+      "ad_en": "Plain text checks",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Kanıtı olmayan düz metin sayısı reddedilir.",
+          "en": "A number in plain text with no supporting evidence is rejected.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-numbers-in-text",
+      "ad_tr": "Metindeki sayılar",
+      "ad_en": "Numbers in text",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Aralık ve normal sayılar sayı olarak sayılır.",
+          "en": "Ranges and ordinary numbers are counted as numbers.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Binlik ayraç bir tam sayı, virgül ise ondalık ayracıdır.",
+          "en": "A thousands separator makes a whole number, and a comma is a decimal separator.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kimlik numarası sayı sayılmaz.",
+          "en": "An identifier number is not counted as a number.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Madde numarası sayı sayılmaz.",
+          "en": "A list item number is not counted as a number.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ondalık sayı, yuvarlama payı içinde eşleşir.",
+          "en": "A decimal number matches within a rounding margin.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tam sayı, kanıtta tam olarak aranır.",
+          "en": "A whole number is searched for exactly in the evidence.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tarih ve saat sayı sayılmaz.",
+          "en": "Dates and times are not counted as numbers.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-kule-tools",
+      "ad_tr": "Kule araçları",
+      "ad_en": "Kule tools",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Stok sorgusu gerçek çıktıdan okunur.",
+          "en": "The stock query reads from the real output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi sorgusundaki puan, hesaplamanın kendisinden gelir.",
+          "en": "The supplier query's score comes from the calculation itself.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-investigation-flow",
+      "ad_tr": "Soruşturma akışı",
+      "ad_en": "Investigation flow",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Kayıt bantları hazır bulunur.",
+          "en": "The recorded tapes are available.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "Uçtan uca akışta ilk deneme reddedilir, ikincisi geçer.",
+          "en": "In the end-to-end flow, the first attempt is rejected and the second passes.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "orkestrator_python-planner-gate",
+      "ad_tr": "Planlayıcı kapısı",
+      "ad_en": "Planner gate",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Aşırı uzun bir madde reddedilir.",
+          "en": "An overly long item is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "E-posta adresi içeren çıktı reddedilir.",
+          "en": "Output that contains an email address is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Görev dışına çıkan planlayıcı uçtan uca reddedilir; analist çalıştırılmaz.",
+          "en": "A planner that goes outside its task is rejected end to end, and the analyst does not run.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kayıt bandı soruşturması kapıdan geçer ve kurallar yerinde kalır.",
+          "en": "The recorded investigation passes the gate, and the rules stay in place.",
+          "kaynak": "kaset"
+        },
+        {
+          "tr": "Maddesiz çıktı reddedilir.",
+          "en": "Output without items is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Görev dışına çıkan ilk çıktı, geri bildirimle yeniden istenir; ikinci çıktı geçer.",
+          "en": "An output that goes outside the task is re-requested with feedback; the second output passes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tablo ya da eylem planı içeren çıktı reddedilir.",
+          "en": "Output containing a table or an action plan is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız alt görev listesinden oluşan çıktı kabul edilir.",
+          "en": "Output made only of a subtask list is accepted.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_node-kule-dashboard-interface",
+      "ad_tr": "Kule panel arayüzü",
+      "ad_en": "Kule dashboard interface",
+      "kume": "kule_node",
+      "testler": [
+        {
+          "tr": "Sayfada, bir ihtiyacın kanıtlandığını ima eden bir ifade yer almaz.",
+          "en": "The page contains no wording that implies a need has been proven.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tablo dosyaları işaret sırası, noktalı virgül ayracı, ondalık virgül ve tırnak kaçışlarıyla doğru okunur.",
+          "en": "Table files are read correctly, including byte-order marks, semicolon separators, decimal commas and quote escapes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Mevsimsel yöntem basit taban yöntemden kötüyse bu açıkça belirtilir.",
+          "en": "When the seasonal method does worse than the simple baseline, the page says so.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Arayüzdeki durum geçiş kuralları sunucudaki kurallarla birebir aynıdır.",
+          "en": "The status transition rules in the interface are identical to those on the server.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yatırım getirisi elle yapılan hesapla aynı çıkar.",
+          "en": "Return on investment matches a manual calculation.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yatırım getirisi varsayılanları, her girdinin güven düzeyi belirtilerek seçilir.",
+          "en": "The return-on-investment defaults are chosen with a stated confidence level for each input.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vaka süreleri kalan, bugün, gecikmiş ve kapanmış olarak doğru sınıflanır.",
+          "en": "Case deadlines are classified correctly as remaining, due today, overdue or closed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aksiyonlar önem, etki türü ve tutar sırasıyla listelenir; tutarsız olanlar kendi düzeyinin sonunda yer alır.",
+          "en": "Actions are listed by importance, impact type and amount; inconsistent ones come last in their own level.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kaynak atfı ve referans bağlantısı sayfada bulunur.",
+          "en": "The source citation and reference link appear on the page.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı sipariş kalemi, tutarı tek kez sayılacak biçimde işlenir.",
+          "en": "The same order line is counted once in the total amount.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ağırlık değişince sıralama değişir; ağırlıklar toplamı bir olacak biçimde ölçeklenir.",
+          "en": "Changing a weight changes the ranking; the weights are scaled to sum to one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Vaka yalnız yönetici tarafından kabul edilebilir; geçersiz durum geçişine izin verilmez.",
+          "en": "A case can be accepted only by a manager; invalid status changes are not allowed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Emniyet gerekçesi olan kritik kalem, eşiğin altına düşse de kritik kalır.",
+          "en": "A critical item with a safety reason stays critical even when it falls below the threshold.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek veride kalibrasyon ölçülemezse bu açıkça söylenir; hedef dışı sıfır doldurma kabul edilmez.",
+          "en": "If calibration cannot be measured on real data, the page says so; out-of-target zero filling is not accepted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hedef aralığının sınır değerleri hedef içinde sayılır; sınırın hemen üstündeki değer dışarıda kalır.",
+          "en": "The edges of the target range count as on target, while a value just above them does not.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki veri kaynağı ayrı rozetlerle gösterilir ve metinleri gerçek veri sayfasıyla aynıdır.",
+          "en": "The two data sources appear as separate badges, with wording that matches the real-data page.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kabul edilen vakalar sütunu yalnız istendiğinde ya da dolu olduğunda görünür.",
+          "en": "The accepted-cases column appears only when requested or when it has entries.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Red, kalite puanı, veri alım süresi ve sevkiyat bulguları sayfada yazılı olarak yer alır.",
+          "en": "Rejections, quality score, intake time and shipment findings appear in writing on the page.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Risk sayısı, hesabın kendi özetiyle aynıdır.",
+          "en": "The risk count matches the calculation's own summary.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayfadaki sayılar kanıt dosyalarıyla birebir uyuşur; kanıt yoksa bu kontrol atlanır.",
+          "en": "The numbers on the page match the evidence files exactly; this check is skipped when no evidence is present.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karşılaştırma özeti yoksa karşılaştırma satırı çizilmez, sayfa yine de görünür.",
+          "en": "When no comparison summary exists, the comparison row is omitted and the page still renders.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir tedarikçi çıkarıldığında hacmi kalan tedarikçilere dağılır ve ilgili bulgular kapanır.",
+          "en": "When a supplier is removed, its volume is spread across the remaining suppliers and its findings close.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Varsayılan ağırlıklarla hesaplanan puan ve seviye, ana hesabın sonucuyla aynıdır.",
+          "en": "The score and level computed with default weights match the main calculation.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Varsayılan stok eşikleri beklenen durum sınıflarını verir.",
+          "en": "The default stock thresholds produce the expected status classes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri eksik olan bölümler nedenleriyle birlikte soluk olarak gösterilir.",
+          "en": "Sections without data are shown faded, with the reason listed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri yoksa sayfa hata vermeden boş bir durum gösterir.",
+          "en": "When there is no data, the page shows an empty state without failing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yazma yetkisi sunucunun verdiği listeye göre belirlenir.",
+          "en": "Write permission is determined from the list the server provides.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayfada kod olarak çalışabilecek bir ifade yer almaz.",
+          "en": "No content on the page can run as script.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride fazla stok payı, stok sonucundan okunur.",
+          "en": "In the sample data, the excess stock share is read from the stock result.",
+          "kaynak": "kosu"
+        }
+      ]
+    }
+  ]
+}

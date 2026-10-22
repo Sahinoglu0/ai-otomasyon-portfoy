@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. IZM-01 deposunun stok seviyesini ve kapasite kullanımını kaynak verilerden doğrula.\n2. IZM-01 deposunun bağlı olduğu ürün ve sipariş kalemlerini listele.\n3. T-03 tedarikçisinin teslimat sürelerini ve son dönem gecikme kayıtlarını topla.\n4. T-03 tedarikçisinin tedarik ettiği kalemlerin alternatif kaynaklarını belirle.\n5. IZM-01 ve T-03 arasındaki bağımlılığı, bu kalemlerin ciroya ve üretime etkisiyle birlikte değerlendir.\n6. Kritiklik ölçütlerini (stok tükenme riski, teslimat gecikmesi, maliyet etkisi) tanımla ve veriyle karşılaştır.",
+      "arac_cagrilari": [],
+      "giren_jeton": 767,
+      "cikan_jeton": 595,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4415
+    }
+  ]
+}

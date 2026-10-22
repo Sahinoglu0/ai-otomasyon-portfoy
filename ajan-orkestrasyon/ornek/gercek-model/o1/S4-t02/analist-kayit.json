@@ -1,0 +1,29 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1708,
+      "cikan_jeton": 109,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1933
+    },
+    {
+      "metin": "## T-05 Performans Özeti\n\n| Gösterge | Değer |\n|---|---|\n| Skor | 47.7 |\n| Seviye | D |\n| Zamanında teslim oranı | %75.0 |\n| Ortalama gecikme | 0.93 gün |\n| Red oranı | %4.95 |\n| Fiyat sapması | %12.02 |\n| Sipariş sayısı | 40 |\n\n## Neden zayıf?\n\nElimdeki veriye göre performansı en çok etkileyen alanlar teslim ve fiyat:\n\n- **Teslim:** Zamanında teslim oranı %75.0. Yani siparişlerin dörtte birinde teslim zamanında gerçekleşmiyor. Ortalama gecikme 0.93 gün; bu süre tek başına büyük görünmüyor, ancak sık tekrarlanan gecikme skoru düşürüyor.\n- **Fiyat:** Fiyat sapması %12.02 ile tabloda en yüksek oransal sapma. Sözleşme ya da teklif fiyatından ciddi uzaklaşma, satın alma maliyetini ve dolayısıyla skoru olumsuz etkiliyor.\n- **Red:** Red oranı %4.95. Kalite tarafında ciddi bir sorun görünmüyor, ancak düşük de değil.\n\n**Sınırlar:** Aracın döndürdüğü veride kriter ağırlıkları, kalite detayları, sipariş teyit verileri ve iletişim kayıtları yok. Bu yüzden skora hangi kriterin ne kadar katkı yaptığını, ayrıca gecikmenin tedarikçi kaynaklı mı yoksa sipariş planlaması ya da iç süreçlerden mi kaynaklandığını kesin olarak ayıramıyorum. Benzer tedarikçilerle karşılaştırma da yapılamadı, çünkü elimdeki araç yalnızca tek bir tedarikçi kaydı getiriyor. Bu nedenle T-05'in sapmasını doğrulayamıyorum.\n\n## İyileştirme önerileri\n\n1. **Gecikme kök nedeni:** Gecikmiş siparişlerde tedarikçinin teyit ettiği tarih ile gerçek teslim tarihini karşılaştırın. Tedarikçi teyidi zamanında yapılmış ama teslim geç olmuşsa sorun tedarikçide; teyit zaten geç ya da planlama değişikliği varsa sorun iç süreçtedir.\n2. **Fiyat sapması:** Sapan kalemleri sözleşme fiyatıyla faturalar üzerinden kontrol edin ve fiyat revizyonunu tedarikçiyle kısa vadede görüşün.\n3. **Red nedenleri:** Redlerin kalite, belge ya da yanlış miktar kaynaklı olduğunu kodlayın. Bu, red oranının kaynağını netleştirir.\n4. **Veri eksikliği:** Kalite, teyit ve iletişim verilerini ayrı kaynaklardan çekip skor ağırlıklarıyla birlikte inceleyin. Bu olmadan kök neden kesinleşmez.\n5. **Takip:** Teslim oranı ve fiyat sapmasını haftalık takip edin; iyileşme olmazsa tedarikçi değerlendirmesini gözden geçirin.\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"skor\", \"deger\": 47.7},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"seviye\", \"deger\": \"D\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"zamaninda_pct\", \"deger\": 75.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"ortalama_gecikme_gun\", \"deger\": 0.93},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"red_pct\", \"deger\": 4.95},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"fiyat_sapma_pct\", \"deger\": 12.02},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"siparis_sayisi\", \"deger\": 40}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 1885,
+      "cikan_jeton": 2819,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 13747
+    }
+  ]
+}

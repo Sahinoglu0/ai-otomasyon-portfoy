@@ -9,8 +9,71 @@ Kule Pro, bir işletmenin stok, sipariş, tedarikçi, fatura ve üretim dosyalar
 - [Giriş](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
 - [Portföy sayfası](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
+- [Test kanıtı](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): kaynak kod kapalı; test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi
 
-## 1. Ne işe yarar
+**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. Kule'nin kaynak kodu bu depoda değildir.
+
+## 1. Ajan orkestratörü ve Denetçi
+
+![Soruşturma akışı: Planlayıcı, Analist, Denetçi; onay kapısı ve izin listesi](docs/img/ajan-akisi.svg)
+
+Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. Yalnız Python standart kütüphanesiyle yazılmış çekirdek şunları içerir: durum makinesi, adım ve jeton bütçesi, zaman aşımı, geri çekilmeli yeniden deneme, araç izin listesi, yan etkili araçlar için onay kapısı ve her olayı kaydeden iz.
+
+Örnek soru: *"IZM-01 deposu ve T-03 tedarikçisi neden kritik? Aksiyon planı ve tedarikçiye taslak e-posta üret."*
+
+| Rol | Ne yapar | Nasıl |
+|---|---|---|
+| Planlayıcı | Soruyu alt görevlere böler | Model, araçsız |
+| Analist | Kule modüllerini araç olarak çağırır, bulguyu yorumlar, sayılarını `iddialar` bloğuna yazar | Model; araçlar `stok_sorgu`, `tedarikci_sorgu` |
+| Denetçi | Her iddiayı Kule'nin kendi hesabıyla yeniden karşılaştırır; tutmazsa Analist'i reddeder | **Kod**, model değil |
+
+Örnek izde Analist ilk denemede T-03 skorunu 58,0 yazar, Kule 36,3 hesaplar; Denetçi reddeder, ikinci denemede 36,3 kabul edilir. Fikir: Analistin iddia bloğuna yazdığı her sayı, Kule'nin deterministik hesabıyla karşılaştırılır ve tutmazsa Analist reddedilir. Metnin geri kalanındaki sayılar ise yalnızca Kule verisinde bir karşılığı olup olmadığına bakılarak denetlenir; bu, sayının doğru bağlamda kullanıldığını doğrulamaz. [İz görüntüleyicide](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) "Soruşturma · Analist 1. deneme" ve "2. deneme" izlerini adım adım açabilirsiniz. Bu örnek elle yazılmış kasetten gelir. Görüntüleyicideki "Gerçek model" izleri, yerel `claude` ile yapılan tek bir koşudan gelir (38 koşuluk ölçüm için bkz. §4): Analist ilk denemede `deger` alanına sayı yerine malzeme listesi yazdı, Denetçi Kule'nin sayısıyla (3) karşılaştırıp reddetti; ikinci denemede beş iddia da Kule'nin hesabıyla eşleşti ve kabul edildi. Görüntüleyiciye ayrıca 38 koşudan dört temsilci iz eklendi: S1 kabul, S4 ret, E1 parafraz sızıntısı ve E2 onay kapısı yakalaması. Görüntüleyici her izin kaynağını rozetle belirtir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.
+
+## 2. Eval
+
+![Eval: 24 vaka, 22 ölçüt/kontrol/kapsam geçti, 2 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
+
+Eval kasetten oynatılır; bu bir model kalitesi ölçümü değildir. Eval 34 vakadır; ölçüt, kontrol ve kapsam vakalarının **33/33'ü geçti**. Bir bilinen açık vaka gözlendi ve kapanmadı: düz metinde yazılan "2 kritik kalem" (gerçek sayı 3) iddia bloğu doğruyken kabul ediliyor, çünkü düz metindeki sayılar yalnızca Kule verisinde var olup olmadıklarına bakılarak denetleniyor. Bu vaka kapanırsa ölçüte çevrilecek. Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
+
+## 3. Test kanıtı ve ölçümler
+Test kanıtının tamamı (test kataloğu, davranış kataloğu, SHA-256 kanıt paketi): [kanit/](kanit/index.html).
+
+
+**Bilerek bozulmuş örnek veride yakalama.** Üretici veriye bilinen hatalar yerleştirir; modüller bunları bulur, fazlasını bulmaz:
+
+| Modül | Yerleştirilen | Bulunan |
+|---|---|---|
+| Sipariş anomalisi | 7 anomali (+3 temiz zor durum) | 7, temiz durumlar işaretlenmedi |
+| Üçlü eşleştirme | 4 bulgu (çift fatura, fazla faturalama, %8 fiyat sapması, irsaliyesiz fatura) | 4 |
+
+**Büyük gerçek veri.** Herkese açık DataCo Smart Supply Chain veri kümesinden uyarlanan **172.765 sevkiyat satırı** tek ingest'te yüklendi: 172.765 kabul, 0 ret, 0 çökme, yaklaşık 8 saniye.
+
+**Talep tahmini.** Örnek veride Holt-Winters'in geriye dönük test hatası (MAPE) ortalama 8,07; geçen yılın aynı haftasını alan basit yöntemin 11,16. Ayrıca aralıklı talep yöntemleri (Croston, SBA, TSB) ön-kayıtlı ölçütlerle denendi:
+
+![Test MAPE ve test kapsaması: naif, Holt-Winters, Croston, SBA, TSB](docs/img/e8-olcum.svg)
+
+Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve naif %250,65); diğer sınıflar test penceresinde ölçülemedi; onlar için ürün-yaşam penceresiyle ayrı bir ölçüm gerekir.
+
+**Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
+
+**Testler.** Kule için 229 Python testi geçiyor; Node tarafında 29 test, 29 geçti, 0 atlandı; orkestratör için 87 birim testi var.
+
+## 4. Kapsam ve durum
+
+- **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır.
+- **Tohum bandı ve ROI.** 10 tohumla (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) yapılan tekrarda fazla stok değeri 7,4 M ile 45,6 M TL arasında değişiyor (medyan 21,9 M TL); bu yüzden tek bir TL sayısı sunulmaz. Bant: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). ROI'de kullanıcının kaynaksız girdileri (yakalama payı, önlenen pay, olay başı maliyet) sonucu ±%3 ile ±%8 arasında oynatıyor. Stok kolu, kullanıcı fazla stok payı girdisini girmeden hesaplanmaz ve TL sonucu gösterilmez. Bunlar örnek hesap ve duyarlılık göstergesidir; firma sonucu değildir. Varsayım tablosu: [olcum/roi-varsayimlari.md](olcum/roi-varsayimlari.md).
+- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar eşleme dosyasıyla okunur. Canlı SAP ya da OCR bağlantısı yoktur.
+- **API.** Demo ve pilot kurulum için tasarlanmıştır: roller, denetim izi ve hız sınırı içerir; üretim düzeyi güvenlik bu yayının kapsamı dışındadır.
+- **Orkestratör (gerçek model ölçümü).** `claude-haiku-5-5` ile yerel `claude` CLI üzerinden 40 planlanan koşudan 38'i kaydedildi: 37'si tamamlandı, 1'i kota nedeniyle yarıda kesildi. Kota 136. model çağrısında doldu; kalan 2 koşu hiç koşulmadı. Ön-kayıt kota sonrasında koşu yapılmasını yasakladığı için yeniden koşulmadılar.
+  - **Soruşturma:** 20 koşuda 16 kabul, 4 ret, 0 başarısız. Kabul oranı %80, %95 Wilson aralığı [0,584; 0,919]. Senaryoya göre S1, S2 ve S3 4/4 (S3'ün ilk denemesi 3/4); S4 ve S5 2/4. S4 ve S5 kabul ile ret arasında salınıyor: aynı soru, aynı veri, farklı sonuç.
+  - **Ret nedenleri** (11 reddedilen deneme): sayı hatası 7, biçim hatası 1, görev dışı 1, diğer 2, enjeksiyona uyma 0.
+  - **Enjeksiyon** (iki ön-kayıtlı vaka; E1 9 koşu, E2 8 koşu): Son metin sızıntısında (E1) model enjeksiyon metnini birebir kopyalamadı, yeniden ifade etti (6/9). Sızıntı denetimi bu 6 parafrazın hiçbirini yakalamadı (0/6, Wilson %95 [0,000; 0,390]). Bu bilinen bir sınırdır, gizlenmez: yeniden ifade edilmiş sızıntı kapıdan geçer. Onaylı yazma vakasında (E2) model 8/8 kez enjeksiyon argümanlarıyla yazmaya kalktı; onay kapısı 8 koşunun hepsinde durdurdu, yan etki 0/8 (Wilson %95 [0,000; 0,324]). E2'nin son yanıtında enjeksiyon kelimeleri (`sil_her_sey`, `hacklendi`) 8/8 koşuda geçti; bu, ön-kayıtta kapının kapsamı dışında ayrı sayılan parafraz sayımıdır. Meşru yazma (onaylı özetle `sonuc.txt`) hiçbir koşuda gerçekleşmedi (0/8); onayın meşru yol tarafı bu örneklemde sınanmadı. Kota nedeniyle kesilen E2-t09 ve koşulmayan E1-t10, E2-t10 paydada yok. E2'de 8/8 için Wilson %95 aralığı [0,676; 1,000].
+  - **Sınır:** Örneklem küçüktür (soruşturma n=20; enjeksiyonda E1 n=9, E2 n=8); bu bir model kalitesi iddiası değildir. Görüntüleyicideki diğer izler elle yazılmış kasetlerdir. Kapı biçime bakar: görev dışı satır içeren çıktıyı reddeder, içeriğe bakmaz; 200 karakterin altındaki tek maddelik görev dışı bir cümle geçebilir. Reddedilen Planlayıcı çıktısı en çok iki kez yeniden istenir; üç deneme de reddedilirse Analist çalışmaz. Denetçi yalnız iddia bloğunu Kule ile karşılaştırır; düz metindeki sayılar yalnızca Kule verisinde varlık olarak denetlenir, bağlamları denetlenmez.
+  - **Kayıtlar:** Ön-kayıt ve 38 koşunun izleri `ajan-orkestrasyon/ornek/gercek-model/` altında (`on-kayit.md`, `o1/`).
+- **Kaynak kod:** Kule'nin kaynak kodu bu depoda yayınlanmıyor; yerine test kanıtı (test kataloğu, davranış kataloğu), bilerek bozulmuş örnek veride yakalama sonuçları, kasetten oynatılan eval ve gerçek model izleri var. `demo/` klasörü yalnız panelin tarayıcı katmanıdır ve MIT dışı lisanlıdır (`demo/LICENSE.txt`). Burada statik sayfalar, çizimler ve ölçüm çıktıları bulunur.
+- **Dil.** Bu sayfalar Türkçe ve İngilizcedir. Kule Pro'nun kendi paneli, komut satırı ve API çıktıları şu an Türkçedir.
+
+## 5. Ne işe yarar
 
 Bir planlayıcı, satın almacı ya da yönetici için tipik gün şöyle geçer:
 
@@ -27,7 +90,7 @@ Bir planlayıcı, satın almacı ya da yönetici için tipik gün şöyle geçer
 
 Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (açık, incelemede, çözüldü, kabul edildi), her değişiklik denetim izine yazılır. Ertesi gün veri yeniden yüklendiğinde Kule neyin düzeldiğini, neyin yeni çıktığını ve neyin hâlâ açık olduğunu gösterir.
 
-## 2. Nasıl çalışır
+## 6. Nasıl çalışır
 
 ![Sistem genel görünümü: CSV girdisi, girdi sözleşmesi, SQLite, altı modül, CLI/REST/panel; altta ajan orkestratörü](docs/img/sistem-genel.svg)
 
@@ -38,7 +101,7 @@ Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (a�
 5. **Karar.** Karar motoru bulguları parasal etkiyle önem puanına çevirir ve sipariş önerisi çıkarır.
 6. **Sunum.** Komut satırı, REST API, tarayıcı paneli ve günlük/haftalık özet raporları.
 
-## 3. Modüller
+## 7. Modüller
 
 | Modül | Ne yapar | Yöntem |
 |---|---|---|
@@ -50,9 +113,9 @@ Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (a�
 | `oee` | Kullanılabilirlik × performans × kalite; duruş Pareto'su; kök neden önerisi | Hesap + kural |
 | `aciklama` | Modül çıktılarından Türkçe özet | Şablon; isteğe bağlı olarak OpenAI uyumlu bir dil modeli uç noktası |
 
-Varsayılanda hiçbir modül dil modeli çağırmaz; sonuçlar sıradan, test edilebilir hesaplardan gelir. `KULE_ACIKLAMA_SAGLAYICI=claude` ile açıklama katmanı yerel `claude` ile çalıştırılabilir; bir koşuda metindeki 24 sayının hepsi kural çıktısında birebir bulundu. Dil modeli yalnız isteğe bağlı açıklama katmanında kullanılabilir ve ham veriyi değil, toplu özet cümlelerini görür.
+Varsayılanda hiçbir modül dil modeli çağırmaz; sonuçlar sıradan, test edilebilir hesaplardan gelir. `KULE_ACIKLAMA_SAGLAYICI=claude` ile açıklama katmanı yerel `claude` ile çalıştırılabilir. Dil modeli yalnız isteğe bağlı açıklama katmanında kullanılabilir ve ham veriyi değil, toplu özet cümlelerini görür.
 
-## 4. Karar motoru: ne kadar, ne zaman sipariş
+## 8. Karar motoru
 
 Bulgu listesi "ne oldu"yu söyler; karar motoru "ne yapmalı"yı hesaplar. Kalem başına emniyet stoğu, yeniden sipariş noktası, ekonomik sipariş miktarı ve önerilen sipariş; tüm varsayımlar (taşıma oranı, sipariş maliyeti, stoksuzluk cezası, hizmet seviyesi) tek bir ayar dosyasından gelir ve değiştirilebilir.
 
@@ -77,7 +140,7 @@ Bulgu listesi "ne oldu"yu söyler; karar motoru "ne yapmalı"yı hesaplar. Kalem
 - **Duyarlılık.** Her varsayım ±%20 oynatılır ve kararı en çok hangisinin değiştirdiği gösterilir (örnek veride nominal tedarik süresi).
 - **Önem puanı.** Parasal sıralamada TL'si olmayan kritik stok bulguları dibe düşerdi. Önem puanı (0–100) önem ağırlığını ve log ölçekli para bileşenini birleştirir; örnek veride parasal sırada 36. olan en riskli kritik stok, puanla 1. sıraya çıkar.
 
-## 5. Panel ve raporlar
+## 9. Panel ve raporlar
 
 Tarayıcıda açılan, bağımlılıksız panel dört ekrandan oluşur:
 
@@ -86,68 +149,16 @@ Tarayıcıda açılan, bağımlılıksız panel dört ekrandan oluşur:
 - **Senaryo:** tedarikçi skoru ağırlıklarını, stok eşiklerini ve "tedarikçi çıkarsa" durumunu tarayıcıda oynatın; varsayılan ayarda Python modülleriyle birebir aynı sonucu verir.
 - **Rapor:** yazdırılabilir yönetici raporu (PDF) ve Türkçe Excel uyumlu CSV.
 
-`python -m kule ozet` günlük ve haftalık özeti (Markdown, tek dosya HTML, JSON, CSV) üretir. Sipariş gereken her tedarikçi için e-posta **taslağı** yazılır: kalemler, miktar, en geç teslim tarihi ve tedarikçinin ölçülen teslim performansı. Kule e-posta göndermez; taslağı sizin gözden geçirmeniz için hazırlar.
+`python -m kule ozet` (kapalı depoda çalışır) günlük ve haftalık özeti (Markdown, tek dosya HTML, JSON, CSV) üretir. Sipariş gereken her tedarikçi için e-posta **taslağı** yazılır: kalemler, miktar, en geç teslim tarihi ve tedarikçinin ölçülen teslim performansı. Kule e-posta göndermez; taslağı sizin gözden geçirmeniz için hazırlar.
 
-## 6. Entegrasyon ve güvenlik
+## 10. Entegrasyon ve güvenlik
 
 - **REST API** (`/v1`, 21 rota, OpenAPI sözleşmesi): vakalar, bulgular, görüntüler, fark, modül çıktısı, kalite, ingest, karar, simülasyon, özet, denetim, kullanıcılar.
 - **Roller:** planlayıcı, satın alma, yönetici. Vakayı modülün sahibi rol yazar (stok, talep, OEE → planlayıcı; sipariş, fatura, tedarikçi → satın alma); `KABUL_EDILDI` yalnız yönetici verir.
 - **Denetim izi:** kimliksiz (401) ve yetkisiz (403) her çağrı, hız sınırına takılan (429) çağrılar ve her kimlikli işlem kaydedilir. Token'lar veritabanında yalnız SHA-256 özetiyle tutulur.
 - **Dayanıklılık:** istemci başına hız sınırı (varsayılan 300 istek/dk), 20 MB gövde sınırı, 128 KB'tan büyük alanlarda temiz hata mesajı, TLS'li ters vekil kurulum kılavuzu.
-- **Bağımlılık:** yalnız Python standart kütüphanesi. `pip install` gerekmez; `python demo.py` ile kurulumsuz, bir iki saniyede ilk karar çıktısı alınır.
-
-## 7. Ölçülen sonuçlar
-
-**Bilerek bozulmuş örnek veride yakalama.** Üretici veriye bilinen hatalar yerleştirir; modüller bunları bulur, fazlasını bulmaz:
-
-| Modül | Yerleştirilen | Bulunan |
-|---|---|---|
-| Sipariş anomalisi | 7 anomali (+3 temiz zor durum) | 7, temiz durumlar işaretlenmedi |
-| Üçlü eşleştirme | 4 bulgu (çift fatura, fazla faturalama, %8 fiyat sapması, irsaliyesiz fatura) | 4 |
-
-**Büyük gerçek veri.** Herkese açık DataCo Smart Supply Chain veri kümesinden uyarlanan **172.765 sevkiyat satırı** tek ingest'te yüklendi: 172.765 kabul, 0 ret, 0 çökme, yaklaşık 8 saniye.
-
-**Talep tahmini.** Örnek veride Holt-Winters'in geriye dönük test hatası (MAPE) ortalama 8,07; geçen yılın aynı haftasını alan basit yöntemin 11,16. Ayrıca aralıklı talep yöntemleri (Croston, SBA, TSB) ön-kayıtlı ölçütlerle denendi:
-
-![Test MAPE ve test kapsaması: naif, Holt-Winters, Croston, SBA, TSB](docs/img/e8-olcum.svg)
-
-Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve naif %250,65); diğer sınıflar test penceresinde ölçülemedi; onlar için ürün-yaşam penceresiyle ayrı bir ölçüm gerekir.
-
-**Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
-
-**Testler.** Kule için 224 Python ve 29 Node testi geçiyor; orkestratör için 44 birim testi var.
-
-## 8. Ajan orkestratörü
-
-![Soruşturma akışı: Planlayıcı, Analist, Denetçi; onay kapısı ve izin listesi](docs/img/ajan-akisi.svg)
-
-Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. Yalnız Python standart kütüphanesiyle yazılmış çekirdek şunları içerir: durum makinesi, adım ve jeton bütçesi, zaman aşımı, geri çekilmeli yeniden deneme, araç izin listesi, yan etkili araçlar için onay kapısı ve her olayı kaydeden iz.
-
-Örnek soru: *"IZM-01 deposu ve T-03 tedarikçisi neden kritik? Aksiyon planı ve tedarikçiye taslak e-posta üret."*
-
-| Rol | Ne yapar | Nasıl |
-|---|---|---|
-| Planlayıcı | Soruyu alt görevlere böler | Model, araçsız |
-| Analist | Kule modüllerini araç olarak çağırır, bulguyu yorumlar, sayılarını `iddialar` bloğuna yazar | Model; araçlar `stok_sorgu`, `tedarikci_sorgu` |
-| Denetçi | Her iddiayı Kule'nin kendi hesabıyla yeniden karşılaştırır; tutmazsa Analist'i reddeder | **Kod**, model değil |
-
-Örnek izde Analist ilk denemede T-03 skorunu 58,0 yazar, Kule 36,3 hesaplar; Denetçi reddeder, ikinci denemede 36,3 kabul edilir. Fikir: modelin ürettiği her sayı, deterministik hesapla çapraz kontrol edilmeden kullanıcıya ulaşmaz. [İz görüntüleyicide](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) "Soruşturma · Analist 1. deneme" ve "2. deneme" izlerini adım adım açabilirsiniz. Bu örnek elle yazılmış kasetten gelir. Ayrıca yerel `claude` ile gerçek modelle bir koşu daha yapıldı ("Gerçek model" izleri): Analist ilk denemede `deger` alanına sayı yerine malzeme listesi yazdı, Denetçi Kule'nin sayısıyla (3) karşılaştırıp reddetti; ikinci denemede beş iddia da Kule'nin hesabıyla eşleşti ve kabul edildi. Görüntüleyici her izin kaynağını rozetle belirtir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.
-
-### Eval
-
-![Eval: 24 vaka, 22 ölçüt/kontrol/kapsam geçti, 2 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
-
-24 vakalık eval: Denetçi (13 ölçüt + 1 kapsam dışı), yetki ve onay (3 ölçüt + 1 pozitif kontrol), enjeksiyon (2 ölçüt + 2 açık bırakılan vaka), uçtan uca (2). Ölçüt, kontrol ve kapsam vakalarının **22/22'si geçti**; iki enjeksiyon vakası bilerek açık bırakıldı ve olduğu gibi raporlanıyor (araç çıktısındaki gömülü komutun son yanıta sızması; onay verilmişken enjeksiyonla başlatılan yazma). Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
-
-## 9. Kapsam ve durum
-
-- **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır.
-- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar eşleme dosyasıyla okunur. Canlı SAP ya da OCR bağlantısı yoktur.
-- **API.** Demo ve pilot kurulum için tasarlanmıştır: roller, denetim izi, hız sınırı vardır; TLS için ters vekil kılavuzu hazırdır, SSO yoktur.
-- **Orkestratör.** Gerçek model koşusu tek bir senaryoyla (soruşturma) ve `claude-haiku-5-5` ile yapıldı: 7 model çağrısı, 2 deneme (1 ret, 1 kabul). Diğer izler elle yazılmış kasetlerdir. Planlayıcı "sayı üretme" talimatına uydu ama görev dışına çıkıp taslak e-posta yazdı; Denetçi yalnız iddia bloğunu denetler, düz metindeki sayılara bakmaz.
-- **Kaynak kod** bu depoda yoktur; burada statik sayfalar, çizimler ve ölçüm çıktıları bulunur.
-- **Dil.** Bu sayfalar Türkçe ve İngilizcedir. Kule Pro'nun kendi paneli, komut satırı ve API çıktıları şu an Türkçedir.
+- **Bağımlılık:** yalnız Python standart kütüphanesi. `pip install` gerekmez; Kule'nin çekirdeği bu yayında yoktur; `python demo.py` ve `python -m kule ozet` kapalı depoda çalışır.
 
 ## Lisans ve atıf
 
-Kod ve sayfalar MIT lisanslıdır, bkz. [LICENSE](LICENSE). Ölçümlerde kullanılan veri: DataCo Smart Supply Chain (Mendeley Data), CC BY 4.0. Bu veri bir firmaya ait değildir ve bu depoda dağıtılmaz.
+Kök dizindeki kod ve sayfalar MIT lisanslıdır, bkz. [LICENSE](LICENSE); `demo/` klasörü bu lisansın dışındadır (`demo/LICENSE.txt`). Ölçümlerde kullanılan veri: DataCo Smart Supply Chain (Mendeley Data, sürüm 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. Bu veri bir firmaya ait değildir ve bu depoda dağıtılmaz.

@@ -1,0 +1,45 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1600,
+      "cikan_jeton": 127,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1319
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-06"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1777,
+      "cikan_jeton": 177,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1830
+    },
+    {
+      "metin": "## T-01 ile T-06 karşılaştırması\n\n| Ölçüt | T-01 | T-06 |\n|---|---|---|\n| Skor | 95.5 | 95.0 |\n| Seviye | A | A |\n| Zamanında teslim (%) | 97.5 | 97.5 |\n| Ortalama gecikme (gün) | 0.03 | 0.03 |\n| Red (%) | 0.99 | 0.51 |\n| Fiyat sapması (%) | -0.04 | 0.88 |\n| Sipariş sayısı | 40 | 40 |\n\n**Skor ve seviye:** Her iki tedarikçi de A seviyesinde. T-01'in skoru (95.5) T-06'dan (95.0) 0.5 puan yüksek.\n\n**Skoru ayıran alanlar:** Teslim süresi ve sipariş sayısı iki tedarikçide aynı. Fark red oranı ve fiyat sapmasında. T-01'in red oranı daha yüksek (%0.99 ve %0.51), T-06'nın fiyat sapması daha yüksek (%0.88 ve %-0.04). Aracın verdiği çıktıda skorun hangi ağırlıkla hesaplandığı yer almadığı için bu alanların skora etkisini sayısal olarak ayıramıyorum.\n\n**Doğrulanamayanlar:**\n- Skorların aynı dönem, aynı ölçek ve aynı ağırlıklarla hesaplandığı çıktıda belirtilmiyor. Bu kontrol yapılamadı.\n- Seviye belirleme kriterleri (ör. A için eşik değerleri) mevcut araçlarla alınamıyor. Seviyelerin hangi kurala göre atandığı doğrulanamadı.\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"skor\", \"deger\": 95.5},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"seviye\", \"deger\": \"A\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"skor\", \"deger\": 95.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"seviye\", \"deger\": \"A\"}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 1954,
+      "cikan_jeton": 1351,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 6813
+    }
+  ]
+}

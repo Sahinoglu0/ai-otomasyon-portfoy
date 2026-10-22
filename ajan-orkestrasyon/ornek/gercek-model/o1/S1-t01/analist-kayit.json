@@ -1,0 +1,45 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IZM-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1748,
+      "cikan_jeton": 96,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1351
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-03"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 3203,
+      "cikan_jeton": 141,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1513
+    },
+    {
+      "metin": "## Kısa cevap\n\nIZM-01 deposunda üç malzemede stok kapsaması çok kısa ve üçü de \"KRITIK\" durumda. T-03 tedarikçisinin performansı da zayıf: skoru 36.3, seviyesi D. Ancak T-03'ün hangi malzemeleri tedarik ettiği araç çıktılarında yok, bu yüzden IZM-01'in T-03'e bağımlılığını doğrulayamıyorum.\n\n## Veri bulguları\n\n**IZM-01 kritik kalemler** (stok_sorgu çıktısı):\n\n| Malzeme | Ad | Stok | Birim | Kapsama (gün) | ABC | Stok değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1005 | Çember (PET) 12mm | 166.0 | RL | 3.8 | A | 106240.0 |\n| M-1006 | Etiket rulosu 100x150 | 150.0 | RL | 4.1 | C | 14250.0 |\n| M-1002 | Koli 40x30x30 | 76.0 | AD | 3.3 | C | 494.0 |\n\nM-1005 en öncelikli kalemdir: ABC sınıfı A, stok değeri en yüksek ve kapsaması kısa.\n\n**T-03 tedarikçisi** (tedarikci_sorgu çıktısı):\n- Zamanında teslimat: %60.0\n- Ortalama gecikme: 2.4 gün\n- Red oranı: %9.29\n- Fiyat sapması: %6.08\n- Skor: 36.3, seviye: D\n- Sipariş sayısı: 40\n\n## Eşikler (değerlendirme ölçütleri)\n\n- **Stok yeterliliği:** Kapsama süresi, tedarik süresinden kısaysa kritik kabul edilir.\n- **Teslimat gecikmesi:** Zamanında teslimat oranı düşük ve ortalama gecikme birikiyorsa risk yüksektir.\n- **Hizmet seviyesi:** Red oranı yüksekse teslim edilen malzeme kalitesi veya uygunluğu sorgulanır.\n- **Maliyet etkisi:** Fiyat sapması ve stok değeri birlikte değerlendirilir; A sınıfı kalemlerde etki öncelikli sayılır.\n\nBu eşikler tanımlayıcıdır; kurum politikanızdaki sayısal değerlerle değiştirilmelidir.\n\n## Yönetici özeti\n\nIZM-01'de üç kalem kısa kapsamayla kritik durumda; en önemlisi A sınıfı M-1005 çember malzemesi. T-03 tedarikçisi, zamanında teslimatın %60.0 olduğu ve skorunun 36.3 (seviye D) olduğu için güvenilir bir kaynak değildir. Kritik kalemlerin T-03'ten tedarik edilip edilmediği doğrulanmalıdır. Bağımlılık doğrulanırsa T-03 kaynaklı gecikme doğrudan IZM-01 sevkiyat riskine dönüşür.\n\n## Aksiyon planı\n\nÖnceliklendirme ve sorumluluk alanları için öneri:\n\n1. **Hemen (acil):** M-1005, M-1006 ve M-1002 için sipariş durumu kontrolü ve acil tedarik seçenekleri. *Sorumlu: Satın alma.*\n2. **Kısa vadede:** T-03 ile gecikme nedenlerini ve düzeltici faaliyet planını netleştirmek. *Sorumlu: Satın alma ve tedarik kalite.*\n3. **Kısa vadede:** T-03 bağımlılığını malzeme bazında haritalamak ve alternatif kaynak durumunu araştırmak. *Sorumlu: Tedarik planlama.*\n4. **Orta vadede:** Fiyat sapması (%6.08) için maliyet analizi yapmak. *Sorumlu: Finans ve satın alma.*\n5. **Orta vadede:** Kritik kalemler için güvenlik stoku ve yeniden sipariş noktası revizyonu. *Sorumlu: Depo ve planlama.*\n\n## Taslak e-posta (ilgili ekip onayına sunulacak)\n\n**Konu:** IZM-01 depo tedarik riski – teslimat planı ve düzeltici faaliyet talebi\n\nSayın T-03 Yetkilisi,\n\nIZM-01 deposunda bazı malzemelerde stok kapsaması kritik seviyeye inmiştir. Son dönemde teslimatlarımızda zamanında teslimat oranının düşük olması ve gecikme yaşanması nedeniyle durumun netleştirilmesine ihtiyaç duyuyoruz.\n\nAşağıdaki bilgileri kısa vadede iletmenizi rica ederiz:\n\n1. Bekleyen siparişlerin malzeme bazında sevk takvimi ve teslim tarihleri\n2. Son dönemdeki gecikmelerin kök nedenleri ve uygulanacak düzeltici faaliyetler\n3. Mevcut fiyatlardaki sapmanın gerekçesi\n4. Acil sevkiyat ve ek kapasite imkânı\n5. Alternatif üretim veya sevkiyat planınız varsa paylaşılması\n\nBu bilgileri kısa vadede ve mümkünse bu hafta içinde almayı beklemekteyiz. Değerlendirme sonrası görüşme talep edebiliriz.\n\nSaygılarımızla,\n[Ad Soyad]\n[Unvan / Birim]\n\n*Not: Taslak gönderilmeden önce ilgili ekip onayı gereklidir.*\n\n## Eksik veriler\n\n- IZM-01 kapasite ve sevkiyat verileri araç çıktısında yok.\n- T-03'ün hangi malzemeleri tedarik ettiği bilinmiyor; bağımlılık bu yüzden doğrulanamadı.\n- T-03 için alternatif kaynak durumu bilinmiyor.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": 3},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"skor\", \"deger\": 36.3},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"zamaninda_pct\", \"deger\": 60.0}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3380,
+      "cikan_jeton": 4459,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 20993
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+{"sira": 1, "zaman": "2026-10-22T00:20:33+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 1, "gecti": false, "uyusmazliklar": ["dayanaksız sayı 0: metinde var, Kule çıktısında ve hesabında yok", "dayanaksız sayı 0.48: metinde var, Kule çıktısında ve hesabında yok", "dayanaksız sayı 92: metinde var, Kule çıktısında ve hesabında yok", "dayanaksız sayı 0.92: metinde var, Kule çıktısında ve hesabında yok"]}
+{"sira": 2, "zaman": "2026-10-22T00:20:53+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 2, "gecti": true, "uyusmazliklar": []}

@@ -1,0 +1,50 @@
+{
+  "sema": "kanit-sayilar/1",
+  "kaynak": "kosu",
+  "kosu_yeri": "yerel",
+  "kosu_tarihi_utc": "2026-10-22T00:28:22Z",
+  "sure_sn": 36.6,
+  "ortam": {
+    "python": "3.14.7",
+    "node": "v22.23.2"
+  },
+  "surum": {
+    "git_sha_kisa": "7ca787c",
+    "kaynak_temiz": true
+  },
+  "kumeler": [
+    {
+      "kimlik": "kule_python",
+      "ad_tr": "Kule · Python testleri",
+      "ad_en": "Kule · Python tests",
+      "toplam": 229,
+      "gecti": 229,
+      "basarisiz": 0,
+      "atlandi": 0,
+      "sure_sn": 28.7,
+      "atlama_nedeni": null
+    },
+    {
+      "kimlik": "orkestrator_python",
+      "ad_tr": "Ajan orkestratörü · Python testleri",
+      "ad_en": "Agent orchestrator · Python tests",
+      "toplam": 87,
+      "gecti": 87,
+      "basarisiz": 0,
+      "atlandi": 0,
+      "sure_sn": 6.7,
+      "atlama_nedeni": null
+    },
+    {
+      "kimlik": "kule_node",
+      "ad_tr": "Kule paneli · Node testleri",
+      "ad_en": "Kule panel · Node tests",
+      "toplam": 29,
+      "gecti": 29,
+      "basarisiz": 0,
+      "atlandi": 0,
+      "sure_sn": 0.6,
+      "atlama_nedeni": null
+    }
+  ]
+}

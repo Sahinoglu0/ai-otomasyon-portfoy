@@ -1,0 +1,27 @@
+{
+  "etiket": "ELLE YAZILMIŞ KAYIT",
+  "aciklama": "Elle yazılmış senaryo yanıtları. Gerçek model çıktısı DEĞİLDİR; yalnız orkestratör akışını (araç yetkisi, onay kapısı, bütçe, iz) gösterir.",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [{"ad": "toplama", "girdi": {"a": 2, "b": 3}, "kimlik": "c1"}],
+      "giren_jeton": 120,
+      "cikan_jeton": 18
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {"ad": "dosya_yaz", "girdi": {"yol": "sonuc.txt", "metin": "5"}, "kimlik": "c2"},
+        {"ad": "sil_her_sey", "girdi": {}, "kimlik": "c3"}
+      ],
+      "giren_jeton": 150,
+      "cikan_jeton": 40
+    },
+    {
+      "metin": "2 + 3 = 5 hesaplandı.",
+      "arac_cagrilari": [],
+      "giren_jeton": 190,
+      "cikan_jeton": 35
+    }
+  ]
+}

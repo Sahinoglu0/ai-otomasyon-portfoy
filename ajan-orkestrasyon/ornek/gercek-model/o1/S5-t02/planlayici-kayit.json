@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. T-01 ile T-06 arasındaki tedarikçi kayıtlarını ve ilgili kaynak verilerini topla.\n2. Her tedarikçi için kullanılan skor metriklerini ve ağırlıklarını doğrula.\n3. Skor hesaplama yöntemlerinin tüm tedarikçilerde aynı olup olmadığını kontrol et.\n4. Her tedarikçinin güncel skor değerini ve değerlendirme tarihini eşleştir.\n5. Her tedarikçinin mevcut seviye bilgisini ve seviye eşik tanımlarını karşılaştır.\n6. Skor ile seviye arasındaki tutarsızlıkları tespit et.\n7. Eksik veya güncel olmayan verileri işaretle.\n8. Tedarikçileri skor sırasına göre sırala ve seviye dağılımını çıkar.\n9. Karşılaştırma sonuçlarını tek bir özet çıktıda birleştir.",
+      "arac_cagrilari": [],
+      "giren_jeton": 747,
+      "cikan_jeton": 566,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 3994
+    }
+  ]
+}

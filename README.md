@@ -17,6 +17,31 @@
 
 **Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. Kule'nin kaynak kodu bu depoda değildir.
 
+## Videolar
+
+İki ayrı video, sesi yok, TR ve EN altyazılı. Kaynak kod gösterilmez; sayılar bu sayfadaki ölçümlerden alınmıştır. [Oynatıcı sayfası](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) (dil seçimi, altyazı, indirme).
+
+| Tanıtım (2 dk 45 sn) | Kullanım (4 dk 42 sn) |
+|---|---|
+| [![Tanıtım videosu: Kule Pro nedir](video/tanitim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) | [![Kullanım videosu: adım adım](video/kullanim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) |
+| Kule Pro nedir, model neden tek başına karar vermez, neyi ölçtük, neyi ölçemedik. [MP4 TR](video/tanitim/tanitim-tr.mp4) · [MP4 EN](video/tanitim/tanitim-en.mp4) · [altyazı](video/tanitim/tanitim-tr.srt) | Kurulumdan insan onayına: veri yükleme, modüller, ajan akışı, iz görüntüleyici. [MP4 TR](video/kullanim/kullanim-tr.mp4) · [MP4 EN](video/kullanim/kullanim-en.mp4) · [altyazı](video/kullanim/kullanim-tr.srt) |
+
+Videolardaki sayılar herkese açık ve sentetik verilerle yapılan ölçümlerdir; gerçek bir firmanın verisiyle ölçülmedi.
+
+## Ekran görüntüleri
+
+Canlı sayfalardan alınmıştır (açık tema, 1440 px).
+
+| Ajan iz görüntüleyici | Test kanıtı |
+|---|---|
+| [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: 345 test, alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+
+| Portföy sayfası | Giriş |
+|---|---|
+| [![Portföy sayfası](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Giriş sayfası](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
+
+İz görüntüleyicideki her iz kaynağını rozetle belirtir: ELLE YAZILMIŞ KAYIT, GERÇEK MODEL KAYDI ya da KOD SATIRI.
+
 ## 1. Ajan orkestratörü ve Denetçi
 
 ![Soruşturma akışı: Planlayıcı, Analist, Denetçi; onay kapısı ve izin listesi](docs/img/ajan-akisi.svg)

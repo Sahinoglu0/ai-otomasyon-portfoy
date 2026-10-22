@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Kule Pro videoları</title>
+<meta name="description" content="Kule Pro tanıtım ve kullanım videoları: TR ve EN altyazılı, sesi yok, kaynak kodu gösterilmez.">
+<style>
+:root {
+  --paper: #f4f1ea; --surface: #fbfaf6; --ink: #1b1d1f; --ink-2: #4a4e52; --ink-3: #6f7377;
+  --rule: #d8d3c7; --accent: #e8a317; --signal: #1f6f5c;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141517; --surface: #1b1d20; --ink: #ecebe6; --ink-2: #b9bab4; --ink-3: #8e908b;
+    --rule: #2e3034; --accent: #f0b43a; --signal: #6cc3a3; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #141517; --surface: #1b1d20; --ink: #ecebe6; --ink-2: #b9bab4; --ink-3: #8e908b;
+  --rule: #2e3034; --accent: #f0b43a; --signal: #6cc3a3; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--sans); overflow-x: hidden; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.75rem; margin: 0 0 8px; }
+h2 { font-size: 1.25rem; margin: 40px 0 4px; }
+p { margin: 0 0 12px; color: var(--ink-2); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0 0; }
+button, .lnk { font: inherit; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
+button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+video { width: 100%; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--rule); border-radius: 8px; display: block; }
+.meta { font-size: .9rem; color: var(--ink-3); margin: 8px 0 0; }
+.meta a { color: var(--ink-2); }
+.note { border-left: 3px solid var(--accent); padding: 4px 12px; margin: 24px 0 0; color: var(--ink-2); font-size: .95rem; }
+@media (max-width: 600px) { h1 { font-size: 1.4rem; } }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="baslik">Kule Pro videoları</h1>
+  <p id="alt">İki ayrı video: tanıtım ve kullanım. Sesi yok; anlatım altyazı olarak akar. Kaynak kod gösterilmez.</p>
+  <div class="bar" role="group" aria-label="Dil">
+    <button type="button" id="tr" aria-pressed="true">Türkçe</button>
+    <button type="button" id="en" aria-pressed="false">English</button>
+  </div>
+
+  <h2 id="h-tanitim">Tanıtım (2 dk 45 sn)</h2>
+  <p id="p-tanitim">Kule Pro nedir, model neden tek başına karar vermez, neyi ölçtük, neyi ölçemedik.</p>
+  <video id="v-tanitim" controls preload="metadata" poster="tanitim/poster.png"></video>
+  <p class="meta" id="m-tanitim"></p>
+
+  <h2 id="h-kullanim">Kullanım (4 dk 42 sn)</h2>
+  <p id="p-kullanim">Kurulumdan insan onayına: adım adım nasıl kullanılır.</p>
+  <video id="v-kullanim" controls preload="metadata" poster="kullanim/poster.png"></video>
+  <p class="meta" id="m-kullanim"></p>
+
+  <p class="note" id="not">Sınır: Videodaki sayılar herkese açık ve sentetik verilerle yapılan ölçümlerdir. Gerçek bir firmanın verisiyle ölçülmedi.</p>
+  <p class="meta"><a href="../">Giriş sayfasına dön</a></p>
+</main>
+<script>
+(function () {
+  var T = {
+    tr: { baslik: "Kule Pro videoları", alt: "İki ayrı video: tanıtım ve kullanım. Sesi yok; anlatım altyazı olarak akar. Kaynak kod gösterilmez.",
+      ht: "Tanıtım (2 dk 45 sn)", pt: "Kule Pro nedir, model neden tek başına karar vermez, neyi ölçtük, neyi ölçemedik.",
+      hk: "Kullanım (4 dk 42 sn)", pk: "Kurulumdan insan onayına: adım adım nasıl kullanılır.",
+      not: "Sınır: Videodaki sayılar herkese açık ve sentetik verilerle yapılan ölçümlerdir. Gerçek bir firmanın verisiyle ölçülmedi.",
+      dl: "İndir", st: "Altyazı dosyası", anim: "Animasyon sayfası" },
+    en: { baslik: "Kule Pro videos", alt: "Two separate videos: introduction and usage. No audio; the narration runs as subtitles. No source code is shown.",
+      ht: "Introduction (2 min 45 s)", pt: "What Kule Pro is, why the model never decides alone, what we measured and what we could not.",
+      hk: "Usage (4 min 42 s)", pk: "From setup to human approval: how to use it, step by step.",
+      not: "Limit: the numbers in the videos come from measurements on public and synthetic data. Nothing was measured on a real company's data.",
+      dl: "Download", st: "Subtitle file", anim: "Animation page" }
+  };
+  function set(lang) {
+    var t = T[lang];
+    document.documentElement.lang = lang;
+    document.getElementById("baslik").textContent = t.baslik;
+    document.getElementById("alt").textContent = t.alt;
+    document.getElementById("h-tanitim").textContent = t.ht;
+    document.getElementById("p-tanitim").textContent = t.pt;
+    document.getElementById("h-kullanim").textContent = t.hk;
+    document.getElementById("p-kullanim").textContent = t.pk;
+    document.getElementById("not").textContent = t.not;
+    ["tanitim", "kullanim"].forEach(function (ad) {
+      var v = document.getElementById("v-" + ad);
+      var pos = 0;
+      try { pos = v.currentTime || 0; } catch (e) {}
+      v.innerHTML = "";
+      v.src = ad + "/" + ad + "-" + lang + ".mp4";
+      var tr = document.createElement("track");
+      tr.kind = "subtitles"; tr.srclang = lang; tr.label = lang === "tr" ? "Türkçe" : "English";
+      tr.src = ad + "/" + ad + "-" + lang + ".vtt"; tr.default = true;
+      v.appendChild(tr);
+      try { v.addEventListener("loadedmetadata", function f() { v.currentTime = pos; v.removeEventListener("loadedmetadata", f); }); } catch (e) {}
+      document.getElementById("m-" + ad).innerHTML =
+        '<a href="' + ad + "/" + ad + "-" + lang + '.mp4" download>' + t.dl + ' (MP4)</a> · ' +
+        '<a href="' + ad + "/" + ad + "-" + lang + '.srt">' + t.st + ' (.srt)</a> · ' +
+        '<a href="' + ad + '/?lang=' + lang + '">' + t.anim + '</a>';
+    });
+    document.getElementById("tr").setAttribute("aria-pressed", lang === "tr");
+    document.getElementById("en").setAttribute("aria-pressed", lang === "en");
+    try { localStorage.setItem("kule-video-dil", lang); } catch (e) {}
+  }
+  document.getElementById("tr").onclick = function () { set("tr"); };
+  document.getElementById("en").onclick = function () { set("en"); };
+  var ilk = (navigator.language || "").slice(0, 2) === "en" ? "en" : "tr";
+  try { var kayit = localStorage.getItem("kule-video-dil"); if (kayit === "tr" || kayit === "en") ilk = kayit; } catch (e) {}
+  set(ilk);
+})();
+</script>
+</body>
+</html>

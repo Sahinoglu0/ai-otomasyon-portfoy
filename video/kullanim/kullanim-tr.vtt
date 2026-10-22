@@ -1,0 +1,70 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.000
+Kurulum, veri, modüller, vakalar, ajan akışı ve onay.
+
+00:00:10.000 --> 00:00:23.000
+python demo.py: örnek veri ve kararlar, yaklaşık yarım saniye.
+
+00:00:23.000 --> 00:00:39.000
+Kurulumsuz: kullanıcı ekle, servisi başlat. İlk yanıt 2,3 sn.
+
+00:00:39.000 --> 00:00:54.000
+Dokuz CSV ve bir fatura metni. stok.csv'de miktar, emniyet stoğu ve maliyet sıfırdan küçük olamaz.
+
+00:00:54.000 --> 00:01:10.000
+ingest: doğrula, yükle, görüntü al. kalite: reddedilen satırlar.
+
+00:01:10.000 --> 00:01:22.000
+calistir: altı modül ve bir açıklama, hepsi JSON.
+
+00:01:22.000 --> 00:01:32.000
+Kapsama gününe göre durum ve ABC sınıfı. Örnek veri.
+
+00:01:32.000 --> 00:01:42.000
+Yedi tür sipariş–mal kabul tutarsızlığı. Örnek veride yedisi de bulundu.
+
+00:01:42.000 --> 00:01:54.000
+8 haftalık tahmin, %80 aralık. Örnek veride ortalama hata 8,07; basit yöntem 11,16.
+
+00:01:54.000 --> 00:02:05.000
+Teslim, red ve fiyat sapmasından skor. Örnek: T-01 A, T-03 D.
+
+00:02:05.000 --> 00:02:16.000
+Sipariş, irsaliye, fatura: dört tür uyumsuzluk. OCR yok.
+
+00:02:16.000 --> 00:02:26.000
+OEE, duruş Pareto'su, kök neden önerisi. Öneri, kanıt değil.
+
+00:02:26.000 --> 00:02:37.000
+Türkçe özet. Varsayılan şablon; dil modeli isteğe bağlı.
+
+00:02:37.000 --> 00:02:49.000
+Her bulgu bir vaka olur: sahibi, durumu, hedef tarihi.
+
+00:02:49.000 --> 00:03:00.000
+Kabul için gerekçe şart. Her değişiklik denetim izinde. 'Kim' bir etiket.
+
+00:03:00.000 --> 00:03:13.000
+Planlayıcı böler. Analist araç çağırır. Denetçi kodla kontrol eder.
+
+00:03:13.000 --> 00:03:26.000
+Gerçek model: ilk deneme reddedildi, ikinci kabul edildi.
+
+00:03:26.000 --> 00:03:39.000
+Her iz kaynağını rozetle belirtir. Gerçek model: 38 koşu kayıtlı.
+
+00:03:39.000 --> 00:03:54.000
+Onay özetle verilir. Özet tutmazsa araç çalışmaz.
+
+00:03:54.000 --> 00:04:07.000
+Önce sözleşmeye uygun veri, sonra ingest, kalite ve calistir.
+
+00:04:07.000 --> 00:04:19.000
+Dil modeli yok, SAP ve OCR bağlantısı yok, firma verisiyle denenmedi.
+
+00:04:19.000 --> 00:04:33.000
+Bilinen sınırlar: sızıntı ve ölçek hatası geçebilir. Önce veriyi düzeltin.
+
+00:04:33.000 --> 00:04:42.000
+Kaynak kod bu yayında yok. Sayılar ve sınırlar kanıt sayfasında.

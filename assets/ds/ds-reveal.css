@@ -1,0 +1,22 @@
+.ds-reveal-hazir [data-ds-reveal]:not(.ds-gorundu),
+.ds-reveal-hazir [data-ds-reveal="sira"]:not(.ds-gorundu) > * {
+opacity: 0;
+transform: translateY(calc(var(--kayma) * 2));
+}
+.ds-reveal-hazir [data-ds-reveal="sira"]:not(.ds-gorundu) { opacity: 1; transform: none; }
+.ds-reveal-hazir [data-ds-reveal]:not(.ds-bitti),
+.ds-reveal-hazir [data-ds-reveal="sira"]:not(.ds-bitti) > * {
+transition:
+opacity var(--sure-4) var(--egri-cik),
+transform var(--sure-4) var(--egri-cik);
+transition-delay: calc(var(--ds-i, 0) * 70ms);
+}
+@media (prefers-reduced-motion: reduce) {
+.ds-reveal-hazir [data-ds-reveal],
+.ds-reveal-hazir [data-ds-reveal] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+:root[data-hareket="azalt"] [data-ds-reveal],
+:root[data-hareket="azalt"] [data-ds-reveal] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+@media print {
+[data-ds-reveal], [data-ds-reveal] > * { opacity: 1 !important; transform: none !important; }
+}

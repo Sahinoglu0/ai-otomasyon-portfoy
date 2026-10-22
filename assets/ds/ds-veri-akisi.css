@@ -1,0 +1,92 @@
+.ds-veri {
+--paket: 10px;
+--ara: var(--s7);
+--adim: 700ms;
+margin: 0; padding: var(--s5); background: var(--surface);
+border: 1px solid var(--rule); border-radius: var(--r2);
+}
+.ds-veri-hat {
+list-style: none; margin: 0; padding: 0;
+display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ara);
+}
+@media (min-width: 720px) {
+.ds-veri-hat { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ara); }
+}
+.ds-veri-hat > li { position: relative; min-width: 0; }
+.ds-veri-kutu {
+display: block; padding: var(--s3) var(--s4); background: var(--paper);
+border: 1.5px solid var(--rule-strong); border-radius: var(--r2);
+}
+.ds-veri-kutu b { display: block; font: 700 var(--t-md)/1.3 var(--mono); }
+.ds-veri-kutu small { display: block; margin-top: 2px; font-size: var(--t-sm); color: var(--ink-2); }
+.ds-veri-hat > li:last-child .ds-veri-kutu { border-color: var(--ok); background: var(--ok-soft); }
+.ds-veri-hat > li:last-child .ds-veri-kutu b { color: var(--ok); }
+.ds-veri-hat > li:not(:last-child)::before {
+content: ""; position: absolute; background: var(--rule-strong);
+left: var(--s5); top: 100%; width: 2px; height: var(--ara);
+}
+.ds-veri-hat > li:not(:last-child)::after {
+content: ""; position: absolute; left: calc(var(--s5) - 5px); top: calc(100% + var(--ara) - 7px);
+border: 6px solid transparent; border-top: 7px solid var(--rule-strong); border-bottom: 0;
+}
+@media (min-width: 720px) {
+.ds-veri-hat > li:not(:last-child)::before { left: 100%; top: 50%; width: var(--ara); height: 2px; }
+.ds-veri-hat > li:not(:last-child)::after {
+left: calc(100% + var(--ara) - 7px); top: calc(50% - 5px);
+border: 6px solid transparent; border-left: 7px solid var(--rule-strong); border-right: 0;
+}
+}
+.ds-veri-paket {
+position: absolute; z-index: 1; width: var(--paket); height: var(--paket); border-radius: 50%;
+background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+left: calc(var(--s5) + 1px - var(--paket) / 2); top: 100%;
+opacity: 0; pointer-events: none;
+}
+@media (min-width: 720px) {
+.ds-veri-paket { left: 100%; top: calc(50% + 1px - var(--paket) / 2); }
+}
+.ds-veri.ds-akiyor .ds-veri-paket {
+animation: ds-veri-asagi var(--adim) var(--egri-ortak) both;
+animation-delay: calc(var(--ds-i) * var(--adim) + var(--adim) * .45);
+}
+@media (min-width: 720px) {
+.ds-veri.ds-akiyor .ds-veri-paket { animation-name: ds-veri-saga; }
+}
+.ds-veri.ds-akiyor .ds-veri-hat > li:not(:last-child)::before {
+animation: ds-veri-hat var(--adim) var(--egri-ortak) both;
+animation-delay: calc(var(--ds-i) * var(--adim) + var(--adim) * .45);
+}
+.ds-veri.ds-akiyor .ds-veri-kutu {
+animation: ds-veri-yan var(--adim) var(--egri-cik) both;
+animation-delay: calc(var(--ds-i) * var(--adim));
+}
+.ds-veri[data-duraklat] .ds-veri-paket,
+.ds-veri[data-duraklat] .ds-veri-kutu,
+.ds-veri[data-duraklat] .ds-veri-hat > li::before { animation-play-state: paused; }
+@keyframes ds-veri-asagi {
+0% { opacity: 0; transform: translateY(0); }
+15% { opacity: 1; }
+85% { opacity: 1; }
+100% { opacity: 0; transform: translateY(calc(var(--ara) - var(--paket))); }
+}
+@keyframes ds-veri-saga {
+0% { opacity: 0; transform: translateX(0); }
+15% { opacity: 1; }
+85% { opacity: 1; }
+100% { opacity: 0; transform: translateX(calc(var(--ara) - var(--paket))); }
+}
+@keyframes ds-veri-hat {
+0%, 100% { background-color: var(--rule-strong); }
+30%, 75% { background-color: var(--isaret); }
+}
+@keyframes ds-veri-yan {
+0% { border-color: var(--rule-strong); box-shadow: 0 0 0 0 transparent; }
+35% { border-color: var(--isaret); box-shadow: 0 0 0 4px var(--accent-soft); }
+100% { box-shadow: 0 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+.ds-veri .ds-veri-paket, .ds-veri .ds-veri-kutu, .ds-veri .ds-veri-hat > li::before { animation: none !important; }
+}
+:root[data-hareket="azalt"] .ds-veri .ds-veri-paket,
+:root[data-hareket="azalt"] .ds-veri .ds-veri-kutu,
+:root[data-hareket="azalt"] .ds-veri .ds-veri-hat > li::before { animation: none !important; }

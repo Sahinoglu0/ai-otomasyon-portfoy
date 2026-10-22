@@ -11,7 +11,7 @@
 **Live pages** (the TR / EN button at the bottom right switches the language):
 
 - [Home](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
-- [Portfolio page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
+- [Product page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 - [Test evidence](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): source code is closed; test counts, behaviour catalogue and an evidence package you can verify with SHA-256
 
@@ -36,9 +36,9 @@ Taken from the live pages (light theme, 1440 px).
 |---|---|
 | [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: 345 tests, breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
-| Portfolio page | Home |
+| Product page | Home |
 |---|---|
-| [![Portfolio page](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Home page](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
+| [![Product page](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Home page](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
 
 Every trace in the viewer carries a badge that states its source (hand-written record, real-model record or code line). The screenshots show the Turkish interface; the pages have a TR / EN switch.
 

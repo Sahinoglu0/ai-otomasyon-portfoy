@@ -1,0 +1,19 @@
+.ds-sayilar {
+display: grid; gap: var(--s3); grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+.ds-sayi {
+min-width: 0; padding: var(--s4) var(--s5); background: var(--surface);
+border: 1px solid var(--rule); border-radius: var(--r2);
+}
+.ds-sayi b, [data-ds-sayac] {
+display: inline-block; font: 700 var(--t-2xl)/1.1 var(--mono);
+font-variant-numeric: tabular-nums; letter-spacing: -.02em; color: var(--ink);
+}
+.ds-sayi > span:not(.ds-alt) { display: block; margin-top: var(--s1); color: var(--ink-2); font-size: var(--t-sm); }
+.ds-sayi > .ds-alt { display: block; height: 3px; margin-top: var(--s3); background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.ds-sayi .ds-alt i {
+display: block; height: 100%; background: var(--ok); transform-origin: left;
+transform: scaleX(var(--ds-oran, 1));
+}
+[data-ds-sayac].ds-sayiyor { color: var(--accent-ink); }
+[data-ds-sayac] { transition: color var(--sure-4) var(--egri-ortak); }

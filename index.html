@@ -4,32 +4,96 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>AI / otomasyon portföyü</title>
-<meta name="description" content="Statik örnek sayfalar; canlı API yok. Veriler sentetik ya da herkese açıktır, gerçek firma verisi değildir.">
-<style>
-:root{--paper:#f4f1ea;--ink:#1b1d1f;--muted:#4a4e52;--rule:#d8d3c7;--surface:#fbfaf6;--rule-strong:#b7b0a1;--accent:#d08a00}
-@media (prefers-color-scheme: dark){:root{--paper:#141517;--ink:#ecebe6;--muted:#b9bab4;--rule:#2e3034;--surface:#1b1d20;--rule-strong:#4a4e54;--accent:#f0b43a}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:720px;margin:0 auto;padding:40px 16px 80px}
-h1{font-size:clamp(28px,6vw,40px);margin:0 0 12px}
-a.card{display:block;background:var(--surface);border:1px solid var(--rule);padding:18px;margin:14px 0;text-decoration:none;color:inherit}
-a.card:hover,a.card:focus-visible{border-color:var(--ink)}
-a.card b{display:block;font-size:18px;margin-bottom:4px}
-.muted{color:var(--muted)}
-</style>
+<title>Kule Pro</title>
+<meta name="description" content="Kule Pro stok, sipariş, fatura ve tedarikçi verisinden her gün karar çıktısı üretir; örnek ve herkese açık veriyle gösterilmiştir.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b43a'/%3E%3Cpath d='M13 26h6l-1.2-12h-3.6zM11 14h10l-1-4h-8zM16 4l-3 6h6z' fill='%2317191b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/ds/ds-tokens.css">
+<link rel="stylesheet" href="assets/ds/ds-ustbar.css">
+<link rel="stylesheet" href="assets/ds/ds-reveal.css">
+<link rel="stylesheet" href="assets/ds/ds-kart.css">
+<link rel="stylesheet" href="assets/ds/ds-sayac.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+<script src="assets/ds/ds-reveal.js"></script>
 </head>
 <body>
+
+<header class="ds-ustbar" data-ds-ustbar>
+  <div class="ds-ustbar-ic">
+    <a class="ds-marka" href="index.html">Kule Pro</a>
+    <nav aria-label="Sayfalar">
+      <a href="portfoy/index.html">Ürün</a>
+      <a href="demo/index.html">Demo</a>
+      <a href="ajan-orkestrasyon/iz-goruntuleyici/index.html">İzler</a>
+      <a href="kanit/index.html">Kanıt</a>
+    </nav>
+    <div class="ust-arac">
+      <button class="tema-dugme" id="tema" type="button" aria-label="Temayı değiştir" title="Temayı değiştir">
+        <svg class="gunes" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="currentColor"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6 13 13M3 13l1.4-1.4M11.6 4.4 13 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg class="ay" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 10.2A6 6 0 0 1 5.8 2.5a6 6 0 1 0 7.7 7.7z" fill="currentColor"/></svg>
+      </button>
+      <span id="dil-yuva"></span>
+    </div>
+  </div>
+  <div class="ds-ilerleme" aria-hidden="true"><i></i></div>
+</header>
+
 <main>
-<h1>AI / otomasyon portföyü</h1>
-<p class="muted">Statik örnek sayfalar; canlı API yok. Veriler sentetik ya da herkese açıktır, gerçek firma verisi değildir.</p>
-<a class="card" href="portfoy/index.html"><b>Anlatı: Kule Pro nedir</b><span class="muted">Bir işletmenin verisinden her sabah karar çıkaran aracın ne yaptığı ve nerede durduğu. Bağımlılık yok, standart kütüphane ile çalışır.</span></a>
-<a class="card" href="ajan-orkestrasyon/iz-goruntuleyici/index.html"><b>İz görüntüleyici: Ajan izleri</b><span class="muted">Soruşturma akışını adım adım aç: Planlayıcı, Analist, Denetçi. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT veya KOD SATIRI.</span></a>
-<a class="card" href="kanit/index.html"><b>Test kanıtı: Ne ölçüldü</b><span class="muted">Kule için 229 Python testi, orkestratör için 87 birim testi, panel için 29 Node testi. Eval sonuçları ve bilerek açık bırakılan bir enjeksiyon vakası da burada. Kaynak kod bu depoda yayınlanmıyor; yerine bu kanıtlar var.</span></a>
-<a class="card" href="demo/index.html"><b>Demo: Kurulumsuz deneme</b><span class="muted">Statik demo: önceden hesaplanmış sentetik örnek, canlı API yok.</span></a>
-<p class="muted"><a href="https://github.com/Sahinoglu0/ai-otomasyon-portfoy#readme">Ayrıntılı anlatım: mimari, ölçüm bulguları ve sınırlar</a> (Türkçe ve İngilizce, GitHub)</p>
-<p class="muted">Kule Pro stok, sipariş, fatura ve tedarikçi verisinden her gün karar çıktısı üretir; örnek ve herkese açık veriyle gösterilmiştir.</p>
+  <div class="kahraman">
+    <div class="wrap">
+      <span class="ds-ust">Karar destek aracı · statik örnek sayfalar</span>
+      <h1>Kule Pro<span class="x">.</span></h1>
+      <p class="lede">Kule Pro stok, sipariş, fatura ve tedarikçi verisinden her gün karar çıktısı üretir; örnek ve herkese açık veriyle gösterilmiştir.</p>
+      <div class="dugmeler">
+        <a class="dugme birincil" href="portfoy/index.html">Ürünü tanı <span class="ds-ok" aria-hidden="true">→</span></a>
+        <a class="dugme" href="demo/index.html">Demoyu dene</a>
+      </div>
+      <figure class="ekran">
+        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Yönetici özeti</span><span class="rozet-sentetik">Sentetik veri</span></div>
+        <img class="tema-acik" src="assets/ekran/panel-ozet-acik.png" width="1200" height="750" alt="Kule Pro panelinin yönetici özeti ekranı: tutar etkisi, bağlı sermaye, kritik stok kalemi, öncelikli aksiyonlar ve risk sıralaması.">
+        <img class="tema-koyu" src="assets/ekran/panel-ozet-koyu.png" width="1200" height="750" loading="lazy" alt="Kule Pro panelinin yönetici özeti ekranı, koyu tema.">
+        <figcaption>Gerçek panel ekranı. Gösterilen veriler sentetik örnek veridir; gerçek bir şirkete ait değildir.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section class="bolum" aria-labelledby="h-sayfalar">
+    <div class="wrap">
+      <div data-ds-reveal>
+        <span class="ds-ust">Sayfalar</span>
+        <h2 id="h-sayfalar">Nereden başlamalı?</h2>
+      </div>
+      <div class="ds-kartlar" data-ds-reveal="sira">
+        <a class="ds-kart" href="portfoy/index.html"><span class="ds-ust">01 · ürün</span><b class="ds-kart-baslik">Kule Pro nedir? <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Ne yaptığı, nasıl çalıştığı, modülleri, neyin ölçüldüğü ve nerede durduğu.</span></a>
+        <a class="ds-kart" href="demo/index.html"><span class="ds-ust">02 · demo</span><b class="ds-kart-baslik">Demoyu dene <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Kurulum gerektirmeyen statik demo, önceden hesaplanmış sentetik örnek veriyle çalışır. Canlı API yoktur.</span></a>
+        <a class="ds-kart" href="ajan-orkestrasyon/iz-goruntuleyici/index.html"><span class="ds-ust">03 · izler</span><b class="ds-kart-baslik">İz görüntüleyiciyi aç <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Soruşturma akışını adım adım aç: Planlayıcı, Analist, Denetçi. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT veya KOD SATIRI.</span></a>
+        <a class="ds-kart" href="kanit/index.html"><span class="ds-ust">04 · kanıt</span><b class="ds-kart-baslik">Test kanıtını gör <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod bu depoda yayımlanmıyor; yerine bu kanıtlar var.</span></a>
+      </div>
+      <div class="sayi-serit" data-ds-sayac-grup data-ds-etiket-tekrar="Tekrar oynat" data-ds-reveal>
+        <div class="ds-sayilar">
+          <div class="ds-sayi"><b data-ds-sayac>229</b><span>Kule · Python testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
+          <div class="ds-sayi"><b data-ds-sayac>87</b><span>Orkestratör · birim testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
+          <div class="ds-sayi"><b data-ds-sayac>29</b><span>Panel · Node testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
+          <div class="ds-sayi"><b data-ds-sayac>41 / 41</b><span>Eval · ölçüt, kontrol, kapsam</span><span class="ds-alt" data-oran="1"><i></i></span></div>
+        </div>
+      </div>
+      <p class="ikincil kucuk" style="margin-top:var(--s4)">Eval kasetten oynatılır; model kalitesini ölçmez. 5 bilinen açık vaka gözlendi ve kapanmadı.</p>
+      <p class="ikincil" style="margin-top:var(--s5)"><a href="https://github.com/Sahinoglu0/ai-otomasyon-portfoy#readme">Ayrıntılı anlatım: mimari, ölçüm bulguları ve sınırlar</a> (Türkçe ve İngilizce, GitHub)</p>
+    </div>
+  </section>
 </main>
+
+<footer class="alt">
+  <div class="wrap">
+    <span>Demolardaki tüm veriler sentetiktir; gerçek şirket verisi kullanılmamıştır.</span>
+    <span>Statik örnek sayfa; canlı API yok.</span>
+    <span>© 2026 · MIT lisansı. <a href="demo/LICENSE.txt">demo/ klasörü</a> bu lisansın dışındadır.</span>
+  </div>
+</footer>
+
+<script src="assets/ds/ds-sayac.js"></script>
+<script src="assets/ds/ds-ustbar.js"></script>
+<script src="assets/i18n-urun.js"></script>
 <script src="assets/i18n.js"></script>
 </body>
 </html>

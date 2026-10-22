@@ -16,12 +16,11 @@
     "YENİ": "NEW", "REGRESYON": "REGRESSION", "kabul": "accepted", "bitmedi": "not finished",
     "değişiklik yok": "no change", "taban yok": "no baseline", "BİLİNEN AÇIK": "KNOWN GAP",
     "Bilinen açık": "Known gap", "Sorun": "Problem", "Çözüm": "Solution", "Teknoloji": "Technology",
-    "Etki": "Impact", "Deneyim": "Experience", "Eğitim": "Education", "Kurslar": "Courses",
-    "İletişim": "Contact", "Çalışıyor": "Working", "Sentetik veri": "Synthetic data",
+    "Etki": "Impact", "Çalışıyor": "Working", "Sentetik veri": "Synthetic data",
     "Taban (taban.json)": "Baseline (taban.json)", "Koyu / açık": "Dark / light",
     "Bölümler": "Sections", "Görünüm": "View", "Temayı değiştir": "Toggle theme",
     "01 / Sorun": "01 / Problem", "02 / Çözüm": "02 / Solution", "03 / Teknoloji": "03 / Technology",
-    "04 / Etki": "04 / Impact", "05 / Deneyim": "05 / Experience", "06 / İletişim": "06 / Contact",
+    "04 / Etki": "04 / Impact",
     "Kayıtlı jeton": "Recorded tokens", "Süre (sn)": "Time (s)", "Yan etkili": "Side effect",
     "Girdi özeti": "Input summary", "Model metni": "Model text", "Araç çağrıları": "Tool calls",
     "Jeton (giren / çıkan)": "Tokens (in / out)", "Uyuşmazlıklar": "Mismatches",
@@ -48,25 +47,14 @@
     "Stok ve sevkiyat analizi": "Inventory and shipment analysis",
     "Sipariş / mal kabul anomali tespiti": "Order / goods receipt anomaly detection",
     "Öncelikli aksiyon listesi": "Prioritised action list",
-    "Ne ile yapıldı": "What it was built with", "Saha deneyimi": "Field experience",
-    "Birlikte çalışalım": "Let's work together",
+    "Ne ile yapıldı": "What it was built with",
     "İş akışını ajan rollerine bölme": "Splitting the workflow into agent roles",
     "Kural tabanlı analiz": "Rule-based analysis", "Birim testleri": "Unit tests",
     "SAP ERP alan mantığı": "SAP ERP field logic", "Markdown ve CSV çıktı": "Markdown and CSV output",
-    "Yapay zekâ kodlama ajanları": "AI coding agents", "36 kalem": "36 items", "229 Python test": "229 Python tests",
-    "Lojistik Elemanı": "Logistics Specialist", "Seri Üretim Operatörü": "Mass Production Operator",
-    "Bilgisayar Programcılığı (Ön Lisans)": "Computer Programming (Associate degree)",
-    "Makine (Ön Lisans)": "Machinery (Associate degree)",
-    "Atatürk Üniversitesi Açık Öğretim": "Atatürk University Open Education",
-    "Dumlupınar Üniversitesi · 2019 – 2021": "Dumlupınar University · 2019 – 2021",
-    "May 2023 – Ağu 2025": "May 2023 – Aug 2025", "Ara 2021 – Eki 2022": "Dec 2021 – Oct 2022",
-    "Türkiye'nin Otomobili Girişim Grubu (TOGG) · Bursa/Gemlik": "Türkiye's Automobile Initiative Group (TOGG) · Bursa/Gemlik",
-    "Lojistik operasyonu": "Logistics operations", "yapay zekâ ajan otomasyonu": "AI agent automation",
-    "İletişim bilgilerim CV'mde.": "My contact details are in my CV.",
+    "Yapay zekâ kodlama ajanları": "AI coding agents", "229 Python test": "229 Python tests",
     "Portföy sayfası": "Portfolio page", "Ajan iz görüntüleyici": "Agent trace viewer",
     "Anlatı": "Story", "Okuma sırası": "Reading order", "Demo": "Demo",
-    "Ayrıntılı anlatım": "Detailed write-up", "Test kanıtı": "Test evidence", "AI / otomasyon portföyü": "AI / automation portfolio",
-    "Emre Şahinoğlu — Portföy": "Emre Şahinoğlu — Portfolio"
+    "Ayrıntılı anlatım": "Detailed write-up", "Test kanıtı": "Test evidence", "AI / otomasyon portföyü": "AI / automation portfolio"
   };
 
   // Alt dizge değişimi: birleştirilmiş ya da dinamik metinlerde cümle düzeyinde çalışır.
@@ -82,34 +70,8 @@
     ["Eval skoru kasetten oynatıldı; model kalitesini ölçmez.", "Eval score replayed from a tape; it does not measure model quality."],
     ["Bir iz dosyası seç ya da örneklerden birini aç.", "Choose a trace file or open one of the samples."],
     // portföy sayfası
-    ["TOGG'da mal kabul, stok ve SAP ERP üzerinde iki yılı aşkın saha deneyimimi, tedarik zinciri kararlarını destekleyen analiz araçlarına dönüştürüyorum.", "I turn more than two years of field experience at TOGG in goods receipt, inventory and SAP ERP into analysis tools that support supply chain decisions."],
-    ["Sahada elle yapılan kontroller hataları geç görünür kılıyor", "Manual checks on the shop floor make errors visible too late"],
-    ["Mal kabulde sipariş ile teslimat, stokta kritik kalem ile fazla kalem ve sevkiyatta geciken kayıt çoğu zaman ayrı tablolarda kontrol ediliyor. Hata bulunduğunda çoğu kez maliyet çoktan oluşmuş oluyor.", "Order versus delivery at goods receipt, critical versus excess items in stock, and late shipment records are usually checked in separate tables. By the time an error is found, the cost has often already been incurred."],
-    ["Kuralları bilinen kontrolleri bir araca dönüştürmek", "Turning checks with known rules into a tool"],
-    ["Her araç işi veri okuma, analiz ve raporlama bileşenlerine böler. Bu bileşenler kural tabanlı Python'dır; varsayılanda dil modeli çağırmazlar. Çıktılar Markdown rapor ve CSV listesi olarak üretilir. Bu sayfada yalnız ilk iki araç (E1, E2) anlatılır; karar motoru ve ajan orkestratörü README'dedir.", "Each tool splits the job into data-reading, analysis and reporting components. These components are rule-based Python; by default they call no language model. Outputs are produced as a Markdown report and a CSV list. This page covers only the first two tools (E1, E2); the decision engine and the agent orchestrator are described in the README."],
-    ["Kritik, ölü ve fazla stok; ABC sınıfı", "Critical, dead and excess stock; ABC class"],
-    ["Depo bazında zamanında teslim oranı", "On-time delivery rate per warehouse"],
-    ["Eksik ve fazla teslimat, açık ve gecikmiş kalem", "Short and over deliveries, open and overdue items"],
-    ["Çift kayıt, sipariş dışı kabul, malzeme uyuşmazlığı", "Duplicate records, receipts without an order, material mismatches"],
-    ["SAP'ye bağlanmaz; SAP alan adlarına benzeyen CSV okur", "Does not connect to SAP; reads CSV files that resemble SAP field names"],
-    ["Araçlar Python ile yazıldı, terminalde (CLI) çalışır ve yalnız standart kütüphaneyi kullanır. Yapay zekâ kodlama ajanlarıyla geliştirildi. Araçların varsayılan çalıştırılmasında çalışma zamanında dil modeli çağrısı yoktur; isteğe bağlı açıklama katmanı ile ajan orkestratörü (ayrı bileşen; planlayıcı ve analist rolleri) dil modeli kullanabilir.", "The tools are written in Python, run in the terminal (CLI) and use only the standard library. They were developed with AI coding agents. In the default run, the tools make no language-model calls at run time; the optional explanation layer and the agent orchestrator (a separate component, with planner and analyst roles) can use a language model."],
-    ["Örnek veride ölçülen sonuçlar", "Results measured on sample data"],
-    ["Aşağıdaki sayılar iki aracın kendi koşusundan alınmıştır. Veriler sentetiktir; gerçek bir şirkete ait değildir.", "The numbers below come from each tool's own run. The data is synthetic; it does not belong to a real company."],
-    ["Bilinen sipariş–mal kabul anomalisinin bulunma oranı (E2, yanlış alarm 0)", "Share of known order–goods receipt anomalies found (E2, 0 false alarms)"],
-    ["3 depo, 1.244 sevkiyat satırı; 0 reddedilen satır (E1)", "3 warehouses, 1,244 shipment rows; 0 rejected rows (E1)"],
     ["Kule için 229 Python testi geçiyor; Node: 29 test, 29 geçti, 0 atlandı", "229 Python tests pass for Kule; Node: 29 tests, 29 pass, 0 skipped"],
-    ["İthal parçaların mal kabul süreçlerini yönettim.", "Managed goods receipt for imported parts."],
-    ["Parçaların üretim bölümlerine ve tedarikçilere sevkini organize ettim; stok takibini SAP ERP üzerinden yaptım.", "Organised shipment of parts to production departments and suppliers; tracked stock in SAP ERP."],
-    ["Yedek parça departmanında yetkili servis siparişlerinin hazırlanması ve sevkiyatını yönettim.", "In the spare parts department, managed preparation and shipment of authorised service orders."],
-    ["Online satıştan gelen araç aksesuarı siparişlerinin operasyonunu ve takibini üstlendim.", "Handled the operation and tracking of vehicle accessory orders from online sales."],
-    ["Üretim hattı çıktılarının kalite standartlarına uygunluğunu denetledim ve raporladım.", "Inspected and reported on whether production line output met quality standards."],
-    ["Paketleme süreçlerini yürütüp ürünlerin sevkiyata hazırlanmasını koordine ettim.", "Ran packaging processes and coordinated getting products ready for shipment."],
-    ["Personelin iş akışını düzenleyerek vardiya verimliliğine katkı sağladım.", "Contributed to shift efficiency by organising staff workflow."],
-    ["Etkili İletişim Teknikleri (İstanbul Boğaziçi Enstitüsü) · Topluluk Önünde Konuşma ve Hitabet (Joven Academia)", "Effective Communication Techniques (Istanbul Boğaziçi Institute) · Public Speaking and Rhetoric (Joven Academia)"],
-    ["Demolardaki tüm veriler sentetiktir (örnek veri); gerçek şirket verisi kullanılmamıştır.", "All data in the demos is synthetic (sample data); no real company data was used."],
     ["Statik örnek sayfa; canlı API yok.", "Static sample page; no live API."],
-    ["Lojistik operasyonu × yapay zekâ ajan otomasyonu", "Logistics operations × AI agent automation"],
-    ["Lojistik saha deneyimini tedarik zinciri analiz araçlarına dönüştüren çalışmalar. Sorun, çözüm, teknoloji ve etki.", "Work that turns logistics field experience into supply chain analysis tools: problem, solution, technology and impact."],
     // giriş sayfası
     ["Kaynak kod kapalı; bu bölüm çıktıyı gösterir: test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi.", "Source code is closed; this section shows the output: test counts, a behaviour catalogue and an evidence package you can verify with SHA-256."],
     ["Test kanıtı: sayılar, davranış kataloğu ve SHA-256 doğrulaması", "Test evidence: counts, behaviour catalogue and SHA-256 verification"],
@@ -126,7 +88,7 @@
     ["Kayıtlı jeton yalnız kaset adımlarını sayar ve kaset etiketlidir. Gerçek model maliyeti değildir.", "Recorded tokens only count tape steps and are labelled as tape. They are not real model cost."],
     ["Bu açıklar gizlenmez. Gözlendikleri için vaka \"geçti\" sayılır; kapanırlarsa ölçüte çevrilmeleri gerekir.", "These gaps are not hidden. Because they are observed, the case counts as \"passed\"; if they get closed they must be turned into criteria."],
     ["Statik örnek: canlı API yok. Bu sayfa yalnız kayıtlı izleri (gerçek model kaydı ve elle yazılmış kasetler) okur; kendisi hiçbir model çağırmaz.", "Static sample: no live API. This page only reads recorded traces (real-model records and hand-written tapes); it calls no model itself."],
-    ["Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez. Kule (cv-portfoy-kule) yalnız stil referansıdır, dokunulmadı.", "Single dependency-free page. Read-only; it does not change trace or eval files. Kule (cv-portfoy-kule) is only a style reference and was not touched."],
+    ["Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez.", "Single dependency-free page. Read-only; it does not change trace or eval files."],
     // iz görüntüleyici: dinamik metinler
     ["Kaynak doğrulanamadı; gerçek model çıktısı olabilir ya da kaset olabilir.", "Source could not be verified; it may be real model output or a tape."],
     ["KASET OYNATMA — gerçek model çıktısı değil.", "TAPE PLAYBACK — not real model output."],
@@ -254,6 +216,9 @@
     [/^(denetci|yetki|enjeksiyon|uctan_uca) · (ölçüt|kontrol|kapsam dışı|bilinen açık)$/, (m, k, t) => KATEGORI[k] + " · " + TUR[t]]
   ];
 
+  // Sayfaya özgü sözlük (ör. assets/i18n-urun.js): window.I18N_EK = { "TR": "EN", ... }, bu dosyadan ÖNCE yüklenir.
+  if (window.I18N_EK && typeof window.I18N_EK === "object") Object.assign(EXACT, window.I18N_EK);
+
   function core(s) {
     const n = norm(s);
     if (Object.prototype.hasOwnProperty.call(EXACT, n)) return EXACT[n];
@@ -367,6 +332,7 @@
       "border-radius:999px;overflow:hidden;background:var(--surface,#fbfaf6);box-shadow:0 1px 4px rgba(0,0,0,.18);font:600 12px/1 var(--mono,ui-monospace,Consolas,monospace)}" +
       "#lang-switch button{all:unset;cursor:pointer;padding:10px 14px;min-width:44px;text-align:center;color:var(--ink,#1b1d1f)}" +
       "#lang-switch button[aria-pressed=true]{background:var(--ink,#1b1d1f);color:var(--paper,var(--surface,#fff))}" +
+      "#lang-switch.yuvada{position:static;box-shadow:none;flex:none}#lang-switch.yuvada button{padding:8px 10px;min-width:40px;min-height:24px}" +
       "#lang-switch button:focus-visible{outline:2px solid var(--accent,#d08a00);outline-offset:-4px}";
     document.head.append(st);
     const box = document.createElement("div");
@@ -379,7 +345,9 @@
       b.addEventListener("click", () => setLang(code));
       box.append(b);
     }
-    document.body.append(box);
+    // Sayfada #dil-yuva varsa düğme üst bara girer (sabit konumlu kutu 390 px'te içeriğin üstüne biniyordu).
+    const yuva = document.getElementById("dil-yuva");
+    if (yuva) { box.classList.add("yuvada"); yuva.append(box); } else document.body.append(box);
   }
 
   function initialLang() {

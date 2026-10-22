@@ -52,6 +52,17 @@ Full test evidence (test catalogue, behaviour catalogue, SHA-256 evidence packag
 
 **Large real-world data.** **172,765 shipment rows** adapted from the public DataCo Smart Supply Chain dataset loaded in one ingest: 172,765 accepted, 0 rejected, 0 crashes, about 8 seconds.
 
+**Open-data trials.** Beyond DataCo, public datasets were tried for Kule's other inputs. These trials were not run on real company data; none of the results is company data.
+
+| Dataset | License (from the page) | What was done | Result |
+|---|---|---|---|
+| Mendeley Data *Retail Inventory Data* (9pn955p5vj, version 1) | CC BY 4.0 | A public **model sample dataset** (fields compiled from Kaggle; it is not a real company's stock record). Adapted to the `stok.csv` contract. | 30/30 rows passed ingest. `stok_durumu` **could not be measured**: the data has no shipments, and the stock codes do not match the sales data. |
+| UCI *Online Retail II* (DOI 10.24432/C5CG6D; Chen, 2012) | CC BY 4.0 | Sales invoices, **proxy-mapped**: invoice→order, country→supplier (this is not supply data). Tried only for ingest robustness. | 1,067,371 rows: 1,044,416 accepted, 22,955 rejected as inconsistent (return and cancellation rows rejected by the rules), 0 crashes, 24 s. It is **not** evidence of order anomalies or supplier scores. |
+
+No open, properly licensed real data was found for goods receipt, delivery notes, invoices or production data, so these inputs were **not measured**. Synthetic data is not presented as real.
+
+The DataCo data page (Mendeley 8gx2fvg2k6, version 5) states "CC BY 4.0", but the same page also reserves all rights, including text and data mining and AI training. For that reason the data file is not included in this repository, only measurement outputs are shared, and the data is not used for training. Measurement output: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
+
 **Demand forecast.** On the sample data the Holt-Winters backtest error (MAPE) averages 8.07; the simple same-week-last-year method gets 11.16. Intermittent demand methods (Croston, SBA, TSB) were also tried against pre-registered criteria:
 
 ![Test MAPE and test coverage: naive, Holt-Winters, Croston, SBA, TSB](docs/img/en/e8-olcum.svg)

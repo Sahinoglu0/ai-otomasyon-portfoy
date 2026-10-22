@@ -11,7 +11,7 @@
 **Canlı sayfalar** (sağ alttaki TR / EN düğmesiyle dil değişir):
 
 - [Giriş](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
-- [Portföy sayfası](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
+- [Ürün sayfası](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
 - [Test kanıtı](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): kaynak kod kapalı; test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi
 
@@ -36,9 +36,9 @@ Canlı sayfalardan alınmıştır (açık tema, 1440 px).
 |---|---|
 | [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: 345 test, alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
-| Portföy sayfası | Giriş |
+| Ürün sayfası | Giriş |
 |---|---|
-| [![Portföy sayfası](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Giriş sayfası](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
+| [![Ürün sayfası](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Giriş sayfası](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
 
 İz görüntüleyicideki her iz kaynağını rozetle belirtir: ELLE YAZILMIŞ KAYIT, GERÇEK MODEL KAYDI ya da KOD SATIRI.
 

@@ -45,6 +45,11 @@ header.top h1{font-size:17px;margin:0;font-weight:600;letter-spacing:.2px;margin
 .tabs{display:flex;gap:4px}
 .tab{background:transparent;border:1px solid transparent;border-radius:6px;padding:6px 12px;cursor:pointer;color:var(--nav-ink);opacity:.7}
 .tab[aria-selected="true"]{opacity:1;border-color:var(--nav-active);color:var(--nav-active)}
+.geri{color:var(--nav-ink-2);font-size:13px;text-decoration:none;white-space:nowrap}
+.geri:hover{color:var(--nav-ink)}
+#lang-switch.yuvada{border-color:#4a4e54;background:transparent}
+#lang-switch.yuvada button{color:var(--nav-ink);padding:6px 10px;min-height:32px;box-sizing:border-box}
+#lang-switch.yuvada button[aria-pressed=true]{background:var(--nav-ink);color:var(--nav)}
 .iconbtn{background:transparent;border:1px solid #4a4e54;border-radius:6px;padding:5px 10px;cursor:pointer;color:var(--nav-ink);font-size:13px}
 
 /* dürüstlük şeridi */
@@ -147,12 +152,14 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
 
 <header class="top">
   <div class="wrap">
+    <a class="geri" href="../../portfoy/index.html">← Kule Pro</a>
     <h1>İz görüntüleyici · AJAN-V1</h1>
     <nav class="tabs" role="tablist" aria-label="Görünüm">
       <button class="tab" role="tab" id="t-iz" aria-controls="p-iz" aria-selected="true">İz</button>
       <button class="tab" role="tab" id="t-eval" aria-controls="p-eval" aria-selected="false">Eval</button>
     </nav>
     <button class="iconbtn" id="tema" type="button" aria-label="Temayı değiştir">Koyu / açık</button>
+    <span id="dil-yuva"></span>
   </div>
 </header>
 
@@ -258,7 +265,7 @@ footer{color:var(--muted);font-size:12px;padding:8px 0 32px}
 
 <footer class="wrap">
   Statik örnek: canlı API yok. Bu sayfa yalnız kayıtlı izleri (gerçek model kaydı ve elle yazılmış kasetler) okur; kendisi hiçbir model çağırmaz.
-  Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez. Kule (cv-portfoy-kule) yalnız stil referansıdır, dokunulmadı.
+  Bağımlılıksız tek sayfa. Yalnız okur; iz ve eval dosyalarını değiştirmez.
 </footer>
 
 <script>

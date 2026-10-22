@@ -2,7 +2,11 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](README.en.md)
 
-Kule Pro, bir işletmenin stok, sipariş, tedarikçi, fatura ve üretim dosyalarını okur ve her sabah şu soruların cevabını hazır verir: **hangi kalem bitmek üzere, ne kadar ve ne zaman sipariş edilmeli, hangi siparişte ya da faturada tutarsızlık var, hangi tedarikçiye güvenilemiyor, para nerede kaçıyor.** Yanında, aracın modüllerini kullanarak soru soran ve kendi cevabını denetleyen bir çok ajanlı orkestratör bulunur.
+1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir.
+2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
+3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümler herkese açık DataCo Smart Supply Chain verisiyle yapıldı. Gerçek bir şirketin verisiyle test edilmedi.
+4. Kaynak kod bu depoda yayınlanmıyor. Burada statik sayfalar, çizimler, test kanıtları ve ajan izleri var.
+5. Gerçek model koşusu (claude-haiku-5-5) planlanan 40 koşunun 38'ini yaptı (37'si tamamlandı, 1'i kotada kesildi, 2'si yapılmadı): soruşturmada 20 koşunun 16'sı kabul edildi, 4'ü Denetçi tarafından reddedildi; enjeksiyon senaryolarında (E1, E2) 17 koşu tamamlandı. Diğer izler elle yazılmış kasetlerdir.
 
 **Canlı sayfalar** (sağ alttaki TR / EN düğmesiyle dil değişir):
 

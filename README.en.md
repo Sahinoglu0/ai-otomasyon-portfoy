@@ -2,7 +2,11 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
-Kule Pro reads a company's stock, order, supplier, invoice and production files and has the answers ready every morning: **which items are about to run out, how much to order and when, which order or invoice has a mismatch, which supplier cannot be relied on, and where money is leaking.** Alongside it sits a multi-agent orchestrator that uses the tool's modules to answer questions and checks its own answers.
+1. Kule Pro reads a company's stock, order, supplier and invoice files and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on.
+2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
+3. The data is synthetic (generator seed 42), and the measurements use the public DataCo Smart Supply Chain dataset. It has not been tested on a real company's data.
+4. The source code is not published in this repository. What is here: static pages, diagrams, test evidence and agent traces.
+5. The real-model run (claude-haiku-5-5) ran 38 of the 40 planned runs (37 completed, 1 cut off by the quota, 2 not run): in the investigation scenarios 16 of 20 runs were accepted and 4 were rejected by the Auditor; 17 runs of the injection scenarios (E1, E2) were completed. The other traces are hand-written tapes.
 
 **Live pages** (the TR / EN button at the bottom right switches the language):
 

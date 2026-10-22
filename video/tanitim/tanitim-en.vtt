@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.000
+Kule Pro reads stock, order, supplier and invoice data.
+
+00:00:12.000 --> 00:00:24.000
+Built for planners, buyers and managers.
+
+00:00:24.000 --> 00:00:36.000
+The model does not decide alone. Data is validated first.
+
+00:00:36.000 --> 00:00:51.000
+Every row is checked against a contract. Bad rows are kept, not lost.
+
+00:00:51.000 --> 00:01:05.000
+172,765 rows, 0 rejected, about 8 s. Public data.
+
+00:01:05.000 --> 00:01:21.000
+Numbers are checked against Kule's own calculation. The checker is code.
+
+00:01:21.000 --> 00:01:32.000
+The format gate stops off-task output. Every step is traced.
+
+00:01:32.000 --> 00:01:44.000
+Approval is given on a summary. If it does not match, the action stops.
+
+00:01:44.000 --> 00:01:54.000
+Python: 229 and 87 tests. Node: 29 tests, all passed.
+
+00:01:54.000 --> 00:02:08.000
+Eval replays recorded cases. Real model: 16 of 20 runs accepted.
+
+00:02:08.000 --> 00:02:21.000
+Goods receipt, delivery notes, invoices and production not measured. No proof of company need yet.
+
+00:02:21.000 --> 00:02:33.000
+Known limit: a reworded leak and a scale error can pass the checks.
+
+00:02:33.000 --> 00:02:45.000
+A decision-support tool. People make the final call. Numbers and limits are on the evidence page.

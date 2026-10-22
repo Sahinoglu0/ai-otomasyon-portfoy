@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kule Pro kullanımı</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f7f9;
+    --fg: #1b2330;
+    --muted: #5d6878;
+    --accent: #2f6fdb;
+    --accent-2: #1fa67a;
+    --bad: #c93a35;
+    --line: #c9d1dc;
+    --panel: #ffffff;
+    --faint: #98a2b3;
+    --term: #141a24;
+    --termfg: #d7e0ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f141c;
+      --fg: #e7ecf3;
+      --muted: #9aa6b8;
+      --accent: #6aa2ff;
+      --accent-2: #3fd1a0;
+      --bad: #ff7a70;
+      --line: #334055;
+      --panel: #171e29;
+      --faint: #4b5668;
+      --term: #080b10;
+      --termfg: #d7e0ec;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141c;
+    --fg: #e7ecf3;
+    --muted: #9aa6b8;
+    --accent: #6aa2ff;
+    --accent-2: #3fd1a0;
+    --bad: #ff7a70;
+    --line: #334055;
+    --panel: #171e29;
+    --faint: #4b5668;
+    --term: #080b10;
+    --termfg: #d7e0ec;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+
+  .stage {
+    position: relative;
+    container-type: inline-size;
+    width: min(100vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .scene {
+    position: absolute; inset: 0;
+    padding: 4.5cqw 6cqw 15cqw;
+    display: flex; flex-direction: column; gap: 2.4cqw;
+    font-size: clamp(12px, 2cqw, 34px);
+    opacity: 0; visibility: hidden;
+  }
+  .scene.active { opacity: 1; visibility: visible; }
+  .scene h2 { margin: 0; font-size: clamp(16px, 3.4cqw, 56px); line-height: 1.2; }
+  .scene h3 { margin: 0; font-size: 1em; font-weight: 600; color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; gap: 1.2cqw; align-items: center; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 1.2cqw;
+    padding: 1.4cqw 2cqw;
+  }
+  .chip {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.5em 1.1em; white-space: nowrap;
+  }
+  .chip.on { border-color: var(--accent-2); color: var(--accent-2); font-weight: 600; }
+  .arrow { color: var(--muted); }
+  .hl { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2) inset; }
+  .bad { color: var(--bad); border-color: var(--bad); }
+  .good { color: var(--accent-2); border-color: var(--accent-2); }
+  .faded { opacity: 0.35; }
+  .tag {
+    display: inline-block; border-radius: 999px; padding: 0.35em 0.9em;
+    border: 1px dashed var(--accent); color: var(--accent); font-size: 0.9em; white-space: nowrap;
+  }
+  .note { color: var(--muted); font-size: 0.95em; }
+  .meta { color: var(--muted); font-size: 0.9em; }
+  .spacer { flex: 1; }
+  .lines { display: flex; flex-direction: column; gap: 1cqw; width: 100%; }
+  .line { display: flex; gap: 1.2cqw; align-items: center; }
+  .bar { height: 0.9cqw; border-radius: 4px; background: var(--line); flex: 1; }
+  .dot { width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: var(--accent-2); flex: none; }
+  .btn {
+    display: inline-block; padding: 0.6em 1.2em; border-radius: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; white-space: nowrap;
+  }
+  .stack { display: flex; flex-direction: column; gap: 1.4cqw; width: 100%; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; width: 100%; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2cqw; width: 100%; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; width: 100%; }
+  .card h3 { margin-bottom: 0.4cqw; }
+  .term {
+    background: var(--term); color: var(--termfg); border-radius: 1.2cqw;
+    padding: 1.6cqw 2.2cqw; width: 100%;
+    font-family: Consolas, "Cascadia Mono", ui-monospace, monospace;
+    font-size: 0.92em; line-height: 1.6;
+  }
+  .term .p { color: var(--accent-2); }
+  .term .o { color: #9fb0c6; }
+  .tbl { display: grid; grid-template-columns: repeat(6, auto); gap: 0.6cqw 2cqw; width: 100%; }
+  .tbl > div { padding: 0.5cqw 0; border-bottom: 1px solid var(--line); }
+  .tbl .head { color: var(--muted); font-weight: 600; }
+  .limits { display: flex; flex-direction: column; gap: 1.6cqw; }
+  .limits li { font-size: 1.1em; }
+  .limits ul { margin: 0; padding-left: 1.2em; }
+
+  /* Animasyonlar: render(t) bunları sahne içi zamana göre sürer. */
+  @keyframes fi { from { opacity: 0; transform: translateY(0.8cqw); } to { opacity: 1; transform: none; } }
+  @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .a { animation: fi 0.6s ease both; animation-delay: var(--d, 0s); }
+  .w { animation: wipe var(--w, 1s) linear both; animation-delay: var(--d, 0s); }
+  .g { transform-origin: 0 50%; animation: grow var(--w, 1s) ease both; animation-delay: var(--d, 0s); }
+
+  .subs {
+    position: absolute; left: 50%; bottom: 4%;
+    transform: translateX(-50%);
+    width: 88%;
+    padding: 0.4em 0.8em;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: clamp(12px, 2.3cqw, 40px);
+    line-height: 1.35;
+    text-align: center;
+    border-radius: 6px;
+  }
+  .subs:empty { display: none; }
+
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; gap: 12px; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    font-size: 14px; color: var(--muted);
+  }
+  .controls button {
+    font: inherit; color: var(--fg); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer;
+  }
+  .controls input[type="range"] { width: min(60vw, 480px); }
+  body.clean .controls { display: none; }
+
+  @media (max-width: 600px) {
+    .stage { width: 100vw; aspect-ratio: 3 / 4; }
+    .scene { padding: 6cqw 6cqw 30cqw; gap: 3.5cqw; font-size: clamp(12px, 3.4cqw, 34px); }
+    .subs { bottom: 3%; }
+    .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+    .tbl { grid-template-columns: repeat(3, auto); }
+  }
+</style>
+</head>
+<body>
+
+<main class="stage" id="stage" aria-label="Kule Pro kullanımı">
+
+  <!-- Sahne 1 -->
+  <section class="scene" data-id="s1" aria-label="Sahne 1">
+    <h2>Kule Pro · kullanım</h2>
+    <div class="spacer"></div>
+    <div class="row">
+      <span class="chip a" style="--d:0.6s">kurulum</span><span class="chip a" style="--d:1s">veri</span>
+      <span class="chip a" style="--d:1.4s">modüller</span><span class="chip a" style="--d:1.8s">vakalar</span>
+      <span class="chip a" style="--d:2.2s">ajan akışı</span><span class="chip a" style="--d:2.6s">onay</span>
+      <span class="chip on a" style="--d:3s">kendi verin</span>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Sahne 2 -->
+  <section class="scene" data-id="s2" aria-label="Sahne 2">
+    <h2>İlk değer</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python demo.py</div>
+      <div class="w o" style="--d:2.2s;--w:0.9s">emniyet stoğu ve sipariş kararları</div>
+      <div class="w o" style="--d:3.4s;--w:0.9s">süre</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="note a" style="--d:5s">Depodaki data/ klasörüne yazmaz</div>
+  </section>
+
+  <!-- Sahne 3 -->
+  <section class="scene" data-id="s3" aria-label="Sahne 3">
+    <h2>Kurulumsuz başlangıç</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python -m kule kullanici ekle ayse planlayici</div>
+      <div class="w " style="--d:2.6s;--w:0.9s"><span class="p">$</span> python -m kule serve --ingest data/ornek</div>
+      <div class="w o" style="--d:4.6s;--w:0.9s">→ http://127.0.0.1:8080/v1/saglik</div>
+    </div>
+    <div class="grid2">
+      <div class="card a" style="--d:6.2s"><h3>Kurulumsuz</h3><div>2,3 sn</div></div>
+      <div class="card a" style="--d:6.8s"><h3>pip ile</h3><div>20–26 sn</div></div>
+    </div>
+    <div class="note a" style="--d:7.6s">token bir kez yazılır</div>
+  </section>
+
+  <!-- Sahne 4 -->
+  <section class="scene" data-id="s4" aria-label="Sahne 4">
+    <h2>Girdi dosyaları</h2>
+    <div class="row">
+      <span class="chip a" style="--d:0.5s">stok</span><span class="chip a" style="--d:0.7s">sevkiyat</span>
+      <span class="chip a" style="--d:0.9s">siparis</span><span class="chip a" style="--d:1.1s">mal_kabul</span>
+      <span class="chip a" style="--d:1.3s">irsaliye</span><span class="chip a" style="--d:1.5s">talep_gecmis</span>
+      <span class="chip a" style="--d:1.7s">tedarikci_teslimat</span><span class="chip a" style="--d:1.9s">uretim</span>
+      <span class="chip a" style="--d:2.1s">yedek_parca</span><span class="chip on a" style="--d:2.5s">faturalar.txt</span>
+    </div>
+    <div class="note a" style="--d:3.2s">UTF-8, virgül ayraç, tarih YYYY-AA-GG</div>
+    <div class="card a" style="--d:4s">
+      <h3>stok.csv</h3>
+      <div>malzeme_no, depo, stok_miktari, emniyet_stogu, birim_maliyet</div>
+    </div>
+    <div class="note a" style="--d:6.4s">Miktar, emniyet stoğu ve maliyet sıfırın altına inemez.</div>
+  </section>
+
+  <!-- Sahne 5 -->
+  <section class="scene" data-id="s5" aria-label="Sahne 5">
+    <h2>Yükle ve denetle</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python -m kule ingest --girdi data/ornek</div>
+      <div class="w " style="--d:3s;--w:0.9s"><span class="p">$</span> python -m kule kalite</div>
+    </div>
+    <div class="row a" style="--d:6s">
+      <span class="chip">kabul</span><span class="chip">eksik</span><span class="chip">tutarsız</span><span class="chip">tekrar</span><span class="chip">bayat</span>
+    </div>
+    <div class="note a" style="--d:7.4s">reddedilen satır ve neden · skor bir varsayımdır</div>
+  </section>
+
+  <!-- Sahne 6 -->
+  <section class="scene" data-id="s6" aria-label="Sahne 6">
+    <h2>Modüller</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python -m kule calistir --girdi data/ornek --cikti data/cikti</div>
+    </div>
+    <div class="grid4">
+      <div class="card a" style="--d:2s">stok_durumu</div>
+      <div class="card a" style="--d:2.4s">siparis_anomali</div>
+      <div class="card a" style="--d:2.8s">talep_tahmini</div>
+      <div class="card a" style="--d:3.2s">tedarikci_skoru</div>
+      <div class="card a" style="--d:3.6s">uclu_eslestirme</div>
+      <div class="card a" style="--d:4s">oee</div>
+      <div class="card a" style="--d:4.4s">aciklama</div>
+      <div class="card a" style="--d:4.8s">7 JSON dosyası</div>
+    </div>
+  </section>
+
+  <!-- Sahne 7 -->
+  <section class="scene" data-id="s7" aria-label="Sahne 7">
+    <h2>stok_durumu</h2>
+    <div class="card a" style="--d:0.6s">
+      <h3>örnek veri: 36 kalem, 3 depo</h3>
+      <div class="grid4" style="margin-top:1.4cqw">
+        <div class="a" style="--d:1.2s"><h3>KRITIK</h3><div>13</div></div>
+        <div class="a" style="--d:1.6s"><h3>OLU_STOK</h3><div>1</div></div>
+        <div class="a" style="--d:2s"><h3>FAZLA_STOK</h3><div>5</div></div>
+        <div class="a" style="--d:2.4s"><h3>ABC</h3><div>sınıf</div></div>
+      </div>
+    </div>
+    <div class="row a" style="--d:3s"><span class="tag">ORNEK_VERI</span></div>
+    <div class="note a" style="--d:4s">Kapsama gününe göre durum ve ABC sınıfı.</div>
+  </section>
+
+  <!-- Sahne 8 -->
+  <section class="scene" data-id="s8" aria-label="Sahne 8">
+    <h2>siparis_anomali</h2>
+    <div class="card a" style="--d:0.6s">
+      <h3>7 tür sipariş–mal kabul tutarsızlığı</h3>
+      <div class="note" style="margin-top:1cqw">önem sırası</div>
+    </div>
+    <div class="row a" style="--d:2.4s"><span class="tag">örnek veride bilerek eklenen 7 anomali bulundu</span></div>
+    <div class="note a" style="--d:3.6s">İptaller hareket türü 102 düşülerek hesaplanır.</div>
+  </section>
+
+  <!-- Sahne 9 -->
+  <section class="scene" data-id="s9" aria-label="Sahne 9">
+    <h2>talep_tahmini</h2>
+    <div class="card a" style="--d:0.6s">
+      <h3>8 haftalık tahmin · %80 aralık · geriye dönük test</h3>
+      <div class="lines" style="margin-top:1.4cqw">
+        <div class="line"><span class="meta" style="width:24cqw">Holt-Winters</span><span class="bar g" style="--w:1.2s;--d:1.2s;flex:0 0 8.07cqw;max-width:8.07cqw;background:var(--accent-2)"></span><span>8,07</span></div>
+        <div class="line"><span class="meta" style="width:24cqw">geçen yılın aynı haftası</span><span class="bar g" style="--w:1.2s;--d:1.6s;flex:0 0 11.16cqw;max-width:11.16cqw;background:var(--faint)"></span><span>11,16</span></div>
+      </div>
+      <div class="note" style="margin-top:1cqw">Örnek veride ortalama yüzde hata · YP-107'de Holt-Winters daha kötü</div>
+    </div>
+  </section>
+
+  <!-- Sahne 10 -->
+  <section class="scene" data-id="s10" aria-label="Sahne 10">
+    <h2>tedarikci_skoru</h2>
+    <div class="note a" style="--d:0.4s">teslim, red, fiyat sapması → 0–100 skor · seviye A / B / C / D</div>
+    <div class="grid2">
+      <div class="card good a" style="--d:1.4s"><h3>T-01</h3><div>95,5 · A</div></div>
+      <div class="card bad a" style="--d:2.4s"><h3>T-03</h3><div>36,3 · D</div></div>
+    </div>
+  </section>
+
+  <!-- Sahne 11 -->
+  <section class="scene" data-id="s11" aria-label="Sahne 11">
+    <h2>uclu_eslestirme</h2>
+    <div class="row">
+      <span class="card a" style="--d:0.6s">sipariş</span><span class="arrow a" style="--d:1s">↔</span>
+      <span class="card a" style="--d:1.3s">irsaliye</span><span class="arrow a" style="--d:1.7s">↔</span>
+      <span class="card a" style="--d:2s">fatura</span>
+    </div>
+    <div class="grid2">
+      <div class="chip a" style="--d:2.8s">çift fatura</div>
+      <div class="chip a" style="--d:3.1s">fazla faturalama</div>
+      <div class="chip a" style="--d:3.4s">fiyat sapması</div>
+      <div class="chip a" style="--d:3.7s">irsaliyesiz fatura</div>
+    </div>
+    <div class="note a" style="--d:5s">OCR yok</div>
+  </section>
+
+  <!-- Sahne 12 -->
+  <section class="scene" data-id="s12" aria-label="Sahne 12">
+    <h2>oee</h2>
+    <div class="card a" style="--d:0.6s">
+      <h3>kullanılabilirlik × performans × kalite</h3>
+      <div class="note" style="margin-top:1cqw">duruş Pareto'su</div>
+    </div>
+    <div class="grid2">
+      <div class="card a" style="--d:2s"><h3>Ortalama OEE</h3><div>%68,15</div></div>
+      <div class="card a" style="--d:2.6s"><h3>Kök neden</h3><div>öneri, kanıt değil</div></div>
+    </div>
+  </section>
+
+  <!-- Sahne 13 -->
+  <section class="scene" data-id="s13" aria-label="Sahne 13">
+    <h2>aciklama</h2>
+    <div class="card a" style="--d:0.6s"><h3>Türkçe özet</h3><div>modül çıktılarından</div></div>
+    <div class="grid2">
+      <div class="card a" style="--d:2s"><h3>Varsayılan</h3><div>şablon, dil modeli yok</div></div>
+      <div class="card a" style="--d:3s"><h3>İsteğe bağlı dil modeli</h3><div>yalnız toplu özet cümlelerini görür</div></div>
+    </div>
+  </section>
+
+  <!-- Sahne 14 -->
+  <section class="scene" data-id="s14" aria-label="Sahne 14">
+    <h2>Vakalar</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python -m kule vaka listele</div>
+    </div>
+    <div class="tbl a" style="--d:2.4s">
+      <div class="head">önem</div><div class="head">modül</div><div class="head">nesne</div>
+      <div class="head">durum</div><div class="head">sahip</div><div class="head">hedef tarih</div>
+    </div>
+    <div class="grid3 a" style="--d:4.4s">
+      <div class="card"><h3>YUKSEK</h3><div>2 gün</div></div>
+      <div class="card"><h3>ORTA</h3><div>5 gün</div></div>
+      <div class="card"><h3>DUSUK</h3><div>10 gün</div></div>
+    </div>
+    <div class="note a" style="--d:5.4s">Hedef süre (varsayım)</div>
+  </section>
+
+  <!-- Sahne 15 -->
+  <section class="scene" data-id="s15" aria-label="Sahne 15">
+    <h2>Vaka durumu</h2>
+    <div class="term a" style="--d:0.4s">
+      <div class="w " style="--d:0.6s;--w:0.9s"><span class="p">$</span> python -m kule vaka durum ID INCELEMEDE --not 'gerekçe'</div>
+    </div>
+    <div class="grid2">
+      <div class="card good a" style="--d:2.6s">Kabul için gerekçe zorunlu</div>
+      <div class="card a" style="--d:3.4s">Her değişiklik denetim izinde</div>
+    </div>
+    <div class="tag a" style="--d:5s">'kim' bir etikettir, kimlik doğrulama değildir.</div>
+  </section>
+
+  <!-- Sahne 16 -->
+  <section class="scene" data-id="s16" aria-label="Sahne 16">
+    <h2>Ajan akışı</h2>
+    <div class="row">
+      <div class="card a" style="--d:0.6s;flex:1"><h3>Planlayıcı</h3><div>model, araçsız</div></div>
+      <span class="arrow a" style="--d:1.8s">→</span>
+      <div class="card a" style="--d:2.2s;flex:1"><h3>Analist</h3><div>model; araçlar stok_sorgu, tedarikci_sorgu</div></div>
+      <span class="arrow a" style="--d:3.4s">→</span>
+      <div class="card hl a" style="--d:3.8s;flex:1"><h3>Denetçi</h3><div>kod; sayıları Kule ile karşılaştırır</div></div>
+    </div>
+    <div class="note a" style="--d:6s">Düz metindeki sayılar yalnız Kule verisinde var mı diye bakılır.</div>
+  </section>
+
+  <!-- Sahne 17 -->
+  <section class="scene" data-id="s17" aria-label="Sahne 17">
+    <h2>Gerçek model koşusu</h2>
+    <div class="stack">
+      <div class="card bad a" style="--d:0.6s">İlk deneme: sayı yerine malzeme listesi · reddedildi</div>
+      <div class="card a" style="--d:2.2s">Kule'nin sayısı: 3</div>
+      <div class="card good a" style="--d:4s">İkinci deneme: beş iddia kabul edildi</div>
+    </div>
+  </section>
+
+  <!-- Sahne 18 -->
+  <section class="scene" data-id="s18" aria-label="Sahne 18">
+    <h2>İz görüntüleyici</h2>
+    <div class="row">
+      <span class="chip on a" style="--d:0.6s">Soruşturma · Planlayıcı</span>
+      <span class="chip a" style="--d:1s">Analist 1. deneme</span>
+      <span class="chip a" style="--d:1.4s">Analist 2. deneme</span>
+      <span class="chip a" style="--d:1.8s">Denetçi</span>
+    </div>
+    <div class="grid3">
+      <div class="tag a" style="--d:2.6s">GERÇEK MODEL KAYDI</div>
+      <div class="tag a" style="--d:3s">ELLE YAZILMIŞ KAYIT</div>
+      <div class="tag a" style="--d:3.4s">KOD SATIRI</div>
+    </div>
+    <div class="note a" style="--d:4.6s">40 planlanan koşudan 38'i kaydedildi</div>
+  </section>
+
+  <!-- Sahne 19 -->
+  <section class="scene" data-id="s19" aria-label="Sahne 19">
+    <h2>Onay kapısı</h2>
+    <div class="card a" style="--d:0.6s"><h3>Yan etkili araç istedi</h3><div class="note">özet</div></div>
+    <div class="row a" style="--d:2.6s">
+      <span class="btn">Onay</span><span class="chip bad">Red</span>
+    </div>
+    <div class="note a" style="--d:4.6s">Onay, çalıştırılacak argümanın özetiyle verilir; özet tutmazsa araç çalışmaz.</div>
+  </section>
+
+  <!-- Sahne 20 -->
+  <section class="scene" data-id="s20" aria-label="Sahne 20">
+    <h2>Kendi verinizle başlayın</h2>
+    <div class="grid4">
+      <div class="card a" style="--d:0.6s"><h3>1</h3><div>verileri sözleşmeye göre hazırla</div></div>
+      <div class="card a" style="--d:1.6s"><h3>2</h3><div>ingest</div></div>
+      <div class="card a" style="--d:2.6s"><h3>3</h3><div>kalite</div></div>
+      <div class="card a" style="--d:3.6s"><h3>4</h3><div>calistir</div></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="note a" style="--d:5s">Gerçek firma verisiyle henüz denenmedi.</div>
+  </section>
+
+  <!-- Sahne 21 -->
+  <section class="scene" data-id="s21" aria-label="Sahne 21">
+    <h2>Sınırlar</h2>
+    <div class="card limits">
+      <ul>
+        <li class="a" style="--d:0.6s">dil modeli varsayılan değil</li>
+        <li class="a" style="--d:1.2s">SAP bağlantısı yok</li>
+        <li class="a" style="--d:1.8s">OCR yok</li>
+        <li class="a" style="--d:2.4s">Docker bu ölçümde koşulamadı</li>
+        <li class="a" style="--d:3s">gerçek firma verisi yok</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sahne 22 -->
+  <section class="scene" data-id="s22" aria-label="Sahne 22">
+    <h2>Bilinen sınırlar</h2>
+    <div class="card limits">
+      <ul>
+        <li class="a" style="--d:0.6s">sızıntı parafrazı 6 denemede 0 yakalandı</li>
+        <li class="a" style="--d:2s">bilerek eklenen ×10 ölçek hatası 34 denemede 0 yakalandı</li>
+        <li class="a" style="--d:3.4s">reddedilen sipariş satırı sahte bulgu üretebilir → önce veriyi düzeltin</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sahne 23 -->
+  <section class="scene" data-id="s23" aria-label="Sahne 23">
+    <div class="spacer"></div>
+    <h2 class="a" style="--d:0.4s">Kaynak kod bu yayında yok</h2>
+    <div class="row a" style="--d:2s"><span class="chip">sayılar ve sınırlar kanıt sayfasında</span></div>
+    <div class="spacer"></div>
+  </section>
+
+  <div class="subs" id="subs" aria-live="polite"></div>
+</main>
+
+<nav class="controls" aria-label="Oynatma">
+  <button id="play" type="button">Oynat</button>
+  <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Konum">
+  <span id="clock">0.0 sn</span>
+  <button id="lang" type="button">EN</button>
+  <button id="theme" type="button">Tema</button>
+</nav>
+
+<script>
+  // Sahne süreleri ve altyazılar senaryo JSON'undan üretildi (_v5/build.mjs). Elle değiştirmeyin.
+  const SCENES = [{"id":"s1","dur":10,"tr":"Kurulum, veri, modüller, vakalar, ajan akışı ve onay.","en":"Setup, data, modules, cases, agent flow and approval."},{"id":"s2","dur":13,"tr":"python demo.py: örnek veri ve kararlar, yaklaşık yarım saniye.","en":"python demo.py: sample data and decisions, about half a second."},{"id":"s3","dur":16,"tr":"Kurulumsuz: kullanıcı ekle, servisi başlat. İlk yanıt 2,3 sn.","en":"No install: add a user, start the service. First answer in 2.3 s."},{"id":"s4","dur":15,"tr":"Dokuz CSV ve bir fatura metni. stok.csv'de miktar, emniyet stoğu ve maliyet sıfırdan küçük olamaz.","en":"Nine CSV files and one invoice text. In stok.csv, quantities, safety stock and costs cannot be negative."},{"id":"s5","dur":16,"tr":"ingest: doğrula, yükle, görüntü al. kalite: reddedilen satırlar.","en":"ingest: validate, load, snapshot. kalite: quality check and rejected rows."},{"id":"s6","dur":12,"tr":"calistir: altı modül ve bir açıklama, hepsi JSON.","en":"calistir: six modules and one summary, all as JSON."},{"id":"s7","dur":10,"tr":"Kapsama gününe göre durum ve ABC sınıfı. Örnek veri.","en":"Status by coverage days, plus ABC class. Sample data."},{"id":"s8","dur":10,"tr":"Yedi tür sipariş–mal kabul tutarsızlığı. Örnek veride yedisi de bulundu.","en":"Seven kinds of order versus goods-receipt mismatch. All seven planted cases were found in sample data."},{"id":"s9","dur":12,"tr":"8 haftalık tahmin, %80 aralık. Örnek veride ortalama hata 8,07; basit yöntem 11,16.","en":"Eight-week forecast, 80% interval. Sample average error 8.07%, simple baseline 11.16%."},{"id":"s10","dur":11,"tr":"Teslim, red ve fiyat sapmasından skor. Örnek: T-01 A, T-03 D.","en":"Score from delivery, rejects and price deviation. Sample: T-01 A, T-03 D."},{"id":"s11","dur":11,"tr":"Sipariş, irsaliye, fatura: dört tür uyumsuzluk. OCR yok.","en":"Order, delivery note, invoice: four kinds of mismatch. No OCR."},{"id":"s12","dur":10,"tr":"OEE, duruş Pareto'su, kök neden önerisi. Öneri, kanıt değil.","en":"OEE, downtime Pareto, root-cause suggestion. A suggestion, not proof."},{"id":"s13","dur":11,"tr":"Türkçe özet. Varsayılan şablon; dil modeli isteğe bağlı.","en":"Turkish summary. Template by default; a language model is optional."},{"id":"s14","dur":12,"tr":"Her bulgu bir vaka olur: sahibi, durumu, hedef tarihi.","en":"Each finding becomes a case with an owner, a status and a target date."},{"id":"s15","dur":11,"tr":"Kabul için gerekçe şart. Her değişiklik denetim izinde. 'Kim' bir etiket.","en":"Acceptance needs a reason. Every change is in the audit trail. 'Who' is a label."},{"id":"s16","dur":13,"tr":"Planlayıcı böler. Analist araç çağırır. Denetçi kodla kontrol eder.","en":"The planner splits the task. The analyst calls tools. The checker verifies in code."},{"id":"s17","dur":13,"tr":"Gerçek model: ilk deneme reddedildi, ikinci kabul edildi.","en":"Real model run: first attempt rejected, second accepted."},{"id":"s18","dur":13,"tr":"Her iz kaynağını rozetle belirtir. Gerçek model: 38 koşu kayıtlı.","en":"Each trace shows its source. Real model: 38 runs recorded."},{"id":"s19","dur":15,"tr":"Onay özetle verilir. Özet tutmazsa araç çalışmaz.","en":"Approval is given on a summary. If it does not match, the tool does not run."},{"id":"s20","dur":13,"tr":"Önce sözleşmeye uygun veri, sonra ingest, kalite ve calistir.","en":"Contract-compliant data first, then ingest, quality check and calistir."},{"id":"s21","dur":12,"tr":"Dil modeli yok, SAP ve OCR bağlantısı yok, firma verisiyle denenmedi.","en":"No language model by default, no SAP or OCR link, not tested on company data."},{"id":"s22","dur":14,"tr":"Bilinen sınırlar: sızıntı ve ölçek hatası geçebilir. Önce veriyi düzeltin.","en":"Known limits: a leak and a scale error can pass. Fix the data first."},{"id":"s23","dur":9,"tr":"Kaynak kod bu yayında yok. Sayılar ve sınırlar kanıt sayfasında.","en":"Source code is not in this release. Numbers and limits are on the evidence page."}];
+
+  const stage = document.getElementById("stage");
+  const subs = document.getElementById("subs");
+  const seek = document.getElementById("seek");
+  const clock = document.getElementById("clock");
+  const playBtn = document.getElementById("play");
+  const langBtn = document.getElementById("lang");
+  const themeBtn = document.getElementById("theme");
+
+  const starts = [];
+  let total = 0;
+  for (const s of SCENES) { starts.push(total); total += s.dur; }
+
+  const sceneEls = [...stage.querySelectorAll(".scene")];
+  sceneEls.forEach((el, i) => {
+    if (el.dataset.id !== SCENES[i].id) throw new Error("sahne sırası uyuşmuyor: " + el.dataset.id);
+  });
+
+  const params = new URLSearchParams(location.search);
+  let lang = params.get("lang") === "en" ? "en" : "tr";
+  const forcedTheme = params.get("theme");
+  if (forcedTheme === "light" || forcedTheme === "dark") document.documentElement.dataset.theme = forcedTheme;
+  if (params.get("clean") === "1") document.body.classList.add("clean");
+
+  function sceneAt(t) {
+    let idx = 0;
+    for (let i = 0; i < SCENES.length; i++) if (t >= starts[i]) idx = i;
+    return idx;
+  }
+
+  // Her CSS animasyonunu sahne içi zamana göre konumlandırır: deterministik kare.
+  function render(t) {
+    const idx = sceneAt(t);
+    sceneEls.forEach((el, i) => el.classList.toggle("active", i === idx));
+    subs.textContent = SCENES[idx][lang];
+    clock.textContent = t.toFixed(1) + " sn";
+    seek.value = String(Math.round((t / total) * 1000));
+    for (const a of document.getAnimations()) {
+      const target = a.effect && a.effect.target;
+      const sc = target && target.closest && target.closest(".scene");
+      if (!sc) continue;
+      a.pause();
+      a.currentTime = Math.max(0, (t - starts[sceneEls.indexOf(sc)]) * 1000);
+    }
+  }
+
+  let t = params.has("t") ? Math.min(total, Math.max(0, Number(params.get("t")))) : 0;
+  let playing = false;
+  let last = 0;
+
+  function tick(now) {
+    if (!playing) return;
+    if (last) t += (now - last) / 1000;
+    last = now;
+    if (t >= total) { t = total; playing = false; playBtn.textContent = "Oynat"; last = 0; }
+    render(t);
+    if (playing) requestAnimationFrame(tick);
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (playing) { playing = false; playBtn.textContent = "Oynat"; last = 0; return; }
+    if (t >= total) t = 0;
+    playing = true; playBtn.textContent = "Duraklat"; last = 0;
+    requestAnimationFrame(tick);
+  });
+  seek.addEventListener("input", () => {
+    t = (Number(seek.value) / 1000) * total;
+    render(t);
+  });
+  langBtn.addEventListener("click", () => {
+    lang = lang === "tr" ? "en" : "tr";
+    langBtn.textContent = lang === "tr" ? "EN" : "TR";
+    render(t);
+  });
+  themeBtn.addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    root.dataset.theme = dark ? "light" : "dark";
+  });
+
+  window.__render = (x) => { t = x; render(x); };
+  window.__scenes = () => ({ total, starts, dur: SCENES.map((s) => s.dur) });
+
+  if (lang === "en") langBtn.textContent = "TR";
+  render(t);
+</script>
+</body>
+</html>

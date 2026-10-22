@@ -17,6 +17,31 @@
 
 **Boundary:** The sample data is synthetic or public and is not a real company's result. The Kule source code is not in this repository.
 
+## Videos
+
+Two separate videos, no audio, with Turkish and English subtitles. No source code is shown; the numbers come from the measurements on this page. [Player page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) (language switch, subtitles, download).
+
+| Introduction (2 min 45 s) | Usage (4 min 42 s) |
+|---|---|
+| [![Introduction video: what Kule Pro is](video/tanitim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) | [![Usage video: step by step](video/kullanim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) |
+| What Kule Pro is, why the model never decides alone, what we measured and what we could not. [MP4 TR](video/tanitim/tanitim-tr.mp4) · [MP4 EN](video/tanitim/tanitim-en.mp4) · [subtitles](video/tanitim/tanitim-en.srt) | From setup to human approval: data loading, modules, the agent flow, the trace viewer. [MP4 TR](video/kullanim/kullanim-tr.mp4) · [MP4 EN](video/kullanim/kullanim-en.mp4) · [subtitles](video/kullanim/kullanim-en.srt) |
+
+The numbers in the videos come from measurements on public and synthetic data; nothing was measured on a real company's data.
+
+## Screenshots
+
+Taken from the live pages (light theme, 1440 px).
+
+| Agent trace viewer | Test evidence |
+|---|---|
+| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: 345 tests, breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+
+| Portfolio page | Home |
+|---|---|
+| [![Portfolio page](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Home page](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
+
+Every trace in the viewer carries a badge that states its source (hand-written record, real-model record or code line). The screenshots show the Turkish interface; the pages have a TR / EN switch.
+
 ## 1. Agent orchestrator and Auditor
 
 ![Investigation flow: Planner, Analyst, Auditor; approval gate and allow-list](docs/img/en/ajan-akisi.svg)

@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kule Pro tanıtımı</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f7f9;
+    --fg: #1b2330;
+    --muted: #5d6878;
+    --accent: #2f6fdb;
+    --accent-2: #1fa67a;
+    --bad: #c93a35;
+    --line: #c9d1dc;
+    --panel: #ffffff;
+    --faint: #98a2b3;
+    --term: #141a24;
+    --termfg: #d7e0ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f141c;
+      --fg: #e7ecf3;
+      --muted: #9aa6b8;
+      --accent: #6aa2ff;
+      --accent-2: #3fd1a0;
+      --bad: #ff7a70;
+      --line: #334055;
+      --panel: #171e29;
+      --faint: #4b5668;
+      --term: #080b10;
+      --termfg: #d7e0ec;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141c;
+    --fg: #e7ecf3;
+    --muted: #9aa6b8;
+    --accent: #6aa2ff;
+    --accent-2: #3fd1a0;
+    --bad: #ff7a70;
+    --line: #334055;
+    --panel: #171e29;
+    --faint: #4b5668;
+    --term: #080b10;
+    --termfg: #d7e0ec;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+
+  .stage {
+    position: relative;
+    container-type: inline-size;
+    width: min(100vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .scene {
+    position: absolute; inset: 0;
+    padding: 4.5cqw 6cqw 15cqw;
+    display: flex; flex-direction: column; gap: 2.4cqw;
+    font-size: clamp(12px, 2cqw, 34px);
+    opacity: 0; visibility: hidden;
+  }
+  .scene.active { opacity: 1; visibility: visible; }
+  .scene h2 { margin: 0; font-size: clamp(16px, 3.4cqw, 56px); line-height: 1.2; }
+  .scene h3 { margin: 0; font-size: 1em; font-weight: 600; color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; gap: 1.2cqw; align-items: center; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 1.2cqw;
+    padding: 1.4cqw 2cqw;
+  }
+  .chip {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+    padding: 0.5em 1.1em; white-space: nowrap;
+  }
+  .chip.on { border-color: var(--accent-2); color: var(--accent-2); font-weight: 600; }
+  .arrow { color: var(--muted); }
+  .hl { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2) inset; }
+  .bad { color: var(--bad); border-color: var(--bad); }
+  .good { color: var(--accent-2); border-color: var(--accent-2); }
+  .faded { opacity: 0.35; }
+  .tag {
+    display: inline-block; border-radius: 999px; padding: 0.35em 0.9em;
+    border: 1px dashed var(--accent); color: var(--accent); font-size: 0.9em; white-space: nowrap;
+  }
+  .note { color: var(--muted); font-size: 0.95em; }
+  .meta { color: var(--muted); font-size: 0.9em; }
+  .spacer { flex: 1; }
+  .lines { display: flex; flex-direction: column; gap: 1cqw; width: 100%; }
+  .line { display: flex; gap: 1.2cqw; align-items: center; }
+  .bar { height: 0.9cqw; border-radius: 4px; background: var(--line); flex: 1; }
+  .dot { width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: var(--accent-2); flex: none; }
+  .btn {
+    display: inline-block; padding: 0.6em 1.2em; border-radius: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; white-space: nowrap;
+  }
+  .stack { display: flex; flex-direction: column; gap: 1.4cqw; width: 100%; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; width: 100%; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2cqw; width: 100%; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; width: 100%; }
+  .card h3 { margin-bottom: 0.4cqw; }
+  .term {
+    background: var(--term); color: var(--termfg); border-radius: 1.2cqw;
+    padding: 1.6cqw 2.2cqw; width: 100%;
+    font-family: Consolas, "Cascadia Mono", ui-monospace, monospace;
+    font-size: 0.92em; line-height: 1.6;
+  }
+  .term .p { color: var(--accent-2); }
+  .term .o { color: #9fb0c6; }
+  .tbl { display: grid; grid-template-columns: repeat(6, auto); gap: 0.6cqw 2cqw; width: 100%; }
+  .tbl > div { padding: 0.5cqw 0; border-bottom: 1px solid var(--line); }
+  .tbl .head { color: var(--muted); font-weight: 600; }
+  .limits { display: flex; flex-direction: column; gap: 1.6cqw; }
+  .limits li { font-size: 1.1em; }
+  .limits ul { margin: 0; padding-left: 1.2em; }
+
+  /* Animasyonlar: render(t) bunları sahne içi zamana göre sürer. */
+  @keyframes fi { from { opacity: 0; transform: translateY(0.8cqw); } to { opacity: 1; transform: none; } }
+  @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .a { animation: fi 0.6s ease both; animation-delay: var(--d, 0s); }
+  .w { animation: wipe var(--w, 1s) linear both; animation-delay: var(--d, 0s); }
+  .g { transform-origin: 0 50%; animation: grow var(--w, 1s) ease both; animation-delay: var(--d, 0s); }
+
+  .subs {
+    position: absolute; left: 50%; bottom: 4%;
+    transform: translateX(-50%);
+    width: 88%;
+    padding: 0.4em 0.8em;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: clamp(12px, 2.3cqw, 40px);
+    line-height: 1.35;
+    text-align: center;
+    border-radius: 6px;
+  }
+  .subs:empty { display: none; }
+
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; gap: 12px; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    font-size: 14px; color: var(--muted);
+  }
+  .controls button {
+    font: inherit; color: var(--fg); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer;
+  }
+  .controls input[type="range"] { width: min(60vw, 480px); }
+  body.clean .controls { display: none; }
+
+  @media (max-width: 600px) {
+    .stage { width: 100vw; aspect-ratio: 3 / 4; }
+    .scene { padding: 6cqw 6cqw 30cqw; gap: 3.5cqw; font-size: clamp(12px, 3.4cqw, 34px); }
+    .subs { bottom: 3%; }
+    .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+    .tbl { grid-template-columns: repeat(3, auto); }
+  }
+</style>
+</head>
+<body>
+
+<main class="stage" id="stage" aria-label="Kule Pro tanıtımı">
+
+  <!-- Sahne 1 -->
+  <section class="scene" data-id="s1" aria-label="Sahne 1">
+    <h2>Kule Pro · tedarik zinciri karar destek aracı</h2>
+    <div class="spacer"></div>
+    <div class="grid4">
+      <div class="card a" style="--d:0.8s"><h3>Stok</h3><div class="bar g" style="--w:1s;--d:1s"></div></div>
+      <div class="card a" style="--d:1.6s"><h3>Sipariş</h3><div class="bar g" style="--w:1s;--d:1.8s"></div></div>
+      <div class="card a" style="--d:2.4s"><h3>Tedarikçi</h3><div class="bar g" style="--w:1s;--d:2.6s"></div></div>
+      <div class="card a" style="--d:3.2s"><h3>Fatura</h3><div class="bar g" style="--w:1s;--d:3.4s"></div></div>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Sahne 2 -->
+  <section class="scene" data-id="s2" aria-label="Sahne 2">
+    <h2>Planlayıcı · Satın alma · Yönetici</h2>
+    <div class="spacer"></div>
+    <div class="grid3">
+      <div class="card a" style="--d:0.8s"><h3>Planlayıcı</h3><div>Bugün hangi kalem kritik?</div></div>
+      <div class="card a" style="--d:3s"><h3>Satın alma</h3><div>Hangi fatura fazla?</div></div>
+      <div class="card a" style="--d:6s"><h3>Yönetici</h3><div>Hangi tedarikçi geriliyor?</div></div>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Sahne 3 -->
+  <section class="scene" data-id="s3" aria-label="Sahne 3">
+    <h2>Akış</h2>
+    <div class="spacer"></div>
+    <div class="row">
+      <span class="chip a" style="--d:0.6s">Veri</span><span class="arrow a" style="--d:1s">→</span>
+      <span class="chip a" style="--d:1.3s">Doğrulama</span><span class="arrow a" style="--d:1.7s">→</span>
+      <span class="chip a" style="--d:2s">Onaylı özet</span><span class="arrow a" style="--d:2.4s">→</span>
+      <span class="chip a" style="--d:2.7s">Biçim kapısı</span><span class="arrow a" style="--d:3.1s">→</span>
+      <span class="chip a" style="--d:3.4s">İz</span><span class="arrow a" style="--d:3.8s">→</span>
+      <span class="chip on a" style="--d:4.1s">İnsan onayı</span>
+    </div>
+    <div class="row a" style="--d:5s">
+      <span class="card hl" style="flex:1">Model · tek başına karar vermez</span>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Sahne 4 -->
+  <section class="scene" data-id="s4" aria-label="Sahne 4">
+    <h2>CSV satırları sözleşmeye giriyor</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Veritabanı</h3>
+        <div class="lines" style="margin-top:1cqw">
+          <div class="line a" style="--d:0.8s"><span class="dot"></span><span class="bar"></span></div>
+          <div class="line a" style="--d:1.4s"><span class="dot"></span><span class="bar"></span></div>
+          <div class="line a" style="--d:2s"><span class="dot"></span><span class="bar"></span></div>
+        </div>
+      </div>
+      <div class="card bad a" style="--d:2.6s">
+        <h3>Reddedilenler</h3>
+        <div class="lines" style="margin-top:1cqw">
+          <div class="line"><span class="bar"></span></div>
+          <div class="note">neden ve ham satır</div>
+        </div>
+      </div>
+    </div>
+    <div class="row a" style="--d:4.5s">
+      <span class="chip">zorunlu alan</span><span class="chip">sayı ve tarih biçimi</span><span class="chip">tekrar kontrolü</span>
+    </div>
+  </section>
+
+  <!-- Sahne 5 -->
+  <section class="scene" data-id="s5" aria-label="Sahne 5">
+    <h2>Yükleme</h2>
+    <div class="grid3">
+      <div class="card a" style="--d:0.8s"><h3>Kabul</h3><div>172.765 satır</div></div>
+      <div class="card a" style="--d:1.6s"><h3>Ret</h3><div>0 ret</div></div>
+      <div class="card a" style="--d:2.4s"><h3>Süre</h3><div>yaklaşık 8 sn</div></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="tag a" style="--d:3.4s">Herkese açık DataCo verisinden uyarlandı · firma verisi değil</div>
+  </section>
+
+  <!-- Sahne 6 -->
+  <section class="scene" data-id="s6" aria-label="Sahne 6">
+    <div class="row" style="justify-content:space-between">
+      <h2>Analist iddiası ve Denetçi</h2>
+      <span class="tag a" style="--d:0.4s">örnek kayıt · elle yazılmış</span>
+    </div>
+    <div class="stack">
+      <div class="card a" style="--d:1s">Analist iddiası: T-03 skoru 58,0</div>
+      <div class="card a" style="--d:2.6s">Kule hesabı: 36,3</div>
+      <div class="card bad a" style="--d:4.2s">Denetçi (kod): reddedildi</div>
+      <div class="card good a" style="--d:6s">İkinci deneme: 36,3 kabul</div>
+    </div>
+    <div class="note a" style="--d:8s">Düz metindeki sayılar yalnız varlık olarak denetlenir.</div>
+  </section>
+
+  <!-- Sahne 7 -->
+  <section class="scene" data-id="s7" aria-label="Sahne 7">
+    <h2>Biçim kapısı</h2>
+    <div class="row">
+      <div class="card good a" style="--d:0.6s;flex:1">Yanıt · görev içi</div>
+      <div class="card bad a" style="--d:1.4s;flex:1">Yanıt · görev dışı</div>
+    </div>
+    <div class="row a" style="--d:3s">
+      <span class="chip bad">Durduruldu</span>
+      <span class="tag">yeniden iste (en çok 2 kez)</span>
+    </div>
+    <div class="spacer"></div>
+    <h3>İz şeridi · her olay tek tek kayıtlı</h3>
+    <div class="row">
+      <span class="chip a" style="--d:4.2s">Veri</span><span class="arrow a" style="--d:4.5s">→</span>
+      <span class="chip a" style="--d:4.8s">Doğrulama</span><span class="arrow a" style="--d:5.1s">→</span>
+      <span class="chip a" style="--d:5.4s">Onaylı özet</span><span class="arrow a" style="--d:5.7s">→</span>
+      <span class="chip a" style="--d:6s">Biçim kapısı</span>
+    </div>
+  </section>
+
+  <!-- Sahne 8 -->
+  <section class="scene" data-id="s8" aria-label="Sahne 8">
+    <h2>İnsan onayı</h2>
+    <div class="card a" style="--d:0.6s">
+      <h3>Çalıştırılacak işin özeti</h3>
+      <div class="lines" style="margin-top:1cqw">
+        <div class="line"><span class="bar g" style="--w:1s;--d:1.2s"></span></div>
+        <div class="line"><span class="bar g" style="--w:1s;--d:1.6s;flex:0.7"></span></div>
+      </div>
+    </div>
+    <div class="row a" style="--d:3s">
+      <span class="btn">Özeti onayla</span>
+      <span class="note">Körlemesine onay modu kapalı</span>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Sahne 9 -->
+  <section class="scene" data-id="s9" aria-label="Sahne 9">
+    <h2>Testler</h2>
+    <div class="grid3">
+      <div class="card a" style="--d:0.8s"><h3>Kule</h3><div>Python 229</div></div>
+      <div class="card a" style="--d:1.6s"><h3>Orkestratör</h3><div>Python 87</div></div>
+      <div class="card a" style="--d:2.4s"><h3>Panel</h3><div>Node 29 · tam ağaçta 29/29</div></div>
+    </div>
+  </section>
+
+  <!-- Sahne 10 -->
+  <section class="scene" data-id="s10" aria-label="Sahne 10">
+    <h2>Ölçümler</h2>
+    <div class="grid2">
+      <div class="card a" style="--d:0.8s"><h3>Eval</h3><div>34 vakanın 33'ü geçti, 1 bilinen açık</div></div>
+      <div class="card a" style="--d:2s"><h3>Gerçek model</h3><div>20 koşudan 16'sı kabul</div></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="tag a" style="--d:3.4s">Eval kasetten oynatılır</div>
+  </section>
+
+  <!-- Sahne 11 -->
+  <section class="scene" data-id="s11" aria-label="Sahne 11">
+    <h2>Ölçülmedi</h2>
+    <div class="card a" style="--d:0.6s">
+      <div class="grid2">
+        <div>Mal kabul</div><div>İrsaliye</div>
+        <div>Fatura</div><div>Üretim</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="note a" style="--d:2.6s">Firma ihtiyacı kanıtı yok</div>
+  </section>
+
+  <!-- Sahne 12 -->
+  <section class="scene" data-id="s12" aria-label="Sahne 12">
+    <h2>Bilinen sınırlar</h2>
+    <div class="card limits">
+      <ul>
+        <li class="a" style="--d:0.8s">Yeniden ifade edilmiş sızıntı: 6 denemede 0 yakalandı.</li>
+        <li class="a" style="--d:2.4s">Bilerek eklenen ×10 ölçek hatası: 34 denemede 0 yakalandı.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sahne 13 -->
+  <section class="scene" data-id="s13" aria-label="Sahne 13">
+    <div class="spacer"></div>
+    <h2 class="a" style="--d:0.4s">Kule Pro · karar destek aracı · son sözü insan söyler</h2>
+    <div class="row a" style="--d:2s">
+      <span class="chip">Kaynak kod bu yayında yok</span>
+      <span class="chip">Sayılar ve sınırlar kanıt sayfasında</span>
+    </div>
+    <div class="spacer"></div>
+  </section>
+
+  <div class="subs" id="subs" aria-live="polite"></div>
+</main>
+
+<nav class="controls" aria-label="Oynatma">
+  <button id="play" type="button">Oynat</button>
+  <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Konum">
+  <span id="clock">0.0 sn</span>
+  <button id="lang" type="button">EN</button>
+  <button id="theme" type="button">Tema</button>
+</nav>
+
+<script>
+  // Sahne süreleri ve altyazılar senaryo JSON'undan üretildi (_v5/build.mjs). Elle değiştirmeyin.
+  const SCENES = [{"id":"s1","dur":12,"tr":"Kule Pro: stok, sipariş, tedarikçi ve fatura verisini okur.","en":"Kule Pro reads stock, order, supplier and invoice data."},{"id":"s2","dur":12,"tr":"Planlayıcı, satın alma ve yönetici için tasarlandı.","en":"Built for planners, buyers and managers."},{"id":"s3","dur":12,"tr":"Model tek başına karar vermez. Veri önce doğrulanır.","en":"The model does not decide alone. Data is validated first."},{"id":"s4","dur":15,"tr":"Her satır sözleşmeye göre denetlenir. Bozuk satır kaybolmaz.","en":"Every row is checked against a contract. Bad rows are kept, not lost."},{"id":"s5","dur":14,"tr":"172.765 satır, 0 ret, yaklaşık 8 sn. Herkese açık veri.","en":"172,765 rows, 0 rejected, about 8 s. Public data."},{"id":"s6","dur":16,"tr":"Sayılar Kule'nin hesabıyla karşılaştırılır. Denetçi bir koddur.","en":"Numbers are checked against Kule's own calculation. The checker is code."},{"id":"s7","dur":11,"tr":"Biçim kapısı görev dışı çıktıyı durdurur. Her adım izlenir.","en":"The format gate stops off-task output. Every step is traced."},{"id":"s8","dur":12,"tr":"Onay özetle verilir. Özet tutmazsa iş durur.","en":"Approval is given on a summary. If it does not match, the action stops."},{"id":"s9","dur":10,"tr":"Python: 229 ve 87 test. Node: 29 test, hepsi geçti.","en":"Python: 229 and 87 tests. Node: 29 tests, all passed."},{"id":"s10","dur":14,"tr":"Eval kasetten oynatılır. Gerçek model: 20 koşudan 16 kabul.","en":"Eval replays recorded cases. Real model: 16 of 20 runs accepted."},{"id":"s11","dur":13,"tr":"Mal kabul, irsaliye, fatura, üretim ölçülmedi. Firma ihtiyacı kanıtı yok.","en":"Goods receipt, delivery notes, invoices and production not measured. No proof of company need yet."},{"id":"s12","dur":12,"tr":"Bilinen sınır: yeniden ifade edilmiş sızıntı ve ölçek hatası geçebilir.","en":"Known limit: a reworded leak and a scale error can pass the checks."},{"id":"s13","dur":12,"tr":"Karar destek aracı. Son sözü insan söyler. Sayılar ve sınırlar kanıt sayfasında.","en":"A decision-support tool. People make the final call. Numbers and limits are on the evidence page."}];
+
+  const stage = document.getElementById("stage");
+  const subs = document.getElementById("subs");
+  const seek = document.getElementById("seek");
+  const clock = document.getElementById("clock");
+  const playBtn = document.getElementById("play");
+  const langBtn = document.getElementById("lang");
+  const themeBtn = document.getElementById("theme");
+
+  const starts = [];
+  let total = 0;
+  for (const s of SCENES) { starts.push(total); total += s.dur; }
+
+  const sceneEls = [...stage.querySelectorAll(".scene")];
+  sceneEls.forEach((el, i) => {
+    if (el.dataset.id !== SCENES[i].id) throw new Error("sahne sırası uyuşmuyor: " + el.dataset.id);
+  });
+
+  const params = new URLSearchParams(location.search);
+  let lang = params.get("lang") === "en" ? "en" : "tr";
+  const forcedTheme = params.get("theme");
+  if (forcedTheme === "light" || forcedTheme === "dark") document.documentElement.dataset.theme = forcedTheme;
+  if (params.get("clean") === "1") document.body.classList.add("clean");
+
+  function sceneAt(t) {
+    let idx = 0;
+    for (let i = 0; i < SCENES.length; i++) if (t >= starts[i]) idx = i;
+    return idx;
+  }
+
+  // Her CSS animasyonunu sahne içi zamana göre konumlandırır: deterministik kare.
+  function render(t) {
+    const idx = sceneAt(t);
+    sceneEls.forEach((el, i) => el.classList.toggle("active", i === idx));
+    subs.textContent = SCENES[idx][lang];
+    clock.textContent = t.toFixed(1) + " sn";
+    seek.value = String(Math.round((t / total) * 1000));
+    for (const a of document.getAnimations()) {
+      const target = a.effect && a.effect.target;
+      const sc = target && target.closest && target.closest(".scene");
+      if (!sc) continue;
+      a.pause();
+      a.currentTime = Math.max(0, (t - starts[sceneEls.indexOf(sc)]) * 1000);
+    }
+  }
+
+  let t = params.has("t") ? Math.min(total, Math.max(0, Number(params.get("t")))) : 0;
+  let playing = false;
+  let last = 0;
+
+  function tick(now) {
+    if (!playing) return;
+    if (last) t += (now - last) / 1000;
+    last = now;
+    if (t >= total) { t = total; playing = false; playBtn.textContent = "Oynat"; last = 0; }
+    render(t);
+    if (playing) requestAnimationFrame(tick);
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (playing) { playing = false; playBtn.textContent = "Oynat"; last = 0; return; }
+    if (t >= total) t = 0;
+    playing = true; playBtn.textContent = "Duraklat"; last = 0;
+    requestAnimationFrame(tick);
+  });
+  seek.addEventListener("input", () => {
+    t = (Number(seek.value) / 1000) * total;
+    render(t);
+  });
+  langBtn.addEventListener("click", () => {
+    lang = lang === "tr" ? "en" : "tr";
+    langBtn.textContent = lang === "tr" ? "EN" : "TR";
+    render(t);
+  });
+  themeBtn.addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    root.dataset.theme = dark ? "light" : "dark";
+  });
+
+  window.__render = (x) => { t = x; render(x); };
+  window.__scenes = () => ({ total, starts, dur: SCENES.map((s) => s.dur) });
+
+  if (lang === "en") langBtn.textContent = "TR";
+  render(t);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.000
+Kule Pro: stok, sipariş, tedarikçi ve fatura verisini okur.
+
+00:00:12.000 --> 00:00:24.000
+Planlayıcı, satın alma ve yönetici için tasarlandı.
+
+00:00:24.000 --> 00:00:36.000
+Model tek başına karar vermez. Veri önce doğrulanır.
+
+00:00:36.000 --> 00:00:51.000
+Her satır sözleşmeye göre denetlenir. Bozuk satır kaybolmaz.
+
+00:00:51.000 --> 00:01:05.000
+172.765 satır, 0 ret, yaklaşık 8 sn. Herkese açık veri.
+
+00:01:05.000 --> 00:01:21.000
+Sayılar Kule'nin hesabıyla karşılaştırılır. Denetçi bir koddur.
+
+00:01:21.000 --> 00:01:32.000
+Biçim kapısı görev dışı çıktıyı durdurur. Her adım izlenir.
+
+00:01:32.000 --> 00:01:44.000
+Onay özetle verilir. Özet tutmazsa iş durur.
+
+00:01:44.000 --> 00:01:54.000
+Python: 229 ve 87 test. Node: 29 test, hepsi geçti.
+
+00:01:54.000 --> 00:02:08.000
+Eval kasetten oynatılır. Gerçek model: 20 koşudan 16 kabul.
+
+00:02:08.000 --> 00:02:21.000
+Mal kabul, irsaliye, fatura, üretim ölçülmedi. Firma ihtiyacı kanıtı yok.
+
+00:02:21.000 --> 00:02:33.000
+Bilinen sınır: yeniden ifade edilmiş sızıntı ve ölçek hatası geçebilir.
+
+00:02:33.000 --> 00:02:45.000
+Karar destek aracı. Son sözü insan söyler. Sayılar ve sınırlar kanıt sayfasında.

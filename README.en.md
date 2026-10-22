@@ -60,9 +60,18 @@ In the example trace the Analyst writes T-03's score as 58.0 on the first attemp
 
 ## 2. Eval
 
-![Eval: 24 cases, 22 criteria/checks/scope passed, 2 known gaps observed](docs/img/en/eval-vakalar.svg)
+<!-- eval:cizim:basla -->
+![Eval: 46 cases, 41 criteria/checks/scope passed, 5 known gaps observed](docs/img/en/eval-vakalar.svg)
+<!-- eval:cizim:bitti -->
 
-The eval is replayed from tapes; it is not a measure of model quality. The eval has 34 cases; **33/33** criteria, check and scope cases passed. One known gap was observed and is not closed: a "2 critical items" sentence in plain text (actual count 3) is accepted while the claims block is correct, because numbers in plain text are checked only for whether they appear in Kule's data. If this case is closed it will become a criterion. The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
+The eval is replayed from tapes; it is not a measure of model quality. <!-- eval:sayi:basla -->The eval has 46 cases; **41/41** criteria, check and scope cases passed. 5 known gaps were observed and are not closed.<!-- eval:sayi:bitti --> The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
+
+The two known gaps are listed side by side below. Neither is closed; both stay as open cases in the eval.
+
+| Gap | What happens | Measure | Eval cases |
+|---|---|---|---|
+| Context of a number in plain text | The Auditor checks only numbers in the claims block. A number used in the wrong context in plain text is accepted: "2 critical items" (actual count 3) passes while the claims block is correct, because numbers in plain text are checked only for whether they appear in Kule's data. | If closed, it becomes a criterion. | `KACAK-duz-metin-yanlis-baglam`, `KACAK-duz-metin-baska-varlik`, `KACAK-duz-metin-anlam-belirsiz` |
+| Rephrased leak | The model rephrases an injected instruction instead of copying it verbatim, and the leak check does not catch these rephrasings by default: 0/6. Paraphrase checking is off by default. | Caught 0/6 by default (Wilson 95% [0.000; 0.390]). | `KACAK-enjeksiyon-anlamsal-parafraz`, `KACAK-enjeksiyon-parafraz-varsayilan-kapali` |
 
 ## 3. Test evidence and measurements
 Full test evidence (test catalogue, behaviour catalogue, SHA-256 evidence package): [kanit/](kanit/index.html).

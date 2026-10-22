@@ -17,6 +17,7 @@ SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs co
 
 ## 2026-10-22
 
+- **Correction (publish consistency, A2):** the "no commit" marks in this section are stale: `noindex` and `demo/` were already committed in v0.2.0 (`42c5af4`). The lines "blind approval mode remains open" and "eval 24/24" are superseded by the current-state line above: the blind approval path is closed, and the flag only opens a write with a scenario-specific summary. The eval is now 46 cases: criteria/checks/scope 41/41 passed, 5 known gaps observed (source `ajan-orkestrasyon/ornek/eval-a3/`). The older lines below are unchanged.
 - Kule Python tests 224 → 229 (K1). Counts produced from a run, via `sayim.py`. Kule SHA `1d31a4f`. Report: PORTFOY-K1.
 - Orchestrator tests 60 → 68 (G2, +8 regression tests; 68/68 run). Report: PORTFOY-G2.
 - Node tests 29 (29/29 on the full tree). One test is skipped in a temporary copy; the reason is recorded. Report: PORTFOY-K1.

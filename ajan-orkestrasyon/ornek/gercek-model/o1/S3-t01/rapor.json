@@ -1,0 +1,18 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "IST-01 deposunun stok durumunu özetle: kritik ve fazla stok kalemleri neler?",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

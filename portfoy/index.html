@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <title>Emre Şahinoğlu — Portföy</title>
 <meta name="description" content="Lojistik saha deneyimini tedarik zinciri analiz araçlarına dönüştüren çalışmalar. Sorun, çözüm, teknoloji ve etki.">
 <style>
@@ -135,7 +136,7 @@ footer { padding: 28px 0 40px; border-top: 1px solid var(--rule); font-size: 13p
     <div class="wrap">
       <span class="sec-no">02 / Çözüm</span>
       <h2>Kuralları bilinen kontrolleri bir araca dönüştürmek</h2>
-      <p class="muted">Her araç işi veri okuma, analiz ve raporlama rollerine böler. Roller kural tabanlı Python bileşenleridir; dil modeli çağırmazlar. Çıktılar Markdown rapor ve CSV listesi olarak üretilir.</p>
+      <p class="muted">Her araç işi veri okuma, analiz ve raporlama bileşenlerine böler. Bu bileşenler kural tabanlı Python'dır; varsayılanda dil modeli çağırmazlar. Çıktılar Markdown rapor ve CSV listesi olarak üretilir. Bu sayfada yalnız ilk iki araç (E1, E2) anlatılır; karar motoru ve ajan orkestratörü README'dedir.</p>
       <div class="cards">
         <article class="card">
           <span class="tag ok">Çalışıyor</span> <span class="tag data">Sentetik veri</span>
@@ -164,7 +165,7 @@ footer { padding: 28px 0 40px; border-top: 1px solid var(--rule); font-size: 13p
     <div class="wrap">
       <span class="sec-no">03 / Teknoloji</span>
       <h2>Ne ile yapıldı</h2>
-      <p class="muted">Araçlar Python ile yazıldı, terminalde (CLI) çalışır ve yalnız standart kütüphaneyi kullanır. Yapay zekâ kodlama ajanlarıyla geliştirildi; çalışma zamanında dil modeli çağrısı yoktur.</p>
+      <p class="muted">Araçlar Python ile yazıldı, terminalde (CLI) çalışır ve yalnız standart kütüphaneyi kullanır. Yapay zekâ kodlama ajanlarıyla geliştirildi. Araçların varsayılan çalıştırılmasında çalışma zamanında dil modeli çağrısı yoktur; isteğe bağlı açıklama katmanı ile ajan orkestratörü (ayrı bileşen; planlayıcı ve analist rolleri) dil modeli kullanabilir.</p>
       <ul class="chips" style="margin-top:20px">
         <li class="hi">Python 3.10+</li>
         <li class="hi">İş akışını ajan rollerine bölme</li>
@@ -186,8 +187,9 @@ footer { padding: 28px 0 40px; border-top: 1px solid var(--rule); font-size: 13p
       <div class="metrics" style="margin-top:24px">
         <div class="metric"><b>7 / 7</b><span>Bilinen sipariş–mal kabul anomalisinin bulunma oranı (E2, yanlış alarm 0)</span></div>
         <div class="metric"><b>36 kalem</b><span>3 depo, 1.244 sevkiyat satırı; 0 reddedilen satır (E1)</span></div>
-        <div class="metric"><b>253 test</b><span>Kule için 224 Python ve 29 Node testi geçiyor</span></div>
+        <div class="metric"><b>229 Python test</b><span>Kule için 229 Python testi geçiyor; Node: 29 test, 29 geçti, 0 atlandı</span></div>
       </div>
+      <p class="muted" style="margin-top:16px"><a href="../kanit/index.html">Test kanıtı: sayılar, davranış kataloğu ve SHA-256 doğrulaması</a></p>
     </div>
   </section>
 

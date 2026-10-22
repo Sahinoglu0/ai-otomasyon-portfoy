@@ -1,0 +1,29 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1730,
+      "cikan_jeton": 114,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1891
+    },
+    {
+      "metin": "## T-05 performans özeti\n\nTedarikçi sorgusundan alınan değerler:\n\n- **Skor:** 47,7\n- **Seviye:** D\n- **Zamanında teslim oranı:** %75,0\n- **Ortalama gecikme:** 0,93 gün\n- **Red oranı:** %4,95\n- **Fiyat sapması:** %12,02\n- **Sipariş sayısı:** 40\n\n**Zayıf performansın göstergeleri:** Skor D seviyesinde. En belirgin sorun teslim tarafında: zamanında teslim oranı %75,0 ve geciken teslimler, skorun düşük kalmasına katkı yapıyor olabilir. Fiyat sapması %12,02 ile de dikkat çekiyor. Red oranı %4,95 düzeyinde.\n\n**Kısıtlar:** Mevcut araç çıktısında skor bileşenlerinin ayrı ağırlıkları, teslim geçmişinin kayıt bazlı dökümü, diğer tedarikçilerle karşılaştırma ve kök neden verisi yok. Bu nedenle hangi bileşenin skoru en çok düşürdüğünü, T-05'in kategori ortalamasına göre konumunu ve gecikmelerin kapasite, lojistik ya da sipariş planlamasından hangisinden kaynaklandığını bu veriyle kesin olarak söyleyemem.\n\n**Veriye dayalı iyileştirme önerileri:**\n\n1. **Teslim süreci:** Gecikmelerin nedenini tedarikçiyle birlikte inceleyin. Siparişlerin üretim ve sevkiyat takvimini paylaşmak ve gecikme olduğunda erken uyarı almak, zamanında teslim oranını yükseltmeye yardımcı olabilir.\n2. **Fiyat sapması:** %12,02 sapmanın sözleşme fiyatı, ek maliyet ya da ölçü/miktar farkından mı kaynaklandığını kontrol edin ve fiyat koşullarını netleştirin.\n3. **Kalite:** Red oranını azaltmak için ret nedenlerini kategorize edip kök neden analizi yapmak ve tedarikçiyle kalite beklentilerini yazılı hale getirmek faydalı olur.\n4. **Veri tamamlama:** Kararı desteklemek için bileşen skorları, teslim kayıtları ve aynı kategorideki tedarikçi karşılaştırması gerekli. Bu verileri sağlarsanız analizi tamamlayabilirim.\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"skor\", \"deger\": 47.7},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"seviye\", \"deger\": \"D\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"zamaninda_pct\", \"deger\": 75.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"ortalama_gecikme_gun\", \"deger\": 0.93},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"red_pct\", \"deger\": 4.95},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"fiyat_sapma_pct\", \"deger\": 12.02},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-05\"}, \"alan\": \"siparis_sayisi\", \"deger\": 40}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 1907,
+      "cikan_jeton": 2216,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 11919
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "etiket": "ELLE YAZILMIŞ KAYIT",
+  "soru": "IZM-01 deposu ve T-03 tedarikçisi neden kritik? Aksiyon planı ve tedarikçiye taslak e-posta üret.",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": false,
+      "uyusmazliklar": [
+        "tedarikci_skoru {'tedarikci': 'T-03'}: iddia 58.0, Kule 36.3",
+        "dayanaksız sayı 58: metinde var, Kule çıktısında ve hesabında yok"
+      ]
+    },
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

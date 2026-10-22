@@ -1,0 +1,35 @@
+{
+  "etiket": "ELLE YAZILMIŞ KAYIT",
+  "aciklama": "Analist için elle yazılmış dört yanıt, iki deneme. 1. deneme BİLEREK YANLIŞ sayı (T-03 skoru 58.0, gerçek 36.3) içerir; Denetçi bunu reddetmelidir. 2. deneme düzeltilmiş sayılarla gelir. Gerçek model çıktısı DEĞİLDİR.",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {"ad": "stok_sorgu", "girdi": {"depo": "IZM-01", "durum": "KRITIK"}, "kimlik": "d1c1"},
+        {"ad": "tedarikci_sorgu", "girdi": {"tedarikci": "T-03"}, "kimlik": "d1c2"}
+      ],
+      "giren_jeton": 180,
+      "cikan_jeton": 30
+    },
+    {
+      "metin": "IZM-01 deposunda KRITIK durumda 3 kalem var: M-1002 Koli 40x30x30, M-1005 Çember (PET) 12mm, M-1006 Etiket rulosu 100x150. Kapsama süreleri 3,3 ile 4,1 gün arasında.\n\nT-03 tedarikçisinin skoru 58,0 (seviye D): zamanında teslim %60, red %9,29, fiyat sapması %6,08.\n\nAksiyon planı: kritik kalemler için acil sipariş ver; T-03 ile teslimat performansını görüş.\n\nTaslak e-posta (gönderilmez): Konu: Teslimat performansı hakkında. Merhaba, son dönem teslimatlarınızda zamanında teslim oranının düştüğünü gözlemledik; durumu birlikte değerlendirmek isteriz.\n\n```iddialar\n[{\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": 3}, {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"skor\", \"deger\": 58.0}]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 260,
+      "cikan_jeton": 120
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {"ad": "tedarikci_sorgu", "girdi": {"tedarikci": "T-03"}, "kimlik": "d2c1"}
+      ],
+      "giren_jeton": 220,
+      "cikan_jeton": 20
+    },
+    {
+      "metin": "IZM-01 deposunda KRITIK durumda 3 kalem var: M-1002 Koli 40x30x30, M-1005 Çember (PET) 12mm, M-1006 Etiket rulosu 100x150. Kapsama süreleri 3,3 ile 4,1 gün arasında.\n\nT-03 tedarikçisinin skoru 36,3 (seviye D): zamanında teslim %60, red %9,29, fiyat sapması %6,08.\n\nAksiyon planı: kritik kalemler için acil sipariş ver; T-03 ile teslimat performansını görüş ve red oranını azaltmak için bir iyileştirme planı iste.\n\nTaslak e-posta (gönderilmez): Konu: Teslimat performansı hakkında. Merhaba, son dönem teslimatlarınızda zamanında teslim oranının düşük seyrettiğini gözlemledik; red oranı ve gecikmeler için bir iyileştirme planı paylaşmanızı rica ederiz.\n\n```iddialar\n[{\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": 3}, {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"skor\", \"deger\": 36.3}]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 300,
+      "cikan_jeton": 130
+    }
+  ]
+}

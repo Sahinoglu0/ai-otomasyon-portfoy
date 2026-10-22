@@ -1,0 +1,13 @@
+Kule Pro demo (panel tarayıcı katmanı) / Kule Pro demo (panel browser layer)
+
+Copyright (c) 2026 Emre Şahinoğlu. Tüm hakları saklıdır. / All rights reserved.
+
+TR: Bu klasördeki dosyalar yalnızca incelemek ve gösterim amacıyla herkese açılmıştır.
+Kopyalanması, değiştirilmesi, yeniden dağıtılması ve ticari kullanımı için yazılı izin gerekir.
+Bu klasör, deponun kökündeki MIT lisansının kapsamı dışındadır. Kule'nin Python çekirdeği
+bu depoda yer almaz.
+
+EN: The files in this folder are made public for review and demonstration only.
+Copying, modification, redistribution and commercial use require written permission.
+This folder is outside the scope of the MIT license at the repository root. Kule's Python
+core is not part of this repository.

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Test kanıtı</title>
+<meta name="description" content="Kaynak kod kapalı; bu sayfa kodu değil test çıktısını gösterir. Sayılar koşudan yazılan sayilar.json dosyasından okunur.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b43a'/%3E%3Cpath d='M8 17l5 5 11-12' stroke='%2317191b' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* Renk ve yazı belirteçleri iz görüntüleyiciyle aynı; rozetler aynı dili konuşsun. */
+:root{
+  --paper:#f3f0e8; --surface:#fbfaf6; --ink:#17191b; --muted:#5d6166;
+  --rule:#d6d0c3; --rule-strong:#b7b0a1; --accent:#d08a00; --accent-ink:#7a4e00;
+  --ok:#1d6b57; --ok-soft:#d9ece5; --wait:#8a5200; --wait-soft:#f4e4c8;
+  --bad:#a12a2a; --bad-soft:#f5dcd9; --skip:#6b6f74;
+  --nav:#17191b; --nav-ink:#e9e6de; --nav-ink-2:#b9b6ae;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121315; --surface:#1a1c1f; --ink:#eceae4; --muted:#a3a8ad;
+    --rule:#34373c; --rule-strong:#4a4e54; --accent:#f0b43a; --accent-ink:#f0b43a;
+    --ok:#5fb89c; --ok-soft:#173a31; --wait:#e0a84a; --wait-soft:#3a2d14;
+    --bad:#e07a72; --bad-soft:#3d1d1b; --skip:#9aa0a6;
+    --nav:#0c0d0e; --nav-ink:#eceae4; --nav-ink-2:#a3a8ad;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121315; --surface:#1a1c1f; --ink:#eceae4; --muted:#a3a8ad;
+  --rule:#34373c; --rule-strong:#4a4e54; --accent:#f0b43a; --accent-ink:#f0b43a;
+  --ok:#5fb89c; --ok-soft:#173a31; --wait:#e0a84a; --wait-soft:#3a2d14;
+  --bad:#e07a72; --bad-soft:#3d1d1b; --skip:#9aa0a6;
+  --nav:#0c0d0e; --nav-ink:#eceae4; --nav-ink-2:#a3a8ad;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font:15px/1.55 var(--sans);overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+.atla{position:absolute;left:-9999px}
+.atla:focus{left:16px;top:8px;z-index:10;background:var(--surface);padding:8px 12px}
+
+header.top{background:var(--nav);color:var(--nav-ink)}
+header.top .wrap{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+header.top h1{font-size:17px;margin:0;font-weight:600;margin-right:auto}
+.geri{color:var(--nav-ink-2);font-size:13px}
+.geri:hover{color:var(--nav-ink)}
+.iconbtn{background:transparent;border:1px solid #4a4e54;border-radius:6px;padding:6px 10px;min-height:32px;cursor:pointer;color:var(--nav-ink);font-size:13px}
+
+main{padding-top:20px;padding-bottom:88px}
+section{margin:0 0 28px}
+h2{font-size:18px;margin:0 0 10px}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.kucuk{font-size:13px}
+code,.mono{font-family:var(--mono);font-size:13px}
+
+/* dürüstlük kutusu: sayfanın ilk okunan şeyi */
+.durust{background:var(--wait-soft);border:1px solid var(--rule-strong);border-left:4px solid var(--wait);border-radius:6px;padding:14px 16px;margin-bottom:24px}
+.durust strong{display:block;margin-bottom:4px}
+.durust p:last-child{margin-bottom:0}
+
+.tag{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.4px;text-transform:uppercase;padding:5px 8px;border-radius:4px;border:1px solid currentColor;white-space:nowrap;vertical-align:middle}
+.tag.kosu{color:#fff;background:#1d6b57;border-color:#1d6b57}
+.tag.kaset{color:var(--wait);background:var(--surface);border-style:dashed}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.kosu{color:#0c0d0e;background:#5fb89c;border-color:#5fb89c}}
+:root[data-theme="dark"] .tag.kosu{color:#0c0d0e;background:#5fb89c;border-color:#5fb89c}
+
+.lejant{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.lejant li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
+.lejant .tag{justify-self:start}
+@media (max-width:520px){.lejant li{grid-template-columns:1fr}}
+
+.kart{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.baslik-satir{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
+.baslik-satir h2{margin:0}
+
+.ozet{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+@media (max-width:560px){.ozet{grid-template-columns:repeat(2,1fr)}}
+.stat{border:1px solid var(--rule);border-radius:6px;padding:10px 12px;background:var(--paper)}
+.stat b{display:block;font:600 26px/1.15 var(--mono)}
+.stat span{font-size:13px;color:var(--muted)}
+.stat.ok b{color:var(--ok)} .stat.bad b{color:var(--bad)} .stat.skip b{color:var(--skip)} .stat.wait b{color:var(--wait)}
+.ozet-3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:560px){.ozet-3{grid-template-columns:1fr}}
+
+dl.meta{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:14px}
+dl.meta dt{color:var(--muted)}
+dl.meta dd{margin:0;min-width:0;overflow-wrap:anywhere}
+@media (max-width:420px){dl.meta{grid-template-columns:1fr}dl.meta dd{margin-bottom:6px}}
+
+.kume{border-top:1px solid var(--rule);padding:12px 0}
+.kume:first-child{border-top:0;padding-top:0}
+.kume-ust{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;align-items:baseline}
+.kume-ust b{font-weight:600}
+.cubuk{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--rule);margin:8px 0 6px}
+.cubuk i{display:block;height:100%}
+.cubuk .g{background:var(--ok)} .cubuk .b{background:var(--bad)} .cubuk .a{background:var(--skip)}
+.cubuk i + i{border-left:2px solid var(--surface)}
+.sayilar{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:13px;color:var(--muted)}
+.sayilar .bad{color:var(--bad);font-weight:600}
+.not{font-size:13px;color:var(--muted);margin:6px 0 0}
+
+details.alan{border-top:1px solid var(--rule)}
+details.alan:first-of-type{border-top:0}
+details.alan summary{cursor:pointer;padding:10px 0;display:flex;justify-content:space-between;gap:12px;list-style:none}
+details.alan summary::-webkit-details-marker{display:none}
+details.alan summary::before{content:"+";font:600 14px/1.5 var(--mono);color:var(--muted);width:14px;flex:none}
+details.alan[open] summary::before{content:"−"}
+details.alan summary span:first-of-type{margin-right:auto}
+details.alan ul{margin:0 0 12px;padding-left:22px}
+details.alan li{margin:4px 0}
+
+.dosyalar{list-style:none;margin:0 0 14px;padding:0}
+.dosyalar li{border-top:1px solid var(--rule);padding:10px 0;display:grid;gap:4px}
+.dosyalar li:first-child{border-top:0}
+.dosya-ust{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.hash{font:12px/1.4 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.durum-ok{color:var(--ok);font-weight:600}
+.durum-bad{color:var(--bad);font-weight:600}
+pre{font:13px/1.5 var(--mono);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;margin:6px 0 12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.btn{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:9px 14px;min-height:40px;cursor:pointer;font-weight:600}
+.hata{background:var(--bad-soft);color:var(--ink);border:1px solid var(--bad);border-radius:6px;padding:12px 14px}
+
+footer{border-top:1px solid var(--rule);padding-top:14px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="atla" href="#icerik" data-i18n="atla">İçeriğe geç</a>
+<header class="top">
+  <div class="wrap">
+    <h1 data-i18n="baslik">Test kanıtı</h1>
+    <a class="geri" href="../index.html" data-i18n="geri">Portföy</a>
+    <button class="iconbtn" id="tema" type="button" data-i18n="tema" data-i18n-attr="aria-label:temaEtiket" aria-label="Temayı değiştir">Koyu / açık</button>
+  </div>
+</header>
+
+<main class="wrap" id="icerik" tabindex="-1">
+  <div class="durust" role="note">
+    <strong data-i18n="durustBaslik">Kaynak kod kapalı; bu bölüm kodu değil çıktıyı gösterir.</strong>
+    <p data-i18n="durustModel">Gerçek model koşuları CI'da değil yerelde yapılır.</p>
+    <p id="kosuYeri" hidden></p>
+  </div>
+
+  <section aria-labelledby="h-lejant">
+    <h2 id="h-lejant" data-i18n="lejantBaslik">Etiketler</h2>
+    <ul class="lejant">
+      <li><span class="tag kosu" data-i18n="rozetKosu">Koşudan çıktı</span><span data-i18n="lejantKosu">Testler gerçekten koşturuldu; sayı ve süre o koşunun çıktısından otomatik yazıldı.</span></li>
+      <li><span class="tag kaset" data-i18n="rozetKaset">Elle yazılmış kayıt (kaset)</span><span data-i18n="lejantKaset">Model yanıtları önceden yazılmış bir kayıttan oynatıldı; model kalitesini ölçmez, yalnız akışın doğru işlediğini gösterir.</span></li>
+    </ul>
+  </section>
+
+  <p class="hata" id="hata" role="alert" hidden data-i18n="hata">Sayı dosyası okunamadı. Sayfayı yenileyin.</p>
+
+  <section id="b-sayilar" aria-labelledby="h-sayilar" hidden>
+    <div class="kart">
+      <div class="baslik-satir">
+        <h2 id="h-sayilar" data-i18n="sayilarBaslik">Son test koşusu</h2>
+        <span class="tag kosu" data-i18n="rozetKosu">Koşudan çıktı</span>
+      </div>
+      <div class="ozet" id="ozet"></div>
+      <dl class="meta" id="meta"></dl>
+    </div>
+  </section>
+
+  <section id="b-dagilim" aria-labelledby="h-dagilim" hidden>
+    <h2 id="h-dagilim" data-i18n="dagilimBaslik">Alan başına dağılım</h2>
+    <div class="kart" id="kumeler"></div>
+  </section>
+
+  <section aria-labelledby="h-kaset">
+    <div class="kart">
+      <div class="baslik-satir">
+        <h2 id="h-kaset" data-i18n="kasetBaslik">Ajan eval skoru</h2>
+        <span class="tag kaset" data-i18n="rozetKaset">Elle yazılmış kayıt (kaset)</span>
+      </div>
+      <div class="ozet ozet-3" id="evalOzet" hidden></div>
+      <p data-i18n="kasetMetin">Ajan orkestratörünün eval skoru elle yazılmış kayıttan oynatılır; model kalitesini ölçmez. Vakalar ve bilinen açık iz görüntüleyicinin Eval sekmesindedir.</p>
+      <a href="../ajan-orkestrasyon/iz-goruntuleyici/index.html" data-i18n="kasetBag">İz görüntüleyiciyi aç</a>
+    </div>
+  </section>
+
+  <!-- Test kataloğu: katalog.json yayına girince görünür; o zamana kadar bölüm hiç gösterilmez. -->
+  <section id="b-katalog" aria-labelledby="h-katalog" hidden>
+    <h2 id="h-katalog" data-i18n="katalogBaslik">Test kataloğu</h2>
+    <p class="muted" id="katalogAlt"></p>
+    <p class="kucuk" id="katalogMd"></p>
+    <div class="kart" id="alanlar"></div>
+  </section>
+
+  <!-- Kanıt paketi ve doğrulama: paket.json yayına girince görünür. -->
+  <section id="b-paket" aria-labelledby="h-paket" hidden>
+    <h2 id="h-paket" data-i18n="paketBaslik">Kanıt paketi</h2>
+    <div class="kart">
+      <dl class="meta" id="paketMeta"></dl>
+      <p class="not" id="paketUyum"></p>
+      <ul class="dosyalar" id="dosyalar"></ul>
+      <h3 class="kucuk" data-i18n="dogrulaBaslik">Nasıl doğrulanır</h3>
+      <p class="kucuk" data-i18n="dogrulaHizli">Tek adımda (Linux / macOS / Git Bash): boş bir klasörde manifesti ve listelenen dosyaları indirip denetler.</p>
+      <pre id="komutHizli"></pre>
+      <p class="kucuk" data-i18n="dogrulaElle">Dosyaları kendiniz indirdiyseniz yalnız denetim komutu:</p>
+      <p class="kucuk muted">Linux</p>
+      <pre id="komutLinux"></pre>
+      <p class="kucuk muted">macOS</p>
+      <pre id="komutMac"></pre>
+      <p class="kucuk muted">Windows PowerShell</p>
+      <pre id="komutWin"></pre>
+      <p class="kucuk" data-i18n="dogrula2">Ya da dosyaları bu tarayıcıda indirip özetlerini manifestle karşılaştırın:</p>
+      <button class="btn" id="tarayiciDogrula" type="button" data-i18n="dogrulaBtn">Tarayıcıda doğrula</button>
+      <p class="not" id="dogrulaSonuc" role="status"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p><span data-i18n="altMetin">Bu sayfadaki sayılar elle yazılmaz; koşudan üretilen veri dosyasından okunur:</span> <a href="sayilar.json">sayilar.json</a></p>
+  </footer>
+</main>
+<script src="kanit.js"></script>
+</body>
+</html>

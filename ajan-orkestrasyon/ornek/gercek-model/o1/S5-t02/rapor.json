@@ -1,0 +1,26 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "T-01 ile T-06 tedarikçilerini skor ve seviye açısından karşılaştır.",
+  "durum": "reddedildi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": false,
+      "uyusmazliklar": [
+        "Analist tamamlanmadı: bütçe aşıldı (adım 6/6, jeton 13780/20000)"
+      ]
+    },
+    {
+      "gecti": false,
+      "uyusmazliklar": [
+        "Analist tamamlanmadı: bütçe aşıldı (adım 6/6, jeton 14634/20000)"
+      ]
+    }
+  ]
+}

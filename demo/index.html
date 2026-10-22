@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Kule Pro demo</title>
+<meta name="description" content="Kule Pro panelinin statik demosu: sentetik, önceden hesaplanmış örnek veri; canlı API yok. Hesaplar tarayıcıda, açık kurallarla yapılır; dil modeli yok.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b43a'/%3E%3Cpath d='M13 26h6l-1.2-12h-3.6zM11 14h10l-1-4h-8zM16 4l-3 6h6z' fill='%2317191b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="panel.css">
+<style>
+/* Demo etiketi: her ekranda, başlığın altında; baskıda da görünür. */
+.demo-etiket { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 8px 16px; background: var(--hatch), var(--wait-soft);
+  border-top: 1px solid var(--rule); color: var(--wait); font: 600 var(--t-xs)/1.4 var(--mono); letter-spacing: .04em; }
+.demo-etiket b { text-transform: uppercase; letter-spacing: .08em; }
+.demo-etiket span { color: var(--ink-2); font-weight: 500; }
+.geri { color: var(--nav-ink-2); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.geri:hover, .geri:focus-visible { color: var(--nav-ink); }
+.marka .geri { margin-left: auto; }
+@media (min-width: 960px) { .demo-etiket { padding-left: var(--s6); padding-right: var(--s6); } }
+/* Dil düğmesi sağ altta durur; son satırlar onun altında kalmasın. */
+.alt { padding-bottom: 72px; }
+</style>
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+<div class="kabuk">
+  <aside class="yan" aria-label="Gezinti">
+    <div class="marka">
+      <svg class="marka-isaret" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="0" y="0" width="32" height="32" rx="6" fill="#f0b43a"/>
+        <path d="M13 26h6l-1.2-12h-3.6zM11 14h10l-1-4h-8zM16 4l-3 6h6z" fill="#17191b"/>
+        <path d="M8 9a10 10 0 0 0 0 10M24 9a10 10 0 0 1 0 10" stroke="#17191b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div><b>Kule Pro</b><small>Statik demo</small></div>
+      <a class="geri" href="../index.html">Portföy</a>
+    </div>
+    <nav class="gezinti" id="gezinti"></nav>
+    <div class="yan-alt">Bu demo sentetik örnek veriyle önceden hesaplanmıştır. Sunucu, canlı API ve dosya yükleme yoktur. Hesaplar kural tabanlıdır; dil modeli çağrısı yoktur.</div>
+  </aside>
+
+  <div class="ana">
+    <header class="ust">
+      <div class="ust-ic">
+        <div class="ust-baslik">
+          <h1 id="ustBaslik">Yönetici özeti</h1>
+          <p id="ustAlt">Tedarik zinciri kontrol kulesi</p>
+        </div>
+        <div class="ust-arac">
+          <span class="rozet" id="veriRozet">Veri yükleniyor</span>
+          <button class="btn kucuk hayalet" id="temaBtn" type="button">Tema: sistem</button>
+          <button class="btn kucuk" id="raporBtn" type="button">Rapor görünümü</button>
+        </div>
+      </div>
+      <p class="demo-etiket" role="note"><b>Statik örnek, sentetik veri, canlı API yok</b><span>Önceden hesaplanmış çıktı (tohum 42) · gerçek şirket verisi değildir</span></p>
+    </header>
+
+    <main class="icerik" id="icerik" tabindex="-1">
+      <p class="uyari" id="durum" role="status" hidden></p>
+      <div id="govde"></div>
+      <div class="bekle" id="yukleAlan" hidden>
+        <b>ÖRNEK VERİ YOK</b>
+        <p>Demo verisi okunamadı. Sayfayı yenileyin.</p>
+      </div>
+    </main>
+
+    <footer class="alt">
+      Bu sayfadaki bütün veriler sentetik (örnek) veridir ve önceden hesaplanmıştır; firma verisi ve SAP bağlantısı yoktur. Aksiyon, risk ve senaryo
+      hesapları açık kurallarla tarayıcıda yapılır; dil modeli çağrısı yoktur. ROI girdileri varsayımsaldır.
+    </footer>
+  </div>
+</div>
+
+<script src="veri.js"></script>
+<script src="hesap.js"></script>
+<script src="panel.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>

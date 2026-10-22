@@ -1,0 +1,30 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "ANK-01",
+            "durum": "KRITIK"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1694,
+      "cikan_jeton": 141,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1567
+    },
+    {
+      "metin": "Evet, ANK-01 deposunda **5 kalem** kritik stok durumunda.\n\n| Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC | Stok Değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1003 | Euro palet 80x120 | 57.0 | AD | 3.4 | B | 23940.0 |\n| M-1010 | Big bag 1 ton | 142.0 | AD | 3.8 | A | 36920.0 |\n| M-1001 | Streç film 23 mikron | 80.0 | RL | 5.4 | C | 6800.0 |\n| M-1012 | Plastik kasa 60x40 | 195.0 | AD | 6.2 | B | 40950.0 |\n| M-1006 | Etiket rulosu 100x150 | 302.0 | RL | 6.4 | B | 28690.0 |\n\n**Aksiyon önerisi (kapsama süresine göre):**\n\n1. **Hemen:** M-1003 (Euro palet) ve M-1010 (Big bag) için satın alma talebi açılmalı. Bu iki kalemin kapsama süresi en kısa, M-1010 ise A sınıfı olduğu için öncelikli.\n2. **Kısa vadede:** M-1001 (Streç film) ve M-1012 (Plastik kasa) için sipariş planlanmalı.\n3. **Takip:** M-1006 (Etiket rulosu) kapsama süresi en uzun olan kalem, ancak yine kritik listede; sipariş durumu izlenmeli.\n\n**Eksik veriler:** Araç çıktısında minimum/emniyet stok eşikleri, bekleyen satın alma siparişleri, tedarikçi bilgileri ve tüketim hızları yer almıyor. Bu yüzden teslim tarihiyle eşleştirme ve tükenme riski hesabını yapamadım. Tedarikçi skorlarını görmek için tedarikçi adlarını paylaşmanız yeterli.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\"}, \"deger\": 5},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\", \"malzeme_no\": \"M-1001\"}, \"alan\": \"stok\", \"deger\": 80.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\", \"malzeme_no\": \"M-1003\"}, \"alan\": \"stok\", \"deger\": 57.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\", \"malzeme_no\": \"M-1006\"}, \"alan\": \"stok\", \"deger\": 302.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\", \"malzeme_no\": \"M-1010\"}, \"alan\": \"stok\", \"deger\": 142.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\", \"malzeme_no\": \"M-1012\"}, \"alan\": \"stok\", \"deger\": 195.0}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 2342,
+      "cikan_jeton": 2120,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 9368
+    }
+  ]
+}

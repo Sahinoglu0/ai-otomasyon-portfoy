@@ -1,0 +1,70 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IST-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1730,
+      "cikan_jeton": 121,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1708
+    },
+    {
+      "metin": "IST-01 deposunda 12 kalem var. Kule stok kaydına göre 5'i **KRITIK**, 1'i **FAZLA_STOK** durumunda.\n\n**Kritik stok (5 kalem)**\n\n| Malzeme | Kodu | Stok | Birim | Kapsama (gün) | ABC | Stok değeri (TL) |\n|---|---|---|---|---|---|---|\n| Koli 40x30x30 | M-1002 | 37.0 | AD | 3.4 | C | 240.5 |\n| Euro palet 80x120 | M-1003 | 24.0 | AD | 5.0 | C | 10080.0 |\n| Çember (PET) 12mm | M-1005 | 176.0 | RL | 5.3 | A | 112640.0 |\n| Köşebent karton 35mm | M-1007 | 37.0 | AD | 4.6 | C | 118.4 |\n| Big bag 1 ton | M-1010 | 165.0 | AD | 4.4 | A | 42900.0 |\n\nEn dikkat çekici olanlar A sınıfı kalemler: Çember (PET) 12mm (5.3 gün) ve Big bag 1 ton (4.4 gün). Bunların kapsama süresi kısa olduğu için öncelikli takip edilmeli.\n\n**Fazla stok (1 kalem)**\n\n- **Koli bandı 45mm (M-1004):** 9476.0 AD stok, 355.5 gün kapsama, 170568.0 TL stok değeri. C sınıfı bir kalem olmasına rağmen toplam değeri yüksek.\n\n**Eksik kalan analiz adımları**\n\nAracın döndürdüğü veride şu bilgiler yok, bu yüzden değerlendirilemedi:\n- Emniyet stoku ve yeniden sipariş noktası (kritik eşiğin neye göre belirlendiği görülmüyor)\n- Açık sipariş durumu\n- Tedarikçi teslim süreleri (tedarikci_sorgu için tedarikçi adı gerekiyor)\n- Fazla stok kalemlerinin son hareket tarihleri\n\nBu bilgiler sağlanırsa kritik kalemler için tükenme riski ve fazla stok için tutma maliyeti analizi yapılabilir. Ayrıca tedarikçi adlarını veya kaynak sistemdeki hareket verisini paylaşırsanız devam edebilirim.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"KRITIK\"}, \"deger\": 5},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"FAZLA_STOK\"}, \"deger\": 1},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"malzeme_no\": \"M-1004\"}, \"alan\": \"stok\", \"deger\": 9476.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"malzeme_no\": \"M-1005\"}, \"alan\": \"kapsama_gun\", \"deger\": 5.3},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"malzeme_no\": \"M-1010\"}, \"alan\": \"kapsama_gun\", \"deger\": 4.4}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3163,
+      "cikan_jeton": 1954,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 8501
+    },
+    {
+      "metin": "Önce IST-01 deposunun stok kayıtlarını araçtan alıyorum.",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IST-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1899,
+      "cikan_jeton": 228,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2338
+    },
+    {
+      "metin": "Denetçinin itirazını gidermek için kritik kalemleri araçtan yeniden sorguluyorum.",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IST-01",
+            "durum": "KRITIK"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 3364,
+      "cikan_jeton": 1338,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 8226
+    },
+    {
+      "metin": "IST-01 deposunda 12 kalem var. Kritik stokta 5, fazla stokta 1 kalem bulunuyor. Sonuçlar iki araç çıktısından alındı (stok_sorgu, depo IST-01, genel ve durum=KRITIK).\n\n**Kritik stok (5 kalem)**\n\n| Malzeme | Ad | Stok | Birim | Kapsama (gün) | Stok değeri (TL) | ABC |\n|---|---|---|---|---|---|---|\n| M-1002 | Koli 40x30x30 | 37.0 | AD | 3.4 | 240.5 | C |\n| M-1003 | Euro palet 80x120 | 24.0 | AD | 5.0 | 10080.0 | C |\n| M-1005 | Çember (PET) 12mm | 176.0 | RL | 5.3 | 112640.0 | A |\n| M-1007 | Köşebent karton 35mm | 37.0 | AD | 4.6 | 118.4 | C |\n| M-1010 | Big bag 1 ton | 165.0 | AD | 4.4 | 42900.0 | A |\n\nKritik kalemlerin kapsama süreleri kısa. Bunların arasında A sınıfı olan M-1005 ve M-1010 öncelikli ilgi gerektiriyor.\n\n**Fazla stok (1 kalem)**\n\n- M-1004 Koli bandı 45mm: stok 9476.0 AD, kapsama 355.5 gün, stok değeri 170568.0 TL, ABC C.\n\n**Eksik kalan analizler**\n\nPlanda istenen şu bilgiler araç çıktılarında yok, bu yüzden rapora eklenmedi:\n- Emniyet stoku ve yeniden sipariş noktası\n- Maksimum stok seviyesi\n- Açık sipariş durumu\n- Tedarikçi teslim süresi (tedarikci_sorgu için tedarikçi adı gerekiyor, bu da henüz bilinmiyor)\n- Son hareket tarihleri\n\nBu verilere ihtiyaç varsa kaynak sistemden ayrıca sorgulanması gerekir.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"KRITIK\"}, \"deger\": 5},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"FAZLA_STOK\"}, \"deger\": 1},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"durum\": \"FAZLA_STOK\"}, \"alan\": \"stok\", \"deger\": 9476.0}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 4042,
+      "cikan_jeton": 2450,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 10878
+    }
+  ]
+}

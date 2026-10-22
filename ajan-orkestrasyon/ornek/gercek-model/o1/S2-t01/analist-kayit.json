@@ -1,0 +1,29 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "ANK-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1806,
+      "cikan_jeton": 117,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1030
+    },
+    {
+      "metin": "Evet, ANK-01 deposunda 5 kalemin durumu **KRITIK**.\n\n| Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC |\n|---|---|---|---|---|---|\n| M-1010 | Big bag 1 ton | 142 | AD | 3.8 | A |\n| M-1003 | Euro palet 80x120 | 57 | AD | 3.4 | B |\n| M-1001 | Streç film 23 mikron | 80 | RL | 5.4 | C |\n| M-1012 | Plastik kasa 60x40 | 195 | AD | 6.2 | B |\n| M-1006 | Etiket rulosu 100x150 | 302 | RL | 6.4 | B |\n\nAyrıca M-1009 (Ahşap kasa 120x100) OLU_STOK durumunda; kapsama süresi hesaplanamıyor ve stok değeri 259000 TL. Kritik değil ama ayrı bir inceleme gerektiriyor.\n\n**Önceliklendirme (kapsama süresi ve ABC sınıfına göre)**\n1. **M-1010 Big bag:** A sınıfı ve 3.8 gün kapsıyor. Üretim ve sevkiyatta en yüksek etkiye sahip olabilir.\n2. **M-1003 Euro palet:** Kapsama süresi en kısa (3.4 gün). Sevkiyatı doğrudan etkileyebilir.\n3. **M-1001 Streç film:** 5.4 gün kapsıyor.\n4. **M-1012 Plastik kasa:** 6.2 gün kapsıyor.\n5. **M-1006 Etiket rulosu:** 6.4 gün kapsıyor.\n\n**Aksiyon planı önerisi**\n- **Kısa vadede:** M-1010 ve M-1003 için acil sipariş durumunu tedarikçiyle netleştirin. Açık sipariş veya planlanmış geliş varsa bunu teyit edin.\n- **Kısa vadede:** Diğer üç kalem için sipariş durumunu kontrol edin ve gerekiyorsa acil sipariş verin.\n- **Kısa vadede:** M-1009 için mevcut talep olup olmadığını inceleyin. Talep yoksa satış veya tasfiye seçeneklerini değerlendirin.\n- **Bu aşamada:** Depolar arası transfer seçeneğini değerlendirmek için diğer depoların stok verisi gerekir. Bu araçla yalnızca ANK-01 verisine erişebildim.\n\n**Eksik bilgiler**\nElimdeki araçlar yalnızca stok durumu ve tedarikçi kaydı sorgulayabiliyor. Bu nedenle şunları doğrulayamadım:\n- Emniyet stoğu ve yeniden sipariş noktası\n- Tedarik süresi ve minimum sipariş miktarı\n- Açık siparişler ve planlanmış gelişler\n- Bekleyen talepler ve üretim/satış etkisi\n\nBu bilgilere erişim sağlanırsa önceliklendirmeyi ve sipariş miktarlarını buna göre güncelleyebilirim. Tedarikçi adlarını verirseniz tedarikçi kayıtlarını da sorgulayabilirim.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\"}, \"deger\": 5},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"OLU_STOK\"}, \"deger\": 1}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3253,
+      "cikan_jeton": 2289,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 11010
+    }
+  ]
+}

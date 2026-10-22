@@ -1,0 +1,55 @@
+{
+  "aciklama": "Sentetik örnekte yerleştirilen anomaliler ile kuralın bulduklarının tür bazında karşılaştırması.",
+  "etiket": "ORNEK_VERI",
+  "satirlar": [
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "ACIK_GECIKMIS",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "CIFT_KAYIT",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "EKSIK_TESLIMAT",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "FAZLA_TESLIMAT",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "GEC_TESLIMAT",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "MALZEME_UYUSMAZLIGI",
+      "yerlestirilen": 1
+    },
+    {
+      "bulunan": 1,
+      "eslesen": 1,
+      "tur": "SIPARISSIZ_KABUL",
+      "yerlestirilen": 1
+    }
+  ],
+  "toplam": {
+    "bulunan": 7,
+    "eslesen": 7,
+    "yerlestirilen": 7
+  },
+  "tutar_etkisi_tl": 61179.93,
+  "yerlestirilmeyen_bulgu": 0
+}

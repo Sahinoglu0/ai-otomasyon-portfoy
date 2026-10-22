@@ -52,6 +52,17 @@ Test kanıtının tamamı (test kataloğu, davranış kataloğu, SHA-256 kanıt 
 
 **Büyük gerçek veri.** Herkese açık DataCo Smart Supply Chain veri kümesinden uyarlanan **172.765 sevkiyat satırı** tek ingest'te yüklendi: 172.765 kabul, 0 ret, 0 çökme, yaklaşık 8 saniye.
 
+**Açık veri denemeleri.** DataCo dışında, Kule'nin diğer girdileri için herkese açık veri setleri denendi. Bu denemeler gerçek firma verisiyle yapılmadı; hiçbir sonuç firma verisi değildir.
+
+| Veri seti | Lisans (sayfadan) | Ne yapıldı | Sonuç |
+|---|---|---|---|
+| Mendeley Data *Retail Inventory Data* (9pn955p5vj, sürüm 1) | CC BY 4.0 | Herkese açık **model örnek verisi** (alanlar Kaggle'dan derlenmiş; gerçek bir şirketin stok kaydı değildir). `stok.csv` sözleşmesine uyarlandı. | 30/30 satır ingest'ten geçti. `stok_durumu` **ölçülemedi**: veride sevkiyat yok, stok kodları satış verisiyle eşleşmiyor. |
+| UCI *Online Retail II* (DOI 10.24432/C5CG6D; Chen, 2012) | CC BY 4.0 | Satış faturaları; fatura→sipariş, ülke→tedarikçi olarak **vekil eşlendi** (tedarik verisi değildir). Yalnız ingest dayanıklılığı için denendi. | 1.067.371 satır: 1.044.416 kabul, 22.955 tutarsız (iade ve iptal satırları kuralla reddedildi), 0 çökme, 24 sn. Sipariş anomalisi ya da tedarikçi skoru kanıtı **değildir**. |
+
+Mal kabul, irsaliye, fatura ve üretim verisi için açık ve lisansı uygun gerçek veri bulunamadı; bu girdiler **ölçülmedi**. Sentetik veri gerçek diye sunulmaz.
+
+DataCo'nun veri sayfası (Mendeley 8gx2fvg2k6, sürüm 5) "CC BY 4.0" yazar; ancak aynı sayfada metin ve veri madenciliği ile yapay zekâ eğitimi dahil "tüm haklar saklıdır" ibaresi de vardır. Bu yüzden veri dosyası bu depoya dahil değildir, yalnız ölçüm çıktıları paylaşılır ve veri eğitim amaçlı kullanılmaz. Ölçüm çıktısı: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
+
 **Talep tahmini.** Örnek veride Holt-Winters'in geriye dönük test hatası (MAPE) ortalama 8,07; geçen yılın aynı haftasını alan basit yöntemin 11,16. Ayrıca aralıklı talep yöntemleri (Croston, SBA, TSB) ön-kayıtlı ölçütlerle denendi:
 
 ![Test MAPE ve test kapsaması: naif, Holt-Winters, Croston, SBA, TSB](docs/img/e8-olcum.svg)

@@ -1,0 +1,67 @@
+{
+  "aciklama": "VERI-E1 ölçümü: gerçek ama herkese açık veri setlerinin Kule girdi sözleşmesine uyarlanması ve ingest dayanıklılık sonuçları. Stok kaynağı bir model örnek veri setidir (şirket stok kaydı değildir). Online Retail II satış verisidir, tedarik verisi değildir (vekil eşleme). TL değerleri yoktur; para birimleri kaynağa göre Php ve GBP'dir.",
+  "tarih": "2026-10-22",
+  "stok_mendeley_9pn955p5vj": {
+    "lisans": "CC BY 4.0 (data.mendeley.com/datasets/9pn955p5vj/1 sayfasından; DOI 10.17632/9pn955p5vj.1; sürüm 1, 25 Kas 2024)",
+    "kaynak_dosya": "Model Sample Data - Retail Inventory.xlsx",
+    "kaynak_sha256": "c80985692329a39dc185c167478951fecc20a904b5257445099035b5a726b251",
+    "boyut_bayt": 24089,
+    "adapter_sayim": {
+      "ham_satir": 30,
+      "blok": 3,
+      "depo_sayisi": 3,
+      "urun_sayisi": 10,
+      "tekrar_anahtar": 0,
+      "kaynak_a_sutunu_tutarsiz": 9
+    },
+    "ingest": {
+      "toplam": 30,
+      "kabul": 30,
+      "eksik": 0,
+      "tutarsiz": 0,
+      "tekrar": 0,
+      "skor": 100.0,
+      "sure_sn": 0.8
+    },
+    "stok_durumu": {
+      "durum": "KOSULAMADI",
+      "neden": "sevkiyat.csv yok; kaynakta sevkiyat verisi yok. Ek olarak stok malzeme_no (p1..p30) ile satış verisi kodları hiç eşleşmiyor (kesişim 0), bu yüzden kapsama hesaplanamaz."
+    },
+    "vekil_alanlar": ["depo (blok depo kimliği M1/M2/M7)", "malzeme_adi (kod + kategori)", "emniyet_stogu (LMIL, alt bakım seviyesi)", "birim_maliyet (Php)"],
+    "uyarlanan_csv_sha256": "ce2d4e6e5f9c9163b2517d261ca0b2838a6d84c969d30652f09e15e0536243cb",
+    "tekrar_kosu_ayni_sha": true
+  },
+  "online_retail_ii_uci_502_vekil": {
+    "lisans": "CC BY 4.0 (archive.ics.uci.edu/dataset/502 sayfasından doğrulandı; DOI 10.24432/C5CG6D)",
+    "kaynak_dosya": "online_retail_II.xlsx",
+    "kaynak_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+    "etiket": "vekil eşleme, tedarik verisi değildir",
+    "adapter_sayim": {
+      "ham_satir": 1067371,
+      "fatura": 53628,
+      "iptal_fatura_satiri": 19494,
+      "miktar_sifir_veya_negatif": 22950
+    },
+    "ingest": {
+      "toplam": 1067371,
+      "kabul": 1044416,
+      "eksik": 0,
+      "tutarsiz": 22955,
+      "tutarsiz_nedenleri": {
+        "miktar > 0 olmalı": 22950,
+        "birim_fiyat >= 0 olmalı": 5
+      },
+      "tekrar": 0,
+      "skor": 97.8,
+      "sure_sn": 24.0
+    },
+    "adapter_sure_sn": 39.2,
+    "kisisel_veri": "CustomerID ve Description çıktıya yazılmaz",
+    "uyarlanan_csv_sha256": "c7398815d3ef130aa1a579d418630d26260640c27c0bbf957b8d4bc3fbccda30",
+    "tekrar_kosu_ayni_sha": true,
+    "stok_durumu_ve_diger_moduller": "girdi yok (yalnız siparis.csv yüklendi); sonuç üretilmedi"
+  },
+  "atlanan_veri_gereksinimleri": {
+    "mal_kabul_irsaliye_fatura_uretim": "Açık ve lisansı doğrulanmış gerçek veri bulunamadı (ARASTIRMA-VERI-01). Bu girdiler için ölçüm yapılmadı."
+  }
+}

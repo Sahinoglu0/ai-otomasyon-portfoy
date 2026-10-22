@@ -17,6 +17,7 @@ SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları
 
 ## 2026-10-22
 
+- **Düzeltme (yayın bütünlüğü, A2):** bu bölümdeki "Commit yok" işaretleri bayattır: `noindex` ve `demo/` v0.2.0 (`42c5af4`) ile zaten commit edilmişti. "--onay-ver açık kaldı" ve "eval 24/24" satırları aşağıdaki güncel hâl satırıyla geçersizdir: körlemesine onay yolu kapalıdır, bayrak yalnız senaryoya özgü özetle yazmayı açar. Eval bugün 46 vaka: ölçüt/kontrol/kapsam 41/41 geçti, 5 bilinen açık gözlendi (kaynak `ajan-orkestrasyon/ornek/eval-a3/`). Aşağıdaki eski satırlar değiştirilmedi.
 - Kule Python testleri 224 → 229 (K1). Sayım koşudan üretildi, `sayim.py` ile. Kule SHA `1d31a4f`. Rapor: PORTFOY-K1.
 - Orkestratör testleri 60 → 68 (G2, +8 regresyon testi; sayım 68/68). Rapor: PORTFOY-G2.
 - Node testleri 29 (tam ağaçta 29/29). Geçici kopyada 1 test atlanır, nedeni yazılı. Rapor: PORTFOY-K1.

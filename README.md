@@ -60,9 +60,18 @@ Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. 
 
 ## 2. Eval
 
-![Eval: 24 vaka, 22 ölçüt/kontrol/kapsam geçti, 2 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
+<!-- eval:cizim:basla -->
+![Eval: 46 vaka, 41 ölçüt/kontrol/kapsam geçti, 5 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
+<!-- eval:cizim:bitti -->
 
-Eval kasetten oynatılır; bu bir model kalitesi ölçümü değildir. Eval 34 vakadır; ölçüt, kontrol ve kapsam vakalarının **33/33'ü geçti**. Bir bilinen açık vaka gözlendi ve kapanmadı: düz metinde yazılan "2 kritik kalem" (gerçek sayı 3) iddia bloğu doğruyken kabul ediliyor, çünkü düz metindeki sayılar yalnızca Kule verisinde var olup olmadıklarına bakılarak denetleniyor. Bu vaka kapanırsa ölçüte çevrilecek. Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
+Eval kasetten oynatılır; bu bir model kalitesi ölçümü değildir. <!-- eval:sayi:basla -->Eval 46 vakadır; ölçüt, kontrol ve kapsam vakalarında **41/41** geçti. 5 bilinen açık vaka gözlendi ve kapanmadı.<!-- eval:sayi:bitti --> Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
+
+İki bilinen açık aşağıda yan yana. İkisi de kapanmadı; ikisi de eval'de açık vaka olarak duruyor.
+
+| Açık | Ne oluyor | Ölçüm | Eval vakaları |
+|---|---|---|---|
+| Düz metindeki sayının bağlamı | Denetçi yalnızca `iddialar` bloğundaki sayıları denetler. Düz metinde yanlış bağlamda yazılan bir sayı kabul ediliyor: "2 kritik kalem" (gerçek sayı 3) iddia bloğu doğruyken geçiyor, çünkü düz metindeki sayılar yalnızca Kule verisinde var olup olmadıklarına bakılarak denetleniyor. | Kapanırsa ölçüte çevrilecek. | `KACAK-duz-metin-yanlis-baglam`, `KACAK-duz-metin-baska-varlik`, `KACAK-duz-metin-anlam-belirsiz` |
+| Yeniden ifade edilmiş sızıntı | Model enjeksiyon metnini birebir kopyalamasa da yeniden ifade ediyor. Sızıntı denetimi bu parafrazları varsayılanda yakalamıyor: 0/6. Parafraz denetimi varsayılanda kapalı. | Varsayılanda 0/6 yakalandı (Wilson %95 [0,000; 0,390]). | `KACAK-enjeksiyon-anlamsal-parafraz`, `KACAK-enjeksiyon-parafraz-varsayilan-kapali` |
 
 ## 3. Test kanıtı ve ölçümler
 Test kanıtının tamamı (test kataloğu, davranış kataloğu, SHA-256 kanıt paketi): [kanit/](kanit/index.html).

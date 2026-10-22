@@ -1,6 +1,6 @@
 {
   "sema": "kanit-paket/1",
-  "olusturma_utc": "2026-10-22T00:29:06Z",
+  "olusturma_utc": "2026-10-22T13:41:38Z",
   "git_sha_kisa": "7ca787c",
   "manifest": "SHA256SUMS",
   "arsiv": null,
@@ -15,11 +15,11 @@
     },
     {
       "yol": "eval-sonuc.json",
-      "sha256": "8d65096383d49d5545c725f3ee739396cb611e6620982f7a05e59df79f057236",
-      "bayt": 9173,
+      "sha256": "331996eeff6495d8b6e46db37911d91a4b760e1d50776d431881a257808876d3",
+      "bayt": 17440,
       "kaynak": "kaset",
-      "aciklama_tr": "Ajan eval sonucu: 34 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
-      "aciklama_en": "Agent eval result: 34 cases, criteria results on tape-replayed responses."
+      "aciklama_tr": "Ajan eval sonucu: 46 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
+      "aciklama_en": "Agent eval result: 46 cases, criteria results on tape-replayed responses."
     },
     {
       "yol": "olcum-talep-kapsam.json",

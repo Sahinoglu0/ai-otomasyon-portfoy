@@ -51,7 +51,7 @@
     "İş akışını ajan rollerine bölme": "Splitting the workflow into agent roles",
     "Kural tabanlı analiz": "Rule-based analysis", "Birim testleri": "Unit tests",
     "SAP ERP alan mantığı": "SAP ERP field logic", "Markdown ve CSV çıktı": "Markdown and CSV output",
-    "Yapay zekâ kodlama ajanları": "AI coding agents", "229 Python test": "229 Python tests",
+    "Yapay zekâ kodlama ajanları": "AI coding agents", "411 Python test": "411 Python tests",
     "Portföy sayfası": "Portfolio page", "Ajan iz görüntüleyici": "Agent trace viewer",
     "Anlatı": "Story", "Okuma sırası": "Reading order", "Demo": "Demo",
     "Ayrıntılı anlatım": "Detailed write-up", "Test kanıtı": "Test evidence", "AI / otomasyon portföyü": "AI / automation portfolio"
@@ -70,7 +70,7 @@
     ["Eval skoru kasetten oynatıldı; model kalitesini ölçmez.", "Eval score replayed from a tape; it does not measure model quality."],
     ["Bir iz dosyası seç ya da örneklerden birini aç.", "Choose a trace file or open one of the samples."],
     // portföy sayfası
-    ["Kule için 229 Python testi geçiyor; Node: 29 test, 29 geçti, 0 atlandı", "229 Python tests pass for Kule; Node: 29 tests, 29 pass, 0 skipped"],
+    ["Kule için 411 Python testi geçiyor; Node: 58 test, 58 geçti, 0 atlandı", "411 Python tests pass for Kule; Node: 58 tests, 58 pass, 0 skipped"],
     ["Statik örnek sayfa; canlı API yok.", "Static sample page; no live API."],
     // giriş sayfası
     ["Kaynak kod kapalı; bu bölüm çıktıyı gösterir: test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi.", "Source code is closed; this section shows the output: test counts, a behaviour catalogue and an evidence package you can verify with SHA-256."],
@@ -105,7 +105,7 @@
     ["İz görüntüleyici: Ajan izleri", "Trace viewer: agent traces"],
     ["Soruşturma akışını adım adım aç: Planlayıcı, Analist, Denetçi. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT veya KOD SATIRI.", "Open the investigation flow step by step: Planner, Analyst, Auditor. Each trace's source is shown by a badge: REAL MODEL RECORD, HAND-WRITTEN TAPE or CODE LINE."],
     ["Test kanıtı: Ne ölçüldü", "Test evidence: what was measured"],
-    ["Kule için 229 Python testi, orkestratör için 87 birim testi, panel için 29 Node testi. Eval sonuçları ve bilerek açık bırakılan bir enjeksiyon vakası da burada. Kaynak kod bu depoda yayınlanmıyor; yerine bu kanıtlar var.", "229 Python tests for Kule, 87 unit tests for the orchestrator and 29 Node tests for the panel. The eval results and one injection case left open on purpose are here too. The source code is not published in this repository; these records stand in for it."],
+    ["Kule için 411 Python testi, orkestratör için 111 birim testi, panel için 58 Node testi. Eval sonuçları ve bilerek açık bırakılan bir enjeksiyon vakası da burada. Kaynak kod bu depoda yayınlanmıyor; yerine bu kanıtlar var.", "411 Python tests for Kule, 111 unit tests for the orchestrator and 58 Node tests for the panel. The eval results and one injection case left open on purpose are here too. The source code is not published in this repository; these records stand in for it."],
     ["Demo: Kurulumsuz deneme", "Demo: try it without setup"],
     ["Statik demo: önceden hesaplanmış sentetik örnek, canlı API yok.", "Static demo: precomputed synthetic sample, no live API."],
     ["Ayrıntılı anlatım: mimari, ölçüm bulguları ve sınırlar", "Detailed write-up: architecture, measurement findings and limits"],

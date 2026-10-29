@@ -2,7 +2,7 @@
 
 Bu katalog, otomatik testlerin neyi doğruladığını kısa cümlelerle anlatır. Her madde bir teste karşılık gelir.
 
-Toplam 345 test: Kule çekirdeği 229, Ajan orkestrasyonu 87, Kule arayüzü 29.
+Toplam 580 test: Kule çekirdeği 411, Ajan orkestrasyonu 111, Kule arayüzü 58.
 
 ## Kule çekirdeği
 
@@ -143,6 +143,7 @@ Toplam 345 test: Kule çekirdeği 229, Ajan orkestrasyonu 87, Kule arayüzü 29.
 
 ### Veri yükleme
 
+- Açık veri etiketli dosya gerçek müşteri verisi sayılmaz.
 - Eksik sütun açık bir hata verir.
 - Etiketi olmayan dosya gerçek veri sayılır.
 - Örnek etiketli dosya sentetik veri sayılır.
@@ -192,6 +193,7 @@ Toplam 345 test: Kule çekirdeği 229, Ajan orkestrasyonu 87, Kule arayüzü 29.
 
 ### SAP veri alımı
 
+- Yükleme yanıtı en fazla beş ilk bulguyu sıralı verir.
 - SAP kaynaklı veri alımı başarıyla kabul edilir.
 
 ### SAP eşleme
@@ -394,6 +396,306 @@ Toplam 345 test: Kule çekirdeği 229, Ajan orkestrasyonu 87, Kule arayüzü 29.
 - Ortak metinler, satır içi metinler, sayılar ve boş hücreler doğru okunur.
 - Sütun adresi doğru çözülür.
 
+### Favorita açık veri uyarlaması
+
+- Haftalık toplamda negatif değerler sıfırlanır ve eksik hafta dışarıda bırakılır.
+
+### M5 açık veri uyarlaması
+
+- Uyarlanan M5 verisi açık veri olarak etiketlenir.
+- M5 günlük satışları haftalığa toplanır ve eksik hafta atılır.
+- İstenen seri sayısı kadar seri örneklenir.
+- Uyarlanan uzun seri talep tahmini modülünden hatasız geçer.
+
+### Üretim açık veri uyarlaması
+
+- Üretim verisi bloklara bölünür ve kullanılabilirlik arızalardan hesaplanır.
+- Uyarlanan üretim verisi OEE modülünden hatasız geçer.
+- İdeal çevrim süresi kullanıldığında performans yüzde yüzü aşmaz.
+- Yarı iletken verisinde vardiya ve hatalı ürün sayısı doğru çıkar.
+
+### Satın alma süreci verisi uyarlaması
+
+- Veri dışında kalan kayıtlar nedenlerine göre sayılır.
+- Fatura tutarı fatura kapatma olayından alınır.
+- Fatura yalnız temiz kalemler için yazılır.
+- Aynı kaleme art arda eklenen kümülatif faturalar mükerrer sayılır.
+- Mal kabul ve irsaliye yalnız temiz kalemlerden üretilir.
+- Sipariş kaydında vekil alanlar ve plan alanları doldurulur.
+- Tedarikçi teslimat alanı bu veride boş yazılır.
+- Üç yönlü eşleştirme ölçütü kalem kategorisinden belirlenir.
+- Uyarlanan veri üçlü eşleştirme modülüyle uyumlu çalışır.
+- Çift fatura ve siparişsiz fatura bulgu adayları yakalanır.
+- Yalnız üç yönlü ve temiz kalemler veride kalır.
+- Zaman damgaları temizlenir ve tutarsız sıralı kayıtlar ayıklanır.
+
+### Satın alma verisinde çift fatura kuralları
+
+- Bir avro fazlasıyla artan kümülatif diziler çift fatura sayılır.
+- Meşru kısmi faturalamada bulgu üretilmez.
+
+### Büyük veri üretimi
+
+- Anomaliler çoğaltılan her kopyada korunur.
+- Üretilen büyük veri sentetik olarak etiketlenir.
+- Faturaların akışlı yazımı eski yöntemle aynı çıktıyı verir.
+- Fatura kimlikleri sipariş kimlikleriyle eşleşir.
+- Geçersiz çoğaltma çarpanı reddedilir.
+- Karar etiketi ve kalem sayısı çoğaltmadan sonra doğru kalır.
+- Kimlikler kopyalar arasında benzersizdir.
+- Komut satırı hem satır hedefini hem çarpanı kabul eder.
+- İstenen satır sayısı hedeflenerek veri üretilir.
+- Satır sayısı çarpan kadar artar.
+- Satır sınırı aşılınca sade bir hata mesajı verilir.
+
+### Deneme ucu
+
+- Deneme ucu paketi yükler ve beklenen bulgularla karşılaştırır.
+
+### Deneme paketi
+
+- Beklenen bulguların hepsi birebir yakalanır.
+- Deneme belgesi her beklenen bulguyu listeler.
+- Paketteki dosya biçimleri birbirinden farklıdır ve hepsi tanınır.
+- Depodaki deneme dosyaları üreticinin çıktısıyla bayt bayt aynıdır.
+- Eksi işaretli 102 iadesi pozitif miktarla da kabul edilir.
+- Paketteki her dosya örnek veri etiketi taşır.
+- Hiçbir satır reddedilmez ve veri örnek olarak sayılır.
+- Panel metni paketin içeriğiyle tutarlıdır.
+- Excel dosyasında ondalık ve bilimsel gösterimli sayılar doğru okunur.
+- Excel sayı hücresindeki ondalık işareti doğru çevrilir.
+
+### 102 hareketi kuralları
+
+- Eşleşen 102 girişi hareketi sıfırlar.
+- Eşleşmeyen 102 girişi net miktarı azaltır.
+
+### Dünden beri yükleme akışı
+
+- Deneme verisinin ikinci günü yüklenince önceki günle fark gösterilir.
+- Karar bulguları ilk bulgularda ve günler arası farkta yer alır.
+
+### Dünden beri karşılaştırması
+
+- Aynı gün yeniden yüklemede her bulgu sürüyor görünür.
+- İkinci gün dosyaları üreticiyle aynıdır ve etiketlidir.
+- İkinci gün farkı bilinen sayılarla eşleşir.
+- İlk raporda karşılaştırılacak önceki gün yoktur.
+- Paylaşılan rapor günler arası farkı da taşır.
+- Sahibi atanan vaka bekleyenler listesinden düşer.
+
+### Karar bulgularında günler arası fark
+
+- İkinci gün karar bulguları yeni, kaybolan ve değişen olarak ayrılır.
+- İlk raporda tüm karar bulguları yeni sayılır.
+- Karar bulguları kaydedilir ama vaka açmaz.
+- Karar girdisi eksikse karar bulgusu kaydedilmez.
+- Deneme paketi karar bulgusunu iki kez saymaz.
+- Paylaşılan rapor karar satırlarına değişim durumunu yazar.
+
+### Bakiye farkı
+
+- Bakiye farkı toleransın üstündeyse bulgu çıkar.
+- Kuruş farkı tolerans içinde kalır ve bulgu sayılmaz.
+- Ödeme ve avans bakiyeyi azaltır.
+
+### Çift açık kalem
+
+- Referansı, tutarı ve satıcısı aynı olan kalem iki kez açıksa bulgu çıkar.
+- Tutarı farklı kalemler çift sayılmaz.
+
+### FBL1N örnek veri zinciri
+
+- Örnek veri zinciri beklenen bulguları üretir.
+- Örnek veri, girdi sözleşmesi tarafından kabul edilir.
+- Özet ve bulgu türü sayıları doğrudur.
+- Örnek veri sözleşmeye uyar ve sentetik olarak etiketlidir.
+- Temiz bir satıcı için bulgu üretilmez.
+- Vaka bulguları kararlı bir parmak izi taşır.
+
+### FBL1N mutabakatının görüntü katmanı
+
+- Modül görüntü katmanında çalışır; girdi eksikse atlanır.
+
+### FBL1N kural sınırları
+
+- Referansı aynı olan farklı tedarikçilerin kalemleri karışmaz.
+- Bulgular önce öneme, sonra tutara göre sıralanır.
+
+### Ödenmiş görünen açık kalem
+
+- Ekstrede ödenmiş görünen kalem SAP'de açıksa bulgu çıkar.
+- Ödeme tutarı farklıysa bu durum ayrı bir bulgu değildir.
+
+### FBL1N dosya eşlemesi
+
+- FBL1N dosyası Kule'nin ekstre biçimine çevrilip yazılır.
+
+### Tutar uyuşmazlığı
+
+- Tutar ve para birimi aynıysa bulgu çıkmaz.
+- Para birimi farklıysa lira etkisi sıfır gösterilir.
+- Tutar uyuşmazlığının etkisi fark kadardır.
+
+### Vadesi geçmiş fatura
+
+- Ödeme kaleminin vadesi geçse de bulgu sayılmaz.
+- Vadesi bugün olan fatura gecikmiş sayılmaz.
+- Vadesi geçmiş açık fatura bulunur.
+
+### Girdi sınırları
+
+- Sonsuz, sayı olmayan ve aşırı basamaklı değerler 400 hatasıyla reddedilir.
+- Metin alanlarında uzunluk ve tür sınırı denetlenir.
+- Ölçüm kaydında aşırı büyük tamsayı 422 hatası verir ve yazılmaz.
+- Çok derin iç içe gövde tüm yazma uçlarında 400 hatası verir.
+- Simülasyonda taşan sayı 422 hatasıyla reddedilir.
+- Sınıra yakın iç içelik hâlâ kabul edilir.
+
+### Ölçüm veri tabanı göçü
+
+- Eski yükleme kayıtları veri tabanı göçünden sonra bozulmaz.
+
+### Ölçüm uçları
+
+- Bulgu doğruluğu işareti olay olarak yazılır, vaka durumunu değiştirmez.
+- Bulgu doğruluğu işareti için yetki ve girdi kuralları uygulanır.
+- Yüklemede atlanan modülün eksik girdileri listelenir.
+- Yükleme süresi ölçülür; hem yanıtta hem veri tabanında saklanır.
+- Geçersiz ölçüm girdisi 422 hatası verir ve yazılmaz.
+- Ölçüm listesi en yeniyi başa alır ve kalıcıdır.
+- Ölçüm özeti kaydedilen ölçümleri yansıtır.
+- Ölçüm, erişim anahtarının sahibi adına yazılır.
+- Ölçüm yazma yetkisi tüm roller için açıktır.
+
+### Ölçüm kaydı
+
+- Geçersiz ölçüm girdisi kayda yazılmaz.
+- Ölçüm kaydı dönemi ve kaynağı taşır.
+
+### Ölçüm özeti
+
+- Boş veri tabanında medyan ve oran üretilmez.
+- Ölçüm kaynakları ayrı ayrı özetlenir.
+
+### Çeyrek aralığı ve SAP ipuçları
+
+- Çeyrek aralığı tek kayıtta ve çok kayıtta doğru hesaplanır.
+- SAP ipuçları ve ek düzeltmeler doğru metinle gelir.
+
+### Paylaşım uçları
+
+- Paylaşım ucu raporu hem web sayfası hem CSV olarak verir.
+- Özet yanıtı rapor tarihini taşır.
+
+### Paylaşılan rapor
+
+- CSV çıktısı Excel ile sorunsuz açılır.
+- CSV'de tırnak işaretleri kaçırılır ve formül enjeksiyonuna karşı korunur.
+- Örnek veri için dosya adı etiket taşır.
+- Rapor sayfasında rozet, tarih, kaynak ve dosyalar beklenen bölümlerde üstte yer alır.
+- Çalışmayan analizler rapor sayfasında her zaman listelenir.
+- Rapor sayfası tek dosyadır; betik ve dış kaynak içermez.
+- Rapor sayfası yazdırmaya ve dar ekrana uygun biçimlenir.
+- Paylaşılan raporda kişi adı ve erişim anahtarı bulunmaz.
+- Paylaşılan rapordaki SAP işlem adları panelle aynıdır.
+
+### Rapor tarihi uçları
+
+- Geçersiz ve gelecekteki rapor tarihi 400 hatasıyla reddedilir.
+- Yükleme yanıtı rapor tarihini ve tarihin kaynağını yazar.
+
+### Rapor tarihi seçimi
+
+- Gerçek veride gecikme hesabı rapor tarihine göre değişir.
+- Gerçek veride tarih istenmezse bugünün tarihi kullanılır.
+- Karışık girdi gerçek veri sayılır.
+- Örnek veride sabit tarih istenen tarihten önce gelir ve etiketlidir.
+- Girdide tarih yoksa istenen tarih ya da bugün kullanılır.
+
+### Son düzeltmeler
+
+- SAP uyarlamasında açık veri etiketi korunur.
+- Çerçevesiz sabit genişlikli liste için anlaşılır bir uyarı verilir.
+- Etiketsiz dosya gerçek veri olarak kalır.
+- FBL1N yöntem metni doğru kural sayısını yazar.
+
+### Sabah raporunda eksik girdi
+
+- Veri tabanı yolu SAP dosyalarıyla da hatasız çalışır.
+- Eksik girdi özeti eksikleri listeler ve metin olarak yazar.
+- Yükleme yanıtı her modüle SAP ipucu ekler.
+- Yalnız SAP dosyaları yüklenince karar kalemi ve karar bulgusu üretilmez.
+- SAP dosyalarıyla karar analizi atlanır, diğer analizler çalışır.
+- Sevkiyat verisi olmadan kritik stok bulgusunun önemi ve metni doğru verilir.
+- Sevkiyat verisi yokken stok analizi yalnız emniyet stoğunu denetler.
+- Girdi tamsa karar analizi çalışır; yalnız gerçekten eksik analizler listelenir.
+
+### SAP dosya biçimleri
+
+- Türkçe etiketli, işaretli ve ondalık virgüllü sipariş listesi okunur.
+- İngilizce etiketli, virgül ayraçlı ve ay-gün sıralı tarihli sipariş listesi okunur.
+- Üst bilgi satırlı, eski kodlamalı malzeme hareketi listesi ve eksi işaretleri okunur.
+- Sonda değil başta eksi işareti ve iade hareketleri doğru okunur.
+- Teknik adlı, farklı sıralı ve fazla sütunlu stok listesi okunur.
+- Toplam ve boş satırlar sayılıp atlanır.
+- Yıl-ay-gün biçimli tarih, boş tarih ve altı haneli kalem numarası okunur.
+- Teknik adlı dosya Windows satır sonlarıyla da okunur.
+- Ondalık noktalı sayılar tahmin edilmez; uyarı verilir.
+- Eksik sütunlar adlarıyla sade bir hata mesajında söylenir.
+- Satır sınırı eşiği aşılınca uyarı verilir.
+- Eşlemedeki etiket listesi doğrulanır.
+- Örnek dosya sayısı ve etiketi doğrudur.
+
+### SAP kodlama ve ayraçları
+
+- Başlık hiç tanınmazsa kodlama ve ayraç söylenir, sütun suçlanmaz.
+- Bozuk 16 bitlik kodlamada sade bir hata verilir.
+- Eski Türkçe kodlamalı, sekme ayraçlı ve Türkçe etiketli dosya okunur.
+- Çizgi çerçeveli sabit genişlikli liste okunur.
+- Büyük uçlu 16 bit kodlamalı, işaretli, sekme ayraçlı dosya okunur.
+- Sütun gerçekten eksikse hata eksik sütunları ve dosya başlıklarını gösterir.
+- Küçük uçlu 16 bit kodlamalı, işaretli, noktalı virgül ayraçlı dosya okunur.
+- Küçük uçlu 16 bit kodlamalı, işaretli, sekme ayraçlı dosya okunur.
+- İşaretsiz küçük uçlu 16 bit kodlamalı, sekme ayraçlı dosya okunur.
+- Sekme ayraçlı standart kodlamalı dosya okunur.
+- Uzantısı .xls olan web sayfası ya da Excel dosyası için sade bir uyarı verilir.
+
+### Çok sayfalı Excel dosyaları
+
+- Beklenen sütun hiçbir sayfada yoksa ilk sayfa kullanılır ve uyarı verilir.
+- Çok sayfalı dosyada doğru sayfa seçilir ve uyarı verilir.
+- Excel satır sınırına ulaşılınca uyarı verilir.
+- Satır sınırının altında uyarı verilmez.
+- Sayfa adıyla seçim yapılabilir.
+- Tek sayfalı dosyada uyarı verilmez.
+
+### Ekstre ve sevkiyat eşlemesi
+
+- Borç ve alacak sütunlu ekstrede tür, tutar, iade, devir ve varsayılan para birimi doğru çıkar.
+- Çıkış hareketi yoksa sevkiyat dosyası yazılmaz ve mevcut dosya ezilmez.
+- Depo sütunu yoksa sevkiyat atlanır, mal kabul yazılır.
+- İngilizce başlıklar ve para birimi sütunu tanınır.
+- Tek malzeme hareketi dosyasından hem mal kabul hem sevkiyat çıkarılır.
+- Zorunlu mal kabul sütunu eksikse ve başka hedef yoksa hata verilir.
+
+### Ekstre sözleşmesi
+
+- Aynı faturaya iki kısmi ödeme tekrar sayılmaz; iade ve devir kabul edilir.
+- Veri tabanı göçü eski ekstre satırlarını korur.
+
+### Kısmi ödeme, iade ve devir
+
+- Bölünmüş ödemelerin toplamı faturayı karşılıyorsa fatura ödenmiş sayılır.
+- Devir alacağı bakiyeyi azaltır.
+- İade ve devir bakiyeye girer, ödeme sayılmaz.
+- Kısmi ödeme SAP'de kayıtsızsa bulgu çıkar, kayıtlıysa çıkmaz.
+
+### Tam SAP seti ile sabah raporu
+
+- Ekstre yoksa mutabakat atlanır ve nedeni söylenir.
+- Tam SAP setiyle FBL1N mutabakatı ve kapsama analizi çalışır.
+
 ## Ajan orkestrasyonu
 
 ### Gerçek model sorgusu
@@ -540,36 +842,119 @@ Toplam 345 test: Kule çekirdeği 229, Ajan orkestrasyonu 87, Kule arayüzü 29.
 - Tablo ya da eylem planı içeren çıktı reddedilir.
 - Yalnız alt görev listesinden oluşan çıktı kabul edilir.
 
+### Düzeltme bloğunu birleştirme
+
+- Bozuk biçimli düzeltme bloğu reddedilir.
+- Reddedilen iddia satırıyla birlikte çıkarılır; kabul edilenler kalır.
+
+### Kayıt kimlikli denetim
+
+- Kayıt kimliği depo, malzeme ya da tedarikçi alanından üretilir; hiçbiri yoksa genel kimlik verilir.
+- Kimlikli kipte, kimliğin yanında iddiası olmayan sayı reddedilir.
+- Yerleri değiştirilmiş sayılar reddedilir; doğru yerdekiler kabul edilir.
+
+### Kısmi yeniden isteme
+
+- İkinci istek yalnız reddedileni yeniden ister ve Kule'nin değerini ipucu olarak vermez.
+
+### Yeniden ifade seçeneği
+
+- Seçenek, denetimdeki yeniden ifade bayrağına iletilir.
+- Yeniden ifade seçeneği varsayılanda kapalıdır ve ikinci tur kolu değişmez.
+
+### Analist seçenekleri
+
+- İkinci tur kolunun ve varsayılan analist seçeneklerinin değerleri sabittir.
+
+### Şemalı çıktı
+
+- Araç isteği ve son yanıt şemalı alandan okunur.
+- Şemaya uymayan parametreler reddedilir.
+- Şemalı çıktı yoksa sonuç olduğu gibi bırakılır.
+- Şema yalnız analiste uygulanır ve varsayılanda kapalıdır.
+
+### Varsayılan davranış korunur
+
+- Sistem mesajı, araç çıktısı ve rapor biçimi varsayılanda değişmez.
+- Varsayılan denetimde red listesi boş döner.
+
+### Ölçüm koşusunu sürdürme
+
+- Yarıda kesilen ölçüm koşusu kaldığı yerden devam eder.
+
+### Güven aralığı hesapları
+
+- Yüzde doksan başarı oranının alt güven sınırı doğru hesaplanır.
+- Yüzde doksan oran için gereken örnek sayısı doğru bulunur.
+- Hiç hata görülmediğinde hata oranı üst sınırı doğru hesaplanır.
+- Veri yokken güven aralığı bütün aralığı kapsar.
+- Yirmi sorgudan on altısı kabul edildiğinde güven aralığı doğru hesaplanır.
+
+### Çağrı sayacı
+
+- Başarılı çağrının süresi ölçülür ve kayıt noktasına yazılır.
+- Girdi uyuşmazlığı koşuyu durdurur.
+- Kotaya takılan çağrı ölçüm kaydına girmez.
+
 ## Kule arayüzü
 
 ### Kule panel arayüzü
 
 - Sayfada, bir ihtiyacın kanıtlandığını ima eden bir ifade yer almaz.
+- Uzantısı .xls olan web sayfası ya da Excel dosyası CSV değil diye uyarılır; metin dosyasında uyarı çıkmaz.
 - Tablo dosyaları işaret sırası, noktalı virgül ayracı, ondalık virgül ve tırnak kaçışlarıyla doğru okunur.
+- Excel satır sınırı uyarısı yalnız sınıra ulaşan metinde çıkar.
 - Mevsimsel yöntem basit taban yöntemden kötüyse bu açıkça belirtilir.
 - Arayüzdeki durum geçiş kuralları sunucudaki kurallarla birebir aynıdır.
 - Yatırım getirisi elle yapılan hesapla aynı çıkar.
 - Yatırım getirisi varsayılanları, her girdinin güven düzeyi belirtilerek seçilir.
+- Kaynağı zaten yüklenmiş liste yüklendi diye işaretlenir; sunucu uyarısı sebep olur ve yüklenmemişler listenin sonuna iner.
+- Boş durum adımları her SAP listesi için nereden alınacağını ve neyi açacağını söyler.
+- Dünden beri rozeti yeni, tutarı değişen ve kaç gündür açık olduğunu gösterir; ilk beş parmak izini taşır.
+- SAP biçimi olmayan metin tanınmaz.
+- SAP dosyası, Türkçe ya da İngilizce etiketli veya teknik başlıkla, açıklama satırı ve işaretle birlikte de tanınır.
 - Vaka süreleri kalan, bugün, gecikmiş ve kapanmış olarak doğru sınıflanır.
+- Farklı 16 bit kodlamalı, işaretsiz, standart ve eski kodlamalı dosyalar çözülür; sekme ayraçlı malzeme hareketi tanınır.
 - Aksiyonlar önem, etki türü ve tutar sırasıyla listelenir; tutarsız olanlar kendi düzeyinin sonunda yer alır.
 - Kaynak atfı ve referans bağlantısı sayfada bulunur.
 - Aynı sipariş kalemi, tutarı tek kez sayılacak biçimde işlenir.
 - Ağırlık değişince sıralama değişir; ağırlıklar toplamı bir olacak biçimde ölçeklenir.
+- Başlık normalleştirmesi sunucu tarafıyla birebir aynı sonucu verir.
+- Bulgu doğruluğunda son işaret olay sırasındaki en sonuncusudur; işaret yoksa boş döner.
+- Cari ekstre, çıkışlı malzeme hareketi ve FBL1N listesi doğru türde tanınır.
 - Vaka yalnız yönetici tarafından kabul edilebilir; geçersiz durum geçişine izin verilmez.
+- Eksik listeler dosya başına toplanır: önce eklenebilenler, sonra açtığı analiz ve diğer eksikler yazılır.
+- Eksik sütunlu dosya tanınır ama eksik alanları listelenir.
+- Emek tasarrufu hesabında kayıtlı süre tek değer olarak kullanılır; diğer kollar değişmez.
+- Emek tasarrufunda alt sınır üst sınırdan farklıdır; eski tek sayı kaydı da okunur.
 - Emniyet gerekçesi olan kritik kalem, eşiğin altına düşse de kritik kalır.
 - Gerçek veride kalibrasyon ölçülemezse bu açıkça söylenir; hedef dışı sıfır doldurma kabul edilmez.
+- Girdi ve SAP dosyası tablosu eşleme dosyasıyla birebir aynıdır.
 - Hedef aralığının sınır değerleri hedef içinde sayılır; sınırın hemen üstündeki değer dışarıda kalır.
 - İki veri kaynağı ayrı rozetlerle gösterilir ve metinleri gerçek veri sayfasıyla aynıdır.
+- İlk beş bulgu sıraya göre verilir; sorumlu ve ipucu taşır, SAP ipucu olmayan modülde ipucu boştur.
+- Kazanılan süre hesabında çeyrek aralığı kullanılır; tek kayıt tek tahmin sayılır.
+- Yeni ölçüm kayıtları hesaptaki değeri günceller; kayıt kalmazsa varsayıma dönülür ve elle girilen değere dokunulmaz.
 - Kabul edilen vakalar sütunu yalnız istendiğinde ya da dolu olduğunda görünür.
+- Panelde reddedilen satırlardan en fazla yirmisi gösterilir.
 - Red, kalite puanı, veri alım süresi ve sevkiyat bulguları sayfada yazılı olarak yer alır.
 - Risk sayısı, hesabın kendi özetiyle aynıdır.
+- Hata mesajı sütun, biçim, oturum, ağ ve sınır ipuçlarıyla sade biçimde verilir.
 - Sayfadaki sayılar kanıt dosyalarıyla birebir uyuşur; kanıt yoksa bu kontrol atlanır.
 - Karşılaştırma özeti yoksa karşılaştırma satırı çizilmez, sayfa yine de görünür.
+- Sorumlu rol ve SAP ipucu, sunucudaki modül sahipleri listesiyle tutarlıdır.
+- Süre girdisi sıfırdan bin dört yüz kırka kadar bir sayıdır ve virgüllü ondalık kabul edilir; diğerleri boş sayılır.
+- Süre göstergesi her zaman varsayım olarak etiketlenir; geçersiz girdide metin gösterilmez.
+- Tanıma tablosu eşleme dosyasıyla aynı kaynağı ve aynı alan kümesini taşır.
+- Tanıma tablosundaki her Türkçe ve İngilizce etiket eşlemede tanımlıdır.
 - Bir tedarikçi çıkarıldığında hacmi kalan tedarikçilere dağılır ve ilgili bulgular kapanır.
 - Varsayılan ağırlıklarla hesaplanan puan ve seviye, ana hesabın sonucuyla aynıdır.
 - Varsayılan stok eşikleri beklenen durum sınıflarını verir.
 - Veri eksik olan bölümler nedenleriyle birlikte soluk olarak gösterilir.
 - Veri yoksa sayfa hata vermeden boş bir durum gösterir.
 - Yazma yetkisi sunucunun verdiği listeye göre belirlenir.
+- Çizgi çerçeveli sabit genişlikli liste malzeme hareketi olarak tanınır.
 - Sayfada kod olarak çalışabilecek bir ifade yer almaz.
+- Ölçüm bağlarında kayıt yoksa değer boştur ve hesaba alınamaz; sıfır yazılmaz.
+- Ölçüm bağlarında yalnız aylık vaka ve kayıtlı süre hesaba alınabilir; az kayıt ve dolmamış ay uyarılır.
 - Örnek veride fazla stok payı, stok sonucundan okunur.

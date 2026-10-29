@@ -1,25 +1,25 @@
 {
   "sema": "kanit-paket/1",
-  "olusturma_utc": "2026-10-22T13:41:38Z",
-  "git_sha_kisa": "7ca787c",
+  "olusturma_utc": "2026-10-29T09:54:00Z",
+  "git_sha_kisa": "a772940",
   "manifest": "SHA256SUMS",
   "arsiv": null,
   "dosyalar": [
     {
       "yol": "sayilar.json",
-      "sha256": "a5206f19c03b8edadb287604ad4973895ed8b678aba022b873e145c7b1d7f8f8",
-      "bayt": 1112,
+      "sha256": "eaf5f038669da64141af678d03f18d45e05b14488e12d8f21a89459a4bdeb702",
+      "bayt": 1115,
       "kaynak": "kosu",
       "aciklama_tr": "Test sayıları (koşudan).",
       "aciklama_en": "Test counts (from the run)."
     },
     {
       "yol": "eval-sonuc.json",
-      "sha256": "331996eeff6495d8b6e46db37911d91a4b760e1d50776d431881a257808876d3",
-      "bayt": 17440,
+      "sha256": "35f92007143fcd652910e3a6886f4daf136b0c2a090f6ec9c7df431eb7ea3625",
+      "bayt": 42363,
       "kaynak": "kaset",
-      "aciklama_tr": "Ajan eval sonucu: 46 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
-      "aciklama_en": "Agent eval result: 46 cases, criteria results on tape-replayed responses."
+      "aciklama_tr": "Ajan eval sonucu: 123 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
+      "aciklama_en": "Agent eval result: 123 cases, criteria results on tape-replayed responses."
     },
     {
       "yol": "olcum-talep-kapsam.json",
@@ -55,24 +55,24 @@
     },
     {
       "yol": "test-katalogu.tr.md",
-      "sha256": "9245bcac5e7572ec18d4f6e0dd81c3681c53782215fc569f1ae9326e48caadde",
-      "bayt": 23417,
+      "sha256": "8199af95d1c9afba5cf123388b72aa61586360d588c04b455cea3cc3ceec01b9",
+      "bayt": 40930,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (Türkçe).",
       "aciklama_en": "Test behaviour catalogue (Turkish)."
     },
     {
       "yol": "test-katalogu.en.md",
-      "sha256": "3ded401826a1652e0f69230f481a7ba7c3bb2fb1e52fcf1b55a0d20f7976e1e5",
-      "bayt": 24415,
+      "sha256": "aa69e3eb4527266f87a43a1d1b1a6237d5140cd8f80ee6c60c92122a5a4ab9a1",
+      "bayt": 42764,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (İngilizce).",
       "aciklama_en": "Test behaviour catalogue (English)."
     },
     {
       "yol": "test-ozeti.json",
-      "sha256": "5ac0fad7c22b553d47df93621500e771c73656ca74585ec1e3800197bd7986a6",
-      "bayt": 931,
+      "sha256": "d6318c33f4ad3394ced9dd2c1566edc89b65ee72859a883b348225ff25a443bd",
+      "bayt": 934,
       "kaynak": "kosu",
       "aciklama_tr": "Test koşusu özeti: sayı, süre, sürüm.",
       "aciklama_en": "Test run summary: counts, duration, version."

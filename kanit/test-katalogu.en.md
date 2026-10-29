@@ -2,7 +2,7 @@
 
 This catalog states, in short sentences, what the automated tests check. Each item corresponds to one test.
 
-Total 345 tests: Kule core 229, Agent orchestration 87, Kule interface 29.
+Total 580 tests: Kule core 411, Agent orchestration 111, Kule interface 58.
 
 ## Kule core
 
@@ -143,6 +143,7 @@ Total 345 tests: Kule core 229, Agent orchestration 87, Kule interface 29.
 
 ### Data loading
 
+- A file labeled as open data is not treated as real customer data.
 - A missing column produces a clear error.
 - A file without a label is treated as real data.
 - A file labeled as sample is treated as synthetic data.
@@ -192,6 +193,7 @@ Total 345 tests: Kule core 229, Agent orchestration 87, Kule interface 29.
 
 ### SAP data intake
 
+- The upload response gives at most five top findings, in order.
 - Data received from SAP is accepted successfully.
 
 ### SAP mapping
@@ -394,6 +396,306 @@ Total 345 tests: Kule core 229, Agent orchestration 87, Kule interface 29.
 - Shared text, inline text, numbers and empty cells are read correctly.
 - Column addresses are resolved correctly.
 
+### Favorita open data adapter
+
+- Negative values are floored to zero in weekly totals, and an incomplete week is left out.
+
+### M5 open data adapter
+
+- The adapted M5 data is labeled as open data.
+- M5 daily sales are summed into weeks and an incomplete week is dropped.
+- As many series are sampled as requested.
+- An adapted long series passes through the demand forecast module without errors.
+
+### Production open data adapter
+
+- Production data is split into blocks and availability is computed from failures.
+- Adapted production data passes through the OEE module without errors.
+- Performance never exceeds one hundred percent when the ideal cycle time is used.
+- Shift and defective item counts come out right on the semiconductor data.
+
+### Purchasing process data adapter
+
+- Records left out of the data are counted by reason.
+- The invoice amount is taken from the invoice clearing event.
+- An invoice is written only for clean line items.
+- Cumulative invoices added one after another to the same item are counted as duplicates.
+- Goods receipts and delivery notes are produced only from clean line items.
+- Proxy fields and plan fields are filled in the order record.
+- The supplier delivery field is written empty on this data.
+- The three-way matching criterion is set from the item category.
+- The adapted data works with the three-way matching module.
+- Duplicate invoice and invoice-without-order finding candidates are caught.
+- Only clean three-way items remain in the data.
+- Timestamps are cleaned and records in an inconsistent order are filtered out.
+
+### Duplicate invoice rules on purchasing data
+
+- Cumulative sequences that rise by more than one euro are counted as duplicate invoices.
+- No finding is raised for legitimate partial invoicing.
+
+### Large data generation
+
+- Anomalies are kept in every copy that is generated.
+- The generated large data is labeled as synthetic.
+- Streaming invoice output matches the output of the old method.
+- Invoice identifiers match the order identifiers.
+- An invalid multiplication factor is rejected.
+- The decision label and item count stay correct after multiplication.
+- Identifiers are unique across copies.
+- The command line accepts both a row target and a multiplier.
+- Data is generated aiming for the requested row count.
+- The row count grows by the multiplier.
+- A plain error message is given when the row limit is exceeded.
+
+### Trial endpoint
+
+- The trial endpoint loads the package and compares it with the expected findings.
+
+### Trial package
+
+- Every expected finding is caught exactly.
+- The trial document lists every expected finding.
+- The file formats in the package differ from each other and are all recognized.
+- The trial files in the repository are byte for byte identical to the generator output.
+- A negative 102 return is also accepted with a positive quantity.
+- Every file in the package carries a sample-data label.
+- No row is rejected and the data is counted as sample data.
+- The dashboard text is consistent with the package contents.
+- Decimal and scientific notation numbers are read correctly from an Excel file.
+- The decimal mark in an Excel number cell is converted correctly.
+
+### Rules for the 102 movement
+
+- A matching 102 entry cancels the movement.
+- A non-matching 102 entry reduces the net quantity.
+
+### Since-yesterday upload flow
+
+- Loading the second day of trial data shows the difference from the previous day.
+- Decision findings appear in the top findings and in the day-to-day difference.
+
+### Since-yesterday comparison
+
+- Reloading on the same day shows every finding as continuing.
+- The second-day files match the generator and are labeled.
+- The second-day difference matches the known numbers.
+- The first report has no previous day to compare with.
+- The shared report also carries the day-to-day difference.
+- A case with an assigned owner drops off the waiting list.
+
+### Day-to-day difference in decision findings
+
+- On the second day, decision findings are split into new, disappeared and changed.
+- In the first report, all decision findings count as new.
+- Decision findings are recorded but do not open cases.
+- No decision finding is recorded when the decision input is missing.
+- The trial package does not count a decision finding twice.
+- The shared report writes the change status on decision rows.
+
+### Balance difference
+
+- A balance difference above the tolerance raises a finding.
+- A difference of a few cents stays within tolerance and is not a finding.
+- Payments and advances reduce the balance.
+
+### Duplicate open item
+
+- A finding is raised when an item with the same reference, amount and vendor is open twice.
+- Items with different amounts are not counted as duplicates.
+
+### FBL1N sample data chain
+
+- The sample data chain produces the expected findings.
+- The sample data is accepted by the input contract.
+- The summary and finding type counts are correct.
+- The sample data follows the contract and is labeled synthetic.
+- A clean vendor produces no finding.
+- Case findings carry a stable fingerprint.
+
+### FBL1N reconciliation in the display layer
+
+- The module runs in the display layer and is skipped when input is missing.
+
+### FBL1N rule boundaries
+
+- Items of different vendors with the same reference are not mixed up.
+- Findings are sorted by importance first, then by amount.
+
+### Open item that looks paid
+
+- A finding is raised when an item shown as paid on the statement is still open in SAP.
+- A different payment amount is not a separate finding.
+
+### FBL1N file mapping
+
+- An FBL1N file is converted and written in the Kule statement format.
+
+### Amount mismatch
+
+- No finding is raised when amount and currency match.
+- When currencies differ, the lira impact is shown as zero.
+- The impact of an amount mismatch equals the difference.
+
+### Overdue invoice
+
+- A payment item past its due date is still not a finding.
+- An invoice due today is not counted as overdue.
+- An open invoice past its due date is found.
+
+### Input limits
+
+- Infinite, not-a-number and over-long numeric values are rejected with a 400 error.
+- Length and type limits are checked on text fields.
+- An oversized integer in a measurement record gives a 422 error and is not written.
+- A deeply nested body gives a 400 error on every write endpoint.
+- An overflowing number in the simulation is rejected with a 422 error.
+- Nesting close to the limit is still accepted.
+
+### Measurement database migration
+
+- Old upload records are not corrupted by the database migration.
+
+### Measurement endpoints
+
+- A finding accuracy mark is written as an event and does not change the case status.
+- Permission and input rules apply to the finding accuracy mark.
+- Missing inputs of a skipped module are listed on upload.
+- Upload time is measured and kept both in the response and in the database.
+- Invalid measurement input gives a 422 error and is not written.
+- The measurement list puts the newest first and is persistent.
+- The measurement summary reflects the recorded measurements.
+- A measurement is written in the name of the access token owner.
+- Writing measurements is open to all roles.
+
+### Measurement record
+
+- Invalid measurement input is not written to the record.
+- A measurement record carries its period and source.
+
+### Measurement summary
+
+- No median or ratio is produced on an empty database.
+- Measurement sources are summarized separately.
+
+### Quarter range and SAP hints
+
+- The quarter range is computed correctly for a single record and for many records.
+- SAP hints and follow-up corrections come with the right text.
+
+### Share endpoints
+
+- The share endpoint returns the report both as a web page and as CSV.
+- The summary response carries the report date.
+
+### Shared report
+
+- The CSV output opens in Excel without trouble.
+- Quotes are escaped in the CSV and formula injection is blocked.
+- The file name carries a label for sample data.
+- The report page shows the badge, date, source and files in the expected sections at the top.
+- Analyses that did not run are always listed on the report page.
+- The report page is a single file with no script and no external resource.
+- The report page is styled for printing and for narrow screens.
+- The shared report contains no person name and no access token.
+- SAP transaction names in the shared report match the dashboard.
+
+### Report date endpoints
+
+- An invalid or future report date is rejected with a 400 error.
+- The upload response states the report date and where it came from.
+
+### Report date selection
+
+- On real data, lateness is computed against the report date.
+- On real data, today's date is used when no date is requested.
+- Mixed input is treated as real data.
+- On sample data, the fixed date takes precedence over a requested date and is labeled.
+- When the input has no date, the requested date or today is used.
+
+### Final fixes
+
+- The open-data label is kept in the SAP adaptation.
+- A clear warning is given for a fixed-width list without a frame.
+- An unlabeled file stays real data.
+- The FBL1N method text states the right number of rules.
+
+### Missing input in the morning report
+
+- The database path also works with SAP files without errors.
+- The missing-input summary lists the gaps and writes them as text.
+- The upload response adds a SAP hint to each module.
+- No decision item or decision finding is produced when only SAP files are loaded.
+- With SAP files the decision analysis is skipped and the other analyses run.
+- Without shipment data, the importance and text of a critical stock finding are given correctly.
+- Without shipment data, the stock analysis checks safety stock only.
+- With complete input the decision analysis runs, and only analyses that are truly missing are listed.
+
+### SAP file formats
+
+- A purchase order list with Turkish labels, a byte order mark and decimal commas is read.
+- A purchase order list with English labels, comma separators and month-day dates is read.
+- A material movement list with a header line and an old encoding, including minus signs, is read.
+- A leading minus sign and return movements are read correctly.
+- A stock list with technical names, a different column order and extra columns is read.
+- Total rows and empty rows are counted and skipped.
+- A year-month-day date, an empty date and a six-digit item number are read.
+- A technical-name file is also read with Windows line endings.
+- Numbers with a decimal point are not guessed; a warning is given.
+- Missing columns are named in a plain error message.
+- A warning is given when the row limit threshold is passed.
+- The label list in the mapping is validated.
+- The number of sample files and their label are correct.
+
+### SAP encodings and separators
+
+- When no header is recognized, the encoding and separator are reported and no column is blamed.
+- A plain error is given for a broken 16-bit encoding.
+- A file in the old Turkish encoding with tab separators and Turkish labels is read.
+- A fixed-width list with a line frame is read.
+- A big-endian 16-bit file with a byte order mark and tab separators is read.
+- When a column is truly missing, the error shows the missing columns and the file headers.
+- A little-endian 16-bit file with a byte order mark and semicolon separators is read.
+- A little-endian 16-bit file with a byte order mark and tab separators is read.
+- A little-endian 16-bit file without a byte order mark and with tab separators is read.
+- A tab-separated file in the standard encoding is read.
+- A plain message is given for a web page or Excel file with an .xls extension.
+
+### Multi-sheet Excel files
+
+- When no sheet has the expected column, the first sheet is used and a warning is given.
+- In a multi-sheet file the right sheet is chosen and a warning is given.
+- A warning is given when the Excel row limit is reached.
+- No warning is given below the row limit.
+- A sheet can be chosen by name.
+- No warning is given for a single-sheet file.
+
+### Statement and shipment mapping
+
+- On a statement with debit and credit columns, type, amount, return, carry-over and default currency come out right.
+- With no outgoing movement, no shipment file is written and the existing file is not overwritten.
+- Without a warehouse column, shipments are skipped and goods receipts are written.
+- English headers and the currency column are recognized.
+- Both goods receipts and shipments are derived from a single material movement file.
+- An error is given when the required goods receipt column is missing and there is no other target.
+
+### Statement contract
+
+- Two partial payments on one invoice are not counted as duplicates; returns and carry-overs are accepted.
+- The database migration keeps old statement rows.
+
+### Partial payment, return and carry-over
+
+- An invoice counts as paid when split payments add up to its amount.
+- A carried-over credit reduces the balance.
+- Returns and carry-overs enter the balance and do not count as payments.
+- A partial payment raises a finding if SAP has no record of it, and none if it does.
+
+### Morning report with the full SAP set
+
+- Reconciliation is skipped without a statement, and the reason is given.
+- With the full SAP set, FBL1N reconciliation and the coverage analysis run.
+
 ## Agent orchestration
 
 ### Live model query
@@ -540,36 +842,119 @@ Total 345 tests: Kule core 229, Agent orchestration 87, Kule interface 29.
 - Output containing a table or an action plan is rejected.
 - Output made only of a subtask list is accepted.
 
+### Merging the correction block
+
+- A malformed correction block is rejected.
+- A rejected claim is removed together with its line, and accepted claims stay.
+
+### Identifier-based check
+
+- A record identifier is built from the warehouse, material or supplier field, and a general one is used when none exist.
+- In identifier mode, a number next to an identifier without a claim is rejected.
+- Numbers with swapped places are rejected, and the ones in the right places are accepted.
+
+### Partial re-request
+
+- The second request asks again only for what was rejected and does not hand over Kule's value as a hint.
+
+### Rephrasing option
+
+- The option is passed on to the rephrasing flag of the check.
+- The rephrasing option is off by default and the second-round arm does not change.
+
+### Analyst options
+
+- The values of the second-round arm and the default analyst options are fixed.
+
+### Schema output
+
+- The tool request and the final answer are read from the schema field.
+- Parameters that do not match the schema are rejected.
+- When there is no schema output, the result is left as it is.
+- The schema applies only to the analyst and is off by default.
+
+### Default behavior is preserved
+
+- The system message, tool output and report format do not change by default.
+- The reject list comes back empty in the default check.
+
+### Resuming a measurement run
+
+- A measurement run that was cut off continues where it stopped.
+
+### Confidence interval calculations
+
+- The lower confidence bound of a ninety percent success rate is computed correctly.
+- The sample size needed for a ninety percent rate is found correctly.
+- The upper bound of the error rate is computed correctly when no error was seen.
+- With no data, the confidence interval covers the whole range.
+- The confidence interval is computed correctly when sixteen of twenty queries are accepted.
+
+### Call counter
+
+- The duration of a successful call is measured and written to the log.
+- An input mismatch stops the run.
+- A call that hits the quota is not entered in the measurement record.
+
 ## Kule interface
 
 ### Kule dashboard interface
 
 - The page contains no wording that implies a need has been proven.
+- A web page or Excel file with an .xls extension is flagged as not CSV, and a text file gets no warning.
 - Table files are read correctly, including byte-order marks, semicolon separators, decimal commas and quote escapes.
+- The Excel row limit warning appears only on text that reaches the limit.
 - When the seasonal method does worse than the simple baseline, the page says so.
 - The status transition rules in the interface are identical to those on the server.
 - Return on investment matches a manual calculation.
 - The return-on-investment defaults are chosen with a stated confidence level for each input.
+- A list whose source is already loaded is marked as loaded, the server warning is the reason, and unloaded ones go to the end.
+- The empty-state steps tell where to get each SAP list and what it unlocks.
+- The since-yesterday badge shows new items, changed amounts and days open, and carries the first five fingerprints.
+- Text that is not in a SAP format is not recognized.
+- A SAP file is recognized with Turkish, English or technical headers, a description line and a byte order mark.
 - Case deadlines are classified correctly as remaining, due today, overdue or closed.
+- Files in different 16-bit encodings, with no mark, in the standard and in the old encoding are decoded, and a tab-separated material movement is recognized.
 - Actions are listed by importance, impact type and amount; inconsistent ones come last in their own level.
 - The source citation and reference link appear on the page.
 - The same order line is counted once in the total amount.
 - Changing a weight changes the ranking; the weights are scaled to sum to one.
+- Header normalization gives exactly the same result as the server side.
+- For finding accuracy, the last mark in the event order wins, and nothing is returned when there is no mark.
+- A statement, an outbound material movement and an FBL1N list are recognized as the right type.
 - A case can be accepted only by a manager; invalid status changes are not allowed.
+- Missing lists are grouped per file: addable ones first, then the analysis they unlock and other gaps.
+- A file with missing columns is recognized and its missing fields are listed.
+- The saved time is used as a single value in the labor saving calculation, and other arms do not change.
+- In the labor saving, the lower bound differs from the upper bound, and an old single-number record is still read.
 - A critical item with a safety reason stays critical even when it falls below the threshold.
 - If calibration cannot be measured on real data, the page says so; out-of-target zero filling is not accepted.
+- The input to SAP file table matches the mapping file exactly.
 - The edges of the target range count as on target, while a value just above them does not.
 - The two data sources appear as separate badges, with wording that matches the real-data page.
+- The first five findings come in order with an owner and a hint, and a module with no SAP hint has an empty hint.
+- The quarter range is used in the saved time calculation, and a single record counts as a single estimate.
+- New measurement records update the value in the calculation, it falls back to the assumption when no records remain, and a manually entered value is left alone.
 - The accepted-cases column appears only when requested or when it has entries.
+- The dashboard shows at most twenty rejected rows.
 - Rejections, quality score, intake time and shipment findings appear in writing on the page.
 - The risk count matches the calculation's own summary.
+- The error message is plain and comes with hints about columns, formats, sessions, network and limits.
 - The numbers on the page match the evidence files exactly; this check is skipped when no evidence is present.
 - When no comparison summary exists, the comparison row is omitted and the page still renders.
+- The responsible role and SAP hint are consistent with the module owner list on the server.
+- A time input is a number from zero to 1440 and accepts a decimal comma, and anything else is treated as empty.
+- The time indicator is always labeled as an assumption, and no text is shown for invalid input.
+- The recognition table uses the same source and the same set of fields as the mapping file.
+- Every Turkish and English label in the recognition table is defined in the mapping.
 - When a supplier is removed, its volume is spread across the remaining suppliers and its findings close.
 - The score and level computed with default weights match the main calculation.
 - The default stock thresholds produce the expected status classes.
 - Sections without data are shown faded, with the reason listed.
 - When there is no data, the page shows an empty state without failing.
 - Write permission is determined from the list the server provides.
+- A fixed-width list with a line frame is recognized as a material movement.
 - No content on the page can run as script.
+- With no records in the measurement links, the value is empty and cannot be used, and zero is never written.
+- In the measurement links only monthly cases and saved time can be used, and few records or an unfinished month trigger a warning.
 - In the sample data, the excess stock share is read from the stock result.

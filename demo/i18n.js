@@ -135,8 +135,8 @@
     ["Şablon özeti · anahtarsız", "Template summary · no API key"], ["Karşılaştırılacak önceki anlık görüntü yok", "No earlier snapshot to compare with"],
     ["— önceki dönem verisi yok", "— no previous period data"],
     // özet
-    ["Altı modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede.",
-      "Six modules at a glance: where money leaks, what to do first, where the risk is."],
+    ["Yedi modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede.",
+      "Seven modules at a glance: where money leaks, what to do first, where the risk is."],
     ["Tespit edilen tutar etkisi", "Detected amount impact"], ["Bağlı sermaye", "Tied-up capital"], ["Kritik stok kalemi", "Critical stock items"],
     ["D seviyesi tedarikçi", "Level D suppliers"], ["Öncelikli 5 aksiyon", "Top 5 actions"], ["CSV indir", "Download CSV"],
     ["Sıra kuralı: önem, sonra etki türü (doğrudan para kaybı, bağlı sermaye, ölçülmedi), sonra tutar.",

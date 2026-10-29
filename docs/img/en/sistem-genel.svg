@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" role="img" aria-labelledby="t d" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
 <title id="t">System overview</title>
-<desc id="d">CSV input, input contract, SQLite, six modules and CLI/REST/panel; below, the agent orchestrator that uses the modules as tools.</desc>
+<desc id="d">CSV input, input contract, SQLite, seven modules and CLI/REST/panel; below, the agent orchestrator that uses the modules as tools.</desc>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4a4e52"/></marker></defs>
 <rect x="0.5" y="0.5" width="959" height="439" rx="8" fill="#fbfaf6" stroke="#d8d3c7"/>
 <text x="24" y="34" font-size="18" font-weight="700" fill="#1b1d1f">Kule Pro + agent orchestrator</text>
@@ -20,7 +20,7 @@
 <text x="412" y="152" font-size="12" fill="#4a4e52">uploads, snapshots,</text><text x="412" y="168" font-size="12" fill="#4a4e52">cases (audit trail)</text>
 
 <rect x="590" y="86" width="165" height="104" rx="6" fill="#fff" stroke="#1b1d1f"/>
-<text x="602" y="110" font-weight="700">6 modules</text><text x="602" y="127" fill="#4a4e52">+ explanation</text>
+<text x="602" y="110" font-weight="700">7 modules</text><text x="602" y="127" fill="#4a4e52">+ explanation</text>
 <text x="602" y="152" font-size="12" fill="#4a4e52">rule-based, no LLM</text>
 
 <rect x="780" y="86" width="160" height="104" rx="6" fill="#fff" stroke="#1b1d1f"/>
@@ -34,7 +34,7 @@
 <g font-size="12" fill="#4a4e52">
 <text x="775" y="312" font-weight="700" fill="#1b1d1f">Modules</text>
 <text x="775" y="332">Inventory status</text><text x="775" y="348">Order anomaly</text><text x="775" y="364">Demand forecast</text>
-<text x="775" y="380">Supplier score</text><text x="775" y="396">Three-way match · OEE</text>
+<text x="775" y="380">Supplier score</text><text x="775" y="396">Three-way match · OEE</text><text x="775" y="412">FBL1N reconciliation</text>
 </g>
 
 <g font-size="13" fill="#1b1d1f">

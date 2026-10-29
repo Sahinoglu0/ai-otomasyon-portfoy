@@ -2,7 +2,7 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
-1. Kule Pro reads a company's stock, order, supplier and invoice files and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on.
+1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
 2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
 3. The data is synthetic (generator seed 42), and the measurements use the public DataCo Smart Supply Chain dataset. It has not been tested on a real company's data.
 4. The source code is not published in this repository. What is here: static pages, diagrams, test evidence and agent traces.
@@ -15,7 +15,7 @@
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 - [Test evidence](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): source code is closed; test counts, behaviour catalogue and an evidence package you can verify with SHA-256
 
-**Boundary:** The sample data is synthetic or public and is not a real company's result. The Kule source code is not in this repository.
+**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats were tested with synthetic files, not with output from a real SAP system. The Kule source code is not in this repository.
 
 ## Videos
 
@@ -34,7 +34,7 @@ Taken from the live pages (light theme, 1440 px).
 
 | Agent trace viewer | Test evidence |
 |---|---|
-| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: 345 tests, breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: 580 tests, breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
 | Product page | Home |
 |---|---|
@@ -61,10 +61,10 @@ In the example trace the Analyst writes T-03's score as 58.0 on the first attemp
 ## 2. Eval
 
 <!-- eval:cizim:basla -->
-![Eval: 46 cases, 41 criteria/checks/scope passed, 5 known gaps observed](docs/img/en/eval-vakalar.svg)
+![Eval: 123 cases, 111 criteria/checks/scope passed, 12 known gaps observed](docs/img/en/eval-vakalar.svg)
 <!-- eval:cizim:bitti -->
 
-The eval is replayed from tapes; it is not a measure of model quality. <!-- eval:sayi:basla -->The eval has 46 cases; **41/41** criteria, check and scope cases passed. 5 known gaps were observed and are not closed.<!-- eval:sayi:bitti --> The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
+The eval is replayed from tapes; it is not a measure of model quality. <!-- eval:sayi:basla -->The eval has 123 cases; **111/111** criteria, check and scope cases passed. 12 known gaps were observed and are not closed.<!-- eval:sayi:bitti --> The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
 
 The two known gaps are listed side by side below. Neither is closed; both stay as open cases in the eval.
 
@@ -105,13 +105,13 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** For Kule, 229 Python tests pass; on the Node side 29 tests, 29 pass, 0 skipped; the orchestrator has 87 unit tests.
+**Tests.** For Kule, 411 Python tests pass; on the Node side 58 tests, 58 pass, 0 skipped; the orchestrator has 111 unit tests.
 
 ## 4. Scope and status
 
-- **Data.** The sample data is synthetic (seed 42); measurements were made on synthetic and public DataCo data. The ROI calculator's inputs are the user's own assumptions.
+- **Data.** The sample data is synthetic (seed 42); measurements were made on synthetic and public DataCo data. The ROI calculator's inputs are the user's own assumptions; two values from Kule records (monthly cases, recorded time) can be taken with their source, but the records are not a pilot measurement: time is the user's own estimate.
 - **Seed band and ROI.** Across 10 seeds (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) the total stock value ranges from 7.4 M to 45.6 M TRY (median 21.9 M TRY), so no single TRY figure is offered. Band: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). In the ROI calculator, the user's unsourced inputs (catch rate, prevented share, cost per event) move the result by ±3% to ±8%. The stock leg is not computed unless the user enters the excess stock share input, and it shows no TRY result. These are worked examples and sensitivity checks, not a company result. ROI assumptions table: [olcum/roi-varsayimlari.en.md](olcum/roi-varsayimlari.en.md).
-- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports are read through a mapping file. There is no live SAP or OCR connection.
+- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are read through a mapping file: Turkish and English headings, UTF-8/UTF-16/ANSI, tab, `;`, `,` and `|` separators; the ALV header and total rows are skipped. **These formats were tested with synthetic files, not with output from a real SAP system.** **The Morning report screen does not accept `.xlsx` files** (it asks for CSV; the server reads `.xlsx` only from a disk folder). There is no live SAP or OCR connection.
 - **API.** Designed for demo and pilot setups: roles, an audit trail and a rate limit are included; production-grade security (TLS, SSO) is outside the scope of this publication.
 - **Orchestrator (real-model measurement).** With `claude-haiku-5-5` through the local `claude` CLI, 38 of 40 planned runs were recorded: 37 completed and 1 cut short by the quota. The quota ran out at model call 136. The last 2 runs were never executed. The pre-registration forbids runs after the quota, so they were not rerun.
   - **Investigation:** 16 of 20 runs accepted, 4 rejected, 0 failed. Acceptance 80%, 95% Wilson interval [0.584, 0.919]. By scenario: S1, S2 and S3 4/4 (S3's first attempt 3/4); S4 and S5 2/4. S4 and S5 flip between accept and reject: same question, same data, different outcome.
@@ -131,6 +131,7 @@ A typical day for a planner, buyer or manager:
 | "Which items are critical today?" | Days-of-cover status CRITICAL / DEAD_STOCK / EXCESS_STOCK and ABC class, ranked by an importance score |
 | "How much should I order, and when?" | Per-item safety stock, reorder point (ROP), economic order quantity (EOQ) and a recommended order |
 | "Is there an error in my orders or invoices?" | 7 kinds of order-vs-goods-receipt mismatch; duplicate invoice, over-billing, price deviation, invoice without delivery note |
+| "Does the vendor's open-item list match the statement?" | FBL1N open-item reconciliation: overdue, duplicate open item, open item that looks paid, amount mismatch, balance difference, partial payment |
 | "Which supplier is a problem?" | A 0–100 score from on-time delivery, rejection rate and price deviation, graded A/B/C/D |
 | "What will demand do?" | An 8-week forecast, an 80% interval and a backtest result |
 | "How efficient are my lines?" | OEE (availability × performance × quality) and a downtime Pareto |
@@ -141,12 +142,12 @@ Every problem found becomes a **case**: it gets an owner, its status is tracked 
 
 ## 6. How it works
 
-![System overview: CSV input, input contract, SQLite, six modules, CLI/REST/panel; the agent orchestrator below](docs/img/en/sistem-genel.svg)
+![System overview: CSV input, input contract, SQLite, seven modules, CLI/REST/panel; the agent orchestrator below](docs/img/en/sistem-genel.svg)
 
-1. **Input.** CSV files exported by the company (stock, shipments, orders, goods receipts, delivery notes, demand history, supplier deliveries, production) and invoice text. `.xlsx` files are read too; Turkish-language and spaced column headers are matched automatically, for example `Malzeme No.` (material number) and `Stok Miktarı` (stock quantity). SAP-style exports (EKPO, MSEG, MARD, LIPS) are converted to the Kule format with a field-mapping file.
+1. **Input.** CSV files exported by the company (stock, shipments, orders, goods receipts, delivery notes, demand history, supplier deliveries, production) and invoice text. `.xlsx` files are read too; Turkish-language and spaced column headers are matched automatically, for example `Malzeme No.` (material number) and `Stok Miktarı` (stock quantity). SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are converted to the Kule format with a field-mapping file; in vendor reconciliation the other side is the vendor statement (Kule CSV format).
 2. **Validation.** Every row is checked against an input contract: type, required field, lower bound, allowed values, cross-field rule, duplicates. A bad row never disappears silently; it is stored with its reason and reflected in the file's **data quality score** (missing, inconsistent, duplicate, stale).
 3. **Storage.** Clean data goes to SQLite. Every run leaves a *snapshot*; the difference between two snapshots can be computed.
-4. **Analysis.** Six modules produce the same JSON envelope (numbers, findings, warnings, the method used).
+4. **Analysis.** Seven modules produce the same JSON envelope (numbers, findings, warnings, the method used).
 5. **Decision.** The decision engine turns findings into an importance score by monetary impact and produces order recommendations.
 6. **Presentation.** Command line, REST API, browser panel and daily/weekly summary reports.
 
@@ -159,6 +160,7 @@ Every problem found becomes a **case**: it gets an owner, its status is tracked 
 | Demand forecast (`talep_tahmini`) | 8-week demand forecast, 80% interval, backtest | Additive Holt-Winters (52-week seasonality) |
 | Supplier score (`tedarikci_skoru`) | On-time delivery, rejection rate, price deviation → 0–100 score, A/B/C/D | Weighted rule (40% / 35% / 25%) |
 | Three-way match (`uclu_eslestirme`) | Order–delivery note–invoice: duplicate invoice, over-billing, price deviation, invoice without delivery note | Rule based; invoice lines are extracted with a regular text pattern |
+| Vendor open-item reconciliation (`fbl1n_mutabakat`) | Overdue, duplicate open item, open item that looks paid, amount mismatch, balance difference, partial payment | Rule based; SAP side FBL1N, other side the vendor statement |
 | OEE (`oee`) | Availability × performance × quality; downtime Pareto; root-cause suggestion | Calculation + rules |
 | Explanation (`aciklama`) | A Turkish summary of the module outputs | Template; optionally an OpenAI-compatible language model endpoint |
 
@@ -191,18 +193,19 @@ A findings list says "what happened"; the decision engine calculates "what to do
 
 ## 9. Panel and reports
 
-The browser panel has no dependencies and has four screens:
+The browser panel has no dependencies and has four screens plus a Morning report screen:
 
 - **Executive summary:** the 5 priority actions, monetary impact, risk ranking by area, demand direction. If two modules find the same order line, the amount is counted once.
 - **ROI calculator:** yearly savings as a low–high range, net and payback over holding cost, invoice leakage, delay and manual-check effort; each line's formula is spelled out with the user's own numbers.
 - **Scenario:** play with supplier score weights, stock thresholds and "what if a supplier leaves" in the browser; with default settings it gives exactly the same result as the Python modules.
 - **Report:** a printable executive report (PDF) and CSV that opens correctly in Turkish Excel.
+- **Morning report (extra screen):** drag and drop SAP files, recognition from the header, today's top 5 findings, rejected rows, a missing-list card and a "Since yesterday" section (new, resolved, amount changed, unchanged). A single-file HTML report and a formula-protected CSV can be downloaded. The screenshot carries a synthetic-data badge; `.xlsx` is not accepted (CSV).
 
 The command `python -m kule ozet` (runs in the closed repository; `ozet` is Turkish for "summary") produces the daily and weekly summary (Markdown, single-file HTML, JSON, CSV). For every supplier that needs an order, an email **draft** is written: items, quantity, latest delivery date and the supplier's measured delivery performance. Kule does not send email; it prepares the draft for you to review.
 
 ## 10. Integration and security
 
-- **REST API** (`/v1`, 21 routes, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users.
+- **REST API** (`/v1`, 28 operations, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users, measurement (`/v1/olcum`, `/v1/olcum/ozet`), finding accuracy.
 - **Roles:** planner, buyer, manager. The module owner's role writes a case (stock, demand, OEE → planner; orders, invoices, suppliers → buyer); only a manager can set `ACCEPTED`.
 - **Audit trail:** every unauthenticated (401) and unauthorised (403) call, every rate-limited (429) call and every authenticated operation is recorded. Tokens are stored in the database only as SHA-256 digests.
 - **Resilience:** per-client rate limit (default 300 requests/min), a 20 MB body limit, a clean error message for fields larger than 128 KB, and a setup guide for a TLS reverse proxy.

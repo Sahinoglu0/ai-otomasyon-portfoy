@@ -2,7 +2,7 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](README.en.md)
 
-1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir.
+1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını, SAP dışa aktarımlarını ve satıcı açık kalemlerini okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir. Sabah raporu ekranı SAP dosyalarını sürükle-bırak ile alır, bugünün ilk 5 bulgusunu ve "dünden beri" farkını gösterir.
 2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
 3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümler herkese açık DataCo Smart Supply Chain verisiyle yapıldı. Gerçek bir şirketin verisiyle test edilmedi.
 4. Kaynak kod bu depoda yayınlanmıyor. Burada statik sayfalar, çizimler, test kanıtları ve ajan izleri var.
@@ -15,7 +15,7 @@
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
 - [Test kanıtı](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): kaynak kod kapalı; test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi
 
-**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. Kule'nin kaynak kodu bu depoda değildir.
+**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. SAP biçimleri sentetik dosyalarla sınandı, gerçek bir SAP çıktısıyla denenmedi. Kule'nin kaynak kodu bu depoda değildir.
 
 ## Videolar
 
@@ -34,7 +34,7 @@ Canlı sayfalardan alınmıştır (açık tema, 1440 px).
 
 | Ajan iz görüntüleyici | Test kanıtı |
 |---|---|
-| [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: 345 test, alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+| [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: 580 test, alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
 | Ürün sayfası | Giriş |
 |---|---|
@@ -61,10 +61,10 @@ Kule'nin modüllerini araç olarak kullanan ince bir çok ajanlı orkestratör. 
 ## 2. Eval
 
 <!-- eval:cizim:basla -->
-![Eval: 46 vaka, 41 ölçüt/kontrol/kapsam geçti, 5 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
+![Eval: 123 vaka, 111 ölçüt/kontrol/kapsam geçti, 12 bilinen açık gözlendi](docs/img/eval-vakalar.svg)
 <!-- eval:cizim:bitti -->
 
-Eval kasetten oynatılır; bu bir model kalitesi ölçümü değildir. <!-- eval:sayi:basla -->Eval 46 vakadır; ölçüt, kontrol ve kapsam vakalarında **41/41** geçti. 5 bilinen açık vaka gözlendi ve kapanmadı.<!-- eval:sayi:bitti --> Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
+Eval kasetten oynatılır; bu bir model kalitesi ölçümü değildir. <!-- eval:sayi:basla -->Eval 123 vakadır; ölçüt, kontrol ve kapsam vakalarında **111/111** geçti. 12 bilinen açık vaka gözlendi ve kapanmadı.<!-- eval:sayi:bitti --> Eval, bilerek bozulmuş iki sürümü de yakalar: her şeyi kabul eden Denetçi ve yetki kontrolü olmayan orkestratör.
 
 İki bilinen açık aşağıda yan yana. İkisi de kapanmadı; ikisi de eval'de açık vaka olarak duruyor.
 
@@ -105,13 +105,13 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Kule için 229 Python testi geçiyor; Node tarafında 29 test, 29 geçti, 0 atlandı; orkestratör için 87 birim testi var.
+**Testler.** Kule için 411 Python testi geçiyor; Node tarafında 58 test, 58 geçti, 0 atlandı; orkestratör için 111 birim testi var.
 
 ## 4. Kapsam ve durum
 
-- **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır.
+- **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır; Kule kayıtlarından iki değer (aylık vaka, kayıtlı süre) kaynağıyla hesaba alınabilir, ama kayıtlar pilot ölçümü değildir: süre kullanıcının kendi tahminidir.
 - **Tohum bandı ve ROI.** 10 tohumla (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) yapılan tekrarda fazla stok değeri 7,4 M ile 45,6 M TL arasında değişiyor (medyan 21,9 M TL); bu yüzden tek bir TL sayısı sunulmaz. Bant: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). ROI'de kullanıcının kaynaksız girdileri (yakalama payı, önlenen pay, olay başı maliyet) sonucu ±%3 ile ±%8 arasında oynatıyor. Stok kolu, kullanıcı fazla stok payı girdisini girmeden hesaplanmaz ve TL sonucu gösterilmez. Bunlar örnek hesap ve duyarlılık göstergesidir; firma sonucu değildir. Varsayım tablosu: [olcum/roi-varsayimlari.md](olcum/roi-varsayimlari.md).
-- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar eşleme dosyasıyla okunur. Canlı SAP ya da OCR bağlantısı yoktur.
+- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar (EKPO, MSEG, MARD, LIPS, FBL1N) eşleme dosyasıyla okunur: TR ve EN başlıklar, UTF-8/UTF-16/ANSI, sekme, `;`, `,` ve `|` ayracı; ALV üst bilgisi ve toplam satırı atlanır. **Bu biçimler sentetik dosyalarla sınandı; gerçek bir SAP çıktısıyla denenmedi.** **Sabah raporu ekranı `.xlsx` dosyasını kabul etmez** (CSV ister; sunucu yalnız disk klasöründen `.xlsx` okur). Canlı SAP ya da OCR bağlantısı yoktur.
 - **API.** Demo ve pilot kurulum için tasarlanmıştır: roller, denetim izi ve hız sınırı içerir; üretim düzeyi güvenlik bu yayının kapsamı dışındadır.
 - **Orkestratör (gerçek model ölçümü).** `claude-haiku-5-5` ile yerel `claude` CLI üzerinden 40 planlanan koşudan 38'i kaydedildi: 37'si tamamlandı, 1'i kota nedeniyle yarıda kesildi. Kota 136. model çağrısında doldu; kalan 2 koşu hiç koşulmadı. Ön-kayıt kota sonrasında koşu yapılmasını yasakladığı için yeniden koşulmadılar.
   - **Soruşturma:** 20 koşuda 16 kabul, 4 ret, 0 başarısız. Kabul oranı %80, %95 Wilson aralığı [0,584; 0,919]. Senaryoya göre S1, S2 ve S3 4/4 (S3'ün ilk denemesi 3/4); S4 ve S5 2/4. S4 ve S5 kabul ile ret arasında salınıyor: aynı soru, aynı veri, farklı sonuç.
@@ -131,6 +131,7 @@ Bir planlayıcı, satın almacı ya da yönetici için tipik gün şöyle geçer
 | "Bugün hangi kalemler kritik?" | Kapsama gününe göre KRITIK / OLU_STOK / FAZLA_STOK durumu ve ABC sınıfı; önem puanıyla sıralı |
 | "Ne kadar, ne zaman sipariş vereyim?" | Kalem başına emniyet stoğu, yeniden sipariş noktası (ROP), ekonomik sipariş miktarı (EOQ) ve önerilen sipariş |
 | "Siparişlerimde, faturalarımda hata var mı?" | 7 tür sipariş–mal kabul tutarsızlığı; çift fatura, fazla faturalama, fiyat sapması, irsaliyesiz fatura |
+| "Satıcının açık kalemleri ekstresiyle tutuyor mu?" | FBL1N açık kalem mutabakatı: vadesi geçmiş, çift açık kalem, ödenmiş görünen açık kalem, tutar uyuşmazlığı, bakiye farkı, kısmi ödeme |
 | "Hangi tedarikçi sorunlu?" | Zamanında teslim, red oranı, fiyat sapmasından 0–100 skor ve A/B/C/D seviyesi |
 | "Talep ne olacak?" | 8 haftalık tahmin, %80 güven aralığı ve geriye dönük test sonucu |
 | "Hatlarım ne kadar verimli?" | OEE (kullanılabilirlik × performans × kalite) ve duruş Pareto'su |
@@ -141,12 +142,12 @@ Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (a�
 
 ## 6. Nasıl çalışır
 
-![Sistem genel görünümü: CSV girdisi, girdi sözleşmesi, SQLite, altı modül, CLI/REST/panel; altta ajan orkestratörü](docs/img/sistem-genel.svg)
+![Sistem genel görünümü: CSV girdisi, girdi sözleşmesi, SQLite, yedi modül, CLI/REST/panel; altta ajan orkestratörü](docs/img/sistem-genel.svg)
 
-1. **Girdi.** İşletmenin dışa aktardığı CSV dosyaları (stok, sevkiyat, sipariş, mal kabul, irsaliye, talep geçmişi, tedarikçi teslimatı, üretim) ve fatura metni. `.xlsx` dosyaları da okunur; Türkçe ve boşluklu sütun başlıkları (`Malzeme No.`, `Stok Miktarı`) otomatik eşlenir. SAP tarzı dışa aktarımlar (EKPO, MSEG, MARD, LIPS) alan eşleme dosyasıyla Kule biçimine çevrilir.
+1. **Girdi.** İşletmenin dışa aktardığı CSV dosyaları (stok, sevkiyat, sipariş, mal kabul, irsaliye, talep geçmişi, tedarikçi teslimatı, üretim) ve fatura metni. `.xlsx` dosyaları da okunur; Türkçe ve boşluklu sütun başlıkları (`Malzeme No.`, `Stok Miktarı`) otomatik eşlenir. SAP tarzı dışa aktarımlar (EKPO, MSEG, MARD, LIPS, FBL1N) alan eşleme dosyasıyla Kule biçimine çevrilir; satıcı mutabakatında karşı taraf, tedarikçi ekstresidir (Kule CSV biçimi).
 2. **Doğrulama.** Her satır bir girdi sözleşmesine göre denetlenir: tür, zorunlu alan, alt sınır, seçenek, alanlar arası kural, tekrar. Bozuk satır sessizce kaybolmaz; nedeniyle birlikte saklanır ve dosyanın **veri kalitesi skoruna** (eksik, tutarsız, tekrar, bayat) yansır.
 3. **Saklama.** Temiz veri SQLite'a yazılır. Her çalıştırma bir *anlık görüntü* bırakır; iki görüntü arasındaki fark çıkarılabilir.
-4. **Analiz.** Altı modül aynı JSON zarfını üretir (sayılar, bulgular, uyarılar, hangi yöntemin kullanıldığı).
+4. **Analiz.** Yedi modül aynı JSON zarfını üretir (sayılar, bulgular, uyarılar, hangi yöntemin kullanıldığı).
 5. **Karar.** Karar motoru bulguları parasal etkiyle önem puanına çevirir ve sipariş önerisi çıkarır.
 6. **Sunum.** Komut satırı, REST API, tarayıcı paneli ve günlük/haftalık özet raporları.
 
@@ -159,6 +160,7 @@ Bulunan her sorun bir **vakaya** dönüşür: sahibi atanır, durumu izlenir (a�
 | `talep_tahmini` | 8 haftalık talep tahmini, %80 aralık, geriye dönük test | Toplamsal Holt-Winters (52 hafta mevsimsellik) |
 | `tedarikci_skoru` | Zamanında teslim, red oranı, fiyat sapması → 0–100 skor, A/B/C/D | Ağırlıklı kural (%40 / %35 / %25) |
 | `uclu_eslestirme` | Sipariş–irsaliye–fatura: çift fatura, fazla faturalama, fiyat sapması, irsaliyesiz fatura | Kural tabanlı; fatura satırları düzenli metin kalıbıyla çıkarılır |
+| `fbl1n_mutabakat` | Satıcı açık kalem mutabakatı: vadesi geçmiş, çift açık kalem, ödenmiş görünen açık kalem, tutar uyuşmazlığı, bakiye farkı, kısmi ödeme | Kural tabanlı; SAP tarafı FBL1N, karşı taraf tedarikçi ekstresi |
 | `oee` | Kullanılabilirlik × performans × kalite; duruş Pareto'su; kök neden önerisi | Hesap + kural |
 | `aciklama` | Modül çıktılarından Türkçe özet | Şablon; isteğe bağlı olarak OpenAI uyumlu bir dil modeli uç noktası |
 
@@ -191,18 +193,19 @@ Bulgu listesi "ne oldu"yu söyler; karar motoru "ne yapmalı"yı hesaplar. Kalem
 
 ## 9. Panel ve raporlar
 
-Tarayıcıda açılan, bağımlılıksız panel dört ekrandan oluşur:
+Tarayıcıda açılan, bağımlılıksız panel dört ekrandan ve ek bir Sabah raporu ekranından oluşur:
 
 - **Yönetici özeti:** öncelikli 5 aksiyon, parasal etki, alan bazında risk sıralaması, talep yönü. Aynı sipariş kalemini iki modül bulursa tutar bir kez sayılır.
 - **ROI hesaplayıcı:** stok taşıma, fatura kaçağı, gecikme ve elle kontrol emeği kollarında alt–üst aralıkla yıllık tasarruf, net ve geri ödeme; her kalemin formülü kullanıcının sayılarıyla dökülür.
 - **Senaryo:** tedarikçi skoru ağırlıklarını, stok eşiklerini ve "tedarikçi çıkarsa" durumunu tarayıcıda oynatın; varsayılan ayarda Python modülleriyle birebir aynı sonucu verir.
 - **Rapor:** yazdırılabilir yönetici raporu (PDF) ve Türkçe Excel uyumlu CSV.
+- **Sabah raporu (ek ekran):** SAP dosyalarını sürükleyip bırakma, başlıktan tanıma, bugünün ilk 5 bulgusu, reddedilen satırlar, eksik liste kartı ve "Dünden beri" bölümü (yeni, çözülen, tutarı değişen, değişmeyen). Tek dosyalık HTML rapor ve formül korumalı CSV indirilebilir. Ekran görüntüsü sentetik veri rozetiyle gelir; `.xlsx` kabul edilmez (CSV).
 
 `python -m kule ozet` (kapalı depoda çalışır) günlük ve haftalık özeti (Markdown, tek dosya HTML, JSON, CSV) üretir. Sipariş gereken her tedarikçi için e-posta **taslağı** yazılır: kalemler, miktar, en geç teslim tarihi ve tedarikçinin ölçülen teslim performansı. Kule e-posta göndermez; taslağı sizin gözden geçirmeniz için hazırlar.
 
 ## 10. Entegrasyon ve güvenlik
 
-- **REST API** (`/v1`, 21 rota, OpenAPI sözleşmesi): vakalar, bulgular, görüntüler, fark, modül çıktısı, kalite, ingest, karar, simülasyon, özet, denetim, kullanıcılar.
+- **REST API** (`/v1`, 28 işlem, OpenAPI sözleşmesi): vakalar, bulgular, görüntüler, fark, modül çıktısı, kalite, ingest, karar, simülasyon, özet, denetim, kullanıcılar, ölçüm (`/v1/olcum`, `/v1/olcum/ozet`), bulgu doğruluğu.
 - **Roller:** planlayıcı, satın alma, yönetici. Vakayı modülün sahibi rol yazar (stok, talep, OEE → planlayıcı; sipariş, fatura, tedarikçi → satın alma); `KABUL_EDILDI` yalnız yönetici verir.
 - **Denetim izi:** kimliksiz (401) ve yetkisiz (403) her çağrı, hız sınırına takılan (429) çağrılar ve her kimlikli işlem kaydedilir. Token'lar veritabanında yalnız SHA-256 özetiyle tutulur.
 - **Dayanıklılık:** istemci başına hız sınırı (varsayılan 300 istek/dk), 20 MB gövde sınırı, 128 KB'tan büyük alanlarda temiz hata mesajı, TLS'li ters vekil kurulum kılavuzu.

@@ -334,7 +334,71 @@
     return f / t * 100;
   }
 
+  // ---- ROI'nin ölçüme bağlanması. Sıra: ölçüm → kullanıcı → varsayım.
+  //   kule → Kule'nin kendi kaydı (vaka sayısı, işleme süresi); elle → kullanıcının kendi girdiği kayıt (beyan, kronometre değil)
+  // Yalnız iki değer hesaba alınabilir: aylık vaka (vaka_ay) ve Sabah raporu başına kazanılan süre (emek kolunu değiştirir).
+  // Bulgu doğruluğu ve işleme süresi bilgi olarak gösterilir: doğruluk kaçırılanı bilmez, yakalama oranı yerine geçmez.
+  // "hesap" hesaba alınan değerdir: aylık vaka tek sayı; kazanılan süre kayıtların çeyrek aralığı {alt, ust}:
+  // tek medyan sahte kesinlik veriyordu; tek kayıtta alt = üst ve tek_tahmin işaretli.
+  var IS_GUNU_AY = 21;      // emek kolu kayıtlı süreyle hesaplanırken ayda iş günü (varsayım)
+  var OLCUM_AZ_KAYIT = 10;  // kullanıcı-iş başına 10 kayıt ancak yön verir; altı "az kayıt"
+  function olcumBaglari(oz) {
+    if (!oz) return [];
+    var s = oz.sabah || {}, v = oz.vaka || {}, d = oz.bulgu_dogrulugu || {}, i = oz.ingest || {};
+    var isaret = num(d.dogru) + num(d.yanlis);
+    return [
+      { id: 'vaka_ay', ad: 'Aylık vaka sayısı', birim: 'adet/ay', kaynak: 'kule', deger: v.toplam ? num(v.son_30_gun) : null,
+        hesap: v.toplam ? num(v.son_30_gun) : null,
+        n: num(v.toplam), aciklama: 'Kule’nin son 30 günde açtığı vaka sayısı',
+        uygulanabilir: num(v.son_30_gun) > 0,
+        uyari: v.kapsam_gun != null && v.kapsam_gun < 30 ? (v.kapsam_gun < 1 ? 'Kayıtlar bugün başladı' : 'Kayıtlar yalnız ' + v.kapsam_gun + ' günlük') +
+          '; ay dolmadı, gerçek aylık sayı farklı olabilir.' : null },
+      { id: 'emek_dk_gun', ad: 'Sabah raporu başına kazanılan süre (medyan)', birim: 'dk/gün', kaynak: 'elle', deger: s.medyan_sure_dk == null ? null : num(s.medyan_sure_dk),
+        hesap: s.medyan_sure_dk == null ? null : { alt: num(s.ceyrek_alt == null ? s.medyan_sure_dk : s.ceyrek_alt),
+          ust: num(s.ceyrek_ust == null ? s.medyan_sure_dk : s.ceyrek_ust) },
+        tek_tahmin: num(s.kayit) < 2,
+        n: num(s.kayit), aciklama: num(s.kullanici) + ' kullanıcının Sabah raporu ekranında girdiği süre tahminleri (kişi başı)',
+        uygulanabilir: s.medyan_sure_dk != null,
+        uyari: s.medyan_sure_dk != null && num(s.kayit) < OLCUM_AZ_KAYIT ? 'Yalnız ' + num(s.kayit) + ' kayıt; yön için bile ' + OLCUM_AZ_KAYIT + ' kayıt gerekir.' : null },
+      { id: 'dogruluk', ad: 'Bulgu doğruluğu', birim: '%', kaynak: 'elle', deger: d.oran == null ? null : num(d.oran) * 100, n: isaret,
+        aciklama: 'Vaka kartlarındaki doğru / yanlış işaretleri', uygulanabilir: false,
+        uyari: 'Hesaba girmez: kaçırılan bulguyu bilmez, "ödemeden önce yakalanan pay" yerine kullanılamaz.' },
+      { id: 'ingest', ad: 'Kule işleme süresi (medyan)', birim: 'sn', kaynak: 'kule', deger: i.medyan_sure_ms == null ? null : num(i.medyan_sure_ms) / 1000,
+        n: num(i.yukleme), aciklama: 'Yüklemenin sunucuda işlenme süresi (ölçüm)', uygulanabilir: false, uyari: 'Bilgi amaçlı; hesaba girmez.' }
+    ];
+  }
+
+  // Hesaba alınmış kayıtları yeni özetle eşitler: "Kayıtları yenile"den sonra tablo yeni medyanı, hesap eski
+  // değeri gösteriyordu). g.olcum[id] olan her girdi için: değer değiştiyse g ve kayıt bilgisi güncellenir; kayıt artık
+  // hesaba alınamıyorsa girdi varsayılana döner. Döndürür: [{id, ad, eski, yeni}] (yeni null = varsayıma döndü).
+  function olcumEsitle(g, oz, varsayilan) {
+    var baglar = olcumBaglari(oz), degisen = [];
+    Object.keys(g.olcum || {}).forEach(function (id) {
+      var b = baglar.filter(function (x) { return x.id === id; })[0], eski = g[id];
+      if (!b || !b.uygulanabilir) {
+        delete g.olcum[id];
+        g[id] = varsayilan[id];
+        degisen.push({ id: id, ad: b ? b.ad : id, eski: eski, yeni: null });
+        return;
+      }
+      if (JSON.stringify(eski) !== JSON.stringify(b.hesap)) {
+        g[id] = b.hesap;
+        degisen.push({ id: id, ad: b.ad, eski: eski, yeni: b.hesap });
+      }
+      g.olcum[id] = { deger: b.hesap, n: b.n, kaynak: b.kaynak, aciklama: b.aciklama, zaman: oz.zaman, tek_tahmin: !!b.tek_tahmin };
+    });
+    return degisen;
+  }
+
+  // Kazanılan süre girdisi: sayı (S8 kayıtları) ya da {alt, ust}. Alt/üst uçtaki dakika; yoksa 0.
+  function emekDk(g, uc) {
+    var x = g.emek_dk_gun;
+    if (x && typeof x === 'object') return num(x[uc]);
+    return num(x);
+  }
+
   // g: { anahtar: sayı } (tek değerliler) ve { anahtar: {alt, ust} } (aralıklılar). Çıktı TL/yıl.
+  // g.emek_dk_gun doluysa emek kolu varsayım aralığı yerine kayıtlı sürenin çeyrek aralığıyla hesaplanır.
   function roi(g) {
     function v(a) { return num(g[a]); }
     function ar(a, uc) { return num(g[a] && g[a][uc]) / 100; }
@@ -347,9 +411,12 @@
         f: function (uc) { return v('gecikme_olay') * v('olay_maliyet_tl') * ar('onlenen_pct', uc); } },
       { id: 'durus', ad: 'Plansız duruş', formul: 'duruş saati × saatlik değer × azalma',
         f: function (uc) { return v('durus_saat') * v('durus_deger_tl') * ar('durus_azalma_pct', uc); } },
-      { id: 'emek', ad: 'Elle kontrol emeği', formul: 'vaka/ay × 12 × dk/60 × kısalan × saat maliyeti',
-        f: function (uc) { return v('vaka_ay') * 12 * v('vaka_dk') / 60 * ar('kisalan_pct', uc) * v('saat_tl'); } }
-    ].map(function (k) { return { id: k.id, ad: k.ad, formul: k.formul, alt: k.f('alt'), ust: k.f('ust') }; });
+      emekDk(g, 'ust') > 0
+        ? { id: 'emek', ad: 'Elle kontrol emeği', formul: 'kişi başı kayıtlı dk/gün × ' + IS_GUNU_AY + ' iş günü × 12 / 60 × saat maliyeti', olcum: true,
+          f: function (uc) { return emekDk(g, uc) * IS_GUNU_AY * 12 / 60 * v('saat_tl'); } }
+        : { id: 'emek', ad: 'Elle kontrol emeği', formul: 'vaka/ay × 12 × dk/60 × kısalan × saat maliyeti',
+          f: function (uc) { return v('vaka_ay') * 12 * v('vaka_dk') / 60 * ar('kisalan_pct', uc) * v('saat_tl'); } }
+    ].map(function (k) { return { id: k.id, ad: k.ad, formul: k.formul, olcum: !!k.olcum, alt: k.f('alt'), ust: k.f('ust') }; });
     var alt = kalemler.reduce(function (s, k) { return s + k.alt; }, 0);
     var ust = kalemler.reduce(function (s, k) { return s + k.ust; }, 0);
     var maliyet = v('yillik_maliyet_tl');
@@ -374,6 +441,7 @@
     ROI_VARSAYIM: ROI_VARSAYIM, seviye: seviye, tedarikciSkor: tedarikciSkor, tedarikciSenaryo: tedarikciSenaryo,
     tedarikciCikar: tedarikciCikar, portfoy: portfoy, stokSinifla: stokSinifla, stokSenaryo: stokSenaryo,
     bulgular: bulgular, aksiyonlar: aksiyonlar, riskler: riskler, tahminYonu: tahminYonu,
-    fazlaPayOrnek: fazlaPayOrnek, roi: roi, csv: csv
+    fazlaPayOrnek: fazlaPayOrnek, roi: roi, csv: csv,
+    IS_GUNU_AY: IS_GUNU_AY, OLCUM_AZ_KAYIT: OLCUM_AZ_KAYIT, olcumBaglari: olcumBaglari, olcumEsitle: olcumEsitle, emekDk: emekDk
   };
 });

@@ -8,6 +8,7 @@
     { id: 'anomali', ad: 'Sipariş anomalisi', ekran: 'anomali' },
     { id: 'eslestirme', ad: 'Üçlü eşleştirme', ekran: 'eslestirme' },
     { id: 'tedarikci', ad: 'Tedarikçi puanı', ekran: 'tedarikci' },
+    { id: 'fbl1n', ad: 'Açık kalem mutabakatı', ekran: 'mutabakat' },
     { id: 'talep', ad: 'Talep tahmini', ekran: 'talep' },
     { id: 'oee', ad: 'OEE', ekran: 'oee' }
   ];
@@ -17,17 +18,20 @@
   var EKRANLAR = [
     { grup: 'Yönetim', liste: [
       { id: 'ozet', ad: 'Yönetici özeti', alt: 'Öncelikli aksiyonlar, parasal etki, risk sıralaması' },
+      { id: 'sabah', ad: 'Sabah raporu', alt: 'Bugünün ilk 5 bulgusu, atlanan analizler, dünden beri' },
       { id: 'roi', ad: 'ROI hesaplayıcı', alt: 'Kendi varsayımlarınızla yıllık tasarruf aralığı' },
       { id: 'senaryo', ad: 'Senaryo', alt: 'Eşik ve ağırlık simülasyonu · istemcide hesap' },
       { id: 'rapor', ad: 'Rapor', alt: 'Yazdırılabilir yönetici raporu' }
     ] },
-    { grup: 'Modüller', liste: MODUL.map(function (m) { return { id: m.ekran, ad: m.ad, modul: m.id, alt: 'Modül çıktısı · önceden hesaplandı' }; }) },
+    { grup: 'Modüller', liste: MODUL.map(function (m) { return { id: m.ekran, ad: m.ad, modul: m.id, alt: 'Modül çıktısı · önceden hesaplandı' }; }) }
   ];
   var EKRAN_DUZ = [];
   EKRANLAR.forEach(function (g) { g.liste.forEach(function (s) { EKRAN_DUZ.push(s); }); });
 
   var veri = {};
-    var aktif = 'ozet';
+  var aktif = 'ozet';
+  var sabahGun = 1;      // Sabah raporu: 1 = ilk rapor, 2 = ertesi sabah
+  var sabahOdak = false; // gün değişince odak düğmede kalsın
   var durumSecim = 'Tümü';
   var urunSecim = null;
 
@@ -73,7 +77,12 @@
   var TUR_AD = { CIFT_KAYIT: 'Çift kayıt', FAZLA_TESLIMAT: 'Fazla teslimat', EKSIK_TESLIMAT: 'Eksik teslimat',
     ACIK_GECIKMIS: 'Açık ve gecikmiş', GEC_TESLIMAT: 'Geç teslimat', MALZEME_UYUSMAZLIGI: 'Malzeme uyuşmazlığı',
     SIPARISSIZ_KABUL: 'Siparişsiz kabul', IRSALIYESIZ_FATURA: 'İrsaliyesiz fatura', FAZLA_FATURA_MIKTAR: 'Fazla fatura miktarı',
-    FIYAT_SAPMASI: 'Fiyat sapması', CIFT_FATURA: 'Çift fatura', SIPARISSIZ_FATURA: 'Siparişsiz fatura', FATURALANMAMIS_TESLIM: 'Faturalanmamış teslim' };
+    FIYAT_SAPMASI: 'Fiyat sapması', CIFT_FATURA: 'Çift fatura', SIPARISSIZ_FATURA: 'Siparişsiz fatura', FATURALANMAMIS_TESLIM: 'Faturalanmamış teslim',
+    VADESI_GECMIS: 'Vadesi geçmiş', CIFT_ACIK_KALEM: 'Çift açık kalem', ODENMIS_ACIK_KALEM: 'Ödenmiş ama açık kalem',
+    TUTAR_UYUSMAZLIGI: 'Tutar uyuşmazlığı', BAKIYE_FARKI: 'Bakiye farkı', KISMI_ODEME: 'Kısmi ödeme',
+    KRITIK_STOK: 'Kritik stok' };
+  var MODUL_AD = { fbl1n: 'Açık kalem mutabakatı', anomali: 'Sipariş anomalisi', stok: 'Stok' };
+  var ANALIZ_AD = { oee: 'Üretim (OEE)', talep: 'Talep tahmini', tedarikci: 'Tedarikçi puanı', eslestirme: 'Üçlü eşleştirme', karar: 'Karar motoru' };
   var NEDEN_AD = { ARIZA: 'Arıza', AYAR: 'Ayar', MALZEME: 'Malzeme' };
 
   function tur(x) { return TUR_AD[x] || x || '—'; }
@@ -178,7 +187,12 @@
       kpi('Bağlı sermaye', tlKisa(m.bagli), (m.bagliPay != null ? yuzde(m.bagliPay) + ' stok değeri fazla veya ölü' : '') + '<br>' + TREND_YOK, 'buyuk', tl(m.bagli)) +
       kpi('Kritik stok kalemi', sayi(m.kritik), (m.kritikAB != null ? m.kritikAB + ' tanesi A/B sınıfı' : '') + '<br>' + TREND_YOK, 'buyuk') +
       kpi('D seviyesi tedarikçi', m.dTed ? sayi(m.dTed.length) : '—', m.dTed ? e(m.dTed.map(function (r) { return r.tedarikci; }).join(', ')) + '<br>' + TREND_YOK : '', 'buyuk') +
+      (veri.fbl1n ? kpi('Satıcı mutabakat bulgusu', sayi(veri.fbl1n.ozet.bulgu_sayisi), 'tutar etkisi ' + tlKisa(veri.fbl1n.ozet.tutar_etkisi_tl) +
+        '<br>sipariş toplamına katılmaz', 'buyuk', tl(veri.fbl1n.ozet.tutar_etkisi_tl)) : '') +
       '</div>';
+    var sabahKart = veri.sabah ? '<section class="kart" aria-labelledby="sabahOzBas"><div class="kart-bas"><h3 id="sabahOzBas">Sabah raporu</h3>' + SENTETIK_ROZET + LLM_YOK_ROZET + '</div>' +
+      '<p>Deneme paketindeki sentetik SAP dosyalarıyla bugünün ilk 5 bulgusu, atlanan analizler ve ertesi sabah “dünden beri” farkı.</p>' +
+      '<button class="btn birincil" type="button" data-git="sabah">Sabah raporunu aç</button></section>' : '';
 
     var yon = veri.talep ? H.tahminYonu(veri.talep) : [];
     var yonSatir = yon.map(function (y) {
@@ -187,11 +201,11 @@
     }).join('');
 
     return sayfaBas('Yönetim', 'Yönetici özeti',
-      'Altı modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede. ' +
+      'Yedi modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede. ' +
       (uretilme ? 'Çıktı tarihi ' + e(tarih(uretilme)) + '.' : ''),
       SENTETIK_ROZET + LLM_YOK_ROZET) +
       eksikModul(TUM_ID.filter(function (i) { return i !== 'aciklama'; })) +
-      kpiler +
+      kpiler + sabahKart +
       '<div class="izgara uc-bir">' +
         '<section class="kart" aria-labelledby="aksBas"><div class="kart-bas"><h3 id="aksBas">Öncelikli 5 aksiyon</h3>' +
           '<button class="btn kucuk hayalet yalniz-ekran" type="button" data-act="aksiyon-csv">CSV indir</button>' +
@@ -666,7 +680,112 @@
       '<p class="not">Kök neden metni kural önerisidir, kanıt değildir.</p></section></div>';
   }
 
-  var MODUL_EKRAN = { stok: stokEkrani, anomali: anomaliEkrani, eslestirme: eslestirmeEkrani, tedarikci: tedarikciEkrani, talep: talepEkrani, oee: oeeEkrani };
+  function mutabakatEkrani(z) {
+    var o = z.ozet, k = dizi(z.kayitlar), sayim = {};
+    k.forEach(function (r) { sayim[r.tur] = (sayim[r.tur] || 0) + 1; });
+    var enBuyuk = Math.max.apply(null, [1].concat(Object.keys(sayim).map(function (t) { return sayim[t]; })));
+    var dag = Object.keys(sayim).sort(function (a, b) { return sayim[b] - sayim[a]; }).map(function (t) {
+      return '<li><span>' + e(tur(t)) + '</span><b>' + sayim[t] + '</b><span class="iz"><i style="--b:' + Math.round(sayim[t] / enBuyuk * 100) + '"></i></span></li>';
+    }).join('');
+    var satir = k.map(function (r) {
+      return '<tr><td class="l"><span class="rozet cerceve">' + e(tur(r.tur)) + '</span></td><td>' + e(r.nesne) + '</td><td>' + e(r.tedarikci) + '</td><td>' + rozet(r.onem) + '</td>' +
+        '<td>' + (r.tutar_etkisi_tl ? tl(r.tutar_etkisi_tl) : '<span class="kucuk-metin">ölçülmedi</span>') + '</td><td>' + (r.gecikme_gun || '—') + '</td><td class="l">' + e(r.aciklama) + '</td></tr>';
+    }).join('');
+    return modulBas('Açık kalem mutabakatı', z) +
+      '<div class="kpis">' + kpi('Açık kalem', sayi(o.kalem_sayisi), sayi(o.tedarikci_sayisi) + ' satıcı') +
+      kpi('Bulgu', sayi(o.bulgu_sayisi), 'yüksek ' + sayi(o.yuksek) + ' · orta ' + sayi(o.orta) + ' · düşük ' + sayi(o.dusuk)) +
+      kpi('Tutar etkisi', tl(o.tutar_etkisi_tl), 'yalnız TL kalemleri') + '</div>' +
+      '<div class="izgara bir-iki"><section class="kart"><div class="kart-bas"><h3>Tür dağılımı</h3></div><ul class="cubuklar">' + (dag || '<li>Bulgu yok</li>') + '</ul>' +
+      '<p class="not">Kısmi ödeme kuralı bu örnek çıktıda tetiklenmez; Sabah raporunun deneme paketinde görünür.</p></section>' +
+      '<section class="kart"><div class="kart-bas"><h3>Bulgular</h3></div>' + filtre() +
+      tablo(['Tür', 'Belge / satıcı-referans', 'Satıcı', 'Önem', 'Tutar etkisi', 'Gecikme (gün)', 'Açıklama'], satir) + '</section></div>';
+  }
+
+  // =========================================================== Sabah raporu (deneme paketi, gün 1 → gün 2)
+  function sabahBulgu(b, fark) {
+    var d = fark && !fark.ilk_rapor ? (fark.durumlar || {})[b.parmak_izi] : null;
+    var rozetler = '';
+    if (d && d.durum === 'YENI') rozetler += '<span class="rozet info">Yeni</span>';
+    else if (d) {
+      if (d.durum === 'DEGISTI') rozetler += '<span class="rozet wait">Tutar değişti</span><span class="kucuk-metin">' + tl(d.onceki_tutar) + ' → ' + tl(d.tutar) + '</span>';
+      rozetler += '<span class="rozet cerceve">' + sayi(d.acik_gun, 0) + ' gündür açık</span>';
+    }
+    var para = b.tutar_etkisi_tl != null ? '<span class="para">' + tl(b.tutar_etkisi_tl) + '<small>tutar etkisi</small></span>' : '<span class="para yok">Parasal etki ölçülmedi</span>';
+    return '<li class="aksiyon"><span class="aksiyon-no" aria-hidden="true">' + b.sira + '</span>' +
+      '<div class="aksiyon-bas"><b>' + e(tur(b.tur)) + ' · ' + e(b.nesne) + '</b>' + para + '</div><p>' + e(b.baslik) + '</p>' +
+      '<div class="meta">' + rozet(b.onem, 'Önem: ' + DURUM_AD[b.onem]) + '<span class="rozet">' + e(MODUL_AD[b.modul] || b.modul) + '</span>' + rozetler +
+      (b.veri_suphesi ? '<span class="rozet wait">Veri şüphesi</span>' : '') + '</div></li>';
+  }
+  function sabahFarkListe(liste, degisen) {
+    if (!liste.length) return '<p class="kucuk-metin">Yok.</p>';
+    return '<ul class="aksiyonlar">' + liste.map(function (b) {
+      var para = degisen
+        ? '<span class="para">' + tl(b.onceki_tutar) + ' → ' + tl(b.tutar_etkisi_tl) + '<small class="' + (b.tutar_etkisi_tl < b.onceki_tutar ? 'yukari' : 'asagi') + '">' +
+          (b.tutar_etkisi_tl < b.onceki_tutar ? '▼ azaldı' : '▲ arttı') + '</small></span>'
+        : (b.tutar_etkisi_tl != null ? '<span class="para">' + tl(b.tutar_etkisi_tl) + '<small>tutar etkisi</small></span>' : '');
+      return '<li class="aksiyon" style="grid-template-columns:minmax(0,1fr)"><div class="aksiyon-bas"><b>' + e(tur(b.tur)) + ' · ' + e(b.nesne) + '</b>' + para + '</div>' +
+        '<p>' + e(b.baslik) + '</p><div class="meta">' + rozet(b.onem, 'Önem: ' + DURUM_AD[b.onem]) + '<span class="rozet">' + e(MODUL_AD[b.modul] || b.modul) + '</span></div></li>';
+    }).join('') + '</ul>';
+  }
+  function sapBicimNotu() {
+    return '<section class="kart" aria-labelledby="sapBicimBas"><div class="kart-bas"><h3 id="sapBicimBas">SAP dosya biçimleri</h3>' + SENTETIK_ROZET + '</div>' +
+      '<ul class="kucuk-metin liste">' +
+      '<li>Kule ALV ve SE16N dışa aktarımlarını okur: Türkçe ve İngilizce başlıklar; UTF-8, UTF-16 (BOM’lu ya da BOM’suz) ve ANSI (Windows-1254) kodlamalar.</li>' +
+      '<li>Ayraç sekme, noktalı virgül, virgül ya da dikey çizgi (|) olabilir; ayraç başlık satırından seçilir. Çerçeveli “Unconverted” görünümü de okunur.</li>' +
+      '<li>ALV üst bilgisi (başlık ve tarih satırları) ile Toplam satırı atlanır.</li>' +
+      '<li>Deneme paketindeki beş dosya bu biçimleri taklit eder: MARD.xlsx (ALV üst bilgisi, Toplam satırı), EKPO.csv (UTF-16, sekme), MSEG.csv (ANSI, noktalı virgül, ALV üst bilgisi), ' +
+      'FBL1N.csv (UTF-8, noktalı virgül), EKSTRE.csv (tedarikçinin ekstresi; SAP çıktısı değil).</li></ul>' +
+      '<div class="uyari"><p><b>Bu biçimler sentetiktir; gerçek bir SAP sistemiyle denenmedi.</b> Bu demoda dosya yüklenmez, sonuç önceden hesaplanmıştır.</p></div></section>';
+  }
+
+  function sabahEkrani() {
+    var s = veri.sabah, g = s ? s.gunler[sabahGun - 1] : null;
+    var bas = sayfaBas('Yönetim', 'Sabah raporu',
+      'Deneme paketindeki sentetik SAP dosyaları yüklenmiş gibi: Kule dosyaları tanır, üç analizi çalıştırır (stok, sipariş anomalisi, açık kalem mutabakatı), girdisi olmayanları atlar. ' +
+      'Dosya yükleme bu demoda yoktur.', SENTETIK_ROZET + LLM_YOK_ROZET);
+    if (!g) return bas + '<div class="bekle"><b>ÖRNEK ÇIKTI YOK</b><p>Bu ekranın örnek çıktısı demoda yok.</p></div>';
+    var f = g.fark, n = f.sayilar, ilk = !!f.ilk_rapor;
+    var bul = dizi(g.bulgular), ilk5 = bul.slice(0, 5), kalan = bul.slice(5);
+    var yuksek = bul.filter(function (b) { return b.onem === 'YUKSEK'; }).length;
+    var atlanan = dizi(g.calisamayan);
+    var dugme = ilk
+      ? '<button class="btn birincil" type="button" id="sabahDugme" data-act="sabah-gun2">2. günü yükle (ertesi sabah)</button>'
+      : '<button class="btn hayalet" type="button" id="sabahDugme" data-act="sabah-gun1">1. güne dön</button>';
+    var dunden;
+    if (ilk) {
+      dunden = '<div class="uyari info"><p><b>İlk rapor, karşılaştırma yok.</b> “Dünden beri” farkı, ertesi sabah ikinci dosya yüklenince hesaplanır; bugün için yeni, çözülen ya da değişen sayısı yazılmaz.</p></div>' +
+        '<div class="kpis">' + kpi('Sahibi bekleyen', sayi(n.sahip_bekleyen, 0), 'sahip atanmamış bulgu') + '</div>';
+    } else {
+      dunden = '<div class="kpis">' + kpi('Yeni', sayi(n.yeni, 0), 'bugün ilk kez çıktı', 'vurgu') + kpi('Çözülen', sayi(n.kaybolan, 0), 'artık çıkmıyor') +
+        kpi('Değişen', sayi(n.degisen, 0), 'tutarı değişti') + kpi('Değişmeyen', sayi(n.degismeyen, 0), 'aynen sürüyor') +
+        kpi('Sahibi bekleyen', sayi(n.sahip_bekleyen, 0), 'sahip atanmamış bulgu') + '</div>' +
+        '<p class="not">Çözülen: ' + e(tarih(f.onceki.tarih)) + ' dosyasında vardı, ' + e(tarih(g.tarih)) + ' dosyasında artık çıkmayan bulgu. Karşılaştırma bulgu parmak izine göre yapılır.</p>' +
+        '<div class="izgara iki"><section class="kart" aria-labelledby="cozBas"><div class="kart-bas"><h3 id="cozBas">Çözülen (' + n.kaybolan + ')</h3></div>' + sabahFarkListe(dizi(f.kaybolanlar), false) + '</section>' +
+        '<section class="kart" aria-labelledby="degBas"><div class="kart-bas"><h3 id="degBas">Tutarı değişen (' + n.degisen + ')</h3></div>' + sabahFarkListe(dizi(f.degisenler), true) + '</section></div>';
+    }
+    var atlananHtml = atlanan.length ? '<ul class="aksiyonlar">' + atlanan.map(function (a) {
+      return '<li class="aksiyon" style="grid-template-columns:minmax(0,1fr)"><div class="aksiyon-bas"><b>' + e(ANALIZ_AD[a.analiz] || a.analiz) + '</b><span class="rozet wait">Atlandı</span></div>' +
+        '<p>' + e(a.neden) + '</p><p class="kucuk-metin"><b>SAP’ta:</b> ' + e(a.sap_ipucu) + '</p></li>';
+    }).join('') + '</ul>' : '<p class="kucuk-metin">Atlanan analiz yok.</p>';
+    return bas +
+      '<div class="uyari"><p><b>' + e(s.etiket) + '</b> Rapor tarihi ' + e(tarih(g.rapor_tarihi)) + ' örnek veride sabit gündür; yükleme günü ' + e(tarih(g.tarih)) + '.</p></div>' +
+      '<section class="kart" aria-labelledby="sabahGunBas"><div class="kart-bas"><h3 id="sabahGunBas">' + g.gun_no + '. gün · ' + (ilk ? 'ilk rapor' : 'ertesi sabah') + '</h3>' + dugme + '</div>' +
+      '<p class="alt-yazi" role="status" id="sabahDurum">' + (ilk ? 'Yüklü: 1. gün (' + e(tarih(g.tarih)) + '). Düğme ertesi sabahın dosyalarını yükler.' :
+        'Yüklü: 2. gün (' + e(tarih(g.tarih)) + '), ' + e(tarih(f.onceki.tarih)) + ' raporuyla karşılaştırıldı.') + '</p></section>' +
+      '<div class="kpis">' + kpi('Bugünün bulgusu', sayi(bul.length, 0), 'yüksek ' + yuksek + ' · diğer ' + (bul.length - yuksek)) +
+      kpi('Atlanan analiz', sayi(atlanan.length, 0), 'girdi dosyası yok') + kpi('Girdi kalitesi', sayi(g.kalite_skoru, 0) + '/100', 'sentetik paket') + '</div>' +
+      '<section class="kart" aria-labelledby="dundenBas"><div class="kart-bas"><h3 id="dundenBas">Dünden beri</h3></div>' + dunden + '</section>' +
+      '<section class="kart" aria-labelledby="ilk5Bas"><div class="kart-bas"><h3 id="ilk5Bas">Bugünün ilk 5 bulgusu</h3>' +
+      '<p class="alt-yazi">Sıra: önem ve puan. Parasal etki yalnız bulgunun kendi tutarıdır.</p></div>' +
+      (ilk5.length ? '<ol class="aksiyonlar">' + ilk5.map(function (b) { return sabahBulgu(b, f); }).join('') + '</ol>' : '<p>Bulgu yok.</p>') +
+      (kalan.length ? '<details class="mt"><summary class="btn kucuk hayalet">Diğer ' + kalan.length + ' bulgu</summary><ol class="aksiyonlar">' +
+        kalan.map(function (b) { return sabahBulgu(b, f); }).join('') + '</ol></details>' : '') + '</section>' +
+      '<section class="kart" aria-labelledby="atlBas"><div class="kart-bas"><h3 id="atlBas">Atlanan analizler ve nedenleri</h3>' +
+      '<p class="alt-yazi">Girdisi olmayan analiz sessizce boş geçilmez, burada nedeniyle birlikte listelenir.</p></div>' + atlananHtml + '</section>' +
+      sapBicimNotu();
+  }
+
+  var MODUL_EKRAN = { stok: stokEkrani, anomali: anomaliEkrani, eslestirme: eslestirmeEkrani, tedarikci: tedarikciEkrani, mutabakat: mutabakatEkrani, talep: talepEkrani, oee: oeeEkrani };
 
   // =========================================================== Çizim
   function gezintiCiz() {
@@ -685,15 +804,17 @@
     $('ustBaslik').textContent = s.ad;
     $('ustAlt').textContent = s.alt;
     document.title = s.ad + ' — Kule Pro demo';
-    var yuklu = TUM_ID.filter(function (i) { return !!veri[i]; }).length;
+    var yuklu = MODUL.filter(function (m) { return !!veri[m.id]; }).length;
     $('yukleAlan').hidden = yuklu > 0;
     if (!yuklu) { $('govde').innerHTML = ''; $('veriRozet').textContent = 'Örnek veri yüklenemedi'; return; }
     var html;
     if (s.modul) html = veri[s.modul] ? MODUL_EKRAN[s.id](veri[s.modul]) :
       '<div class="bekle"><b>ÖRNEK ÇIKTI YOK</b><p>Bu modülün örnek çıktısı demoda yok.</p></div>';
-    else html = { ozet: ozetEkrani, roi: roiEkrani, senaryo: senaryoEkrani, rapor: raporEkrani }[s.id]();
+    else html = { ozet: ozetEkrani, sabah: sabahEkrani, roi: roiEkrani, senaryo: senaryoEkrani, rapor: raporEkrani }[s.id]();
     $('govde').innerHTML = html;
-    $('veriRozet').textContent = 'Sentetik · ' + yuklu + '/' + TUM_ID.length + ' modül';
+    if (sabahOdak && $('sabahDugme')) $('sabahDugme').focus({ preventScroll: true });
+    sabahOdak = false;
+    $('veriRozet').textContent = 'Sentetik · ' + yuklu + '/' + MODUL.length + ' modül';
     $('veriRozet').title = 'Önceden hesaplanmış örnek çıktı (tohum 42); canlı API yok';
   }
 
@@ -720,6 +841,7 @@
     if (!g) return false;
     var n = 0;
     TUM_ID.forEach(function (id) { if (g[id] && !zarfUygun(g[id], id)) { veri[id] = g[id]; n++; } });
+    if (g.sabah && dizi(g.sabah.gunler).length === 2) veri.sabah = g.sabah;
     return n > 0;
   }
   function veriYukle() {
@@ -741,6 +863,7 @@
     if (act === 'yazdir') window.print();
     if (act === 'roi-sifirla') { roiDeger = roiVarsayilan(); roiKaydet(); ciz(); }
     if (act === 'sen-sifirla') { senSifirla(); ciz(); }
+    if (act === 'sabah-gun2' || act === 'sabah-gun1') { sabahGun = act === 'sabah-gun2' ? 2 : 1; sabahOdak = true; ciz(); }
   });
   $('raporBtn').addEventListener('click', function () { git('rapor', true); });
 

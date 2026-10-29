@@ -329,3 +329,7 @@ textarea.secim { padding: var(--s2) var(--s3); min-height: 80px; resize: vertica
   .ozellik { grid-template-columns: max-content minmax(0, 1fr); }
   .pano { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
+
+/* Sabah raporu ve SAP biçimleri notu */
+.liste { margin: 0 0 var(--s3); padding-left: 1.25em; list-style: disc; display: grid; gap: 6px; }
+.liste li { overflow-wrap: anywhere; }

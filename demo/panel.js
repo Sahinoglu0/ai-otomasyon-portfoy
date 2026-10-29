@@ -187,7 +187,7 @@
     }).join('');
 
     return sayfaBas('Yönetim', 'Yönetici özeti',
-      'Yedi modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede. ' +
+      'Altı modülün çıktısından tek bakışta: nereden para kaçıyor, neyi önce yapmalı, risk nerede. ' +
       (uretilme ? 'Çıktı tarihi ' + e(tarih(uretilme)) + '.' : ''),
       SENTETIK_ROZET + LLM_YOK_ROZET) +
       eksikModul(TUM_ID.filter(function (i) { return i !== 'aciklama'; })) +

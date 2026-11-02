@@ -1,43 +1,43 @@
 {
   "aciklama": "Test koşusunun özeti: yalnız sayı, süre ve sürüm. Ham çıktı yok; davranış cümleleri test-katalogu dosyalarında.",
-  "koşu_tarihi_utc": "2026-10-29T09:53:33Z",
+  "koşu_tarihi_utc": "2026-11-02T18:00:13Z",
   "node_tam_agac": {
     "atlandi": 0,
     "basarisiz": 0,
-    "gecti": 58,
-    "toplam": 58
+    "gecti": 128,
+    "toplam": 128
   },
   "suitler": [
     {
       "ad": "Kule çekirdeği",
       "atlandi": 0,
       "basarisiz": 0,
-      "gecti": 411,
-      "sure_sn": 68.3,
-      "toplam": 411
+      "gecti": 559,
+      "sure_sn": 76.3,
+      "toplam": 559
     },
     {
       "ad": "Ajan orkestrasyonu",
       "atlandi": 0,
       "basarisiz": 0,
-      "gecti": 111,
-      "sure_sn": 17.9,
-      "toplam": 111
+      "gecti": 120,
+      "sure_sn": 36.0,
+      "toplam": 120
     },
     {
       "ad": "Kule arayüzü",
       "atlandi": 0,
       "basarisiz": 0,
-      "gecti": 58,
-      "sure_sn": 0.7,
-      "toplam": 58
+      "gecti": 128,
+      "sure_sn": 4.5,
+      "toplam": 128
     }
   ],
   "surum": {
     "kaynak_kirli": false,
-    "kule_git_sha": "a77294023d27f3b27b35ec5b27c02a1508ae8896",
-    "node": "v22.23.2",
+    "kule_git_sha": "85e07f4c089b7440c116105a9464fe5b4a56dcc7",
+    "node": "v26.13.0",
     "python": "3.14.7"
   },
-  "toplam_test": 580
+  "toplam_test": 807
 }

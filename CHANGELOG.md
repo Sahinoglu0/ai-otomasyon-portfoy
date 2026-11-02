@@ -5,6 +5,50 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-02 (v0.7.0)
+
+Kule Pro 0.7.0 yerel olarak hazırlandı. Bu sürüm henüz push edilmedi ve etiketlenmedi.
+
+### Eklenenler
+
+- **Dosya başına ondalık ayarı:** her SAP dosyası için sayıların `tr` ya da `en` biçiminde yazıldığı sihirbaz adımında seçilir. Seçilmeyen dosyada tahmin yapılmaz.
+- **Yanlış ondalık ayarı uyarısı:** seçilen ayar dosyadaki değerlerle kesin olarak çelişiyorsa uyarı çıkar. Değer değiştirilmez.
+- **Belirsiz değer önizlemesi:** `1.250` gibi iki biçimde de okunan değerler iki okunuşla gösterilir. Kule birini seçmez.
+- **"Kontrol edilemedi" bildirimi:** bir sütunun tüm değerleri `x.xxx` biçimindeyse ve karşı kanıt yoksa sihirbazda ve sonuç ekranında sakin bir not çıkar. Değer değiştirilmez.
+- **Sabah ekranında `.xlsx` kabulü:** dosya seçici `.xlsx` kabul eder; sunucu ilk sayfayı okur. Zip64 ve şifreli `.xlsx` dosyaları kapsam dışıdır.
+- **SAP anonimleştirme aracı:** SAP dışa aktarımındaki tedarikçi, müşteri, malzeme adı ve unvan alanlarını değiştirir. Yalnız standart kütüphane kullanır, ağ modülü yoktur; kullanıcı kendi makinesinde çalıştırır. Yazmadan önce bilinen gerçek değerler çıktıda aranır. Eşleme dosyası gerçek değerler içerdiği için paylaşılmamalıdır.
+- **Eşleme şablonu düzeltmeleri:** `LIFNR` tablosu EKKO, `EINDT` tablosu EKET, `MENGE` tablosu EKPO olarak düzeltildi. `MAKTX`, `EISBE` ve `VERPR` "doğrulanamadı" işaretiyle bırakıldı.
+
+### Düzeltmeler
+
+- Seçili ondalık ayarında doğru değerler artık reddedilmiyor (ör. TR ayarında `1.000` → `1000`, `1.250-` → `-1250`). Baş grubu sıfır olan `0.125` gibi değerler reddedilmeye devam eder.
+- Bozuk ya da Excel biçiminde olmayan `.xlsx` dosyası "okunamadı" uyarısı alır; önceden genel "tanınmadı" uyarısı çıkıyordu.
+- Talep tahmini akışlı okur. Sentetik ölçümde (Windows 11, 3.000 M5 serisi) tepe bellek 556 MB'den 34 MB'a indi; süre aynı kaldı (46,9 s). Tam M5 koşusu bu maddenin kapsamında değildir.
+
+### Dürüst sınırlar
+
+- Kanıt sentetiktir. Fikstürler proje üreticisiyle üretildi; gerçek SAP dışa aktarımı ve gerçek Excel dosyasıyla doğrulanmadı.
+- `MAKTX`, `EISBE`, `VERPR` ve kolon adları birincil SAP kaynağıyla doğrulanamadı. Tablo adları ikincil kaynaktan alındı.
+- Ondalık uyarısı yalnız kesin çelişkide çıkar. `x.xxx` biçimli tek noktalı üç haneli sütunlar kanıtla ayrılamaz; "kontrol edilemedi" diye bildirilir.
+- Sihirbazdaki belirsiz değer ve yanlış ayar uyarısı headless Chrome'da (gerçek dosya seçimi, 1280 ve 390 px) görüldü. "Kontrol edilemedi" bildirimi ve sonuç ekranı tarayıcıda denenmedi; gerçek ekran okuyucu denenmedi.
+- Yıl ve şirket kodu (mali yıl, şirket kodu) anahtarı eklenmedi. Bilinen sınır.
+- Tarih hücreleri Excel seri numarası olarak gelirse satır reddedilir.
+- macOS ve Linux denenmedi.
+- `kanit/` sayfasındaki test sayıları (559 / 128 / 120), koşu bilgisi ve ekran görüntüsü 0.7.0 koşusundan alınmıştır. `kanit/test-katalogu.*` (davranış cümleleri) ise henüz yenilenmedi; v0.6.0 koşusuna (580 test) aittir.
+
+### Erişilebilirlik (dahili denetim)
+
+- Dokunma hedefleri 480 px ve altında en az 44 px oldu. Kalan tek öğe "Gerçek veri" ekranındaki satır içi bağlantıdır; WCAG 2.2 AA 2.5.8 satır içi metin bağlantılarını muaf tutar.
+- Bozuk `.xlsx` hata mesajı `role="status"` ile duyurulur. NVDA ve VoiceOver ile doğrulanmadı.
+- Metin girdisi kenarlığı: açık tema 1,76:1 → 4,08:1; koyu tema 1,70:1 → 4,69:1. Açık temada odak halkası 2,52:1 → 6,32:1.
+- Düşük öncelikli açıklar: csv ve xlsx çakışması hazırla adımında reddediliyor; üst gezinme 360 px'de yatay kaydırıyor.
+
+### Test
+
+- Kule Python: 559 test geçti, 0 başarısız (Python 3.14.7).
+- Orkestratör Python: 120 test geçti, 0 başarısız.
+- Panel (Node): 128 test geçti, 0 başarısız, 0 atlandı.
+
 ## 2026-10-29 (v0.6.0)
 
 - **İz görüntüleyici İngilizce düzeltmesi:** çapraz incelemede, İngilizce modda Eval sekmesinde yaklaşık 50 Türkçe metin kaldığı görüldü (değerlendirme vakaları 34'ten 123'e büyümüş, çeviri sözlüğü yeni vakaları kapsamıyordu). `assets/i18n.js` 123 vakayı kapsayacak şekilde genişletildi; gerçek tarayıcıda İngilizce Eval sekmesinde Türkçe karakterli metin 0, 375 px yatay taşma 0, TR/EN geçişi çalışıyor. Kod kimlikleri, araç/alan adları ve ham iz (`pre/code`) bilinçli olarak çevrilmedi.
@@ -56,22 +100,22 @@ SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları
 
 ## 2026-10-19 (tarihsel olarak sonradan yazıldı)
 
-- Gerçek model izleri ve İngilizce SVG'ler eklendi, rozetli iz görüntüleyici. SHA `98b3131`.
-- Gerçek model sonrası metin düzeltmeleri (SVG, iz görüntüleyici altbilgisi, ana sayfa). SHA `a5c645a`.
-- README: aracın ne yaptığını anlatan ayrıntılı sürüm (TR + EN). SHA `0bb9d9d`.
+- Gerçek model izleri ve İngilizce SVG'ler eklendi, rozetli iz görüntüleyici. (v0.1.0).
+- Gerçek model sonrası metin düzeltmeleri (SVG, iz görüntüleyici altbilgisi, ana sayfa). (v0.1.0).
+- README: aracın ne yaptığını anlatan ayrıntılı sürüm (TR + EN). (v0.1.0).
 
 ## 2026-10-18 (tarihsel olarak sonradan yazıldı)
 
-- Puan 3,0/5 ve test sayıları (Kule 224 Python + 29 Node). SHA `66df4d0`.
-- Eval sonucu: yazım hatası düzeltildi. SHA `2d7c1dc`.
-- İz görüntüleyici: TR/EN dil geçişi. SHA `ed1f0da`.
-- Giriş ve portföy sayfası: TR/EN dil geçişi; giriş sayfasına anlatım bağlantısı. SHA `30b79c8`.
-- README: ayrıntılı anlatım, çizimler; İngilizce sürüm. SHA `9403a08`.
-- Çizimler (SVG). SHA `f698c30`.
-- TR/EN dil geçişi betiği. SHA `dda64a4`.
-- İz görüntüleyici. SHA `c449a9a`.
-- Eval sonucu. SHA `64de285`.
-- Analist izleri ve eval sonucu. SHA `29d516c`.
-- Portföy sayfası, analist izleri ve eval sonucu. SHA `8541b59`.
-- README, giriş sayfası ve örnek izler. SHA `33bb039`.
-- MIT lisansı. SHA `10169b0`.
+- Puan 3,0/5 ve test sayıları (Kule 224 Python + 29 Node). (v0.1.0).
+- Eval sonucu: yazım hatası düzeltildi. (v0.1.0).
+- İz görüntüleyici: TR/EN dil geçişi. (v0.1.0).
+- Giriş ve portföy sayfası: TR/EN dil geçişi; giriş sayfasına anlatım bağlantısı. (v0.1.0).
+- README: ayrıntılı anlatım, çizimler; İngilizce sürüm. (v0.1.0).
+- Çizimler (SVG). (v0.1.0).
+- TR/EN dil geçişi betiği. (v0.1.0).
+- İz görüntüleyici. (v0.1.0).
+- Eval sonucu. (v0.1.0).
+- Analist izleri ve eval sonucu. (v0.1.0).
+- Portföy sayfası, analist izleri ve eval sonucu. (v0.1.0).
+- README, giriş sayfası ve örnek izler. (v0.1.0).
+- MIT lisansı. (v0.1.0).

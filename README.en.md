@@ -34,7 +34,7 @@ Taken from the live pages (light theme, 1440 px).
 
 | Agent trace viewer | Test evidence |
 |---|---|
-| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: 580 tests, breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: latest run summary and breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
 | Product page | Home |
 |---|---|
@@ -105,7 +105,7 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** For Kule, 411 Python tests pass; on the Node side 58 tests, 58 pass, 0 skipped; the orchestrator has 111 unit tests.
+**Tests.** For Kule, 559 Python tests pass; on the Node side 128 tests, 128 pass, 0 skipped; the orchestrator has 120 unit tests.
 
 ## 4. Scope and status
 

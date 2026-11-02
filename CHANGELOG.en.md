@@ -5,6 +5,50 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-02 (v0.7.0)
+
+Kule Pro 0.7.0 was prepared locally. This release has not been pushed or tagged yet.
+
+### Added
+
+- **Decimal setting per file:** for each SAP file, whether numbers are written as `tr` or `en` is chosen in a wizard step. No guessing is done for a file where nothing is chosen.
+- **Wrong decimal setting warning:** a warning appears if the chosen setting clearly contradicts the values in the file. Values are not changed.
+- **Ambiguous value preview:** values that read validly in both formats, such as `1.250`, are shown with both readings. Kule does not pick one.
+- **"Cannot verify" note:** if every value in a column is in `x.xxx` form and there is no counter-evidence, a calm note appears in the wizard and on the result screen. Values are not changed.
+- **`.xlsx` accepted on the morning screen:** the file picker accepts `.xlsx`; the server reads the first sheet. Zip64 and encrypted `.xlsx` files are out of scope.
+- **SAP anonymisation tool:** replaces supplier, customer, material name and title fields in SAP exports. It uses only the standard library and has no network module; the user runs it on their own machine. Before writing, known real values are searched for in the output. The mapping file contains real values and must not be shared.
+- **Mapping template fixes:** the `LIFNR` table is EKKO, the `EINDT` table is EKET, the `MENGE` table is EKPO. `MAKTX`, `EISBE` and `VERPR` are left marked "not verified".
+
+### Fixed
+
+- Correct values under the chosen decimal setting are no longer rejected (e.g. `1.000` under TR → `1000`; `1.250-` under TR → `-1250`). Values with a leading zero group such as `0.125` are still rejected.
+- A corrupt or non-Excel `.xlsx` file gets a "could not be read" warning; before, the generic "not recognised" message appeared.
+- Demand forecasting reads as a stream. In a synthetic measurement (Windows 11, 3,000 M5 series) peak memory fell from 556 MB to 34 MB; run time stayed the same (46.9 s). A full M5 run is outside this item.
+
+### Honest limits
+
+- The evidence is synthetic. The fixtures were built by the project's own generator and have not been checked against a real SAP export or a real Excel file.
+- `MAKTX`, `EISBE`, `VERPR` and column names have not been verified against a primary SAP source. Table names come from a secondary source.
+- The decimal warning fires only on a clear contradiction. Single-dot three-digit `x.xxx` columns cannot be separated by evidence; they are reported as "cannot verify".
+- The ambiguous-value and wrong-setting warnings were seen in headless Chrome (real file selection, 1280 and 390 px). The "cannot verify" note and the result screen were not tried in a browser, and no real screen reader was tried.
+- No year or company-code key (fiscal year, company code) was added. Known limit.
+- If date cells arrive as Excel serial numbers, the row is rejected.
+- macOS and Linux were not tried.
+- The test counts (559 / 128 / 120), run details and screenshot on the `kanit/` page come from the 0.7.0 run. The test catalogue (`kanit/test-katalogu.*`, the behaviour sentences) has not been refreshed yet and belongs to the v0.6.0 run (580 tests).
+
+### Accessibility (internal audit)
+
+- Touch targets are at least 44 px at 480 px and below. The one remaining item is the inline link on the "Real data" screen; WCAG 2.2 AA 2.5.8 exempts inline text links.
+- The corrupt `.xlsx` error message is announced with `role="status"`. Not verified with NVDA or VoiceOver.
+- Text input border: light theme 1.76:1 → 4.08:1; dark theme 1.70:1 → 4.69:1. Light-theme focus ring 2.52:1 → 6.32:1.
+- Low-priority open items: a csv and xlsx conflict is rejected at the prepare step; top navigation scrolls horizontally at 360 px.
+
+### Test
+
+- Kule Python: 559 tests passed, 0 failed (Python 3.14.7).
+- Orchestrator Python: 120 tests passed, 0 failed.
+- Panel (Node): 128 tests passed, 0 failed, 0 skipped.
+
 ## 2026-10-29 (v0.6.0)
 
 - **Trace viewer English fix:** a cross-review found about 50 Turkish texts left in the Eval tab in English mode (evaluation cases had grown from 34 to 123 and the translation table did not cover the new ones). `assets/i18n.js` now covers all 123 cases; in a real browser the English Eval tab has 0 Turkish-character texts, 0 horizontal overflow at 375 px, and the TR/EN switch works. Code identifiers, tool/field names and the raw trace (`pre/code`) are deliberately left untranslated.
@@ -56,22 +100,22 @@ SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs co
 
 ## 2026-10-19 (written retrospectively)
 
-- Real model traces and English SVGs added, with a badge on the trace viewer. SHA `98b3131`.
-- Text fixes after the real-model run (SVG, trace viewer footer, home page). SHA `a5c645a`.
-- README: detailed version describing what the tool does (TR + EN). SHA `0bb9d9d`.
+- Real model traces and English SVGs added, with a badge on the trace viewer. (v0.1.0).
+- Text fixes after the real-model run (SVG, trace viewer footer, home page). (v0.1.0).
+- README: detailed version describing what the tool does (TR + EN). (v0.1.0).
 
 ## 2026-10-18 (written retrospectively)
 
-- Score 3.0/5 and current test counts (Kule 224 Python + 29 Node). SHA `66df4d0`.
-- Eval result: typo fixed. SHA `2d7c1dc`.
-- Trace viewer: TR/EN language switch. SHA `ed1f0da`.
-- Home and portfolio pages: TR/EN language switch; link to the explanation from the home page. SHA `30b79c8`.
-- README: detailed explanation, drawings; English version. SHA `9403a08`.
-- Drawings (SVG). SHA `f698c30`.
-- TR/EN language switch script. SHA `dda64a4`.
-- Trace viewer. SHA `c449a9a`.
-- Eval result. SHA `64de285`.
-- Analyst traces and eval result. SHA `29d516c`.
-- Portfolio page, analyst traces and eval result. SHA `8541b59`.
-- README, home page and sample traces. SHA `33bb039`.
-- MIT license. SHA `10169b0`.
+- Score 3.0/5 and current test counts (Kule 224 Python + 29 Node). (v0.1.0).
+- Eval result: typo fixed. (v0.1.0).
+- Trace viewer: TR/EN language switch. (v0.1.0).
+- Home and portfolio pages: TR/EN language switch; link to the explanation from the home page. (v0.1.0).
+- README: detailed explanation, drawings; English version. (v0.1.0).
+- Drawings (SVG). (v0.1.0).
+- TR/EN language switch script. (v0.1.0).
+- Trace viewer. (v0.1.0).
+- Eval result. (v0.1.0).
+- Analyst traces and eval result. (v0.1.0).
+- Portfolio page, analyst traces and eval result. (v0.1.0).
+- README, home page and sample traces. (v0.1.0).
+- MIT license. (v0.1.0).

@@ -135,8 +135,8 @@ window.I18N_EK = {
   /* 05 kanıt */
   "05 / kanıt": "05 / evidence", "Ne kanıtlandı?": "What has been tested?",
   "Testler": "Tests", "Gerçek model deneyi": "Real-model run", "Örneklem": "Sample size",
-  "Ajan orkestratörü için 87 birim testi var. Son koşu 22 Ekim 2026 tarihli ve 0 başarısız test içeriyor.":
-    "The agent orchestrator has 87 unit tests. The latest run is dated 22 October 2026 and had 0 failures.",
+  "Ajan orkestratörü için 120 birim testi var. Son koşu 2 Kasım 2026 tarihli ve 0 başarısız test içeriyor.":
+    "The agent orchestrator has 120 unit tests. The latest run is dated 2 November 2026 and had 0 failures.",
   "Ajan orkestratörünün değerlendirme seti 46 vakadan oluşur. Kasetten oynatılır, bu yüzden model kalitesini ölçmez. Ölçüt, kontrol ve kapsam vakalarının 41'i de geçti (41/41); 5 bilinen açık vaka gözlendi ve kapanmadı.":
     "The orchestrator's evaluation set has 46 cases. It is replayed from recorded tapes, so it does not measure model quality. All 41 criteria, check and scope cases passed (41/41); 5 known-gap cases were observed and are not closed.",
   "claude-haiku-5-5 ile planlanan 40 koşudan 38'i kaydedildi; 37'si tamamlandı, 1'i kota nedeniyle kesildi, 2'si yapılmadı. Soruşturma akışında 20 koşunun 16'sı kabul edildi (%80; %95 Wilson aralığı 0,584–0,919). Ölçümler ön-kayıtlıdır; önceden yazılan hedefler vaat değildir ve sonuç ne çıkarsa o yayımlanır.":

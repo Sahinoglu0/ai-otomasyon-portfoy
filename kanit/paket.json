@@ -1,22 +1,22 @@
 {
   "sema": "kanit-paket/1",
-  "olusturma_utc": "2026-10-29T09:54:00Z",
-  "git_sha_kisa": "a772940",
+  "olusturma_utc": "2026-11-02T18:05:01Z",
+  "git_sha_kisa": "85e07f4",
   "manifest": "SHA256SUMS",
   "arsiv": null,
   "dosyalar": [
     {
       "yol": "sayilar.json",
-      "sha256": "eaf5f038669da64141af678d03f18d45e05b14488e12d8f21a89459a4bdeb702",
-      "bayt": 1115,
+      "sha256": "6675b61a8f6d4e04b4d4237fff6084bcb94898f5a95a633427c62640a8fde764",
+      "bayt": 1118,
       "kaynak": "kosu",
       "aciklama_tr": "Test sayıları (koşudan).",
       "aciklama_en": "Test counts (from the run)."
     },
     {
       "yol": "eval-sonuc.json",
-      "sha256": "35f92007143fcd652910e3a6886f4daf136b0c2a090f6ec9c7df431eb7ea3625",
-      "bayt": 42363,
+      "sha256": "f11a40ef291c7f8334377fb27823edca7783ebf846822ac96b2b390ff4f40616",
+      "bayt": 42366,
       "kaynak": "kaset",
       "aciklama_tr": "Ajan eval sonucu: 123 vaka, kasetle oynatılan yanıtlar üzerinde ölçüt sonuçları.",
       "aciklama_en": "Agent eval result: 123 cases, criteria results on tape-replayed responses."
@@ -71,8 +71,8 @@
     },
     {
       "yol": "test-ozeti.json",
-      "sha256": "d6318c33f4ad3394ced9dd2c1566edc89b65ee72859a883b348225ff25a443bd",
-      "bayt": 934,
+      "sha256": "4975a685876b65f24e908bcc70ebf902605ee99290d6526d471d4ee46442e11e",
+      "bayt": 938,
       "kaynak": "kosu",
       "aciklama_tr": "Test koşusu özeti: sayı, süre, sürüm.",
       "aciklama_en": "Test run summary: counts, duration, version."

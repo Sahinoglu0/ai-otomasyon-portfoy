@@ -2,14 +2,14 @@
   "sema": "kanit-sayilar/1",
   "kaynak": "kosu",
   "kosu_yeri": "yerel",
-  "kosu_tarihi_utc": "2026-10-29T09:53:33Z",
-  "sure_sn": 87.7,
+  "kosu_tarihi_utc": "2026-11-02T18:00:13Z",
+  "sure_sn": 120.5,
   "ortam": {
     "python": "3.14.7",
-    "node": "v22.23.2"
+    "node": "v26.13.0"
   },
   "surum": {
-    "git_sha_kisa": "a772940",
+    "git_sha_kisa": "85e07f4",
     "kaynak_temiz": true
   },
   "kumeler": [
@@ -17,33 +17,33 @@
       "kimlik": "kule_python",
       "ad_tr": "Kule · Python testleri",
       "ad_en": "Kule · Python tests",
-      "toplam": 411,
-      "gecti": 411,
+      "toplam": 559,
+      "gecti": 559,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 68.3,
+      "sure_sn": 76.3,
       "atlama_nedeni": null
     },
     {
       "kimlik": "orkestrator_python",
       "ad_tr": "Ajan orkestratörü · Python testleri",
       "ad_en": "Agent orchestrator · Python tests",
-      "toplam": 111,
-      "gecti": 111,
+      "toplam": 120,
+      "gecti": 120,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 17.9,
+      "sure_sn": 36.0,
       "atlama_nedeni": null
     },
     {
       "kimlik": "kule_node",
       "ad_tr": "Kule paneli · Node testleri",
       "ad_en": "Kule panel · Node tests",
-      "toplam": 58,
-      "gecti": 58,
+      "toplam": 128,
+      "gecti": 128,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 0.7,
+      "sure_sn": 3.7,
       "atlama_nedeni": null
     }
   ]

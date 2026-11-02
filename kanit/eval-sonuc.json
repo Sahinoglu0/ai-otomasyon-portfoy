@@ -20,7 +20,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "denetci-tolerans-icinde",
@@ -30,7 +30,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "denetci-tolerans-disinda",
@@ -40,7 +40,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-03'}: iddia 36.4, Kule 36.3",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-yanlis-skor",
@@ -50,7 +50,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-03'}: iddia 58.0, Kule 36.3",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "denetci-yanlis-sayim",
@@ -60,7 +60,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: stok_durumu {'depo': 'IZM-01', 'durum': 'KRITIK'}: iddia 4, Kule 3",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-blok-yok",
@@ -70,7 +70,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: iddia bloğu yok: sayısal iddialar doğrulanamaz",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "denetci-bozuk-json",
@@ -80,7 +80,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: iddia bloğu okunamadı: Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "denetci-blok-null",
@@ -90,7 +90,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: iddia bloğu liste olmalı, NoneType geldi",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-blok-sayi",
@@ -100,7 +100,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: iddia bloğu liste olmalı, int geldi",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-filtre-listesi",
@@ -110,7 +110,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: geçersiz iddia: filtre nesne olmalı: {'modul': 'stok_durumu', 'filtre': [], 'deger': 3}",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "denetci-alan-listesi",
@@ -120,7 +120,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: geçersiz iddia: alan metin olmalı: {'modul': 'tedarikci_skoru', 'filtre': {'tedarikci': 'T-03'}, 'alan': ['skor'], 'deger': 36.3}",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-bilinmeyen-modul",
@@ -130,7 +130,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: bilinmeyen modül: uydurma",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-birden-cok-kayit",
@@ -140,7 +140,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {}: 6 kayıt, tek olmalı",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "denetci-duz-metin-yanlis-sayi-reddedilir",
@@ -150,7 +150,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-duz-metin-dayanakli-sayi-kabul",
@@ -160,7 +160,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-duz-metin-dayanaksiz-sayi-reddedilir",
@@ -170,7 +170,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 999",
       "jeton": 0,
-      "sure_sn": 0.007
+      "sure_sn": 0.013
     },
     {
       "ad": "denetci-bicim-binlik-ayiraci-kabul",
@@ -180,7 +180,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-bicim-ondalik-virgul-reddedilir",
@@ -190,7 +190,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 106.24",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-duz-metin-yanlis-baglam-reddedilir",
@@ -200,7 +200,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 2: IZM-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.012
     },
     {
       "ad": "KACAK-duz-metin-yanlis-baglam",
@@ -210,7 +210,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-baska-varlik-sayisi-reddedilir",
@@ -220,7 +220,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 5: IZM-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "KACAK-duz-metin-baska-varlik",
@@ -230,7 +230,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-baska-varlik-sayisi-kabul",
@@ -240,7 +240,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "denetci-anlam-belirsiz-reddedilir",
@@ -250,7 +250,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3: IZM-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "KACAK-duz-metin-anlam-belirsiz",
@@ -260,7 +260,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "denetci-onceki-cumle-varligi-devralinir",
@@ -270,7 +270,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "denetci-tarih-sayi-degildir",
@@ -280,7 +280,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "planlayici-alt-gorev-listesi-kabul",
@@ -310,7 +310,7 @@
       "gecti": true,
       "gozlenen": "sil_her_sey çalıştı=False, arac_reddi=True",
       "jeton": 355,
-      "sure_sn": 0.005
+      "sure_sn": 0.011
     },
     {
       "ad": "yetki-onay-yok-yazma-calismaz",
@@ -320,7 +320,7 @@
       "gecti": true,
       "gozlenen": "dosya_yaz çalıştı=False, onay_reddi=True",
       "jeton": 355,
-      "sure_sn": 0.001
+      "sure_sn": 0.002
     },
     {
       "ad": "yetki-onay-reddi-yazma-calismaz",
@@ -330,7 +330,7 @@
       "gecti": true,
       "gozlenen": "dosya_yaz çalıştı=False, onay_reddi=True",
       "jeton": 355,
-      "sure_sn": 0.0
+      "sure_sn": 0.001
     },
     {
       "ad": "yetki-bool-onay-yazma-calismaz",
@@ -340,7 +340,7 @@
       "gecti": true,
       "gozlenen": "dosya_yaz çalıştı=False, onay_reddi=True",
       "jeton": 355,
-      "sure_sn": 0.0
+      "sure_sn": 0.001
     },
     {
       "ad": "yetki-onay-verilince-yazma-calisir",
@@ -350,7 +350,7 @@
       "gecti": true,
       "gozlenen": "dosya_yaz çalıştı=True, onay_verildi=True",
       "jeton": 355,
-      "sure_sn": 0.0
+      "sure_sn": 0.001
     },
     {
       "ad": "enjeksiyon-izinsiz-arac-engellenir",
@@ -380,7 +380,7 @@
       "gecti": true,
       "gozlenen": "enjeksiyon son metinde=True, Denetçi=red",
       "jeton": 355,
-      "sure_sn": 0.005
+      "sure_sn": 0.02
     },
     {
       "ad": "enjeksiyon-onayli-yazma-engellenir",
@@ -390,7 +390,7 @@
       "gecti": true,
       "gozlenen": "dosya_yaz çalıştı=False, onay_reddi=True",
       "jeton": 500,
-      "sure_sn": 0.001
+      "sure_sn": 0.002
     },
     {
       "ad": "enjeksiyon-parafraz-son-metinde-denetci-reddeder",
@@ -400,7 +400,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: yönerge sızıntısı (parafraz): sil_her_sey",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "enjeksiyon-parafraz-temiz-yanit-kabul",
@@ -410,7 +410,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "KACAK-enjeksiyon-anlamsal-parafraz",
@@ -420,7 +420,7 @@
       "gecti": true,
       "gozlenen": "kabul (kaçak var)",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "KACAK-enjeksiyon-parafraz-varsayilan-kapali",
@@ -430,7 +430,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "kapsam-disi-parafraz-alintili-guvenli-yanit",
@@ -440,7 +440,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: yönerge sızıntısı (parafraz): sil_her_sey",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "uctan-uca-denetci-reddi-ve-arac-secimi",
@@ -450,7 +450,7 @@
       "gecti": true,
       "gozlenen": "durum=tamamlandi, denetim=[False, True], Analist araçları=['stok_sorgu', 'tedarikci_sorgu']",
       "jeton": 1465,
-      "sure_sn": 0.066
+      "sure_sn": 0.114
     },
     {
       "ad": "uctan-uca-planlayici-arac-kullanmaz",
@@ -460,7 +460,7 @@
       "gecti": true,
       "gozlenen": "araç olayı=yok",
       "jeton": 205,
-      "sure_sn": 0.029
+      "sure_sn": 0.076
     },
     {
       "ad": "uctan-uca-planlayici-yeniden-denemede-duzelir",
@@ -470,7 +470,7 @@
       "gecti": true,
       "gozlenen": "durum=tamamlandi, plan denetimi=[False, True]",
       "jeton": 0,
-      "sure_sn": 0.036
+      "sure_sn": 0.083
     },
     {
       "ad": "genis-tablo-dogru-adet",
@@ -480,7 +480,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "genis-tablo-yanlis-adet",
@@ -490,7 +490,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-tablo-skor-dogru",
@@ -500,7 +500,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-tablo-skor-yanlis",
@@ -510,7 +510,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-cok-varlik-dogru",
@@ -520,7 +520,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3: ANK-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-cok-varlik-yer-degisik",
@@ -530,7 +530,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3: ANK-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-cok-varlik-ikinci-yanlis",
@@ -540,7 +540,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3: ANK-01 için bu değer var, cümlenin anlamıyla eşleşmiyor; dayanaksız sayı 7: ANK-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-cok-varlik-uc-depo",
@@ -550,7 +550,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3: ANK-01 için bu değer var, cümlenin anlamıyla eşleşmiyor",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-tarih-kabul",
@@ -560,7 +560,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-saat-kabul",
@@ -570,7 +570,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-gorev-sayisi-kabul",
@@ -580,7 +580,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-birim-kabul",
@@ -590,7 +590,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 23",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-tarih-yanlis-sayi-red",
@@ -600,7 +600,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-birim-yanlis-sayi-red",
@@ -610,7 +610,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 23",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-bicim-binlik-kabul",
@@ -620,7 +620,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.008
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-bicim-virgul-ondalik-red",
@@ -630,7 +630,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 110.245",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-bicim-ondalik-kabul",
@@ -640,7 +640,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-bicim-ondalik-yanlis-red",
@@ -650,7 +650,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3.6",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-uzun-dogru",
@@ -660,7 +660,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-uzun-sonda-yanlis",
@@ -670,7 +670,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-uzun-ortada-yanlis",
@@ -680,7 +680,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-uzun-tum-dogru",
@@ -690,7 +690,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-celisen-ikinci-deger-red",
@@ -700,7 +700,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-celisen-tek-dogru-kabul",
@@ -710,7 +710,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-celisen-yanlis-alternatif",
@@ -720,7 +720,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 36.8",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-celisen-seviye-kabul",
@@ -730,7 +730,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-tedarikci-dogru",
@@ -740,7 +740,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-tedarikci-yanlis",
@@ -750,7 +750,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-01'}: iddia 96.0, Kule 95.5; dayanaksız sayı 96",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-tedarikci-yok",
@@ -760,7 +760,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-99'}: 0 kayıt, tek olmalı; dayanaksız sayı 50",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-tedarikci-stok-dogru",
@@ -770,7 +770,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-tablo-dogru-adet-kimlikli",
@@ -780,7 +780,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-tablo-yanlis-adet-kimlikli",
@@ -790,7 +790,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 5: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-tablo-skor-dogru-kimlikli",
@@ -800,7 +800,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-tablo-skor-yanlis-kimlikli",
@@ -810,7 +810,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3: T-03 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.008
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-cok-varlik-dogru-kimlikli",
@@ -820,7 +820,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.021
     },
     {
       "ad": "genis-cok-varlik-yer-degisik-kimlikli",
@@ -830,7 +830,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 5: IZM-01 kimlikli doğrulanmış iddiada yok; dayanaksız sayı 3: ANK-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-cok-varlik-ikinci-yanlis-kimlikli",
@@ -840,7 +840,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 7: ANK-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-cok-varlik-uc-depo-kimlikli",
@@ -850,7 +850,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.02
     },
     {
       "ad": "genis-tarih-kabul-kimlikli",
@@ -860,7 +860,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-saat-kabul-kimlikli",
@@ -870,7 +870,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-gorev-sayisi-kabul-kimlikli",
@@ -880,7 +880,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.023
     },
     {
       "ad": "genis-birim-kabul-kimlikli",
@@ -890,7 +890,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 23",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.02
     },
     {
       "ad": "genis-tarih-yanlis-sayi-red-kimlikli",
@@ -900,7 +900,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 4: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.009
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-birim-yanlis-sayi-red-kimlikli",
@@ -910,7 +910,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 23; dayanaksız sayı 4: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.009
+      "sure_sn": 0.018
     },
     {
       "ad": "genis-bicim-binlik-kabul-kimlikli",
@@ -920,7 +920,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-bicim-virgul-ondalik-red-kimlikli",
@@ -930,7 +930,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 110.245: M-1001 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-bicim-ondalik-kabul-kimlikli",
@@ -940,7 +940,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.016
     },
     {
       "ad": "genis-bicim-ondalik-yanlis-red-kimlikli",
@@ -950,7 +950,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 3.6: T-03 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-uzun-dogru-kimlikli",
@@ -960,7 +960,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-uzun-sonda-yanlis-kimlikli",
@@ -970,7 +970,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 5: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.02
     },
     {
       "ad": "genis-uzun-ortada-yanlis-kimlikli",
@@ -980,7 +980,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3: T-03 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-uzun-tum-dogru-kimlikli",
@@ -990,7 +990,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-celisen-ikinci-deger-red-kimlikli",
@@ -1000,7 +1000,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 58.3: T-03 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-celisen-tek-dogru-kabul-kimlikli",
@@ -1010,7 +1010,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.017
     },
     {
       "ad": "genis-celisen-yanlis-alternatif-kimlikli",
@@ -1020,7 +1020,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 36.8: T-03 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-celisen-seviye-kabul-kimlikli",
@@ -1030,7 +1030,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.007
+      "sure_sn": 0.014
     },
     {
       "ad": "genis-tedarikci-dogru-kimlikli",
@@ -1040,7 +1040,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.008
+      "sure_sn": 0.013
     },
     {
       "ad": "genis-tedarikci-yanlis-kimlikli",
@@ -1050,7 +1050,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-01'}: iddia 96.0, Kule 95.5; dayanaksız sayı 96: T-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.01
+      "sure_sn": 0.019
     },
     {
       "ad": "genis-tedarikci-yok-kimlikli",
@@ -1060,7 +1060,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: tedarikci_skoru {'tedarikci': 'T-99'}: 0 kayıt, tek olmalı; dayanaksız sayı 50",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.015
     },
     {
       "ad": "genis-tedarikci-stok-dogru-kimlikli",
@@ -1070,7 +1070,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-arac-ciktisi-kayit-kimligi",
@@ -1080,7 +1080,7 @@
       "gecti": true,
       "gozlenen": "kimlikli: IZM-01/M-1001; varsayılan kayit alanı: False",
       "jeton": 0,
-      "sure_sn": 0.007
+      "sure_sn": 0.024
     },
     {
       "ad": "c2-kimlik-dogru-kabul",
@@ -1090,7 +1090,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.014
     },
     {
       "ad": "c2-kimlik-yok-red",
@@ -1100,7 +1100,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: geçersiz iddia: kimlik metin olmalı: {'modul': 'stok_durumu', 'filtre': {'depo': 'IZM-01', 'durum': 'KRITIK'}, 'deger': 3}; dayanaksız sayı 3: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-kimlik-yanlis-red",
@@ -1110,7 +1110,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: stok_durumu {'depo': 'IZM-01', 'durum': 'KRITIK'}: kimlik ANK-01, Kule IZM-01",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-kimlik-varsayilanda-yok-sayilir",
@@ -1120,7 +1120,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.014
     },
     {
       "ad": "c2-malzeme-satiri-kabul",
@@ -1130,7 +1130,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.004
+      "sure_sn": 0.012
     },
     {
       "ad": "c2-baska-depo-malzeme-red",
@@ -1140,7 +1140,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 80: M-1001 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.012
     },
     {
       "ad": "c2-varlik-devri-yok-kabul",
@@ -1150,7 +1150,7 @@
       "gecti": true,
       "gozlenen": "kabul",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-varlik-devri-a2-red",
@@ -1160,7 +1160,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 95.5: T-06 için Kule verisinde yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-numarali-dolgu-red",
@@ -1170,7 +1170,7 @@
       "gecti": true,
       "gozlenen": "reddedildi: dayanaksız sayı 7: IZM-01 kimlikli doğrulanmış iddiada yok",
       "jeton": 0,
-      "sure_sn": 0.005
+      "sure_sn": 0.013
     },
     {
       "ad": "c2-red-yalniz-uc-anahtar",
@@ -1180,7 +1180,7 @@
       "gecti": true,
       "gozlenen": "gösterilen red=[{'sayi': 58.0, 'varlik': 'T-03', 'beklenen_kaynak': 'tedarikci_skoru.skor'}, {'sayi': 58.0, 'varlik': 'T-03', 'beklenen_kaynak': 'iddialar bloğunda kimliği T-03 içeren iddia'}]",
       "jeton": 0,
-      "sure_sn": 0.013
+      "sure_sn": 0.029
     },
     {
       "ad": "c2-kismi-yalniz-reddedilen-istenir",
@@ -1190,7 +1190,7 @@
       "gecti": true,
       "gozlenen": "durum=tamamlandi, denetim=[False, True], kısmi=[False, True], red=[{'sayi': 58.0, 'varlik': 'T-03', 'beklenen_kaynak': 'tedarikci_skoru.skor'}, {'sayi': 58.0, 'varlik': 'T-03', 'beklenen_kaynak': 'iddialar bloğunda kimliği T-03 içeren iddia'}], son iddialar=[{'modul': 'stok_durumu', 'filtre': {'depo': 'IZM-01', 'durum': 'KRITIK'}, 'deger': 3, 'kimlik': 'IZM-01'}, {'modul': 'tedarikci_skoru', 'filtre': {'tedarikci': 'T-03'}, 'alan': 'skor', 'deger': 36.3, 'kimlik': 'T-03'}]",
       "jeton": 0,
-      "sure_sn": 0.061
+      "sure_sn": 0.165
     },
     {
       "ad": "c2-baglanamayan-red-tam-yeniden",
@@ -1200,7 +1200,7 @@
       "gecti": true,
       "gozlenen": "durum=tamamlandi, kısmi=[False, False]",
       "jeton": 0,
-      "sure_sn": 0.052
+      "sure_sn": 0.096
     },
     {
       "ad": "c2-iki-deneme-siniri",
@@ -1210,7 +1210,7 @@
       "gecti": true,
       "gozlenen": "durum=reddedildi, deneme=2",
       "jeton": 0,
-      "sure_sn": 0.048
+      "sure_sn": 0.098
     },
     {
       "ad": "c2-butce-6-asar",
@@ -1220,7 +1220,7 @@
       "gecti": true,
       "gozlenen": "azami_adim=6, ilk deneme: Analist tamamlanmadı: bütçe aşıldı (adım 6/6, jeton 12/20000)",
       "jeton": 0,
-      "sure_sn": 0.086
+      "sure_sn": 0.174
     },
     {
       "ad": "c2-butce-8-tamamlar",
@@ -1230,7 +1230,7 @@
       "gecti": true,
       "gozlenen": "azami_adim=8, ilk deneme: kabul",
       "jeton": 0,
-      "sure_sn": 0.072
+      "sure_sn": 0.137
     },
     {
       "ad": "c2-sistem-mesaji-ornek",
@@ -1240,7 +1240,7 @@
       "gecti": true,
       "gozlenen": "varsayılan 584 karakter, C2 1362 karakter; örnekte gerçek kimlik/değer yok",
       "jeton": 0,
-      "sure_sn": 0.006
+      "sure_sn": 0.015
     }
   ],
   "karsilastirma": {

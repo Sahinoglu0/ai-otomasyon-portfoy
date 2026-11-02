@@ -34,7 +34,7 @@ Canlı sayfalardan alınmıştır (açık tema, 1440 px).
 
 | Ajan iz görüntüleyici | Test kanıtı |
 |---|---|
-| [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: 580 test, alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+| [![Ajan iz görüntüleyici: koşu özeti, zaman çizelgesi, onay kapısı](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test kanıtı: son koşu özeti ve alan başına dağılım](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
 
 | Ürün sayfası | Giriş |
 |---|---|
@@ -105,7 +105,7 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Kule için 411 Python testi geçiyor; Node tarafında 58 test, 58 geçti, 0 atlandı; orkestratör için 111 birim testi var.
+**Testler.** Kule için 559 Python testi geçiyor; Node tarafında 128 test, 128 geçti, 0 atlandı; orkestratör için 120 birim testi var.
 
 ## 4. Kapsam ve durum
 

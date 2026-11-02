@@ -2,9 +2,9 @@
 
 **Dil / Language:** Türkçe · [English](#english)
 
-Bu metin GitHub Release gövdesi olarak yapıştırılacak. Etiket: `v0.7.0` (henüz oluşturulmadı).
+Bu metin GitHub Release gövdesidir. Etiket: `v0.7.0`.
 
-**Yayın tarihi:** *(lider dolduracak)*
+**Yayın tarihi:** 2 Kasım 2026
 
 ## Öne çıkanlar
 
@@ -47,7 +47,7 @@ Bu depoda Kule'nin kaynak kodu yoktur ve bu sürümde yayınlanmadı; bu yüzden
 
 # Kule Pro 0.7.0 (English)
 
-This text is for the GitHub Release body. Tag: `v0.7.0` (not created yet). **Release date:** *(maintainer fills in)*
+This text is the GitHub Release body. Tag: `v0.7.0`. **Release date:** 2 November 2026
 
 ## Highlights
 

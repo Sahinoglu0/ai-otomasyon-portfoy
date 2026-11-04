@@ -5,6 +5,35 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-04 (measurement update, no version number)
+
+No commit. These lines only change documentation. The Kule code did not change in this publish copy. The code change (V5) is in the `cv-portfoy-kule` repository, commit 4705097.
+
+### Added
+
+- **Real open-data measurements:** the README (Turkish and English) now covers BPI Challenge 2019, the simulated Berti package, the Zenodo clay-brick OEE dataset and the M5 measurements. Each number has its source report named beside it. All results are labelled as "rule agreement" or "candidate findings"; no accuracy claim is made.
+  - `uclu_eslestirme`: 984 candidate findings on BPI 2019, 5.3 s, peak memory 537 MB (KULE-V1-ezgi).
+  - `siparis_anomali`: 0 findings on BPI 2019, but not evaluable because the six rules lack data (KULE-V1-ezgi). On Berti PO/GR, 90/90 injected deviations were caught and the 15 clean lines produced 0 false findings (KULE-V4-zeynep-3).
+  - `stok_durumu`: 96.6% rule agreement on 88 comparable pairs in Berti (KULE-V2-zeynep).
+  - `karar`: 86.4% agreement on 88 pairs in Berti; Understock sensitivity 100% (KULE-V2-zeynep).
+  - `oee`: on the clay-brick data the daily total matches the source (an algebraic identity); availability is off by +15.7 points and performance by −16.9 points (KULE-V3-zeynep).
+  - `talep_tahmini`: on M5 with 5,082 series, Kule's WAPE was 47.3%, seasonal naive 61.0%, and the last-4-week average 38.4% (KULE-V3-zeynep).
+- **RBKP/RSEG invoice mapping:** a `fatura.csv` input and a three-way matching table input were added. 569 tests pass on synthetic data. Not verified against real SAP output (KULE-F1-ezgi).
+
+### Fixed
+
+- **Dead-stock definition (`cv-portfoy-kule`, commit 4705097):** `stok_durumu` labelled items with zero stock and no shipments as OLU_STOK. Dead stock now requires `stok > 0` and no shipments. The defect in 192 Berti pairs was fixed; after the fix 277 of 280 pairs agree (98.9%) (KULE-V5-ezgi-2). This brings the rule closer to Berti's own rule; it is not a measure of real accuracy.
+
+### Honest limits
+
+- No module has been tried with a real SAP export, RBKP/RSEG included.
+- BPI 2019 has no quantity or planned-date fields. Of the six `siparis_anomali` rules, only the price, duplicate-invoice and invoice-without-goods-receipt parts ran; FATURALANMAMIS_TESLIM and FAZLA_FATURA_MIKTAR did not.
+- The Berti data is a simulation. Rule-agreement figures are not independent accuracy.
+- There is no labelled sequence-anomaly data, so no false-alarm rate is given for any module.
+- KULE-V6 is a variant measurement ("last-4-week average" as a selection candidate; M5 WAPE 39.7%). It is not implemented in Kule's code.
+- The test count on the `kanit/` page (559) belongs to the 0.7.0 run. The 570 tests run after V5 (`cv-portfoy-kule`) are not yet on the evidence page.
+- The `kanit/test-katalogu.*` page still belongs to the v0.6.0 run.
+
 ## 2026-11-02 (v0.7.0)
 
 Kule Pro 0.7.0 was prepared locally. This release has not been pushed or tagged yet.

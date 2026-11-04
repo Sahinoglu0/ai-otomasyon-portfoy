@@ -5,6 +5,35 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-04 (ölçüm güncellemesi, sürüm numarası yok)
+
+Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kopyasında değişmedi. Kod değişikliği (V5) `cv-portfoy-kule` deposunda, commit 4705097.
+
+### Eklenenler
+
+- **Gerçek açık veri ölçümleri:** README'ye (Türkçe ve İngilizce) BPI Challenge 2019, Berti simüle paketi, Zenodo kil tuğla OEE ve M5 ölçümleri eklendi. Her sayının yanında kaynak rapor adı yazılı. Bütün sonuçlar "kural uyuşması" ya da "aday bulgu" olarak etiketlendi; doğruluk iddiası yok.
+  - `uclu_eslestirme`: BPI 2019 günlüğünde 984 aday bulgu, 5,3 sn, tepe bellek 537 MB (KULE-V1-ezgi).
+  - `siparis_anomali`: BPI 2019'da 0 bulgu, ama altı kuralın verisi olmadığı için değerlendirilemedi (KULE-V1-ezgi). Berti PO/GR'de enjekte sapmaların 90/90'ı yakalandı, temiz 15 kalemde sahte bulgu 0 (KULE-V4-zeynep-3).
+  - `stok_durumu`: Berti'de 88 karşılaştırılabilir çiftte %96,6 kural uyuşması (KULE-V2-zeynep).
+  - `karar`: Berti'de 88 çiftte %86,4 uyuşma; Understock duyarlılığı %100 (KULE-V2-zeynep).
+  - `oee`: kil tuğla verisinde OEE toplamı kaynakla örtüşüyor (cebirsel özdeşlik); kullanılabilirlik +15,7 ve performans −16,9 puan sapıyor (KULE-V3-zeynep).
+  - `talep_tahmini`: M5, 5.082 seri, WAPE Kule %47,3, mevsimsel naif %61,0, son 4 hafta ortalaması %38,4 (KULE-V3-zeynep).
+- **RBKP/RSEG fatura eşlemesi:** `fatura.csv` girdisi ve üçlü eşleştirme tablo girdisi eklendi; sentetik veriyle 569 test geçti. Gerçek SAP çıktısıyla doğrulanmadı (KULE-F1-ezgi).
+
+### Düzeltmeler
+
+- **Ölü stok tanımı (`cv-portfoy-kule`, commit 4705097):** `stok_durumu`, dönemde sevk olmayan ve stoğu 0 olan kalemi OLU_STOK sayıyordu. Artık ölü stok yalnız `stok > 0` ve sevk yoksa. Berti'de 192 çiftteki kusur bu şekilde düzeldi; düzeltme sonrası 280 çiftte %98,9 uyuşma (KULE-V5-ezgi-2). Bu, kuralın Berti'nin kendi kuralıyla uyumunu artırdı; gerçek doğruluk değildir.
+
+### Dürüst sınırlar
+
+- Gerçek bir SAP dışa aktarımı hiçbir modülde denenmedi; RBKP/RSEG dahil.
+- BPI 2019 verisinde miktar ve plan tarihi yok. `siparis_anomali`nin altı kuralından yalnız fiyat, çift fatura ve irsaliyesiz fatura ile ilgili kısım koştu; FATURALANMAMIS_TESLIM ve FAZLA_FATURA_MIKTAR koşmadı.
+- Berti verisi simülasyondur. Kural uyuşmaları bağımsız doğruluk değildir.
+- Etiketli sipariş anomalisi verisi yok; hiçbir modül için yanlış alarm oranı verilmedi.
+- KULE-V6 bir varyant ölçümüdür ("son 4 hafta ortalaması" seçim adayı, M5 WAPE %39,7). Kule kodunda uygulanmadı.
+- `kanit/` sayfasındaki test sayıları (559) 0.7.0 koşusuna aittir. V5 sonrası 570 test (`cv-portfoy-kule`) henüz kanıt sayfasına işlenmedi.
+- Kanıt sayfası `kanit/test-katalogu.*` hâlâ v0.6.0 koşusuna ait.
+
 ## 2026-11-02 (v0.7.0)
 
 Kule Pro 0.7.0 yerel olarak hazırlandı. Bu sürüm henüz push edilmedi ve etiketlenmedi.

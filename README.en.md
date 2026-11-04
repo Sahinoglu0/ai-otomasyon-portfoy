@@ -4,7 +4,7 @@
 
 1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
 2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
-3. The data is synthetic (generator seed 42), and the measurements use the public DataCo Smart Supply Chain dataset. It has not been tested on a real company's data.
+3. The data is synthetic (generator seed 42). Most measurements use public data: DataCo Smart Supply Chain, BPI Challenge 2019 (a real but anonymised process log), a simulated Berti inventory package, the Zenodo clay-brick OEE dataset and the M5 demand dataset. No module has been tested on a customer's data or on your own SAP system.
 4. The source code is not published in this repository. What is here: static pages, diagrams, test evidence and agent traces.
 5. The real-model run (claude-haiku-5-5) ran 38 of the 40 planned runs (37 completed, 1 cut off by the quota, 2 not run): in the investigation scenarios 16 of 20 runs were accepted and 4 were rejected by the Auditor; 17 runs of the injection scenarios (E1, E2) were completed. The other traces are hand-written tapes.
 
@@ -15,7 +15,7 @@
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 - [Test evidence](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): source code is closed; test counts, behaviour catalogue and an evidence package you can verify with SHA-256
 
-**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats were tested with synthetic files, not with output from a real SAP system. The Kule source code is not in this repository.
+**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats (including RBKP/RSEG) were tested with synthetic files, not with output from a real SAP system. The Kule source code is not in this repository.
 
 ## Videos
 
@@ -93,7 +93,24 @@ Full test evidence (test catalogue, behaviour catalogue, SHA-256 evidence packag
 | Mendeley Data *Retail Inventory Data* (9pn955p5vj, version 1) | CC BY 4.0 | A public **model sample dataset** (fields compiled from Kaggle; it is not a real company's stock record). Adapted to the `stok.csv` contract. | 30/30 rows passed ingest. `stok_durumu` **could not be measured**: the data has no shipments, and the stock codes do not match the sales data. |
 | UCI *Online Retail II* (DOI 10.24432/C5CG6D; Chen, 2012) | CC BY 4.0 | Sales invoices, **proxy-mapped**: invoice→order, country→supplier (this is not supply data). Tried only for ingest robustness. | 1,067,371 rows: 1,044,416 accepted, 22,955 rejected as inconsistent (return and cancellation rows rejected by the rules), 0 crashes, 24 s. It is **not** evidence of order anomalies or supplier scores. |
 
-No open, properly licensed real data was found for goods receipt, delivery notes, invoices or production data, so these inputs were **not measured**. Synthetic data is not presented as real.
+**Real open-data measurements (KULE-V1..V5, KULE-F1).** Each number below comes from the report named in its row. None of them is an accuracy measurement. "Rule agreement" shows how consistently two implementations apply the same definition; it does not show that the definition is right in the real world. Berti is a simulation, and no labelled sequence-anomaly data was available.
+
+| Module | Data (licence) | Result | Report |
+|---|---|---|---|
+| `uclu_eslestirme` | BPI Challenge 2019 OCEL (4TU, CC BY 4.0; MD5 verified). 251,734 traces, 1.6 million events. | 984 candidate findings (amount effect 7,182,225), 5.3 s, peak memory 537 MB. The findings are candidates, not proof. There is no quantity field, so FATURALANMAMIS_TESLIM and FAZLA_FATURA_MIKTAR did not run. In the Item Category cross-check, the CIFT_FATURA rate is nearly the same in both categories (0.50% / 0.47%). | KULE-V1-ezgi |
+| `siparis_anomali` (BPI) | Same log | 0 findings, but **not evaluable**: the six rules need quantity, planned date and material fields that are missing. This 0 is not evidence of a clean dataset. | KULE-V1-ezgi |
+| `stok_durumu` | Berti simulated inventory package (simulation) | Before the fix: 85 of 88 comparable pairs agreed (96.6%); 357 dead-stock pairs could not be compared. Kule was labelling items with zero stock and no shipments as dead stock. In 192 pairs that was a defect, and it was fixed. After the fix: 277 of 280 pairs agreed (98.9%). The Berti label is close to Kule's own rule, so this is not independent accuracy. | KULE-V2-zeynep, KULE-V5-ezgi-2 |
+| `karar` (Berti) | Same package | 86.4% agreement on 88 comparable pairs; Understock sensitivity 100%, Normal 0/3. | KULE-V2-zeynep |
+| `siparis_anomali` (Berti PO/GR) | Berti simulated, 438 PO lines, 94 goods receipts | On natural data, five of the six rules matched an independent reference exactly; both sides found 0 CIFT_KAYIT. Most natural findings (367 ACIK_GECIKMIS) come from random keys: only 47 of 94 goods receipts match a PO line. With injected deviations (15 lines per rule) 90/90 were caught, and the 15 clean lines produced 0 false findings. The injected deviations were deliberately clear (+50%, −50%, 10 days). | KULE-V4-zeynep-3 |
+| `oee` (clay brick) | Zenodo 17855209, 62 days, CC BY 4.0; proxy mapping | The daily total OEE matches the source with a mean absolute error of 0.07 points; this is an algebraic identity, not validation. Availability is off by +15.7 points and performance by −16.9 points (r = 0.23 and 0.36). The components do not match the source. | KULE-V3-zeynep |
+| `talep_tahmini` (M5) | M5, Zenodo 12636070, 5,082 series, last 4 weeks held out, CC BY 4.0 | WAPE: Kule 47.3%; seasonal naive 61.0%; last-4-week average 38.4%. So Kule is worse than a simple average. It under-forecasts by 10.4% overall. The second sample (1,017 series) points the same way. | KULE-V3-zeynep |
+| `fatura.csv` (RBKP/RSEG) | None; synthetic file | 569 tests pass. Not verified against real SAP output. | KULE-F1-ezgi |
+
+KULE-V6 is a variant measurement. Adding "last-4-week average" as a selection candidate lowers M5 WAPE to 39.7%. Adding "other unplanned downtime" to OEE did not close the availability gap (+15.7 → +15.0 points). Kule's code does not use these variants.
+
+**Still not measured.** No real SAP export (EKPO, MSEG, RBKP/RSEG included) has been tried in any module. BPI 2019 has no quantity or planned-date fields, so the six `siparis_anomali` rules did not run on it. There is no labelled sequence-anomaly data, so no false-alarm rate is given for any module. Kule does not join RBKP and RSEG; they must be combined into one file first.
+
+Goods receipt, delivery notes and invoices were measured with the BPI 2019 log; production (OEE) was measured with clay-brick data through a proxy mapping. Synthetic data is not presented as real.
 
 The DataCo data page (Mendeley 8gx2fvg2k6, version 5) states "CC BY 4.0", but the same page also reserves all rights, including text and data mining and AI training. For that reason the data file is not included in this repository, only measurement outputs are shared, and the data is not used for training. Measurement output: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
 
@@ -105,13 +122,13 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** For Kule, 559 Python tests pass; on the Node side 128 tests, 128 pass, 0 skipped; the orchestrator has 120 unit tests.
+**Tests.** For Kule, 559 Python tests pass in the 0.7.0 evidence page. After the KULE-V5 fix, 570 tests ran and passed in the same codebase (`cv-portfoy-kule`); the KULE-F1 report records 569 passing tests after the RBKP/RSEG addition. On the Node side 128 tests, 128 pass, 0 skipped; the orchestrator has 120 unit tests.
 
 ## 4. Scope and status
 
 - **Data.** The sample data is synthetic (seed 42); measurements were made on synthetic and public DataCo data. The ROI calculator's inputs are the user's own assumptions; two values from Kule records (monthly cases, recorded time) can be taken with their source, but the records are not a pilot measurement: time is the user's own estimate.
 - **Seed band and ROI.** Across 10 seeds (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) the total stock value ranges from 7.4 M to 45.6 M TRY (median 21.9 M TRY), so no single TRY figure is offered. Band: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). In the ROI calculator, the user's unsourced inputs (catch rate, prevented share, cost per event) move the result by ±3% to ±8%. The stock leg is not computed unless the user enters the excess stock share input, and it shows no TRY result. These are worked examples and sensitivity checks, not a company result. ROI assumptions table: [olcum/roi-varsayimlari.en.md](olcum/roi-varsayimlari.en.md).
-- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are read through a mapping file: Turkish and English headings, UTF-8/UTF-16/ANSI, tab, `;`, `,` and `|` separators; the ALV header and total rows are skipped. **These formats were tested with synthetic files, not with output from a real SAP system.** **The Morning report screen does not accept `.xlsx` files** (it asks for CSV; the server reads `.xlsx` only from a disk folder). There is no live SAP or OCR connection.
+- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are read through a mapping file: Turkish and English headings, UTF-8/UTF-16/ANSI, tab, `;`, `,` and `|` separators; the ALV header and total rows are skipped. **These formats were tested with synthetic files, not with output from a real SAP system.** The RBKP/RSEG invoice mapping (KULE-F1) was also tested only with synthetic data. **The Morning report screen does not accept `.xlsx` files** (it asks for CSV; the server reads `.xlsx` only from a disk folder). There is no live SAP or OCR connection.
 - **API.** Designed for demo and pilot setups: roles, an audit trail and a rate limit are included; production-grade security (TLS, SSO) is outside the scope of this publication.
 - **Orchestrator (real-model measurement).** With `claude-haiku-5-5` through the local `claude` CLI, 38 of 40 planned runs were recorded: 37 completed and 1 cut short by the quota. The quota ran out at model call 136. The last 2 runs were never executed. The pre-registration forbids runs after the quota, so they were not rerun.
   - **Investigation:** 16 of 20 runs accepted, 4 rejected, 0 failed. Acceptance 80%, 95% Wilson interval [0.584, 0.919]. By scenario: S1, S2 and S3 4/4 (S3's first attempt 3/4); S4 and S5 2/4. S4 and S5 flip between accept and reject: same question, same data, different outcome.
@@ -214,3 +231,5 @@ The command `python -m kule ozet` (runs in the closed repository; `ozet` is Turk
 ## License and attribution
 
 Code and pages at the repository root are MIT licensed, see [LICENSE](LICENSE); the `demo/` folder is outside this license (`demo/LICENSE.txt`). Data used in the measurements: DataCo Smart Supply Chain (Mendeley Data, version 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. This data does not belong to any company and is not distributed in this repository.
+
+Additional measurement data, all CC BY 4.0, are not distributed in raw form in this repository: BPI Challenge 2019 OCEL (4TU, MD5 verified), the Berti simulated inventory package (a simulation, not a real company's data), Zenodo 17855209 (clay-brick OEE) and Zenodo 12636070 (M5). Attributions are in `CREDITS.md`.

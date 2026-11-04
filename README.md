@@ -4,7 +4,7 @@
 
 1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını, SAP dışa aktarımlarını ve satıcı açık kalemlerini okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir. Sabah raporu ekranı SAP dosyalarını sürükle-bırak ile alır, bugünün ilk 5 bulgusunu ve "dünden beri" farkını gösterir.
 2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
-3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümler herkese açık DataCo Smart Supply Chain verisiyle yapıldı. Gerçek bir şirketin verisiyle test edilmedi.
+3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümlerin büyük kısmı herkese açık verilerle yapıldı: DataCo Smart Supply Chain, BPI Challenge 2019 (gerçek ama anonimleştirilmiş bir süreç kaydı), simüle Berti paketi, Zenodo kil tuğla OEE ve M5 talep verisi. Hiçbir modül bir müşterinin ya da kendi SAP sisteminizin verisiyle test edilmedi.
 4. Kaynak kod bu depoda yayınlanmıyor. Burada statik sayfalar, çizimler, test kanıtları ve ajan izleri var.
 5. Gerçek model koşusu (claude-haiku-5-5) planlanan 40 koşunun 38'ini yaptı (37'si tamamlandı, 1'i kotada kesildi, 2'si yapılmadı): soruşturmada 20 koşunun 16'sı kabul edildi, 4'ü Denetçi tarafından reddedildi; enjeksiyon senaryolarında (E1, E2) 17 koşu tamamlandı. Diğer izler elle yazılmış kasetlerdir.
 
@@ -15,7 +15,7 @@
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
 - [Test kanıtı](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): kaynak kod kapalı; test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi
 
-**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. SAP biçimleri sentetik dosyalarla sınandı, gerçek bir SAP çıktısıyla denenmedi. Kule'nin kaynak kodu bu depoda değildir.
+**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. SAP biçimleri (RBKP/RSEG dahil) sentetik dosyalarla sınandı, gerçek bir SAP çıktısıyla denenmedi. Kule'nin kaynak kodu bu depoda değildir.
 
 ## Videolar
 
@@ -93,7 +93,24 @@ Test kanıtının tamamı (test kataloğu, davranış kataloğu, SHA-256 kanıt 
 | Mendeley Data *Retail Inventory Data* (9pn955p5vj, sürüm 1) | CC BY 4.0 | Herkese açık **model örnek verisi** (alanlar Kaggle'dan derlenmiş; gerçek bir şirketin stok kaydı değildir). `stok.csv` sözleşmesine uyarlandı. | 30/30 satır ingest'ten geçti. `stok_durumu` **ölçülemedi**: veride sevkiyat yok, stok kodları satış verisiyle eşleşmiyor. |
 | UCI *Online Retail II* (DOI 10.24432/C5CG6D; Chen, 2012) | CC BY 4.0 | Satış faturaları; fatura→sipariş, ülke→tedarikçi olarak **vekil eşlendi** (tedarik verisi değildir). Yalnız ingest dayanıklılığı için denendi. | 1.067.371 satır: 1.044.416 kabul, 22.955 tutarsız (iade ve iptal satırları kuralla reddedildi), 0 çökme, 24 sn. Sipariş anomalisi ya da tedarikçi skoru kanıtı **değildir**. |
 
-Mal kabul, irsaliye, fatura ve üretim verisi için açık ve lisansı uygun gerçek veri bulunamadı; bu girdiler **ölçülmedi**. Sentetik veri gerçek diye sunulmaz.
+**Gerçek açık veri ölçümleri (KULE-V1..V5, KULE-F1).** Aşağıdaki her sayı, sondaki rapor adından alınmıştır. Hiçbiri doğruluk ölçümü değildir. "Kural uyuşması", iki kodun aynı tanımı ne kadar tutarlı uyguladığını gösterir; tanımın gerçek dünyada doğru olduğunu göstermez. Berti verisi simülasyondur; etiketli sipariş anomalisi içeren bir veri bu ölçümlerde yoktur.
+
+| Modül | Veri (lisans) | Sonuç | Rapor |
+|---|---|---|---|
+| `uclu_eslestirme` | BPI Challenge 2019 OCEL (4TU, CC BY 4.0; MD5 doğrulandı). 251.734 iz, 1,6 milyon olay. | 984 aday bulgu (tutar etkisi 7.182.225), 5,3 sn, tepe bellek 537 MB. Bulgular aday; kanıt değil. Miktar alanı olmadığı için FATURALANMAMIS_TESLIM ve FAZLA_FATURA_MIKTAR koşmadı. Item Category çapraz kontrolünde CIFT_FATURA oranı iki kategoride neredeyse aynı (%0,50 / %0,47). | KULE-V1-ezgi |
+| `siparis_anomali` (BPI) | Aynı günlük | 0 bulgu, ama **değerlendirilemedi**: altı kuralın miktar, plan tarihi ve malzeme alanı yok. Bu 0 bir temizlik kanıtı değildir. | KULE-V1-ezgi |
+| `stok_durumu` | Berti simüle envanter paketi (simülasyon) | Düzeltme öncesi: 88 karşılaştırılabilir çiftte %96,6 (85/88) kural uyuşması; 357 ölü stok çifti karşılaştırılamadı. Kule'de stoğu 0 ve sevki olmayan kalem ölü stok sayılıyordu; 192 çiftte bu bir kusurdu ve düzeltildi. Düzeltme sonrası 280 çiftte %98,9 (277/280) uyuşma. Berti etiketi Kule'nin kuralına yakın olduğu için bu bağımsız doğruluk değildir. | KULE-V2-zeynep, KULE-V5-ezgi-2 |
+| `karar` (Berti) | Aynı paket | 88 karşılaştırılabilir çiftte %86,4 uyuşma; Understock duyarlılığı %100, Normal 0/3. | KULE-V2-zeynep |
+| `siparis_anomali` (Berti PO/GR) | Berti simüle, 438 PO kalemi, 94 mal kabul | Doğal veride altı kuralın beşi bağımsız referansla birebir uyuştu; CIFT_KAYIT iki tarafta da 0 buldu. Doğal bulguların çoğu (367 ACIK_GECIKMIS) anahtar rastgeleliğinden geliyor: 94 mal kabulün yalnız 47'si bir PO kalemine denk geliyor. Enjekte sapmada (her kural 15 kalem) 90/90 yakalandı; 15 temiz kalemde 0 sahte bulgu. Enjekte sapmalar belirgin seçildi (+%50, −%50, 10 gün). | KULE-V4-zeynep-3 |
+| `oee` (kil tuğla) | Zenodo 17855209, 62 gün, CC BY 4.0; vekil eşleme | Günlük toplam OEE, kaynakla ort. mutlak hata 0,07 puan; bu bir cebirsel özdeşliktir, doğrulama değildir. Kullanılabilirlik +15,7 puan, performans −16,9 puan sapıyor (r = 0,23 ve 0,36). Bileşenler kaynakla uyuşmuyor. | KULE-V3-zeynep |
+| `talep_tahmini` (M5) | M5, Zenodo 12636070, 5.082 seri, son 4 hafta tutuldu, CC BY 4.0 | WAPE: Kule %47,3; mevsimsel naif %61,0; son 4 hafta ortalaması %38,4. Yani Kule basit ortalamadan kötü. Toplamda %10,4 eksik tahmin. İkinci örneklemde (1.017 seri) aynı yön. | KULE-V3-zeynep |
+| `fatura.csv` (RBKP/RSEG) | Yok; sentetik dosya | 569 test geçti. Gerçek SAP çıktısıyla doğrulanmadı. | KULE-F1-ezgi |
+
+KULE-V6 bir varyant ölçümüdür: "son 4 hafta ortalaması" seçim adayı olarak eklenince M5'te WAPE %39,7'ye iniyor; oee'deki "diğer plansız duruş" kalemi kullanılabilirlik farkını kapatmadı (+15,7 → +15,0 puan). Kule kodu bu varyantları kullanmıyor.
+
+**Hâlâ ölçülmeyenler.** Gerçek bir SAP dışa aktarımı (EKPO, MSEG, RBKP/RSEG dahil) hiçbir modülde denenmedi. BPI 2019'da miktar ve plan tarihi olmadığı için siparis_anomali'nin altı kuralı bu veride koşmadı. Etiketli sipariş anomalisi verisi olmadığından yanlış alarm oranı hiçbir modül için verilmez. Kule'de RBKP ile RSEG'i birleştiren adım yoktur; tek dosyada birleştirilmeleri gerekir.
+
+Mal kabul, irsaliye ve fatura olayları BPI 2019 günlüğüyle, üretim (OEE) kil tuğla verisiyle vekil eşlemeyle ölçüldü. Sentetik veri gerçek diye sunulmaz.
 
 DataCo'nun veri sayfası (Mendeley 8gx2fvg2k6, sürüm 5) "CC BY 4.0" yazar; ancak aynı sayfada metin ve veri madenciliği ile yapay zekâ eğitimi dahil "tüm haklar saklıdır" ibaresi de vardır. Bu yüzden veri dosyası bu depoya dahil değildir, yalnız ölçüm çıktıları paylaşılır ve veri eğitim amaçlı kullanılmaz. Ölçüm çıktısı: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
 
@@ -105,13 +122,13 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Kule için 559 Python testi geçiyor; Node tarafında 128 test, 128 geçti, 0 atlandı; orkestratör için 120 birim testi var.
+**Testler.** Kule için 559 Python testi geçiyor (0.7.0 kanıt sayfası); KULE-V5 düzeltmesinden sonra aynı kod tabanında 570 test koşuldu ve geçti (`cv-portfoy-kule`), KULE-F1 raporunda RBKP/RSEG eklemesi ile 569 test geçti. Node tarafında 128 test, 128 geçti, 0 atlandı; orkestratör için 120 birim testi var.
 
 ## 4. Kapsam ve durum
 
 - **Veri.** Örnek veri sentetiktir (tohum 42); ölçümler sentetik ve herkese açık DataCo verisiyle yapılmıştır. ROI hesaplayıcının girdileri kullanıcının kendi varsayımlarıdır; Kule kayıtlarından iki değer (aylık vaka, kayıtlı süre) kaynağıyla hesaba alınabilir, ama kayıtlar pilot ölçümü değildir: süre kullanıcının kendi tahminidir.
 - **Tohum bandı ve ROI.** 10 tohumla (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) yapılan tekrarda fazla stok değeri 7,4 M ile 45,6 M TL arasında değişiyor (medyan 21,9 M TL); bu yüzden tek bir TL sayısı sunulmaz. Bant: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). ROI'de kullanıcının kaynaksız girdileri (yakalama payı, önlenen pay, olay başı maliyet) sonucu ±%3 ile ±%8 arasında oynatıyor. Stok kolu, kullanıcı fazla stok payı girdisini girmeden hesaplanmaz ve TL sonucu gösterilmez. Bunlar örnek hesap ve duyarlılık göstergesidir; firma sonucu değildir. Varsayım tablosu: [olcum/roi-varsayimlari.md](olcum/roi-varsayimlari.md).
-- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar (EKPO, MSEG, MARD, LIPS, FBL1N) eşleme dosyasıyla okunur: TR ve EN başlıklar, UTF-8/UTF-16/ANSI, sekme, `;`, `,` ve `|` ayracı; ALV üst bilgisi ve toplam satırı atlanır. **Bu biçimler sentetik dosyalarla sınandı; gerçek bir SAP çıktısıyla denenmedi.** **Sabah raporu ekranı `.xlsx` dosyasını kabul etmez** (CSV ister; sunucu yalnız disk klasöründen `.xlsx` okur). Canlı SAP ya da OCR bağlantısı yoktur.
+- **Entegrasyon.** Girdi CSV ve `.xlsx` dosyasıdır; SAP tarzı dışa aktarımlar (EKPO, MSEG, MARD, LIPS, FBL1N) eşleme dosyasıyla okunur: TR ve EN başlıklar, UTF-8/UTF-16/ANSI, sekme, `;`, `,` ve `|` ayracı; ALV üst bilgisi ve toplam satırı atlanır. **Bu biçimler sentetik dosyalarla sınandı; gerçek bir SAP çıktısıyla denenmedi.** RBKP/RSEG fatura eşlemesi (KULE-F1) da yalnız sentetik veriyle sınandı. **Sabah raporu ekranı `.xlsx` dosyasını kabul etmez** (CSV ister; sunucu yalnız disk klasöründen `.xlsx` okur). Canlı SAP ya da OCR bağlantısı yoktur.
 - **API.** Demo ve pilot kurulum için tasarlanmıştır: roller, denetim izi ve hız sınırı içerir; üretim düzeyi güvenlik bu yayının kapsamı dışındadır.
 - **Orkestratör (gerçek model ölçümü).** `claude-haiku-5-5` ile yerel `claude` CLI üzerinden 40 planlanan koşudan 38'i kaydedildi: 37'si tamamlandı, 1'i kota nedeniyle yarıda kesildi. Kota 136. model çağrısında doldu; kalan 2 koşu hiç koşulmadı. Ön-kayıt kota sonrasında koşu yapılmasını yasakladığı için yeniden koşulmadılar.
   - **Soruşturma:** 20 koşuda 16 kabul, 4 ret, 0 başarısız. Kabul oranı %80, %95 Wilson aralığı [0,584; 0,919]. Senaryoya göre S1, S2 ve S3 4/4 (S3'ün ilk denemesi 3/4); S4 ve S5 2/4. S4 ve S5 kabul ile ret arasında salınıyor: aynı soru, aynı veri, farklı sonuç.
@@ -214,3 +231,5 @@ Tarayıcıda açılan, bağımlılıksız panel dört ekrandan ve ek bir Sabah r
 ## Lisans ve atıf
 
 Kök dizindeki kod ve sayfalar MIT lisanslıdır, bkz. [LICENSE](LICENSE); `demo/` klasörü bu lisansın dışındadır (`demo/LICENSE.txt`). Ölçümlerde kullanılan veri: DataCo Smart Supply Chain (Mendeley Data, sürüm 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. Bu veri bir firmaya ait değildir ve bu depoda dağıtılmaz.
+
+Ek ölçüm verileri, hepsi CC BY 4.0 ve ham hâliyle bu depoda dağıtılmaz: BPI Challenge 2019 OCEL (4TU, MD5 doğrulandı), Berti simüle envanter paketi (simülasyon, gerçek bir firmanın verisi değil), Zenodo 17855209 (kil tuğla OEE) ve Zenodo 12636070 (M5). Atıflar `CREDITS.md` dosyasında.

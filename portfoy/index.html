@@ -216,6 +216,40 @@
         </div>
         <p class="ikincil kucuk">Ekranlar panelin kendisinden alındı. Panel ve komut satırı şu an Türkçe; modül ekranlarındaki veriler sentetiktir.</p>
       </div>
+
+      <div class="sabah-galeri" data-ds-reveal>
+        <h3 class="figur-baslik" id="h-sabah">Sabah raporu ekranı</h3>
+        <p>Sabah raporu ekranı SAP tarzı dışa aktarımları (CSV ya da .xlsx) sürükle-bırakla alır ve bugünün ilk 5 bulgusunu, "dünden beri" farkını ve eksik sütun uyarılarını gösterir.</p>
+        <p class="ikincil kucuk">Aşağıdaki beş görüntünün hepsi <b>sentetik veriyle</b> alındı: Kule Pro'nun kendi deneme paketi ve elle üretilmiş sahte dosyalar. Gerçek bir firmanın ya da gerçek bir SAP sisteminin verisi yoktur; her görüntüde sentetik olduğunu belirten bir rozet bulunur. <b>Ekran gerçek bir SAP çıktısıyla denenmedi.</b></p>
+
+        <div class="sabah-galeri-izgara">
+          <figure class="ekran uzun">
+            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Sabah raporu</span><span class="rozet-sentetik">Sentetik veri</span></div>
+            <img src="../docs/img/ekran/sabah-ilk5-bulgu.png" width="980" height="747" loading="lazy" decoding="async" alt="Sabah raporu: bugün bakılacak ilk 5 bulgu. Her bulguda önem, tahmini etki, kim bakmalı ve SAP'de nereye gidileceği yazıyor.">
+            <figcaption><b>İlk 5 bulgu.</b> Sentetik deneme paketinin 1. günü. Her bulguda önem, tahmini etki (sunucu tahmini), kim bakmalı ve SAP'de nereye bakılacağı yazar. Menü yolu bir öneridir; firmaya göre değişebilir.</figcaption>
+          </figure>
+          <figure class="ekran uzun">
+            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Örnek paket sonucu</span><span class="rozet-sentetik">Sentetik veri</span></div>
+            <img src="../docs/img/ekran/sabah-ornek-paket.png" width="980" height="284" loading="lazy" decoding="async" alt="Örnek paket sonucu: 17 beklenen sorunun 17'si bulundu.">
+            <figcaption><b>Örnek paket sonucu.</b> Paketin içine bilerek yerleştirilmiş 17 sorunun 17'si bulundu. Bu, kendi uydurduğumuz sorulara verilen cevaptır; gerçek veride doğruluk ölçüsü değildir.</figcaption>
+          </figure>
+          <figure class="ekran uzun">
+            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Dünden beri</span><span class="rozet-sentetik">Sentetik veri</span></div>
+            <img src="../docs/img/ekran/sabah-dunden-beri.png" width="980" height="392" loading="lazy" decoding="async" alt="Dünden beri bölümü: 2 yeni, 3 çözülen ya da kaybolan, 3 tutarı değişen bulgu.">
+            <figcaption><b>Dünden beri.</b> Aynı paketin ertesi günü: 2 yeni, 3 çözülen ya da kaybolan, 3 tutarı değişen bulgu. Tarihler denemenin çalıştırıldığı güne göre görünür.</figcaption>
+          </figure>
+          <figure class="ekran uzun">
+            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Eksik sütun uyarısı</span><span class="rozet-sentetik">Sentetik veri</span></div>
+            <img src="../docs/img/ekran/sabah-eksik-sutun.png" width="980" height="810" loading="lazy" decoding="async" alt="Eksik sütun uyarısı: EKPO dosyasında sipariş miktarı (MENGE) alanı eksik; rapor hazırlanamaz.">
+            <figcaption><b>Eksik sütun uyarısı.</b> Elle üretilmiş sentetik bir EKPO dosyasından sipariş miktarı (MENGE) sütunu çıkarıldı. Kule dosyayı tanır, eksik alanı adıyla söyler ve "rapor hazırlanamaz" uyarısı verir.</figcaption>
+          </figure>
+          <figure class="ekran uzun">
+            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Dosya boyutu uyarısı</span><span class="rozet-sentetik">Sentetik veri</span></div>
+            <img src="../docs/img/ekran/sabah-buyuk-dosya-hata.png" width="980" height="745" loading="lazy" decoding="async" alt="Dosya boyutu uyarısı: dosyalar birlikte çok büyük; gönderilecek veri yaklaşık 79 MB, sınır 20 MB.">
+            <figcaption><b>Dosya boyutu uyarısı.</b> Elle üretilmiş sentetik bir EKPO dosyası. Kule isteği göndermeden önce "yaklaşık 79 MB" tahminini ve 20 MB sınırını gösterir; 79 MB kodlama payı eklenmiş bir tahmindir.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 

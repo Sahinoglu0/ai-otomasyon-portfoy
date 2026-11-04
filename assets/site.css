@@ -123,6 +123,12 @@ section.bolum p { margin: 0 0 var(--s3); max-width: 68ch; }
 .ekran-sekmeleri { margin-top: var(--s6); }
 .ekran-sekmeleri .ekran { margin-top: var(--s3); box-shadow: var(--golge-1); }
 
+/* Sabah raporu galerisi: mobilde tek sütun, 980 px ve üstünde iki sütun; ilk görüntü tam genişlik */
+.sabah-galeri { margin-top: var(--s6); }
+.sabah-galeri-izgara { display: grid; gap: var(--s5); grid-template-columns: minmax(0, 1fr); margin-top: var(--s4); }
+@media (min-width: 980px) { .sabah-galeri-izgara { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sabah-galeri-izgara > .ekran:first-child { grid-column: 1 / -1; } }
+.sabah-galeri-izgara .ekran { margin: 0; min-width: 0; box-shadow: var(--golge-1); }
+
 /* Kanıt rakamları */
 .kanit-kutu { display: grid; gap: var(--s4); grid-template-columns: minmax(0, 1fr); margin-top: var(--s5); }
 @media (min-width: 720px) { .kanit-kutu { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

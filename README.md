@@ -42,6 +42,18 @@ Canlı sayfalardan alınmıştır (açık tema, 1440 px).
 
 İz görüntüleyicideki her iz kaynağını rozetle belirtir: ELLE YAZILMIŞ KAYIT, GERÇEK MODEL KAYDI ya da KOD SATIRI.
 
+### Sabah raporu ekranı
+
+Aşağıdaki görüntülerin hepsi **sentetik veriyle** alındı: Kule Pro'nun kendi deneme paketi (SAP biçimini taklit eden, uydurma dosyalar) ve elle üretilmiş sahte dosyalar. Gerçek bir firmanın ya da gerçek bir SAP sisteminin verisi yoktur; ekranlardaki "ÖRNEK VERİ · SENTETİK" rozeti her görüntüde görünür. Görüntüler Chrome'da, 980 px genişliğinde alınmış kırpmalardır. Ekran gerçek bir SAP çıktısıyla denenmedi.
+
+| Görüntü | Ne gösteriyor |
+|---|---|
+| ![Sabah raporu: bugün bakılacak ilk 5 bulgu, sentetik örnek paket](docs/img/ekran/sabah-ilk5-bulgu.png) | **İlk 5 bulgu.** Sentetik deneme paketinin 1. günü. Her bulguda önem, tahmini etki (sunucu tahmini), kim bakmalı ve SAP'de nereye gidileceği yazar; menü yolu "öneri"dir, firmaya göre değişebilir. |
+| ![Sabah raporu: örnek paket sonucu, 17 / 17 beklenen sorun bulundu](docs/img/ekran/sabah-ornek-paket.png) | **Örnek paket sonucu.** Paketin içine bilerek yerleştirilmiş 17 sorunun 17'si bulundu. Bu, kendi uydurduğumuz sorulara verilen cevaptır; gerçek veride doğruluk ölçüsü değildir. |
+| ![Sabah raporu: "Dünden beri" bölümü, 2. gün](docs/img/ekran/sabah-dunden-beri.png) | **Dünden beri.** Aynı paketin ertesi sabahı: 2 yeni, 3 çözülen, 3 tutarı değişen bulgu. Tarihler denemenin çalıştırıldığı güne göre görünür. |
+| ![Sabah raporu: zorunlu sütunu eksik dosya uyarısı](docs/img/ekran/sabah-eksik-sutun.png) | **Eksik sütun uyarısı.** Elle üretilmiş sentetik EKPO dosyasından sipariş miktarı (MENGE) sütunu çıkarıldı. Kule dosyayı tanır, eksik alanı adıyla söyler ve "Sabah raporunu hazırla" düğmesini devre dışı bırakır (görüntüde düğme koyu görünse de pasiftir). |
+| ![Sabah raporu: çok büyük dosya için hata mesajı](docs/img/ekran/sabah-buyuk-dosya-hata.png) | **Hata mesajı örneği.** Elle üretilmiş sentetik, 75 MB'lık bir EKPO dosyası. Kule isteği göndermeden önce "Dosyalar birlikte çok büyük… sınır 20 MB" der. Gösterilen "yaklaşık 79 MB" kodlama payı eklenmiş tahmindir. |
+
 ## 1. Ajan orkestratörü ve Denetçi
 
 ![Soruşturma akışı: Planlayıcı, Analist, Denetçi; onay kapısı ve izin listesi](docs/img/ajan-akisi.svg)

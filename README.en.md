@@ -42,6 +42,18 @@ Taken from the live pages (light theme, 1440 px).
 
 Every trace in the viewer carries a badge that states its source (hand-written record, real-model record or code line). The screenshots show the Turkish interface; the pages have a TR / EN switch.
 
+### Morning report screen
+
+Every image below was taken with **synthetic data**: Kule Pro's own trial package (invented files that imitate the SAP export format) and hand-made fake files. There is no data from a real company or a real SAP system, and the "SAMPLE DATA · SYNTHETIC" badge (shown in Turkish as "ÖRNEK VERİ · SENTETİK") is visible in each image. They are crops taken in Chrome at 980 px width, in the Turkish interface. The screen was not tried with real SAP output.
+
+| Image | What it shows |
+|---|---|
+| ![Morning report: top 5 findings for today, synthetic sample package](docs/img/ekran/sabah-ilk5-bulgu.png) | **Top 5 findings.** Day 1 of the synthetic trial package. Each finding gives its importance, estimated impact (a server estimate), who should look and where to go in SAP; the menu path is a "suggestion" and may differ by company. |
+| ![Morning report: sample package result, 17 of 17 expected issues found](docs/img/ekran/sabah-ornek-paket.png) | **Sample package result.** All 17 issues planted in the package on purpose were found. This answers questions we wrote ourselves; it is not an accuracy figure on real data. |
+| ![Morning report: "Since yesterday" section, day 2](docs/img/ekran/sabah-dunden-beri.png) | **Since yesterday.** The next morning of the same package: 2 new, 3 resolved, 3 changed-amount findings. The dates shown follow the day the trial was run. |
+| ![Morning report: warning for a file with a missing required column](docs/img/ekran/sabah-eksik-sutun.png) | **Missing column warning.** The order quantity (MENGE) column was removed from a hand-made synthetic EKPO file. Kule recognises the file, names the missing field and disables the "Prepare morning report" button (the button looks dark in the image but is disabled). |
+| ![Morning report: error message for a file that is too large](docs/img/ekran/sabah-buyuk-dosya-hata.png) | **Error message example.** A hand-made synthetic 75 MB EKPO file. Kule says "files are too large together… limit 20 MB" before sending anything. The "about 79 MB" shown is an estimate that includes encoding overhead. |
+
 ## 1. Agent orchestrator and Auditor
 
 ![Investigation flow: Planner, Analyst, Auditor; approval gate and allow-list](docs/img/en/ajan-akisi.svg)

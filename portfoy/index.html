@@ -16,6 +16,13 @@
 <link rel="stylesheet" href="../assets/ds/ds-ajan-akisi.css">
 <link rel="stylesheet" href="../assets/ds/ds-sekme.css">
 <link rel="stylesheet" href="../assets/site.css">
+<style>
+  /* Güncel bölümü: dar ekranda ölçüm taslağı yatay kaydırılır; içindeki yazılar okunaklı kalır. */
+  @media (max-width: 720px) {
+    #guncel .ekran.uzun { overflow-x: auto; }
+    #guncel .ekran.uzun img { width: 760px; max-width: none; }
+  }
+</style>
 <script src="../assets/site.js"></script>
 <script src="../assets/ds/ds-reveal.js"></script>
 </head>

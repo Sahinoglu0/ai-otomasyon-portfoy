@@ -194,5 +194,26 @@ window.I18N_EK = {
   "Ne yaptığı, nasıl çalıştığı, modülleri, neyin ölçüldüğü ve nerede durduğu.":
     "What it does, how it works, its modules, what was measured and where it stops.",
   "Eval kasetten oynatılır; model kalitesini ölçmez. 5 bilinen açık vaka gözlendi ve kapanmadı.":
-    "The eval is replayed from tapes; it does not measure model quality. 5 known-gap cases were observed and are not closed."
+    "The eval is replayed from tapes; it does not measure model quality. 5 known-gap cases were observed and are not closed.",
+
+  /* güncel geliştirme (0.7.0 sonrası) bölümü */
+  "güncel": "current",
+  "Güncel geliştirme (0.7.0 sonrası)": "Current development (after 0.7.0)",
+  "Bu bölüm 0.7.0'dan sonra geliştirme deposunda yapılanları anlatır. Hiçbiri yayımlanmış bir sürüm değildir ve gerçek SAP verisiyle denenmedi.":
+    "This section describes what has been done in the development repository after 0.7.0. None of it is a published release, and it has not been tried on real SAP data.",
+  "kule[pdf] (deneysel)": "kule[pdf] (experimental)",
+  "Metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. Kurulum isteğe bağlıdır; çekirdek bağımlılıksız kalır.":
+    "A text-layer supplier statement PDF is read if it passes five gates. It has been tested only with a single synthetic template. Installation is optional; the core stays dependency-free.",
+  "Son 4 hafta ortalaması (aday, varsayılan değil)": "Last-4-weeks average (candidate, not the default)",
+  "Talep tahmininde yedek yöntem. Sentetik ve açık veride sonuç karışık çıktı: ortalama hata kötüleşti, medyan iyileşti. Üretimde açılmadı.":
+    "A fallback method for demand forecasting. On synthetic and open data the results were mixed: the mean error got worse, the median improved. Not enabled in production.",
+  "Pilot ölçüm özeti ekranı": "Pilot measurement summary screen",
+  "Panelde yükleme süresi, red oranı ve vaka kapanma süresi. Boş ve sentetik veri açıkça etiketli; TL ya da tasarruf iddiası yok.":
+    "In the panel: upload time, rejection rate and case closing time. Empty and synthetic data are clearly labelled; there is no TL or savings claim.",
+  "Pilot ölçüm özeti · tasarım taslağı": "Pilot measurement summary · design draft",
+  "Pilot ölçüm özeti tasarım taslağı: önce ve sonra süreleri, Kule'nin kendi kayıtları ve ölçümün ne kadar sağlam olduğu. Sentetik veri.":
+    "Pilot measurement summary design draft: before and after times, Kule's own records and how robust the measurement is. Synthetic data.",
+  "Tasarım taslağı, pilot sonucu değil.": "Design draft, not a pilot result.",
+  "Ekranın nasıl görüneceğini gösterir. Üstteki rozetler ve başlık verinin sentetik olduğunu belirtir; sayılar bir pilot ölçümü değildir ve Kule'nin bir iddiası sayılmamalıdır.":
+    "It shows how the screen would look. The badges and title at the top state that the data is synthetic; the numbers are not a pilot measurement and should not be read as a Kule claim."
 };

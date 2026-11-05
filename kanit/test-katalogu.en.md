@@ -2,9 +2,9 @@
 
 This catalog states, in short sentences, what the automated tests check. Each item corresponds to one test.
 
-Total 580 tests: Kule core 411, Agent orchestration 111, Kule interface 58.
+Total 869 tests (0.7.0, run 2026-11-05): Kule core 603 (601 passed, 2 expected failures), Agent orchestration 120, Kule interface (panel) 146. Run on Python 3.14.7 and Node v26.13.0.
 
-This catalogue is left over from the 0.6.0 run (580 tests). Current counts (869 tests) are in sayilar.json and test-ozeti.json; the catalogue does not yet cover the tests added after 0.7.0.
+For now this catalogue describes the 580 tests carried over from the 0.6.0 run. The 289 tests added in 0.7.0 (869 − 580) do not yet have behaviour entries in this release; the counts match sayilar.json and test-ozeti.json exactly.
 
 ## Kule core
 

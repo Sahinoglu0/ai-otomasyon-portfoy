@@ -5,6 +5,15 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-05 (development note, no version number)
+
+In this publish copy the Kule code stays at 0.7.0. The items below exist only in the private `cv-portfoy-kule` development repository. They are not released and were not tried on real SAP data:
+
+- **`kule[pdf]` (experimental):** a text-layer supplier statement PDF is read if it passes five gates. Tested with one synthetic template only. Optional install; the core keeps no dependencies.
+- **Four-week average (candidate, not default):** a fallback method in demand forecasting. Results on synthetic and open data were mixed (mean error got worse, median improved); not enabled in production.
+- **Pilot measurement summary screen:** upload, rejection rate and case closing time in the panel. Empty and synthetic data are labelled; no TL or savings claim.
+- Documents (install, contract, security, English changelog) were corrected to match the code.
+
 ## 2026-11-04 (measurement update, no version number)
 
 No commit. These lines only change documentation. The Kule code did not change in this publish copy. The code change (V5) is in the `cv-portfoy-kule` repository, commit 4705097.

@@ -5,6 +5,15 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-05 (geliştirme sürümü notu, sürüm numarası yok)
+
+Bu yayın kopyasında Kule kodu 0.7.0 olarak kaldı. Aşağıdakiler yalnız özel `cv-portfoy-kule` geliştirme deposundadır, yayınlanmadı, gerçek SAP verisiyle denenmedi:
+
+- **`kule[pdf]` (deneysel):** metin katmanlı tedarikçi ekstresi PDF'i, beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. İsteğe bağlı kurulum, çekirdek bağımlılıksız kalır.
+- **Son 4 hafta ortalaması (aday, varsayılan değil):** talep tahmininde yedek yöntem. Sentetik ve açık veride sonuç karışık çıktı (ortalama hata kötüleşti, medyan iyileşti); üretimde açılmadı.
+- **Pilot ölçüm özeti ekranı:** panelde yükleme, red oranı ve vaka kapanma süresi. Boş ve sentetik veri açıkça etiketli; TL ya da tasarruf iddiası yok.
+- Belgeler (kurulum, sözleşme, güvenlik, İngilizce değişiklik günlüğü) koda göre düzeltildi.
+
 ## 2026-11-04 (ölçüm güncellemesi, sürüm numarası yok)
 
 Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kopyasında değişmedi. Kod değişikliği (V5) `cv-portfoy-kule` deposunda, commit 4705097.

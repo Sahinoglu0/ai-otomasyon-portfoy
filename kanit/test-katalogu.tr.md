@@ -4,6 +4,8 @@ Bu katalog, otomatik testlerin neyi doğruladığını kısa cümlelerle anlatı
 
 Toplam 580 test: Kule çekirdeği 411, Ajan orkestrasyonu 111, Kule arayüzü 58.
 
+Bu katalog 0.6.0 koşusundan kalmıştır (580 test). Güncel sayılar (869 test) sayilar.json ve test-ozeti.json dosyalarındadır; katalog 0.7.0 sonrası testleri henüz kapsamıyor.
+
 ## Kule çekirdeği
 
 ### Aralıklı talep yöntemleri

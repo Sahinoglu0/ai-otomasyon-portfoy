@@ -4,6 +4,8 @@ This catalog states, in short sentences, what the automated tests check. Each it
 
 Total 580 tests: Kule core 411, Agent orchestration 111, Kule interface 58.
 
+This catalogue is left over from the 0.6.0 run (580 tests). Current counts (869 tests) are in sayilar.json and test-ozeti.json; the catalogue does not yet cover the tests added after 0.7.0.
+
 ## Kule core
 
 ### Intermittent demand methods

@@ -134,7 +134,15 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Kule için 559 Python testi geçiyor (0.7.0 kanıt sayfası); KULE-V5 düzeltmesinden sonra aynı kod tabanında 570 test koşuldu ve geçti (`cv-portfoy-kule`), KULE-F1 raporunda RBKP/RSEG eklemesi ile 569 test geçti. Node tarafında 128 test, 128 geçti, 0 atlandı; orkestratör için 120 birim testi var.
+**Testler.** Son koşu 2026-11-05'te yerelde yapıldı (`cv-portfoy-kule` e3873d9; Python 3.14.7, Node v26.13.0; sayılar: [`kanit/sayilar.json`](kanit/sayilar.json)). Kule Python testleri: 603 test, 601 geçti, 0 başarısız, 2 beklenen başarısızlık (iki hedef: iki yılın aynı MBLNR'si ayrı belgedir; farklı şirket kodunda aynı EBELN/EBELP ayrı kalemdir; ikisi de henüz uygulanmadı). Ajan orkestratörü: 120 geçti. Kule paneli (Node): 146 geçti, 0 atlandı. Önceki 0.7.0 kanıt sayfası 559 Python testi gösteriyordu; aradaki fark 0.7.0 sonrası eklemelerden gelir. Koşu, commit edilmemiş bir belge içeren çalışma kopyasında yapıldı; bu belge testleri etkilemez, ama kaynağın temiz olmadığını gösterir. Kaynak raporu: test sayıları için bu koşu; eski 569 sayısı KULE-F1 raporundadır.
+
+**0.7.0 sonrası geliştirme (yayınlanmadı, sürüm numarası yok).** Aşağıdakiler yalnız özel `cv-portfoy-kule` deposundadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+
+- **`kule[pdf]` (deneysel):** metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. İsteğe bağlı kurulum; çekirdek bağımlılıksız kalır.
+- **Son 4 hafta ortalaması (aday, varsayılan değil):** sentetik ve açık veride sonuç karışık çıktı (ortalama hata kötüleşti, medyan iyileşti). KULE-V3 M5 ölçümünde WAPE: Kule %47,3, mevsimsel naif %61,0, son 4 hafta ortalaması %38,4; KULE-V6 varyant ölçümünde %39,7; bu varyant Kule kodunda uygulanmadı. Üretimde açılmadı. Kaynak raporlar: KULE-V3-zeynep, KULE-V6.
+- **Pilot ölçüm özeti ekranı:** panelde yükleme, red oranı ve vaka kapanma süresi. Boş ve sentetik veri açıkça etiketli; TL ya da tasarruf iddiası yok.
+- **Python'suz Windows paketi (spike):** embeddable Python ve `baslat.bat` ile hazırlandı; yalnız simülasyon, ürün kodu değişmedi. Bu yayında kurulum kanıtı yoktur (KULE-N1).
+- **Açık kalanlar:** iki beklenen başarısızlık (yukarıda); kanıt sayfasındaki test davranış kataloğu hâlâ 0.6.0 koşusunda (580 test) ve 0.7.0 sonrası testleri kapsamıyor; gerçek SAP çıktısı denenmedi.
 
 ## 4. Kapsam ve durum
 

@@ -134,7 +134,15 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** For Kule, 559 Python tests pass in the 0.7.0 evidence page. After the KULE-V5 fix, 570 tests ran and passed in the same codebase (`cv-portfoy-kule`); the KULE-F1 report records 569 passing tests after the RBKP/RSEG addition. On the Node side 128 tests, 128 pass, 0 skipped; the orchestrator has 120 unit tests.
+**Tests.** The latest run was done locally on 2026-11-05 (`cv-portfoy-kule` e3873d9; Python 3.14.7, Node v26.13.0; numbers: [`kanit/sayilar.json`](kanit/sayilar.json)). Kule Python tests: 603 tests, 601 passed, 0 failed, 2 expected failures (two targets not yet implemented: the same MBLNR in two different years is two separate documents; the same EBELN/EBELP under different company codes is a separate line item). Agent orchestrator: 120 passed. Kule panel (Node): 146 passed, 0 skipped. The earlier 0.7.0 evidence page showed 559 Python tests; the difference comes from additions after 0.7.0. The run used a working copy containing an uncommitted document; it does not affect the tests, but it means the source was not clean. Sources: the test counts are from this run; the older 569 figure is from the KULE-F1 report.
+
+**Post-0.7.0 development (not published, no version number).** The following exist only in the private `cv-portfoy-kule` repository, were tested with synthetic data, and **were not verified with real SAP data**:
+
+- **`kule[pdf]` (experimental):** a text-layer supplier-statement PDF is read if it passes five gates. Tested with one synthetic template only. Optional install; the core stays dependency-free.
+- **Last-4-week average (candidate, not the default):** results on synthetic and public data were mixed (mean error got worse, median error improved). In the KULE-V3 M5 measurement, WAPE was: Kule 47.3%, seasonal naive 61.0%, last-4-week average 38.4%; the KULE-V6 variant measured 39.7%, and that variant is not implemented in Kule's code. Not enabled in production. Sources: KULE-V3-zeynep, KULE-V6.
+- **Pilot measurement summary screen:** on the panel, shows uploads, rejection rate and case closing time. Empty and synthetic data are clearly labelled; no TRY or savings claims.
+- **Python-free Windows package (spike):** prepared with embeddable Python and `baslat.bat`; simulation only, no product code change. This publication has no installation evidence (KULE-N1).
+- **Open items:** the two expected failures (above); the test behaviour catalogue on the evidence page is still from the 0.6.0 run (580 tests) and does not cover the tests added after 0.7.0; no real SAP export has been tested.
 
 ## 4. Scope and status
 

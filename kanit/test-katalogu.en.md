@@ -4,7 +4,7 @@ This catalog states, in short sentences, what the automated tests check. Each it
 
 Total 869 tests (0.7.0, run 2026-11-05): Kule core 603 (601 passed, 2 expected failures), Agent orchestration 120, Kule interface (panel) 146. Run on Python 3.14.7 and Node v26.13.0.
 
-For now this catalogue describes the 580 tests carried over from the 0.6.0 run. The 289 tests added in 0.7.0 (869 − 580) do not yet have behaviour entries in this release; the counts match sayilar.json and test-ozeti.json exactly.
+This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some items correspond to more than one test that checks the same behaviour.
 
 ## Kule core
 
@@ -698,6 +698,250 @@ For now this catalogue describes the 580 tests carried over from the 0.6.0 run. 
 - Reconciliation is skipped without a statement, and the reason is given.
 - With the full SAP set, FBL1N reconciliation and the coverage analysis run.
 
+### CSV row selection
+
+- When the candidate beats the naive method, the four-week average is not computed at all.
+- If the candidate and the four-week average are both worse than the naive method, the seasonal naive method is used and the reason is recorded.
+- When the candidate is worse than the naive method but the four-week average is better, the four-week average is chosen and its error is stated in the reason.
+- The backtested error of the four-week average is zero on a constant series over the real window.
+- The four-week average is computed correctly; with a single value it returns that value.
+- The four-week average forecast is flat across the horizon and yields a positive spread.
+- The streaming reader applies the same rule: a line break inside quotes is reported as an error with its line number.
+- A comment line after a multi-line quoted record is skipped and the record count stays intact.
+- A '#' line trapped inside an open quote is not silently dropped; the error names the file and line.
+- In a semicolon-delimited file, an unquoted inch mark is kept as part of the value.
+- A legitimate file with an unquoted inch mark is not rejected, and a later '#' line is treated as a comment.
+- An unclosed quote never causes silent record loss; a clear 'unclosed quote' error is raised.
+- Even when a '#' line sits in between, an unclosed quote still produces a clear error.
+- In the streaming reader, an unclosed quote is also reported as a clear error.
+- A quoted field spanning two lines is merged into a single record once the quote closes.
+- A doubled quote inside a quoted field is unescaped to a single quote.
+
+### Invoices and RBKP/RSEG documents
+
+- Credit memos are not imported as invoices and are counted among the filtered-out records.
+- An invoice file in Windows-1254 encoding is read and a warning about the encoding is issued.
+- A malformed amount is never guessed; that row is rejected as inconsistent and the other row loads.
+- Invoice records exported after loading produce a file carrying the same invoice numbers.
+- Invoice files with Turkish, English, or technical headers produce the same table.
+- An input is not reported missing when an alternative file stands in for it.
+- In three-way matching, duplicate invoices are found from the invoice table.
+- Price variances are found from the table, and credit memos do not mix into that finding.
+- On sample data, the text invoice file and the table invoice file yield the same findings.
+- A zero-quantity invoice line becomes an error while the rest of the file is still processed.
+
+### Uninterpretable results
+
+- The adapter reports fields missing from the source in a NONE line; rules that depend on them are marked uninterpretable.
+- An old invoice with no payment and no goods receipt remains a genuine candidate.
+- No time window is applied to a short log; findings are not cut.
+- An invoice cut at the right edge of the window near the end of the log is excluded and the exclusion is counted.
+- A paid or receipted item stays within the window; a paid but unreceived invoice still becomes a genuine candidate.
+- A rule that needs a field absent from the source is marked uninterpretable with its reason; when all fields are present, nothing is returned.
+- The NONE line is parsed into field names; without it the list stays empty.
+- In order anomaly checks, when quantity and plan fields are missing, the related rules do not run; a warning says zero findings does not mean clean.
+- A goods receipt without an order is still flagged as an unordered receipt, unaffected by the field declaration.
+- Without a field declaration, the order anomaly check behaves as before: excess deliveries are found and no uninterpretable field is recorded.
+- If unit price is missing, the price variance rule does not run in three-way matching and is listed as uninterpretable.
+- If quantity is missing, quantity-based rules are marked uninterpretable; the unit-price variance rule still runs.
+- Three-way matching without any field declaration still yields the earlier excess invoice quantity and price variance findings.
+
+### Stock
+
+- An item with zero stock and no shipments is not dead stock; it is critical if below safety stock, otherwise normal.
+
+### Kule programming interface
+
+- Number-format settings are accepted only in SAP mode and only as tr or en; other values are rejected.
+- A data upload with a '#' line trapped in quotes is rejected, nothing is written, and the error names the file and line.
+
+### Decision records
+
+- When a supplier is removed, safety stock does not drop on the replacement items, and their lead-time variability does not fall below the pool's.
+- The supplier dependency table is consistent in every row, sorted by descending risk, and the primary-supplier counts add up to the item count.
+- When lead time exceeds the stockout horizon of an urgent item, the warning goes only to the internal note, not to the supplier-facing text.
+- The line count, urgent-item count, and total in each supplier draft match the decision output exactly; no address is invented.
+
+### Measurement
+
+- The command-line import's duration is recorded and appears in the measurement summary.
+- On an empty database, closure time and rejection rate are not computed; they appear empty, not zero.
+- The median time to close cases and the latest upload's rejection rate are computed correctly; a corrupt record closing before it opened is not counted.
+- Files and uploads labeled synthetic are counted separately, and the latest upload's synthetic status is reported.
+
+### PDF statements
+
+- The missing PDF dependency message gives the install command from the docs and does not suggest a similarly named package.
+- The core install has no dependencies; PDF support is defined as an optional extra.
+- The PDF amount parser reads trailing minus signs and Turkish decimal notation correctly and rejects ambiguous formats.
+- If the PDF library is missing, a clear install error is raised and the core import keeps working.
+- After a successful PDF read, no background process is left running.
+- An invalid time-limit setting (zero, negative, or not a number) falls back to the default.
+- If one page exceeds the text limit, the document is rejected with a limit error that names the page.
+- If reading exceeds the time limit, it is stopped, a timeout error is raised, and no process is left behind.
+- Corrupt and edge-case PDF files are rejected with a clear could-not-be-read reason instead of a raw error.
+- Scripts inside a PDF are not run and no network access is made; a warning reports this.
+- The same statement supplied as CSV or as PDF produces identical supplier rows.
+- Amounts with a trailing minus sign stay consistent in the balance chain; numbers with an ambiguous format are rejected.
+- Text-based PDF statements generated from three different seeds all match the expected rows, and the balance chain is consistent.
+- Ruled-table PDFs also give the same result across three seeds, and the balance chain stays consistent.
+- Multi-page statements are read as one piece; if the column header appears on only one page, a warning is given for each page without it.
+- A statement with a different font and a different header name yields the same rows, and the balance chain stays consistent.
+- The carried-forward balance row is classified as an opening debit, and a credit row whose description mentions a return is classified as a return.
+- A PDF whose balance chain is broken is rejected with a balance-chain error.
+- When a PDF with a broken balance chain is converted, no output CSV file is written.
+- Amounts that are out of alignment are treated as ambiguous and the row is rejected as ambiguous.
+- A statement with no balance column but a passing total check is accepted; one with neither a balance nor a total check is rejected.
+- Scanned PDFs with no text layer are rejected with a no-text error.
+- If the supplier name is left empty, PDF reading is rejected with a missing-supplier error.
+
+### Morning report Excel reading
+
+- Xlsx content that is not a valid ZIP archive is rejected with a 422 response.
+- When all SAP files are sent as xlsx, the upload is accepted and all eight files are adapted.
+- Xlsx content that is not valid base64 is rejected with a 400 response.
+- An xlsx file with no matching SAP source is rejected with a 400 response.
+- An xlsx file from the SAP list is accepted and read as xlsx under its real file name.
+- An xlsx upload sent without the SAP flag is rejected with a 400 response.
+- If the same SAP source is sent as both csv and xlsx, the request is rejected with a 400 response.
+- When English is selected, numeric xlsx cells stay unchanged and text cells are read with the English number rule.
+- When Turkish is selected, numeric xlsx cells stay unchanged and text cells are read with the Turkish number rule.
+
+### SAP anonymisation
+
+- The anonymization tool uses no network access.
+- The same supplier gets the same placeholder value across rows and files, and different suppliers get different values.
+- The anonymized output contains no real supplier names or codes.
+- The mapping table never appears in the output, and writing it into the output folder is refused.
+- The same mapping table is reused in a later run, so values stay consistent.
+- Numbers, dates, decimal formats and column names are kept exactly after anonymization.
+- A known supplier name in a free-text column is replaced too, using the same placeholder as in the table.
+- Supplier, customer and material names appear nowhere in the output, and the row count is preserved.
+- The anonymization tool runs from the command line on its own, needing only its script and the input file.
+- Xlsx input is supported; names in text are replaced and numeric cells are kept as they are.
+- If the output folder is the same as the input folder, the run is refused and the input file is left unchanged.
+- On the command line, choosing the input folder as the output returns exit code 2 and leaves the input unchanged.
+- With the overwrite option, an existing output file is replaced.
+- An existing output file is not overwritten without the overwrite option.
+- If the csv output of an xlsx input would land in the input folder, the run is refused and the input is unchanged.
+- If a hard link in the output folder points at the input file, the command line stops with code 2 and the input is unchanged.
+- An output that is a hard link to the input file cannot be overwritten.
+- An output that is a symbolic link to the input file cannot be overwritten.
+- A regular, unlinked output file is still replaced when the overwrite option is used.
+- An output target that is a hard link to a file outside the input is rejected on the command line with code 2.
+- The contents of a file outside the input are not overwritten when an output is a hard link to it.
+- The contents of a file outside the input are not overwritten when an output is a symbolic link to it.
+- Look-alike spellings written with Cyrillic or Greek letters do not leak a supplier name.
+- Lowercase Cyrillic and Greek look-alikes are recognized too, so the supplier name stays hidden.
+- Ordinary Latin-letter names that only partly resemble a known name are not replaced by mistake.
+- The leak check catches a supplier name that still contains Cyrillic look-alike letters.
+- A real supplier name in the header row is anonymized too.
+- Case differences, extra spaces and partial supplier names do not leak into the output.
+- If a leak remains after anonymization, the command line stops with code 3.
+- If the output already exists, the command line stops with code 2; the same run succeeds with the overwrite option.
+- If the anonymization step lets a real value through, the leak check stops the run and no file is written.
+- The leak check also catches differences in case, spacing and partial names.
+- If the output is aimed at the input folder, it is refused and the input file is unchanged.
+- A supplier name in free text gets the same placeholder value as in the table, even when the letter case differs.
+- An existing output is not written over without the overwrite option; with it, the output is written.
+- A multi-line supplier name in quotes is processed normally when its continuation line does not start with a hash mark.
+- If a continuation line inside quotes starts with a hash mark, the command line returns a non-zero code.
+- A hash-prefixed line after a line break inside quotes does not silently corrupt a record; the run is stopped.
+- Name evasions using mixed case, punctuation, spacing, dashes, underscores and invisible characters are closed.
+- The list of general company suffixes is fixed and kept under test.
+- Two-character name fragments, such as AB or 3M, do not leak into the text.
+- Non-breaking spaces and Turkish capital dotted-I variants do not leak, and a general company suffix does not match other text by mistake.
+- A numeric supplier code does not leak even when it appears in free text.
+- The leak check also catches new forms: combining marks, full-width letters, soft hyphens, spaced-out letters and numeric codes.
+- Supplier names hidden with Unicode tricks (combining marks, zero-width spaces, Cyrillic letters, full-width letters, soft hyphens, line breaks) do not leak, and the row count is preserved.
+- The header row is also anonymized against real names, and the column count is preserved.
+- Case differences and spaced variants of a name do not remain in the output.
+- A general company suffix on its own is not treated as an identity, so it does not receive another company's placeholder code.
+- A two-character real name is replaced when it appears as a word in free text.
+- Even when a real name appears only in part, that part is replaced too.
+- A name in free text keeps the same placeholder value as in the supplier name cell.
+
+### SAP file formats
+
+- If the same order line comes from two companies, the second company's line is rejected as a duplicate.
+- If the same document number appears in two different years, the adaptation writes both rows; validation accepts the first and rejects the second as a duplicate.
+- In a target file with several companies, both lines are accepted.
+- In a target file spanning several years, both documents are accepted.
+- When a mapping template has a missing column, the error message names that column.
+- Table and column names in the template map to the correct source, and fields that could not be verified against the primary source stay clearly marked.
+- When the user links their own header through a label, the column maps to the right field and numbers are read correctly.
+- In a file with decimal commas, dot values with three digits are not read as thousands; they are reported as untranslatable.
+
+### Number format
+
+- When a file does not match the chosen number format, a warning shows the values that would be misread; the values are not changed.
+- A file set to English but written in Turkish format is caught as a mismatch.
+- No warning is produced for a file that matches the chosen format.
+- A file set to Turkish but written in English format is caught as a mismatch.
+- When there is no evidence, meaning only ambiguous values exist, no warning is produced.
+- An unknown number format or a file name not in the list produces an error that shows the offending value.
+- A file set to English is read differently from the same input in Turkish: the dot is the decimal separator and the comma the thousands separator.
+- A file with no format chosen is read with the old rule, and ambiguous values are rejected.
+- A file set to Turkish is read differently from the same input in English: the comma is the decimal separator and the dot the thousands separator.
+- Columns with no ambiguous values, or that are empty, are not reported as unverifiable.
+- The file report lists the unverifiable column and how many values it has; the values stay unchanged.
+- Ambiguous values with a trailing minus sign are counted too.
+- When English is selected, values with a comma followed by three digits are reported as unverifiable.
+- A column with both ambiguous and clear values is not reported as unverifiable.
+- When a column contains clear counter-evidence, its ambiguous values are not reported as unverifiable; they are reported as a mismatch.
+- No unverifiable notice is given for a file with no format chosen.
+- When all values in a column are ambiguous, the column is reported as unverifiable, with examples.
+- When English is selected, the dot is the decimal separator and the comma the thousands separator.
+- A value that does not fit the chosen format is rejected.
+- When no format is chosen, the old rule is unchanged and ambiguous values are rejected.
+- When Turkish is selected, the dot is the thousands separator and the comma the decimal separator.
+- When an English-format file is read as Turkish, the rows that would be misread are shown with their line numbers and both readings.
+- The warning shows at most three examples; the rest are reported as a count.
+- The report includes the row, column, value and both readings of each misread value.
+- A file with a single value produces no warning, since there is no evidence; the value is read in the chosen format.
+- When a batch of Turkish-format values is read as English, the misread values are shown together with the correct reading.
+
+### Server security
+
+- A row starting with a hash mark is written to csv with all its cells; cells containing a separator are quoted.
+- If a cell starting with a hash mark contains a line break, the conversion is refused and no target file is created.
+- An xlsx upload that is a compression bomb is rejected with a 422 response and a plain compression message, with no stack trace.
+- An xlsx file with an abnormally high compression ratio is rejected.
+- An xlsx file whose archive holds more parts than allowed is rejected.
+- A normal-sized xlsx file is still read correctly.
+- A falsely declared uncompressed size in the archive index does not inflate memory; reading is refused with a small memory peak.
+
+### Demand flow
+
+- Contiguous input produces exactly the same output as the previous version.
+- Non-contiguous input produces exactly the same output as the previous version.
+- When a required column is missing, the error message names the missing column.
+- A file made only of comment lines produces a no-records error.
+
+### Excel reading
+
+- A row starting with a hash mark is written to csv with all its cells, and cells containing commas are quoted.
+- If the first cell, which starts with a hash mark, contains a line break, the conversion is refused.
+- When the sheet count exceeds the limit, reading the xlsx is refused.
+- Reading an xlsx with a very high compression ratio is refused.
+- When the total uncompressed size exceeds the limit, reading is refused even if each part is under it.
+- When the zip member count exceeds the limit, reading is refused.
+
+### Release gate
+
+- A user name appearing in plain text is caught as a leak.
+- A real Windows user path is caught as a leak, and the user name is reported separately.
+- Even if a line contains a hint, a real path is still caught as a leak.
+- If a name in code formatting and a hint share a line, a name in plain text is still counted as a leak.
+- A user name in code formatting is caught as a leak even without a hint.
+- A line that explains the rule using placeholder paths and names is not counted as a leak.
+- If a real path sits next to a placeholder path, the real one is caught.
+- A rule description containing only a placeholder path passes.
+
+### Trial package
+
+- The files in the store are identical in content to what the producer supplied.
+
 ## Agent orchestration
 
 ### Live model query
@@ -898,6 +1142,18 @@ For now this catalogue describes the 580 tests carried over from the 0.6.0 run. 
 - An input mismatch stops the run.
 - A call that hits the quota is not entered in the measurement record.
 
+### Plan, run and scoring (0.7.0)
+
+- Runs with no label, an invalid label, or cut short are left out of the denominator, and the reason for exclusion is shown.
+- When the sample count is zero, the result is formatted as not verified.
+- Scoring with labels and checks produces the correct summary: the copy, keyword and semantic capture measures give the expected counts.
+- Twelve runs complete with 30 calls in total; each run keeps its own call record, and all runs are written to one run log.
+- When the quota runs out, the run stops, the model is not retried, and the remaining runs are marked as not completed.
+- When the call ceiling is reached, the run stops and the remaining runs are marked as not completed.
+- Changing a file makes its digest signature stop matching, and a missing signature file is reported separately.
+- The real pre-registration signature verifies without any warning.
+- The plan has 12 runs interleaved across two axes, and the budget equals the ceiling exactly.
+
 ## Kule interface
 
 ### Kule dashboard interface
@@ -960,3 +1216,93 @@ For now this catalogue describes the 580 tests carried over from the 0.6.0 run. 
 - With no records in the measurement links, the value is empty and cannot be used, and zero is never written.
 - In the measurement links only monthly cases and saved time can be used, and few records or an unfinished month trigger a warning.
 - In the sample data, the excess stock share is read from the stock result.
+
+### Additional panel tests (0.7.0)
+
+- The unrecognised-file message does not mention Excel; Excel files get their own warning, and a header row is requested.
+- If the request body exceeds its limit, the request is not sent and a plain message is shown.
+- An empty file gets its own message stating that it is zero bytes.
+- Binary or corrupt-encoding content gets a "not text" warning; real SAP text is not affected.
+- No English sentences appear in the Turkish interface.
+- While a file with missing fields is present, the prepare button stays disabled.
+- The panel scripts compile without syntax errors.
+- Field names show the Turkish label together with the code; an unknown code is shown as it is, and when a source is given, that list's label is used.
+- When the record count is below the threshold, the median is hidden and the reason is written out.
+- Open time is shown in hours below 24 hours and in days above that; with no value, no duration is shown.
+- In the light theme, input borders reach at least 3:1 contrast against both the paper and the surface.
+- In the light theme, the focus ring reaches at least 3:1 contrast on the paper.
+- A file that declares an extremely large size but is actually small is rejected with a limit error.
+- Base64 encoding in the browser gives exactly the same result as the server side, so the Excel file bytes are sent unchanged.
+- A corrupt .xlsx file with no zip signature gets a "could not be read" warning, not the generic "not recognised" message.
+- The corrupt .xlsx warning is announced to screen readers.
+- A corrupt local header offset does not throw immediately; a rejected result is returned so the caller can give the "could not be read" reply.
+- With no data, "No measurements yet" is shown; no number card or zero value appears.
+- .xlsx files are accepted and sent to the server, and the old "cannot be read" text no longer appears.
+- The "I don't know" answer points the user to the SU3 → Defaults → Decimal display path; no wrong path is shown, and the reason the button is disabled is written out.
+- Ambiguous numbers appear in an announced area, with both readings and the note that Kule does not pick one.
+- A column whose decimal format cannot be determined is announced calmly, in the wizard step and on the result screen.
+- The chosen decimal format is reflected on screen and included in the request sent to the server.
+- File names, warnings, rejection reasons and unrecognised-file messages appear on screen in plain Turkish.
+- The "no preview for Excel" message is gone; only ambiguous text cells are asked about.
+- Tables that scroll sideways on narrow screens can be focused with the keyboard and are announced by name to screen readers.
+- With data, values come from the measurement records and are shown in Turkish number format.
+- A large file of random content with many unclosed row tags (6 MB and 20 MB) returns a result or a clear error within one second, without tripping the compression-ratio limit.
+- Input, choice and dropdown borders all use the same border colour.
+- Even with many unclosed cell tags in a single row, reading returns a result or a clear error within one second.
+- Manually entered times are labelled "User-reported" and Kule cards are labelled "Kule measurement", each with its own badge.
+- When two members both declare small sizes but together expand to 80 MB, the shared counter trips and a limit error is returned.
+- If a relationship ID contains special characters, a plain "relationship not found" error is shown and no raw technical error leaks through.
+- An unclosed second row is not silently skipped; a clear error is shown, so no data is lost.
+- The measurement summary never shows TL, savings or earnings, and no before-and-after difference is invented.
+- HTML special characters in text shown on screen are escaped.
+- A valid, normally sized Excel file still opens and its text is returned.
+- In the dark theme, whether set by the system or chosen manually, input borders reach at least 3:1 contrast on the paper.
+- In the dark theme, the focus colour matches the accent colour and gives high contrast on dark paper.
+- In the ambiguous-number block, a long value wraps inside the line and the block does not overflow.
+- With partial data, a card without records shows "—" and its reason, and never a zero.
+- A file named .xlsx whose content is text is still recognised as text, as before, and no warning is shown.
+- The focus ring is read from the central colour definition and appears on keyboard focus and when an input is focused.
+- Sample selection takes ambiguous values first, up to the requested count, in the same order as the sample list.
+- The measurement summary is correctly connected to the panel, navigation and the live screen registry, and scripts load in the right order.
+- Rejection categories from the server are shown with plain Turkish names; an unknown category is shown as it is.
+- Internal markers in rejection reasons are turned into plain text, and files are shown together with their SAP name.
+- The internal marker never appears in any warning or error text; the user sees the value that could not be read under the chosen setting.
+- A missing-column warning becomes one sentence naming the missing fields; developer notes and the header dump are left out.
+- Even with many unclosed row tags, reading returns a result or a clear error within one second, and the reader does not slow itself down.
+- Both readings of an ambiguous number are written as plain text, side by side: the Turkish reading and the English reading.
+- Building the ambiguous-number text leaves the input list and the value unchanged.
+- The ambiguity decision and both readings give exactly the same result as the server's strict rule.
+- Only numbers whose two readings are both valid and different count as ambiguous; numbers with one reading or none do not.
+- The number-format request includes only recognised and selected files, keyed by the SAP source name.
+- Columns whose decimal format cannot be determined are identified at column level, using the same rule as the server.
+- Numbers are read in the chosen Turkish or English format; minus signs are kept, and an unreadable value returns nothing.
+- The number read in the preview matches the server's strict rule exactly.
+- Number reading gives the same result as the server's converter; single-group ambiguous values are handled separately.
+- The reading is written in Turkish style without thousands separators; an unreadable value shows "cannot be read".
+- Sample numbers come from numeric SAP columns; values that read differently in the two formats come first.
+- The number-format choice is always asked for CSV files; for Excel files it is asked only when an ambiguous text cell exists.
+- Numeric columns are separated one by one by SAP field code, and values are listed in file order.
+- A warning appears when the chosen format conflicts with the file content; ambiguous values are not counted in this check.
+- Values that could be misread are listed with row, column, value and both readings, matching the server exactly.
+- On the scenario screen, the supplier option escapes the level text as HTML.
+- Synthetic data is labelled in the header and on the rejection card, with the count of synthetic records written out.
+- Even with many unclosed entries in the shared text table, reading returns a result or a clear error within one second.
+- An uncompressed file that declares a small size but is really 70 MB exceeds the total expanded-size limit and gets a limit error.
+- Text from the server, such as the upload ID and date, is escaped on screen.
+- On phone-width screens, expandable summaries are at least 44 pixels tall, with no inline height override.
+- On phone-width screens, buttons, inputs, selectors and remove targets are at least 44 pixels tall.
+- A file without a label, uploaded by the user, is shown with the "Your files · real data" badge.
+- An Excel file declaring 1 KB that expands to 40 MB is rejected once the limit is passed, without freezing the tab.
+- The 64 MB expanded-size limit applies to the total of all members; if the declared total exceeds it, no member is opened.
+- A valid, normally sized Excel file is not blocked by the limits and opens.
+- An Excel file with thousands of members is rejected before opening because it exceeds the member-count limit.
+- Text extracted from Excel goes through SAP recognition, and the EKPO header is recognised.
+- A corrupt zip file is rejected instead of silently returning empty text.
+- The first sheet of an Excel file becomes tab-separated text; shared and inline text, numbers and escape characters are read correctly.
+- Only text cells are taken from Excel; number-type cells are not added to the list.
+- A zip bomb with a 1000:1 ratio is rejected before it is expanded; the limit marker survives the response path and the "limit exceeded" warning is shown.
+- A file counts as Excel only when it has both the .xlsx name and a zip signature; either one alone is not enough.
+- In Excel, only text values with two different readings are asked about; values such as "4711" and "abc" are not asked.
+- A member that declares a small size but expands to 80 MB is cut off during streaming, and a limit error is returned.
+- A zip file not named .xlsx is called an Office or zip file, and no Excel step is shown.
+- Sample package buttons are disabled when there is no access key, and the result heading can receive keyboard focus.

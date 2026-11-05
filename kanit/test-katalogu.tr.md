@@ -4,7 +4,7 @@ Bu katalog, otomatik testlerin neyi doğruladığını kısa cümlelerle anlatı
 
 Toplam 869 test (0.7.0, koşu 2026-11-05): Kule çekirdeği 603 (601 geçti, 2 beklenen başarısızlık), Ajan orkestrasyonu 120, Kule arayüzü (panel) 146. Python 3.14.7 ve Node v26.13.0 ile koşuldu.
 
-Bu katalog şimdilik 0.6.0 koşusundan kalan 580 testin davranışını anlatır. 0.7.0'da eklenen 289 testin (869 − 580) davranış maddeleri bu sürümde henüz yazılmadı; sayılar sayilar.json ve test-ozeti.json ile birebir eşleşir.
+Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde bazı maddeler, aynı davranışı sınayan birden çok teste karşılık gelir.
 
 ## Kule çekirdeği
 
@@ -698,6 +698,250 @@ Bu katalog şimdilik 0.6.0 koşusundan kalan 580 testin davranışını anlatır
 - Ekstre yoksa mutabakat atlanır ve nedeni söylenir.
 - Tam SAP setiyle FBL1N mutabakatı ve kapsama analizi çalışır.
 
+### CSV satır seçimi
+
+- Aday yöntem naiften iyiyse son dört hafta ortalaması hiç hesaplanmaz.
+- Aday ve son dört hafta ortalaması naiften kötüyse mevsimsel naif yöntem kullanılır ve gerekçesi yazılır.
+- Aday naiften kötüyken son dört hafta ortalaması naiften iyiyse o yöntem seçilir ve hatası gerekçede yer alır.
+- Son dört hafta ortalamasının geriye dönük hatası, sabit bir seride gerçek pencere üzerinde sıfırdır.
+- Son dört hafta ortalaması doğru hesaplanır; tek değerli seride o değerin kendisi döner.
+- Son dört hafta ortalaması ufuk boyunca sabit tahmin verir ve pozitif bir sapma üretir.
+- Akış okuyucu da aynı kuralı uygular: tırnak içinde satır sonu varsa hata, satır numarasıyla birlikte bildirilir.
+- Tırnak içinde biten çok satırlı kayıttan sonra gelen yorum satırı atlanır ve kayıt sayısı bozulmaz.
+- Tırnak içinde kalan '#' ile başlayan satır sessizce düşmez; hata dosya adı ve satır numarasıyla bildirilir.
+- Noktalı virgül ayraçlı dosyada tırnaksız inç işareti değerin parçası olarak korunur.
+- Tırnaksız inç işareti taşıyan meşru bir dosya reddedilmez; sonraki '#' satırı yorum sayılır.
+- Kapanmamış tırnak kayıt kaybına yol açmaz; açık bir 'kapanmamış tırnak' hatası verilir.
+- Araya '#' satırı girse de kapanmamış tırnak net bir hata verir.
+- Akış okuyucuda kapanmamış tırnak da açık bir hata olarak bildirilir.
+- Tırnak içinde iki satıra yayılan alan kapandığında tek kayıt olarak birleşir.
+- Tırnak içindeki çift tırnak kaçışı tek tırnağa çevrilir.
+
+### Fatura ve RBKP/RSEG belgeleri
+
+- Alacak dekontu fatura olarak alınmaz ve süzülen kayıtlar arasında sayılır.
+- Windows-1254 kodlamalı fatura dosyası okunur ve kodlama için uyarı verilir.
+- Bozuk tutar tahmin edilmez; o satır tutarsız diye reddedilir, diğer satır yüklenir.
+- Yüklenen fatura kayıtları dışa aktarıldığında aynı fatura numaralarını taşıyan dosya çıkar.
+- Türkçe, İngilizce ve teknik başlıklı fatura dosyaları aynı tabloyu üretir.
+- Bir girdinin yerine geçen alternatif dosya varsa o girdi eksik sayılmaz.
+- Üçlü eşleştirmede çift fatura, fatura tablosundan bulunur.
+- Fiyat sapması tablodan bulunur ve alacak dekontu bu bulguya karışmaz.
+- Örnek veride metin fatura dosyası ile tablo fatura dosyası aynı bulguları verir.
+- Sıfır miktarlı fatura satırı hata olur; dosyanın geri kalanı yine işlenir.
+
+### Yorumlanamayan sonuçlar
+
+- Adaptör, kaynakta olmayan alanları YOK satırıyla bildirir; bu alanlara bağlı kurallar yorumlanamaz sayılır.
+- Eski, ödemesiz ve girişsiz fatura gerçek aday olarak kalır.
+- Kısa bir logda zaman penceresi uygulanmaz; bulgular kesilmeden çıkar.
+- Log sonuna yakın, pencerenin sağ ucunda kesilmiş fatura dışlanır ve dışlama sayılır.
+- Ödenmiş ya da girişi olan kalem pencere içinde kalır; ödenmiş ama girişsiz fatura yine gerçek aday olur.
+- Kaynakta olmayan alana bağlı kural, nedeniyle birlikte yorumlanamaz sayılır; alanlar tamamsa hiçbir şey dönmez.
+- YOK satırı alan adlarına ayrıştırılır; satır yoksa liste boş kalır.
+- Sipariş anomalisinde miktar ve plan alanları yoksa ilgili kurallar çalışmaz; sıfır bulgunun temiz anlamına gelmediği uyarılır.
+- Siparişi olmayan mal kabulü, alan ilanından etkilenmeden sipariş dışı kabul olarak bulunur.
+- Alan ilanı yoksa sipariş anomalisi önceki gibi çalışır: fazla teslimat bulunur ve yorumlanamaz alanı yazılmaz.
+- Birim fiyat yoksa üçlü eşleştirmede fiyat sapması kuralı çalışmaz ve yorumlanamaz olarak listelenir.
+- Miktar yoksa miktara dayalı kurallar yorumlanamaz sayılır; birim fiyata dayanan fiyat sapması yine çalışır.
+- Alan ilanı olmayan üçlü eşleştirme önceki gibi fazla fatura miktarı ve fiyat sapması bulguları verir.
+
+### Stok
+
+- Stoğu sıfır ve sevkiyatı olmayan kalem ölü stok sayılmaz; emniyet stoğunun altındaysa kritik, değilse normal olur.
+
+### Kule programlama arayüzü
+
+- Veri alımında sayı biçimi yalnız SAP kipinde ve tr ya da en değerleriyle kabul edilir; diğer değerler reddedilir.
+- Tırnak içinde kalan '#' satırı içeren veri alımı reddedilir, hiçbir şey yazılmaz ve hata dosya adı ile satır numarasını gösterir.
+
+### Karar kaydı
+
+- Bir tedarikçi çıkarıldığında yerine geçen kalemlerde emniyet stoğu azalmaz ve tedarik süresi dalgalanması havuzun altına düşmez.
+- Tedarikçi bağımlılık tablosu her satırda tutarlıdır, risk sırasıyla azalan dizilir ve ana tedarikçi sayıları kalem sayısına eşittir.
+- Tedarik süresi ACİL kalemin stok bitiş süresini aşarsa uyarı yalnız iç nota yazılır; tedarikçiye giden metinde görünmez.
+- Tedarikçi taslağındaki satır sayısı, acil kalem sayısı ve tutar karar çıktısıyla birebir aynıdır; taslakta adres uydurulmaz.
+
+### Ölçüm
+
+- Komut satırı içe aktarımının süresi kaydedilir ve ölçüm özetinde görünür.
+- Boş veritabanında kapanış süresi ve red oranı hesaplanmaz; sıfır değil boş görünür.
+- Kapanan vakaların medyan süresi ve son yüklemenin red oranı doğru hesaplanır; açılıştan önce kapanmış bozuk kayıt sayılmaz.
+- Sentetik olarak etiketlenmiş dosya ve yüklemeler ayrı sayılır; son yüklemenin sentetik durumu bildirilir.
+
+### PDF ekstre
+
+- Eksik PDF bağımlılığı mesajı belgelerdeki kurulum komutunu verir; adı karışabilecek bir paketi önermez.
+- Çekirdek kurulumun bağımlılığı yoktur; PDF desteği isteğe bağlı ek paket olarak tanımlanır.
+- PDF tutar çözücü sondaki eksi işaretini ve Türkçe ondalık biçimini doğru okur; belirsiz biçimleri reddeder.
+- PDF kütüphanesi yoksa açık bir kurulum hatası verilir ve veri alımının çekirdeği çalışmaya devam eder.
+- Başarılı PDF okumasından sonra arka planda kalan bir süreç olmaz.
+- Geçersiz süre ayarı (sıfır, negatif ya da sayı olmayan) varsayılan süreye döner.
+- Bir sayfadaki metin sınırı aşılırsa belge sınır hatasıyla reddedilir ve sayfa numarası bildirilir.
+- Okuma süresi aşılırsa okuma durdurulur, süre hatası verilir ve arkada süreç kalmaz.
+- Bozuk ve sınır durumdaki PDF dosyaları ham bir hata yerine açık bir okunamadı nedeniyle reddedilir.
+- PDF içindeki betik çalıştırılmaz, ağa erişilmez ve bu durum bir uyarıyla bildirilir.
+- Aynı ekstre CSV ya da PDF olarak verildiğinde çıkan tedarikçi satırları birebir aynıdır.
+- Sonda eksi işaretli tutarlar bakiye zincirinde doğru işlenir; biçimi belirsiz sayılar reddedilir.
+- Üç farklı tohumla üretilen metin tabanlı PDF ekstrelerinde tüm değerler beklenen satırlarla eşleşir ve bakiye zinciri tutarlı çıkar.
+- Çizgili tablolu PDF'ler de üç tohumda aynı sonucu verir ve bakiye zinciri tutarlı kalır.
+- Çok sayfalı ekstreler tek parça olarak okunur; sütun başlığı yalnız bir sayfada varsa her eksik sayfa için uyarı verilir.
+- Farklı yazı tipi ve farklı başlık adı kullanan ekstre aynı satırları üretir ve bakiye zinciri tutarlı kalır.
+- Devreden bakiye satırı devir borcu olarak, iade açıklaması taşıyan alacak satırı ise iade olarak sınıflandırılır.
+- Bakiye zinciri kırık bir PDF belge, bakiye zinciri hatasıyla reddedilir.
+- Bakiye zinciri kırık bir PDF ile dönüşüm yapılırsa çıktı CSV dosyası hiç yazılmaz.
+- Hizası kayık tutarlar belirsiz sayılır ve satır belirsiz olarak reddedilir.
+- Bakiye sütunu olmayan ama toplam kontrolü tutan ekstre kabul edilir; ne bakiye ne de toplam kontrolü olmayan ekstre reddedilir.
+- Taranmış, metin katmanı olmayan PDF'ler metin yok hatasıyla reddedilir.
+- Tedarikçi adı boş bırakılırsa PDF okuma, tedarikçi eksik hatasıyla reddedilir.
+
+### Sabah raporu Excel okuma
+
+- Geçerli bir ZIP arşivi olmayan xlsx içeriği 422 yanıtıyla reddedilir.
+- SAP dosyalarının tamamı xlsx olarak gönderildiğinde yükleme kabul edilir ve sekiz dosya uyarlanır.
+- Base64 olmayan xlsx içeriği 400 yanıtıyla reddedilir.
+- Karşılığı olan bir SAP kaynağı bulunmayan xlsx dosyası 400 yanıtıyla reddedilir.
+- SAP listesindeki bir xlsx dosyası kabul edilir ve gerçek dosya adıyla xlsx olarak okunur.
+- SAP bayrağı olmadan gönderilen xlsx yükleme 400 yanıtıyla reddedilir.
+- Aynı SAP kaynağı hem csv hem xlsx olarak gönderilirse istek 400 yanıtıyla reddedilir.
+- İngilizce seçilince xlsx sayı hücreleri değişmez; metin hücreleri ise İngilizce sayı kuralına göre okunur.
+- Türkçe seçilince xlsx sayı hücreleri değişmez; metin hücreleri ise Türkçe sayı kuralına göre okunur.
+
+### SAP anonimleştirme
+
+- Anonimleştirme aracı ağ erişimi kullanmaz.
+- Aynı tedarikçi farklı satırlarda ve dosyalarda aynı sahte değeri alır; farklı tedarikçiler farklı değer alır.
+- Anonimleştirilmiş çıktıda gerçek tedarikçi adları ve kodları geçmez.
+- Eşleme tablosu çıktıda yer almaz ve çıktı klasörüne yazılması reddedilir.
+- Aynı eşleme tablosu sonraki çalıştırmada yeniden kullanılır; böylece değerler tutarlı kalır.
+- Sayılar, tarihler, ondalık biçimler ve sütun adları anonimleştirmeden sonra aynen korunur.
+- Serbest metin sütunundaki bilinen tedarikçi adı da değişir ve tablodaki aynı sahte değeri kullanır.
+- Tedarikçi, müşteri ve malzeme adları çıktının hiçbir yerinde geçmez; satır sayısı korunur.
+- Anonimleştirme aracı, yalnızca kendi betiği ve girdi dosyasıyla komut satırından tek başına çalışır.
+- Xlsx girdisi desteklenir; metindeki adlar değişir, sayı hücreleri olduğu gibi kalır.
+- Çıktı klasörü girdi klasörüyle aynıysa işlem reddedilir ve girdi dosyası değişmez.
+- Komut satırında çıktı olarak girdi klasörü seçilirse çıkış kodu 2 döner ve girdi değişmez.
+- Üzerine yazma seçeneğiyle var olan çıktı dosyası yenilenir.
+- Var olan çıktı dosyasının üzerine, üzerine yazma seçeneği olmadan yazılmaz.
+- Xlsx girdisinden üretilecek csv çıktısı girdi klasörüne düşecekse işlem reddedilir ve girdi değişmez.
+- Çıktı klasöründeki sabit bağ girdi dosyasını gösteriyorsa komut satırı 2 koduyla durur ve girdi değişmez.
+- Girdi dosyasına sabit bağlı bir çıktı üzerine yazılamaz.
+- Girdi dosyasına sembolik bağlı bir çıktı üzerine yazılamaz.
+- Bağsız, düzenli bir çıktı dosyası üzerine yazma seçeneğiyle yine yenilenir.
+- Girdi dışındaki bir dosyaya sabit bağlı çıktı hedefi komut satırında 2 koduyla reddedilir.
+- Girdi dışındaki bir dosyaya sabit bağlı çıktı hedefinin içeriği ezilmez.
+- Girdi dışındaki bir dosyaya sembolik bağlı çıktı hedefinin içeriği ezilmez.
+- Kiril ve Yunan harflerinden oluşan görsel benzer yazımlar tedarikçi adını sızdırmaz.
+- Küçük harfli Kiril ve Yunan benzerleri de tanınır; tedarikçi adı gizli kalır.
+- Normal Latin harflerle yazılmış, bilinen bir adın yalnızca parçasına benzeyen adlar yanlışlıkla değiştirilmez.
+- Sızıntı denetimi, Kiril harfli bir tedarikçi adı kalırsa bunu yakalar.
+- Başlık satırındaki gerçek tedarikçi adı da anonimleştirilir.
+- Büyük-küçük harf farkı, fazla boşluk ve kısmi tedarikçi adları çıktıda sızmaz.
+- Anonimleştirme sonrası sızıntı kalırsa komut satırı 3 koduyla durur.
+- Çıktı zaten varsa komut satırı 2 koduyla durur; aynı çalıştırma üzerine yazma seçeneğiyle başarılı olur.
+- Anonimleştirme adımı gerçek bir değeri geçirirse sızıntı denetimi işlemi durdurur ve hiçbir dosya yazılmaz.
+- Sızıntı denetimi büyük-küçük harf, boşluk ve kısmi ad farklılıklarını da yakalar.
+- Çıktı girdi klasörüne yazılmak istenirse reddedilir ve girdi dosyası değişmez.
+- Serbest metindeki tedarikçi adı, büyük-küçük harf farkı olsa bile tablodaki sahte değeri alır.
+- Var olan çıktı, üzerine yazma seçeneği verilmeden yazılmaz; seçenek verilince yazılır.
+- Tırnak içindeki çok satırlı tedarikçi adının devam satırı diyezle başlamıyorsa normal işlenir.
+- Tırnak içindeki devam satırı diyezle başlıyorsa komut satırı sıfırdan farklı bir kod döner.
+- Tırnak içindeki satır sonundan sonra gelen diyezli satır kaydı sessizce bozmaz; işlem durdurulur.
+- Karışık büyük-küçük harf, noktalama, boşluk, tire, alt çizgi ve görünmez karakterle yapılan ad atlatmaları kapanır.
+- Genel şirket eklerinin listesi sabittir ve testle korunur.
+- İki karakterlik ad parçaları, örneğin AB veya 3M, metinde sızmaz.
+- Sert boşluk ve Türkçe büyük İ varyantları sızmaz; genel bir şirket eki başka metinde yanlış eşleşmez.
+- Sayısal tedarikçi kodu serbest metinde geçse bile sızmaz.
+- Sızıntı denetimi birleşik işaretli, tam genişlikli, yumuşak tireli, harfleri aralıklı ve sayısal kodlu yeni biçimleri de yakalar.
+- Unicode ile gizlenen tedarikçi adları (birleşik işaret, sıfır genişlikli boşluk, Kiril harf, tam genişlik, yumuşak tire, satır sonu) sızmaz ve satır sayısı korunur.
+- Başlık satırı da gerçek tedarikçi adlarına karşı anonimleştirilir ve sütun sayısı korunur.
+- Büyük-küçük harf farkı ve boşluklu ad varyantları çıktıda kalmaz.
+- Tek başına genel bir şirket eki kimlik sayılmaz; başka bir şirketin sahte kodu ona verilmez.
+- İki karakterlik gerçek ad serbest metinde kelime olarak geçtiğinde değiştirilir.
+- Gerçek ad tam geçmese bile yalnızca bir parçası geçiyorsa o parça da değiştirilir.
+- Serbest metindeki ad, tedarikçi adı hücresindeki sahte değerle aynı kalır.
+
+### SAP dosya biçimleri
+
+- Aynı sipariş kalemi iki farklı şirketten gelirse ikinci şirketin kalemi tekrar olarak reddedilir.
+- Aynı belge numarası farklı yıllarda iki kez yazılırsa uyarlama iki satırı da yazar; doğrulama ilkini kabul eder, ikincisini tekrar olarak reddeder.
+- Birden fazla şirketi olan hedef dosyada iki kalem de kabul edilir.
+- Birden fazla yılı olan hedef dosyada iki belge de kabul edilir.
+- Eşleme şablonunda bir sütun eksikse hata mesajı eksik sütunun adını söyler.
+- Şablondaki tablo ve sütun adları doğru kaynakla eşlenir; birincil kaynakla doğrulanamayan alanlar açıkça işaretli kalır.
+- Kullanıcı kendi başlığını etiketle bağladığında sütun doğru alana eşlenir ve sayılar doğru okunur.
+- Ondalık virgüllü dosyada üç basamaklı nokta değerleri binlik sayılmaz; çevrilemeyen değer olarak bildirilir.
+
+### Sayı biçimi
+
+- Dosya seçilen biçimle uyuşmuyorsa yanlış okunacak değerleri gösteren bir uyarı üretilir; değerler değişmez.
+- İngilizce seçilmiş ama Türkçe yazılmış bir dosya uyuşmazlık olarak yakalanır.
+- Seçilen biçimle uyuşan dosyada uyarı üretilmez.
+- Türkçe seçilmiş ama İngilizce yazılmış bir dosya uyuşmazlık olarak yakalanır.
+- Kanıt yoksa, yani yalnızca belirsiz değerler varsa, uyarı üretilmez.
+- Bilinmeyen bir sayı biçimi ya da listede olmayan bir dosya adı, değeri gösteren bir hata verir.
+- İngilizce seçilen dosya, aynı girdiyle Türkçeden farklı okunur: nokta ondalık, virgül binlik ayıracı sayılır.
+- Biçim seçilmeyen dosya eski kuralla okunur ve belirsiz değerler reddedilir.
+- Türkçe seçilen dosya, aynı girdiyle İngilizceden farklı okunur: virgül ondalık, nokta binlik ayıracı sayılır.
+- Belirsiz değeri olmayan ya da boş sütunlar kontrol edilemedi olarak bildirilmez.
+- Dosya raporunda kontrol edilemeyen sütun ve değer sayısı bildirilir; değerler değişmez.
+- Sonunda eksi işareti olan belirsiz değerler de sayılır.
+- İngilizce seçilince virgülden sonra üç basamaklı değerler kontrol edilemedi olarak bildirilir.
+- Hem belirsiz hem net değer içeren sütun kontrol edilemedi olarak bildirilmez.
+- Sütunda net bir karşı kanıt varsa belirsiz değerler kontrol edilemedi sayılmaz; uyuşmazlık olarak ayrıca bildirilir.
+- Biçim seçilmeyen dosya için kontrol edilemedi bildirimi yapılmaz.
+- Bir sütunun bütün değerleri belirsizse sütun, örnekleriyle birlikte kontrol edilemedi olarak bildirilir.
+- İngilizce seçildiğinde nokta ondalık ayıracıdır; virgül binlik ayıracıdır.
+- Seçilen biçimle uymayan bir değer reddedilir.
+- Biçim seçilmediğinde eski kural değişmez ve belirsiz değerler reddedilir.
+- Türkçe seçildiğinde nokta binlik ayıracıdır; virgül ondalık ayıracıdır.
+- İngilizce yazılmış dosya Türkçe seçilince, yanlış okunacak satırlar satır numarasıyla ve iki okunuşuyla gösterilir.
+- Uyarıda en fazla üç örnek gösterilir; kalanlar sayı olarak bildirilir.
+- Rapor, yanlış okunan her değerin satırını, sütununu, değerini ve iki okunuşunu içerir.
+- Tek değerli dosyada kanıt olmadığından uyarı çıkmaz; değer seçilen biçimle okunur.
+- Toplu Türkçe biçimli değerler İngilizce seçilince yanlış okunan değerler, doğru okunuşla birlikte gösterilir.
+
+### Sunucu güvenliği
+
+- Xlsx'in '#' ile başlayan satırı csv'ye tüm hücreleriyle yazılır; ayraç içeren hücreler tırnaklanır.
+- '#' ile başlayan hücrede satır sonu varsa dönüşüm reddedilir ve hedef dosya oluşmaz.
+- Sıkıştırma bombası niteliğindeki xlsx yüklemesi 422 yanıtı ve sade bir sıkıştırma mesajıyla reddedilir; döküm görünmez.
+- Olağandışı yüksek sıkıştırma oranına sahip xlsx dosyası reddedilir.
+- İçinde izin verilenden fazla parça bulunan xlsx dosyası reddedilir.
+- Normal boyutlu bir xlsx dosyası hâlâ doğru okunur.
+- Arşiv dizininde yalan beyan edilen açık boyut belleği şişirmez; okuma küçük bir bellek tepesiyle reddedilir.
+
+### Talep akışı
+
+- Bitişik girdi, önceki sürümle birebir aynı çıktıyı üretir.
+- Bitişik olmayan girdi, önceki sürümle birebir aynı çıktıyı üretir.
+- Gerekli sütun eksikse hata mesajı eksik sütunun adını verir.
+- Yalnızca yorum satırlarından oluşan dosya kayıt yok hatası verir.
+
+### Excel okuma
+
+- Xlsx'in '#' ile başlayan satırı, tüm hücreleriyle ve virgül içeren hücreler tırnaklı olarak csv'ye yazılır.
+- '#' ile başlayan ilk hücrede satır sonu varsa dönüşüm reddedilir.
+- Sayfa sayısı sınırı aşıldığında xlsx okuması reddedilir.
+- Çok yüksek sıkıştırma oranlı xlsx okuması reddedilir.
+- Açılan toplam boyut sınırı aşıldığında, her parça tek tek sınırın altında olsa bile okuma reddedilir.
+- Zip içindeki üye sayısı sınırı aşıldığında okuma reddedilir.
+
+### Yayın kapısı
+
+- Düz metinde geçen bir kullanıcı adı sızıntı olarak yakalanır.
+- Gerçek bir Windows kullanıcı yolu sızıntı olarak yakalanır ve kullanıcı adı ayrıca bildirilir.
+- Satırda bir ipucu bulunsa bile gerçek yol sızıntı olarak yakalanır.
+- Ters tırnaklı ad ve ipucu aynı satırdaysa, düz metindeki ad yine sızıntı sayılır.
+- Ters tırnak içindeki kullanıcı adı, ipucu olmasa da sızıntı olarak yakalanır.
+- Kuralı anlatan, yer tutucu yol ve ad içeren bir satır sızıntı sayılmaz.
+- Yer tutucu yolun yanında gerçek bir yol varsa, gerçek olan yakalanır.
+- Yalnızca yer tutucu bir yol içeren kural açıklaması geçer.
+
+### Deneme paketi
+
+- Depodaki dosyaların içeriği üreticinin verdikleriyle aynıdır.
+
 ## Ajan orkestrasyonu
 
 ### Gerçek model sorgusu
@@ -898,6 +1142,18 @@ Bu katalog şimdilik 0.6.0 koşusundan kalan 580 testin davranışını anlatır
 - Girdi uyuşmazlığı koşuyu durdurur.
 - Kotaya takılan çağrı ölçüm kaydına girmez.
 
+### Plan, koşu ve hesap (0.7.0)
+
+- Etiketsiz, geçersiz etiketli ya da yarıda kesilmiş koşular paydaya girmez ve dışarıda bırakılma nedeni gösterilir.
+- Örneklem sayısı sıfır olduğunda sonuç doğrulanamadı olarak biçimlendirilir.
+- Etiketler ve denetimlerle yapılan puanlama doğru özeti üretir; kopya, sözcük ve anlamsal yakalama ölçütleri beklenen sayıları verir.
+- On iki koşu toplam 30 çağrıyla tamamlanır; her koşunun çağrı kaydı ayrı tutulur ve tüm koşular tek kayıt dosyasına yazılır.
+- Kota dolunca koşu durur, model yeniden denenmez ve kalan koşular yapılamadı olarak işaretlenir.
+- Çağrı tavanına ulaşılınca koşu durur ve kalan koşular yapılamadı olarak işaretlenir.
+- Dosya değişince özet imzası uyuşmaz hale gelir; imza dosyası yoksa bu ayrıca bildirilir.
+- Gerçek ön kayıt imzası doğrulanır ve uyarı vermez.
+- Plan, iki eksen üzerinden serpiştirilmiş 12 koşudan oluşur ve bütçe tavana tam olarak eşittir.
+
 ## Kule arayüzü
 
 ### Kule panel arayüzü
@@ -960,3 +1216,93 @@ Bu katalog şimdilik 0.6.0 koşusundan kalan 580 testin davranışını anlatır
 - Ölçüm bağlarında kayıt yoksa değer boştur ve hesaba alınamaz; sıfır yazılmaz.
 - Ölçüm bağlarında yalnız aylık vaka ve kayıtlı süre hesaba alınabilir; az kayıt ve dolmamış ay uyarılır.
 - Örnek veride fazla stok payı, stok sonucundan okunur.
+
+### Panel ek testleri (0.7.0)
+
+- Tanınmayan dosya mesajı Excel'e değinmez; Excel dosyaları ayrıca uyarılır ve başlık satırı istenir.
+- İstek gövdesi sınırı aşılırsa istek gönderilmez ve sade bir mesaj gösterilir.
+- Boş dosya kendi mesajını alır: dosyanın sıfır bayt olduğu yazılır.
+- İkili ya da bozuk kodlanmış içerik "metin değil" uyarısı alır; gerçek SAP metni bu uyarıdan etkilenmez.
+- Türkçe arayüzde İngilizce cümle görünmez.
+- Eksik alanlı bir dosya varken hazırla düğmesi devre dışı kalır.
+- Panel betikleri sözdizimi hatası olmadan derlenir.
+- Alan adları Türkçe ad ile kodu birlikte gösterir; bilinmeyen kod olduğu gibi kalır; kaynak verilirse o listenin etiketi kullanılır.
+- Kayıt sayısı eşiğin altındayken medyan gizlenir ve nedeni yazılır.
+- Açık kalma süresi 24 saatten kısaysa saat, daha uzunsa gün olarak gösterilir; değer yoksa süre yazılmaz.
+- Açık temada girdi kutusu kenarlığı hem kağıt hem yüzey üzerinde en az 3:1 kontrast sağlar.
+- Açık temada odak halkası kağıt üzerinde en az 3:1 kontrast sağlar.
+- Boyutu aşırı büyük beyan edilmiş ama gerçekte küçük olan bir dosya sınır hatasıyla reddedilir.
+- Tarayıcıdaki base64 kodlaması sunucu tarafıyla birebir aynı sonucu verir; Excel dosyasının baytları değişmeden gönderilir.
+- Zip imzası olmayan bozuk .xlsx dosyası "okunamadı" uyarısı alır; genel "tanınmadı" mesajı verilmez.
+- Bozuk .xlsx uyarısı ekran okuyucularda duyurulur.
+- Yerel başlık konumu bozuksa hata anında fırlatılmaz; çağıran taraf "okunamadı" yanıtını verebilecek şekilde reddedilen bir sonuç döner.
+- Veri yokken "Henüz ölçüm yok" yazılır; sayı kartı ya da sıfır değer gösterilmez.
+- .xlsx dosyası kabul edilir ve sunucuya gönderilir; eski "okunmaz" metni artık gösterilmez.
+- "Bilmiyorum" yanıtı kullanıcıyı SU3 → Varsayılanlar → Ondalık gösterim yoluna yönlendirir; yanlış bir yol gösterilmez ve düğmenin neden pasif olduğu yazılır.
+- Belirsiz sayılar duyurulan bir alanda, iki okunuşuyla ve "Kule birini seçmez" notuyla gösterilir.
+- Ondalık biçimi anlaşılamayan sütun, sihirbaz adımında ve sonuç ekranında sakin bir dille duyurulur.
+- Seçilen ondalık biçim ekrana yansır ve sunucuya gönderilen istekte yer alır.
+- Dosya adı, uyarı, ret nedeni ve tanınmayan dosya metinleri sade Türkçeyle ekrana yazılır.
+- Excel dosyası için "önizleme yapılmaz" metni kalktı; yalnız belirsiz metin hücreleri sorulur.
+- Dar ekranda yatay kaydırılan tablolar klavyeyle odaklanır ve ekran okuyucuya adlarıyla duyurulur.
+- Dolu veride değerler ölçüm kayıtlarından alınır ve Türkçe sayı biçiminde gösterilir.
+- Rastgele içerikli, kapanmamış satır etiketleri çok olan büyük dosya (6 ve 20 MB) bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.
+- Girdi, seçim ve açılır kutu kenarlıkları aynı kenarlık rengini kullanır.
+- Tek satırda çok sayıda kapanmamış hücre etiketi olsa bile okuma bir saniye içinde sonuç ya da net hata verir.
+- Elle girilen süre "Kullanıcı beyanı", Kule kartları "Kule ölçümü" rozetiyle ayrı ayrı gösterilir.
+- İki üye de küçük beyan edilmiş ama toplam 80 MB'a açılıyorsa ortak sayaç sınırı aşılır ve sınır hatası verilir.
+- İlişki kimliğinde özel karakter varsa düz "ilişki bulunamadı" hatası verilir; teknik hata kullanıcıya sızmaz.
+- Kapanmamış ikinci satır sessizce atlanmaz; net bir hata verilir ve veri kaybı olmaz.
+- Ölçüm özetinde TL, tasarruf ya da kazanç yazılmaz; önce ve sonra arasında olmayan bir fark uydurulmaz.
+- Ekrana yazılan metinde HTML özel karakterleri kaçışlanır.
+- Normal boyutlu, geçerli bir Excel dosyası hâlâ açılır ve metni döndürülür.
+- Koyu temada, sistem ayarıyla ya da elle seçilse de girdi kenarlığı kağıt üzerinde en az 3:1 kontrast sağlar.
+- Koyu temada odak rengi vurgu rengiyle aynıdır ve koyu kağıt üzerinde yüksek kontrast verir.
+- Belirsiz sayı bloğunda uzun değer satır içinde kırılır; blok taşmaz.
+- Kısmi veride kaydı olmayan kart "—" ve nedenini gösterir; sıfır yazılmaz.
+- Adı .xlsx olan ama içeriği metin olan dosya, önceki gibi metin olarak tanınır ve uyarı verilmez.
+- Odak halkası merkezi renk tanımından okunur; klavye odağında ve girdi alanı odaklandığında görünür.
+- Örnek seçimi önce belirsiz değerleri alır ve istenen sayı kadar gösterir; sıra örnek listesiyle aynıdır.
+- Ölçüm özeti panele, gezintiye ve canlı ekran kaydına doğru bağlanır; betikler doğru sırayla yüklenir.
+- Sunucudan gelen ret kategorileri sade Türkçe adlarıyla gösterilir; tanınmayan kategori olduğu gibi kalır.
+- Ret nedenindeki iç işaret sade metne çevrilir; dosya, SAP adıyla birlikte gösterilir.
+- İç işaret hiçbir uyarı ya da hata metninde görünmez; kullanıcı, seçilen ayara göre okunamayan değeri görür.
+- Eksik sütun uyarısı, eksik alanların adlarını içeren tek bir cümle olur; geliştirici notu ve başlık dökümü gösterilmez.
+- Çok sayıda kapanmamış satır etiketi olsa bile okuma bir saniye içinde sonuç ya da net hata verir; okuyucu kendi kendini yavaşlatmaz.
+- Belirsiz bir sayının iki okunuşu düz metin olarak, yan yana yazılır: Türkçe okunuş ve İngilizce okunuş.
+- Belirsiz sayı metni üretilirken girdi listesi ve değer değişmez.
+- Belirsizlik kararı ve iki okunuş, sunucunun kesin kuralıyla birebir aynı sonucu verir.
+- Yalnız iki okunuşu da geçerli ve birbirinden farklı olan sayılar belirsiz sayılır; tek okunanlar ya da okunamayanlar belirsiz sayılmaz.
+- Sayı biçimi isteğine yalnız tanınmış ve seçilmiş dosyalar girer; anahtar SAP kaynak adıdır.
+- Ondalık biçimi anlaşılamayan sütunlar, sunucuyla aynı kuralla sütun düzeyinde belirlenir.
+- Sayılar seçilen Türkçe ya da İngilizce biçime göre okunur; eksi işareti korunur, okunamayan değer boş döner.
+- Önizlemede okunan sayı, sunucunun kesin kuralıyla birebir aynıdır.
+- Sayı okuma, sunucudaki çeviriciyle aynı sonucu verir; tek gruplu belirsiz değerler bu kuraldan ayrı ele alınır.
+- Okunuş Türkçe yazılır ve binlik ayraç içermez; okunamayan değer için "okunamaz" yazılır.
+- Örnek sayılar sayısal SAP sütunlarından alınır; iki biçimde farklı okunanlar önce gelir.
+- Sayı biçimi seçimi CSV dosyalarında her zaman sorulur; Excel dosyasında yalnız belirsiz metin hücresi varsa sorulur.
+- Sayısal sütunlar tek tek, SAP alan koduna göre ayrılır ve değerler dosyadaki sırayla listelenir.
+- Seçilen biçimle dosya içeriği çelişiyorsa uyarı verilir; belirsiz değerler bu kontrole dahil edilmez.
+- Yanlış okunabilecek değerler satır, sütun, değer ve iki okunuşuyla listelenir; sunucuyla birebir aynıdır.
+- Senaryo ekranındaki tedarikçi seçeneğinde seviye bilgisi HTML olarak kaçışlanır.
+- Sentetik veri başlıkta ve ret kartında etiketlenir; kaç kaydın sentetik olduğu yazılır.
+- Ortak metin tablosunda çok sayıda kapanmamış giriş olsa bile okuma bir saniye içinde sonuç ya da net hata verir.
+- Sıkıştırılmamış bir dosya küçük boyut beyan edip gerçekte 70 MB ise toplam açık boyut sınırı aşılır ve sınır hatası verilir.
+- Sunucudan gelen yükleme kimliği ve tarih gibi metinler ekranda kaçışlanır.
+- Telefon genişliğinde açılır özetler en az 44 piksel yüksekliğindedir; satır içi yükseklik sınırı yoktur.
+- Telefon genişliğinde düğmeler, girdi kutuları, seçimler ve kaldırma hedefleri en az 44 piksel yüksekliğindedir.
+- Etiketi olmayan, kullanıcının kendi yüklediği dosya "Kendi dosyalarınız · gerçek veri" rozetiyle gösterilir.
+- Beyanı 1 KB olup gerçekte 40 MB'a açılan Excel dosyası, sınır aşılınca sekmeyi dondurmadan reddedilir.
+- Açık boyut sınırı (64 MB) tüm üyelerin toplamına uygulanır; beyan toplamı sınırı aşarsa hiçbir üye açılmaz.
+- Normal boyutlu geçerli Excel dosyası sınırlar yüzünden engellenmez ve açılır.
+- Binlerce üyesi olan Excel dosyası, açılmadan üye sayısı sınırıyla reddedilir.
+- Excel'den çıkarılan metin SAP tanımasından geçer ve EKPO başlığı tanınır.
+- Bozuk zip dosyası reddedilir; sessizce boş metin döndürülmez.
+- Excel'in ilk sayfası sekmeyle ayrılmış metne çevrilir; ortak ve satır içi metin, sayılar ve kaçış karakterleri doğru okunur.
+- Excel'den yalnız metin hücreleri alınır; sayı tipindeki hücreler listeye girmez.
+- Oranı 1000'e 1 olan zip bombası açılmadan reddedilir; sınır işareti yanıt yolunda kaybolmaz ve "sınırı aştı" uyarısı gösterilir.
+- Bir dosyanın Excel sayılması için hem .xlsx adı hem zip imzası gerekir; yalnız biri yeterli değildir.
+- Excel'de yalnız iki okunuşu farklı metin değerler sorulur; "4711" ve "abc" gibi değerler sorulmaz.
+- Küçük beyan edilip 80 MB'a açılan üye, akış sırasında kesilir ve sınır hatası verilir.
+- Adı .xlsx olmayan zip dosyası Office ya da zip dosyası olarak adlandırılır ve Excel adımı gösterilmez.
+- Örnek paket düğmeleri giriş anahtarı yokken pasif olur; sonuç başlığı klavyeyle odaklanabilir.

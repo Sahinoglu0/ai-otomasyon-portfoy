@@ -1,0 +1,30 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "ANK-01",
+            "durum": "KRITIK"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1635,
+      "cikan_jeton": 147,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1516
+    },
+    {
+      "metin": "ANK-01 deposunda **5 adet kritik stok kalemi** var.\n\n| Sıra | Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC | Stok Değeri (TL) |\n|---|---|---|---|---|---|---|---|\n| 1 | M-1003 | Euro palet 80x120 | 57.0 | AD | 3.4 | B | 23940.0 |\n| 2 | M-1010 | Big bag 1 ton | 142.0 | AD | 3.8 | A | 36920.0 |\n| 3 | M-1001 | Streç film 23 mikron | 80.0 | RL | 5.4 | C | 6800.0 |\n| 4 | M-1012 | Plastik kasa 60x40 | 195.0 | AD | 6.2 | B | 40950.0 |\n| 5 | M-1006 | Etiket rulosu 100x150 | 302.0 | RL | 6.4 | B | 28690.0 |\n\nSıralama, tükenme riskine göre yapıldı: kapsama süresi en kısa olan kalem en üstte.\n\n**Aksiyon planı**\n\n1. **Hemen:** M-1003 (Euro palet) ve M-1010 (Big bag). Kapsama süreleri en kısa olan iki kalem bunlar. M-1010 ABC sınıfı A olduğu ve stok değeri en yüksek kalem olduğu için önceliklidir.\n2. **Kısa vadede:** M-1001 (Streç film), M-1012 (Plastik kasa) ve M-1006 (Etiket rulosu). Bu kalemler için tedarik siparişleri bu hafta içinde verilmeli.\n3. Bu kalemler için mevcut açık siparişleri, tedarik sürelerini ve talep tahminlerini kontrol edin. Bu bilgiler elimdeki araçlarla alınamadı, bu yüzden aksiyon planında yer almıyor.\n\n**Eksik bilgi:** Veride emniyet stoğu ve yeniden sipariş noktası alanları yok. Kritik durum yalnızca Kule'nin sınıflandırmasına dayanıyor. Bu eşiklerin nasıl belirlendiğini doğrulamak için stok_durumu kaynağına bakmanızı öneririm.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\"}, \"deger\": 5}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 2283,
+      "cikan_jeton": 1585,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 7998
+    }
+  ]
+}

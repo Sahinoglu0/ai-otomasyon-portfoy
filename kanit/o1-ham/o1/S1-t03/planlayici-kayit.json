@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. IZM-01 deposunun stok seviyelerini, kapasite kullanımını ve son dönem hareket verilerini incele.\n2. IZM-01 deposunun hangi ürün, müşteri ve sevkiyat akışları için kritik olduğunu belirle.\n3. IZM-01 deposunda yaşanan gecikme, kesinti ya da taşma riski olan dönemleri tespit et.\n4. T-03 tedarikçisinin sipariş, teslimat süresi ve kalite performans verilerini incele.\n5. T-03 tedarikçisinin tek kaynak olup olmadığını ve alternatif tedarikçi durumunu değerlendir.\n6. T-03 tedarikçisinin IZM-01 deposuna bağımlılığını ve bu bağımlılığın yarattığı riski analiz et.\n7. Riskleri etki ve olasılık açısından önceliklendir.\n8. Aksiyon planı için gerekli adımları, sorumluları ve tamamlanma sürelerini hazırla.\n9. T-03 tedarikçisine gönderilecek taslak e-postanın içeriğini ve ana mesajlarını belirle.\n10. Taslak e-postayı sonuç ve takip adımlarıyla birlikte son haline getir.",
+      "arac_cagrilari": [],
+      "giren_jeton": 767,
+      "cikan_jeton": 757,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4832
+    }
+  ]
+}

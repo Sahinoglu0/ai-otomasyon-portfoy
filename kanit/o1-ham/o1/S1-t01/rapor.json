@@ -1,0 +1,18 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "IZM-01 deposu ve T-03 tedarikçisi neden kritik? Aksiyon planı ve tedarikçiye taslak e-posta üret.",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

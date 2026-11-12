@@ -1,0 +1,197 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1724,
+      "cikan_jeton": 161,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2092
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-02"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1901,
+      "cikan_jeton": 211,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2136
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-03"
+          },
+          "kimlik": "arac-3"
+        }
+      ],
+      "giren_jeton": 2078,
+      "cikan_jeton": 89,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1525
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-04"
+          },
+          "kimlik": "arac-4"
+        }
+      ],
+      "giren_jeton": 2255,
+      "cikan_jeton": 86,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1636
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-5"
+        }
+      ],
+      "giren_jeton": 2432,
+      "cikan_jeton": 97,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1989
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-06"
+          },
+          "kimlik": "arac-6"
+        }
+      ],
+      "giren_jeton": 2609,
+      "cikan_jeton": 137,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1680
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1815,
+      "cikan_jeton": 194,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1992
+    },
+    {
+      "metin": "Şu ana kadar yalnızca T-01 verisi var. Kalan tedarikçileri sırayla sorguluyorum, başlıyorum: T-02.",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-02"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1992,
+      "cikan_jeton": 208,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2054
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-03"
+          },
+          "kimlik": "arac-3"
+        }
+      ],
+      "giren_jeton": 2226,
+      "cikan_jeton": 111,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1666
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-04"
+          },
+          "kimlik": "arac-4"
+        }
+      ],
+      "giren_jeton": 2403,
+      "cikan_jeton": 115,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1288
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-05"
+          },
+          "kimlik": "arac-5"
+        }
+      ],
+      "giren_jeton": 2580,
+      "cikan_jeton": 123,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1728
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-06"
+          },
+          "kimlik": "arac-6"
+        }
+      ],
+      "giren_jeton": 2757,
+      "cikan_jeton": 110,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1693
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "T-05 tedarikçisinin performansı neden zayıf? Skor, seviye ve teslim bilgisini yaz, iyileştirme öner.",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": false,
+      "uyusmazliklar": [
+        "görev dışı satır: **Alt görevler:**"
+      ]
+    },
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

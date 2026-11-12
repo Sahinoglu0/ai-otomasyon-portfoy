@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. T-01 tedarikçisinin skor verisini kaynaktan çek.\n2. T-01 tedarikçisinin seviye bilgisini kaynaktan çek.\n3. T-06 tedarikçisinin skor verisini kaynaktan çek.\n4. T-06 tedarikçisinin seviye bilgisini kaynaktan çek.\n5. İki tedarikçinin skor değerlerini aynı ölçüt ve dönem üzerinden karşılaştır.\n6. İki tedarikçinin seviye farkını aynı sınıflandırma kuralına göre karşılaştır.\n7. Karşılaştırma sonucunu skor ve seviye başlıklarıyla birleştirerek sonuçlandır.",
+      "arac_cagrilari": [],
+      "giren_jeton": 747,
+      "cikan_jeton": 462,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2765
+    }
+  ]
+}

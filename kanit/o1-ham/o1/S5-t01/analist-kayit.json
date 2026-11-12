@@ -1,0 +1,85 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1587,
+      "cikan_jeton": 159,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1854
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-06"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1764,
+      "cikan_jeton": 93,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1510
+    },
+    {
+      "metin": "## T-01 ile T-06 karşılaştırması\n\n| Alan | T-01 | T-06 | Fark (T-01 − T-06) |\n|---|---|---|---|\n| skor | 95.5 | 95.0 | 0.5 |\n| seviye | A | A | aynı |\n| zamaninda_pct | 97.5 | 97.5 | 0 |\n| ortalama_gecikme_gun | 0.03 | 0.03 | 0 |\n| red_pct | 0.99 | 0.51 | 0.48 |\n| fiyat_sapma_pct | -0.04 | 0.88 | -0.92 |\n| siparis_sayisi | 40 | 40 | 0 |\n\n**Sonuç:**\n- **Seviye:** İki tedarikçi de A seviyesinde.\n- **Skor:** T-01 (95.5), T-06'dan (95.0) 0.5 puan yüksek.\n- **Farklar, büyükten küçüğe (mutlak fark):**\n  1. Fiyat sapması: T-06 +0.88, T-01 -0.04. Fark 0.92.\n  2. Skor: T-01 lehine 0.5 puan.\n  3. Red oranı: T-01 0.99, T-06 0.51. Fark 0.48; T-06 daha düşük red oranına sahip.\n\n**Sınırlamalar:** Plan adım 2 ve 3'ü (seviye kriterleri ile dönem ve ölçüt setinin tutarlılığı) doğrulayamadım. Elimdeki araçlar yalnızca tedarikçi kaydını döndürüyor; kriter ve dönem bilgisi vermiyor. Skorların aynı dönem ve ölçütle hesaplandığı varsayımıyla karşılaştırma yaptım.\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"skor\", \"deger\": 95.5},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"skor\", \"deger\": 95.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"seviye\", \"deger\": \"A\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"seviye\", \"deger\": \"A\"}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 1941,
+      "cikan_jeton": 1604,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 7686
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1779,
+      "cikan_jeton": 151,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2338
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-06"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1956,
+      "cikan_jeton": 152,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1932
+    },
+    {
+      "metin": "Kule araçlarından alınan verilere göre iki tedarikçi de aynı seviyede (A) ve birbirine yakın skora sahip. Denetçinin reddettiği önceki yanıttaki sayılar bu yanıtta kullanılmıyor.\n\n**Karşılaştırma (araç çıktısındaki değerler):**\n\n| Tedarikçi | Skor | Seviye | Red % | Fiyat sapma % | Sipariş sayısı |\n|---|---|---|---|---|---|\n| T-01 | 95.5 | A | 0.99 | -0.04 | 40 |\n| T-06 | 95.0 | A | 0.51 | 0.88 | 40 |\n\n- **Skor:** T-01 (95.5) T-06'dan (95.0) yüksek.\n- **Seviye:** İkisi de A.\n- **Red yüzdesi:** T-06 (0.51) T-01'e (0.99) göre daha düşük. Bu, iki tedarikçinin skor dışında ayrıştığı tek alanlardan biri.\n\n**Sınırlamalar:**\n- Araç çıktıları skor dönemini ve seviyeyi belirleyen ölçüt setini içermiyor. Bu yüzden iki verinin aynı dönem ve aynı ölçütle hesaplandığını doğrulayamadım.\n- Seviye kriterlerini de araçlardan doğrulayamadım; yalnızca seviye değerlerini aktarabiliyorum.\n\n```iddialar\n[\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"skor\", \"deger\": 95.5},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-01\"}, \"alan\": \"seviye\", \"deger\": \"A\"},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"skor\", \"deger\": 95.0},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-06\"}, \"alan\": \"seviye\", \"deger\": \"A\"}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 2133,
+      "cikan_jeton": 1596,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 8176
+    }
+  ]
+}

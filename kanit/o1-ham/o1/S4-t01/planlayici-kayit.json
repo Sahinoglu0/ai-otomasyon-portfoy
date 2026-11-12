@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. T-05 tedarikçisinin güncel performans skorunu ve bu skorun hesaplandığı ölçütleri belirle.\n2. T-05'in performans seviyesini ve bu seviyenin tanımını kontrol et.\n3. T-05'in teslim geçmişini (zamanında teslim, gecikme, eksik teslim) dönemsel olarak incele.\n4. Skoru düşüren ölçütleri (teslim, kalite, fiyat, iletişim vb.) ağırlıklarıyla birlikte karşılaştır.\n5. T-05'in performansını aynı kategorideki diğer tedarikçilerle kıyasla.\n6. Zayıflığın tekrarlayan mı yoksa belirli bir döneme ya da siparişe özgü mü olduğunu ayırt et.\n7. Skor hesaplamasında veri eksikliği veya hatalı kayıt olup olmadığını doğrula.\n8. Bulguları neden-sonuç ilişkisi açısından özetle ve iyileştirme için gereken ek veriyi listele.",
+      "arac_cagrilari": [],
+      "giren_jeton": 764,
+      "cikan_jeton": 697,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4099
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+{"sira": 1, "zaman": "2026-10-22T00:29:17+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 1, "gecti": false, "uyusmazliklar": ["stok_durumu {'malzeme_no': 'M-1004'}: 3 kayıt, tek olmalı", "stok_durumu {'malzeme_no': 'M-1005'}: 3 kayıt, tek olmalı", "stok_durumu {'malzeme_no': 'M-1010'}: 3 kayıt, tek olmalı"]}
+{"sira": 2, "zaman": "2026-10-22T00:29:45+00:00", "olay": "denetim", "kaynak": "gercek-model", "deneme": 2, "gecti": true, "uyusmazliklar": []}

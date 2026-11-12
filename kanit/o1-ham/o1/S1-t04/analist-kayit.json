@@ -1,0 +1,45 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Önce IZM-01 deposunun stok durumunu sorguluyorum.",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IZM-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1755,
+      "cikan_jeton": 181,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1710
+    },
+    {
+      "metin": "Önce T-03 tedarikçisinin kaydını alıyorum.",
+      "arac_cagrilari": [
+        {
+          "ad": "tedarikci_sorgu",
+          "girdi": {
+            "tedarikci": "T-03"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 3238,
+      "cikan_jeton": 386,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 3272
+    },
+    {
+      "metin": "## Kısa cevap\n\n- **IZM-01 deposu:** Araç çıktısında üç kalem `KRITIK` olarak işaretli. Bunların kapsama süresi 3.3 ile 4.1 gün arasında. Araç bu etiketin gerekçesini vermiyor; etiketi kapsama sürelerine dayanarak yorumluyorum.\n- **T-03 tedarikçisi:** Seviye `D`, skor 36.3. Zamanında teslimat oranı %60.0 ve ortalama gecikme 2.4 gün.\n- **Bağlantı doğrulanmadı:** Araçlar T-03'ün hangi kalemleri tedarik ettiğini göstermiyor. Dolayısıyla T-03'ün IZM-01'deki kritik kalemlerle ilişkisi kanıtlanmış değil.\n\n## Veri kapsamı\n\nMevcut iki araç yalnızca stok durumu ve tedarikçi skor kaydını döndürüyor. Plandaki 9 alt görevin büyük kısmı için veri yok.\n\n| # | Alt görev | Durum |\n|---|---|---|\n| 1 | Stok ve kapasite kullanımı | Kısmen: stok ve kapsama var, kapasite verisi yok |\n| 2 | Sipariş ve sevkiyat hacmi | Veri yok |\n| 3 | Kritik ürün ve müşteri grupları | Veri yok |\n| 4 | T-03 teslimat performansı | Kısmen: oranlar var, dönemsel trend yok |\n| 5 | T-03 kalemleri ve ikameler | Veri yok |\n| 6 | T-03–IZM-01 bağlantısı | Veri yok |\n| 7 | Gecikme senaryoları | Veri yok, modelleme yapılamadı |\n| 8 | Risk önceliklendirmesi | Kısmen, yalnız stok ve tedarikçi verisiyle |\n| 9 | Eksik veri tespiti | Aşağıda |\n\n## IZM-01 bulguları\n\n**Kritik kalemler:**\n\n| Malzeme | Stok | Kapsama (gün) | ABC | Stok değeri (TL) |\n|---|---|---|---|---|\n| M-1005 Çember (PET) 12mm | 166 RL | 3.8 | A | 106240.0 |\n| M-1002 Koli 40x30x30 | 76 AD | 3.3 | C | 494.0 |\n| M-1006 Etiket rulosu 100x150 | 150 RL | 4.1 | C | 14250.0 |\n\nM-1005 hem kritik hem A sınıfı olduğu için öncelikli.\n\n**Fazla stok (ayrı risk):**\n- M-1003 Euro palet 80x120: 237.7 gün kapsama, 1640520.0 TL, B sınıfı.\n- M-1001 Streç film 23 mikron: 249.6 gün kapsama, 110245.0 TL, C sınıfı.\n\nBu kalemlerde sermaye bağlanmış durumda; kritik kalemlerle aynı depoda, fakat ayrı bir yönetim konusu.\n\n## T-03 bulguları\n\n- Zamanında teslimat: %60.0\n- Ortalama gecikme: 2.4 gün\n- Red oranı: %9.29\n- Fiyat sapması: %6.08\n- Sipariş sayısı: 40\n- Skor: 36.3, seviye D\n\n## Aksiyon planı\n\n**Hemen:**\n- M-1005, M-1002 ve M-1006 için açık sipariş ve sevkiyat durumunu kontrol edin.\n- T-03'ün hangi kalemleri tedarik ettiğini satınalma kayıtlarından doğrulayın.\n\n**Kısa vadede:**\n- T-03 ile performans ve düzeltici faaliyet görüşmesi yapın (taslak aşağıda).\n- Kritik kalemler için alternatif tedarikçi araştırması başlatın. İkame verisi olmadığı için bu adım için kaynak bilgi eksik.\n\n**Orta vadede:**\n- M-1003 ve M-1001 için satın almayı gözden geçirin ve fazla stokun nasıl azaltılacağını değerlendirin.\n- Kapasite, sevkiyat hacmi ve müşteri etkisi verilerini toplayıp gecikme senaryolarını modelleyin.\n\n## Taslak e-posta (T-03'e)\n\n**Konu:** T-03 teslimat performansı ve iyileştirme planı\n\nSayın T-03 Yetkilisi,\n\nTedarikçi performans kayıtlarımızı inceledik. Mevcut kayıtlara göre 40 sipariş üzerinden zamanında teslimat oranı %60.0, ortalama gecikme 2.4 gün, red oranı %9.29 ve fiyat sapması %6.08 olarak görünmektedir. Genel skorunuz 36.3 (seviye D) olarak kaydedilmiştir.\n\nBu durum IZM-01 deposunda bazı kritik kalemlerin tedarikinde risk oluşturmaktadır. Sizden aşağıdakileri en kısa sürede paylaşmanızı rica ediyoruz:\n\n1. Açık siparişlerin güncel teslim tarihleri\n2. Gecikme ve red nedenlerinin analizi\n3. Düzeltici faaliyet planı ve uygulama takvimi\n4. [Kalemler, satınalma doğrulaması sonrası eklenecek] için öncelikli teslimat taahhüdü\n\nÖnümüzdeki haftalarda bu konuyu görüşmek üzere bir toplantı planlamak isteriz.\n\nSaygılarımızla,\n[Adınız]\n[Unvan]\n[Şirket]\n\n## Eksik bilgiler (yönetim kararı için)\n\n1. T-03'ün tedarik ettiği kalemler ve IZM-01 ile eşleşmesi\n2. IZM-01 kapasite kullanım oranı ve depo kapasitesi\n3. Sipariş ve sevkiyat hacmi, kritik müşteri grupları\n4. T-03 için dönemsel teslimat trendi (son dönem ile önceki dönem karşılaştırması)\n5. Kritik kalemlerin ikame tedarikçi ve ürün bilgileri\n6. Kritik kalemlerin mevcut açık sipariş miktarları\n\n\n<br>\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IZM-01\", \"durum\": \"KRITIK\"}, \"deger\": 3},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"skor\", \"deger\": 36.3},\n  {\"modul\": \"tedarikci_skoru\", \"filtre\": {\"tedarikci\": \"T-03\"}, \"alan\": \"zamaninda_pct\", \"deger\": 60.0}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3441,
+      "cikan_jeton": 5982,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 26568
+    }
+  ]
+}

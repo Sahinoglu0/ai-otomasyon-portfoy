@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. ANK-01 deposunun güncel stok kayıtlarını kaynaktan çek.\n2. Her kalem için mevcut stok miktarını ve birimini doğrula.\n3. Her kalem için minimum stok veya emniyet stoku eşiğini belirle.\n4. Mevcut stoğu eşikle karşılaştırarak kritik seviyedeki kalemleri ayır.\n5. Kritik kalemleri, ilgili ürün ve tedarikçi bilgileriyle birlikte listele.\n6. Bekleyen satın alma siparişlerini ve tahmini teslim tarihlerini kritik kalemlerle eşleştir.\n7. Kritik kalemlerin son dönem tüketim hızını hesapla ve tükenme riskini değerlendir.\n8. Sonuçları ANK-01 deposu için kritik stok raporu olarak derle.",
+      "arac_cagrilari": [],
+      "giren_jeton": 754,
+      "cikan_jeton": 486,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4697
+    }
+  ]
+}

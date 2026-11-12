@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n\n1. IST-01 deposuna ait güncel stok kayıtlarının kaynağını ve tarih aralığını belirle.\n2. Kalem bazında mevcut stok miktarını çek ve depo kapasitesi veya kullanılabilir alanla karşılaştır.\n3. Kalem bazında emniyet stoğu ve yeniden sipariş noktası değerlerini stok miktarıyla eşleştir.\n4. Stoğu emniyet seviyesinin altında kalan kalemleri kritik olarak işaretle.\n5. Talep tahminine ve ortalama tüketim hızına göre stok süresi yeterli olmayan kalemleri belirle.\n6. Stoğu yeniden sipariş noktasının belirgin üzerinde olan veya tüketim hızına göre uzun süre yetecek kalemleri fazla stok olarak ayır.\n7. Kritik ve fazla stok listelerini kalem kodu, ürün adı ve son hareket tarihi bilgileriyle birleştir.\n8. Son hareket tarihi eski olan veya hareketsiz kalan kalemleri ayrıca kontrol et.\n9. Bulguları kritik ve fazla stok başlıklarıyla kullanıcıya sunulacak kısa bir özet halinde derle.",
+      "arac_cagrilari": [],
+      "giren_jeton": 749,
+      "cikan_jeton": 643,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4643
+    }
+  ]
+}

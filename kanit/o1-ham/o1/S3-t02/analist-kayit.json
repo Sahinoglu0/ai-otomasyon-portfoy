@@ -1,0 +1,29 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "IST-01"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1830,
+      "cikan_jeton": 83,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 2994
+    },
+    {
+      "metin": "## IST-01 Stok Durumu Özeti\n\nAraç yalnızca depo, malzeme, stok miktarı, birim, kapsama süresi, durum, ABC sınıfı ve stok değeri alanlarını döndürdü. Emniyet stoğu, yeniden sipariş noktası, depo kapasitesi, talep tahmini ve son hareket tarihi bu çıktıda yok. Kritik ve fazla stok sınıflandırması, aracın verdiği `durum` alanına göre yapıldı.\n\n### Kritik Stok (5 kalem)\n\n| Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC | Stok Değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1002 | Koli 40x30x30 | 37.0 | AD | 3.4 | C | 240.5 |\n| M-1003 | Euro palet 80x120 | 24.0 | AD | 5.0 | C | 10080.0 |\n| M-1005 | Çember (PET) 12mm | 176.0 | RL | 5.3 | A | 112640.0 |\n| M-1007 | Köşebent karton 35mm | 37.0 | AD | 4.6 | C | 118.4 |\n| M-1010 | Big bag 1 ton | 165.0 | AD | 4.4 | A | 42900.0 |\n\nEn dikkat çekici iki kalem M-1005 ve M-1010'dur. Her ikisi A sınıfında ve kapsama süreleri 6 günden kısa.\n\n### Fazla Stok (1 kalem)\n\n| Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC | Stok Değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1004 | Koli bandı 45mm | 9476.0 | AD | 355.5 | C | 170568.0 |\n\nBu kalemin kapsama süresi aracın verdiği değere göre 355.5 gün. Kalem C sınıfında olmasına karşın stok değeri yüksek.\n\n### Normal Stok (6 kalem)\n\nM-1001, M-1006, M-1008, M-1009, M-1011 ve M-1012 normal durumda.\n\n### Eksik Kalanlar\n\n- Emniyet stoğu ve yeniden sipariş noktası karşılaştırması yapılamadı. Bu değerler araç çıktısında yok.\n- Son hareket tarihine göre hareketsiz kalem kontrolü yapılamadı.\n- Depo kapasitesi karşılaştırması yapılamadı.\n\n```iddialar\n[\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1002\"}, \"alan\": \"stok\", \"deger\": 37.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1003\"}, \"alan\": \"stok\", \"deger\": 24.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1005\"}, \"alan\": \"stok\", \"deger\": 176.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1007\"}, \"alan\": \"stok\", \"deger\": 37.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1010\"}, \"alan\": \"stok\", \"deger\": 165.0},\n  {\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"IST-01\", \"malzeme_no\": \"M-1004\"}, \"alan\": \"stok\", \"deger\": 9476.0}\n]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 3263,
+      "cikan_jeton": 2330,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 10493
+    }
+  ]
+}

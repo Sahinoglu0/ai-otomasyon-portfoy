@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. T-05 tedarikçisinin güncel performans skoru ve seviyesi kaynak verilerden çekilir.\n2. Teslim zamanındalık, kısmi teslim ve gecikme kayıtları son dönem için derlenir.\n3. Skoru etkileyen kriter bazında ağırlıklar incelenip en düşük katkı yapan kriterler belirlenir.\n4. Kalite, sipariş karşılama ve iletişim verileri ayrı ayrı kontrol edilir.\n5. Zayıflığın tedarikçi kaynaklı mı, sipariş planlamasından veya iç süreçlerden mi kaynaklandığı ayrıştırılır.\n6. Benzer tedarikçilerle karşılaştırma yapılarak T-05'in sapması doğrulanır.\n7. Bulgular tek bir nedensel özet halinde birleştirilir.",
+      "arac_cagrilari": [],
+      "giren_jeton": 764,
+      "cikan_jeton": 614,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 4188
+    }
+  ]
+}

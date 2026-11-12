@@ -1,0 +1,27 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "soru": "T-01 ile T-06 tedarikçilerini skor ve seviye açısından karşılaştır.",
+  "durum": "tamamlandi",
+  "plan_uyusmazliklar": [],
+  "plan_denemeleri": [
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ],
+  "denemeler": [
+    {
+      "gecti": false,
+      "uyusmazliklar": [
+        "dayanaksız sayı 0: metinde var, Kule çıktısında ve hesabında yok",
+        "dayanaksız sayı 0.48: metinde var, Kule çıktısında ve hesabında yok",
+        "dayanaksız sayı 92: metinde var, Kule çıktısında ve hesabında yok",
+        "dayanaksız sayı 0.92: metinde var, Kule çıktısında ve hesabında yok"
+      ]
+    },
+    {
+      "gecti": true,
+      "uyusmazliklar": []
+    }
+  ]
+}

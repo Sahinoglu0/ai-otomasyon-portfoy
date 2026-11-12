@@ -1,0 +1,13 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "Alt görevler:\n1. IZM-01 deposunun stok, kapasite ve sevkiyat verilerini topla.\n2. T-03 tedarikçisinin teslimat geçmişini, kapasite ve alternatif kaynak durumunu incele.\n3. IZM-01 deposunun T-03 tedarikine bağımlılığını ve bu bağımlılığın operasyonel etkisini belirle.\n4. Kritikliği belirleyen eşikleri tanımla: stok yeterliliği, teslimat gecikmesi, hizmet seviyesi ve maliyet etkisi.\n5. Kritiklik değerlendirmesini yönetici özetine dönüştür.\n6. Aksiyon planı için öncelikli iş kalemlerini ve sorumluluk alanlarını ayır.\n7. Tedarikçiye iletilecek e-postanın amacını, talep edilen bilgileri ve yanıt tarihini netleştir.\n8. Taslak e-postayı ilgili ekip onayına sun.",
+      "arac_cagrilari": [],
+      "giren_jeton": 767,
+      "cikan_jeton": 726,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 5018
+    }
+  ]
+}

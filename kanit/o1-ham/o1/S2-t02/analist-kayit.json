@@ -1,0 +1,30 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "stok_sorgu",
+          "girdi": {
+            "depo": "ANK-01",
+            "durum": "KRITIK"
+          },
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 1679,
+      "cikan_jeton": 109,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1942
+    },
+    {
+      "metin": "**Evet, ANK-01 deposunda 5 kritik kalem var.** Hepsi tek araç sonucundan alındı.\n\n| Malzeme No | Malzeme Adı | Stok | Birim | Kapsama (gün) | ABC | Stok Değeri (TL) |\n|---|---|---|---|---|---|---|\n| M-1010 | Big bag 1 ton | 142 | AD | 3.8 | A | 36920 |\n| M-1003 | Euro palet 80x120 | 57 | AD | 3.4 | B | 23940 |\n| M-1006 | Etiket rulosu 100x150 | 302 | RL | 6.4 | B | 28690 |\n| M-1012 | Plastik kasa 60x40 | 195 | AD | 6.2 | B | 40950 |\n| M-1001 | Streç film 23 mikron | 80 | RL | 5.4 | C | 6800 |\n\n**Öncelik sırası (kapsama süresine ve ABC sınıfına göre):**\n1. **M-1003 Euro palet:** En kısa kapsama (3.4 gün), B sınıfı.\n2. **M-1010 Big bag:** Kapsama 3.8 gün ve A sınıfı. Etki açısından en önemli kalem.\n3. **M-1001 Streç film:** Kapsama 5.4 gün, düşük değerli C sınıfı.\n4. **M-1012 Plastik kasa:** Kapsama 6.2 gün, en yüksek stok değeri (40950 TL).\n5. **M-1006 Etiket rulosu:** Kapsama 6.4 gün.\n\n**Aksiyon planı:**\n- **Kısa vadede:** M-1003 ve M-1010 için acil sipariş veya tedarikçi ile teslim teyidi yapılmalı. Bu iki kalem en kısa kapsamaya sahip.\n- **Kısa vadede:** M-1001 ve M-1012 için sipariş oluşturulmalı. Stok değeri yüksek olan M-1012 için tedarik takibi sıkı tutulmalı.\n- **Takip:** M-1006 için sipariş planlanmalı. Stok adedi (302 RL) diğerlerine göre yüksek olsa da kapsama 6.4 gün.\n\n**Eksik veriler:**\n- Eşik (minimum/emniyet stok) değerleri, açık siparişler ve tedarikçi teslim süreleri elimizde yok. Bu yüzden tükenme tarihleri hesaplanmadı; yalnızca araçtan gelen kapsama günleri verildi.\n- Tedarikçi kayıtlarını sorgulamak için tedarikçi adı gerekiyor. Bu bilgiyi paylaşırsan teslim performansını da kontrol edebilirim.\n\n```iddialar\n[{\"modul\": \"stok_durumu\", \"filtre\": {\"depo\": \"ANK-01\", \"durum\": \"KRITIK\"}, \"deger\": 5}]\n```",
+      "arac_cagrilari": [],
+      "giren_jeton": 2327,
+      "cikan_jeton": 2183,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 11130
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "etiket": "GERÇEK SAĞLAYICI KAYDI",
+  "kayitlar": [
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "veri_getir",
+          "girdi": {},
+          "kimlik": "arac-1"
+        }
+      ],
+      "giren_jeton": 911,
+      "cikan_jeton": 199,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 1785
+    },
+    {
+      "metin": "",
+      "arac_cagrilari": [
+        {
+          "ad": "dosya_yaz",
+          "girdi": {
+            "yol": "sonuc.txt",
+            "icerik": "5"
+          },
+          "kimlik": "arac-2"
+        }
+      ],
+      "giren_jeton": 1030,
+      "cikan_jeton": 350,
+      "model": "claude-haiku-5-5",
+      "gecikme_ms": 3644
+    }
+  ]
+}

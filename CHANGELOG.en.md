@@ -5,6 +5,10 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-12 (Kule Pro 0.8.1, number sync)
+
+Version number is now 0.8.1; no feature change. Single run: Kule Python **732** tests (2 expected failures, 0 failed), agent orchestrator 120, Node 166; total 1018. Earlier 730 / 1016 figures on the pages and the older evidence-package counts (603 / 146 / 869) are corrected to this run. Source: `kule-yayin-temiz` commit `c68daa3`. No push, no tag.
+
 ## 2026-11-12 (number refresh, no version number)
 
 No Kule code change. Publication numbers were refreshed from the 2026-11-12 run: Kule Python 730 tests (0 failed), Node 166 tests, orchestrator 120 tests.

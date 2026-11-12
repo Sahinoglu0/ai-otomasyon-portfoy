@@ -5,6 +5,10 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-12 (Kule Pro 0.8.1, sayı eşitleme)
+
+Sürüm numarası 0.8.1 oldu; özellik değişikliği yok. Tek koşu: Kule Python **732** test (2 beklenen başarısızlık, 0 başarısız), ajan orkestratörü 120, Node 166; toplam 1018. Önceki sayfalardaki 730 / 1016 değerleri ve kanıt paketindeki eski sayılar (603 / 146 / 869) bu koşuya göre düzeltildi. Kaynak: `kule-yayin-temiz` commit `c68daa3`. Push ve etiket yok.
+
 ## 2026-11-12 (sayı yenileme, sürüm numarası yok)
 
 Kule kodu değişmedi. Yayın sayıları 2026-11-12 koşusuna göre güncellendi: Kule Python 730 test (0 başarısız), Node 166 test, orkestratör 120 test.

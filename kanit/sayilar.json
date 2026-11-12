@@ -2,14 +2,14 @@
   "sema": "kanit-sayilar/1",
   "kaynak": "kosu",
   "kosu_yeri": "yerel",
-  "kosu_tarihi_utc": "2026-11-12T11:46:55Z",
-  "sure_sn": 109.8,
+  "kosu_tarihi_utc": "2026-11-12T19:05:55Z",
+  "sure_sn": 163.3,
   "ortam": {
     "python": "3.14.7",
     "node": "v26.13.0"
   },
   "surum": {
-    "git_sha_kisa": "e3873d9",
+    "git_sha_kisa": "c68daa3",
     "kaynak_temiz": true
   },
   "kumeler": [
@@ -17,12 +17,12 @@
       "kimlik": "kule_python",
       "ad_tr": "Kule · Python testleri",
       "ad_en": "Kule · Python tests",
-      "toplam": 603,
-      "gecti": 601,
+      "toplam": 732,
+      "gecti": 732,
       "basarisiz": 0,
       "atlandi": 0,
       "beklenen_basarisiz": 2,
-      "sure_sn": 72.2,
+      "sure_sn": 113.7,
       "atlama_nedeni": null
     },
     {
@@ -33,18 +33,18 @@
       "gecti": 120,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 34.6,
+      "sure_sn": 42.1,
       "atlama_nedeni": null
     },
     {
       "kimlik": "kule_node",
       "ad_tr": "Kule paneli · Node testleri",
       "ad_en": "Kule panel · Node tests",
-      "toplam": 146,
-      "gecti": 146,
+      "toplam": 166,
+      "gecti": 166,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 3.0,
+      "sure_sn": 3.9,
       "atlama_nedeni": null
     }
   ]

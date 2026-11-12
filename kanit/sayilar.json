@@ -2,15 +2,15 @@
   "sema": "kanit-sayilar/1",
   "kaynak": "kosu",
   "kosu_yeri": "yerel",
-  "kosu_tarihi_utc": "2026-11-05T12:02:29Z",
-  "sure_sn": 277.6,
+  "kosu_tarihi_utc": "2026-11-12T11:46:55Z",
+  "sure_sn": 109.8,
   "ortam": {
     "python": "3.14.7",
     "node": "v26.13.0"
   },
   "surum": {
     "git_sha_kisa": "e3873d9",
-    "kaynak_temiz": false
+    "kaynak_temiz": true
   },
   "kumeler": [
     {
@@ -22,7 +22,7 @@
       "basarisiz": 0,
       "atlandi": 0,
       "beklenen_basarisiz": 2,
-      "sure_sn": 185.3,
+      "sure_sn": 72.2,
       "atlama_nedeni": null
     },
     {
@@ -33,7 +33,7 @@
       "gecti": 120,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 83.9,
+      "sure_sn": 34.6,
       "atlama_nedeni": null
     },
     {
@@ -44,7 +44,7 @@
       "gecti": 146,
       "basarisiz": 0,
       "atlandi": 0,
-      "sure_sn": 4.5,
+      "sure_sn": 3.0,
       "atlama_nedeni": null
     }
   ]

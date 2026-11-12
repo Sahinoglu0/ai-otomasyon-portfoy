@@ -1,14 +1,14 @@
 {
   "sema": "kanit-paket/1",
-  "olusturma_utc": "2026-11-05T12:06:40Z",
+  "olusturma_utc": "2026-11-12T11:46:55Z",
   "git_sha_kisa": "e3873d9",
   "manifest": "SHA256SUMS",
   "arsiv": null,
   "dosyalar": [
     {
       "yol": "sayilar.json",
-      "sha256": "d854d0a77b1d569587d1bc859b9a17b60002b06789b9993be9982ad67fb00d89",
-      "bayt": 1151,
+      "sha256": "d160030df257f3eea43c9ff2c43290e29196bfc41d7727b29eef33f5d7e0d8a7",
+      "bayt": 1149,
       "kaynak": "kosu",
       "aciklama_tr": "Test sayıları (koşudan).",
       "aciklama_en": "Test counts (from the run)."
@@ -55,23 +55,23 @@
     },
     {
       "yol": "test-katalogu.tr.md",
-      "sha256": "c286e43b04f4defb1ab29deda0799619849420c27d8e0c186b529126393e99b5",
-      "bayt": 41116,
+      "sha256": "385c7e9d9dcbb620729b46f00dc7cef84f6400030644d3d0dff3952d11b8c4d1",
+      "bayt": 71003,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (Türkçe).",
       "aciklama_en": "Test behaviour catalogue (Turkish)."
     },
     {
       "yol": "test-katalogu.en.md",
-      "sha256": "140e7f4a98ba11541cacd206335d1b722f3220fc50e26b3d546e3bd60f5551c6",
-      "bayt": 42955,
+      "sha256": "15d7652fd419788bff2cab8728c4db9217880b6b678ef39748653017c20e8a3c",
+      "bayt": 73177,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (İngilizce).",
       "aciklama_en": "Test behaviour catalogue (English)."
     },
     {
       "yol": "test-ozeti.json",
-      "sha256": "76cd4a9aa236365bc61657f753f1c007a28b777519ba087a815de6de1e9dbca6",
+      "sha256": "cd33ffd4e95182df9c7093b5ca0d0d5c2650225374d81b64a2d478b0a46ff3fc",
       "bayt": 969,
       "kaynak": "kosu",
       "aciklama_tr": "Test koşusu özeti: sayı, süre, sürüm.",

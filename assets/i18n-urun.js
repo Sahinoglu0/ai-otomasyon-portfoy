@@ -137,10 +137,10 @@ window.I18N_EK = {
   "Testler": "Tests", "Gerçek model deneyi": "Real-model run", "Örneklem": "Sample size",
   "Ajan orkestratörü için 120 birim testi var. Son koşu 2 Kasım 2026 tarihli ve 0 başarısız test içeriyor.":
     "The agent orchestrator has 120 unit tests. The latest run is dated 2 November 2026 and had 0 failures.",
-  "Ajan orkestratörünün değerlendirme seti 46 vakadan oluşur. Kasetten oynatılır, bu yüzden model kalitesini ölçmez. Ölçüt, kontrol ve kapsam vakalarının 41'i de geçti (41/41); 5 bilinen açık vaka gözlendi ve kapanmadı.":
-    "The orchestrator's evaluation set has 46 cases. It is replayed from recorded tapes, so it does not measure model quality. All 41 criteria, check and scope cases passed (41/41); 5 known-gap cases were observed and are not closed.",
-  "claude-haiku-5-5 ile planlanan 40 koşudan 38'i kaydedildi; 37'si tamamlandı, 1'i kota nedeniyle kesildi, 2'si yapılmadı. Soruşturma akışında 20 koşunun 16'sı kabul edildi (%80; %95 Wilson aralığı 0,584–0,919). Ölçümler ön-kayıtlıdır; önceden yazılan hedefler vaat değildir ve sonuç ne çıkarsa o yayımlanır.":
-    "With claude-haiku-5-5, 38 of 40 planned runs were recorded: 37 completed, 1 was cut off by a quota, and 2 were not run. In the investigation flow, 16 of 20 runs were accepted (80%; 95% Wilson interval 0.584–0.919). The measurements were pre-registered; the targets written in advance are not promises, and the result is published whatever it turns out to be.",
+  "Ajan orkestratörünün değerlendirme seti 123 vakadan oluşur. Kasetten oynatılır, bu yüzden model kalitesini ölçmez. Ölçüt, kontrol ve kapsam vakalarının 111'i de geçti (111/111); 12 bilinen açık vakanın 12'si gözlendi ve kapanmadı.":
+    "The orchestrator's evaluation set has 123 cases. It is replayed from recorded tapes, so it does not measure model quality. All 111 criteria, check and scope cases passed (111/111); all 12 known-gap cases were observed and are not closed.",
+  "claude-haiku-5-5 ile planlanan 40 koşudan 38'i kaydedildi; 37'si tamamlandı, 1'i kota nedeniyle kesildi, 2'si yapılmadı. Soruşturma akışında 20 koşunun 16'sı kabul edildi (%80; %95 Wilson aralığı 0,584–0,919). Kaynak: 22 Ekim 2026 ön-kaydı ve bu turun kayıtları (o1/ozet.json, on-kayit.md); bu ham kayıtlar kanit/ paketinde yok. Bu sayılar yalnızca o turu kapsar; sonraki parafraz denetimi ölçümü bu kutuda sayılmaz ve ölçülmüş bir sonuç olarak sunulmaz. Ölçümler ön-kayıtlıdır; önceden yazılan hedefler vaat değildir ve sonuç ne çıkarsa o yayımlanır.":
+    "With claude-haiku-5-5, 38 of 40 planned runs were recorded: 37 completed, 1 was cut off by a quota, and 2 were not run. In the investigation flow, 16 of 20 runs were accepted (80%; 95% Wilson interval 0.584–0.919). Source: the 22 October 2026 pre-registration and this round's records (o1/ozet.json, on-kayit.md); these raw records are not in the kanit/ package. These figures cover only that round; a later paraphrase-check measurement is not counted in this box and is not presented as a measured result. The measurements were pre-registered; the targets written in advance are not promises, and the result is published whatever it turns out to be.",
   "Bu örneklem küçüktür (soruşturma 20 koşu). Bir model kalitesi iddiası değildir.":
     "The sample is small (20 investigation runs). This is not a claim about model quality.",
   "İz görüntüleyici: ELLE YAZILMIŞ KAYIT rozeti, koşu özeti, adım bütçesi ve ajan şeridindeki zaman çizelgesi.":
@@ -193,8 +193,8 @@ window.I18N_EK = {
   "01 · ürün": "01 · product", "02 · demo": "02 · demo", "03 · izler": "03 · traces", "04 · kanıt": "04 · evidence",
   "Ne yaptığı, nasıl çalıştığı, modülleri, neyin ölçüldüğü ve nerede durduğu.":
     "What it does, how it works, its modules, what was measured and where it stops.",
-  "Eval kasetten oynatılır; model kalitesini ölçmez. 5 bilinen açık vaka gözlendi ve kapanmadı.":
-    "The eval is replayed from tapes; it does not measure model quality. 5 known-gap cases were observed and are not closed.",
+  "Eval kasetten oynatılır; model kalitesini ölçmez. 12 bilinen açık vaka gözlendi ve kapanmadı.":
+    "The eval is replayed from tapes; it does not measure model quality. 12 known-gap cases were observed and are not closed.",
 
   /* güncel geliştirme (0.7.0 sonrası) bölümü */
   "güncel": "current",

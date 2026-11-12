@@ -44,7 +44,7 @@ Every trace in the viewer carries a badge that states its source (hand-written r
 
 ### Morning report screen
 
-Every image below was taken with **synthetic data**: Kule Pro's own trial package (invented files that imitate the SAP export format) and hand-made fake files. There is no data from a real company or a real SAP system, and the "SAMPLE DATA · SYNTHETIC" badge (shown in Turkish as "ÖRNEK VERİ · SENTETİK") is visible in each image. They are crops taken in Chrome at 980 px width, in the Turkish interface. The screen was not tried with real SAP output.
+Every image below was taken with **synthetic data**: Kule Pro's own trial package (invented files that imitate the SAP export format) and hand-made fake files. There is no data from a real company or a real SAP system, and the "SAMPLE DATA · SYNTHETIC" badge (shown in Turkish as `ÖRNEK VERİ · SENTETİK`) is visible in each image. They are crops taken in Chrome at 980 px width, in the Turkish interface. The screen was not tried with real SAP output.
 
 | Image | What it shows |
 |---|---|
@@ -134,7 +134,7 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** The latest verification was run locally on 2026-11-12: from a clean archive of `cv-portfoy-kule` commit **e3873d9** (not a working copy); Python 3.14.7, Node v26.13.0 (numbers: [`kanit/sayilar.json`](kanit/sayilar.json)). Kule Python tests (`python -m unittest discover -s tests`): 603 tests, 601 passed, 0 failed, 2 expected failures (two targets not yet implemented: the same MBLNR in two different years is two separate documents; the same EBELN/EBELP under different company codes is a separate line item). Agent orchestrator: 120 passed (run from a working copy that is not a git repository, so no version ID). Kule panel (Node): 146 passed, 0 skipped (with the KULE-E6 evidence files in place; without them one test is skipped). The first 0.7.0 run was done on 2026-11-05 with the same numbers; that run used a working copy containing an uncommitted document. The earlier 0.7.0 evidence page showed 559 Python tests; the difference comes from additions after 0.7.0. The older 569 figure is from the KULE-F1 report.
+**Tests.** The latest verification was run locally on 2026-11-12: from a clean archive of `cv-portfoy-kule` commit **03d2fe7** (not a working copy); Python 3.14.7, Node v26.13.0 (numbers: [`kanit/sayilar.json`](kanit/sayilar.json)). For Kule, 730 Python tests pass; on the Node side 166 tests, 166 pass, 0 skipped; the orchestrator has 120 unit tests. Python run (`python -m unittest discover -s tests`): 730 tests, 0 failed; 2 of them are expected failures (two targets not yet implemented). Agent orchestrator: 120 passed. Node tests: 166 passed, 0 skipped. The first 0.7.0 run was done on 2026-11-05; that run used a working copy containing an uncommitted document. The earlier 0.7.0 evidence page showed fewer tests; the difference comes from additions after 0.7.0. The older 569 figure is from the KULE-F1 report.
 
 **Post-0.7.0 development (not published, no version number).** The following exist only in the private `cv-portfoy-kule` repository, were tested with synthetic data, and **were not verified with real SAP data**:
 

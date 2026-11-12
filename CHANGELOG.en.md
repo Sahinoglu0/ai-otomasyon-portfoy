@@ -5,6 +5,13 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-12 (number refresh, no version number)
+
+No Kule code change. Publication numbers were refreshed from the 2026-11-12 run: Kule Python 730 tests (0 failed), Node 166 tests, orchestrator 120 tests.
+
+- The evidence manifest (`kanit/SHA256SUMS`) was regenerated from the LF bytes in git; `.gitattributes` now keeps every file under `kanit/**` as LF.
+- Strong generalizing phrasings were removed; source report names are written per section.
+
 ## 2026-11-05 (development note, no version number)
 
 In this publish copy the Kule code stays at 0.7.0. The items below exist only in the private `cv-portfoy-kule` development repository. They are not released and were not tried on real SAP data:

@@ -5,6 +5,13 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-12 (sayı yenileme, sürüm numarası yok)
+
+Kule kodu değişmedi. Yayın sayıları 2026-11-12 koşusuna göre güncellendi: Kule Python 730 test (0 başarısız), Node 166 test, orkestratör 120 test.
+
+- Kanıt manifesti (`kanit/SHA256SUMS`) git'teki LF baytlarından yeniden üretildi; `.gitattributes` artık `kanit/**` altındaki tüm dosyaları LF tutar.
+- Güçlü genelleme ifadeleri kaldırıldı; kaynak rapor adları bölüm bazında yazılı.
+
 ## 2026-11-05 (geliştirme sürümü notu, sürüm numarası yok)
 
 Bu yayın kopyasında Kule kodu 0.7.0 olarak kaldı. Aşağıdakiler yalnız özel `cv-portfoy-kule` geliştirme deposundadır, yayınlanmadı, gerçek SAP verisiyle denenmedi:
@@ -20,7 +27,7 @@ Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kop
 
 ### Eklenenler
 
-- **Gerçek açık veri ölçümleri:** README'ye (Türkçe ve İngilizce) BPI Challenge 2019, Berti simüle paketi, Zenodo kil tuğla OEE ve M5 ölçümleri eklendi. Her sayının yanında kaynak rapor adı yazılı. Bütün sonuçlar "kural uyuşması" ya da "aday bulgu" olarak etiketlendi; doğruluk iddiası yok.
+- **Gerçek açık veri ölçümleri:** README'ye (Türkçe ve İngilizce) BPI Challenge 2019, Berti simüle paketi, Zenodo kil tuğla OEE ve M5 ölçümleri eklendi. Sayıların kaynak rapor adları ilgili bölümlerde yazılı. Bütün sonuçlar "kural uyuşması" ya da "aday bulgu" olarak etiketlendi; doğruluk iddiası yok.
   - `uclu_eslestirme`: BPI 2019 günlüğünde 984 aday bulgu, 5,3 sn, tepe bellek 537 MB (KULE-V1-ezgi).
   - `siparis_anomali`: BPI 2019'da 0 bulgu, ama altı kuralın verisi olmadığı için değerlendirilemedi (KULE-V1-ezgi). Berti PO/GR'de enjekte sapmaların 90/90'ı yakalandı, temiz 15 kalemde sahte bulgu 0 (KULE-V4-zeynep-3).
   - `stok_durumu`: Berti'de 88 karşılaştırılabilir çiftte %96,6 kural uyuşması (KULE-V2-zeynep).

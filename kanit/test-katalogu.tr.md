@@ -4,7 +4,7 @@ Bu katalog, otomatik testlerin neyi doğruladığını kısa cümlelerle anlatı
 
 Toplam 869 test (0.7.0, koşu 2026-11-05): Kule çekirdeği 603 (601 geçti, 2 beklenen başarısızlık), Ajan orkestrasyonu 120, Kule arayüzü (panel) 146. Python 3.14.7 ve Node v26.13.0 ile koşuldu.
 
-Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde bazı maddeler, aynı davranışı sınayan birden çok teste karşılık gelir.
+Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar.
 
 ## Kule çekirdeği
 
@@ -459,7 +459,7 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde b
 - Beklenen bulguların hepsi birebir yakalanır.
 - Deneme belgesi her beklenen bulguyu listeler.
 - Paketteki dosya biçimleri birbirinden farklıdır ve hepsi tanınır.
-- Depodaki deneme dosyaları üreticinin çıktısıyla bayt bayt aynıdır.
+- Depodaki deneme dosyaları üreticinin çıktısıyla aynı içeriktedir.
 - Eksi işaretli 102 iadesi pozitif miktarla da kabul edilir.
 - Paketteki her dosya örnek veri etiketi taşır.
 - Hiçbir satır reddedilmez ve veri örnek olarak sayılır.
@@ -648,6 +648,14 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde b
 - Satır sınırı eşiği aşılınca uyarı verilir.
 - Eşlemedeki etiket listesi doğrulanır.
 - Örnek dosya sayısı ve etiketi doğrudur.
+- Aynı sipariş kalemi iki farklı şirketten gelirse ikinci şirketin kalemi tekrar olarak reddedilir.
+- Aynı belge numarası farklı yıllarda iki kez yazılırsa uyarlama iki satırı da yazar; doğrulama ilkini kabul eder, ikincisini tekrar olarak reddeder.
+- Birden fazla şirketi olan hedef dosyada iki kalem de kabul edilir.
+- Birden fazla yılı olan hedef dosyada iki belge de kabul edilir.
+- Eşleme şablonunda bir sütun eksikse hata mesajı eksik sütunun adını söyler.
+- Şablondaki tablo ve sütun adları doğru kaynakla eşlenir; birincil kaynakla doğrulanamayan alanlar açıkça işaretli kalır.
+- Kullanıcı kendi başlığını etiketle bağladığında sütun doğru alana eşlenir ve sayılar doğru okunur.
+- Ondalık virgüllü dosyada üç basamaklı nokta değerleri binlik sayılmaz; çevrilemeyen değer olarak bildirilir.
 
 ### SAP kodlama ve ayraçları
 
@@ -861,17 +869,6 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde b
 - Gerçek ad tam geçmese bile yalnızca bir parçası geçiyorsa o parça da değiştirilir.
 - Serbest metindeki ad, tedarikçi adı hücresindeki sahte değerle aynı kalır.
 
-### SAP dosya biçimleri
-
-- Aynı sipariş kalemi iki farklı şirketten gelirse ikinci şirketin kalemi tekrar olarak reddedilir.
-- Aynı belge numarası farklı yıllarda iki kez yazılırsa uyarlama iki satırı da yazar; doğrulama ilkini kabul eder, ikincisini tekrar olarak reddeder.
-- Birden fazla şirketi olan hedef dosyada iki kalem de kabul edilir.
-- Birden fazla yılı olan hedef dosyada iki belge de kabul edilir.
-- Eşleme şablonunda bir sütun eksikse hata mesajı eksik sütunun adını söyler.
-- Şablondaki tablo ve sütun adları doğru kaynakla eşlenir; birincil kaynakla doğrulanamayan alanlar açıkça işaretli kalır.
-- Kullanıcı kendi başlığını etiketle bağladığında sütun doğru alana eşlenir ve sayılar doğru okunur.
-- Ondalık virgüllü dosyada üç basamaklı nokta değerleri binlik sayılmaz; çevrilemeyen değer olarak bildirilir.
-
 ### Sayı biçimi
 
 - Dosya seçilen biçimle uyuşmuyorsa yanlış okunacak değerleri gösteren bir uyarı üretilir; değerler değişmez.
@@ -937,10 +934,6 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde b
 - Kuralı anlatan, yer tutucu yol ve ad içeren bir satır sızıntı sayılmaz.
 - Yer tutucu yolun yanında gerçek bir yol varsa, gerçek olan yakalanır.
 - Yalnızca yer tutucu bir yol içeren kural açıklaması geçer.
-
-### Deneme paketi
-
-- Depodaki dosyaların içeriği üreticinin verdikleriyle aynıdır.
 
 ## Ajan orkestrasyonu
 
@@ -1246,7 +1239,8 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar. Panel bölümünde b
 - Excel dosyası için "önizleme yapılmaz" metni kalktı; yalnız belirsiz metin hücreleri sorulur.
 - Dar ekranda yatay kaydırılan tablolar klavyeyle odaklanır ve ekran okuyucuya adlarıyla duyurulur.
 - Dolu veride değerler ölçüm kayıtlarından alınır ve Türkçe sayı biçiminde gösterilir.
-- Rastgele içerikli, kapanmamış satır etiketleri çok olan büyük dosya (6 ve 20 MB) bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.
+- Rastgele içerikli, kapanmamış satır etiketleri çok olan 6 MB'lık dosya bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.
+- Rastgele içerikli, kapanmamış satır etiketleri çok olan 20 MB'lık dosya bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.
 - Girdi, seçim ve açılır kutu kenarlıkları aynı kenarlık rengini kullanır.
 - Tek satırda çok sayıda kapanmamış hücre etiketi olsa bile okuma bir saniye içinde sonuç ya da net hata verir.
 - Elle girilen süre "Kullanıcı beyanı", Kule kartları "Kule ölçümü" rozetiyle ayrı ayrı gösterilir.

@@ -4,7 +4,7 @@ This catalog states, in short sentences, what the automated tests check. Each it
 
 Total 869 tests (0.7.0, run 2026-11-05): Kule core 603 (601 passed, 2 expected failures), Agent orchestration 120, Kule interface (panel) 146. Run on Python 3.14.7 and Node v26.13.0.
 
-This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some items correspond to more than one test that checks the same behaviour.
+This catalogue covers all 869 tests of the 0.7.0 run.
 
 ## Kule core
 
@@ -459,7 +459,7 @@ This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some
 - Every expected finding is caught exactly.
 - The trial document lists every expected finding.
 - The file formats in the package differ from each other and are all recognized.
-- The trial files in the repository are byte for byte identical to the generator output.
+- The trial files in the repository have the same content as the generator output.
 - A negative 102 return is also accepted with a positive quantity.
 - Every file in the package carries a sample-data label.
 - No row is rejected and the data is counted as sample data.
@@ -648,6 +648,14 @@ This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some
 - A warning is given when the row limit threshold is passed.
 - The label list in the mapping is validated.
 - The number of sample files and their label are correct.
+- If the same order line comes from two companies, the second company's line is rejected as a duplicate.
+- If the same document number appears in two different years, the adaptation writes both rows; validation accepts the first and rejects the second as a duplicate.
+- In a target file with several companies, both lines are accepted.
+- In a target file spanning several years, both documents are accepted.
+- When a mapping template has a missing column, the error message names that column.
+- Table and column names in the template map to the correct source, and fields that could not be verified against the primary source stay clearly marked.
+- When the user links their own header through a label, the column maps to the right field and numbers are read correctly.
+- In a file with decimal commas, dot values with three digits are not read as thousands; they are reported as untranslatable.
 
 ### SAP encodings and separators
 
@@ -861,17 +869,6 @@ This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some
 - Even when a real name appears only in part, that part is replaced too.
 - A name in free text keeps the same placeholder value as in the supplier name cell.
 
-### SAP file formats
-
-- If the same order line comes from two companies, the second company's line is rejected as a duplicate.
-- If the same document number appears in two different years, the adaptation writes both rows; validation accepts the first and rejects the second as a duplicate.
-- In a target file with several companies, both lines are accepted.
-- In a target file spanning several years, both documents are accepted.
-- When a mapping template has a missing column, the error message names that column.
-- Table and column names in the template map to the correct source, and fields that could not be verified against the primary source stay clearly marked.
-- When the user links their own header through a label, the column maps to the right field and numbers are read correctly.
-- In a file with decimal commas, dot values with three digits are not read as thousands; they are reported as untranslatable.
-
 ### Number format
 
 - When a file does not match the chosen number format, a warning shows the values that would be misread; the values are not changed.
@@ -937,10 +934,6 @@ This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some
 - A line that explains the rule using placeholder paths and names is not counted as a leak.
 - If a real path sits next to a placeholder path, the real one is caught.
 - A rule description containing only a placeholder path passes.
-
-### Trial package
-
-- The files in the store are identical in content to what the producer supplied.
 
 ## Agent orchestration
 
@@ -1246,7 +1239,8 @@ This catalogue covers all 869 tests of the 0.7.0 run. In the panel section, some
 - The "no preview for Excel" message is gone; only ambiguous text cells are asked about.
 - Tables that scroll sideways on narrow screens can be focused with the keyboard and are announced by name to screen readers.
 - With data, values come from the measurement records and are shown in Turkish number format.
-- A large file of random content with many unclosed row tags (6 MB and 20 MB) returns a result or a clear error within one second, without tripping the compression-ratio limit.
+- A 6 MB file of random content with many unclosed row tags returns a result or a clear error within one second, without tripping the compression-ratio limit.
+- A 20 MB file of random content with many unclosed row tags returns a result or a clear error within one second, without tripping the compression-ratio limit.
 - Input, choice and dropdown borders all use the same border colour.
 - Even with many unclosed cell tags in a single row, reading returns a result or a clear error within one second.
 - Manually entered times are labelled "User-reported" and Kule cards are labelled "Kule measurement", each with its own badge.

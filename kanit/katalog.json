@@ -1833,8 +1833,8 @@
           "kaynak": "kosu"
         },
         {
-          "tr": "Depodaki deneme dosyaları üreticinin çıktısıyla bayt bayt aynıdır.",
-          "en": "The trial files in the repository are byte for byte identical to the generator output.",
+          "tr": "Depodaki deneme dosyaları üreticinin çıktısıyla aynı içeriktedir.",
+          "en": "The trial files in the repository have the same content as the generator output.",
           "kaynak": "kosu"
         },
         {
@@ -2594,6 +2594,46 @@
           "tr": "Örnek dosya sayısı ve etiketi doğrudur.",
           "en": "The number of sample files and their label are correct.",
           "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı sipariş kalemi iki farklı şirketten gelirse ikinci şirketin kalemi tekrar olarak reddedilir.",
+          "en": "If the same order line comes from two companies, the second company's line is rejected as a duplicate.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı belge numarası farklı yıllarda iki kez yazılırsa uyarlama iki satırı da yazar; doğrulama ilkini kabul eder, ikincisini tekrar olarak reddeder.",
+          "en": "If the same document number appears in two different years, the adaptation writes both rows; validation accepts the first and rejects the second as a duplicate.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Birden fazla şirketi olan hedef dosyada iki kalem de kabul edilir.",
+          "en": "In a target file with several companies, both lines are accepted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Birden fazla yılı olan hedef dosyada iki belge de kabul edilir.",
+          "en": "In a target file spanning several years, both documents are accepted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eşleme şablonunda bir sütun eksikse hata mesajı eksik sütunun adını söyler.",
+          "en": "When a mapping template has a missing column, the error message names that column.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Şablondaki tablo ve sütun adları doğru kaynakla eşlenir; birincil kaynakla doğrulanamayan alanlar açıkça işaretli kalır.",
+          "en": "Table and column names in the template map to the correct source, and fields that could not be verified against the primary source stay clearly marked.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kullanıcı kendi başlığını etiketle bağladığında sütun doğru alana eşlenir ve sayılar doğru okunur.",
+          "en": "When the user links their own header through a label, the column maps to the right field and numbers are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ondalık virgüllü dosyada üç basamaklı nokta değerleri binlik sayılmaz; çevrilemeyen değer olarak bildirilir.",
+          "en": "In a file with decimal commas, dot values with three digits are not read as thousands; they are reported as untranslatable.",
+          "kaynak": "kosu"
         }
       ]
     },
@@ -2796,6 +2836,1046 @@
         {
           "tr": "Tam SAP setiyle FBL1N mutabakatı ve kapsama analizi çalışır.",
           "en": "With the full SAP set, FBL1N reconciliation and the coverage analysis run.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-csv-row-selection",
+      "ad_tr": "CSV satır seçimi",
+      "ad_en": "CSV row selection",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aday yöntem naiften iyiyse son dört hafta ortalaması hiç hesaplanmaz.",
+          "en": "When the candidate beats the naive method, the four-week average is not computed at all.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aday ve son dört hafta ortalaması naiften kötüyse mevsimsel naif yöntem kullanılır ve gerekçesi yazılır.",
+          "en": "If the candidate and the four-week average are both worse than the naive method, the seasonal naive method is used and the reason is recorded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aday naiften kötüyken son dört hafta ortalaması naiften iyiyse o yöntem seçilir ve hatası gerekçede yer alır.",
+          "en": "When the candidate is worse than the naive method but the four-week average is better, the four-week average is chosen and its error is stated in the reason.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Son dört hafta ortalamasının geriye dönük hatası, sabit bir seride gerçek pencere üzerinde sıfırdır.",
+          "en": "The backtested error of the four-week average is zero on a constant series over the real window.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Son dört hafta ortalaması doğru hesaplanır; tek değerli seride o değerin kendisi döner.",
+          "en": "The four-week average is computed correctly; with a single value it returns that value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Son dört hafta ortalaması ufuk boyunca sabit tahmin verir ve pozitif bir sapma üretir.",
+          "en": "The four-week average forecast is flat across the horizon and yields a positive spread.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Akış okuyucu da aynı kuralı uygular: tırnak içinde satır sonu varsa hata, satır numarasıyla birlikte bildirilir.",
+          "en": "The streaming reader applies the same rule: a line break inside quotes is reported as an error with its line number.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içinde biten çok satırlı kayıttan sonra gelen yorum satırı atlanır ve kayıt sayısı bozulmaz.",
+          "en": "A comment line after a multi-line quoted record is skipped and the record count stays intact.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içinde kalan '#' ile başlayan satır sessizce düşmez; hata dosya adı ve satır numarasıyla bildirilir.",
+          "en": "A '#' line trapped inside an open quote is not silently dropped; the error names the file and line.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Noktalı virgül ayraçlı dosyada tırnaksız inç işareti değerin parçası olarak korunur.",
+          "en": "In a semicolon-delimited file, an unquoted inch mark is kept as part of the value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnaksız inç işareti taşıyan meşru bir dosya reddedilmez; sonraki '#' satırı yorum sayılır.",
+          "en": "A legitimate file with an unquoted inch mark is not rejected, and a later '#' line is treated as a comment.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kapanmamış tırnak kayıt kaybına yol açmaz; açık bir 'kapanmamış tırnak' hatası verilir.",
+          "en": "An unclosed quote never causes silent record loss; a clear 'unclosed quote' error is raised.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Araya '#' satırı girse de kapanmamış tırnak net bir hata verir.",
+          "en": "Even when a '#' line sits in between, an unclosed quote still produces a clear error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Akış okuyucuda kapanmamış tırnak da açık bir hata olarak bildirilir.",
+          "en": "In the streaming reader, an unclosed quote is also reported as a clear error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içinde iki satıra yayılan alan kapandığında tek kayıt olarak birleşir.",
+          "en": "A quoted field spanning two lines is merged into a single record once the quote closes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içindeki çift tırnak kaçışı tek tırnağa çevrilir.",
+          "en": "A doubled quote inside a quoted field is unescaped to a single quote.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-invoices-and-rbkp-rseg-documents",
+      "ad_tr": "Fatura ve RBKP/RSEG belgeleri",
+      "ad_en": "Invoices and RBKP/RSEG documents",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Alacak dekontu fatura olarak alınmaz ve süzülen kayıtlar arasında sayılır.",
+          "en": "Credit memos are not imported as invoices and are counted among the filtered-out records.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Windows-1254 kodlamalı fatura dosyası okunur ve kodlama için uyarı verilir.",
+          "en": "An invoice file in Windows-1254 encoding is read and a warning about the encoding is issued.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk tutar tahmin edilmez; o satır tutarsız diye reddedilir, diğer satır yüklenir.",
+          "en": "A malformed amount is never guessed; that row is rejected as inconsistent and the other row loads.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yüklenen fatura kayıtları dışa aktarıldığında aynı fatura numaralarını taşıyan dosya çıkar.",
+          "en": "Invoice records exported after loading produce a file carrying the same invoice numbers.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe, İngilizce ve teknik başlıklı fatura dosyaları aynı tabloyu üretir.",
+          "en": "Invoice files with Turkish, English, or technical headers produce the same table.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir girdinin yerine geçen alternatif dosya varsa o girdi eksik sayılmaz.",
+          "en": "An input is not reported missing when an alternative file stands in for it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Üçlü eşleştirmede çift fatura, fatura tablosundan bulunur.",
+          "en": "In three-way matching, duplicate invoices are found from the invoice table.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Fiyat sapması tablodan bulunur ve alacak dekontu bu bulguya karışmaz.",
+          "en": "Price variances are found from the table, and credit memos do not mix into that finding.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veride metin fatura dosyası ile tablo fatura dosyası aynı bulguları verir.",
+          "en": "On sample data, the text invoice file and the table invoice file yield the same findings.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sıfır miktarlı fatura satırı hata olur; dosyanın geri kalanı yine işlenir.",
+          "en": "A zero-quantity invoice line becomes an error while the rest of the file is still processed.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-uninterpretable-results",
+      "ad_tr": "Yorumlanamayan sonuçlar",
+      "ad_en": "Uninterpretable results",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Adaptör, kaynakta olmayan alanları YOK satırıyla bildirir; bu alanlara bağlı kurallar yorumlanamaz sayılır.",
+          "en": "The adapter reports fields missing from the source in a NONE line; rules that depend on them are marked uninterpretable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eski, ödemesiz ve girişsiz fatura gerçek aday olarak kalır.",
+          "en": "An old invoice with no payment and no goods receipt remains a genuine candidate.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kısa bir logda zaman penceresi uygulanmaz; bulgular kesilmeden çıkar.",
+          "en": "No time window is applied to a short log; findings are not cut.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Log sonuna yakın, pencerenin sağ ucunda kesilmiş fatura dışlanır ve dışlama sayılır.",
+          "en": "An invoice cut at the right edge of the window near the end of the log is excluded and the exclusion is counted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödenmiş ya da girişi olan kalem pencere içinde kalır; ödenmiş ama girişsiz fatura yine gerçek aday olur.",
+          "en": "A paid or receipted item stays within the window; a paid but unreceived invoice still becomes a genuine candidate.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kaynakta olmayan alana bağlı kural, nedeniyle birlikte yorumlanamaz sayılır; alanlar tamamsa hiçbir şey dönmez.",
+          "en": "A rule that needs a field absent from the source is marked uninterpretable with its reason; when all fields are present, nothing is returned.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "YOK satırı alan adlarına ayrıştırılır; satır yoksa liste boş kalır.",
+          "en": "The NONE line is parsed into field names; without it the list stays empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sipariş anomalisinde miktar ve plan alanları yoksa ilgili kurallar çalışmaz; sıfır bulgunun temiz anlamına gelmediği uyarılır.",
+          "en": "In order anomaly checks, when quantity and plan fields are missing, the related rules do not run; a warning says zero findings does not mean clean.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Siparişi olmayan mal kabulü, alan ilanından etkilenmeden sipariş dışı kabul olarak bulunur.",
+          "en": "A goods receipt without an order is still flagged as an unordered receipt, unaffected by the field declaration.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Alan ilanı yoksa sipariş anomalisi önceki gibi çalışır: fazla teslimat bulunur ve yorumlanamaz alanı yazılmaz.",
+          "en": "Without a field declaration, the order anomaly check behaves as before: excess deliveries are found and no uninterpretable field is recorded.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Birim fiyat yoksa üçlü eşleştirmede fiyat sapması kuralı çalışmaz ve yorumlanamaz olarak listelenir.",
+          "en": "If unit price is missing, the price variance rule does not run in three-way matching and is listed as uninterpretable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Miktar yoksa miktara dayalı kurallar yorumlanamaz sayılır; birim fiyata dayanan fiyat sapması yine çalışır.",
+          "en": "If quantity is missing, quantity-based rules are marked uninterpretable; the unit-price variance rule still runs.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Alan ilanı olmayan üçlü eşleştirme önceki gibi fazla fatura miktarı ve fiyat sapması bulguları verir.",
+          "en": "Three-way matching without any field declaration still yields the earlier excess invoice quantity and price variance findings.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-stock",
+      "ad_tr": "Stok",
+      "ad_en": "Stock",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Stoğu sıfır ve sevkiyatı olmayan kalem ölü stok sayılmaz; emniyet stoğunun altındaysa kritik, değilse normal olur.",
+          "en": "An item with zero stock and no shipments is not dead stock; it is critical if below safety stock, otherwise normal.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-kule-programming-interface",
+      "ad_tr": "Kule programlama arayüzü",
+      "ad_en": "Kule programming interface",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Veri alımında sayı biçimi yalnız SAP kipinde ve tr ya da en değerleriyle kabul edilir; diğer değerler reddedilir.",
+          "en": "Number-format settings are accepted only in SAP mode and only as tr or en; other values are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içinde kalan '#' satırı içeren veri alımı reddedilir, hiçbir şey yazılmaz ve hata dosya adı ile satır numarasını gösterir.",
+          "en": "A data upload with a '#' line trapped in quotes is rejected, nothing is written, and the error names the file and line.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-decision-records",
+      "ad_tr": "Karar kaydı",
+      "ad_en": "Decision records",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bir tedarikçi çıkarıldığında yerine geçen kalemlerde emniyet stoğu azalmaz ve tedarik süresi dalgalanması havuzun altına düşmez.",
+          "en": "When a supplier is removed, safety stock does not drop on the replacement items, and their lead-time variability does not fall below the pool's.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi bağımlılık tablosu her satırda tutarlıdır, risk sırasıyla azalan dizilir ve ana tedarikçi sayıları kalem sayısına eşittir.",
+          "en": "The supplier dependency table is consistent in every row, sorted by descending risk, and the primary-supplier counts add up to the item count.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarik süresi ACİL kalemin stok bitiş süresini aşarsa uyarı yalnız iç nota yazılır; tedarikçiye giden metinde görünmez.",
+          "en": "When lead time exceeds the stockout horizon of an urgent item, the warning goes only to the internal note, not to the supplier-facing text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi taslağındaki satır sayısı, acil kalem sayısı ve tutar karar çıktısıyla birebir aynıdır; taslakta adres uydurulmaz.",
+          "en": "The line count, urgent-item count, and total in each supplier draft match the decision output exactly; no address is invented.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-measurement",
+      "ad_tr": "Ölçüm",
+      "ad_en": "Measurement",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Komut satırı içe aktarımının süresi kaydedilir ve ölçüm özetinde görünür.",
+          "en": "The command-line import's duration is recorded and appears in the measurement summary.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş veritabanında kapanış süresi ve red oranı hesaplanmaz; sıfır değil boş görünür.",
+          "en": "On an empty database, closure time and rejection rate are not computed; they appear empty, not zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kapanan vakaların medyan süresi ve son yüklemenin red oranı doğru hesaplanır; açılıştan önce kapanmış bozuk kayıt sayılmaz.",
+          "en": "The median time to close cases and the latest upload's rejection rate are computed correctly; a corrupt record closing before it opened is not counted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sentetik olarak etiketlenmiş dosya ve yüklemeler ayrı sayılır; son yüklemenin sentetik durumu bildirilir.",
+          "en": "Files and uploads labeled synthetic are counted separately, and the latest upload's synthetic status is reported.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-pdf-statements",
+      "ad_tr": "PDF ekstre",
+      "ad_en": "PDF statements",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Eksik PDF bağımlılığı mesajı belgelerdeki kurulum komutunu verir; adı karışabilecek bir paketi önermez.",
+          "en": "The missing PDF dependency message gives the install command from the docs and does not suggest a similarly named package.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çekirdek kurulumun bağımlılığı yoktur; PDF desteği isteğe bağlı ek paket olarak tanımlanır.",
+          "en": "The core install has no dependencies; PDF support is defined as an optional extra.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "PDF tutar çözücü sondaki eksi işaretini ve Türkçe ondalık biçimini doğru okur; belirsiz biçimleri reddeder.",
+          "en": "The PDF amount parser reads trailing minus signs and Turkish decimal notation correctly and rejects ambiguous formats.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "PDF kütüphanesi yoksa açık bir kurulum hatası verilir ve veri alımının çekirdeği çalışmaya devam eder.",
+          "en": "If the PDF library is missing, a clear install error is raised and the core import keeps working.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Başarılı PDF okumasından sonra arka planda kalan bir süreç olmaz.",
+          "en": "After a successful PDF read, no background process is left running.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz süre ayarı (sıfır, negatif ya da sayı olmayan) varsayılan süreye döner.",
+          "en": "An invalid time-limit setting (zero, negative, or not a number) falls back to the default.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir sayfadaki metin sınırı aşılırsa belge sınır hatasıyla reddedilir ve sayfa numarası bildirilir.",
+          "en": "If one page exceeds the text limit, the document is rejected with a limit error that names the page.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Okuma süresi aşılırsa okuma durdurulur, süre hatası verilir ve arkada süreç kalmaz.",
+          "en": "If reading exceeds the time limit, it is stopped, a timeout error is raised, and no process is left behind.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk ve sınır durumdaki PDF dosyaları ham bir hata yerine açık bir okunamadı nedeniyle reddedilir.",
+          "en": "Corrupt and edge-case PDF files are rejected with a clear could-not-be-read reason instead of a raw error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "PDF içindeki betik çalıştırılmaz, ağa erişilmez ve bu durum bir uyarıyla bildirilir.",
+          "en": "Scripts inside a PDF are not run and no network access is made; a warning reports this.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı ekstre CSV ya da PDF olarak verildiğinde çıkan tedarikçi satırları birebir aynıdır.",
+          "en": "The same statement supplied as CSV or as PDF produces identical supplier rows.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sonda eksi işaretli tutarlar bakiye zincirinde doğru işlenir; biçimi belirsiz sayılar reddedilir.",
+          "en": "Amounts with a trailing minus sign stay consistent in the balance chain; numbers with an ambiguous format are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Üç farklı tohumla üretilen metin tabanlı PDF ekstrelerinde tüm değerler beklenen satırlarla eşleşir ve bakiye zinciri tutarlı çıkar.",
+          "en": "Text-based PDF statements generated from three different seeds all match the expected rows, and the balance chain is consistent.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çizgili tablolu PDF'ler de üç tohumda aynı sonucu verir ve bakiye zinciri tutarlı kalır.",
+          "en": "Ruled-table PDFs also give the same result across three seeds, and the balance chain stays consistent.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çok sayfalı ekstreler tek parça olarak okunur; sütun başlığı yalnız bir sayfada varsa her eksik sayfa için uyarı verilir.",
+          "en": "Multi-page statements are read as one piece; if the column header appears on only one page, a warning is given for each page without it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Farklı yazı tipi ve farklı başlık adı kullanan ekstre aynı satırları üretir ve bakiye zinciri tutarlı kalır.",
+          "en": "A statement with a different font and a different header name yields the same rows, and the balance chain stays consistent.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Devreden bakiye satırı devir borcu olarak, iade açıklaması taşıyan alacak satırı ise iade olarak sınıflandırılır.",
+          "en": "The carried-forward balance row is classified as an opening debit, and a credit row whose description mentions a return is classified as a return.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bakiye zinciri kırık bir PDF belge, bakiye zinciri hatasıyla reddedilir.",
+          "en": "A PDF whose balance chain is broken is rejected with a balance-chain error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bakiye zinciri kırık bir PDF ile dönüşüm yapılırsa çıktı CSV dosyası hiç yazılmaz.",
+          "en": "When a PDF with a broken balance chain is converted, no output CSV file is written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hizası kayık tutarlar belirsiz sayılır ve satır belirsiz olarak reddedilir.",
+          "en": "Amounts that are out of alignment are treated as ambiguous and the row is rejected as ambiguous.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bakiye sütunu olmayan ama toplam kontrolü tutan ekstre kabul edilir; ne bakiye ne de toplam kontrolü olmayan ekstre reddedilir.",
+          "en": "A statement with no balance column but a passing total check is accepted; one with neither a balance nor a total check is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Taranmış, metin katmanı olmayan PDF'ler metin yok hatasıyla reddedilir.",
+          "en": "Scanned PDFs with no text layer are rejected with a no-text error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi adı boş bırakılırsa PDF okuma, tedarikçi eksik hatasıyla reddedilir.",
+          "en": "If the supplier name is left empty, PDF reading is rejected with a missing-supplier error.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-morning-report-excel-reading",
+      "ad_tr": "Sabah raporu Excel okuma",
+      "ad_en": "Morning report Excel reading",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Geçerli bir ZIP arşivi olmayan xlsx içeriği 422 yanıtıyla reddedilir.",
+          "en": "Xlsx content that is not a valid ZIP archive is rejected with a 422 response.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "SAP dosyalarının tamamı xlsx olarak gönderildiğinde yükleme kabul edilir ve sekiz dosya uyarlanır.",
+          "en": "When all SAP files are sent as xlsx, the upload is accepted and all eight files are adapted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Base64 olmayan xlsx içeriği 400 yanıtıyla reddedilir.",
+          "en": "Xlsx content that is not valid base64 is rejected with a 400 response.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karşılığı olan bir SAP kaynağı bulunmayan xlsx dosyası 400 yanıtıyla reddedilir.",
+          "en": "An xlsx file with no matching SAP source is rejected with a 400 response.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "SAP listesindeki bir xlsx dosyası kabul edilir ve gerçek dosya adıyla xlsx olarak okunur.",
+          "en": "An xlsx file from the SAP list is accepted and read as xlsx under its real file name.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "SAP bayrağı olmadan gönderilen xlsx yükleme 400 yanıtıyla reddedilir.",
+          "en": "An xlsx upload sent without the SAP flag is rejected with a 400 response.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı SAP kaynağı hem csv hem xlsx olarak gönderilirse istek 400 yanıtıyla reddedilir.",
+          "en": "If the same SAP source is sent as both csv and xlsx, the request is rejected with a 400 response.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce seçilince xlsx sayı hücreleri değişmez; metin hücreleri ise İngilizce sayı kuralına göre okunur.",
+          "en": "When English is selected, numeric xlsx cells stay unchanged and text cells are read with the English number rule.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe seçilince xlsx sayı hücreleri değişmez; metin hücreleri ise Türkçe sayı kuralına göre okunur.",
+          "en": "When Turkish is selected, numeric xlsx cells stay unchanged and text cells are read with the Turkish number rule.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sap-anonymisation",
+      "ad_tr": "SAP anonimleştirme",
+      "ad_en": "SAP anonymisation",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Anonimleştirme aracı ağ erişimi kullanmaz.",
+          "en": "The anonymization tool uses no network access.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı tedarikçi farklı satırlarda ve dosyalarda aynı sahte değeri alır; farklı tedarikçiler farklı değer alır.",
+          "en": "The same supplier gets the same placeholder value across rows and files, and different suppliers get different values.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anonimleştirilmiş çıktıda gerçek tedarikçi adları ve kodları geçmez.",
+          "en": "The anonymized output contains no real supplier names or codes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eşleme tablosu çıktıda yer almaz ve çıktı klasörüne yazılması reddedilir.",
+          "en": "The mapping table never appears in the output, and writing it into the output folder is refused.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı eşleme tablosu sonraki çalıştırmada yeniden kullanılır; böylece değerler tutarlı kalır.",
+          "en": "The same mapping table is reused in a later run, so values stay consistent.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayılar, tarihler, ondalık biçimler ve sütun adları anonimleştirmeden sonra aynen korunur.",
+          "en": "Numbers, dates, decimal formats and column names are kept exactly after anonymization.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Serbest metin sütunundaki bilinen tedarikçi adı da değişir ve tablodaki aynı sahte değeri kullanır.",
+          "en": "A known supplier name in a free-text column is replaced too, using the same placeholder as in the table.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi, müşteri ve malzeme adları çıktının hiçbir yerinde geçmez; satır sayısı korunur.",
+          "en": "Supplier, customer and material names appear nowhere in the output, and the row count is preserved.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anonimleştirme aracı, yalnızca kendi betiği ve girdi dosyasıyla komut satırından tek başına çalışır.",
+          "en": "The anonymization tool runs from the command line on its own, needing only its script and the input file.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Xlsx girdisi desteklenir; metindeki adlar değişir, sayı hücreleri olduğu gibi kalır.",
+          "en": "Xlsx input is supported; names in text are replaced and numeric cells are kept as they are.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çıktı klasörü girdi klasörüyle aynıysa işlem reddedilir ve girdi dosyası değişmez.",
+          "en": "If the output folder is the same as the input folder, the run is refused and the input file is left unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Komut satırında çıktı olarak girdi klasörü seçilirse çıkış kodu 2 döner ve girdi değişmez.",
+          "en": "On the command line, choosing the input folder as the output returns exit code 2 and leaves the input unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Üzerine yazma seçeneğiyle var olan çıktı dosyası yenilenir.",
+          "en": "With the overwrite option, an existing output file is replaced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Var olan çıktı dosyasının üzerine, üzerine yazma seçeneği olmadan yazılmaz.",
+          "en": "An existing output file is not overwritten without the overwrite option.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Xlsx girdisinden üretilecek csv çıktısı girdi klasörüne düşecekse işlem reddedilir ve girdi değişmez.",
+          "en": "If the csv output of an xlsx input would land in the input folder, the run is refused and the input is unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çıktı klasöründeki sabit bağ girdi dosyasını gösteriyorsa komut satırı 2 koduyla durur ve girdi değişmez.",
+          "en": "If a hard link in the output folder points at the input file, the command line stops with code 2 and the input is unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi dosyasına sabit bağlı bir çıktı üzerine yazılamaz.",
+          "en": "An output that is a hard link to the input file cannot be overwritten.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi dosyasına sembolik bağlı bir çıktı üzerine yazılamaz.",
+          "en": "An output that is a symbolic link to the input file cannot be overwritten.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bağsız, düzenli bir çıktı dosyası üzerine yazma seçeneğiyle yine yenilenir.",
+          "en": "A regular, unlinked output file is still replaced when the overwrite option is used.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi dışındaki bir dosyaya sabit bağlı çıktı hedefi komut satırında 2 koduyla reddedilir.",
+          "en": "An output target that is a hard link to a file outside the input is rejected on the command line with code 2.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi dışındaki bir dosyaya sabit bağlı çıktı hedefinin içeriği ezilmez.",
+          "en": "The contents of a file outside the input are not overwritten when an output is a hard link to it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi dışındaki bir dosyaya sembolik bağlı çıktı hedefinin içeriği ezilmez.",
+          "en": "The contents of a file outside the input are not overwritten when an output is a symbolic link to it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kiril ve Yunan harflerinden oluşan görsel benzer yazımlar tedarikçi adını sızdırmaz.",
+          "en": "Look-alike spellings written with Cyrillic or Greek letters do not leak a supplier name.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Küçük harfli Kiril ve Yunan benzerleri de tanınır; tedarikçi adı gizli kalır.",
+          "en": "Lowercase Cyrillic and Greek look-alikes are recognized too, so the supplier name stays hidden.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Normal Latin harflerle yazılmış, bilinen bir adın yalnızca parçasına benzeyen adlar yanlışlıkla değiştirilmez.",
+          "en": "Ordinary Latin-letter names that only partly resemble a known name are not replaced by mistake.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sızıntı denetimi, Kiril harfli bir tedarikçi adı kalırsa bunu yakalar.",
+          "en": "The leak check catches a supplier name that still contains Cyrillic look-alike letters.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Başlık satırındaki gerçek tedarikçi adı da anonimleştirilir.",
+          "en": "A real supplier name in the header row is anonymized too.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük-küçük harf farkı, fazla boşluk ve kısmi tedarikçi adları çıktıda sızmaz.",
+          "en": "Case differences, extra spaces and partial supplier names do not leak into the output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anonimleştirme sonrası sızıntı kalırsa komut satırı 3 koduyla durur.",
+          "en": "If a leak remains after anonymization, the command line stops with code 3.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çıktı zaten varsa komut satırı 2 koduyla durur; aynı çalıştırma üzerine yazma seçeneğiyle başarılı olur.",
+          "en": "If the output already exists, the command line stops with code 2; the same run succeeds with the overwrite option.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Anonimleştirme adımı gerçek bir değeri geçirirse sızıntı denetimi işlemi durdurur ve hiçbir dosya yazılmaz.",
+          "en": "If the anonymization step lets a real value through, the leak check stops the run and no file is written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sızıntı denetimi büyük-küçük harf, boşluk ve kısmi ad farklılıklarını da yakalar.",
+          "en": "The leak check also catches differences in case, spacing and partial names.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çıktı girdi klasörüne yazılmak istenirse reddedilir ve girdi dosyası değişmez.",
+          "en": "If the output is aimed at the input folder, it is refused and the input file is unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Serbest metindeki tedarikçi adı, büyük-küçük harf farkı olsa bile tablodaki sahte değeri alır.",
+          "en": "A supplier name in free text gets the same placeholder value as in the table, even when the letter case differs.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Var olan çıktı, üzerine yazma seçeneği verilmeden yazılmaz; seçenek verilince yazılır.",
+          "en": "An existing output is not written over without the overwrite option; with it, the output is written.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içindeki çok satırlı tedarikçi adının devam satırı diyezle başlamıyorsa normal işlenir.",
+          "en": "A multi-line supplier name in quotes is processed normally when its continuation line does not start with a hash mark.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içindeki devam satırı diyezle başlıyorsa komut satırı sıfırdan farklı bir kod döner.",
+          "en": "If a continuation line inside quotes starts with a hash mark, the command line returns a non-zero code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tırnak içindeki satır sonundan sonra gelen diyezli satır kaydı sessizce bozmaz; işlem durdurulur.",
+          "en": "A hash-prefixed line after a line break inside quotes does not silently corrupt a record; the run is stopped.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karışık büyük-küçük harf, noktalama, boşluk, tire, alt çizgi ve görünmez karakterle yapılan ad atlatmaları kapanır.",
+          "en": "Name evasions using mixed case, punctuation, spacing, dashes, underscores and invisible characters are closed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Genel şirket eklerinin listesi sabittir ve testle korunur.",
+          "en": "The list of general company suffixes is fixed and kept under test.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki karakterlik ad parçaları, örneğin AB veya 3M, metinde sızmaz.",
+          "en": "Two-character name fragments, such as AB or 3M, do not leak into the text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sert boşluk ve Türkçe büyük İ varyantları sızmaz; genel bir şirket eki başka metinde yanlış eşleşmez.",
+          "en": "Non-breaking spaces and Turkish capital dotted-I variants do not leak, and a general company suffix does not match other text by mistake.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayısal tedarikçi kodu serbest metinde geçse bile sızmaz.",
+          "en": "A numeric supplier code does not leak even when it appears in free text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sızıntı denetimi birleşik işaretli, tam genişlikli, yumuşak tireli, harfleri aralıklı ve sayısal kodlu yeni biçimleri de yakalar.",
+          "en": "The leak check also catches new forms: combining marks, full-width letters, soft hyphens, spaced-out letters and numeric codes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Unicode ile gizlenen tedarikçi adları (birleşik işaret, sıfır genişlikli boşluk, Kiril harf, tam genişlik, yumuşak tire, satır sonu) sızmaz ve satır sayısı korunur.",
+          "en": "Supplier names hidden with Unicode tricks (combining marks, zero-width spaces, Cyrillic letters, full-width letters, soft hyphens, line breaks) do not leak, and the row count is preserved.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Başlık satırı da gerçek tedarikçi adlarına karşı anonimleştirilir ve sütun sayısı korunur.",
+          "en": "The header row is also anonymized against real names, and the column count is preserved.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Büyük-küçük harf farkı ve boşluklu ad varyantları çıktıda kalmaz.",
+          "en": "Case differences and spaced variants of a name do not remain in the output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek başına genel bir şirket eki kimlik sayılmaz; başka bir şirketin sahte kodu ona verilmez.",
+          "en": "A general company suffix on its own is not treated as an identity, so it does not receive another company's placeholder code.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki karakterlik gerçek ad serbest metinde kelime olarak geçtiğinde değiştirilir.",
+          "en": "A two-character real name is replaced when it appears as a word in free text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek ad tam geçmese bile yalnızca bir parçası geçiyorsa o parça da değiştirilir.",
+          "en": "Even when a real name appears only in part, that part is replaced too.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Serbest metindeki ad, tedarikçi adı hücresindeki sahte değerle aynı kalır.",
+          "en": "A name in free text keeps the same placeholder value as in the supplier name cell.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-number-format",
+      "ad_tr": "Sayı biçimi",
+      "ad_en": "Number format",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Dosya seçilen biçimle uyuşmuyorsa yanlış okunacak değerleri gösteren bir uyarı üretilir; değerler değişmez.",
+          "en": "When a file does not match the chosen number format, a warning shows the values that would be misread; the values are not changed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce seçilmiş ama Türkçe yazılmış bir dosya uyuşmazlık olarak yakalanır.",
+          "en": "A file set to English but written in Turkish format is caught as a mismatch.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Seçilen biçimle uyuşan dosyada uyarı üretilmez.",
+          "en": "No warning is produced for a file that matches the chosen format.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe seçilmiş ama İngilizce yazılmış bir dosya uyuşmazlık olarak yakalanır.",
+          "en": "A file set to Turkish but written in English format is caught as a mismatch.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kanıt yoksa, yani yalnızca belirsiz değerler varsa, uyarı üretilmez.",
+          "en": "When there is no evidence, meaning only ambiguous values exist, no warning is produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bilinmeyen bir sayı biçimi ya da listede olmayan bir dosya adı, değeri gösteren bir hata verir.",
+          "en": "An unknown number format or a file name not in the list produces an error that shows the offending value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce seçilen dosya, aynı girdiyle Türkçeden farklı okunur: nokta ondalık, virgül binlik ayıracı sayılır.",
+          "en": "A file set to English is read differently from the same input in Turkish: the dot is the decimal separator and the comma the thousands separator.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Biçim seçilmeyen dosya eski kuralla okunur ve belirsiz değerler reddedilir.",
+          "en": "A file with no format chosen is read with the old rule, and ambiguous values are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe seçilen dosya, aynı girdiyle İngilizceden farklı okunur: virgül ondalık, nokta binlik ayıracı sayılır.",
+          "en": "A file set to Turkish is read differently from the same input in English: the comma is the decimal separator and the dot the thousands separator.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz değeri olmayan ya da boş sütunlar kontrol edilemedi olarak bildirilmez.",
+          "en": "Columns with no ambiguous values, or that are empty, are not reported as unverifiable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dosya raporunda kontrol edilemeyen sütun ve değer sayısı bildirilir; değerler değişmez.",
+          "en": "The file report lists the unverifiable column and how many values it has; the values stay unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sonunda eksi işareti olan belirsiz değerler de sayılır.",
+          "en": "Ambiguous values with a trailing minus sign are counted too.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce seçilince virgülden sonra üç basamaklı değerler kontrol edilemedi olarak bildirilir.",
+          "en": "When English is selected, values with a comma followed by three digits are reported as unverifiable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Hem belirsiz hem net değer içeren sütun kontrol edilemedi olarak bildirilmez.",
+          "en": "A column with both ambiguous and clear values is not reported as unverifiable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sütunda net bir karşı kanıt varsa belirsiz değerler kontrol edilemedi sayılmaz; uyuşmazlık olarak ayrıca bildirilir.",
+          "en": "When a column contains clear counter-evidence, its ambiguous values are not reported as unverifiable; they are reported as a mismatch.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Biçim seçilmeyen dosya için kontrol edilemedi bildirimi yapılmaz.",
+          "en": "No unverifiable notice is given for a file with no format chosen.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir sütunun bütün değerleri belirsizse sütun, örnekleriyle birlikte kontrol edilemedi olarak bildirilir.",
+          "en": "When all values in a column are ambiguous, the column is reported as unverifiable, with examples.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce seçildiğinde nokta ondalık ayıracıdır; virgül binlik ayıracıdır.",
+          "en": "When English is selected, the dot is the decimal separator and the comma the thousands separator.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Seçilen biçimle uymayan bir değer reddedilir.",
+          "en": "A value that does not fit the chosen format is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Biçim seçilmediğinde eski kural değişmez ve belirsiz değerler reddedilir.",
+          "en": "When no format is chosen, the old rule is unchanged and ambiguous values are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe seçildiğinde nokta binlik ayıracıdır; virgül ondalık ayıracıdır.",
+          "en": "When Turkish is selected, the dot is the thousands separator and the comma the decimal separator.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İngilizce yazılmış dosya Türkçe seçilince, yanlış okunacak satırlar satır numarasıyla ve iki okunuşuyla gösterilir.",
+          "en": "When an English-format file is read as Turkish, the rows that would be misread are shown with their line numbers and both readings.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Uyarıda en fazla üç örnek gösterilir; kalanlar sayı olarak bildirilir.",
+          "en": "The warning shows at most three examples; the rest are reported as a count.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Rapor, yanlış okunan her değerin satırını, sütununu, değerini ve iki okunuşunu içerir.",
+          "en": "The report includes the row, column, value and both readings of each misread value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek değerli dosyada kanıt olmadığından uyarı çıkmaz; değer seçilen biçimle okunur.",
+          "en": "A file with a single value produces no warning, since there is no evidence; the value is read in the chosen format.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Toplu Türkçe biçimli değerler İngilizce seçilince yanlış okunan değerler, doğru okunuşla birlikte gösterilir.",
+          "en": "When a batch of Turkish-format values is read as English, the misread values are shown together with the correct reading.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-server-security",
+      "ad_tr": "Sunucu güvenliği",
+      "ad_en": "Server security",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Xlsx'in '#' ile başlayan satırı csv'ye tüm hücreleriyle yazılır; ayraç içeren hücreler tırnaklanır.",
+          "en": "A row starting with a hash mark is written to csv with all its cells; cells containing a separator are quoted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "'#' ile başlayan hücrede satır sonu varsa dönüşüm reddedilir ve hedef dosya oluşmaz.",
+          "en": "If a cell starting with a hash mark contains a line break, the conversion is refused and no target file is created.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sıkıştırma bombası niteliğindeki xlsx yüklemesi 422 yanıtı ve sade bir sıkıştırma mesajıyla reddedilir; döküm görünmez.",
+          "en": "An xlsx upload that is a compression bomb is rejected with a 422 response and a plain compression message, with no stack trace.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Olağandışı yüksek sıkıştırma oranına sahip xlsx dosyası reddedilir.",
+          "en": "An xlsx file with an abnormally high compression ratio is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İçinde izin verilenden fazla parça bulunan xlsx dosyası reddedilir.",
+          "en": "An xlsx file whose archive holds more parts than allowed is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Normal boyutlu bir xlsx dosyası hâlâ doğru okunur.",
+          "en": "A normal-sized xlsx file is still read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Arşiv dizininde yalan beyan edilen açık boyut belleği şişirmez; okuma küçük bir bellek tepesiyle reddedilir.",
+          "en": "A falsely declared uncompressed size in the archive index does not inflate memory; reading is refused with a small memory peak.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-demand-flow",
+      "ad_tr": "Talep akışı",
+      "ad_en": "Demand flow",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bitişik girdi, önceki sürümle birebir aynı çıktıyı üretir.",
+          "en": "Contiguous input produces exactly the same output as the previous version.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bitişik olmayan girdi, önceki sürümle birebir aynı çıktıyı üretir.",
+          "en": "Non-contiguous input produces exactly the same output as the previous version.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerekli sütun eksikse hata mesajı eksik sütunun adını verir.",
+          "en": "When a required column is missing, the error message names the missing column.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnızca yorum satırlarından oluşan dosya kayıt yok hatası verir.",
+          "en": "A file made only of comment lines produces a no-records error.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-excel-reading",
+      "ad_tr": "Excel okuma",
+      "ad_en": "Excel reading",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Xlsx'in '#' ile başlayan satırı, tüm hücreleriyle ve virgül içeren hücreler tırnaklı olarak csv'ye yazılır.",
+          "en": "A row starting with a hash mark is written to csv with all its cells, and cells containing commas are quoted.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "'#' ile başlayan ilk hücrede satır sonu varsa dönüşüm reddedilir.",
+          "en": "If the first cell, which starts with a hash mark, contains a line break, the conversion is refused.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayfa sayısı sınırı aşıldığında xlsx okuması reddedilir.",
+          "en": "When the sheet count exceeds the limit, reading the xlsx is refused.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çok yüksek sıkıştırma oranlı xlsx okuması reddedilir.",
+          "en": "Reading an xlsx with a very high compression ratio is refused.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Açılan toplam boyut sınırı aşıldığında, her parça tek tek sınırın altında olsa bile okuma reddedilir.",
+          "en": "When the total uncompressed size exceeds the limit, reading is refused even if each part is under it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Zip içindeki üye sayısı sınırı aşıldığında okuma reddedilir.",
+          "en": "When the zip member count exceeds the limit, reading is refused.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-release-gate",
+      "ad_tr": "Yayın kapısı",
+      "ad_en": "Release gate",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Düz metinde geçen bir kullanıcı adı sızıntı olarak yakalanır.",
+          "en": "A user name appearing in plain text is caught as a leak.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek bir Windows kullanıcı yolu sızıntı olarak yakalanır ve kullanıcı adı ayrıca bildirilir.",
+          "en": "A real Windows user path is caught as a leak, and the user name is reported separately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Satırda bir ipucu bulunsa bile gerçek yol sızıntı olarak yakalanır.",
+          "en": "Even if a line contains a hint, a real path is still caught as a leak.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ters tırnaklı ad ve ipucu aynı satırdaysa, düz metindeki ad yine sızıntı sayılır.",
+          "en": "If a name in code formatting and a hint share a line, a name in plain text is still counted as a leak.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ters tırnak içindeki kullanıcı adı, ipucu olmasa da sızıntı olarak yakalanır.",
+          "en": "A user name in code formatting is caught as a leak even without a hint.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kuralı anlatan, yer tutucu yol ve ad içeren bir satır sızıntı sayılmaz.",
+          "en": "A line that explains the rule using placeholder paths and names is not counted as a leak.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yer tutucu yolun yanında gerçek bir yol varsa, gerçek olan yakalanır.",
+          "en": "If a real path sits next to a placeholder path, the real one is caught.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnızca yer tutucu bir yol içeren kural açıklaması geçer.",
+          "en": "A rule description containing only a placeholder path passes.",
           "kaynak": "kosu"
         }
       ]
@@ -3588,6 +4668,59 @@
       ]
     },
     {
+      "kimlik": "orkestrator_python-plan-run-and-scoring-0-7-0",
+      "ad_tr": "Plan, koşu ve hesap (0.7.0)",
+      "ad_en": "Plan, run and scoring (0.7.0)",
+      "kume": "orkestrator_python",
+      "testler": [
+        {
+          "tr": "Etiketsiz, geçersiz etiketli ya da yarıda kesilmiş koşular paydaya girmez ve dışarıda bırakılma nedeni gösterilir.",
+          "en": "Runs with no label, an invalid label, or cut short are left out of the denominator, and the reason for exclusion is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örneklem sayısı sıfır olduğunda sonuç doğrulanamadı olarak biçimlendirilir.",
+          "en": "When the sample count is zero, the result is formatted as not verified.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketler ve denetimlerle yapılan puanlama doğru özeti üretir; kopya, sözcük ve anlamsal yakalama ölçütleri beklenen sayıları verir.",
+          "en": "Scoring with labels and checks produces the correct summary: the copy, keyword and semantic capture measures give the expected counts.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "On iki koşu toplam 30 çağrıyla tamamlanır; her koşunun çağrı kaydı ayrı tutulur ve tüm koşular tek kayıt dosyasına yazılır.",
+          "en": "Twelve runs complete with 30 calls in total; each run keeps its own call record, and all runs are written to one run log.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kota dolunca koşu durur, model yeniden denenmez ve kalan koşular yapılamadı olarak işaretlenir.",
+          "en": "When the quota runs out, the run stops, the model is not retried, and the remaining runs are marked as not completed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çağrı tavanına ulaşılınca koşu durur ve kalan koşular yapılamadı olarak işaretlenir.",
+          "en": "When the call ceiling is reached, the run stops and the remaining runs are marked as not completed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dosya değişince özet imzası uyuşmaz hale gelir; imza dosyası yoksa bu ayrıca bildirilir.",
+          "en": "Changing a file makes its digest signature stop matching, and a missing signature file is reported separately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek ön kayıt imzası doğrulanır ve uyarı vermez.",
+          "en": "The real pre-registration signature verifies without any warning.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Plan, iki eksen üzerinden serpiştirilmiş 12 koşudan oluşur ve bütçe tavana tam olarak eşittir.",
+          "en": "The plan has 12 runs interleaved across two axes, and the budget equals the ceiling exactly.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
       "kimlik": "kule_node-kule-dashboard-interface",
       "ad_tr": "Kule panel arayüzü",
       "ad_en": "Kule dashboard interface",
@@ -3881,6 +5014,454 @@
         {
           "tr": "Örnek veride fazla stok payı, stok sonucundan okunur.",
           "en": "In the sample data, the excess stock share is read from the stock result.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_node-additional-panel-tests-0-7-0",
+      "ad_tr": "Panel ek testleri (0.7.0)",
+      "ad_en": "Additional panel tests (0.7.0)",
+      "kume": "kule_node",
+      "testler": [
+        {
+          "tr": "Tanınmayan dosya mesajı Excel'e değinmez; Excel dosyaları ayrıca uyarılır ve başlık satırı istenir.",
+          "en": "The unrecognised-file message does not mention Excel; Excel files get their own warning, and a header row is requested.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İstek gövdesi sınırı aşılırsa istek gönderilmez ve sade bir mesaj gösterilir.",
+          "en": "If the request body exceeds its limit, the request is not sent and a plain message is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş dosya kendi mesajını alır: dosyanın sıfır bayt olduğu yazılır.",
+          "en": "An empty file gets its own message stating that it is zero bytes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İkili ya da bozuk kodlanmış içerik \"metin değil\" uyarısı alır; gerçek SAP metni bu uyarıdan etkilenmez.",
+          "en": "Binary or corrupt-encoding content gets a \"not text\" warning; real SAP text is not affected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Türkçe arayüzde İngilizce cümle görünmez.",
+          "en": "No English sentences appear in the Turkish interface.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik alanlı bir dosya varken hazırla düğmesi devre dışı kalır.",
+          "en": "While a file with missing fields is present, the prepare button stays disabled.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panel betikleri sözdizimi hatası olmadan derlenir.",
+          "en": "The panel scripts compile without syntax errors.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Alan adları Türkçe ad ile kodu birlikte gösterir; bilinmeyen kod olduğu gibi kalır; kaynak verilirse o listenin etiketi kullanılır.",
+          "en": "Field names show the Turkish label together with the code; an unknown code is shown as it is, and when a source is given, that list's label is used.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kayıt sayısı eşiğin altındayken medyan gizlenir ve nedeni yazılır.",
+          "en": "When the record count is below the threshold, the median is hidden and the reason is written out.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Açık kalma süresi 24 saatten kısaysa saat, daha uzunsa gün olarak gösterilir; değer yoksa süre yazılmaz.",
+          "en": "Open time is shown in hours below 24 hours and in days above that; with no value, no duration is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Açık temada girdi kutusu kenarlığı hem kağıt hem yüzey üzerinde en az 3:1 kontrast sağlar.",
+          "en": "In the light theme, input borders reach at least 3:1 contrast against both the paper and the surface.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Açık temada odak halkası kağıt üzerinde en az 3:1 kontrast sağlar.",
+          "en": "In the light theme, the focus ring reaches at least 3:1 contrast on the paper.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boyutu aşırı büyük beyan edilmiş ama gerçekte küçük olan bir dosya sınır hatasıyla reddedilir.",
+          "en": "A file that declares an extremely large size but is actually small is rejected with a limit error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tarayıcıdaki base64 kodlaması sunucu tarafıyla birebir aynı sonucu verir; Excel dosyasının baytları değişmeden gönderilir.",
+          "en": "Base64 encoding in the browser gives exactly the same result as the server side, so the Excel file bytes are sent unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Zip imzası olmayan bozuk .xlsx dosyası \"okunamadı\" uyarısı alır; genel \"tanınmadı\" mesajı verilmez.",
+          "en": "A corrupt .xlsx file with no zip signature gets a \"could not be read\" warning, not the generic \"not recognised\" message.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk .xlsx uyarısı ekran okuyucularda duyurulur.",
+          "en": "The corrupt .xlsx warning is announced to screen readers.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yerel başlık konumu bozuksa hata anında fırlatılmaz; çağıran taraf \"okunamadı\" yanıtını verebilecek şekilde reddedilen bir sonuç döner.",
+          "en": "A corrupt local header offset does not throw immediately; a rejected result is returned so the caller can give the \"could not be read\" reply.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri yokken \"Henüz ölçüm yok\" yazılır; sayı kartı ya da sıfır değer gösterilmez.",
+          "en": "With no data, \"No measurements yet\" is shown; no number card or zero value appears.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": ".xlsx dosyası kabul edilir ve sunucuya gönderilir; eski \"okunmaz\" metni artık gösterilmez.",
+          "en": ".xlsx files are accepted and sent to the server, and the old \"cannot be read\" text no longer appears.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "\"Bilmiyorum\" yanıtı kullanıcıyı SU3 → Varsayılanlar → Ondalık gösterim yoluna yönlendirir; yanlış bir yol gösterilmez ve düğmenin neden pasif olduğu yazılır.",
+          "en": "The \"I don't know\" answer points the user to the SU3 → Defaults → Decimal display path; no wrong path is shown, and the reason the button is disabled is written out.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz sayılar duyurulan bir alanda, iki okunuşuyla ve \"Kule birini seçmez\" notuyla gösterilir.",
+          "en": "Ambiguous numbers appear in an announced area, with both readings and the note that Kule does not pick one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ondalık biçimi anlaşılamayan sütun, sihirbaz adımında ve sonuç ekranında sakin bir dille duyurulur.",
+          "en": "A column whose decimal format cannot be determined is announced calmly, in the wizard step and on the result screen.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Seçilen ondalık biçim ekrana yansır ve sunucuya gönderilen istekte yer alır.",
+          "en": "The chosen decimal format is reflected on screen and included in the request sent to the server.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dosya adı, uyarı, ret nedeni ve tanınmayan dosya metinleri sade Türkçeyle ekrana yazılır.",
+          "en": "File names, warnings, rejection reasons and unrecognised-file messages appear on screen in plain Turkish.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Excel dosyası için \"önizleme yapılmaz\" metni kalktı; yalnız belirsiz metin hücreleri sorulur.",
+          "en": "The \"no preview for Excel\" message is gone; only ambiguous text cells are asked about.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dar ekranda yatay kaydırılan tablolar klavyeyle odaklanır ve ekran okuyucuya adlarıyla duyurulur.",
+          "en": "Tables that scroll sideways on narrow screens can be focused with the keyboard and are announced by name to screen readers.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Dolu veride değerler ölçüm kayıtlarından alınır ve Türkçe sayı biçiminde gösterilir.",
+          "en": "With data, values come from the measurement records and are shown in Turkish number format.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Rastgele içerikli, kapanmamış satır etiketleri çok olan 6 MB'lık dosya bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.",
+          "en": "A 6 MB file of random content with many unclosed row tags returns a result or a clear error within one second, without tripping the compression-ratio limit.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Rastgele içerikli, kapanmamış satır etiketleri çok olan 20 MB'lık dosya bir saniye içinde sonuç ya da net hata verir; sıkıştırma oranı sınırına takılmaz.",
+          "en": "A 20 MB file of random content with many unclosed row tags returns a result or a clear error within one second, without tripping the compression-ratio limit.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Girdi, seçim ve açılır kutu kenarlıkları aynı kenarlık rengini kullanır.",
+          "en": "Input, choice and dropdown borders all use the same border colour.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek satırda çok sayıda kapanmamış hücre etiketi olsa bile okuma bir saniye içinde sonuç ya da net hata verir.",
+          "en": "Even with many unclosed cell tags in a single row, reading returns a result or a clear error within one second.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Elle girilen süre \"Kullanıcı beyanı\", Kule kartları \"Kule ölçümü\" rozetiyle ayrı ayrı gösterilir.",
+          "en": "Manually entered times are labelled \"User-reported\" and Kule cards are labelled \"Kule measurement\", each with its own badge.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki üye de küçük beyan edilmiş ama toplam 80 MB'a açılıyorsa ortak sayaç sınırı aşılır ve sınır hatası verilir.",
+          "en": "When two members both declare small sizes but together expand to 80 MB, the shared counter trips and a limit error is returned.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İlişki kimliğinde özel karakter varsa düz \"ilişki bulunamadı\" hatası verilir; teknik hata kullanıcıya sızmaz.",
+          "en": "If a relationship ID contains special characters, a plain \"relationship not found\" error is shown and no raw technical error leaks through.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kapanmamış ikinci satır sessizce atlanmaz; net bir hata verilir ve veri kaybı olmaz.",
+          "en": "An unclosed second row is not silently skipped; a clear error is shown, so no data is lost.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ölçüm özetinde TL, tasarruf ya da kazanç yazılmaz; önce ve sonra arasında olmayan bir fark uydurulmaz.",
+          "en": "The measurement summary never shows TL, savings or earnings, and no before-and-after difference is invented.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ekrana yazılan metinde HTML özel karakterleri kaçışlanır.",
+          "en": "HTML special characters in text shown on screen are escaped.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Normal boyutlu, geçerli bir Excel dosyası hâlâ açılır ve metni döndürülür.",
+          "en": "A valid, normally sized Excel file still opens and its text is returned.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Koyu temada, sistem ayarıyla ya da elle seçilse de girdi kenarlığı kağıt üzerinde en az 3:1 kontrast sağlar.",
+          "en": "In the dark theme, whether set by the system or chosen manually, input borders reach at least 3:1 contrast on the paper.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Koyu temada odak rengi vurgu rengiyle aynıdır ve koyu kağıt üzerinde yüksek kontrast verir.",
+          "en": "In the dark theme, the focus colour matches the accent colour and gives high contrast on dark paper.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz sayı bloğunda uzun değer satır içinde kırılır; blok taşmaz.",
+          "en": "In the ambiguous-number block, a long value wraps inside the line and the block does not overflow.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kısmi veride kaydı olmayan kart \"—\" ve nedenini gösterir; sıfır yazılmaz.",
+          "en": "With partial data, a card without records shows \"—\" and its reason, and never a zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Adı .xlsx olan ama içeriği metin olan dosya, önceki gibi metin olarak tanınır ve uyarı verilmez.",
+          "en": "A file named .xlsx whose content is text is still recognised as text, as before, and no warning is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Odak halkası merkezi renk tanımından okunur; klavye odağında ve girdi alanı odaklandığında görünür.",
+          "en": "The focus ring is read from the central colour definition and appears on keyboard focus and when an input is focused.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek seçimi önce belirsiz değerleri alır ve istenen sayı kadar gösterir; sıra örnek listesiyle aynıdır.",
+          "en": "Sample selection takes ambiguous values first, up to the requested count, in the same order as the sample list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ölçüm özeti panele, gezintiye ve canlı ekran kaydına doğru bağlanır; betikler doğru sırayla yüklenir.",
+          "en": "The measurement summary is correctly connected to the panel, navigation and the live screen registry, and scripts load in the right order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sunucudan gelen ret kategorileri sade Türkçe adlarıyla gösterilir; tanınmayan kategori olduğu gibi kalır.",
+          "en": "Rejection categories from the server are shown with plain Turkish names; an unknown category is shown as it is.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ret nedenindeki iç işaret sade metne çevrilir; dosya, SAP adıyla birlikte gösterilir.",
+          "en": "Internal markers in rejection reasons are turned into plain text, and files are shown together with their SAP name.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İç işaret hiçbir uyarı ya da hata metninde görünmez; kullanıcı, seçilen ayara göre okunamayan değeri görür.",
+          "en": "The internal marker never appears in any warning or error text; the user sees the value that could not be read under the chosen setting.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eksik sütun uyarısı, eksik alanların adlarını içeren tek bir cümle olur; geliştirici notu ve başlık dökümü gösterilmez.",
+          "en": "A missing-column warning becomes one sentence naming the missing fields; developer notes and the header dump are left out.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çok sayıda kapanmamış satır etiketi olsa bile okuma bir saniye içinde sonuç ya da net hata verir; okuyucu kendi kendini yavaşlatmaz.",
+          "en": "Even with many unclosed row tags, reading returns a result or a clear error within one second, and the reader does not slow itself down.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz bir sayının iki okunuşu düz metin olarak, yan yana yazılır: Türkçe okunuş ve İngilizce okunuş.",
+          "en": "Both readings of an ambiguous number are written as plain text, side by side: the Turkish reading and the English reading.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz sayı metni üretilirken girdi listesi ve değer değişmez.",
+          "en": "Building the ambiguous-number text leaves the input list and the value unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsizlik kararı ve iki okunuş, sunucunun kesin kuralıyla birebir aynı sonucu verir.",
+          "en": "The ambiguity decision and both readings give exactly the same result as the server's strict rule.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız iki okunuşu da geçerli ve birbirinden farklı olan sayılar belirsiz sayılır; tek okunanlar ya da okunamayanlar belirsiz sayılmaz.",
+          "en": "Only numbers whose two readings are both valid and different count as ambiguous; numbers with one reading or none do not.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayı biçimi isteğine yalnız tanınmış ve seçilmiş dosyalar girer; anahtar SAP kaynak adıdır.",
+          "en": "The number-format request includes only recognised and selected files, keyed by the SAP source name.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ondalık biçimi anlaşılamayan sütunlar, sunucuyla aynı kuralla sütun düzeyinde belirlenir.",
+          "en": "Columns whose decimal format cannot be determined are identified at column level, using the same rule as the server.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayılar seçilen Türkçe ya da İngilizce biçime göre okunur; eksi işareti korunur, okunamayan değer boş döner.",
+          "en": "Numbers are read in the chosen Turkish or English format; minus signs are kept, and an unreadable value returns nothing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Önizlemede okunan sayı, sunucunun kesin kuralıyla birebir aynıdır.",
+          "en": "The number read in the preview matches the server's strict rule exactly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayı okuma, sunucudaki çeviriciyle aynı sonucu verir; tek gruplu belirsiz değerler bu kuraldan ayrı ele alınır.",
+          "en": "Number reading gives the same result as the server's converter; single-group ambiguous values are handled separately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Okunuş Türkçe yazılır ve binlik ayraç içermez; okunamayan değer için \"okunamaz\" yazılır.",
+          "en": "The reading is written in Turkish style without thousands separators; an unreadable value shows \"cannot be read\".",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek sayılar sayısal SAP sütunlarından alınır; iki biçimde farklı okunanlar önce gelir.",
+          "en": "Sample numbers come from numeric SAP columns; values that read differently in the two formats come first.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayı biçimi seçimi CSV dosyalarında her zaman sorulur; Excel dosyasında yalnız belirsiz metin hücresi varsa sorulur.",
+          "en": "The number-format choice is always asked for CSV files; for Excel files it is asked only when an ambiguous text cell exists.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sayısal sütunlar tek tek, SAP alan koduna göre ayrılır ve değerler dosyadaki sırayla listelenir.",
+          "en": "Numeric columns are separated one by one by SAP field code, and values are listed in file order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Seçilen biçimle dosya içeriği çelişiyorsa uyarı verilir; belirsiz değerler bu kontrole dahil edilmez.",
+          "en": "A warning appears when the chosen format conflicts with the file content; ambiguous values are not counted in this check.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yanlış okunabilecek değerler satır, sütun, değer ve iki okunuşuyla listelenir; sunucuyla birebir aynıdır.",
+          "en": "Values that could be misread are listed with row, column, value and both readings, matching the server exactly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Senaryo ekranındaki tedarikçi seçeneğinde seviye bilgisi HTML olarak kaçışlanır.",
+          "en": "On the scenario screen, the supplier option escapes the level text as HTML.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sentetik veri başlıkta ve ret kartında etiketlenir; kaç kaydın sentetik olduğu yazılır.",
+          "en": "Synthetic data is labelled in the header and on the rejection card, with the count of synthetic records written out.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ortak metin tablosunda çok sayıda kapanmamış giriş olsa bile okuma bir saniye içinde sonuç ya da net hata verir.",
+          "en": "Even with many unclosed entries in the shared text table, reading returns a result or a clear error within one second.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sıkıştırılmamış bir dosya küçük boyut beyan edip gerçekte 70 MB ise toplam açık boyut sınırı aşılır ve sınır hatası verilir.",
+          "en": "An uncompressed file that declares a small size but is really 70 MB exceeds the total expanded-size limit and gets a limit error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sunucudan gelen yükleme kimliği ve tarih gibi metinler ekranda kaçışlanır.",
+          "en": "Text from the server, such as the upload ID and date, is escaped on screen.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Telefon genişliğinde açılır özetler en az 44 piksel yüksekliğindedir; satır içi yükseklik sınırı yoktur.",
+          "en": "On phone-width screens, expandable summaries are at least 44 pixels tall, with no inline height override.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Telefon genişliğinde düğmeler, girdi kutuları, seçimler ve kaldırma hedefleri en az 44 piksel yüksekliğindedir.",
+          "en": "On phone-width screens, buttons, inputs, selectors and remove targets are at least 44 pixels tall.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketi olmayan, kullanıcının kendi yüklediği dosya \"Kendi dosyalarınız · gerçek veri\" rozetiyle gösterilir.",
+          "en": "A file without a label, uploaded by the user, is shown with the \"Your files · real data\" badge.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Beyanı 1 KB olup gerçekte 40 MB'a açılan Excel dosyası, sınır aşılınca sekmeyi dondurmadan reddedilir.",
+          "en": "An Excel file declaring 1 KB that expands to 40 MB is rejected once the limit is passed, without freezing the tab.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Açık boyut sınırı (64 MB) tüm üyelerin toplamına uygulanır; beyan toplamı sınırı aşarsa hiçbir üye açılmaz.",
+          "en": "The 64 MB expanded-size limit applies to the total of all members; if the declared total exceeds it, no member is opened.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Normal boyutlu geçerli Excel dosyası sınırlar yüzünden engellenmez ve açılır.",
+          "en": "A valid, normally sized Excel file is not blocked by the limits and opens.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Binlerce üyesi olan Excel dosyası, açılmadan üye sayısı sınırıyla reddedilir.",
+          "en": "An Excel file with thousands of members is rejected before opening because it exceeds the member-count limit.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Excel'den çıkarılan metin SAP tanımasından geçer ve EKPO başlığı tanınır.",
+          "en": "Text extracted from Excel goes through SAP recognition, and the EKPO header is recognised.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk zip dosyası reddedilir; sessizce boş metin döndürülmez.",
+          "en": "A corrupt zip file is rejected instead of silently returning empty text.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Excel'in ilk sayfası sekmeyle ayrılmış metne çevrilir; ortak ve satır içi metin, sayılar ve kaçış karakterleri doğru okunur.",
+          "en": "The first sheet of an Excel file becomes tab-separated text; shared and inline text, numbers and escape characters are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Excel'den yalnız metin hücreleri alınır; sayı tipindeki hücreler listeye girmez.",
+          "en": "Only text cells are taken from Excel; number-type cells are not added to the list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Oranı 1000'e 1 olan zip bombası açılmadan reddedilir; sınır işareti yanıt yolunda kaybolmaz ve \"sınırı aştı\" uyarısı gösterilir.",
+          "en": "A zip bomb with a 1000:1 ratio is rejected before it is expanded; the limit marker survives the response path and the \"limit exceeded\" warning is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bir dosyanın Excel sayılması için hem .xlsx adı hem zip imzası gerekir; yalnız biri yeterli değildir.",
+          "en": "A file counts as Excel only when it has both the .xlsx name and a zip signature; either one alone is not enough.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Excel'de yalnız iki okunuşu farklı metin değerler sorulur; \"4711\" ve \"abc\" gibi değerler sorulmaz.",
+          "en": "In Excel, only text values with two different readings are asked about; values such as \"4711\" and \"abc\" are not asked.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Küçük beyan edilip 80 MB'a açılan üye, akış sırasında kesilir ve sınır hatası verilir.",
+          "en": "A member that declares a small size but expands to 80 MB is cut off during streaming, and a limit error is returned.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Adı .xlsx olmayan zip dosyası Office ya da zip dosyası olarak adlandırılır ve Excel adımı gösterilmez.",
+          "en": "A zip file not named .xlsx is called an Office or zip file, and no Excel step is shown.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek paket düğmeleri giriş anahtarı yokken pasif olur; sonuç başlığı klavyeyle odaklanabilir.",
+          "en": "Sample package buttons are disabled when there is no access key, and the result heading can receive keyboard focus.",
           "kaynak": "kosu"
         }
       ]

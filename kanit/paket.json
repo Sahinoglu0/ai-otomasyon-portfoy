@@ -55,16 +55,16 @@
     },
     {
       "yol": "test-katalogu.tr.md",
-      "sha256": "63e966ea438759c4b5fff2adf9149383e6e1564db34ab7089212a62b5ff4ffdf",
-      "bayt": 70947,
+      "sha256": "27d791c2b443a42b9246bb2ffff10c0228a05ae85fd2a30f7a36b6a63fbb121a",
+      "bayt": 83300,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (Türkçe).",
       "aciklama_en": "Test behaviour catalogue (Turkish)."
     },
     {
       "yol": "test-katalogu.en.md",
-      "sha256": "6ab89f22e284960e980b0a1b48c28a7e0cad54ca29ebfeba837f1d29d3e6d370",
-      "bayt": 73091,
+      "sha256": "a1c30751284757b7036250c6a0c2b9472daa4478937b6e138e22667b3a641a41",
+      "bayt": 85812,
       "kaynak": "kosu",
       "aciklama_tr": "Test davranış kataloğu (İngilizce).",
       "aciklama_en": "Test behaviour catalogue (English)."

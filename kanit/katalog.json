@@ -3877,6 +3877,731 @@
           "tr": "Yalnızca yer tutucu bir yol içeren kural açıklaması geçer.",
           "en": "A rule description containing only a placeholder path passes.",
           "kaynak": "kosu"
+        },
+        {
+          "tr": "Muafiyet yalnız belirli eski commitlere tanınır; diğerlerinde yazar noreply değilse hata verilir.",
+          "en": "The exemption applies only to specific old commits; for the others, a non-noreply author raises an error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Muafiyet listesi yalnız orijinal commit ve eklenen bir committen oluşur.",
+          "en": "The exemption list has only the original commit and one added commit.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-invoice-and-payment-echo-0-8-0",
+      "ad_tr": "Fatura ve ödeme yankısı (0.8.0)",
+      "ad_en": "Invoice and payment echo (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Geri alınan ödeme kalıcı çift ödeme sayılmaz; ilgili kayıtlar çift belge olarak kalır.",
+          "en": "A reversed payment is not counted as a lasting double payment; the related records stay double documents.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri alma kaydı yoksa ilgili çift ödeme kalıcı olarak kalır.",
+          "en": "Without a reversal record, the related double payment stays.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sipariş başına net ödeme sayısı yazılır; geri alınan ödemeler düşülür ve sonuç eksiye inmez.",
+          "en": "The net payment count is written per order; reversed payments are subtracted and the result never goes below zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tekrarlanan fatura kabulü, sonda tek bir kapatma varsa yankı sayılır; kapatma yoksa yankı sayılmaz.",
+          "en": "A repeated invoice receipt counts as an echo when a single clearing closes it at the end; without a clearing it does not count.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki satıcı faturası çift fatura bulgusu olarak aday kalır.",
+          "en": "Two supplier invoices remain candidates, each reported as a double invoice finding.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek belgede iki kayıt yankısı silinmez; bulgu kalır ve yankı şüpheli olarak işaretlenir.",
+          "en": "An echo of two records on one document is not deleted; the finding stays and is flagged as a suspected echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Eski davranış bayrağıyla yankı bulguyu düşürür ve işaret üretilmez.",
+          "en": "With the old-behaviour flag, the echo drops the finding and no flag is produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Varsayılan davranışta hiçbir bulgu silinmez ve yankı işaretlenir.",
+          "en": "By default no finding is deleted and the echo is flagged.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-suppression-and-feedback-endpoints-0-8-0",
+      "ad_tr": "Bastırma ve geri bildirim uç noktaları (0.8.0)",
+      "ad_en": "Suppression and feedback endpoints (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Bastırma kuralı eklenir ve aktif listede görünür.",
+          "en": "A suppression rule is added and appears in the active list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı kimlikli ikinci kural 409 ile, geçersiz girdi 422 ile reddedilir.",
+          "en": "A second rule with the same identifier is rejected with 409, and invalid input with 422.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Süresi dolmuş kural etkin listede yer almaz; ayrı süresi dolan listesinde görünür.",
+          "en": "An expired rule is left out of the active list and shown in the separate expired list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kural eklemek yalnız yönetici rolüne açıktır; planlayıcı ve satın alma 403 alır.",
+          "en": "Adding a rule is open only to the administrator role; planner and purchasing get 403.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kural dosyası atomik yazılır, geçici dosya kalmaz; eklenen kural okunabilir.",
+          "en": "The rule file is written atomically, no temporary file is left, and the added rule can be read back.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz geri bildirim isteği 422 ile yanıtlanır ve hata alanı döner.",
+          "en": "An invalid feedback request is answered with 422 and an error field.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim 201 ile kaydedilir, kaydı açan kullanıcı doğru yazılır ve listeleme 200 döner.",
+          "en": "Feedback is saved with 201, the record names the correct user, and listing returns 200.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-suppression-end-to-end-run-and-importance-classes-0-8-0",
+      "ad_tr": "Bastırma, uçtan uca çalıştırma ve önem sınıfları (0.8.0)",
+      "ad_en": "Suppression, end-to-end run and importance classes (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Gerekçesi boş olan ya da bitiş tarihi olmayan kural reddedilir.",
+          "en": "A rule with an empty reason or without an end date is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş girdiden boş kural listesi okunur; aynı kimlikli iki kural reddedilir.",
+          "en": "An empty input reads as an empty rule list; two rules with the same identifier are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Süresi dolan kural uygulanmaz ve dolan kurallar ayrı listede görünür.",
+          "en": "An expired rule is not applied and expired rules appear in a separate list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tedarikçi ve kalem eşleşen bulgu bastırılır; izde kuralın kimliği kalır.",
+          "en": "A finding matching the supplier and item is suppressed; the trace keeps the rule identifier.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kural yalnız eşleşen türdeki ve siparişteki bulguyu bastırır.",
+          "en": "A rule suppresses only the finding of the matching type and order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Zorunlu alanı eksik kural reddedilir.",
+          "en": "A rule with a required field missing is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme dosyasından okunan net ödeme sayısı sipariş başına yazılır.",
+          "en": "The net payment count read from the payment file is written per order.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bastırma kuralı çalıştırmada uygulanır; bastırılan sayısı ve kuralın izi özete yazılır.",
+          "en": "The suppression rule is applied in a run, and the suppressed count and the rule trace are written to the summary.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme dosyası çıktı klasöründen otomatik alınır; klasör yoksa girdi bulunmaz.",
+          "en": "The payment file is picked up automatically from the output folder; if the folder is missing, no input is found.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme dosyasında geçerli satırlar okunur; bozuk dosya boş döner ve iki hata bildirilir.",
+          "en": "Valid rows of the payment file are read; a malformed file gives an empty result and two errors are reported.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme kalemi olmayan iki çift bulgu için uyarı verilir ve bulgular çift fatura kalır.",
+          "en": "A warning is given for two double findings with no payment item, and they stay double invoices.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme yolu verilince çift ödeme yüksek, çift belge düşük önemle uçtan uca ayrılır; sınıflandırılmamış kalmaz.",
+          "en": "With a payment path given, double payments are high importance and double documents low, end to end, with none left unclassified.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme yolu verilmezse bulgular çift fatura kalır ve eksik dosya için uyarı verilir.",
+          "en": "Without a payment path, the findings stay double invoices and a warning is given for the missing file.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Süresi dolan bastırma kuralı uygulanmaz ve kural için uyarı çıktıya yazılır.",
+          "en": "An expired suppression rule is not applied, and a warning for it is written to the output.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersiz geri bildirim girdileri hata ile reddedilir.",
+          "en": "Invalid feedback input is rejected with an error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri tabanı en son sürüme getirilir ve geri bildirim tablosu bulunur.",
+          "en": "The database is brought to the latest version and the feedback table exists.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim bulgu anahtarına göre kaydedilir ve listelenir; başka anahtarın kaydı gelmez.",
+          "en": "Feedback is saved and listed by finding key; records under another key do not appear.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim özeti toplam ile doğru, yanlış ve belirsiz sayılarını ayrı verir.",
+          "en": "The feedback summary gives the total and separate counts of correct, wrong and uncertain.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Net ödeme, ödeme sayısından iptal sayısının düşülmesiyle bulunur ve eksiye inmez.",
+          "en": "Net payment is the payment count minus cancellations, and never goes below zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çift ödeme ve çift fatura yüksek, çift belge tutar ne olursa olsun düşük önemdedir.",
+          "en": "Double payments and double invoices are high importance; double documents are low whatever the amount.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme bilgisi yoksa iki bulgu da eski türde, çift fatura olarak kalır.",
+          "en": "Without payment data both findings keep the old type, double invoice.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme bilgisi varsa bulgu çift ödeme ya da çift belge olarak ayrışır.",
+          "en": "With payment data, a finding splits into double payment or double document.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ödeme kaydı eksik kalem eski türde, çift fatura olarak kalır; diğeri ayrışır.",
+          "en": "The item with an incomplete payment record keeps its old type, double invoice; the other splits.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-echo-feedback-label-and-finding-model-0-8-0",
+      "ad_tr": "Yankı geri bildirim etiketi ve bulgu modeli (0.8.0)",
+      "ad_en": "Echo feedback label and finding model (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Tanınmayan geri bildirim etiketi reddedilir.",
+          "en": "An unrecognised feedback label is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiket ile karar çeliştiğinde geri bildirim reddedilir.",
+          "en": "Feedback is rejected when the label and the decision contradict each other.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiket karara eşlenir ve kendi alanında saklanır.",
+          "en": "The label maps to the decision and is stored in its own field.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketsiz geri bildirim eski istemciden gelse de kabul edilir ve etiketsiz sayılır.",
+          "en": "Feedback without a label, from an older client, is accepted and counted as unlabelled.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiket sayıları karar sayılarından ayrı özetlenir.",
+          "en": "Label counts are summarised separately from decision counts.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bulgu yanıtındaki yankı alanı doğru ya da yanlış değeridir.",
+          "en": "The echo field in the findings response is a true or false value.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim isteğindeki yankı etiketi kabul edilir ve 201 ile kaydedilir.",
+          "en": "An echo label in a feedback request is accepted and saved with 201.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri tabanı göçü yankı şüpheli ve etiket kolonlarını ekler.",
+          "en": "The database migration adds the suspected echo column and the label column.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Sıralama, yankı şüpheli alanını bulgu satırında taşır.",
+          "en": "Sorting carries the suspected echo field on the finding row.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı anahtarları CSV dosyasından okunur; dosya yoksa boş küme döner.",
+          "en": "Echo keys are read from the CSV file; without the file the set is empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı işareti yalnız ilgili kalemin çift bulgularına konur ve hiçbir bulgu düşmez.",
+          "en": "The echo flag goes only on the matching item's double findings, and no finding is dropped.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İşaret yalnız yankı bulgu türündeki satırlara konur.",
+          "en": "The flag is set only on rows of the echo finding types.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İşaretli bulgular yankı dosyasıyla birebir aynıdır.",
+          "en": "The flagged findings match the echo file exactly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı işaretlemesi bulgu sayısını değiştirmez.",
+          "en": "Echo flagging does not change the number of findings.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek veriden üretilen yankı dosyası boş değildir.",
+          "en": "The echo file generated from sample data is not empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı dosyası yoksa hiçbir bulgu işaretlenmez.",
+          "en": "If there is no echo file, no finding is flagged.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-sap-echo-file-0-8-0",
+      "ad_tr": "SAP yankı dosyası (0.8.0)",
+      "ad_en": "SAP echo file (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "SAP girdisindeki yankı dosyası kopyalanır ve kopyadan okunur.",
+          "en": "The echo file from the SAP input is copied and read back from the copy.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı dosyası yoksa kopyalama yapılmaz ve hedefte dosya oluşmaz.",
+          "en": "If there is no echo file, nothing is copied and no file appears at the target.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-precision-and-labeller-gate-0-8-0",
+      "ad_tr": "Kesinlik ve etiketleyici kapısı (0.8.0)",
+      "ad_en": "Precision and labeller gate (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Eşleştirmede dört kayıt sayılır: üç eşleşme ve iki eşleşmeyen kalem çıkar, çakışma dahil.",
+          "en": "Matching counts four records, with three matches and two unmatched items, conflicts included.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalem parmak izi yalnız çift fatura için üretilir; çift belge ve bozuk anahtar için yoktur.",
+          "en": "An item fingerprint is produced only for double invoices; double documents and malformed keys have none.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiket yoksa ölçüm çıkış kodu 2 ile biter, sayı üretilmediği yazılır ve etiketleyici insan olarak gösterilir.",
+          "en": "With no labels the measurement exits with code 2, states that no figure was produced, and shows the labeller as human.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçersizlik nedeni etiketleyiciye göre açıklanır: insan için gerçek sayısı sıfır, ajan ya da bilinmiyor için kaynak.",
+          "en": "The reason for invalidity depends on the labeller: zero real count for a human, or agent or unknown as the source.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İnsan etiketleyicinin gerçek sayısı sıfırsa ölçüm geçersiz sayılır, çıkış kodu 3 olur ve kesinlik yazılmaz.",
+          "en": "If the human labeller's real count is zero, the measurement is invalid, exits with 3, and no precision is printed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketleyici ajan ise ölçüm geçersiz sayılır, çıkış kodu 3 olur ve kesinlik yazılmaz.",
+          "en": "If the labeller is an agent, the measurement is invalid, exits with 3, and no precision is printed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek kaydı olan insan etiketleyici ile ölçüm geçerlidir ve çıkış kodu 0 döner.",
+          "en": "With a human labeller and real records, the measurement is valid and exits with 0.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiketleyici belirtilmezse bilinmiyor sayılır, ölçüm geçersiz olur ve çıkış kodu 3 döner.",
+          "en": "If no labeller is named, it counts as unknown, the measurement is invalid, and it exits with 3.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Gerçek liste boşsa yüz satırın tümü etiketsiz kalır, ölçüm yapılmaz ve çıkış kodu 2 döner.",
+          "en": "With an empty real list, all one hundred rows stay unlabelled, no measurement is made, and the exit code is 2.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Etiket yoksa ölçüm yapılmaz; kesinlik ve Wilson aralığı üretilmez.",
+          "en": "Without labels no measurement is made; no precision or Wilson interval is produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tanınmayan etiket değeri hata verir.",
+          "en": "An unrecognised label value raises an error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tüm kayıtlar gerçekse kesinlik ve iki sınır sıfır çıkar.",
+          "en": "When all records are real, precision and both bounds are zero.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tüm kayıtlar yankıysa kesinlik ve iki sınır bir çıkar.",
+          "en": "When all records are echoes, precision and both bounds are one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karışık sonuçta belirsiz kayıtlar dışarıda kalır; kesinlik 0,75 olur ve sınırlar 0,5 ile altıda beş arasında gösterilir.",
+          "en": "In a mixed result, uncertain records stay out; precision is 0.75 with bounds from 0.5 to five sixths.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız belirsiz kayıt varsa ölçüm yapılmaz.",
+          "en": "If only uncertain records exist, no measurement is made.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Havuz ağırlıklı tabakalı kesinlik 0,25 çıkar ve kapsam havuz payı 1,0 olur.",
+          "en": "Stratified precision with pool weights is 0.25, and the coverage pool share is 1.0.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karar yoksa tabakalı sonuç üretilmez.",
+          "en": "With no decisions, no stratified result is produced.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tüm yankılarda Wilson üst sınırı bire eşit, alt sınır birin altında kalır.",
+          "en": "With all echoes, the Wilson upper bound equals one and the lower bound stays below one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Örnek sayısı sıfırsa Wilson aralığı tanımsız döner.",
+          "en": "With zero samples the Wilson interval is undefined.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yarı yarıya bölünmüş örnekte Wilson aralığı yaklaşık 0,4038 ile 0,5962 arasında çıkar.",
+          "en": "For an even split, the Wilson interval is about 0.4038 to 0.5962.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-kappa-and-echo-variant-0-8-0",
+      "ad_tr": "Kappa ve yankı varyantı (0.8.0)",
+      "ad_en": "Kappa and echo variant (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Gerçek veride etiket yoksa sayı üretilmez ve çıkış kodu 2 döner.",
+          "en": "On real data with no labels, no figure is produced and the exit code is 2.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geçici kopyada bir etiketleyici çifti için kappa hesaplanır; mevcut tabloda tutarsız satır yoktur.",
+          "en": "In a temporary copy, kappa is computed for a labeller pair, and the current table has no inconsistent rows.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Cohen kappa bilinen örnekte 0,5 verir.",
+          "en": "Cohen's kappa gives 0.5 on a known example.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş satırlar kappa hesabının dışında kalır ve sonuç tam uyum olarak bir çıkar.",
+          "en": "Empty rows are excluded, and the result is full agreement, one.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tam uyumda kappa bir olur; tek sınıfta ve boş etiketlerde tanımsız döner.",
+          "en": "Full agreement gives kappa one; a single class or empty labels give undefined.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek sütunlu tabloda kappa hesaplanamaz olarak bildirilir.",
+          "en": "On a single-column table, kappa is reported as not computable.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Üç etiketleyici için üç ikili kappa çifti hesaplanır.",
+          "en": "With three labellers, three pairwise kappa pairs are computed.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Olay dizisi kısa kodlardan ayrılır; tarih ve net tutar doğru okunur.",
+          "en": "The event sequence is parsed from short codes; the date and net amount are read correctly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bozuk olay parçası hata verir.",
+          "en": "A malformed event fragment raises an error.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı tohum aynı sentetik sonucu verir.",
+          "en": "The same seed gives the same synthetic result.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yeni varyant hiç yakalamazsa yakalama kaybı, mevcut yöntemin doğru pozitif sayısına eşit olur.",
+          "en": "If the new variant catches nothing, its capture loss equals the current method's true positive count.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Mevcut varyant tablosu üreticiyle aynı sayıları verir ve yakalama kaybı sıfırdır.",
+          "en": "The current variant table gives the same counts as the generator, and capture loss is zero.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-echo-decision-field-0-8-0",
+      "ad_tr": "Yankı karar alanı (0.8.0)",
+      "ad_en": "Echo decision field (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Veri tabanı göçü yankı karar kolonunu ekler ve değerleri kesin, belirsiz ya da yok ile sınırlar.",
+          "en": "The migration adds the echo decision column and limits its values to definite, uncertain or none.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kalemde bir belirsiz karar varsa kalem kararı belirsiz olur.",
+          "en": "If an item has an uncertain decision, the item decision is uncertain.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Boş karar listesi belirsiz döner.",
+          "en": "An empty decision list returns uncertain.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tek gerçek karar kalem kararı olur.",
+          "en": "A single real decision becomes the item decision.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı kararı gerçek kararın önüne geçer.",
+          "en": "An echo decision takes precedence over a real decision.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Araç kararları yanıttaki adlara çevrilir.",
+          "en": "Tool decisions are translated into the response's names.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tanınmayan araç değeri boş karar olur.",
+          "en": "An unrecognised tool value becomes an empty decision.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karar dosyası yoksa harita boş döner.",
+          "en": "With no decision file, the map is empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karar kolonu yoksa anahtar yine bulunur ama karar boş kalır.",
+          "en": "Without a decision column the key is still found, but the decision stays empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız küme verilirse bulgunun karar alanı boş kalır.",
+          "en": "When only a set is given, the finding's decision field stays empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Karar sözlüğü verilince karar bulguya yazılır ve parmak izi değişmez.",
+          "en": "When a decision dictionary is given, the decision is written to the finding and the fingerprint is unchanged.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bulgu yanıtı yankı karar alanını taşır ve değer tanımlı kümeden gelir.",
+          "en": "The findings response carries the echo decision field, with values from a defined set.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı dosyasının karar kolonunda yalnız geçerli değerler bulunur.",
+          "en": "The echo file's decision column holds only valid values.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Veri tabanındaki karar, yankı dosyasıyla birebir aynıdır.",
+          "en": "The decision in the database matches the echo file exactly.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı kararı hiçbir bulguyu düşürmez.",
+          "en": "The echo decision drops no findings.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-echo-rule-variants-0-8-0",
+      "ad_tr": "Yankı kural varyantları (0.8.0)",
+      "ad_en": "Echo rule variants (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Varsayılan kural mevcut davranışla birebir aynı sonucu verir.",
+          "en": "The default rule gives exactly the same result as the current behaviour.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Varyant sözlüğünde dört anahtar bulunur: mevcut, zaman kısıtlı, tek bulanık ve puan iki eşik.",
+          "en": "The variant dictionary has four keys: current, time-limited, single-fuzzy and two-threshold score.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Ara satıcı faturası puan bandında gerçek sayılır; puan iki eşik yankı üretmez.",
+          "en": "An intermediate supplier invoice is real in the score band; the two-threshold score produces no echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bulanık tarih, puan iki eşikte yine yankı sayılır.",
+          "en": "A fuzzy date still counts as an echo under the two-threshold score.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Puan iki eşik varyantı kayıtlı varyantlar arasındadır.",
+          "en": "The two-threshold score variant is among the registered variants.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Orta skorda kayıt belirsiz kalır ve yankı sayılmaz.",
+          "en": "At a middle score the record stays uncertain and is not counted as an echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tam uyumlu kayıt puan iki eşikte yankıdır.",
+          "en": "A fully matching record is an echo under the two-threshold score.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tutar uyuşmazsa puan iki eşik yankı üretmez.",
+          "en": "If the amounts disagree, the two-threshold score produces no echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "İki alan birden bulanıksa tek bulanık kural kaydı reddeder.",
+          "en": "If two fields are fuzzy at once, the single-fuzzy rule rejects the record.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız tarih bulanıksa kayıt yankı sayılır.",
+          "en": "If only the date is fuzzy, the record counts as an echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tarih çok uzaksa tek bulanık kural kaydı reddeder.",
+          "en": "If the date is too far off, the single-fuzzy rule rejects the record.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tüm alanlar tam uyumluysa tek bulanık kural yankıyı yakalar.",
+          "en": "If all fields match exactly, the single-fuzzy rule catches the echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yalnız tutar bulanıksa kayıt yankı sayılır.",
+          "en": "If only the amount is fuzzy, the record counts as an echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tutar uyuşmazsa tek bulanık kural yankı üretmez.",
+          "en": "If the amounts disagree, the single-fuzzy rule produces no echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aday olay yoksa zaman kısıtlı kural boş döner.",
+          "en": "With no candidate event, the time-limited rule returns nothing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Aynı gündeki yankı pencereye dahildir.",
+          "en": "An echo on the same day is inside the window.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Pencere dışındaki gecikmeli yankı zaman kısıtlı kuralda sayılmaz; mevcut kural bu adayı yakalar.",
+          "en": "A late echo outside the window is not counted by the time-limited rule; the current rule catches this candidate.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Pencere içindeki ikinci mal kabul kaydı yankı sayılır.",
+          "en": "A second goods receipt inside the window counts as an echo.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Tarihi olmayan aday sayılmaz.",
+          "en": "A candidate without a date is not counted.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_python-echo-test-set-0-8-0",
+      "ad_tr": "Yankı test seti (0.8.0)",
+      "ad_en": "Echo test set (0.8.0)",
+      "kume": "kule_python",
+      "testler": [
+        {
+          "tr": "Aynı tohum yankı test setinde aynı çıktıyı verir.",
+          "en": "The same seed gives the same output in the echo test set.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz olaylar ölçüme girmez ve ayrıca sayılır.",
+          "en": "Uncertain events do not enter the measurement and are counted separately.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Kural beklenen yankıyı yakalar ve gerçek tek belgeyi işaretlemez.",
+          "en": "The rule catches the expected echo and does not flag a real single document.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Satıcı olayı yoksa kural hiçbir şey işaretlemez.",
+          "en": "Without a supplier event, the rule flags nothing.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Test setinde yankı, ayrı gerçek belge ve belirsiz olmak üzere en az üç olay türü vardır.",
+          "en": "The test set has at least three event types: echo, separate real document and uncertain.",
+          "kaynak": "kosu"
         }
       ]
     },
@@ -5462,6 +6187,114 @@
         {
           "tr": "Örnek paket düğmeleri giriş anahtarı yokken pasif olur; sonuç başlığı klavyeyle odaklanabilir.",
           "en": "Sample package buttons are disabled when there is no access key, and the result heading can receive keyboard focus.",
+          "kaynak": "kosu"
+        }
+      ]
+    },
+    {
+      "kimlik": "kule_node-additional-panel-tests-0-8-0",
+      "ad_tr": "Panel ek testleri (0.8.0)",
+      "ad_en": "Additional panel tests (0.8.0)",
+      "kume": "kule_node",
+      "testler": [
+        {
+          "tr": "Geri bildirim kararı yalnız doğru, yanlış veya belirsiz olabilir; diğer değerler reddedilir.",
+          "en": "A feedback decision can only be correct, wrong or uncertain; other values are rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim nedeni zorunludur; boş ya da yalnız boşluktan oluşamaz ve gönderilmeden önce kırpılır.",
+          "en": "The feedback reason is required; it cannot be empty or only spaces, and it is trimmed before sending.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Geri bildirim nedeni en fazla 500 karakter olabilir; 500 karakter geçer, 501 karakter reddedilir.",
+          "en": "A feedback reason can be at most 500 characters; 500 passes and 501 is rejected.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Çift ödeme yüksek, çift belge düşük önemdedir ve birbirinden ayrıdır; tanınmayan tür etiketsiz kalır.",
+          "en": "Double payment is high importance, double document is low, the two are kept apart, and an unrecognised type stays unlabelled.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bastırma kuralında kimlik, tedarikçi, kalem, bitiş tarihi ve gerekçe boş bırakılamaz.",
+          "en": "In a suppression rule, identifier, supplier, item, end date and reason cannot be left empty.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bastırma bitiş tarihi yıl-ay-gün biçiminde olmalı ve bugünden önce olamaz; bugün geçerlidir.",
+          "en": "The suppression end date must be in year-month-day format and cannot be before today; today is valid.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bastırma isteğinde sipariş numarası ve tür alanları yalnız doluysa gövdeye girer; tür yalnız iki değerden biri olabilir.",
+          "en": "In a suppression request, the order number and type fields enter the body only when filled; the type can be only one of two values.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Bastırma kuralında kalan gün sayısı, bugün son gün olsa bile bugünü ve sonraki günleri sayar.",
+          "en": "The remaining day count of a suppression rule counts today and later days, even when today is the last day.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panelde gezinti ve çizim betikleri aynı canlı ekran kimliğini kullanır.",
+          "en": "In the panel, the navigation and drawing scripts use the same live screen identifier.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Olay ekranında geri bildirim ve bastırma formları ile sil düğmesi bağlıdır.",
+          "en": "On the event screen, the feedback and suppression forms and the delete button are wired.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı etiketi yalnız yankı şüpheli olarak işaretlenmiş bulgulara verilir.",
+          "en": "The echo label is given only to findings marked as suspected echoes.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı etiketleri mevcut karar değerlerine eşlenir (yankı yanlış alarm sayılır); yeni karar değeri eklenmez.",
+          "en": "Echo labels map onto existing decision values (echo counts as a false alarm); no new decision value is added.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "CSV indirmesinde işaret dizisi yoktur, ayraç noktalı virgüldür, satır sonları CRLF'dir ve başlık ile kayıt satırları bulunur.",
+          "en": "The CSV download has no leading marker, uses a semicolon separator, CRLF line endings, and both a header and record rows.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "CSV çıktısında noktalı virgül, tırnak ya da satır sonu içeren neden tırnaklanır; = + - @ ile başlayan hücreler formül sayılıp kaçırılır.",
+          "en": "In CSV output, a reason containing a semicolon, quote or line break is quoted; cells starting with = + - or @ are escaped so they are not read as formulas.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panelde yankı rozeti ve yankı formu bulunur; CSV düğmesi bağlıdır.",
+          "en": "The panel has an echo badge and an echo form, and the CSV button is wired.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı CSV dosyası tanınan yardımcı dosyalardandır ve SAP listesi sayılmaz.",
+          "en": "The echo CSV file is a recognised helper file and is not counted as a SAP list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Panelde ilk beş bulgu yankı şüpheli alanını korur; yankı rozeti ve yankı formu buna bağlıdır.",
+          "en": "The first five findings in the panel keep the suspected-echo field; the echo badge and echo form depend on it.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz bandı, yankı kararı belirsiz olan bulgularla ayrılır ve önceki listenin alt kümesidir.",
+          "en": "The uncertain band is separated by findings whose echo decision is uncertain, and is a subset of the previous list.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Belirsiz bandı yoksa önceki liste bugünkü haliyle çizilir ve ek başlık görünmez.",
+          "en": "If there is no uncertain band, the previous list is drawn as it is today and no extra heading appears.",
+          "kaynak": "kosu"
+        },
+        {
+          "tr": "Yankı kararı ilk beş bulguya ve ek kayıtlara taşınır; ek seçimde belirsiz kayıtlar önce gelir.",
+          "en": "The echo decision carries over to the first five findings and to extra records; in extra selection, uncertain records come first.",
           "kaynak": "kosu"
         }
       ]

@@ -2,9 +2,9 @@
 
 Bu katalog, otomatik testlerin neyi doğruladığını kısa cümlelerle anlatır. Her madde bir teste karşılık gelir.
 
-Toplam 869 test (0.7.0, koşu 2026-11-05): Kule çekirdeği 603 (601 geçti, 2 beklenen başarısızlık), Ajan orkestrasyonu 120, Kule arayüzü (panel) 146. Python 3.14.7 ve Node v26.13.0 ile koşuldu.
+Toplam 1018 test (0.8.0, koşu 2026-11-12): Kule çekirdeği 732 (2'si beklenen başarısızlık), Ajan orkestrasyonu 120, Kule arayüzü (panel) 166. Python 3.14.7 ve Node v26.13.0 ile koşuldu.
 
-Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar.
+Bu katalog 0.8.0 koşusundaki 1018 testin tamamını kapsar.
 
 ## Kule çekirdeği
 
@@ -934,6 +934,165 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar.
 - Kuralı anlatan, yer tutucu yol ve ad içeren bir satır sızıntı sayılmaz.
 - Yer tutucu yolun yanında gerçek bir yol varsa, gerçek olan yakalanır.
 - Yalnızca yer tutucu bir yol içeren kural açıklaması geçer.
+- Muafiyet yalnız belirli eski commitlere tanınır; diğerlerinde yazar noreply değilse hata verilir.
+- Muafiyet listesi yalnız orijinal commit ve eklenen bir committen oluşur.
+
+### Fatura ve ödeme yankısı (0.8.0)
+
+- Geri alınan ödeme kalıcı çift ödeme sayılmaz; ilgili kayıtlar çift belge olarak kalır.
+- Geri alma kaydı yoksa ilgili çift ödeme kalıcı olarak kalır.
+- Sipariş başına net ödeme sayısı yazılır; geri alınan ödemeler düşülür ve sonuç eksiye inmez.
+- Tekrarlanan fatura kabulü, sonda tek bir kapatma varsa yankı sayılır; kapatma yoksa yankı sayılmaz.
+- İki satıcı faturası çift fatura bulgusu olarak aday kalır.
+- Tek belgede iki kayıt yankısı silinmez; bulgu kalır ve yankı şüpheli olarak işaretlenir.
+- Eski davranış bayrağıyla yankı bulguyu düşürür ve işaret üretilmez.
+- Varsayılan davranışta hiçbir bulgu silinmez ve yankı işaretlenir.
+
+### Bastırma ve geri bildirim uç noktaları (0.8.0)
+
+- Bastırma kuralı eklenir ve aktif listede görünür.
+- Aynı kimlikli ikinci kural 409 ile, geçersiz girdi 422 ile reddedilir.
+- Süresi dolmuş kural etkin listede yer almaz; ayrı süresi dolan listesinde görünür.
+- Kural eklemek yalnız yönetici rolüne açıktır; planlayıcı ve satın alma 403 alır.
+- Kural dosyası atomik yazılır, geçici dosya kalmaz; eklenen kural okunabilir.
+- Geçersiz geri bildirim isteği 422 ile yanıtlanır ve hata alanı döner.
+- Geri bildirim 201 ile kaydedilir, kaydı açan kullanıcı doğru yazılır ve listeleme 200 döner.
+
+### Bastırma, uçtan uca çalıştırma ve önem sınıfları (0.8.0)
+
+- Gerekçesi boş olan ya da bitiş tarihi olmayan kural reddedilir.
+- Boş girdiden boş kural listesi okunur; aynı kimlikli iki kural reddedilir.
+- Süresi dolan kural uygulanmaz ve dolan kurallar ayrı listede görünür.
+- Tedarikçi ve kalem eşleşen bulgu bastırılır; izde kuralın kimliği kalır.
+- Kural yalnız eşleşen türdeki ve siparişteki bulguyu bastırır.
+- Zorunlu alanı eksik kural reddedilir.
+- Ödeme dosyasından okunan net ödeme sayısı sipariş başına yazılır.
+- Bastırma kuralı çalıştırmada uygulanır; bastırılan sayısı ve kuralın izi özete yazılır.
+- Ödeme dosyası çıktı klasöründen otomatik alınır; klasör yoksa girdi bulunmaz.
+- Ödeme dosyasında geçerli satırlar okunur; bozuk dosya boş döner ve iki hata bildirilir.
+- Ödeme kalemi olmayan iki çift bulgu için uyarı verilir ve bulgular çift fatura kalır.
+- Ödeme yolu verilince çift ödeme yüksek, çift belge düşük önemle uçtan uca ayrılır; sınıflandırılmamış kalmaz.
+- Ödeme yolu verilmezse bulgular çift fatura kalır ve eksik dosya için uyarı verilir.
+- Süresi dolan bastırma kuralı uygulanmaz ve kural için uyarı çıktıya yazılır.
+- Geçersiz geri bildirim girdileri hata ile reddedilir.
+- Veri tabanı en son sürüme getirilir ve geri bildirim tablosu bulunur.
+- Geri bildirim bulgu anahtarına göre kaydedilir ve listelenir; başka anahtarın kaydı gelmez.
+- Geri bildirim özeti toplam ile doğru, yanlış ve belirsiz sayılarını ayrı verir.
+- Net ödeme, ödeme sayısından iptal sayısının düşülmesiyle bulunur ve eksiye inmez.
+- Çift ödeme ve çift fatura yüksek, çift belge tutar ne olursa olsun düşük önemdedir.
+- Ödeme bilgisi yoksa iki bulgu da eski türde, çift fatura olarak kalır.
+- Ödeme bilgisi varsa bulgu çift ödeme ya da çift belge olarak ayrışır.
+- Ödeme kaydı eksik kalem eski türde, çift fatura olarak kalır; diğeri ayrışır.
+
+### Yankı geri bildirim etiketi ve bulgu modeli (0.8.0)
+
+- Tanınmayan geri bildirim etiketi reddedilir.
+- Etiket ile karar çeliştiğinde geri bildirim reddedilir.
+- Etiket karara eşlenir ve kendi alanında saklanır.
+- Etiketsiz geri bildirim eski istemciden gelse de kabul edilir ve etiketsiz sayılır.
+- Etiket sayıları karar sayılarından ayrı özetlenir.
+- Bulgu yanıtındaki yankı alanı doğru ya da yanlış değeridir.
+- Geri bildirim isteğindeki yankı etiketi kabul edilir ve 201 ile kaydedilir.
+- Veri tabanı göçü yankı şüpheli ve etiket kolonlarını ekler.
+- Sıralama, yankı şüpheli alanını bulgu satırında taşır.
+- Yankı anahtarları CSV dosyasından okunur; dosya yoksa boş küme döner.
+- Yankı işareti yalnız ilgili kalemin çift bulgularına konur ve hiçbir bulgu düşmez.
+- İşaret yalnız yankı bulgu türündeki satırlara konur.
+- İşaretli bulgular yankı dosyasıyla birebir aynıdır.
+- Yankı işaretlemesi bulgu sayısını değiştirmez.
+- Örnek veriden üretilen yankı dosyası boş değildir.
+- Yankı dosyası yoksa hiçbir bulgu işaretlenmez.
+
+### SAP yankı dosyası (0.8.0)
+
+- SAP girdisindeki yankı dosyası kopyalanır ve kopyadan okunur.
+- Yankı dosyası yoksa kopyalama yapılmaz ve hedefte dosya oluşmaz.
+
+### Kesinlik ve etiketleyici kapısı (0.8.0)
+
+- Eşleştirmede dört kayıt sayılır: üç eşleşme ve iki eşleşmeyen kalem çıkar, çakışma dahil.
+- Kalem parmak izi yalnız çift fatura için üretilir; çift belge ve bozuk anahtar için yoktur.
+- Etiket yoksa ölçüm çıkış kodu 2 ile biter, sayı üretilmediği yazılır ve etiketleyici insan olarak gösterilir.
+- Geçersizlik nedeni etiketleyiciye göre açıklanır: insan için gerçek sayısı sıfır, ajan ya da bilinmiyor için kaynak.
+- İnsan etiketleyicinin gerçek sayısı sıfırsa ölçüm geçersiz sayılır, çıkış kodu 3 olur ve kesinlik yazılmaz.
+- Etiketleyici ajan ise ölçüm geçersiz sayılır, çıkış kodu 3 olur ve kesinlik yazılmaz.
+- Gerçek kaydı olan insan etiketleyici ile ölçüm geçerlidir ve çıkış kodu 0 döner.
+- Etiketleyici belirtilmezse bilinmiyor sayılır, ölçüm geçersiz olur ve çıkış kodu 3 döner.
+- Gerçek liste boşsa yüz satırın tümü etiketsiz kalır, ölçüm yapılmaz ve çıkış kodu 2 döner.
+- Etiket yoksa ölçüm yapılmaz; kesinlik ve Wilson aralığı üretilmez.
+- Tanınmayan etiket değeri hata verir.
+- Tüm kayıtlar gerçekse kesinlik ve iki sınır sıfır çıkar.
+- Tüm kayıtlar yankıysa kesinlik ve iki sınır bir çıkar.
+- Karışık sonuçta belirsiz kayıtlar dışarıda kalır; kesinlik 0,75 olur ve sınırlar 0,5 ile altıda beş arasında gösterilir.
+- Yalnız belirsiz kayıt varsa ölçüm yapılmaz.
+- Havuz ağırlıklı tabakalı kesinlik 0,25 çıkar ve kapsam havuz payı 1,0 olur.
+- Karar yoksa tabakalı sonuç üretilmez.
+- Tüm yankılarda Wilson üst sınırı bire eşit, alt sınır birin altında kalır.
+- Örnek sayısı sıfırsa Wilson aralığı tanımsız döner.
+- Yarı yarıya bölünmüş örnekte Wilson aralığı yaklaşık 0,4038 ile 0,5962 arasında çıkar.
+
+### Kappa ve yankı varyantı (0.8.0)
+
+- Gerçek veride etiket yoksa sayı üretilmez ve çıkış kodu 2 döner.
+- Geçici kopyada bir etiketleyici çifti için kappa hesaplanır; mevcut tabloda tutarsız satır yoktur.
+- Cohen kappa bilinen örnekte 0,5 verir.
+- Boş satırlar kappa hesabının dışında kalır ve sonuç tam uyum olarak bir çıkar.
+- Tam uyumda kappa bir olur; tek sınıfta ve boş etiketlerde tanımsız döner.
+- Tek sütunlu tabloda kappa hesaplanamaz olarak bildirilir.
+- Üç etiketleyici için üç ikili kappa çifti hesaplanır.
+- Olay dizisi kısa kodlardan ayrılır; tarih ve net tutar doğru okunur.
+- Bozuk olay parçası hata verir.
+- Aynı tohum aynı sentetik sonucu verir.
+- Yeni varyant hiç yakalamazsa yakalama kaybı, mevcut yöntemin doğru pozitif sayısına eşit olur.
+- Mevcut varyant tablosu üreticiyle aynı sayıları verir ve yakalama kaybı sıfırdır.
+
+### Yankı karar alanı (0.8.0)
+
+- Veri tabanı göçü yankı karar kolonunu ekler ve değerleri kesin, belirsiz ya da yok ile sınırlar.
+- Kalemde bir belirsiz karar varsa kalem kararı belirsiz olur.
+- Boş karar listesi belirsiz döner.
+- Tek gerçek karar kalem kararı olur.
+- Yankı kararı gerçek kararın önüne geçer.
+- Araç kararları yanıttaki adlara çevrilir.
+- Tanınmayan araç değeri boş karar olur.
+- Karar dosyası yoksa harita boş döner.
+- Karar kolonu yoksa anahtar yine bulunur ama karar boş kalır.
+- Yalnız küme verilirse bulgunun karar alanı boş kalır.
+- Karar sözlüğü verilince karar bulguya yazılır ve parmak izi değişmez.
+- Bulgu yanıtı yankı karar alanını taşır ve değer tanımlı kümeden gelir.
+- Yankı dosyasının karar kolonunda yalnız geçerli değerler bulunur.
+- Veri tabanındaki karar, yankı dosyasıyla birebir aynıdır.
+- Yankı kararı hiçbir bulguyu düşürmez.
+
+### Yankı kural varyantları (0.8.0)
+
+- Varsayılan kural mevcut davranışla birebir aynı sonucu verir.
+- Varyant sözlüğünde dört anahtar bulunur: mevcut, zaman kısıtlı, tek bulanık ve puan iki eşik.
+- Ara satıcı faturası puan bandında gerçek sayılır; puan iki eşik yankı üretmez.
+- Bulanık tarih, puan iki eşikte yine yankı sayılır.
+- Puan iki eşik varyantı kayıtlı varyantlar arasındadır.
+- Orta skorda kayıt belirsiz kalır ve yankı sayılmaz.
+- Tam uyumlu kayıt puan iki eşikte yankıdır.
+- Tutar uyuşmazsa puan iki eşik yankı üretmez.
+- İki alan birden bulanıksa tek bulanık kural kaydı reddeder.
+- Yalnız tarih bulanıksa kayıt yankı sayılır.
+- Tarih çok uzaksa tek bulanık kural kaydı reddeder.
+- Tüm alanlar tam uyumluysa tek bulanık kural yankıyı yakalar.
+- Yalnız tutar bulanıksa kayıt yankı sayılır.
+- Tutar uyuşmazsa tek bulanık kural yankı üretmez.
+- Aday olay yoksa zaman kısıtlı kural boş döner.
+- Aynı gündeki yankı pencereye dahildir.
+- Pencere dışındaki gecikmeli yankı zaman kısıtlı kuralda sayılmaz; mevcut kural bu adayı yakalar.
+- Pencere içindeki ikinci mal kabul kaydı yankı sayılır.
+- Tarihi olmayan aday sayılmaz.
+
+### Yankı test seti (0.8.0)
+
+- Aynı tohum yankı test setinde aynı çıktıyı verir.
+- Belirsiz olaylar ölçüme girmez ve ayrıca sayılır.
+- Kural beklenen yankıyı yakalar ve gerçek tek belgeyi işaretlemez.
+- Satıcı olayı yoksa kural hiçbir şey işaretlemez.
+- Test setinde yankı, ayrı gerçek belge ve belirsiz olmak üzere en az üç olay türü vardır.
 
 ## Ajan orkestrasyonu
 
@@ -1300,3 +1459,26 @@ Bu katalog 0.7.0 koşusundaki 869 testin tamamını kapsar.
 - Küçük beyan edilip 80 MB'a açılan üye, akış sırasında kesilir ve sınır hatası verilir.
 - Adı .xlsx olmayan zip dosyası Office ya da zip dosyası olarak adlandırılır ve Excel adımı gösterilmez.
 - Örnek paket düğmeleri giriş anahtarı yokken pasif olur; sonuç başlığı klavyeyle odaklanabilir.
+
+### Panel ek testleri (0.8.0)
+
+- Geri bildirim kararı yalnız doğru, yanlış veya belirsiz olabilir; diğer değerler reddedilir.
+- Geri bildirim nedeni zorunludur; boş ya da yalnız boşluktan oluşamaz ve gönderilmeden önce kırpılır.
+- Geri bildirim nedeni en fazla 500 karakter olabilir; 500 karakter geçer, 501 karakter reddedilir.
+- Çift ödeme yüksek, çift belge düşük önemdedir ve birbirinden ayrıdır; tanınmayan tür etiketsiz kalır.
+- Bastırma kuralında kimlik, tedarikçi, kalem, bitiş tarihi ve gerekçe boş bırakılamaz.
+- Bastırma bitiş tarihi yıl-ay-gün biçiminde olmalı ve bugünden önce olamaz; bugün geçerlidir.
+- Bastırma isteğinde sipariş numarası ve tür alanları yalnız doluysa gövdeye girer; tür yalnız iki değerden biri olabilir.
+- Bastırma kuralında kalan gün sayısı, bugün son gün olsa bile bugünü ve sonraki günleri sayar.
+- Panelde gezinti ve çizim betikleri aynı canlı ekran kimliğini kullanır.
+- Olay ekranında geri bildirim ve bastırma formları ile sil düğmesi bağlıdır.
+- Yankı etiketi yalnız yankı şüpheli olarak işaretlenmiş bulgulara verilir.
+- Yankı etiketleri mevcut karar değerlerine eşlenir (yankı yanlış alarm sayılır); yeni karar değeri eklenmez.
+- CSV indirmesinde işaret dizisi yoktur, ayraç noktalı virgüldür, satır sonları CRLF'dir ve başlık ile kayıt satırları bulunur.
+- CSV çıktısında noktalı virgül, tırnak ya da satır sonu içeren neden tırnaklanır; = + - @ ile başlayan hücreler formül sayılıp kaçırılır.
+- Panelde yankı rozeti ve yankı formu bulunur; CSV düğmesi bağlıdır.
+- Yankı CSV dosyası tanınan yardımcı dosyalardandır ve SAP listesi sayılmaz.
+- Panelde ilk beş bulgu yankı şüpheli alanını korur; yankı rozeti ve yankı formu buna bağlıdır.
+- Belirsiz bandı, yankı kararı belirsiz olan bulgularla ayrılır ve önceki listenin alt kümesidir.
+- Belirsiz bandı yoksa önceki liste bugünkü haliyle çizilir ve ek başlık görünmez.
+- Yankı kararı ilk beş bulguya ve ek kayıtlara taşınır; ek seçimde belirsiz kayıtlar önce gelir.

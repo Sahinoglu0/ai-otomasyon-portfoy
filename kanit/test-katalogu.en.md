@@ -2,9 +2,9 @@
 
 This catalog states, in short sentences, what the automated tests check. Each item corresponds to one test.
 
-Total 869 tests (0.7.0, run 2026-11-05): Kule core 603 (601 passed, 2 expected failures), Agent orchestration 120, Kule interface (panel) 146. Run on Python 3.14.7 and Node v26.13.0.
+Total 1018 tests (0.8.0, run 2026-11-12): Kule core 732 (2 of them expected failures), Agent orchestration 120, Kule interface (panel) 166. Run with Python 3.14.7 and Node v26.13.0.
 
-This catalogue covers all 869 tests of the 0.7.0 run.
+This catalogue covers all 1018 tests of the 0.8.0 run.
 
 ## Kule core
 
@@ -934,6 +934,165 @@ This catalogue covers all 869 tests of the 0.7.0 run.
 - A line that explains the rule using placeholder paths and names is not counted as a leak.
 - If a real path sits next to a placeholder path, the real one is caught.
 - A rule description containing only a placeholder path passes.
+- The exemption applies only to specific old commits; for the others, a non-noreply author raises an error.
+- The exemption list has only the original commit and one added commit.
+
+### Invoice and payment echo (0.8.0)
+
+- A reversed payment is not counted as a lasting double payment; the related records stay double documents.
+- Without a reversal record, the related double payment stays.
+- The net payment count is written per order; reversed payments are subtracted and the result never goes below zero.
+- A repeated invoice receipt counts as an echo when a single clearing closes it at the end; without a clearing it does not count.
+- Two supplier invoices remain candidates, each reported as a double invoice finding.
+- An echo of two records on one document is not deleted; the finding stays and is flagged as a suspected echo.
+- With the old-behaviour flag, the echo drops the finding and no flag is produced.
+- By default no finding is deleted and the echo is flagged.
+
+### Suppression and feedback endpoints (0.8.0)
+
+- A suppression rule is added and appears in the active list.
+- A second rule with the same identifier is rejected with 409, and invalid input with 422.
+- An expired rule is left out of the active list and shown in the separate expired list.
+- Adding a rule is open only to the administrator role; planner and purchasing get 403.
+- The rule file is written atomically, no temporary file is left, and the added rule can be read back.
+- An invalid feedback request is answered with 422 and an error field.
+- Feedback is saved with 201, the record names the correct user, and listing returns 200.
+
+### Suppression, end-to-end run and importance classes (0.8.0)
+
+- A rule with an empty reason or without an end date is rejected.
+- An empty input reads as an empty rule list; two rules with the same identifier are rejected.
+- An expired rule is not applied and expired rules appear in a separate list.
+- A finding matching the supplier and item is suppressed; the trace keeps the rule identifier.
+- A rule suppresses only the finding of the matching type and order.
+- A rule with a required field missing is rejected.
+- The net payment count read from the payment file is written per order.
+- The suppression rule is applied in a run, and the suppressed count and the rule trace are written to the summary.
+- The payment file is picked up automatically from the output folder; if the folder is missing, no input is found.
+- Valid rows of the payment file are read; a malformed file gives an empty result and two errors are reported.
+- A warning is given for two double findings with no payment item, and they stay double invoices.
+- With a payment path given, double payments are high importance and double documents low, end to end, with none left unclassified.
+- Without a payment path, the findings stay double invoices and a warning is given for the missing file.
+- An expired suppression rule is not applied, and a warning for it is written to the output.
+- Invalid feedback input is rejected with an error.
+- The database is brought to the latest version and the feedback table exists.
+- Feedback is saved and listed by finding key; records under another key do not appear.
+- The feedback summary gives the total and separate counts of correct, wrong and uncertain.
+- Net payment is the payment count minus cancellations, and never goes below zero.
+- Double payments and double invoices are high importance; double documents are low whatever the amount.
+- Without payment data both findings keep the old type, double invoice.
+- With payment data, a finding splits into double payment or double document.
+- The item with an incomplete payment record keeps its old type, double invoice; the other splits.
+
+### Echo feedback label and finding model (0.8.0)
+
+- An unrecognised feedback label is rejected.
+- Feedback is rejected when the label and the decision contradict each other.
+- The label maps to the decision and is stored in its own field.
+- Feedback without a label, from an older client, is accepted and counted as unlabelled.
+- Label counts are summarised separately from decision counts.
+- The echo field in the findings response is a true or false value.
+- An echo label in a feedback request is accepted and saved with 201.
+- The database migration adds the suspected echo column and the label column.
+- Sorting carries the suspected echo field on the finding row.
+- Echo keys are read from the CSV file; without the file the set is empty.
+- The echo flag goes only on the matching item's double findings, and no finding is dropped.
+- The flag is set only on rows of the echo finding types.
+- The flagged findings match the echo file exactly.
+- Echo flagging does not change the number of findings.
+- The echo file generated from sample data is not empty.
+- If there is no echo file, no finding is flagged.
+
+### SAP echo file (0.8.0)
+
+- The echo file from the SAP input is copied and read back from the copy.
+- If there is no echo file, nothing is copied and no file appears at the target.
+
+### Precision and labeller gate (0.8.0)
+
+- Matching counts four records, with three matches and two unmatched items, conflicts included.
+- An item fingerprint is produced only for double invoices; double documents and malformed keys have none.
+- With no labels the measurement exits with code 2, states that no figure was produced, and shows the labeller as human.
+- The reason for invalidity depends on the labeller: zero real count for a human, or agent or unknown as the source.
+- If the human labeller's real count is zero, the measurement is invalid, exits with 3, and no precision is printed.
+- If the labeller is an agent, the measurement is invalid, exits with 3, and no precision is printed.
+- With a human labeller and real records, the measurement is valid and exits with 0.
+- If no labeller is named, it counts as unknown, the measurement is invalid, and it exits with 3.
+- With an empty real list, all one hundred rows stay unlabelled, no measurement is made, and the exit code is 2.
+- Without labels no measurement is made; no precision or Wilson interval is produced.
+- An unrecognised label value raises an error.
+- When all records are real, precision and both bounds are zero.
+- When all records are echoes, precision and both bounds are one.
+- In a mixed result, uncertain records stay out; precision is 0.75 with bounds from 0.5 to five sixths.
+- If only uncertain records exist, no measurement is made.
+- Stratified precision with pool weights is 0.25, and the coverage pool share is 1.0.
+- With no decisions, no stratified result is produced.
+- With all echoes, the Wilson upper bound equals one and the lower bound stays below one.
+- With zero samples the Wilson interval is undefined.
+- For an even split, the Wilson interval is about 0.4038 to 0.5962.
+
+### Kappa and echo variant (0.8.0)
+
+- On real data with no labels, no figure is produced and the exit code is 2.
+- In a temporary copy, kappa is computed for a labeller pair, and the current table has no inconsistent rows.
+- Cohen's kappa gives 0.5 on a known example.
+- Empty rows are excluded, and the result is full agreement, one.
+- Full agreement gives kappa one; a single class or empty labels give undefined.
+- On a single-column table, kappa is reported as not computable.
+- With three labellers, three pairwise kappa pairs are computed.
+- The event sequence is parsed from short codes; the date and net amount are read correctly.
+- A malformed event fragment raises an error.
+- The same seed gives the same synthetic result.
+- If the new variant catches nothing, its capture loss equals the current method's true positive count.
+- The current variant table gives the same counts as the generator, and capture loss is zero.
+
+### Echo decision field (0.8.0)
+
+- The migration adds the echo decision column and limits its values to definite, uncertain or none.
+- If an item has an uncertain decision, the item decision is uncertain.
+- An empty decision list returns uncertain.
+- A single real decision becomes the item decision.
+- An echo decision takes precedence over a real decision.
+- Tool decisions are translated into the response's names.
+- An unrecognised tool value becomes an empty decision.
+- With no decision file, the map is empty.
+- Without a decision column the key is still found, but the decision stays empty.
+- When only a set is given, the finding's decision field stays empty.
+- When a decision dictionary is given, the decision is written to the finding and the fingerprint is unchanged.
+- The findings response carries the echo decision field, with values from a defined set.
+- The echo file's decision column holds only valid values.
+- The decision in the database matches the echo file exactly.
+- The echo decision drops no findings.
+
+### Echo rule variants (0.8.0)
+
+- The default rule gives exactly the same result as the current behaviour.
+- The variant dictionary has four keys: current, time-limited, single-fuzzy and two-threshold score.
+- An intermediate supplier invoice is real in the score band; the two-threshold score produces no echo.
+- A fuzzy date still counts as an echo under the two-threshold score.
+- The two-threshold score variant is among the registered variants.
+- At a middle score the record stays uncertain and is not counted as an echo.
+- A fully matching record is an echo under the two-threshold score.
+- If the amounts disagree, the two-threshold score produces no echo.
+- If two fields are fuzzy at once, the single-fuzzy rule rejects the record.
+- If only the date is fuzzy, the record counts as an echo.
+- If the date is too far off, the single-fuzzy rule rejects the record.
+- If all fields match exactly, the single-fuzzy rule catches the echo.
+- If only the amount is fuzzy, the record counts as an echo.
+- If the amounts disagree, the single-fuzzy rule produces no echo.
+- With no candidate event, the time-limited rule returns nothing.
+- An echo on the same day is inside the window.
+- A late echo outside the window is not counted by the time-limited rule; the current rule catches this candidate.
+- A second goods receipt inside the window counts as an echo.
+- A candidate without a date is not counted.
+
+### Echo test set (0.8.0)
+
+- The same seed gives the same output in the echo test set.
+- Uncertain events do not enter the measurement and are counted separately.
+- The rule catches the expected echo and does not flag a real single document.
+- Without a supplier event, the rule flags nothing.
+- The test set has at least three event types: echo, separate real document and uncertain.
 
 ## Agent orchestration
 
@@ -1300,3 +1459,26 @@ This catalogue covers all 869 tests of the 0.7.0 run.
 - A member that declares a small size but expands to 80 MB is cut off during streaming, and a limit error is returned.
 - A zip file not named .xlsx is called an Office or zip file, and no Excel step is shown.
 - Sample package buttons are disabled when there is no access key, and the result heading can receive keyboard focus.
+
+### Additional panel tests (0.8.0)
+
+- A feedback decision can only be correct, wrong or uncertain; other values are rejected.
+- The feedback reason is required; it cannot be empty or only spaces, and it is trimmed before sending.
+- A feedback reason can be at most 500 characters; 500 passes and 501 is rejected.
+- Double payment is high importance, double document is low, the two are kept apart, and an unrecognised type stays unlabelled.
+- In a suppression rule, identifier, supplier, item, end date and reason cannot be left empty.
+- The suppression end date must be in year-month-day format and cannot be before today; today is valid.
+- In a suppression request, the order number and type fields enter the body only when filled; the type can be only one of two values.
+- The remaining day count of a suppression rule counts today and later days, even when today is the last day.
+- In the panel, the navigation and drawing scripts use the same live screen identifier.
+- On the event screen, the feedback and suppression forms and the delete button are wired.
+- The echo label is given only to findings marked as suspected echoes.
+- Echo labels map onto existing decision values (echo counts as a false alarm); no new decision value is added.
+- The CSV download has no leading marker, uses a semicolon separator, CRLF line endings, and both a header and record rows.
+- In CSV output, a reason containing a semicolon, quote or line break is quoted; cells starting with = + - or @ are escaped so they are not read as formulas.
+- The panel has an echo badge and an echo form, and the CSV button is wired.
+- The echo CSV file is a recognised helper file and is not counted as a SAP list.
+- The first five findings in the panel keep the suspected-echo field; the echo badge and echo form depend on it.
+- The uncertain band is separated by findings whose echo decision is uncertain, and is a subset of the previous list.
+- If there is no uncertain band, the previous list is drawn as it is today and no extra heading appears.
+- The echo decision carries over to the first five findings and to extra records; in extra selection, uncertain records come first.

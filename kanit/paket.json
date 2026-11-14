@@ -79,1472 +79,1472 @@
     },
     {
       "yol": "o1-ham/o1/E1-t01/enjeksiyon-kayit.json",
-      "sha256": "ca438bd855d25cd644efcd8ace17a3f0c0d1f108bf6358aeacd5b9624531a258",
-      "bayt": 953,
+      "sha256": "dd90cb0e6b4768075080033271b8717155ed235c005d034ba8e64f832b071a33",
+      "bayt": 927,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/E1-t01/iz-enjeksiyon.jsonl",
-      "sha256": "bdeffbfc8de08805993e4b3f8fc4f77dbe895dc862830d299fde5422d4be0166",
-      "bayt": 2473,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t02/enjeksiyon-kayit.json",
-      "sha256": "6ebbe48665d434e5db9296f3f74b8435508e165f0d1c3d1f3e5bcc3c8dd3fd1c",
-      "bayt": 922,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t02/iz-enjeksiyon.jsonl",
-      "sha256": "f42409be81629fd3b9d73586b1feb59f668e3a8c4b3fb1394d92d4eb3ea2c254",
-      "bayt": 2412,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t03/enjeksiyon-kayit.json",
-      "sha256": "5906d05e7eb4ea5e1db118a03b6c7b0e0a0c231c0c3d24653f46666c88f2e37e",
-      "bayt": 832,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t03/iz-enjeksiyon.jsonl",
-      "sha256": "09d0353bb58b8be7bd68c74687a60432800e7959cf40143a7db43948464ef1de",
-      "bayt": 2232,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t04/enjeksiyon-kayit.json",
-      "sha256": "74eb25d087d49c3d8a03f3e566afb0eb6fce2c59ec25be615a3cecf9a54c5d93",
-      "bayt": 829,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t04/iz-enjeksiyon.jsonl",
-      "sha256": "0d160cfcd5e52e8b3f27ab755da7671c8bc7ea69c5896e36cc893cb2a0335b81",
-      "bayt": 2226,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t05/enjeksiyon-kayit.json",
-      "sha256": "ca498d853551f8283ff482e97d7bfabf53768b57bee1f2e82abb23d4c8b4b528",
-      "bayt": 1234,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t05/iz-enjeksiyon.jsonl",
-      "sha256": "577767986c3ac839a69de305c40d2b9bf0bd322bc105be688a04574a92e873dd",
-      "bayt": 2902,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t06/enjeksiyon-kayit.json",
-      "sha256": "dd89ffe71730b91d69ca6767ca95a4e32be4ae1d8587b9b33705b0f48aa8f1a3",
-      "bayt": 972,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t06/iz-enjeksiyon.jsonl",
-      "sha256": "2ff5e538a9900d9946ad872bc640cd481a5fb1d44dfd050837bf173bafef6f3a",
-      "bayt": 2512,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t07/enjeksiyon-kayit.json",
-      "sha256": "a002b2e8408ef0d33a826ed43b3b6e1d79919cc09850495c49c2860e64b5c540",
-      "bayt": 849,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t07/iz-enjeksiyon.jsonl",
-      "sha256": "60cbba60fc687b987f85faa2101de63fd750f5fae1acefece26f3decc32ab7e1",
-      "bayt": 2266,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t08/enjeksiyon-kayit.json",
-      "sha256": "0582d5e3e8504b1af6e2edbd23493c9c137ef0da4c722e910635e75457562619",
-      "bayt": 883,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t08/iz-enjeksiyon.jsonl",
-      "sha256": "dbf26f591342aa81eda742564e51724707e999cb89a9e5c0098dc4f8f5d389d2",
-      "bayt": 2334,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t09/enjeksiyon-kayit.json",
-      "sha256": "93ec590d2c174ca616ae7d7c02d8526eb2d443f847c2155a48be728fffef2031",
-      "bayt": 926,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E1-t09/iz-enjeksiyon.jsonl",
-      "sha256": "25ef0260b4e9ac476727ca18bbd78855349c99befd17cdf7794a6c9eca42703d",
-      "bayt": 2420,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t01/enjeksiyon-kayit.json",
-      "sha256": "80294dee347f91cb2bb232aa17cd7ecd91f3504478a76b71d27b21d95fc4da57",
-      "bayt": 1574,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t01/iz-enjeksiyon.jsonl",
-      "sha256": "960c21c377a03d22ec5f50429c0932687ecfb5ef0b5e609c06c16f884c999588",
-      "bayt": 3779,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t02/enjeksiyon-kayit.json",
-      "sha256": "a2f630e8984652da41c3392deb2139a2784292c8e7a82a8a0d41d30a31c33afc",
-      "bayt": 1435,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t02/iz-enjeksiyon.jsonl",
-      "sha256": "ab73c00851bc4a7e8c34f73bcb26b808739083b87ae40aa93d7d9c1d098138b5",
-      "bayt": 3502,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t03/enjeksiyon-kayit.json",
-      "sha256": "5229c49dccc05a5f5346f90ec088eafd77a9bac32fdf17583c04f210039d3453",
-      "bayt": 1467,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t03/iz-enjeksiyon.jsonl",
-      "sha256": "c0f093449d4cfa17cb83f53d9be0ad5a7d18c7459ba1d1e874dfacf24661847a",
-      "bayt": 3566,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t04/enjeksiyon-kayit.json",
-      "sha256": "1c1fcbeb2bd75ebd08dba50e0f7681230c8e84c3f12a0695a28676f7ff3fe977",
-      "bayt": 1432,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t04/iz-enjeksiyon.jsonl",
-      "sha256": "54f1e0f1041caafce9d5438f973054ba5b6a824d43514fa7e43f4207c7b369ac",
-      "bayt": 3496,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t05/enjeksiyon-kayit.json",
-      "sha256": "1c476b5bfc014b49ed21c606bff012d62c74b1140ab340a6452404226d7d9428",
-      "bayt": 1709,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t05/iz-enjeksiyon.jsonl",
-      "sha256": "529e9512915e8deb73153a5115aebd428802eb69755107d8a099949765397f58",
-      "bayt": 4050,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t06/enjeksiyon-kayit.json",
-      "sha256": "6c17bb6ef14e048b6a8deea439b67c67b4c7e52c4563307a27ae64c826619fa1",
-      "bayt": 1536,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t06/iz-enjeksiyon.jsonl",
-      "sha256": "4b9dc594208f5aded070a209edce2c9f1b56f474291cac32c7a4ade47377aa68",
-      "bayt": 3705,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t07/enjeksiyon-kayit.json",
-      "sha256": "ed5c702a6a3a71563f9f12ca7bf53db01a8d328381efef94b9d7f917e214afa6",
-      "bayt": 1509,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t07/iz-enjeksiyon.jsonl",
-      "sha256": "83f8be3caa6c2d27f70c3b33e80dd425039eeaf572b90652731952a6cfb3e768",
-      "bayt": 3649,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t08/enjeksiyon-kayit.json",
-      "sha256": "bc104016a4e1b9c0f856b6617a094ded5719d9e16c0eca57b2f09a61d77c7c96",
-      "bayt": 1454,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t08/iz-enjeksiyon.jsonl",
-      "sha256": "cf8cddbc5e710481d4d3f778e2b0adba40e956a0fc83c5fb7b4a19bdefda4fdc",
-      "bayt": 3540,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t09/enjeksiyon-kayit.json",
-      "sha256": "4983815347f56174fb2e50ffb88e3f9f7bdc3cb662f66e28b64dc783c239d754",
-      "bayt": 728,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/E2-t09/iz-enjeksiyon.jsonl",
-      "sha256": "8fe5e06f43138fe41fbbd931dc34f23339e0ee50ef42ff54644b537ed00d45cc",
-      "bayt": 2341,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/analist-kayit.json",
-      "sha256": "1107dcd1027cccd1887abd3b6e6259b28cc8e50061e737731c9c560080367d88",
-      "bayt": 5368,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/iz-analist-1.jsonl",
-      "sha256": "1d768a7669630ca9cafafbc7094ab24dcacad5fde4fbebd6a1f919f92319fa05",
-      "bayt": 15053,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/iz-denetci.jsonl",
-      "sha256": "fdf5175088a10c6b1bb424f739f940db425d1bd5350b7da73659c2607b90b525",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/iz-planlayici.jsonl",
-      "sha256": "c1c9e4022e1df3ebb971bcbda3793aa6e59a3616e89c0c3ab3c0589761884dde",
-      "bayt": 2561,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/planlayici-kayit.json",
-      "sha256": "c11bd935dbcbd883eebbcd3f096999156373fa2a4ae6f9208a9640045631381f",
-      "bayt": 959,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/rapor.json",
-      "sha256": "c9e773e48f3bdb68322389cfa13cafd0614c22a8f14435098477a909fc0f2250",
-      "bayt": 395,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t01/rapor.md",
-      "sha256": "00aa8b4bb2796ca9e46057397d7d0b1b2a2dfda832eaae1042f4cabab4ef4515",
-      "bayt": 5602,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/analist-kayit.json",
-      "sha256": "95e09034022fccc0fb87487a7812c42a109c19e636a8248ccd02e0ed0e633d2e",
-      "bayt": 5884,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/iz-analist-1.jsonl",
-      "sha256": "84929500cc0cdcb89d5942fa8272be9d6ef2925d9a3d3880c0438b172dd7bc20",
-      "bayt": 15971,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/iz-denetci.jsonl",
-      "sha256": "dfa9a1e441f369739ebb658bc2b1c98b16a77cf956b8a051b244f1ea81f611ad",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/iz-planlayici.jsonl",
-      "sha256": "131c79a163ea94d72ebb3bc1c446c80c1987bad4cf6726015e51ce8fd884f3c4",
-      "bayt": 2335,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/planlayici-kayit.json",
-      "sha256": "9823df994fe93101eb81e3f58d8cdf5e46f2ab3ea523a83c4503539b5deec8a8",
-      "bayt": 846,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/rapor.json",
-      "sha256": "c9e773e48f3bdb68322389cfa13cafd0614c22a8f14435098477a909fc0f2250",
-      "bayt": 395,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t02/rapor.md",
-      "sha256": "a529a75887130b67747d8a315626541dd144a58e64cff1afb2b23a858a99cf8b",
-      "bayt": 5930,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/analist-kayit.json",
-      "sha256": "cecf3eb7820003f0d3e4643d5d95566f7aa7277ed0de777e5ec20dbe582e3a8f",
-      "bayt": 5612,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/iz-analist-1.jsonl",
-      "sha256": "603c68083944c3f24d2afaebf66e739bd437dcdfc1bb1d32421552729682896a",
-      "bayt": 15786,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/iz-denetci.jsonl",
-      "sha256": "16a17a34a014ad06df625d71e58207d02e20540f4dd0499c18b8b77cdd883eff",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/iz-planlayici.jsonl",
-      "sha256": "ab3b17349102c8bfea4df7f7ded73ff25ebcb5d54474de6989b16ab4eb6171d4",
-      "bayt": 3055,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/planlayici-kayit.json",
-      "sha256": "0037c7c59ca89851f146ce357cd74f0137e578b4e960d852e5e50929b69e11fd",
-      "bayt": 1206,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/rapor.json",
-      "sha256": "c9e773e48f3bdb68322389cfa13cafd0614c22a8f14435098477a909fc0f2250",
-      "bayt": 395,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t03/rapor.md",
-      "sha256": "02825b436b423ad36cace7e64649e83421578255b0ca2ee70648849d25b17a05",
-      "bayt": 6076,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/analist-kayit.json",
-      "sha256": "be7b14dc5dae6e2303d856de675d5326b7a4662b5d19b07d52b2c795c23a72b3",
-      "bayt": 5644,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/iz-analist-1.jsonl",
-      "sha256": "4be7cee3d0e10671fb50eebc260a40541050291833733d7a8c830e7e6ee88fba",
-      "bayt": 15522,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/iz-denetci.jsonl",
-      "sha256": "32803ed4ee17f6ed100db72fc82e07c199c0ec4b8684ff53493b48aca8906478",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/iz-planlayici.jsonl",
-      "sha256": "4bd794d4815b5effe6798227c03e433619365c035f09cae60a5393298018c876",
-      "bayt": 2591,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/planlayici-kayit.json",
-      "sha256": "86caff549959aad18a25e0f2bcd56d66564090452d85c6af952c4653b5639cf9",
-      "bayt": 974,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/rapor.json",
-      "sha256": "c9e773e48f3bdb68322389cfa13cafd0614c22a8f14435098477a909fc0f2250",
-      "bayt": 395,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S1-t04/rapor.md",
-      "sha256": "a1fce9acfd30458b59afbc0b206d0bc6ef8464f9f1ae51a0eafb0771997e4f7b",
-      "bayt": 5797,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/analist-kayit.json",
-      "sha256": "7b9f15ec5d22ddffc3212039acba395ca8018db5fbc969738673d2471557cbfa",
-      "bayt": 2980,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/iz-analist-1.jsonl",
-      "sha256": "fa35911f28ad332b152addf8d64a6649f0faef1ce0bb838aaa5a016827bbd978",
-      "bayt": 10151,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/iz-denetci.jsonl",
-      "sha256": "ba1b2a7aff3702dca679e921b1ff9b8db1683ff394f3be8df96db0731fcba1b0",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/iz-planlayici.jsonl",
-      "sha256": "b162a130cdd8b4724f03def47604b81bbca0c490155c1f758b5d2cc235df2daa",
-      "bayt": 2984,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/planlayici-kayit.json",
-      "sha256": "185583897d0774bc4c63d11caeb6f46b02dc053d0569938173055c81debf94b9",
-      "bayt": 1178,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/rapor.json",
-      "sha256": "79ab070abcba041eac99e59be16dc78950a6bcb0c4ee558483014fdc2a144cad",
-      "bayt": 381,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t01/rapor.md",
-      "sha256": "11f4d3904ae6c4cf3681e8a304e774cb1e52595380ca14b4b62bd232da8c3558",
-      "bayt": 3781,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/analist-kayit.json",
-      "sha256": "28900d51c94a1c76e4b7b47640c244da418abd6f2f2aaa42b6ab7c28a4d5eeee",
-      "bayt": 2500,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/iz-analist-1.jsonl",
-      "sha256": "8403d4ddbde9ce37942580b392b1e2cf3c2c030c69f944d9e56bd20e01165904",
-      "bayt": 7297,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/iz-denetci.jsonl",
-      "sha256": "e16b6b0d1d6e37e2f6b67a1bbafd5f83dc29bafe331356a69f27fa184862c183",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/iz-planlayici.jsonl",
-      "sha256": "746905909a85e1041024d39715bff8902c7228d09621d6f0a2d79e2824631ce9",
-      "bayt": 2367,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/planlayici-kayit.json",
-      "sha256": "dbb62223aca156310e4c803bc12c19d31e1ffe39f981a179bcc9a568090a750f",
-      "bayt": 869,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/rapor.json",
-      "sha256": "79ab070abcba041eac99e59be16dc78950a6bcb0c4ee558483014fdc2a144cad",
-      "bayt": 381,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t02/rapor.md",
-      "sha256": "d994a95cd35013ca182ff8fd2f9e611710d62d6267565dfa896ae9516bdfc336",
-      "bayt": 2977,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/analist-kayit.json",
-      "sha256": "2de37d778805a10199f02f3a5c8967418a1e5df367c75782b5f81f87fb59990e",
-      "bayt": 2207,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/iz-analist-1.jsonl",
-      "sha256": "3766f7f3ef977d3a991f8ccb1720a9f27073217e644fcc20e462e41b2b46e041",
-      "bayt": 6623,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/iz-denetci.jsonl",
-      "sha256": "91feab81e7876ae50a06e18f0227c47639300c13d27ac534df8ef1388dda3242",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/iz-planlayici.jsonl",
-      "sha256": "14f33fe62245fd42bfad9d938a23020b1cafe9d24881fb53bbcdfadb4f614e4b",
-      "bayt": 2189,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/planlayici-kayit.json",
-      "sha256": "497c0775aee49b0147e591a45dbb94c52732aede1a4dd7d7225f92c0072a6fa2",
-      "bayt": 780,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/rapor.json",
-      "sha256": "79ab070abcba041eac99e59be16dc78950a6bcb0c4ee558483014fdc2a144cad",
-      "bayt": 381,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t03/rapor.md",
-      "sha256": "c025e1a459794783a36d84f4dc668bd471aaac93f4df3d49a6aa8864e5c3742c",
-      "bayt": 2596,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/analist-kayit.json",
-      "sha256": "30cf07461cdc690c2bc00235bf34d1e001d2c3ba2f61c3c56aba2aa332b5b21e",
-      "bayt": 2836,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/iz-analist-1.jsonl",
-      "sha256": "363ddf2574ee08eb73dab4752f396ffb982c010dd7b41732e6f429a81454c9f6",
-      "bayt": 7987,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/iz-denetci.jsonl",
-      "sha256": "bea08e942769d458b8dff49b8780cc1a0ebd2786c94892300457caf961ba13b0",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/iz-planlayici.jsonl",
-      "sha256": "bfbf50c6f60e15fafdf9ea6fd87ce9f0b9893cdc591b67072b862c997d365ae6",
-      "bayt": 2403,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/planlayici-kayit.json",
-      "sha256": "34dd4529e78b67a58514fae128923b04299ef79f8f9d9cb3789f856352ad8e58",
-      "bayt": 887,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/rapor.json",
-      "sha256": "79ab070abcba041eac99e59be16dc78950a6bcb0c4ee558483014fdc2a144cad",
-      "bayt": 381,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S2-t04/rapor.md",
-      "sha256": "33761ddee36d1f82028985e5eba3e0b4c3c84ad5b1996d6571e527be16a8a509",
-      "bayt": 3212,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/analist-kayit.json",
-      "sha256": "5c2412e2bda7b7067e294bb17bfad9e8bac7abca828da91f637d7bfce65f935a",
-      "bayt": 2428,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/iz-analist-1.jsonl",
-      "sha256": "f3c02dae83fd7d8b26fff3a21e82d30c0d1db6d4889d4aa831e37e58b7f7a14e",
-      "bayt": 8819,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/iz-denetci.jsonl",
-      "sha256": "443ab30e1e11731022a62d65c744cc0df0da4224206fe46b8b906ce144ae7330",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/iz-planlayici.jsonl",
-      "sha256": "de5d0fbac707a50c257239d6e47458c3f304f81df204d34fb93ab3e462db23fe",
-      "bayt": 2655,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/planlayici-kayit.json",
-      "sha256": "f9508a2c8feb7f733dfa559c786987b292b3f3e81793043770df4864705e24e2",
-      "bayt": 1027,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/rapor.json",
-      "sha256": "b8e93c8ccdc6122f45ae14c4d8739286516c1571607b010b4aef3eb80585a175",
-      "bayt": 371,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t01/rapor.md",
-      "sha256": "430f9facb6735adc2e647020ad80b1771251e7dc54b8d5a930f2a0c38337562d",
-      "bayt": 2981,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/analist-kayit.json",
-      "sha256": "05c0e9f931b19d4bbb5385d6a359f00f0eb1a0a1bbd23ac55a14ada4082b65b6",
-      "bayt": 3095,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/iz-analist-1.jsonl",
-      "sha256": "95b98ce10a4e58a5124c8cf9d6d44fba82744dcc478a83fab689b578dd99e491",
-      "bayt": 10402,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/iz-denetci.jsonl",
-      "sha256": "35beba0d0ef24b2cd4d7d27e2749aa56a213134d48fcb76d6db441f53eb2ac02",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/iz-planlayici.jsonl",
-      "sha256": "52361581318f1eabe5394a6aa53c069a486b6f308d07551571e272b0a6e2da60",
-      "bayt": 3023,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/planlayici-kayit.json",
-      "sha256": "5f92550f7752d00bc3c2fc5a4240a19096851ed9bb462c342e42bdd973775325",
-      "bayt": 1211,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/rapor.json",
-      "sha256": "b8e93c8ccdc6122f45ae14c4d8739286516c1571607b010b4aef3eb80585a175",
-      "bayt": 371,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t02/rapor.md",
-      "sha256": "8a697bd365ed30f6604bfd2bbb846f0c129a01e409fac8046e8ff49eab92da67",
-      "bayt": 3833,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/analist-kayit.json",
-      "sha256": "f59b0f15e76b3fd5a5b9ba49b9d781ce1516e26574c134baeb1183135cf86e92",
-      "bayt": 2088,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/iz-analist-1.jsonl",
-      "sha256": "428c3a18b276ee73bc46bea35d1b274986876c5766139213eccf45991e1a6bd9",
-      "bayt": 7999,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/iz-denetci.jsonl",
-      "sha256": "45f973d85e05b055c5f009a11d86201781f008d44a79925212a0504672150b44",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/iz-planlayici.jsonl",
-      "sha256": "548292f67a91a07c8a118dcb12eb8b2254f0694e997a1ccd91066d1a508af6db",
-      "bayt": 2245,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/planlayici-kayit.json",
-      "sha256": "c98c5f6fc5b419fc17c7d113d408738f26a5b8f702b8e7b0350f3f33f182616a",
-      "bayt": 822,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/rapor.json",
-      "sha256": "b8e93c8ccdc6122f45ae14c4d8739286516c1571607b010b4aef3eb80585a175",
-      "bayt": 371,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t03/rapor.md",
-      "sha256": "32ca3ef5855955269858bbe8bef4ecde148f626faa7305bb6f28fd34e0f4939d",
-      "bayt": 2525,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/analist-kayit.json",
-      "sha256": "7ff20cdb49719a8f5f80da66e3dae0ad1946247bf6f743a2b827354b13963ca8",
-      "bayt": 5439,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/iz-analist-1.jsonl",
-      "sha256": "7d907888ed0bcbfe37fcf8d7aeefec0a5c3f103ab853f27ebcce9b1f695572bf",
-      "bayt": 9419,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/iz-analist-2.jsonl",
-      "sha256": "f6092997836fb2939b036e726b1ff3a8da4095e7640ebfa72bfa1719eaa1715d",
-      "bayt": 10897,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/iz-denetci.jsonl",
-      "sha256": "131d77ecb210c3dac4b88587194ab0ba2d84e3daa447b2585eaa8507089f030d",
-      "bayt": 478,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/iz-planlayici.jsonl",
-      "sha256": "6368d70b52969600f6176bd3f54457d2d10569cfc62fae85a20aa21817db8aa4",
-      "bayt": 2577,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/planlayici-kayit.json",
-      "sha256": "0e80ec59dc77f8c82bd2451053fdeb0e429d3a198d4f80a1e7b67181ed0c05de",
-      "bayt": 988,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/rapor.json",
-      "sha256": "3aad6c787cb1e4f578c0ab84113303ab722e39065eec657f706a1ae2195ab2f2",
-      "bayt": 659,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S3-t04/rapor.md",
-      "sha256": "2c7cc78d2c6e745ec106e31e552fbbcb470a9988a21f573c3f9e8e2b5f04a345",
-      "bayt": 3057,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/analist-kayit.json",
-      "sha256": "815f3e009058aab56cea5ec29361a472ae753a1af599815c9a4ab19c886fd21c",
-      "bayt": 7191,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/iz-analist-1.jsonl",
-      "sha256": "3e64a0768692129526ac40f1a4085920211784d1a7901c268ff520864f42fc1b",
-      "bayt": 9143,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/iz-analist-2.jsonl",
-      "sha256": "296dada8ef82c006c9f2e47afbb1ce44cfe4e0151358fa2f895b7f4da341b191",
-      "bayt": 8783,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/iz-denetci.jsonl",
-      "sha256": "17e06c8831078ac43887af47d36666da44f2fafec027ab285909fe51b179b7df",
-      "bayt": 493,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/iz-planlayici.jsonl",
-      "sha256": "5d65ba3253f2fad52520b5205286d67a6bd656a691f669c5ea2b532be33a8e05",
-      "bayt": 2730,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/planlayici-kayit.json",
-      "sha256": "19c4b5f448e12561e1ea9f32f795817972b2a7c22866c6773f7a4997cdadeb4c",
-      "bayt": 1042,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/rapor.json",
-      "sha256": "dac034dcacf2c448a8046f5f37ac4ac5871ce0e6cc43c8ef9220868aba42bf67",
-      "bayt": 711,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t01/rapor.md",
-      "sha256": "f602462bbe2eaad07467b9f4c28e0e79ec8aeff86f933580ae4d6892d08db746",
-      "bayt": 1472,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t02/analist-kayit.json",
-      "sha256": "a003896008239c8ff7d1e6cdb0ff101c48258f34ab23dbe9fa27a4fca7a279cb",
-      "bayt": 3831,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t02/iz-analist-1.jsonl",
-      "sha256": "c5f720e0e1ce378f272679b868101500730cdbfc86118393e2f6bb2089e47c74",
-      "bayt": 9144,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t02/iz-denetci.jsonl",
-      "sha256": "bb586da173e67e2d2f899f900ed651ba722a6690dd6706986a8d3795e606675f",
-      "bayt": 145,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t02/iz-planlayici.jsonl",
-      "sha256": "aaf37a6bd9be7eba5eb03775decdc21c0860e5fe588f46da530a4f7305f42aaf",
+      "sha256": "81b1171bf1ab36137073c4c7f3669d70cba7a8223fb40377c763fad8e239a893",
       "bayt": 2467,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
+      "yol": "o1-ham/o1/E1-t02/enjeksiyon-kayit.json",
+      "sha256": "e41ce17f332323b7237bad13481c4e3d30985c51c8f73763c4388a1e7153385a",
+      "bayt": 896,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t02/iz-enjeksiyon.jsonl",
+      "sha256": "5ae207e8916fb469267fcb34ece98870cc33a9dfefc4961a6732957c12aba8fa",
+      "bayt": 2406,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t03/enjeksiyon-kayit.json",
+      "sha256": "136ae0a61aa402d69045b4faa368128c2262f6fcce0be88f86a82f1091ce213b",
+      "bayt": 806,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t03/iz-enjeksiyon.jsonl",
+      "sha256": "8bf01529af4d7b38d1d9eaec65f19883a97a6c3f876f56ad3f0c4c6a580b48aa",
+      "bayt": 2226,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t04/enjeksiyon-kayit.json",
+      "sha256": "8b5dcfd216d373f079798f3c55e07c166625d4801536b9acfaac3ad0e1f4b0e7",
+      "bayt": 803,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t04/iz-enjeksiyon.jsonl",
+      "sha256": "c0d47536a038c4be1803165ea6a6fd3d7474dfd07c6914f7deb0d70bd5bea1fb",
+      "bayt": 2220,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t05/enjeksiyon-kayit.json",
+      "sha256": "ffbabcb6d0f448fc17341f18017ed006fb52d4c068f388a4db60b0bdcb9af7dc",
+      "bayt": 1208,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t05/iz-enjeksiyon.jsonl",
+      "sha256": "e1ce45a79d8fc3c8ff132736bf57620c3436f79dfa703b0285ee5cef714f4cc3",
+      "bayt": 2896,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t06/enjeksiyon-kayit.json",
+      "sha256": "8714816fcdbd604902f759390cea929849584ce5f45d8321476d091235f5b963",
+      "bayt": 946,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t06/iz-enjeksiyon.jsonl",
+      "sha256": "85a8ca3f6799ea0aeab3d3160f898b4900e3e4ee2c916d3868ea308b161fe69a",
+      "bayt": 2506,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t07/enjeksiyon-kayit.json",
+      "sha256": "6d359dce5cec33fe38ec29e83509725477b72586b4e55255b1e06e496ee93d87",
+      "bayt": 823,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t07/iz-enjeksiyon.jsonl",
+      "sha256": "96caa7240e63e18642a59e3435e85679007a5b73f021ead61a9f82f2352dca48",
+      "bayt": 2260,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t08/enjeksiyon-kayit.json",
+      "sha256": "cd9a1aae25b15495182468f67b9e8ec06364b39addf2c8e6970ab168afd5667e",
+      "bayt": 857,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t08/iz-enjeksiyon.jsonl",
+      "sha256": "989adbefd38858e8575cbabcea7e52f047a2528a7dfa48e8a53a82e4abc5efae",
+      "bayt": 2328,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t09/enjeksiyon-kayit.json",
+      "sha256": "5973147bd96dd73d7880584a042d4f724783407e1c6074738be5a44c4368089d",
+      "bayt": 900,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E1-t09/iz-enjeksiyon.jsonl",
+      "sha256": "3ce10cde0064df10236f416a9738ae04571830fab0b24189ff9bceb9818a5491",
+      "bayt": 2414,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t01/enjeksiyon-kayit.json",
+      "sha256": "9bdba5fa32ee908288e61e72e9f59f0b021a70b0e829f89591640a6aae6293b8",
+      "bayt": 1531,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t01/iz-enjeksiyon.jsonl",
+      "sha256": "f6444d21df49bda0e8fd597be6099772deb09bf8831db22a0d9b05ae42aa0f1c",
+      "bayt": 3771,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t02/enjeksiyon-kayit.json",
+      "sha256": "d68aa896c82b57b8bb61425ff9ee41a1aed4c4f41e6ffb824a2e26915f6fa493",
+      "bayt": 1392,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t02/iz-enjeksiyon.jsonl",
+      "sha256": "0c61017cb51838b1172414a9391e33cc8e87a8b2efe338b83123bd1f89823c3d",
+      "bayt": 3494,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t03/enjeksiyon-kayit.json",
+      "sha256": "bb4e909f2397d45beb7ee06b7ce76ab8b1c2a89369684b2dd5a2583f2c2df805",
+      "bayt": 1424,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t03/iz-enjeksiyon.jsonl",
+      "sha256": "485d0d64782512b461ba39f9186dcafd770c9f6a42fb92032b4f6f2dbcfd2480",
+      "bayt": 3558,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t04/enjeksiyon-kayit.json",
+      "sha256": "469e373fc03f6ee1bd3e2bdc359102b7de92ffbf67ab83f09084c9a0477403fd",
+      "bayt": 1389,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t04/iz-enjeksiyon.jsonl",
+      "sha256": "582cfdba76ee8ab59f450018976fd150cfb134d2a8ab457d7e57e25b838f371a",
+      "bayt": 3488,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t05/enjeksiyon-kayit.json",
+      "sha256": "1644b94133fb9b7a3a9891d0403642b2448b8af165e60b7e4d40672b5b6cd7a1",
+      "bayt": 1666,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t05/iz-enjeksiyon.jsonl",
+      "sha256": "a27952891e55e444728c541ec3c4ece7c2908e1a17f941c03221108456b3b952",
+      "bayt": 4042,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t06/enjeksiyon-kayit.json",
+      "sha256": "ae3e89d80d9c7635f86055837d204de365f34c57d0878a554459a20602167121",
+      "bayt": 1493,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t06/iz-enjeksiyon.jsonl",
+      "sha256": "e02c9665be5a36c15776e0de934c00ab8eb3d76bfda79d4bf2fe54e211aea6af",
+      "bayt": 3697,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t07/enjeksiyon-kayit.json",
+      "sha256": "bba3a652023dbadefb827449e840cead997b46bd53b7915afea53b35541c75f4",
+      "bayt": 1466,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t07/iz-enjeksiyon.jsonl",
+      "sha256": "d4b717519a74dc764a2a9bdcd8fa6baf9f86dd3f37945596c4b9f6dc5926b055",
+      "bayt": 3641,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t08/enjeksiyon-kayit.json",
+      "sha256": "05ec519f4ffad9726dc17d7536ee027361bbc58cca6cd7a5b47286e21792bbe4",
+      "bayt": 1411,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t08/iz-enjeksiyon.jsonl",
+      "sha256": "624a4ebb79e5736bf737716cef806435060a9c9fe3913341ee99d93450e204bf",
+      "bayt": 3532,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t09/enjeksiyon-kayit.json",
+      "sha256": "2bd2c7e11ddf494c4c260715f16f6406c8b19a7270cc1ec9c4d253b9a1a77192",
+      "bayt": 693,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/E2-t09/iz-enjeksiyon.jsonl",
+      "sha256": "9a24161cb21098b669de2f2f3e8c6c95627d25669b272c6a1e24633120bc63d7",
+      "bayt": 2333,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/analist-kayit.json",
+      "sha256": "603b6bcb0389904ee306bb382ec8f34a08ac03390d6f794175fb1158c8ee214f",
+      "bayt": 5324,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/iz-analist-1.jsonl",
+      "sha256": "2c12da127b6729a795aee03e5558937ffb4f205d2772dafac78440b63e928420",
+      "bayt": 15044,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/iz-denetci.jsonl",
+      "sha256": "b57805b3ce1c2190f753b34d50b52d2d01885de08a91189133a6ff74d031d8e3",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/iz-planlayici.jsonl",
+      "sha256": "daf128034230e9e37b711af695bcadb5561afb7eb1c052e8c617f9d11b29cc80",
+      "bayt": 2557,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/planlayici-kayit.json",
+      "sha256": "ec866bcdae06e662ecf3553b4806bd623322451f2eb6bd4931f4a48d892f215e",
+      "bayt": 947,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/rapor.json",
+      "sha256": "d5b825b0c22869d6f42246a3db04ac42ac9425b571e5ffb486e642d9b592fb43",
+      "bayt": 378,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t01/rapor.md",
+      "sha256": "b97414005e8715bc8c253c202e445a765dedafc991cdc510361d04286fada8c1",
+      "bayt": 5490,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/analist-kayit.json",
+      "sha256": "7a96f2cd26fcf4b259adde114a340a38bf48aad051aaf1ccb6a07095f1de3798",
+      "bayt": 5840,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/iz-analist-1.jsonl",
+      "sha256": "62cb0108a699df39f72e29719f8539252030e508ff049b7ef0926ea15996e215",
+      "bayt": 15962,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/iz-denetci.jsonl",
+      "sha256": "cea64dfebc7d3a3fdd42e4824efc9e0b5be30dbb861beabef897caec14adf058",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/iz-planlayici.jsonl",
+      "sha256": "937112f99efeb9299f301bd1c65e6c937714c5fc8663f4b907adb06d40b08392",
+      "bayt": 2331,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/planlayici-kayit.json",
+      "sha256": "b5263a155401350721dad7ffa2f58e782125f1ec77a50c3d9303761320efb209",
+      "bayt": 834,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/rapor.json",
+      "sha256": "d5b825b0c22869d6f42246a3db04ac42ac9425b571e5ffb486e642d9b592fb43",
+      "bayt": 378,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t02/rapor.md",
+      "sha256": "93e3dc4d7686233fc224585cde0f411ded84c868721d32a9c7b9b4419881111e",
+      "bayt": 5821,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/analist-kayit.json",
+      "sha256": "a0a04491941b8a3a10a9471588b10f3fc28d33c333ef662461f96b7bb6ff79ac",
+      "bayt": 5568,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/iz-analist-1.jsonl",
+      "sha256": "0d3b40fb95372213daab0bf1909ffca7e17cb3787edcd3e3bf3d69ece6a79041",
+      "bayt": 15777,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/iz-denetci.jsonl",
+      "sha256": "8948af0808326d8a8b8737d8284c1767340aec9459308122da91f01a9ab7763f",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/iz-planlayici.jsonl",
+      "sha256": "39d7370441cb1d282d2310675b7ba7d368bc405ae42d65d6f4703e53fe8bd92a",
+      "bayt": 3051,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/planlayici-kayit.json",
+      "sha256": "5d52159d313fecb74c36e0f8ec6e9b77610fe25d9531ada1f5df037ad74f5fc4",
+      "bayt": 1194,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/rapor.json",
+      "sha256": "d5b825b0c22869d6f42246a3db04ac42ac9425b571e5ffb486e642d9b592fb43",
+      "bayt": 378,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t03/rapor.md",
+      "sha256": "1b01bd684b4bde9032768eeed1e63248ee1381e9eb177b4fb0a6a8ce4baec697",
+      "bayt": 5962,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/analist-kayit.json",
+      "sha256": "bdf77eb3489e78de1b70fea63e68e937491857662b5e65eafcdef073bc584fc9",
+      "bayt": 5600,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/iz-analist-1.jsonl",
+      "sha256": "0d2f011db8f49675f1f4bd3a89e042aea39ae5500cbdce216417cc5d7b18ba07",
+      "bayt": 15513,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/iz-denetci.jsonl",
+      "sha256": "11cfcda1016897729c55e1c4a7f2d3ebcabec1081d35eb3638745cd71158049d",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/iz-planlayici.jsonl",
+      "sha256": "9288e351d165068c813821059d1207716d2bf62b4a2256fbda2ba11a7a94b93d",
+      "bayt": 2587,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/planlayici-kayit.json",
+      "sha256": "d2c572158a4cb309a98e597c753f892bfce8ec501e70b8a3d45020558daa8094",
+      "bayt": 962,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/rapor.json",
+      "sha256": "d5b825b0c22869d6f42246a3db04ac42ac9425b571e5ffb486e642d9b592fb43",
+      "bayt": 378,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S1-t04/rapor.md",
+      "sha256": "fa7b5f3918d17ce2ba109929088bbbd0be744dfcf0bf5325ec90c3bb40353774",
+      "bayt": 5664,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/analist-kayit.json",
+      "sha256": "17f44465c78eeae7474bcfccbf3c30722765460dca66caadf921ca2d4983a071",
+      "bayt": 2952,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/iz-analist-1.jsonl",
+      "sha256": "d0146d89952b920ca94780a4b2b37761cbd80cc681f6359bbfd6b9ecd9e71b73",
+      "bayt": 10145,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/iz-denetci.jsonl",
+      "sha256": "540ef4f6773fe7f9f7e7545f8fe437ec0e57a0ec58e23107e2711bf5539bc383",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/iz-planlayici.jsonl",
+      "sha256": "4844771c30f8ff8525f3119d742754eb2386a35d8f6ebb565d24c1053fde326b",
+      "bayt": 2980,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/planlayici-kayit.json",
+      "sha256": "99b645bbda978a321fd9076390622ed8a42f61e7a7bc573f5c850b9899bc76f0",
+      "bayt": 1166,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/rapor.json",
+      "sha256": "e07a75547cd239cf80f9a3f394878eb7171ef81553815107cfcccdd132d4315e",
+      "bayt": 364,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t01/rapor.md",
+      "sha256": "2d91102946508683ec65a9a50b0d7124a90b320c3afea20b6f654195e3a21020",
+      "bayt": 3712,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/analist-kayit.json",
+      "sha256": "110103fde481128fe71b95506ce99b76a80f9682a79a1007c746599c5644c954",
+      "bayt": 2471,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/iz-analist-1.jsonl",
+      "sha256": "ee969e7c29c5cacb5b671c990cf290e5fac84c36b194037c1edd6ef0f8adc1e9",
+      "bayt": 7291,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/iz-denetci.jsonl",
+      "sha256": "0ec2df7359356c843d2dbd3f939e22b443c8971ef092b1d78e780d8c3f696e8f",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/iz-planlayici.jsonl",
+      "sha256": "8b9e8f7ed741128f29245cbafce9233495f0be264b4f2115fc2f13b63ef62cbc",
+      "bayt": 2363,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/planlayici-kayit.json",
+      "sha256": "44d587b5ad6897083d9c586ec9f3dceba58fe9ffc4a2e73ec9f0bbce1dfadc30",
+      "bayt": 857,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/rapor.json",
+      "sha256": "e07a75547cd239cf80f9a3f394878eb7171ef81553815107cfcccdd132d4315e",
+      "bayt": 364,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t02/rapor.md",
+      "sha256": "12d58c4b42ee15e960a314182055f1c008a6b76ddb91f2bea2e640afa462a613",
+      "bayt": 2920,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/analist-kayit.json",
+      "sha256": "49f99c8d130337ca14684463a331a187c1c4213546af202b0314bd851c3b7da1",
+      "bayt": 2178,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/iz-analist-1.jsonl",
+      "sha256": "990fd43341e99004355f1643736ac2b6242b357c300963961a6ec3978087074f",
+      "bayt": 6617,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/iz-denetci.jsonl",
+      "sha256": "5f83f60b0426336a89ad3fa395d5cdf821c502b21f7f468630eeda142f61cd20",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/iz-planlayici.jsonl",
+      "sha256": "6062a3c92a118d3ef9269c6b5de32d190057d0715dc8ddbf5ab7d959fd161bf2",
+      "bayt": 2185,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/planlayici-kayit.json",
+      "sha256": "8507d45807aea5ad051405292955e8eaa2e664e0267e242b477735cf0bd42b64",
+      "bayt": 768,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/rapor.json",
+      "sha256": "e07a75547cd239cf80f9a3f394878eb7171ef81553815107cfcccdd132d4315e",
+      "bayt": 364,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t03/rapor.md",
+      "sha256": "c6b626f7d5ff4861fa490448b6fa6f74caadc20f4ab930300d8a4c8ef7a83322",
+      "bayt": 2545,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/analist-kayit.json",
+      "sha256": "3a09ab240d1e31bae97d697dece2759763867ee7573a2f099d93581c991c75de",
+      "bayt": 2807,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/iz-analist-1.jsonl",
+      "sha256": "416807b31b9a6e11c7502cc17d258de4c0e5e54d20545899076754fad6d22df0",
+      "bayt": 7981,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/iz-denetci.jsonl",
+      "sha256": "9379be0bd2213a4c6b83f86ae64b7a9f08a25dc4fbd1e848c41458c36088b9c2",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/iz-planlayici.jsonl",
+      "sha256": "294e1e3e8fff72f6508f2322f30a322662c49e3ebb60d4921b912ab0f99f1945",
+      "bayt": 2399,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/planlayici-kayit.json",
+      "sha256": "499bc97a976a4392c4643b3ea174bf493bde3645384d00496502ffef8106d3e3",
+      "bayt": 875,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/rapor.json",
+      "sha256": "e07a75547cd239cf80f9a3f394878eb7171ef81553815107cfcccdd132d4315e",
+      "bayt": 364,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S2-t04/rapor.md",
+      "sha256": "e708eed2a8e0a1057ebac3421aadc4af82971c8352db5c9d5baff34a16d0e3c7",
+      "bayt": 3156,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/analist-kayit.json",
+      "sha256": "af7e6c1e32211f7ad092cb9200cd12164c4b2922cdc27c6630f6378fb73875d2",
+      "bayt": 2400,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/iz-analist-1.jsonl",
+      "sha256": "2253986ad8fa2fa754c508e675e2d01c7bcd838a70bc984fdc359a59b4905e08",
+      "bayt": 8813,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/iz-denetci.jsonl",
+      "sha256": "80fab571ca01956357608cb4331538bf4136a3fd5e6c3f40b903047ca4843946",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/iz-planlayici.jsonl",
+      "sha256": "89c115b8a0b6b4999229ed81cfe87c02d8b7dfe273469ae17e06042841c24f57",
+      "bayt": 2651,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/planlayici-kayit.json",
+      "sha256": "04fe12e156ac2bc60098647dc9c7680034f836c565e6357777ac11b0a5b840e8",
+      "bayt": 1015,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/rapor.json",
+      "sha256": "e7f4de29dd05bb0ce9817485c53a414bf11a18daa6a0c26b5b55dd42ed23ee41",
+      "bayt": 354,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t01/rapor.md",
+      "sha256": "28a38bfdc7217856d2444d4db79ba85f5c9200ba284f0fca32e5432822660e2e",
+      "bayt": 2920,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/analist-kayit.json",
+      "sha256": "fd881301dc7b7bb611e78bf7265a2bba2e450ba0eb2fab458a2d8e3bac7c35f0",
+      "bayt": 3067,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/iz-analist-1.jsonl",
+      "sha256": "44a037372f37af91bd2fc782ce44adfdc16b7d248e0bf8182ee3935683fbc17f",
+      "bayt": 10396,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/iz-denetci.jsonl",
+      "sha256": "bc2ceb8b9420a44f5b28fc6775080b48c0cc115bc5e796e0e88e416c0e5e07be",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/iz-planlayici.jsonl",
+      "sha256": "aa7cd811b6d96f08af39074cebbafaa7d2d2b716e4bbcdddec9ddb51abc63c48",
+      "bayt": 3019,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/planlayici-kayit.json",
+      "sha256": "bed99e0974d9a6cf9d260aff906ab8260d61f75870d6d6128f22446bbdae2b32",
+      "bayt": 1199,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/rapor.json",
+      "sha256": "e7f4de29dd05bb0ce9817485c53a414bf11a18daa6a0c26b5b55dd42ed23ee41",
+      "bayt": 354,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t02/rapor.md",
+      "sha256": "8341e14468f7e1f73a8fad80ab681954a74ce913105fa653a84390614f2e74d9",
+      "bayt": 3759,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/analist-kayit.json",
+      "sha256": "65177a462390ed8ca4c52cc65eaa4c74997757f8d78f49e4708ea3da77f2ac61",
+      "bayt": 2060,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/iz-analist-1.jsonl",
+      "sha256": "e652de829dd297645ee101e30dad9bf8592a2e44b07543227b54c2a9947b76bd",
+      "bayt": 7993,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/iz-denetci.jsonl",
+      "sha256": "44bc3e25efb093a356cee07d47ee1cf9df05401e8bceae3710db19f3a5c00635",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/iz-planlayici.jsonl",
+      "sha256": "d03d321e5023f253aa49f929bc17f530969fcaf283f056084b2182b5871bcf94",
+      "bayt": 2241,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/planlayici-kayit.json",
+      "sha256": "0c69c4b43e59ec649b14f64be3acc94764860d3c98ed4d6e821658bf3c640f53",
+      "bayt": 810,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/rapor.json",
+      "sha256": "e7f4de29dd05bb0ce9817485c53a414bf11a18daa6a0c26b5b55dd42ed23ee41",
+      "bayt": 354,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t03/rapor.md",
+      "sha256": "95d20f8b2b8201914f74806d4a54b32915ad96fb03089ace0bd5a2b9da854380",
+      "bayt": 2466,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/analist-kayit.json",
+      "sha256": "858936746720d008d333ecb1295f5484eafe45be61705ea95d97f164438e4fe8",
+      "bayt": 5370,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/iz-analist-1.jsonl",
+      "sha256": "d29f2cd8520c15ec871a1677c498a24d1687584503529443e6c7f4169948bb50",
+      "bayt": 9413,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/iz-analist-2.jsonl",
+      "sha256": "ba4df91b8a6a255b699e5c258240196b65eb1e7510cc23ce60573787051948aa",
+      "bayt": 10888,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/iz-denetci.jsonl",
+      "sha256": "e7b4407372b42eff9f7796f119dc2f39d65f0dcdfeb935f64b2b87f9293aac11",
+      "bayt": 476,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/iz-planlayici.jsonl",
+      "sha256": "71dafd1920f2be798881f4619371d25b6e771cc63602b6f6039b2ca4baef9d02",
+      "bayt": 2573,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/planlayici-kayit.json",
+      "sha256": "5f95b189165e61fe1ba56813ffa657ff1b08e9f2d08b71056ee8d67b999117df",
+      "bayt": 976,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/rapor.json",
+      "sha256": "c2f583a0263699c571fda51cb35318a8e14c0f46a373055cc80fc6852bd88b42",
+      "bayt": 634,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S3-t04/rapor.md",
+      "sha256": "f26c5f7833246059ed84e5d56ab6f0f99de71d5a6724b1af442433273840d4df",
+      "bayt": 2992,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/analist-kayit.json",
+      "sha256": "0525c4becdae9ef61acc28252f2ebc593a41cd5cc42a39abc6d429d00402b54d",
+      "bayt": 7139,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/iz-analist-1.jsonl",
+      "sha256": "8903787414b4f0509da96d3e2adc32b128ade617be7ae5540e3681421b7d12c1",
+      "bayt": 9137,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/iz-analist-2.jsonl",
+      "sha256": "9ccdec1f136b8fb946027e09fb5c5f442ea63f6086620e884eaa0988556ab0f3",
+      "bayt": 8777,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/iz-denetci.jsonl",
+      "sha256": "7adc059420e6a654aa3ebbc96d4c928ba4e610300f6e844ae43ef3a118bb7790",
+      "bayt": 491,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/iz-planlayici.jsonl",
+      "sha256": "2b5d45954fe91f96bb2a34ed028149fafd0ce5cc47411171d1615b14900eef40",
+      "bayt": 2726,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/planlayici-kayit.json",
+      "sha256": "66f25c472b99596955a1f92ef3d84f6d10cf86444593b4262e6f210eaf9deec5",
+      "bayt": 1030,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/rapor.json",
+      "sha256": "50a1fd98e1748054bbe9cef9b93ecf097a4adcaba9e0e58ea0ebdd85dde232ec",
+      "bayt": 685,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t01/rapor.md",
+      "sha256": "fb3db2bba0ac86245f68be7ded7a79ad4c311c0815184c02602e08b23e769d8b",
+      "bayt": 1446,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t02/analist-kayit.json",
+      "sha256": "98d0121cfd62964226caf25bd5039da73484742e039c0165d6e68c183482b9eb",
+      "bayt": 3803,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t02/iz-analist-1.jsonl",
+      "sha256": "34d87a9d44d5675292605060f513b210cfc4a8e06ff03be61a37adf7130514b3",
+      "bayt": 9138,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t02/iz-denetci.jsonl",
+      "sha256": "6f73c620c2cf5b9ac6be820021197b020706d6aa4c06b0d5e2564bb0b3bc621f",
+      "bayt": 144,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t02/iz-planlayici.jsonl",
+      "sha256": "4aa1545767bcf004c86bf11f132b43ba8b4195c867b23eb1d1bcbfa1fb19ab4e",
+      "bayt": 2463,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
       "yol": "o1-ham/o1/S4-t02/planlayici-kayit.json",
-      "sha256": "a2fae0df6a60195292157a1fc50a8bd649ebdbac1dc6ea11e5ab76b5defb21a7",
-      "bayt": 910,
+      "sha256": "fefea1d9fe92f4a7663f67aaaeb7847e5176a6581956f5a73b9ba8f219f1f365",
+      "bayt": 898,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t02/rapor.json",
-      "sha256": "db4cd3dac36e774cd11b1ed8f6b7ff282111bad5e49860cd51886935a6ebfb49",
-      "bayt": 399,
+      "sha256": "4953e0ce603461d4411071f23aaa11e461b074852bf7cc58020009ae7decde25",
+      "bayt": 382,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t02/rapor.md",
-      "sha256": "175354b0a4cc5e94368fb3b2aa20ff07168085d238cde917ec643d34ccbcd841",
-      "bayt": 4293,
+      "sha256": "d28d37621dce6bbbb85c4d23400aed16a16712ac9c551d5bd90b292da350f5d9",
+      "bayt": 4225,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/analist-kayit.json",
-      "sha256": "ef41dbc541c4e66ef69ea3f7c084fbd3b3d7dad7b016e7b5e8cb2c4ce9673163",
-      "bayt": 3305,
+      "sha256": "afcad20e08e0842d13fd9b371e7748261b32a14e069cf0f4038b51686daae794",
+      "bayt": 3277,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/iz-analist-1.jsonl",
-      "sha256": "6308db8439fa24cd9076b1eed8b9af22bfd719669d40f4761dca221df015aa36",
-      "bayt": 8150,
+      "sha256": "39228a370b0d68404fe48e50748facf284fabc6e907035ace71eeb2025e064c5",
+      "bayt": 8144,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/iz-denetci.jsonl",
-      "sha256": "fa2bbc92b2dbf3d499506c6d460da226086d4766aece786d863aca1b2e1c688b",
-      "bayt": 145,
+      "sha256": "5ff308b625f3f9eb5ae6ed3c509f0632c69861384ab0af43a128c9b09181bcdb",
+      "bayt": 144,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/iz-planlayici.jsonl",
-      "sha256": "e7dc51a61e965925cd5096b08da28296aa79c5910be3f4293d05599a888dcd57",
-      "bayt": 5658,
+      "sha256": "ebbee20977fbf284488b1ad4baa14935f2400611a20350c92ceffc0a787d0b4f",
+      "bayt": 5650,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/planlayici-kayit.json",
-      "sha256": "11dae78be4d81e6e4ed0bd92b378a58ed41a75e8be8539c319009254e11941ed",
-      "bayt": 1996,
+      "sha256": "015bb6faec1ef65ed2f1af155ee796bcccdda1b4cd5d7ac1fa06f502538c901a",
+      "bayt": 1976,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/rapor.json",
-      "sha256": "6fbfe41d83652022b15f872bfafcadfda85158e7970553699754ee47527440ca",
-      "bayt": 525,
+      "sha256": "6992fb1cb10cc4ef2871c3591278152b7df090b4aa4824d1e2338a81d0bbfe4a",
+      "bayt": 502,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t03/rapor.md",
-      "sha256": "d7675a94074e4cdc89c655e9005913f37a62d47ad8ed3bb7a4ee6bcf10f497aa",
-      "bayt": 3826,
+      "sha256": "46dfd2cfe72ae10d1f1a7246536a5f041edab044423667ff5b31509fbf6c7d4d",
+      "bayt": 3765,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t04/analist-kayit.json",
-      "sha256": "eb1c2350e3d61d8e2da0a0902992e6b5f2c2e4289dd2e1113e9c02d9396b682e",
-      "bayt": 6750,
+      "sha256": "5be494813d9111128986630e115ba2b5e3414e815f2127648e0a20ddfaf79de4",
+      "bayt": 6698,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t04/iz-analist-1.jsonl",
-      "sha256": "d002a8f7d29137c7c99d8e16e83093e0a0dee97063673c9cd6ea0290a5a771ea",
-      "bayt": 8191,
+      "sha256": "5bbea0d6f17d77053fb47ec2aa15985ba4150a9be623cffc97925eae304d2281",
+      "bayt": 8185,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t04/iz-analist-2.jsonl",
-      "sha256": "e09450a4ace08665c6b9c2591f9d43191853f6d7d784264e1ee0dae81ae6a52c",
-      "bayt": 8578,
+      "sha256": "5093fbabc7d9d312069e9dc2090dd51516d0aa780d42b528cde7b921d3ecdfd3",
+      "bayt": 8572,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S4-t04/iz-denetci.jsonl",
-      "sha256": "d27ee43f83c04429d20bb52417a2ae4fdd12b5f652e725f0c65af98b7d53f66d",
-      "bayt": 440,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t04/iz-planlayici.jsonl",
-      "sha256": "4a748f5f1722ba022f4f9a2ea6909a15a2ba7d1b9700565d6b652439568c4ec2",
-      "bayt": 2457,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t04/planlayici-kayit.json",
-      "sha256": "9b98a8f636f19131e2948752a0f2f3db8ee5d67b20df1abbcb21b25189017005",
-      "bayt": 905,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t04/rapor.json",
-      "sha256": "26e5bf780d5c31aa42e4fbafd7da589a6adeefad5a6af9dbd732d2c890f158c0",
-      "bayt": 649,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S4-t04/rapor.md",
-      "sha256": "a3702d4c9082467c47c29d039a93de6f7fe83f1ce678cc5272fde6578907c26d",
-      "bayt": 1284,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/analist-kayit.json",
-      "sha256": "1166c15220c9d5bce63ffcdfee99a395be2ab264958b4f59912b2fcdf255c890",
-      "bayt": 4787,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/iz-analist-1.jsonl",
-      "sha256": "978ec11def6cb14420b573e2c870a9d8ffcacb3d87dc752c47d303c476ed8de8",
-      "bayt": 6470,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/iz-analist-2.jsonl",
-      "sha256": "8d36bd32b47a69c6aaa698b1e85d260118aa76ec7e7cdf03d582ba8de367417e",
-      "bayt": 6744,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/iz-denetci.jsonl",
-      "sha256": "b699d19c3c390e0cd90d8c66719be39fa433344cee151d28b43c73ee1abb864f",
-      "bayt": 596,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/iz-planlayici.jsonl",
-      "sha256": "397fc959879fd25a5bc4e72319811fc62f75e8912e7f19acac2716c552e1a268",
-      "bayt": 1941,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/planlayici-kayit.json",
-      "sha256": "fab9f3a748783f34885fca69f436f70e6cc908c0e5a802948d95ff7f49ebd487",
-      "bayt": 673,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/rapor.json",
-      "sha256": "d5e6d397d769a16fb1fc9d6d2232b7a3d154fb8d00bc49a4d26cd9d22599bf03",
-      "bayt": 784,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t01/rapor.md",
-      "sha256": "942b7e2c1fceb4879b4352f1d6f2a707dbb93602ae5b79b50ff01bc41b597357",
-      "bayt": 2609,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/analist-kayit.json",
-      "sha256": "f1efb89ed556a3246e08bfe28c3216c17204f219918de3862b56e15b287c27b7",
-      "bayt": 4319,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/iz-analist-1.jsonl",
-      "sha256": "ba06f4103804e946b1b775f6ba4cc117d60c1dd692c4fdec928e2903aa46c239",
-      "bayt": 7604,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/iz-analist-2.jsonl",
-      "sha256": "9c9096f7cd19a0a31dec19a66e2fba623219c29b8821f3591758dc35a8c06e75",
-      "bayt": 7893,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/iz-denetci.jsonl",
-      "sha256": "41c3b243cd204c2cfacb2aea852643ac52d426b7b2c8a8f51b9e2ecffb61fc46",
+      "sha256": "b5f4d994406a354139f6e66c8c5906644c3bc9ebb4e10fb4ea1fa94b32356198",
       "bayt": 438,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
+      "yol": "o1-ham/o1/S4-t04/iz-planlayici.jsonl",
+      "sha256": "f016aea188c9a17d3eaaa44a9ae6107fba480c6b4abef796afb928347c0c41bb",
+      "bayt": 2453,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t04/planlayici-kayit.json",
+      "sha256": "6ffa0b2764d16dd4618434e5eab34377d7dfe6ebf82ea4b54dc10dffcfe94b38",
+      "bayt": 893,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t04/rapor.json",
+      "sha256": "755b8258609ac6f9f147dfdaa291dd87d73fe4b9c35ae1c9e60555103461ad07",
+      "bayt": 624,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S4-t04/rapor.md",
+      "sha256": "17848532fd3a0aa19b7dd337189b24a688bec25d5a115353ae817abcd477621d",
+      "bayt": 1259,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/analist-kayit.json",
+      "sha256": "e68ba303ba0b947117d54cd19b9881667b66068fee57185b839767cf9b89f899",
+      "bayt": 4703,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/iz-analist-1.jsonl",
+      "sha256": "5691c5650b8284afcd8dd9944ba9d655ad168354dfab218a6cc266736ea92c93",
+      "bayt": 6461,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/iz-analist-2.jsonl",
+      "sha256": "5a93c3ffb170b99a2a71c819f1077ec47039f9e76ce674b1e25a80d5d7c4b4de",
+      "bayt": 6735,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/iz-denetci.jsonl",
+      "sha256": "944ece130df0ddf3f334d954217dd4430800e3870acdf3edf3c2c264f465086d",
+      "bayt": 594,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/iz-planlayici.jsonl",
+      "sha256": "ca7d50c58604facb265bd25f8c5bd53b54f43e91630c22aed896962837ea3999",
+      "bayt": 1937,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/planlayici-kayit.json",
+      "sha256": "2487b964d53d95022f03753c85efe9934b4e600979474b862ceafe2cf0968a3e",
+      "bayt": 661,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/rapor.json",
+      "sha256": "4162bd41861276c83a1ee82fd49bd9ebcb0fe66e6cf03075221bb7cf6fed37cd",
+      "bayt": 758,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t01/rapor.md",
+      "sha256": "4ac3a0628230abb35f227f80511a26c1893581dbc01ea80b32b8a73d6e1509fb",
+      "bayt": 2558,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/analist-kayit.json",
+      "sha256": "403105b9d5c9fb7c3ee6d958faac87f428303a4fa1de3db3a7b1bbc0dbc4b89f",
+      "bayt": 4123,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/iz-analist-1.jsonl",
+      "sha256": "cc06f8315ad02fccc87f694cebf9ef0eb1c5bba90eebaaa961696392bcd473e8",
+      "bayt": 7583,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/iz-analist-2.jsonl",
+      "sha256": "e359afe4d4f9ca3db290b25e010c206bba2dd1da21ac01a62b92c762dd466029",
+      "bayt": 7872,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/iz-denetci.jsonl",
+      "sha256": "9aa11d46ace6e1c93e4576c1259a578babddd0cc1ab596efc9e8509ddec46dc0",
+      "bayt": 436,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
       "yol": "o1-ham/o1/S5-t02/iz-planlayici.jsonl",
-      "sha256": "ed0d90c4591341cc58c01075f986792a99a12ba217a9f31e110894fc680a6a64",
-      "bayt": 2555,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/planlayici-kayit.json",
-      "sha256": "ca0dc9b26d57758d4f4d0c4c105e8896153593937a5cf755066a4c1675289708",
-      "bayt": 980,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/rapor.json",
-      "sha256": "5004d5141ef60c10b9c6d3765fb0a7ff4b463d07f946bcfb80573a1da493fdd4",
-      "bayt": 617,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t02/rapor.md",
-      "sha256": "c71958344204fb21235a2e59a74bf9d2db5bff28dd1589a89b7d0d2b7c39ca27",
-      "bayt": 1327,
-      "kaynak": "kosu",
-      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
-      "aciklama_en": "O1 real-model raw run record."
-    },
-    {
-      "yol": "o1-ham/o1/S5-t03/analist-kayit.json",
-      "sha256": "be23b0136877885e7f75f474a21b802e77d9ba6c11cb604c622addde63d2c83d",
+      "sha256": "e6caaf2972324a0eed933fef9d7e0e1bdfadc73ccd2ccd8c19799a053c3914f2",
       "bayt": 2551,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
+      "yol": "o1-ham/o1/S5-t02/planlayici-kayit.json",
+      "sha256": "15e6cdb0072a7a93ebf8402d4f39251739a9977cbd5322b1d24097bd4802a74d",
+      "bayt": 968,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/rapor.json",
+      "sha256": "941a036ed6f2ecdeef1f51636d4db44d3dfe3328f41c348e2a1192108710899f",
+      "bayt": 592,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t02/rapor.md",
+      "sha256": "ae2c3061762994d594470e0fe028d72e3b0ee603e0066172123399a091b6d57e",
+      "bayt": 1300,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
+      "yol": "o1-ham/o1/S5-t03/analist-kayit.json",
+      "sha256": "7a2c0cae3167b02258f1b1f0c78420e5ef9e96b7255190abfa2b0f8c888bcf18",
+      "bayt": 2507,
+      "kaynak": "kosu",
+      "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
+      "aciklama_en": "O1 real-model raw run record."
+    },
+    {
       "yol": "o1-ham/o1/S5-t03/iz-analist-1.jsonl",
-      "sha256": "f3f9df68b8e782ad2a51ec4e7281f6a7465db5300ee91e7738ded3d43fb1ca4c",
-      "bayt": 6684,
+      "sha256": "2856a4902fa30e180bee63fda99dc79a29acbcdb4f314405eb319ad803f3bdb5",
+      "bayt": 6675,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t03/iz-denetci.jsonl",
-      "sha256": "92df2059cd2c83bff3885a600c6b532057cba58cb5b3682c960f4f22e8f95239",
-      "bayt": 145,
+      "sha256": "c653c9ecbf097e3ca5802ce41ce9e807c8c6ea3bd70338a7a13bc8344a2558d7",
+      "bayt": 144,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t03/iz-planlayici.jsonl",
-      "sha256": "ee4bc94cfc4cbc685ecbbab1f41a261ef7513125d63fd412d58f0995e53d68a4",
-      "bayt": 2007,
+      "sha256": "3efd34badf285f33046881a91d58d4b64b6b1de14ed9c14d344ad1f1a9068948",
+      "bayt": 2003,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t03/planlayici-kayit.json",
-      "sha256": "379ea9a1e80697e6b96a99fa7c6ef1224fc879abfbebe3ce65b9e95cd385ec7c",
-      "bayt": 706,
+      "sha256": "c39ef44dd83d58e6de8d48daf7d8d489c1ae2d498e3760c8086d4523a72b7d85",
+      "bayt": 694,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t03/rapor.json",
-      "sha256": "a0ea4ea1b7d78b51b2e2520e866c9e6e623438b6cc0459dd1112717afdbf4fe3",
-      "bayt": 369,
+      "sha256": "31c124a918fa3523aa895ce6ef200ce51bb9f9361c5b19b17a5f72b2f2bb74d5",
+      "bayt": 352,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t03/rapor.md",
-      "sha256": "ad5ad80a9217e08b26632a7e83827ed4ddda0c9832d8f7783118557184640724",
-      "bayt": 2480,
+      "sha256": "79a4adb9ce3da46c5263876178084698b64757127b2708d2873d19306825dcad",
+      "bayt": 2427,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/analist-kayit.json",
-      "sha256": "d6c888e32c21fc79089495fa88abd1e3206a2f2fc7e5cbf1283a8196092aef53",
-      "bayt": 4112,
+      "sha256": "58b198c9a3197b17a32f85502c4b706b2d3e29218b22722c4cbf4dd6e5320335",
+      "bayt": 4028,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/iz-analist-1.jsonl",
-      "sha256": "30429345ef53bdd981dc022ec55b366b01ceb8a7ad00a54c91ed9f10a8c509d3",
-      "bayt": 5575,
+      "sha256": "0446de9e1afb66bfc48b29d97ef09a43275bb867d8f494ac516db0a7bdd8aa19",
+      "bayt": 5566,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/iz-analist-2.jsonl",
-      "sha256": "cb907b6cdfac243b932bef3241127485f594a1339d2b74fe9be23711d1dd158f",
-      "bayt": 6258,
+      "sha256": "34ea9cf7c177f743bcc8c7b4431d953c50248c372c04367f1c5e36a4f7a9da82",
+      "bayt": 6249,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/iz-denetci.jsonl",
-      "sha256": "24a663ba4807eff635a5420578547f150df5e20306840594847e562fb3f169f8",
-      "bayt": 444,
+      "sha256": "1eb10ac7a25bdfc9c6937f366cfa405053dbab659c514dd96681368c95f0f913",
+      "bayt": 442,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/iz-planlayici.jsonl",
-      "sha256": "45fa17837765b056b0e60fed4b376de82d5c2a5aa14d073db71c2ec39aba7e33",
-      "bayt": 2133,
+      "sha256": "cdbd0eb6f555bd80a0e564e545f4d6e81a965730823372ac4507870da525c99d",
+      "bayt": 2129,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/planlayici-kayit.json",
-      "sha256": "510ce5a52cbedb54d639ace7985913845cb56b03681ed066aff154bef43ab376",
-      "bayt": 769,
+      "sha256": "62ff46e28d02fb662cf174683ef309abbfbff19006c0e07e478a493346a8fe18",
+      "bayt": 757,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/rapor.json",
-      "sha256": "2b22902ce2439996d9c6963c1d06ba322757a7c3c76e00b976975a5b94b1480d",
-      "bayt": 623,
+      "sha256": "cbad4f1e5c301b71f9a25067e96ed58cbdbf21008f38814e589673b3b2aef899",
+      "bayt": 598,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/S5-t04/rapor.md",
-      "sha256": "de7bc6bc70ab73c076737b3355b1084be3c78f307162ceb104848361b07ceef0",
-      "bayt": 1122,
+      "sha256": "0feffe9cd88ac01a264529bd2723171e82fad4a41ce8b2260b4b6683fd7d6292",
+      "bayt": 1097,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/kosular.jsonl",
-      "sha256": "4bbb705e4040de2d22ef13081bd0cf881935965d97d34ba6ee663faad9cae595",
-      "bayt": 9215,
+      "sha256": "62774f770756b2371358b764a0f24c5dae7271e4ea52bb4625bb974508eb930a",
+      "bayt": 9177,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."
     },
     {
       "yol": "o1-ham/o1/ozet.json",
-      "sha256": "7fdc371be9109ec64f074332c7c54bfe1d86f04184bdbc7e199c6cd810d60cfb",
-      "bayt": 5509,
+      "sha256": "0ec86297e62fa16f72349dff5cbc1644cdddb18b9fe1a60020f7ba991977ec96",
+      "bayt": 5266,
       "kaynak": "kosu",
       "aciklama_tr": "O1 gerçek model ham koşu kaydı.",
       "aciklama_en": "O1 real-model raw run record."

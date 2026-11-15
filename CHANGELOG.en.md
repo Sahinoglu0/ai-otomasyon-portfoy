@@ -5,6 +5,15 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-16 (Kule Pro 0.14.0, showcase sync)
+
+The showcase was updated to Kule Pro 0.14.0 (KULE-SENKRON-1). The private source repository is at commit `51f7e8a` and tag `v0.14.0` the same day; no source code was added to this repository.
+
+- Version: 0.8.1 → 0.14.0. A summary of the intermediate releases is in the README ("Releases 0.8.1 → 0.14.0"); source: the private repository's `CHANGELOG.md`.
+- Numbers refreshed from the new run (2026-11-15, Python 3.14.7, Node v26.13.0): Kule Python 1298 tests (4 skipped, 2 expected failures, 0 failed), orchestrator 120, Node 234; total 1652. The older 603 / 146 figures on the landing page were corrected too.
+- **Known limit:** the `kanit/` folder (`sayilar.json`, test behaviour catalogue, SHA-256 manifest) was not moved to this run; it stays a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018). Roughly 570 Kule tests added up to 0.14.0 have no sentence in the catalogue.
+- No verification with real SAP data; measurement findings are unchanged.
+
 ## 2026-11-12 (Kule Pro 0.8.1, number sync)
 
 Version number is now 0.8.1; no feature change. Single run: Kule Python **732** tests (2 expected failures, 0 failed), agent orchestrator 120, Node 166; total 1018. Earlier 730 / 1016 figures on the pages and the older evidence-package counts (603 / 146 / 869) are corrected to this run. Source: `kule-yayin-temiz` commit `c68daa3`. No push, no tag.

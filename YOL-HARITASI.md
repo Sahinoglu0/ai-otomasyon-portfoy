@@ -19,6 +19,8 @@ Tamamlanan maddeler silinmedi; her birinin başında **Tamamlandı** yazılır v
 - **ROI kayıt bağlantısındaki bayat değer.** **Tamamlandı (S10):** hesaptaki süre yeni kayıtlarla eşitleniyor, tek tahmin "kullanıcı tahmini" etiketli. Açık: kayıtlar pilot ölçümü değil; ROI "kısmen kayıtlı" diye anlatılır.
 - **Sabah ekranında `.xlsx`.** Panel `.xlsx` kabul etmiyor (yalnız `.csv`, `.txt`); sunucu yalnız disk klasöründen okuyor. Kabul etmek küçük bir değişiklik, ama bir ürün kararı (KULE-R7).
 
+- **Kanıt paketini 0.14.0'a geçirmek.** `kanit/sayilar.json`, test davranış kataloğu ve SHA-256 manifesti 0.8.1 koşusunda (1018 test) kaldı; 0.14.0'da eklenen yaklaşık 570 Kule testinin katalog cümleleri yazılıp onaylanmalı.
+
 ## Açık kararlar
 
 - **Körlemesine onay modu.** `--onay-ver` modunda onay özeti denetlenmiyor; bu açık kapanmadı. Karar: modun kaldırılması ya da sıkılaştırılması.

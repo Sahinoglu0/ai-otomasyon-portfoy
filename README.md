@@ -2,6 +2,8 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](README.en.md)
 
+**Güncel sürüm:** Kule Pro 0.14.0 (2026-11-16, özel kaynak deposunda; kaynak kod bu depoda yok). Ayrıntı: [CHANGELOG.md](CHANGELOG.md).
+
 1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını, SAP dışa aktarımlarını ve satıcı açık kalemlerini okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir. Sabah raporu ekranı SAP dosyalarını sürükle-bırak ile alır, bugünün ilk 5 bulgusunu ve "dünden beri" farkını gösterir.
 2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
 3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümlerin büyük kısmı herkese açık verilerle yapıldı: DataCo Smart Supply Chain, BPI Challenge 2019 (gerçek ama anonimleştirilmiş bir süreç kaydı), simüle Berti paketi, Zenodo kil tuğla OEE ve M5 talep verisi. Hiçbir modül bir müşterinin ya da kendi SAP sisteminizin verisiyle test edilmedi.
@@ -134,15 +136,22 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Son doğrulama 2026-11-12'de yerelde yapıldı: Kule yayın kopyasının (`kule-yayin-temiz`) **c68daa3** commit'inde, kaynak temiz (çalışma kopyasında değil); Python 3.14.7, Node v26.13.0 (sayılar: [`kanit/sayilar.json`](kanit/sayilar.json)). Kule için 732 Python testi geçiyor; Node tarafında 166 test, 166 geçti, 0 atlandı; orkestratör için 120 birim testi var. Python koşusu (`python -m unittest discover -s tests`): 730 test, 0 başarısız; 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı). Ajan orkestratörü: 120 geçti. Node testleri: 166 geçti, 0 atlandı. İlk 0.7.0 koşusu 2026-11-05'te yapılmıştı; o koşu commit edilmemiş bir belge içeren çalışma kopyasındaydı. Önceki 0.7.0 kanıt sayfası daha az test gösteriyordu; aradaki fark 0.7.0 sonrası eklemelerden gelir. Eski 569 sayısı KULE-F1 raporundadır.
+**Testler.** Son doğrulama 2026-11-15'te yerelde yapıldı: Kule Pro 0.14.0, özel kaynak deposunun `51f7e8a` commit'i, kaynak temiz; Python 3.14.7, Node v26.13.0. Kule için 1298 Python testi geçiyor; Node tarafında 234 test, 234 geçti, 0 atlandı; orkestratör için 120 birim testi var. Ayrıntı: Kule Python koşusunda (`unittest` keşfi) 1298 testin 4'ü atlandı, 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı), 0 başarısız; orkestratör 120 geçti; Node 234 geçti. Toplam 1652. **Kanıt paketi (`kanit/`) bu koşuya henüz geçirilmedi:** `kanit/sayilar.json` ve test davranış kataloğu 0.8.1 koşusunun anlık görüntüsüdür (732 / 120 / 166, toplam 1018); 0.14.0'da eklenen testler katalogda yoktur. Eski 0.7.0 koşusu 2026-11-05'te yapılmıştı; eski 569 sayısı KULE-F1 raporundadır.
 
-**0.7.0 sonrası geliştirme (yayınlanmadı, sürüm numarası yok).** Aşağıdakiler yalnız özel `cv-portfoy-kule` deposundadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+**Sürümler 0.8.1 → 0.14.0 (özel kaynak deposunda etiketli; kaynak kod bu depoda yok).** Aşağıdakiler kaynak deposunun `CHANGELOG.md` dosyasından alınmıştır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+
+- **0.10.0:** veritabanı yedek komutları (tutarlı kopya, bütünlük denetimi, geri yükleme), kullanıcı `token-yenile`, dosya günlüğünde dönen kayıt, tek port ve tek başlatma satırı.
+- **0.11.0 – 0.12.x:** satıcı ana kaydı mükerrerlik adayı (`MUKERRER_SATICI_ADAY`) ve `satici.csv` kabulü (yalnız HMAC özetleri saklanır); açık siparişin stok pozisyonuna eklenmesi (varsayılan kapalı); hatalı token hız sınırı (429) ve eşzamanlı bağlantı üst sınırı (503); `satici-temizle --gun N` saklama komutu ve salt okunur saklama önizlemesi; panel kullanıcı kılavuzu.
+- **0.13.x:** CLI çıkış kodu ve ortam değişkeni doğrulaması, hata mesajlarında eylem önerisi, `docs/api.md` ile kod arasında tutarlılık testi, belge komut örneklerinin koddan doğrulanması; **0.13.7:** stok analizine XYZ talep değişkenliği sınıfı (eşikler ölçülmüş değil, **varsayımdır**) ve panel erişilebilirlik düzeltmeleri.
+- **0.14.0 (2026-11-16):** ayrı bekleyen dalların tek hatta birleşimi: karar tablosu CSV (`GET /v1/ozet/karar.csv`) ve panelde CSV düğmesi, CLI `--sayi-bicimi`, SAP eşleme hata dilinin sadeleşmesi, sızıntı tarayıcısı ve sürüm yayın araçları. Sabah raporu varsayılanı ilk 200 bulgudur (`?sinir=0` hepsini verir).
+
+**0.7.0 sonrası ilk geliştirme notları (0.8.1 öncesi dönem).** Aşağıdakiler özel `cv-portfoy-kule` deposundadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
 
 - **`kule[pdf]` (deneysel):** metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. İsteğe bağlı kurulum; çekirdek bağımlılıksız kalır.
 - **Son 4 hafta ortalaması (aday, varsayılan değil):** sentetik ve açık veride sonuç karışık çıktı (ortalama hata kötüleşti, medyan iyileşti). KULE-V3 M5 ölçümünde WAPE: Kule %47,3, mevsimsel naif %61,0, son 4 hafta ortalaması %38,4; KULE-V6 varyant ölçümünde %39,7; bu varyant Kule kodunda uygulanmadı. Üretimde açılmadı. Kaynak raporlar: KULE-V3-zeynep, KULE-V6.
 - **Pilot ölçüm özeti ekranı:** panelde yükleme, red oranı ve vaka kapanma süresi. Boş ve sentetik veri açıkça etiketli; TL ya da tasarruf iddiası yok.
 - **Python'suz Windows paketi (spike):** embeddable Python ve `baslat.bat` ile hazırlandı; yalnız simülasyon, ürün kodu değişmedi. Bu yayında kurulum kanıtı yoktur (KULE-N1).
-- **Açık kalanlar:** iki beklenen başarısızlık (yukarıda); test davranış kataloğu 0.7.0 koşusunun 869 testinin tamamını kapsar; gerçek SAP çıktısı denenmedi.
+- **Açık kalanlar:** iki beklenen başarısızlık (yukarıda); test davranış kataloğu 0.8.1 koşusunun 1018 testinin tamamını kapsar (0.14.0 testleri yok); gerçek SAP çıktısı denenmedi.
 
 ## 4. Kapsam ve durum
 

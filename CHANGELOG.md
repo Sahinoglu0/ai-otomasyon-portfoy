@@ -5,6 +5,15 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-16 (Kule Pro 0.14.0, vitrin senkronu)
+
+Vitrin, Kule Pro 0.14.0 sürümüne göre güncellendi (KULE-SENKRON-1). Özel kaynak deposu aynı gün `51f7e8a` commit'inde ve `v0.14.0` etiketinde; bu depoya kaynak kod eklenmedi.
+
+- Sürüm: 0.8.1 → 0.14.0. Ara sürümlerin özeti README'de ("Sürümler 0.8.1 → 0.14.0"); kaynak: özel deponun `CHANGELOG.md` dosyası.
+- Sayılar yeni koşuya göre yenilendi (2026-11-15, Python 3.14.7, Node v26.13.0): Kule Python 1298 test (4 atlandı, 2 beklenen başarısızlık, 0 başarısız), orkestratör 120, Node 234; toplam 1652. Giriş sayfasındaki eski 603 / 146 değerleri de düzeltildi.
+- **Bilinen sınır:** `kanit/` klasörü (`sayilar.json`, test davranış kataloğu, SHA-256 manifesti) bu koşuya geçirilmedi; 0.8.1 koşusunun anlık görüntüsü (732 / 120 / 166, toplam 1018) olarak kaldı. 0.14.0'da eklenen yaklaşık 570 Kule testinin cümlesi katalogda yok.
+- Gerçek SAP verisiyle doğrulama yok; ölçüm bulguları değişmedi.
+
 ## 2026-11-12 (Kule Pro 0.8.1, sayı eşitleme)
 
 Sürüm numarası 0.8.1 oldu; özellik değişikliği yok. Tek koşu: Kule Python **732** test (2 beklenen başarısızlık, 0 başarısız), ajan orkestratörü 120, Node 166; toplam 1018. Önceki sayfalardaki 730 / 1016 değerleri ve kanıt paketindeki eski sayılar (603 / 146 / 869) bu koşuya göre düzeltildi. Kaynak: `kule-yayin-temiz` commit `c68daa3`. Push ve etiket yok.

@@ -2,6 +2,8 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
+**Current version:** Kule Pro 0.14.0 (2026-11-16, in the private source repository; the source code is not in this repository). Details: [CHANGELOG.en.md](CHANGELOG.en.md).
+
 1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
 2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
 3. The data is synthetic (generator seed 42). Most measurements use public data: DataCo Smart Supply Chain, BPI Challenge 2019 (a real but anonymised process log), a simulated Berti inventory package, the Zenodo clay-brick OEE dataset and the M5 demand dataset. No module has been tested on a customer's data or on your own SAP system.
@@ -134,15 +136,22 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** The latest verification was run locally on 2026-11-12: from the Kule publish copy (`kule-yayin-temiz`) at commit **c68daa3**, clean source (not a working copy); Python 3.14.7, Node v26.13.0 (numbers: [`kanit/sayilar.json`](kanit/sayilar.json)). For Kule, 732 Python tests pass; on the Node side 166 tests, 166 pass, 0 skipped; the orchestrator has 120 unit tests. Python run (`python -m unittest discover -s tests`): 730 tests, 0 failed; 2 of them are expected failures (two targets not yet implemented). Agent orchestrator: 120 passed. Node tests: 166 passed, 0 skipped. The first 0.7.0 run was done on 2026-11-05; that run used a working copy containing an uncommitted document. The earlier 0.7.0 evidence page showed fewer tests; the difference comes from additions after 0.7.0. The older 569 figure is from the KULE-F1 report.
+**Tests.** The latest verification was run locally on 2026-11-15: Kule Pro 0.14.0, commit `51f7e8a` of the private source repository, clean source; Python 3.14.7, Node v26.13.0. For Kule, 1298 Python tests pass; on the Node side 234 tests, 234 pass, 0 skipped; the orchestrator has 120 unit tests. Detail: in the Kule Python run (`unittest` discovery) 4 of the 1298 tests were skipped and 2 are expected failures (two targets not yet implemented), 0 failed; orchestrator 120 passed; Node 234 passed. Total 1652. **The evidence package (`kanit/`) has not been moved to this run yet:** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018); tests added up to 0.14.0 are not in the catalogue. The older 0.7.0 run was done on 2026-11-05; the older 569 figure is from the KULE-F1 report.
 
-**Post-0.7.0 development (not published, no version number).** The following exist only in the private `cv-portfoy-kule` repository, were tested with synthetic data, and **were not verified with real SAP data**:
+**Releases 0.8.1 → 0.14.0 (tagged in the private source repository; the source code is not in this repository).** The following is taken from the source repository's `CHANGELOG.md`, was tested with synthetic data, and **was not verified with real SAP data**:
+
+- **0.10.0:** database backup commands (consistent copy, integrity check, restore), user `token-yenile` (token renewal), rotating file log, single port and single start line.
+- **0.11.0 – 0.12.x:** vendor master duplicate candidate (`MUKERRER_SATICI_ADAY`) and `satici.csv` intake (only HMAC digests are stored); open orders can be added to the stock position (off by default); bad-token rate limit (429) and concurrent connection cap (503); `satici-temizle --gun N` retention command and a read-only retention preview; panel user guide.
+- **0.13.x:** CLI exit code and environment variable validation, action hints in error messages, a consistency test between `docs/api.md` and the code, doc command examples verified against the code; **0.13.7:** XYZ demand variability class for stock analysis (thresholds are an **assumption**, not measured) and panel accessibility fixes.
+- **0.14.0 (2026-11-16):** several pending branches merged into one line: decision table CSV (`GET /v1/ozet/karar.csv`) and a CSV button in the panel, CLI `--sayi-bicimi`, simpler SAP mapping error wording, a leak scanner and release tooling. The morning report now defaults to the first 200 findings (`?sinir=0` returns all).
+
+**Early notes after 0.7.0 (period before 0.8.1).** The following are in the private `cv-portfoy-kule` repository, were tested with synthetic data, and **were not verified with real SAP data**:
 
 - **`kule[pdf]` (experimental):** a text-layer supplier-statement PDF is read if it passes five gates. Tested with one synthetic template only. Optional install; the core stays dependency-free.
 - **Last-4-week average (candidate, not the default):** results on synthetic and public data were mixed (mean error got worse, median error improved). In the KULE-V3 M5 measurement, WAPE was: Kule 47.3%, seasonal naive 61.0%, last-4-week average 38.4%; the KULE-V6 variant measured 39.7%, and that variant is not implemented in Kule's code. Not enabled in production. Sources: KULE-V3-zeynep, KULE-V6.
 - **Pilot measurement summary screen:** on the panel, shows uploads, rejection rate and case closing time. Empty and synthetic data are clearly labelled; no TRY or savings claims.
 - **Python-free Windows package (spike):** prepared with embeddable Python and `baslat.bat`; simulation only, no product code change. This publication has no installation evidence (KULE-N1).
-- **Open items:** the two expected failures (above); the test behaviour catalogue covers all 869 tests of the 0.7.0 run; no real SAP export has been tested.
+- **Open items:** the two expected failures (above); the test behaviour catalogue covers all 1018 tests of the 0.8.1 run (not the 0.14.0 tests); no real SAP export has been tested.
 
 ## 4. Scope and status
 

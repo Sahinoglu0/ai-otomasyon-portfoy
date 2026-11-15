@@ -199,8 +199,8 @@ window.I18N_EK = {
   /* güncel geliştirme (0.7.0 sonrası) bölümü */
   "güncel": "current",
   "Güncel geliştirme (0.7.0 sonrası)": "Current development (after 0.7.0)",
-  "Bu bölüm 0.7.0'dan sonra geliştirme deposunda yapılanları anlatır. Hiçbiri yayımlanmış bir sürüm değildir ve gerçek SAP verisiyle denenmedi.":
-    "This section describes what has been done in the development repository after 0.7.0. None of it is a published release, and it has not been tried on real SAP data.",
+  "Bu bölüm 0.7.0'dan sonra geliştirme deposunda yapılanları anlatır. Sürümler 0.14.0'a kadar özel kaynak deposunda etiketlidir; kaynak kod bu vitrinde yoktur. Hiçbiri gerçek SAP verisiyle denenmedi.":
+    "This section describes what has been done in the development repository after 0.7.0. Versions up to 0.14.0 are tagged in the private source repository; the source code is not in this showcase. None of it has been tried on real SAP data.",
   "kule[pdf] (deneysel)": "kule[pdf] (experimental)",
   "Metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. Kurulum isteğe bağlıdır; çekirdek bağımlılıksız kalır.":
     "A text-layer supplier statement PDF is read if it passes five gates. It has been tested only with a single synthetic template. Installation is optional; the core stays dependency-free.",

@@ -5,6 +5,16 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` of this publication. Kule (measurement and tests) records come from an internal development repository and are not published. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-16 (v0.14.2, showcase polish)
+
+Accessibility and theme fixes before publication. The Kule code did not change in this publication.
+
+- Theme: the theme chosen on the home page carries over to the evidence page and is kept in the browser.
+- Language button: now sits inside the page's nav region; it was previously appended directly to the body.
+- Tabs: the tab panel no longer enters the Tab order; keyboard navigation stays on the tab buttons.
+- Evidence page: the theme is applied before the first paint, so no light/dark flash on load.
+- Internal cleanup: internal development codes were removed from SVG titles and source comments; internal report references were also removed from the release notes.
+
 ## 2026-11-16 (Kule Pro 0.14.1, showcase refresh)
 
 The showcase was refreshed: figures were re-checked against the source release and the inconsistencies were closed. The Kule code did not change in this publication.

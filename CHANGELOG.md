@@ -5,6 +5,16 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu yayının `git log` çıktısıdır. Kule (ölçüm ve test) kayıtları iç geliştirme deposundandır; yayımlanmamıştır. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-16 (v0.14.2, vitrin cilası)
+
+Yayın öncesi erişilebilirlik ve tema düzeltmeleri. Kule kodu bu yayında değişmedi.
+
+- Tema: ana sayfada seçilen tema kanıt sayfasına da taşınır ve tarayıcıda kalıcıdır.
+- Dil düğmesi: artık sayfanın nav bölgesinin içinde; önceden gövdeye doğrudan ekleniyordu.
+- Sekmeler: sekme paneli Tab sırasına girmez; klavye gezintisi sekme düğmelerinde kalır.
+- Kanıt sayfası: tema ilk boyamadan önce uygulanır, sayfa açılırken koyu/açık geçiş görülmez.
+- İç kod temizliği: SVG başlıklarından ve kaynak yorumlarından iç geliştirme kodları kaldırıldı; sürüm notlarındaki iç rapor atıfları da silindi.
+
 ## 2026-11-16 (Kule Pro 0.14.1, vitrin yenilemesi)
 
 Vitrin yenilendi: sayılar kaynak sürümden yeniden doğrulandı ve çelişkiler kapatıldı. Kule kodu bu yayında değişmedi.

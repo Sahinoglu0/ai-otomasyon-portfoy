@@ -23,6 +23,7 @@ window.I18N_EK = {
   "Tekrar oynat": "Replay", "Duraklat": "Pause", "Sürdür": "Resume",
   "Demolardaki tüm veriler sentetiktir; gerçek şirket verisi kullanılmamıştır.": "All demo data is synthetic; no real company data was used.",
   "© 2026 · MIT lisansı.": "© 2026 · MIT license.",
+  "demo/ klasörü": "demo/ folder", "bu lisansın dışındadır.": "is outside this license.",
 
   /* sayılar */
   "modül, aynı çıktı biçimi": "modules, one output format",
@@ -163,8 +164,8 @@ window.I18N_EK = {
 
   /* 07 dene */
   "07 / dene": "07 / try it", "Nasıl denenir?": "How can I try it?",
-  "Kurulum gerektirmeyen statik demo, önceden hesaplanmış sentetik örnek veriyle çalışır. Canlı API yoktur.":
-    "A static demo that needs no installation, using precomputed synthetic sample data. There is no live API.",
+  "Kurulum gerektirmeyen statik demo, önceden hesaplanmış sonuçlarla çalışır. Canlı API yoktur.":
+    "A static demo that needs no installation and runs on precomputed results. There is no live API.",
   "Soruşturma akışını adım adım açın. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.":
     "Open the investigation flow step by step. Each trace's source is marked with a badge: REAL MODEL RECORD, HAND-WRITTEN RECORD, or CODE LINE.",
   "Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi.":
@@ -195,7 +196,8 @@ window.I18N_EK = {
   "Kule Pro: stok, sipariş ve fatura dosyalarınızdan bakılacak işler": "Kule Pro: work to do from your stock, order and invoice files",
   "Kule Pro, bir işletmenin SAP dışa aktarımlarını ve tedarikçi dosyalarını alıp bakılacak işlerin listesini çıkarır. Kararı insan verir diye tasarlandı: araç her bulguyu, dayanağını ve sorumlusunu gösterir. Aşağıda dosyanın nasıl okunduğunu, her modülün ne yaptığını ve sayıların nereden geldiğini bulabilirsiniz.":
     "Kule Pro takes SAP exports and supplier files from a business and produces a list of work to do. The product is built so that people make the decisions: the tool shows each finding, what it rests on, and who owns it. The sections below explain how a file is read, what each module does, and where the numbers come from.",
-  "Panelden alınmış ekran. Veriler örnek verisidir.": "Screen taken from the panel. The data is sample data.",
+  "Panelden alınmış ekran. Veriler sentetik örnektir; gerçek bir şirkete ait değildir.":
+    "Screen taken from the panel. The data is synthetic sample data and does not belong to a real company.",
   "Ürün anlatımı · sorun": "Product overview · problem",
   "Tutarsızlık ayrı tablolarda saklanır": "Mismatches sit in separate tables",
   "Stok, sipariş, mal kabul ve fatura çoğu zaman ayrı tablolarda ve ayrı kişilerde tutulur. Her tablo kendi içinde doğru görünebilir; fark ancak kayıtlar yan yana konduğunda ortaya çıkar.":
@@ -207,8 +209,7 @@ window.I18N_EK = {
     "You upload the file. Stock, purchase order, goods receipt, invoice and SAP export files are accepted, and SAP exports can arrive as CSV or .xlsx.",
   "Her satır okunur. Okunamayan satır atlanmaz; satır numarası ve nedeni listede gösterilir. Hiç satır okunamayan dosya kabul edilmez ve nedeni gösterilir.":
     "Every row is read. A row that cannot be read is not dropped; its row number and the reason appear in the list. A file with no readable rows is not accepted, and the reason is shown.",
-  "Komut satırı çıktısı, gerçek bir koşudan; düzenlenmedi. Girdi örnek verisidir.":
-    "Command-line output from a real run; not edited. The input is sample data.",
+  "Komut satırı çıktısı, gerçek bir koşudan; düzenlenmedi.": "Command-line output from a real run; not edited.",
   "Yedi analiz modülü": "Seven analysis modules",
   "Her modül verilere bir soru sorar.": "Each module asks the data one question.",
   "Kritik stoku ve ölü stoku ayırır.": "Separates critical stock from dead stock.",
@@ -219,8 +220,9 @@ window.I18N_EK = {
   "Ekipman genel verimliliğini hesaplar.": "Calculates overall equipment effectiveness.",
   "FBL1N açık kalem mutabakatı": "FBL1N open-item reconciliation",
   "Satıcı açık kalemlerini kontrol eder.": "Checks the vendor's open items.",
-  "Ekranlar panelden alındı. Panel ve komut satırı şu an Türkçe; ekranlardaki veriler örnek verisidir.":
-    "The screens are taken from the panel. The panel and the command line are currently in Turkish; the data on the screens is sample data.",
+  "Ekranlar panelden alındı. Panel ve komut satırı şu an Türkçe.":
+    "The screens are taken from the panel. The panel and the command line are currently in Turkish.",
+  "Sürümler": "Releases",
   "Neyin ölçüldüğü": "What was measured",
   "Bir örnek dosya": "A sample file",
   "Test paketi, bilerek konmuş 18 hatalı bir örnek dosya içerir. Paket bu hataların 18'ini buldu ve listeye fazla bulgu eklemedi. Dosya uydurma verilerle hazırlandığı için bu sonuç, kuralların konmuş hataları yakalayabildiğini gösterir.":

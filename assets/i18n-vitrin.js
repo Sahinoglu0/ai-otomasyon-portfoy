@@ -2,7 +2,7 @@
    karar defteri, akış ve etiket metinleri bu kartta yazıldı. assets/i18n.js bu sözlüğü tam eşleşme olarak kullanır; bu dosya i18n.js'ten ÖNCE yüklenir. */
 window.I18N_EK = Object.assign(window.I18N_EK || {}, {
   /* Üst bölüm */
-  "Karar destek aracı · örnek ve herkese açık veriyle": "Decision support tool · sample and public data",
+  "Karar destek aracı": "Decision support tool",
   "Dosyalarınızdan bakılacak işler": "Work to do, from your files",
   "Kule Pro, SAP dışa aktarımlarınızı okur ve bugün ilgilenmeniz gereken stok kalemlerini, siparişleri ve tedarikçileri sıraya koyar. Her bulgu, kimin bakacağını ve nereye bakacağını da söyler.": "Kule Pro reads your SAP exports and sorts the stock items, orders and suppliers that need attention today. Each finding also says who should look at it and where to look.",
   "Ürün sayfasını aç": "Open the product page",

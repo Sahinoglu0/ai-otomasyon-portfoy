@@ -223,7 +223,7 @@ section.bolum p { margin: 0 0 var(--s3); max-width: 68ch; }
 @media (max-width: 719px) {
   .ds-ustbar-ic { height: auto; flex-wrap: wrap; row-gap: 0; padding-top: var(--s2); padding-bottom: 0; }
   .ds-ustbar-ic .ust-arac { margin-left: auto; }
-  .ds-ustbar nav { order: 3; flex: 1 0 100%; justify-content: space-between; overflow-x: visible; -webkit-mask-image: none; mask-image: none; }
+  .ds-ustbar nav { order: 3; flex: 1 0 100%; flex-wrap: wrap; justify-content: space-between; overflow-x: visible; -webkit-mask-image: none; mask-image: none; }
   .ds-ustbar nav a { padding: 0 var(--s2); }
   :root:has(.ds-ustbar) { scroll-padding-top: 112px; }
 }

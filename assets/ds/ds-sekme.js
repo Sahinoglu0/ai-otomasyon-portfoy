@@ -16,7 +16,7 @@ b.type = "button"; b.setAttribute("role", "tab");
 b.id = "ds-sekme-" + no + "-" + i; p.id = p.id || "ds-panel-" + no + "-" + i;
 b.setAttribute("aria-controls", p.id);
 b.textContent = (bas && bas.textContent.trim()) || p.getAttribute("data-baslik") || String(i + 1);
-p.setAttribute("role", "tabpanel"); p.setAttribute("aria-labelledby", b.id); p.tabIndex = 0;
+p.setAttribute("role", "tabpanel"); p.setAttribute("aria-labelledby", b.id);
 liste.appendChild(b);
 return b;
 });

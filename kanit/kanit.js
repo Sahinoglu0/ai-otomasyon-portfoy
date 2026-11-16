@@ -366,9 +366,9 @@
       "#lang-switch button[aria-pressed=true]{background:var(--ink);color:var(--paper)}" +
       "#lang-switch button:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}";
     document.head.append(st);
-    const box = el("div");
+    // nav landmark: body'ye çıplak div eklemek axe "region" kuralını bozar.
+    const box = el("nav");
     box.id = "lang-switch";
-    box.setAttribute("role", "group");
     box.setAttribute("aria-label", "Language");
     for (const [code, label] of [["tr", "TR"], ["en", "EN"]]) {
       const b = el("button", null, label);
@@ -383,10 +383,15 @@
     dilDugmesi();
     lang = ilkDil();
     cevirStatik();
+    // Tema tercihi ana sayfayla aynı "kule-sayfa-tema" anahtarında: ana sayfada seçilen tema buraya taşınır.
+    const TEMA_ANAHTAR = "kule-sayfa-tema";
+    try { const s = localStorage.getItem(TEMA_ANAHTAR); if (s === "light" || s === "dark") document.documentElement.setAttribute("data-theme", s); } catch (_) { /* depolama yok */ }
     $("#tema").addEventListener("click", () => {
       const kok = document.documentElement;
       const koyu = kok.getAttribute("data-theme") === "dark" || (!kok.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
-      kok.setAttribute("data-theme", koyu ? "light" : "dark");
+      const yeni = koyu ? "light" : "dark";
+      kok.setAttribute("data-theme", yeni);
+      try { localStorage.setItem(TEMA_ANAHTAR, yeni); } catch (_) { /* depolama yok */ }
     });
     $("#tarayiciDogrula").addEventListener("click", tarayicidaDogrula);
     const [s, k, p, e] = await Promise.all([oku("sayilar.json"), oku("katalog.json"), oku("paket.json"), oku("eval-sonuc.json")]);

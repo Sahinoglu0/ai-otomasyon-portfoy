@@ -447,9 +447,9 @@
       "#lang-switch.yuvada{position:static;box-shadow:none;flex:none}#lang-switch.yuvada button{padding:8px 10px;min-width:40px;min-height:24px}" +
       "#lang-switch button:focus-visible{outline:2px solid var(--accent,#d08a00);outline-offset:-4px}";
     document.head.append(st);
-    const box = document.createElement("div");
+    // Düğme bir landmark (nav) içinde: body'ye çıplak div olarak eklenince axe "region" kuralını bozuyordu.
+    const box = document.createElement("nav");
     box.id = "lang-switch";
-    box.setAttribute("role", "group");
     box.setAttribute("aria-label", "Language / Dil");
     for (const [code, label, name] of [["tr", "TR", "Türkçe"], ["en", "EN", "English"]]) {
       const b = document.createElement("button");

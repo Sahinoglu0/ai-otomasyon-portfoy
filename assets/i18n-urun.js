@@ -167,8 +167,8 @@ window.I18N_EK = {
     "A static demo that needs no installation, using precomputed synthetic sample data. There is no live API.",
   "Soruşturma akışını adım adım açın. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.":
     "Open the investigation flow step by step. Each trace's source is marked with a badge: REAL MODEL RECORD, HAND-WRITTEN RECORD, or CODE LINE.",
-  "Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod bu depoda yayımlanmıyor; yerine bu kanıtlar var.":
-    "Test counts, a behaviour catalogue, and an evidence package that can be verified with SHA-256. The source code is not published in this repository; these records are published instead.",
+  "Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod yayımlanmıyor; yerine bu kanıtlar var.":
+    "Test counts, a behaviour catalogue, and an evidence package that can be verified with SHA-256. The source code is not published; these records stand in for it.",
 
   /* 08 sss */
   "08 / sss": "08 / faq", "Sık sorulan sorular": "Frequently asked questions",
@@ -179,14 +179,80 @@ window.I18N_EK = {
   "Hayır. Ölçümler sentetik veriyle ve herkese açık DataCo verisiyle yapıldı.":
     "No. The measurements used synthetic data and the publicly available DataCo dataset.",
   "Kaynak kodu neden yayımlanmıyor?": "Why isn't the source code published?",
-  "Kaynak kod bu depoda yayımlanmıyor. Bunun yerine test kanıtları, eval sonuçları, ölçüm çıktıları ve ajan izleri açık.":
-    "The source code is not published in this repository. Test evidence, eval results, measurement outputs and agent traces are published instead.",
+  "Kaynak kod yayımlanmıyor. Bunun yerine test kanıtları, eval sonuçları, ölçüm çıktıları ve ajan izleri açık.":
+    "The source code is not published. Test evidence, eval results, measurement outputs and agent traces are open instead.",
   "Ne gerekiyor?": "What do I need?",
   "Bu sayfalar ve demo için yalnız bir tarayıcı. Kule'nin kendisi Python 3.10 veya üstüyle çalışır; yalnız standart kütüphane kullanılır, ek paket kurmak gerekmez.":
     "Only a browser for these pages and the demo. Kule itself runs on Python 3.10 or later; it uses only the standard library, so no extra packages need to be installed.",
   "Hangi dillerde?": "Which languages?",
   "Bu sayfalar Türkçe ve İngilizce. Kule'nin paneli ve komut satırı çıktıları şu an Türkçe.":
     "These pages are in Turkish and English. The Kule panel and command-line output are currently in Turkish.",
+
+  /* ürün sayfası, VITRIN-M1 metni (yeniden kurulum, VITRIN-T3) */
+  "Ürün anlatımı": "Product overview",
+  "Kule Pro, bir işletmenin stok, sipariş, mal kabul ve fatura dosyalarını okuyup bakılacak işlerin listesini çıkarır. Ne yaptığını, nasıl okunduğunu ve sayıların nereden geldiğini anlatır.":
+    "Kule Pro reads a company's stock, order, goods receipt and invoice files and produces a list of work to do. It explains what it does, how files are read, and where the numbers come from.",
+  "Kule Pro: stok, sipariş ve fatura dosyalarınızdan bakılacak işler": "Kule Pro: work to do from your stock, order and invoice files",
+  "Kule Pro, bir işletmenin SAP dışa aktarımlarını ve tedarikçi dosyalarını alıp bakılacak işlerin listesini çıkarır. Kararı insan verir diye tasarlandı: araç her bulguyu, dayanağını ve sorumlusunu gösterir. Aşağıda dosyanın nasıl okunduğunu, her modülün ne yaptığını ve sayıların nereden geldiğini bulabilirsiniz.":
+    "Kule Pro takes SAP exports and supplier files from a business and produces a list of work to do. The product is built so that people make the decisions: the tool shows each finding, what it rests on, and who owns it. The sections below explain how a file is read, what each module does, and where the numbers come from.",
+  "Panelden alınmış ekran. Veriler örnek verisidir.": "Screen taken from the panel. The data is sample data.",
+  "Ürün anlatımı · sorun": "Product overview · problem",
+  "Tutarsızlık ayrı tablolarda saklanır": "Mismatches sit in separate tables",
+  "Stok, sipariş, mal kabul ve fatura çoğu zaman ayrı tablolarda ve ayrı kişilerde tutulur. Her tablo kendi içinde doğru görünebilir; fark ancak kayıtlar yan yana konduğunda ortaya çıkar.":
+    "Stock, orders, goods receipts and invoices are often kept in separate tables, sometimes by separate people. Each table can look correct on its own; the gap appears only when the records are read side by side.",
+  "Örneğin bir siparişle faturası miktar ya da tutar bakımından uyuşmayabilir ve bunu kimse, iki kayıt bir araya getirilene kadar görmez.":
+    "For example, an order and its invoice may disagree on quantity or amount, and nobody sees it until the two records are put together.",
+  "Dosyayı yüklersiniz, satırlar okunur": "You upload the file and the rows are read",
+  "Dosyayı yüklersiniz. Stok, sipariş, mal kabul, fatura ve SAP dışa aktarımları kabul edilir; SAP dışa aktarımları CSV ya da .xlsx biçiminde gelebilir.":
+    "You upload the file. Stock, purchase order, goods receipt, invoice and SAP export files are accepted, and SAP exports can arrive as CSV or .xlsx.",
+  "Her satır okunur. Okunamayan satır atlanmaz; satır numarası ve nedeni listede gösterilir. Hiç satır okunamayan dosya kabul edilmez ve nedeni gösterilir.":
+    "Every row is read. A row that cannot be read is not dropped; its row number and the reason appear in the list. A file with no readable rows is not accepted, and the reason is shown.",
+  "Komut satırı çıktısı, gerçek bir koşudan; düzenlenmedi. Girdi örnek verisidir.":
+    "Command-line output from a real run; not edited. The input is sample data.",
+  "Yedi analiz modülü": "Seven analysis modules",
+  "Her modül verilere bir soru sorar.": "Each module asks the data one question.",
+  "Kritik stoku ve ölü stoku ayırır.": "Separates critical stock from dead stock.",
+  "Sipariş, mal kabul ve fatura arasındaki tutarsızlıkları bulur.": "Finds mismatches between orders, goods receipts and invoices.",
+  "Geçmiş satıştan gelecek dönemin talebini tahmin eder.": "Estimates the demand for the coming period from past sales.",
+  "Tedarikçi performansını özetler.": "Summarizes supplier performance.",
+  "Sipariş, mal kabul ve faturayı karşılaştırır.": "Compares orders, goods receipts and invoices.",
+  "Ekipman genel verimliliğini hesaplar.": "Calculates overall equipment effectiveness.",
+  "FBL1N açık kalem mutabakatı": "FBL1N open-item reconciliation",
+  "Satıcı açık kalemlerini kontrol eder.": "Checks the vendor's open items.",
+  "Ekranlar panelden alındı. Panel ve komut satırı şu an Türkçe; ekranlardaki veriler örnek verisidir.":
+    "The screens are taken from the panel. The panel and the command line are currently in Turkish; the data on the screens is sample data.",
+  "Neyin ölçüldüğü": "What was measured",
+  "Bir örnek dosya": "A sample file",
+  "Test paketi, bilerek konmuş 18 hatalı bir örnek dosya içerir. Paket bu hataların 18'ini buldu ve listeye fazla bulgu eklemedi. Dosya uydurma verilerle hazırlandığı için bu sonuç, kuralların konmuş hataları yakalayabildiğini gösterir.":
+    "The test suite includes a sample file with 18 deliberately planted errors. The suite found all 18 and added no extra findings. The file is invented, so the result shows that the rules catch planted errors.",
+  "Ne ölçüldü": "What was measured",
+  "Toplam 1652 otomatik test var: 1298 Python testi, 120 ajan orkestratörü testi ve 234 Node testi. Bu koşuda 4 test atlandı; bu yüzden 1652 rakamı otomatik test sayısıdır, geçen test sayısı olarak okunmamalıdır.":
+    "1,652 automated tests: 1,298 Python tests, 120 agent orchestrator tests and 234 Node tests. Four tests were skipped in that run, so 1,652 is the number of automated tests, not the number that passed.",
+  "Değerlendirme seti 123 vakadan oluşur. Dosya elle yazılmış kayıt olarak etiketlidir: model yanıtları kayıttan oynatılır, puan kodun bu yanıtlara verdiği tepkiyi ölçer, modelin kalitesini ölçmez.":
+    "The evaluation set has 123 cases. It is labeled a hand-written record: model answers are replayed from a recording, so the score measures how the code responds to those answers, not the quality of the model.",
+  "Açık veri: 180.519 ham satırdan 172.765'i kabul edildi. Satırlar DataCo açık veri setinden gelir ve veri seti CC BY 4.0 lisanslıdır.":
+    "Open data: 172,765 rows were accepted out of 180,519 raw rows. The rows come from the DataCo open dataset, licensed under CC BY 4.0.",
+  "Bu sayılar 16 Kasım 2026 tarihli, 0.14.0 sürümüne ait koşudan alındı. Kanıt sayfasındaki sayılar daha eski bir koşuya ait; iki sayfa güncelleninceye kadar farklı sayılar görebilirsiniz.":
+    "These counts come from a run on 16 November 2026 against version 0.14.0. The evidence page still shows numbers from an earlier run, so the two pages will differ until it is updated.",
+  "Hız sınırı": "Rate limit",
+  "0.14.0 sürümünün API'si 37 yol ve 41 işlem içerir. /v1 altındaki istekler IP adresi başına dakikada 300 ile sınırlıdır. Sınırı aşan istek 429 yanıtı alır ve Retry-After başlığında ne zaman yeniden denenebileceğini görür.":
+    "Version 0.14.0 exposes 37 paths and 41 operations. Requests under /v1 are limited to 300 per minute per IP address. A request over the limit gets a 429 response with a Retry-After header that says when to retry.",
+  "Bu sınır kimlik doğrulamanın yerine geçmez. Önünde bir ters vekil sunucu varsa bütün istemciler tek IP olarak görünür ve sınır hepsine birlikte uygulanır.":
+    "The limit is not a substitute for authentication. If a reverse proxy sits in front of the service, all clients appear as one IP address and share the limit.",
+  "Gerçek SAP çıktısıyla henüz denenmedi": "Not yet tried on real SAP output",
+  "Ölçümler örnek dosyalar ve açık veriyle yapıldı; ilk gerçek SAP çıktısını pilot kullanımda deneyeceğiz. Sürüm demo ve pilot için tasarlandı; üretim düzeyinde güvenlik bu sürümün kapsamı dışında. Gerçek veride doğruluk oranı henüz bilinmiyor.":
+    "Kule Pro has not been run on a real SAP export. The measurements used sample files and open data, and the first real SAP export will be tried in a pilot. The release is built for demos and pilots; production-grade security is outside its scope. Accuracy on real data is not yet known.",
+  "0.8.1'den 0.14.0'a kadar eklenenler: satıcı ana verisi ve mükerrer satıcı adayları, boş yüklemenin reddi, günlük dosyası ve veritabanı yedekleme komutları, karar tablosunun CSV olarak indirilmesi. Tam liste sürüm notlarında.":
+    "Added from 0.8.1 to 0.14.0: supplier master data with duplicate candidates, rejection of empty uploads, log rotation and database backup commands, and the decision table as a CSV download. The full list is in the release notes.",
+  "Sorular": "Questions",
+  "Kaynak kodu açık mı?": "Is the source code open?",
+  "Hayır. Ürünün kaynak kodu paylaşılmıyor. Bu sitede test sonuçları, sayılar ve doğrulama dosyaları yer alır.":
+    "No. The product's source code is not shared. This site publishes test results, counts and verification files.",
+  "Demo ve kanıt sayfaları:": "Demo and evidence pages:",
+  "test kanıtı": "test evidence",
+  "Demolardaki veriler örnek verisidir; gerçek şirket verisi kullanılmamıştır.": "All demo data is sample data; no real company data was used.",
+  "Statik örnek sayfa; canlı API yok.": "Static sample page; no live API.",
+  "Ölçüm": "Measurement",
 
   /* giriş sayfası */
   "Nereden başlamalı?": "Where to start?",
@@ -199,8 +265,8 @@ window.I18N_EK = {
   /* güncel geliştirme (0.7.0 sonrası) bölümü */
   "güncel": "current",
   "Güncel geliştirme (0.7.0 sonrası)": "Current development (after 0.7.0)",
-  "Bu bölüm 0.7.0'dan sonra geliştirme deposunda yapılanları anlatır. Sürümler 0.14.0'a kadar özel kaynak deposunda etiketlidir; kaynak kod bu vitrinde yoktur. Hiçbiri gerçek SAP verisiyle denenmedi.":
-    "This section describes what has been done in the development repository after 0.7.0. Versions up to 0.14.0 are tagged in the private source repository; the source code is not in this showcase. None of it has been tried on real SAP data.",
+  "Bu bölüm 0.7.0'dan sonra yapılanları anlatır. Sürümler 0.14.0'a kadar etiketlidir; kaynak kod bu sitede yayımlanmaz. Hiçbiri gerçek SAP verisiyle denenmedi.":
+    "This section describes what was done after 0.7.0. Versions up to 0.14.0 are tagged; the source code is not published on this site. None of it has been tried on real SAP data.",
   "kule[pdf] (deneysel)": "kule[pdf] (experimental)",
   "Metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. Kurulum isteğe bağlıdır; çekirdek bağımlılıksız kalır.":
     "A text-layer supplier statement PDF is read if it passes five gates. It has been tested only with a single synthetic template. Installation is optional; the core stays dependency-free.",

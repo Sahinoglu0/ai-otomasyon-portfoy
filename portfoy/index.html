@@ -4,40 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Kule Pro — ürün anlatımı</title>
-<meta name="description" content="Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura verisinden her gün karar çıktısı üreten bir karar destek aracıdır. Ne yaptığını, nasıl çalıştığını ve neyin ölçüldüğünü anlatır.">
+<title>Kule Pro: ürün anlatımı</title>
+<meta name="description" content="Kule Pro, bir işletmenin stok, sipariş, mal kabul ve fatura dosyalarını okuyup bakılacak işlerin listesini çıkarır. Ne yaptığını, nasıl okunduğunu ve sayıların nereden geldiğini anlatır.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0b43a'/%3E%3Cpath d='M13 26h6l-1.2-12h-3.6zM11 14h10l-1-4h-8zM16 4l-3 6h6z' fill='%2317191b'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/ds/ds-tokens.css">
 <link rel="stylesheet" href="../assets/ds/ds-ustbar.css">
 <link rel="stylesheet" href="../assets/ds/ds-reveal.css">
 <link rel="stylesheet" href="../assets/ds/ds-kart.css">
-<link rel="stylesheet" href="../assets/ds/ds-sayac.css">
-<link rel="stylesheet" href="../assets/ds/ds-veri-akisi.css">
-<link rel="stylesheet" href="../assets/ds/ds-ajan-akisi.css">
 <link rel="stylesheet" href="../assets/ds/ds-sekme.css">
 <link rel="stylesheet" href="../assets/site.css">
-<style>
-  /* Güncel bölümü: dar ekranda ölçüm taslağı yatay kaydırılır; içindeki yazılar okunaklı kalır. */
-  @media (max-width: 720px) {
-    #guncel .ekran.uzun { overflow-x: auto; }
-    #guncel .ekran.uzun img { width: 760px; max-width: none; }
-  }
-</style>
 <script src="../assets/site.js"></script>
 <script src="../assets/ds/ds-reveal.js"></script>
 </head>
-<body>
+<body class="urun-sayfa">
 
 <header class="ds-ustbar" data-ds-ustbar>
   <div class="ds-ustbar-ic">
     <a class="ds-marka" href="../index.html">Kule Pro</a>
     <nav aria-label="Bölümler">
-      <a href="#nedir">Nedir</a>
+      <a href="#sorun">Sorun</a>
       <a href="#nasil">Nasıl çalışır</a>
       <a href="#moduller">Modüller</a>
-      <a href="#kanit">Kanıt</a>
+      <a href="#olcum">Ölçüm</a>
       <a href="#sinirlar">Sınırlar</a>
-      <a href="#nasil-denenir">Dene</a>
+      <a href="#sss">Sorular</a>
     </nav>
     <div class="ust-arac">
       <button class="tema-dugme" id="tema" type="button" aria-label="Temayı değiştir" title="Temayı değiştir">
@@ -51,139 +41,70 @@
 </header>
 
 <main>
-  <div class="kahraman">
+  <section class="urun-kahraman" aria-labelledby="h-giris">
     <div class="wrap">
-      <span class="ds-ust">Karar destek aracı · ürün anlatımı</span>
-      <h1>Kule Pro<span class="x">.</span></h1>
-      <p class="lede">Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura verisinden her gün karar çıktısı üreten bir karar destek aracıdır. Ne yaptığını, nasıl çalıştığını ve neyin ölçüldüğünü anlatır.</p>
+      <span class="ds-ust">Ürün anlatımı</span>
+      <h1 id="h-giris">Kule Pro: stok, sipariş ve fatura dosyalarınızdan bakılacak işler</h1>
+      <p class="lede">Kule Pro, bir işletmenin SAP dışa aktarımlarını ve tedarikçi dosyalarını alıp bakılacak işlerin listesini çıkarır. Kararı insan verir diye tasarlandı: araç her bulguyu, dayanağını ve sorumlusunu gösterir. Aşağıda dosyanın nasıl okunduğunu, her modülün ne yaptığını ve sayıların nereden geldiğini bulabilirsiniz.</p>
       <div class="dugmeler">
         <a class="dugme birincil" href="../demo/index.html">Demoyu dene <span class="ds-ok" aria-hidden="true">→</span></a>
-        <a class="dugme" href="../ajan-orkestrasyon/iz-goruntuleyici/index.html">İz görüntüleyiciyi aç</a>
         <a class="dugme" href="../kanit/index.html">Test kanıtını gör</a>
       </div>
-      <figure class="ekran">
-        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Yönetici özeti</span><span class="rozet-sentetik">Sentetik veri</span></div>
+      <figure class="ekran urun-ekran">
+        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Yönetici özeti</span></div>
         <img class="tema-acik" src="../assets/ekran/panel-ozet-acik.png" width="1200" height="750" alt="Kule Pro panelinin yönetici özeti ekranı: tutar etkisi, bağlı sermaye, kritik stok kalemi, öncelikli aksiyonlar ve risk sıralaması.">
         <img class="tema-koyu" src="../assets/ekran/panel-ozet-koyu.png" width="1200" height="750" loading="lazy" alt="Kule Pro panelinin yönetici özeti ekranı, koyu tema.">
-        <figcaption>Gerçek panel ekranı. Gösterilen veriler sentetik örnek veridir; gerçek bir şirkete ait değildir.</figcaption>
+        <figcaption>Panelden alınmış ekran. Veriler örnek verisidir.</figcaption>
       </figure>
-    </div>
-  </div>
-
-  <!-- 1. NEDİR -->
-  <section class="bolum" id="nedir" aria-labelledby="h-nedir">
-    <div class="wrap" data-ds-reveal>
-      <span class="ds-ust">01 / nedir</span>
-      <h2 id="h-nedir">Kule Pro nedir?</h2>
-      <p>Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını okuyan bir karar destek aracıdır. Her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez göründüğünü hazır bir liste olarak verir. Çekirdeği kural tabanlı, test edilebilir hesaplardan oluşur; varsayılanda hiçbir modül dil modeli çağırmaz.</p>
-      <div class="sayi-serit" data-ds-sayac-grup data-ds-etiket-tekrar="Tekrar oynat">
-        <div class="ds-sayilar">
-          <div class="ds-sayi"><b data-ds-sayac>7</b><span>modül, aynı çıktı biçimi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
-          <div class="ds-sayi"><b data-ds-sayac>1298</b><span>Kule · Python testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
-          <div class="ds-sayi"><b data-ds-sayac>120</b><span>Orkestratör · birim testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
-          <div class="ds-sayi"><b data-ds-sayac>234</b><span>Panel · Node testi</span><span class="ds-alt" data-oran="1"><i></i></span></div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- 2. SORUN -->
-  <section class="bolum" id="sorun" aria-labelledby="h-sorun">
-    <div class="wrap" data-ds-reveal>
-      <span class="ds-ust">02 / sorun</span>
-      <h2 id="h-sorun">Hangi sorunu çözer?</h2>
-      <p>Stok, sipariş, mal kabul ve fatura çoğu işletmede ayrı tablolarda kontrol edilir. Bir hata genellikle fark edildiğinde maliyeti çoktan oluşmuş olur. Kule Pro bu kontrolleri tek bir günlük çıktıda toplar: kritik ve ölü stok, sipariş–mal kabul–fatura tutarsızlıkları, tedarikçi performansı ve sipariş önerisi.</p>
-      <p class="ikincil">Aracı kullanacak kişiler farklı işlere bakar.</p>
-      <ul class="roller" data-ds-reveal="sira">
-        <li><b>Planlayıcı</b><span>Stok ve talep tarafını izler.</span></li>
-        <li><b>Satın alma</b><span>Sipariş, fatura ve tedarikçi tarafını izler.</span></li>
-        <li><b>Yönetici</b><span>Özet ve maliyet tarafını izler.</span></li>
-      </ul>
+  <section class="bolum urun-bolum" id="sorun" aria-labelledby="h-sorun">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Sorun</span>
+      <h2 id="h-sorun">Tutarsızlık ayrı tablolarda saklanır</h2>
+      <p>Stok, sipariş, mal kabul ve fatura çoğu zaman ayrı tablolarda ve ayrı kişilerde tutulur. Her tablo kendi içinde doğru görünebilir; fark ancak kayıtlar yan yana konduğunda ortaya çıkar.</p>
+      <p>Örneğin bir siparişle faturası miktar ya da tutar bakımından uyuşmayabilir ve bunu kimse, iki kayıt bir araya getirilene kadar görmez.</p>
     </div>
   </section>
 
-  <!-- 3. NASIL -->
-  <section class="bolum" id="nasil" aria-labelledby="h-nasil">
-    <div class="wrap">
-      <div data-ds-reveal>
-        <span class="ds-ust">03 / nasıl çalışır</span>
-        <h2 id="h-nasil">Nasıl çalışır?</h2>
-        <p class="ikincil">Veri bir kez okunur, satır satır denetlenir, modüllerden geçer ve karara dönüşür.</p>
-      </div>
-      <figure class="ds-veri" data-ds-veri data-ds-reveal aria-label="Veri akışı: dosya, doğrulama, modüller, karar">
-        <ol class="ds-veri-hat">
-          <li><span class="ds-veri-kutu"><b>CSV / .xlsx</b><small>işletmenin dışa aktardığı dosyalar</small></span></li>
-          <li><span class="ds-veri-kutu"><b>Doğrulama</b><small>her satır girdi sözleşmesine göre</small></span></li>
-          <li><span class="ds-veri-kutu"><b>Modüller</b><small>SQLite, 7 kural tabanlı analiz</small></span></li>
-          <li><span class="ds-veri-kutu"><b>Karar</b><small>önem puanı ve sipariş önerisi</small></span></li>
-        </ol>
-      </figure>
-      <ol class="adimlar" data-ds-reveal="sira">
-        <li><b>Veri</b><span>İşletmenin dışa aktardığı CSV ve .xlsx dosyaları okunur. SAP tarzı dışa aktarımlar bir eşleme dosyasıyla Kule biçimine çevrilir.</span></li>
-        <li><b>Doğrulama</b><span>Her satır bir girdi sözleşmesine göre denetlenir. Bozuk satır sessizce kaybolmaz; nedeni birlikte saklanır ve dosyanın veri kalitesi skoruna yansır.</span></li>
-        <li><b>Saklama ve analiz</b><span>Temiz veri SQLite'a yazılır. Her çalıştırma bir anlık görüntü bırakır; iki görüntü arasındaki fark çıkarılabilir. Analiz modülleri aynı çıktı biçimini üretir.</span></li>
-        <li><b>Karar ve sunum</b><span>Karar motoru bulguları parasal etkilerine göre önem puanına çevirir ve sipariş önerisi çıkarır. Sonuçlar komut satırı, REST API, tarayıcı paneli ve günlük ya da haftalık raporlar olarak sunulur.</span></li>
-      </ol>
-
-      <figure class="ekran uzun" data-ds-reveal>
-        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>python -m kule karar --db kule.db</span><span class="rozet-sentetik">Sentetik veri</span></div>
+  <section class="bolum urun-bolum" id="nasil" aria-labelledby="h-nasil">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Nasıl çalışır</span>
+      <h2 id="h-nasil">Dosyayı yüklersiniz, satırlar okunur</h2>
+      <p>Dosyayı yüklersiniz. Stok, sipariş, mal kabul, fatura ve SAP dışa aktarımları kabul edilir; SAP dışa aktarımları CSV ya da .xlsx biçiminde gelebilir.</p>
+      <p>Her satır okunur. Okunamayan satır atlanmaz; satır numarası ve nedeni listede gösterilir. Hiç satır okunamayan dosya kabul edilmez ve nedeni gösterilir.</p>
+      <figure class="ekran urun-ekran" data-ds-reveal>
+        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>python -m kule karar --db kule.db</span></div>
         <img src="../assets/ekran/cli-karar.png" width="1000" height="640" loading="lazy" alt="Komut satırında karar çıktısı: kalem, durum, stok, günlük talep, emniyet stoğu, yeniden sipariş noktası, sipariş önerisi ve tedarikçi sütunları.">
-        <figcaption>Komut satırı çıktısı, gerçek koşudan; düzenlenmedi. Girdi sentetik örnek veridir.</figcaption>
+        <figcaption>Komut satırı çıktısı, gerçek bir koşudan; düzenlenmedi. Girdi örnek verisidir.</figcaption>
       </figure>
-
-      <h3 class="figur-baslik" id="h-ajan">Ajan orkestratörü (ayrı bileşen)</h3>
-      <p>Kule'nin modüllerini araç olarak kullanan çok ajanlı bir akıştır. Planlayıcı soruyu alt görevlere böler. Analist modülleri çağırır, bulguyu yorumlar ve sayılarını bir iddia bloğuna yazar. Denetçi ise bir model değil, koddur: iddia bloğundaki her sayıyı Kule'nin kendi hesabıyla karşılaştırır ve tutmayan sayıyı reddeder.</p>
-      <p class="ikincil">Denetçi yalnız iddia bloğunu kontrol eder; düz metindeki sayılar yalnızca Kule verisinde var olup olmadıklarına bakılarak denetlenir. Yan etkili araçlar (örneğin bir kayıt yazmak) insan onayı olmadan çalışmaz. Her adım bir iz olarak kaydedilir ve iz görüntüleyicide açılabilir.</p>
-      <figure class="ds-ajan" data-ds-ajan aria-labelledby="ajan-baslik" data-ds-reveal>
-        <figcaption id="ajan-baslik" class="ds-sr">Ajan akışı: Planlayıcı, Analist, Denetçi ve onay kapısı</figcaption>
-        <ol class="ds-ajan-dugumler">
-          <li data-dugum="planlayici"><span class="ds-ajan-daire" aria-hidden="true">P</span><div><b class="ds-ajan-ad">Planlayıcı</b><span class="ds-ajan-is">Soruyu alt görevlere böler</span></div></li>
-          <li data-dugum="analist"><span class="ds-ajan-daire" aria-hidden="true">A</span><div><b class="ds-ajan-ad">Analist</b><span class="ds-ajan-is">Modülleri çağırır, iddia bloğunu yazar</span>
-            <span class="ds-ajan-rozetler"><span class="ds-rozet ds-rozet-bekle" data-rozet="deneme2">2. deneme</span></span></div></li>
-          <li data-dugum="denetci"><span class="ds-ajan-daire" aria-hidden="true">D</span><div><b class="ds-ajan-ad">Denetçi (kod)</b><span class="ds-ajan-is">Sayıyı Kule'nin hesabıyla karşılaştırır</span>
-            <span class="ds-ajan-rozetler"><span class="ds-rozet ds-rozet-red" data-rozet="red">1. red</span><span class="ds-rozet ds-rozet-ok" data-rozet="kabul">2. kabul</span></span></div></li>
-          <li data-dugum="onay"><span class="ds-ajan-daire" aria-hidden="true">✓</span><div><b class="ds-ajan-ad">Onay kapısı</b><span class="ds-ajan-is">Yan etkili adımı insan onaylar</span>
-            <span class="ds-ajan-rozetler"><span class="ds-rozet ds-rozet-ok" data-rozet="onay">Onaylandı</span></span></div></li>
-        </ol>
-        <p class="ds-ajan-geri"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M14 4v5a3 3 0 0 1-3 3H4m3-3-3 3 3 3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Red: Denetçi Analist'e geri gönderir</span></p>
-        <ol class="ds-ajan-anlati">
-          <li>Planlayıcı soruyu alt görevlere böler.</li>
-          <li>Analist modülleri çağırır ve sayıları iddia bloğuna yazar.</li>
-          <li>Denetçi reddeder: iddia 58,0, Kule'nin hesabı 36,3.</li>
-          <li>Analist ikinci denemede sayıyı düzeltir.</li>
-          <li>Denetçi kabul eder: sayı Kule'nin hesabıyla eşleşiyor.</li>
-          <li>Onay kapısı: yan etkili adım insan onayıyla çalışır.</li>
-        </ol>
-      </figure>
-      <p class="ikincil kucuk">Örnek akış eval'deki bir vakadan alındı (T-03 tedarikçi skoru: iddia 58,0, Kule 36,3).</p>
     </div>
   </section>
 
-  <!-- 4. MODÜLLER -->
-  <section class="bolum" id="moduller" aria-labelledby="h-moduller">
-    <div class="wrap">
-      <div data-ds-reveal>
-        <span class="ds-ust">04 / modüller</span>
-        <h2 id="h-moduller">Modüller</h2>
-        <p>Kule Pro yedi modülden oluşur. Her biri bir işi yapar ve aynı biçimde çıktı verir.</p>
-      </div>
-      <div class="moduller" data-ds-reveal="sira">
-        <div class="ds-kart"><span class="ds-ust">01</span><b class="ds-kart-baslik">Stok durumu</b><span class="ds-kart-metin">Her kalem için kapsama gününü hesaplar, kalemi KRİTİK, ÖLÜ STOK ya da FAZLA STOK olarak sınıflar ve ABC sınıfını verir.</span></div>
-        <div class="ds-kart"><span class="ds-ust">02</span><b class="ds-kart-baslik">Sipariş anomalisi</b><span class="ds-kart-metin">Sipariş ile mal kabul kayıtları arasındaki yedi tür tutarsızlığı bulur ve önem sırasına koyar.</span></div>
-        <div class="ds-kart"><span class="ds-ust">03</span><b class="ds-kart-baslik">Talep tahmini</b><span class="ds-kart-metin">Önümüzdeki sekiz hafta için talep tahmini verir; %80 güven aralığı ve geriye dönük test sonucu ile birlikte.</span></div>
-        <div class="ds-kart"><span class="ds-ust">04</span><b class="ds-kart-baslik">Tedarikçi skoru</b><span class="ds-kart-metin">Zamanında teslim, red oranı ve fiyat sapmasından 0–100 arası bir skor ve A/B/C/D seviyesi üretir. Örnek veride T-01 95,5 (A), T-03 36,3 (D) çıkar.</span></div>
-        <div class="ds-kart"><span class="ds-ust">05</span><b class="ds-kart-baslik">Üçlü eşleştirme</b><span class="ds-kart-metin">Sipariş, irsaliye ve faturayı birlikte kontrol eder: çift fatura, fazla faturalama, fiyat sapması ve irsaliyesiz fatura.</span></div>
-        <div class="ds-kart"><span class="ds-ust">06</span><b class="ds-kart-baslik">OEE</b><span class="ds-kart-metin">Hat verimliliğini (kullanılabilirlik × performans × kalite) hesaplar ve duruşları Pareto grafiğine döker. Gerçek üretim verisiyle ölçülmedi (bkz. sınırlar).</span></div>
-        <div class="ds-kart"><span class="ds-ust">07</span><b class="ds-kart-baslik">Açıklama</b><span class="ds-kart-metin">Modül çıktılarından Türkçe bir özet üretir. Varsayılanda şablonla çalışır; isteğe bağlı bir dil modeli yalnızca toplu özet cümlelerini görür, ham veriyi görmez.</span></div>
-      </div>
+  <section class="bolum urun-bolum" id="moduller" aria-labelledby="h-moduller">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Modüller</span>
+      <h2 id="h-moduller">Yedi analiz modülü</h2>
+      <p>Her modül verilere bir soru sorar.</p>
+      <ol class="urun-modul-liste">
+        <li><h3 class="modul-ad">Stok durumu</h3><p>Kritik stoku ve ölü stoku ayırır.</p></li>
+        <li><h3 class="modul-ad">Sipariş anomalisi</h3><p>Sipariş, mal kabul ve fatura arasındaki tutarsızlıkları bulur.</p></li>
+        <li><h3 class="modul-ad">Talep tahmini</h3><p>Geçmiş satıştan gelecek dönemin talebini tahmin eder.</p></li>
+        <li><h3 class="modul-ad">Tedarikçi skoru</h3><p>Tedarikçi performansını özetler.</p></li>
+        <li><h3 class="modul-ad">Üçlü eşleştirme</h3><p>Sipariş, mal kabul ve faturayı karşılaştırır.</p></li>
+        <li><h3 class="modul-ad">OEE</h3><p>Ekipman genel verimliliğini hesaplar.</p></li>
+        <li><h3 class="modul-ad">FBL1N açık kalem mutabakatı</h3><p>Satıcı açık kalemlerini kontrol eder.</p></li>
+      </ol>
+      <p class="ikincil kucuk">Ekranlar panelden alındı. Panel ve komut satırı şu an Türkçe; ekranlardaki veriler örnek verisidir.</p>
 
-      <div class="ekran-sekmeleri" data-ds-reveal>
+      <div class="ekran-sekmeleri">
         <h3 class="figur-baslik">Panelde modül ekranları</h3>
         <div class="ds-sekmeler" data-ds-sekme data-ds-etiket="Modül ekranları">
           <section class="ds-sekme-panel">
             <h4 class="ds-sekme-baslik">Stok</h4>
             <figure class="ekran">
-              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Stok</span><span class="rozet-sentetik">Sentetik veri</span></div>
+              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Stok</span></div>
               <img class="tema-acik" src="../assets/ekran/panel-stok-acik.png" width="1200" height="750" loading="lazy" alt="Panelde stok modülü: kalemlerin kapsama günü ve KRİTİK, ÖLÜ STOK, FAZLA STOK sınıfları.">
               <img class="tema-koyu" src="../assets/ekran/panel-stok-koyu.png" width="1200" height="750" loading="lazy" alt="Panelde stok modülü, koyu tema.">
             </figure>
@@ -191,7 +112,7 @@
           <section class="ds-sekme-panel">
             <h4 class="ds-sekme-baslik">Sipariş anomalisi</h4>
             <figure class="ekran">
-              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Sipariş anomalisi</span><span class="rozet-sentetik">Sentetik veri</span></div>
+              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Sipariş anomalisi</span></div>
               <img class="tema-acik" src="../assets/ekran/panel-anomali-acik.png" width="1200" height="750" loading="lazy" alt="Panelde sipariş anomalisi modülü: sipariş ile mal kabul arasındaki tutarsızlıklar önem sırasıyla.">
               <img class="tema-koyu" src="../assets/ekran/panel-anomali-koyu.png" width="1200" height="750" loading="lazy" alt="Panelde sipariş anomalisi modülü, koyu tema.">
             </figure>
@@ -199,7 +120,7 @@
           <section class="ds-sekme-panel">
             <h4 class="ds-sekme-baslik">Üçlü eşleştirme</h4>
             <figure class="ekran">
-              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Üçlü eşleştirme</span><span class="rozet-sentetik">Sentetik veri</span></div>
+              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Üçlü eşleştirme</span></div>
               <img class="tema-acik" src="../assets/ekran/panel-eslestirme-acik.png" width="1200" height="750" loading="lazy" alt="Panelde üçlü eşleştirme modülü: sipariş, irsaliye ve fatura bulguları.">
               <img class="tema-koyu" src="../assets/ekran/panel-eslestirme-koyu.png" width="1200" height="750" loading="lazy" alt="Panelde üçlü eşleştirme modülü, koyu tema.">
             </figure>
@@ -207,7 +128,7 @@
           <section class="ds-sekme-panel">
             <h4 class="ds-sekme-baslik">Tedarikçi</h4>
             <figure class="ekran">
-              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Tedarikçi</span><span class="rozet-sentetik">Sentetik veri</span></div>
+              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Tedarikçi</span></div>
               <img class="tema-acik" src="../assets/ekran/panel-tedarikci-acik.png" width="1200" height="750" loading="lazy" alt="Panelde tedarikçi puanı: altı tedarikçinin skoru, seviyesi, zamanında teslim, red ve fiyat sapması.">
               <img class="tema-koyu" src="../assets/ekran/panel-tedarikci-koyu.png" width="1200" height="750" loading="lazy" alt="Panelde tedarikçi puanı, koyu tema.">
             </figure>
@@ -215,149 +136,71 @@
           <section class="ds-sekme-panel">
             <h4 class="ds-sekme-baslik">Talep tahmini</h4>
             <figure class="ekran">
-              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Talep tahmini</span><span class="rozet-sentetik">Sentetik veri</span></div>
+              <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Talep tahmini</span></div>
               <img class="tema-acik" src="../assets/ekran/panel-talep-acik.png" width="1200" height="750" loading="lazy" alt="Panelde talep tahmini: sekiz haftalık tahmin ve güven aralığı.">
               <img class="tema-koyu" src="../assets/ekran/panel-talep-koyu.png" width="1200" height="750" loading="lazy" alt="Panelde talep tahmini, koyu tema.">
             </figure>
           </section>
         </div>
-        <p class="ikincil kucuk">Ekranlar panelin kendisinden alındı. Panel ve komut satırı şu an Türkçe; modül ekranlarındaki veriler sentetiktir.</p>
-      </div>
-
-      <div class="sabah-galeri" data-ds-reveal>
-        <h3 class="figur-baslik" id="h-sabah">Sabah raporu ekranı</h3>
-        <p>Sabah raporu ekranı SAP tarzı dışa aktarımları (CSV ya da .xlsx) sürükle-bırakla alır ve bugünün ilk 5 bulgusunu, "dünden beri" farkını ve eksik sütun uyarılarını gösterir.</p>
-        <p class="ikincil kucuk">Aşağıdaki beş görüntünün hepsi <b>sentetik veriyle</b> alındı: Kule Pro'nun kendi deneme paketi ve elle üretilmiş sahte dosyalar. Gerçek bir firmanın ya da gerçek bir SAP sisteminin verisi yoktur; her görüntüde sentetik olduğunu belirten bir rozet bulunur. <b>Ekran gerçek bir SAP çıktısıyla denenmedi.</b></p>
-
-        <div class="sabah-galeri-izgara">
-          <figure class="ekran uzun">
-            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Sabah raporu</span><span class="rozet-sentetik">Sentetik veri</span></div>
-            <img src="../docs/img/ekran/sabah-ilk5-bulgu.png" width="980" height="747" loading="lazy" decoding="async" alt="Sabah raporu: bugün bakılacak ilk 5 bulgu. Her bulguda önem, tahmini etki, kim bakmalı ve SAP'de nereye gidileceği yazıyor.">
-            <figcaption><b>İlk 5 bulgu.</b> Sentetik deneme paketinin 1. günü. Her bulguda önem, tahmini etki (sunucu tahmini), kim bakmalı ve SAP'de nereye bakılacağı yazar. Menü yolu bir öneridir; firmaya göre değişebilir.</figcaption>
-          </figure>
-          <figure class="ekran uzun">
-            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Örnek paket sonucu</span><span class="rozet-sentetik">Sentetik veri</span></div>
-            <img src="../docs/img/ekran/sabah-ornek-paket.png" width="980" height="284" loading="lazy" decoding="async" alt="Örnek paket sonucu: 17 beklenen sorunun 17'si bulundu.">
-            <figcaption><b>Örnek paket sonucu.</b> Paketin içine bilerek yerleştirilmiş 17 sorunun 17'si bulundu. Bu, kendi uydurduğumuz sorulara verilen cevaptır; gerçek veride doğruluk ölçüsü değildir.</figcaption>
-          </figure>
-          <figure class="ekran uzun">
-            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Dünden beri</span><span class="rozet-sentetik">Sentetik veri</span></div>
-            <img src="../docs/img/ekran/sabah-dunden-beri.png" width="980" height="392" loading="lazy" decoding="async" alt="Dünden beri bölümü: 2 yeni, 3 çözülen ya da kaybolan, 3 tutarı değişen bulgu.">
-            <figcaption><b>Dünden beri.</b> Aynı paketin ertesi günü: 2 yeni, 3 çözülen ya da kaybolan, 3 tutarı değişen bulgu. Tarihler denemenin çalıştırıldığı güne göre görünür.</figcaption>
-          </figure>
-          <figure class="ekran uzun">
-            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Eksik sütun uyarısı</span><span class="rozet-sentetik">Sentetik veri</span></div>
-            <img src="../docs/img/ekran/sabah-eksik-sutun.png" width="980" height="810" loading="lazy" decoding="async" alt="Eksik sütun uyarısı: EKPO dosyasında sipariş miktarı (MENGE) alanı eksik; rapor hazırlanamaz.">
-            <figcaption><b>Eksik sütun uyarısı.</b> Elle üretilmiş sentetik bir EKPO dosyasından sipariş miktarı (MENGE) sütunu çıkarıldı. Kule dosyayı tanır, eksik alanı adıyla söyler ve "rapor hazırlanamaz" uyarısı verir.</figcaption>
-          </figure>
-          <figure class="ekran uzun">
-            <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Kule Pro · Dosya boyutu uyarısı</span><span class="rozet-sentetik">Sentetik veri</span></div>
-            <img src="../docs/img/ekran/sabah-buyuk-dosya-hata.png" width="980" height="745" loading="lazy" decoding="async" alt="Dosya boyutu uyarısı: dosyalar birlikte çok büyük; gönderilecek veri yaklaşık 79 MB, sınır 20 MB.">
-            <figcaption><b>Dosya boyutu uyarısı.</b> Elle üretilmiş sentetik bir EKPO dosyası. Kule isteği göndermeden önce "yaklaşık 79 MB" tahminini ve 20 MB sınırını gösterir; 79 MB kodlama payı eklenmiş bir tahmindir.</figcaption>
-          </figure>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. KANIT -->
-  <section class="bolum" id="kanit" aria-labelledby="h-kanit">
-    <div class="wrap">
-      <div data-ds-reveal>
-        <span class="ds-ust">05 / kanıt</span>
-        <h2 id="h-kanit">Ne kanıtlandı?</h2>
-      </div>
-      <div class="kanit-kutu" data-ds-reveal="sira">
-        <div><span class="ds-ust">Testler</span><p class="test-satir"><b>1298 Python test</b><span>Kule için 1298 Python testi geçiyor; Node: 234 test, 234 geçti, 0 atlandı</span></p><p>Ajan orkestratörü için 120 birim testi var; 120 geçti. Son koşu 15 Kasım 2026 tarihli (Kule Pro 0.14.0, kaynak sürümü 51f7e8a, Python 3.14.7, Node v26.13.0): Kule Python testlerinin 4'ü atlandı, 2'si beklenen başarısızlık. Toplam 1652 test. Kanıt sayfasındaki katalog 0.8.1 koşusunun 1018 testini kapsar.</p></div>
-        <div><span class="ds-ust">Eval</span><p>Ajan orkestratörünün değerlendirme seti 123 vakadan oluşur. Kasetten oynatılır, bu yüzden model kalitesini ölçmez. Ölçüt, kontrol ve kapsam vakalarının 111'i de geçti (111/111); 12 bilinen açık vakanın 12'si gözlendi ve kapanmadı.</p></div>
-        <div><span class="ds-ust">Gerçek model deneyi</span><p>claude-haiku-5-5 ile planlanan 40 koşudan 38'i kaydedildi; 37'si tamamlandı, 1'i kota nedeniyle kesildi, 2'si yapılmadı. Soruşturma akışında 20 koşunun 16'sı kabul edildi (%80; %95 Wilson aralığı 0,584–0,919). Kaynak: 22 Ekim 2026 ön-kaydı ve bu turun kayıtları (<a href="../kanit/o1-ham/o1/ozet.json">o1/ozet.json</a>, <a href="../kanit/o1-ham/on-kayit.md">on-kayit.md</a>); ham kayıtlar kanit/o1-ham/ altında, SHA-256 ile kanit/SHA256SUMS dosyasında listelenir. Bu sayılar yalnızca o turu kapsar; sonraki parafraz denetimi ölçümü bu kutuda sayılmaz ve ölçülmüş bir sonuç olarak sunulmaz. Ölçümler ön-kayıtlıdır; önceden yazılan hedefler vaat değildir ve sonuç ne çıkarsa o yayımlanır.</p></div>
-        <div><span class="ds-ust">Örneklem</span><p>Bu örneklem küçüktür (soruşturma 20 koşu). Bir model kalitesi iddiası değildir.</p></div>
-      </div>
-      <figure class="ekran uzun" data-ds-reveal>
-        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>İz görüntüleyici</span></div>
-        <img src="../assets/ekran/iz-acilis.png" width="1200" height="600" loading="lazy" alt="İz görüntüleyici: ELLE YAZILMIŞ KAYIT rozeti, koşu özeti, adım bütçesi ve ajan şeridindeki zaman çizelgesi.">
-        <figcaption>İz görüntüleyici: her izin kaynağı rozetle belirtilir. Bu kare elle yazılmış bir kaset koşusunu gösterir.</figcaption>
-      </figure>
+  <section class="bolum urun-bolum" id="olcum" aria-labelledby="h-olcum">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Ölçüm</span>
+      <h2 id="h-olcum">Neyin ölçüldüğü</h2>
+      <h3 class="figur-baslik">Bir örnek dosya</h3>
+      <p>Test paketi, bilerek konmuş 18 hatalı bir örnek dosya içerir. Paket bu hataların 18'ini buldu ve listeye fazla bulgu eklemedi. Dosya uydurma verilerle hazırlandığı için bu sonuç, kuralların konmuş hataları yakalayabildiğini gösterir.</p>
+
+      <h3 class="figur-baslik">Ne ölçüldü</h3>
+      <p>Toplam 1652 otomatik test var: 1298 Python testi, 120 ajan orkestratörü testi ve 234 Node testi. Bu koşuda 4 test atlandı; bu yüzden 1652 rakamı otomatik test sayısıdır, geçen test sayısı olarak okunmamalıdır.</p>
+      <p>Değerlendirme seti 123 vakadan oluşur. Dosya elle yazılmış kayıt olarak etiketlidir: model yanıtları kayıttan oynatılır, puan kodun bu yanıtlara verdiği tepkiyi ölçer, modelin kalitesini ölçmez.</p>
+      <p>Açık veri: 180.519 ham satırdan 172.765'i kabul edildi. Satırlar DataCo açık veri setinden gelir ve veri seti CC BY 4.0 lisanslıdır.</p>
+      <p>Bu sayılar 16 Kasım 2026 tarihli, 0.14.0 sürümüne ait koşudan alındı. Kanıt sayfasındaki sayılar daha eski bir koşuya ait; iki sayfa güncelleninceye kadar farklı sayılar görebilirsiniz.</p>
     </div>
   </section>
 
-  <!-- 6. SINIRLAR -->
-  <section class="bolum" id="sinirlar" aria-labelledby="h-sinirlar">
-    <div class="wrap" data-ds-reveal>
-      <span class="ds-ust">06 / sınırlar</span>
-      <h2 id="h-sinirlar">Sınırlar</h2>
-      <ul class="sinirlar" data-ds-reveal="sira">
-        <li><b>Gerçek firma verisi yok</b>Gerçek bir firmanın verisiyle ölçülmedi. Ölçümler sentetik veriyle (tohum 42) ve herkese açık DataCo Smart Supply Chain verisiyle yapıldı. Mal kabul, irsaliye, fatura ve üretim verisi için lisansı uygun gerçek veri bulunamadı; bu girdiler ölçülmedi.</li>
-        <li><b>Bilinen açık 1</b>Eval'de düz metin içindeki sayının bağlamı denetlenmiyor. "2 kritik kalem" yazılan vaka kabul ediliyor, oysa gerçek sayı 3.</li>
-        <li><b>Bilinen açık 2</b>Enjeksiyon metnini modelin kendi sözleriyle yeniden ifade ettiği durumlarda sızıntı denetimi yakalamadı (6 vakanın 0'ı).</li>
-        <li><b>ROI varsayıma bağlı</b>ROI hesaplayıcının sonucu kullanıcının kendi varsayımlarına bağlıdır. Bu yüzden tek bir TL rakamı sunulmaz; varsayım tablosu açıktır.</li>
-      </ul>
+  <section class="bolum urun-bolum" id="api" aria-labelledby="h-api">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">API</span>
+      <h2 id="h-api">Hız sınırı</h2>
+      <p>0.14.0 sürümünün API'si 37 yol ve 41 işlem içerir. /v1 altındaki istekler IP adresi başına dakikada 300 ile sınırlıdır. Sınırı aşan istek 429 yanıtı alır ve Retry-After başlığında ne zaman yeniden denenebileceğini görür.</p>
+      <p>Bu sınır kimlik doğrulamanın yerine geçmez. Önünde bir ters vekil sunucu varsa bütün istemciler tek IP olarak görünür ve sınır hepsine birlikte uygulanır.</p>
     </div>
   </section>
 
-  <!-- GÜNCEL GELİŞTİRME (0.7.0 SONRASI) -->
-  <section class="bolum" id="guncel" aria-labelledby="h-guncel">
-    <div class="wrap">
-      <div data-ds-reveal>
-        <span class="ds-ust">güncel</span>
-        <h2 id="h-guncel">Güncel geliştirme (0.7.0 sonrası)</h2>
-        <p class="ikincil">Bu bölüm 0.7.0'dan sonra geliştirme deposunda yapılanları anlatır. Sürümler 0.14.0'a kadar özel kaynak deposunda etiketlidir; kaynak kod bu vitrinde yoktur. Hiçbiri gerçek SAP verisiyle denenmedi.</p>
-      </div>
-      <div class="kanit-kutu" data-ds-reveal="sira">
-        <div><span class="ds-ust">kule[pdf] (deneysel)</span><p>Metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. Kurulum isteğe bağlıdır; çekirdek bağımlılıksız kalır.</p></div>
-        <div><span class="ds-ust">Son 4 hafta ortalaması (aday, varsayılan değil)</span><p>Talep tahmininde yedek yöntem. Sentetik ve açık veride sonuç karışık çıktı: ortalama hata kötüleşti, medyan iyileşti. Üretimde açılmadı.</p></div>
-        <div><span class="ds-ust">Pilot ölçüm özeti ekranı</span><p>Panelde yükleme süresi, red oranı ve vaka kapanma süresi. Boş ve sentetik veri açıkça etiketli; TL ya da tasarruf iddiası yok.</p></div>
-      </div>
-      <figure class="ekran uzun" data-ds-reveal>
-        <div class="ekran-bas"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>Pilot ölçüm özeti · tasarım taslağı</span><span class="rozet-sentetik">Sentetik veri</span></div>
-        <img src="../assets/ekran/olcum-ozeti-taslak-sentetik.png" width="1280" height="1400" loading="lazy" decoding="async" alt="Pilot ölçüm özeti tasarım taslağı: önce ve sonra süreleri, Kule'nin kendi kayıtları ve ölçümün ne kadar sağlam olduğu. Sentetik veri.">
-        <figcaption><b>Tasarım taslağı, pilot sonucu değil.</b> Ekranın nasıl görüneceğini gösterir. Üstteki rozetler ve başlık verinin sentetik olduğunu belirtir; sayılar bir pilot ölçümü değildir ve Kule'nin bir iddiası sayılmamalıdır.</figcaption>
-      </figure>
+  <section class="bolum urun-bolum" id="sinirlar" aria-labelledby="h-sinirlar">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Sınırlar</span>
+      <h2 id="h-sinirlar">Gerçek SAP çıktısıyla henüz denenmedi</h2>
+      <p>Ölçümler örnek dosyalar ve açık veriyle yapıldı; ilk gerçek SAP çıktısını pilot kullanımda deneyeceğiz. Sürüm demo ve pilot için tasarlandı; üretim düzeyinde güvenlik bu sürümün kapsamı dışında. Gerçek veride doğruluk oranı henüz bilinmiyor.</p>
+
+      <h3 class="figur-baslik">Sürümler</h3>
+      <p>0.8.1'den 0.14.0'a kadar eklenenler: satıcı ana verisi ve mükerrer satıcı adayları, boş yüklemenin reddi, günlük dosyası ve veritabanı yedekleme komutları, karar tablosunun CSV olarak indirilmesi. Tam liste sürüm notlarında.</p>
     </div>
   </section>
 
-  <!-- 7. NASIL DENENİR -->
-  <section class="bolum" id="nasil-denenir" aria-labelledby="h-dene">
-    <div class="wrap">
-      <div data-ds-reveal>
-        <span class="ds-ust">07 / dene</span>
-        <h2 id="h-dene">Nasıl denenir?</h2>
-      </div>
-      <div class="ds-kartlar dene" data-ds-reveal="sira">
-        <a class="ds-kart" href="../demo/index.html"><span class="ds-ust">Demo</span><b class="ds-kart-baslik">Demoyu dene <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Kurulum gerektirmeyen statik demo, önceden hesaplanmış sentetik örnek veriyle çalışır. Canlı API yoktur.</span></a>
-        <a class="ds-kart" href="../ajan-orkestrasyon/iz-goruntuleyici/index.html"><span class="ds-ust">İz görüntüleyici</span><b class="ds-kart-baslik">İz görüntüleyiciyi aç <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Soruşturma akışını adım adım açın. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.</span></a>
-        <a class="ds-kart" href="../kanit/index.html"><span class="ds-ust">Test kanıtı</span><b class="ds-kart-baslik">Test kanıtını gör <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod bu depoda yayımlanmıyor; yerine bu kanıtlar var.</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. SSS -->
-  <section class="bolum" id="sss" aria-labelledby="h-sss">
-    <div class="wrap" data-ds-reveal>
-      <span class="ds-ust">08 / sss</span>
+  <section class="bolum urun-bolum" id="sss" aria-labelledby="h-sss">
+    <div class="wrap urun-metin">
+      <span class="ds-ust">Sorular</span>
       <h2 id="h-sss">Sık sorulan sorular</h2>
       <div class="sss">
-        <details class="ds-akordiyon"><summary>Kule Pro bir yapay zekâ mı?</summary><div class="ds-akordiyon-ic"><p>Hayır, karar çıktıları kural tabanlıdır ve test edilebilir. Ajan orkestratörü ayrı bir bileşendir ve dil modeli kullanır; onun iddiaları da Kule'nin hesabıyla denetlenir.</p></div></details>
-        <details class="ds-akordiyon"><summary>Gerçek bir firmanın verisiyle çalıştı mı?</summary><div class="ds-akordiyon-ic"><p>Hayır. Ölçümler sentetik veriyle ve herkese açık DataCo verisiyle yapıldı.</p></div></details>
-        <details class="ds-akordiyon"><summary>Kaynak kodu neden yayımlanmıyor?</summary><div class="ds-akordiyon-ic"><p>Kaynak kod bu depoda yayımlanmıyor. Bunun yerine test kanıtları, eval sonuçları, ölçüm çıktıları ve ajan izleri açık.</p></div></details>
-        <details class="ds-akordiyon"><summary>Ne gerekiyor?</summary><div class="ds-akordiyon-ic"><p>Bu sayfalar ve demo için yalnız bir tarayıcı. Kule'nin kendisi Python 3.10 veya üstüyle çalışır; yalnız standart kütüphane kullanılır, ek paket kurmak gerekmez.</p></div></details>
-        <details class="ds-akordiyon"><summary>Hangi dillerde?</summary><div class="ds-akordiyon-ic"><p>Bu sayfalar Türkçe ve İngilizce. Kule'nin paneli ve komut satırı çıktıları şu an Türkçe.</p></div></details>
+        <details class="ds-akordiyon"><summary>Kaynak kodu açık mı?</summary><div class="ds-akordiyon-ic"><p>Hayır. Ürünün kaynak kodu paylaşılmıyor. Bu sitede test sonuçları, sayılar ve doğrulama dosyaları yer alır.</p></div></details>
       </div>
+      <p class="ikincil kucuk">Demo ve kanıt sayfaları: <a href="../demo/index.html">demo</a> · <a href="../kanit/index.html">test kanıtı</a></p>
     </div>
   </section>
 </main>
 
 <footer class="alt">
   <div class="wrap">
-    <span>Demolardaki tüm veriler sentetiktir; gerçek şirket verisi kullanılmamıştır.</span>
+    <span>Demolardaki veriler örnek verisidir; gerçek şirket verisi kullanılmamıştır.</span>
     <span>Statik örnek sayfa; canlı API yok.</span>
     <span>© 2026 · MIT lisansı. <a href="../demo/LICENSE.txt">demo/ klasörü</a> bu lisansın dışındadır.</span>
   </div>
 </footer>
 
-<script src="../assets/ds/ds-sayac.js"></script>
-<script src="../assets/ds/ds-veri-akisi.js"></script>
-<script src="../assets/ds/ds-ajan-akisi.js"></script>
 <script src="../assets/ds/ds-sekme.js"></script>
 <script src="../assets/ds/ds-ustbar.js"></script>
 <script src="../assets/i18n-urun.js"></script>

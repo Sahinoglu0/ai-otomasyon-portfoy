@@ -1,14 +1,13 @@
 {
   "sema": "kanit-paket/1",
   "olusturma_utc": "2026-11-12T19:05:55Z",
-  "git_sha_kisa": "c68daa3",
   "manifest": "SHA256SUMS",
   "arsiv": null,
   "dosyalar": [
     {
       "yol": "sayilar.json",
-      "sha256": "d78ad5eb88bcb7195289e47f4ad3f24f1db215fd9baf5312475b57d7cd9ebf24",
-      "bayt": 1150,
+      "sha256": "92699ff114e0dc45cb19fbb31c86c7e660b07a960ca7406311f0cd65bb327b43",
+      "bayt": 1119,
       "kaynak": "kosu",
       "aciklama_tr": "Test sayıları (koşudan).",
       "aciklama_en": "Test counts (from the run)."
@@ -71,8 +70,8 @@
     },
     {
       "yol": "test-ozeti.json",
-      "sha256": "e1275464ec15e6b631994a74d670e5b5b780e7e8fa3f234bed2b696af056fc86",
-      "bayt": 971,
+      "sha256": "613815e021509a6c333ad57266e9d15654ae1976108fd57c432c74c63c51bd07",
+      "bayt": 907,
       "kaynak": "kosu",
       "aciklama_tr": "Test koşusu özeti: sayı, süre, sürüm.",
       "aciklama_en": "Test run summary: counts, duration, version."

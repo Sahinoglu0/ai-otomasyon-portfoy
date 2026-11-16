@@ -78,6 +78,8 @@
     dogrulaOzet: ["dosya manifestle eşleşti", "files match the manifest"],
     altMetin: ["Bu sayfadaki sayılar elle yazılmaz; koşudan üretilen veri dosyasından okunur:",
       "The numbers on this page are not typed by hand; they are read from the data file produced by the run:"],
+    paketNot: ["Bu paket Kule Pro 0.8.1 sürümünün koşusudur: 12 Kasım 2026, 1018 test (Python 732 · orkestratör 120 · Node 166). Ana sayfa ve ürün sayfasındaki sayılar 0.14.0 sürümüne aittir ve ayrı bir koşudan gelir; iki koşu birbirinin yerine geçmez.",
+      "This package is the run of Kule Pro version 0.8.1: 12 November 2026, 1018 tests (Python 732 · orchestrator 120 · Node 166). The figures on the home and product pages belong to version 0.14.0 and come from a separate run; the two runs do not replace each other."],
   };
 
   let lang = "tr";
@@ -149,7 +151,7 @@
     meta.replaceChildren();
     metaSatir(meta, t("tarih"), tarih(s.kosu_tarihi_utc));
     metaSatir(meta, t("sure"), nf(s.sure_sn, 1) + " " + t("sn"));
-    if (s.surum) metaSatir(meta, t("surum"), s.surum.git_sha_kisa + " · " + t(s.surum.kaynak_temiz ? "temiz" : "kirli"));
+    if (s.surum) metaSatir(meta, t("surum"), t(s.surum.kaynak_temiz ? "temiz" : "kirli"));
     if (s.ortam) metaSatir(meta, t("ortam"), Object.entries(s.ortam).map(([k, v]) => `${k === "python" ? "Python" : k === "node" ? "Node" : k} ${v}`).join(" · "));
 
     const kosuYeri = $("#kosuYeri");

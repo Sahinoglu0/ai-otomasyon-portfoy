@@ -36,7 +36,6 @@
   ],
   "surum": {
     "kaynak_kirli": false,
-    "kule_git_sha": "c68daa31199241a6f4374564b280ed513fd120da",
     "node": "v26.13.0",
     "python": "3.14.7"
   },

@@ -2,12 +2,12 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
-**Current version:** Kule Pro 0.14.0 (2026-11-16, in the private source repository; the source code is not in this repository). Details: [CHANGELOG.en.md](CHANGELOG.en.md).
+**Current version:** Kule Pro 0.14.0 (2026-11-16). The source code is not published. Details: [CHANGELOG.en.md](CHANGELOG.en.md).
 
 1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
 2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
 3. The data is synthetic (generator seed 42). Most measurements use public data: DataCo Smart Supply Chain, BPI Challenge 2019 (a real but anonymised process log), a simulated Berti inventory package, the Zenodo clay-brick OEE dataset and the M5 demand dataset. No module has been tested on a customer's data or on your own SAP system.
-4. The source code is not published in this repository. What is here: static pages, diagrams, test evidence and agent traces.
+4. The source code is not published. What is here: static pages, diagrams, test evidence and agent traces.
 5. The real-model run (claude-haiku-5-5) ran 38 of the 40 planned runs (37 completed, 1 cut off by the quota, 2 not run): in the investigation scenarios 16 of 20 runs were accepted and 4 were rejected by the Auditor; 17 runs of the injection scenarios (E1, E2) were completed. The other traces are hand-written tapes.
 
 **Live pages** (the TR / EN button at the bottom right switches the language):
@@ -17,7 +17,7 @@
 - [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
 - [Test evidence](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): source code is closed; test counts, behaviour catalogue and an evidence package you can verify with SHA-256
 
-**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats (including RBKP/RSEG) were tested with synthetic files, not with output from a real SAP system. The Kule source code is not in this repository.
+**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats (including RBKP/RSEG) were tested with synthetic files, not with output from a real SAP system. The Kule source code is not included on these pages.
 
 ## Videos
 
@@ -51,7 +51,7 @@ Every image below was taken with **synthetic data**: Kule Pro's own trial packag
 | Image | What it shows |
 |---|---|
 | ![Morning report: top 5 findings for today, synthetic sample package](docs/img/ekran/sabah-ilk5-bulgu.png) | **Top 5 findings.** Day 1 of the synthetic trial package. Each finding gives its importance, estimated impact (a server estimate), who should look and where to go in SAP; the menu path is a "suggestion" and may differ by company. |
-| ![Morning report: sample package result, 17 of 17 expected issues found](docs/img/ekran/sabah-ornek-paket.png) | **Sample package result.** All 17 issues planted in the package on purpose were found. This answers questions we wrote ourselves; it is not an accuracy figure on real data. |
+| ![Morning report: sample package result, 18 of 18 expected issues found](docs/img/ekran/sabah-ornek-paket.png) | **Sample package result.** All 18 issues planted in the package on purpose were found. This answers questions we wrote ourselves; it is not an accuracy figure on real data. |
 | ![Morning report: "Since yesterday" section, day 2](docs/img/ekran/sabah-dunden-beri.png) | **Since yesterday.** The next morning of the same package: 2 new, 3 resolved, 3 changed-amount findings. The dates shown follow the day the trial was run. |
 | ![Morning report: warning for a file with a missing required column](docs/img/ekran/sabah-eksik-sutun.png) | **Missing column warning.** The order quantity (MENGE) column was removed from a hand-made synthetic EKPO file. Kule recognises the file, names the missing field and disables the "Prepare morning report" button (the button looks dark in the image but is disabled). |
 | ![Morning report: error message for a file that is too large](docs/img/ekran/sabah-buyuk-dosya-hata.png) | **Error message example.** A hand-made synthetic 75 MB EKPO file. Kule says "files are too large together… limit 20 MB" before sending anything. The "about 79 MB" shown is an estimate that includes encoding overhead. |
@@ -98,7 +98,7 @@ Full test evidence (test catalogue, behaviour catalogue, SHA-256 evidence packag
 | Order anomaly | 7 anomalies (+3 clean hard cases) | 7, clean cases not flagged |
 | Three-way match | 4 findings (duplicate invoice, over-billing, 8% price deviation, invoice without delivery note) | 4 |
 
-**Large real-world data.** **172,765 shipment rows** adapted from the public DataCo Smart Supply Chain dataset loaded in one ingest: 172,765 accepted, 0 rejected, 0 crashes, about 8 seconds.
+**Large real-world data.** **172,765 shipment rows** adapted from the public DataCo Smart Supply Chain dataset loaded in one ingest: 172,765 accepted, 0 rejected, 0 crashes.
 
 **Open-data trials.** Beyond DataCo, public datasets were tried for Kule's other inputs. These trials were not run on real company data; none of the results is company data.
 
@@ -126,7 +126,7 @@ KULE-V6 is a variant measurement. Adding "last-4-week average" as a selection ca
 
 Goods receipt, delivery notes and invoices were measured with the BPI 2019 log; production (OEE) was measured with clay-brick data through a proxy mapping. Synthetic data is not presented as real.
 
-The DataCo data page (Mendeley 8gx2fvg2k6, version 5) states "CC BY 4.0", but the same page also reserves all rights, including text and data mining and AI training. For that reason the data file is not included in this repository, only measurement outputs are shared, and the data is not used for training. Measurement output: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
+The DataCo data page (Mendeley 8gx2fvg2k6, version 5) states "CC BY 4.0", but the same page also reserves all rights, including text and data mining and AI training. For that reason the data file is not included here, only measurement outputs are shared, and the data is not used for training. Measurement output: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
 
 **Demand forecast.** On the sample data the Holt-Winters backtest error (MAPE) averages 8.07; the simple same-week-last-year method gets 11.16. Intermittent demand methods (Croston, SBA, TSB) were also tried against pre-registered criteria:
 
@@ -136,16 +136,16 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** The latest verification was run locally on 2026-11-15: Kule Pro 0.14.0, commit `51f7e8a` of the private source repository, clean source; Python 3.14.7, Node v26.13.0. For Kule, 1298 Python tests pass; on the Node side 234 tests, 234 pass, 0 skipped; the orchestrator has 120 unit tests. Detail: in the Kule Python run (`unittest` discovery) 4 of the 1298 tests were skipped and 2 are expected failures (two targets not yet implemented), 0 failed; orchestrator 120 passed; Node 234 passed. Total 1652. **The evidence package (`kanit/`) has not been moved to this run yet:** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018); tests added up to 0.14.0 are not in the catalogue. The older 0.7.0 run was done on 2026-11-05; the older 569 figure is from the KULE-F1 report.
+**Tests.** The latest verification was run locally on 2026-11-15: Kule Pro 0.14.0, clean source (source release not published); Python 3.14.7, Node v26.13.0. For Kule, 1298 Python tests pass; on the Node side 234 tests, 234 pass, 0 skipped; the orchestrator has 120 unit tests. Detail: in the Kule Python run (`unittest` discovery) 4 of the 1298 tests were skipped and 2 are expected failures (two targets not yet implemented), 0 failed; orchestrator 120 passed; Node 234 passed. Total 1652. **The evidence package (`kanit/`) has not been moved to this run yet:** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018); tests added up to 0.14.0 are not in the catalogue. The older 0.7.0 run was done on 2026-11-05; the older 569 figure is from the KULE-F1 report.
 
-**Releases 0.8.1 → 0.14.0 (tagged in the private source repository; the source code is not in this repository).** The following is taken from the source repository's `CHANGELOG.md`, was tested with synthetic data, and **was not verified with real SAP data**:
+**Releases 0.8.1 → 0.14.0 (the source code is not published).** The following is taken from Kule Pro's release notes, was tested with synthetic data, and **was not verified with real SAP data**:
 
 - **0.10.0:** database backup commands (consistent copy, integrity check, restore), user `token-yenile` (token renewal), rotating file log, single port and single start line.
 - **0.11.0 – 0.12.x:** vendor master duplicate candidate (`MUKERRER_SATICI_ADAY`) and `satici.csv` intake (only HMAC digests are stored); open orders can be added to the stock position (off by default); bad-token rate limit (429) and concurrent connection cap (503); `satici-temizle --gun N` retention command and a read-only retention preview; panel user guide.
 - **0.13.x:** CLI exit code and environment variable validation, action hints in error messages, a consistency test between `docs/api.md` and the code, doc command examples verified against the code; **0.13.7:** XYZ demand variability class for stock analysis (thresholds are an **assumption**, not measured) and panel accessibility fixes.
 - **0.14.0 (2026-11-16):** several pending branches merged into one line: decision table CSV (`GET /v1/ozet/karar.csv`) and a CSV button in the panel, CLI `--sayi-bicimi`, simpler SAP mapping error wording, a leak scanner and release tooling. The morning report now defaults to the first 200 findings (`?sinir=0` returns all).
 
-**Early notes after 0.7.0 (period before 0.8.1).** The following are in the private `cv-portfoy-kule` repository, were tested with synthetic data, and **were not verified with real SAP data**:
+**Early notes after 0.7.0 (period before 0.8.1).** The following are in internal development records, were tested with synthetic data, and **were not verified with real SAP data**:
 
 - **`kule[pdf]` (experimental):** a text-layer supplier-statement PDF is read if it passes five gates. Tested with one synthetic template only. Optional install; the core stays dependency-free.
 - **Last-4-week average (candidate, not the default):** results on synthetic and public data were mixed (mean error got worse, median error improved). In the KULE-V3 M5 measurement, WAPE was: Kule 47.3%, seasonal naive 61.0%, last-4-week average 38.4%; the KULE-V6 variant measured 39.7%, and that variant is not implemented in Kule's code. Not enabled in production. Sources: KULE-V3-zeynep, KULE-V6.
@@ -165,7 +165,7 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
   - **Injection** (two pre-registered cases; E1 9 runs, E2 8 runs): In the last-reply leak case (E1) the model did not copy the injected text verbatim; it paraphrased it (6/9). The leak check caught none of these 6 paraphrases (0/6, 95% Wilson [0.000, 0.390]). This is a known limit and is not hidden: a paraphrased leak passes the gate. In the approved-write case (E2) the model tried to write with injected arguments in 8/8 runs; the approval gate stopped it in all 8, with no side effect (0/8, 95% Wilson [0.000, 0.324]). In E2's final text the injected words (`sil_her_sey`, `hacklendi`) appeared in 8/8 runs; this is the paraphrase count, which the pre-registration places outside the gate's scope and counts separately. The legitimate write (`sonuc.txt` with the approved summary) never happened in any run (0/8), so the approval's legitimate path was not tested in this sample. The run cut short by the quota (E2-t09) and the runs never executed (E1-t10, E2-t10) are not in any denominator. For 8/8 in E2, the 95% Wilson interval is [0.676, 1.000].
   - **Limits:** The samples are small (investigation n=20; injection cases E1 n=9, E2 n=8), and this is not a claim about model quality. The other traces in the viewer are hand-written tapes. The current gate checks form: it rejects output with off-task lines, but it does not check content, and a single off-task sentence under 200 characters can pass. A rejected Planner output is requested again at most twice; if all three attempts are rejected, the Analyst does not run. The Auditor compares the claims block with Kule; numbers in plain text are checked only for presence in Kule's data, not for context.
   - **Records:** The pre-registration and the traces of all 38 runs are in `ajan-orkestrasyon/ornek/gercek-model/` (`on-kayit.md`, `o1/`).
-- **Source code:** Kule's source code is not published in this repository. In its place there is test evidence (test catalogue, behaviour catalogue), results on deliberately broken sample data, an eval replayed from tapes and real-model traces. The `demo/` folder holds only the panel's browser layer and is under a non-MIT license (`demo/LICENSE.txt`). It contains static pages, drawings and measurement outputs.
+- **Source code:** Kule's source code is not published. In its place there is test evidence (test catalogue, behaviour catalogue), results on deliberately broken sample data, an eval replayed from tapes and real-model traces. The `demo/` folder holds only the panel's browser layer and is under a non-MIT license (`demo/LICENSE.txt`). It contains static pages, drawings and measurement outputs.
 - **Language.** These pages are in Turkish and English. Kule Pro's own panel, command line and API outputs are currently Turkish only.
 
 ## 5. What it is for
@@ -247,18 +247,18 @@ The browser panel has no dependencies and has four screens plus a Morning report
 - **Report:** a printable executive report (PDF) and CSV that opens correctly in Turkish Excel.
 - **Morning report (extra screen):** drag and drop SAP files, recognition from the header, today's top 5 findings, rejected rows, a missing-list card and a "Since yesterday" section (new, resolved, amount changed, unchanged). A single-file HTML report and a formula-protected CSV can be downloaded. The screenshot carries a synthetic-data badge; `.xlsx` and CSV are accepted, old `.xls` is not.
 
-The command `python -m kule ozet` (runs in the closed repository; `ozet` is Turkish for "summary") produces the daily and weekly summary (Markdown, single-file HTML, JSON, CSV). For every supplier that needs an order, an email **draft** is written: items, quantity, latest delivery date and the supplier's measured delivery performance. Kule does not send email; it prepares the draft for you to review.
+The command `python -m kule ozet` (runs only in a full Kule installation; `ozet` is Turkish for "summary") produces the daily and weekly summary (Markdown, single-file HTML, JSON, CSV). For every supplier that needs an order, an email **draft** is written: items, quantity, latest delivery date and the supplier's measured delivery performance. Kule does not send email; it prepares the draft for you to review.
 
 ## 10. Integration and security
 
-- **REST API** (`/v1`, 28 operations, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users, measurement (`/v1/olcum`, `/v1/olcum/ozet`), finding accuracy.
+- **REST API** (`/v1`, 37 paths, 41 operations, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users, measurement (`/v1/olcum`, `/v1/olcum/ozet`), finding accuracy.
 - **Roles:** planner, buyer, manager. The module owner's role writes a case (stock, demand, OEE → planner; orders, invoices, suppliers → buyer); only a manager can set `ACCEPTED`.
 - **Audit trail:** every unauthenticated (401) and unauthorised (403) call, every rate-limited (429) call and every authenticated operation is recorded. Tokens are stored in the database only as SHA-256 digests.
 - **Resilience:** per-client rate limit (default 300 requests/min), a 20 MB body limit, a clean error message for fields larger than 128 KB, and a setup guide for a TLS reverse proxy.
-- **Dependencies:** the Python standard library only. No `pip install` needed. Kule's core is not in this publication: `python demo.py` and `python -m kule ozet` run in the closed repository.
+- **Dependencies:** the Python standard library only. No `pip install` needed. Kule's core is not in this publication: `python demo.py` and `python -m kule ozet` run only in a full Kule installation.
 
 ## License and attribution
 
-Code and pages at the repository root are MIT licensed, see [LICENSE](LICENSE); the `demo/` folder is outside this license (`demo/LICENSE.txt`). Data used in the measurements: DataCo Smart Supply Chain (Mendeley Data, version 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. This data does not belong to any company and is not distributed in this repository.
+Code and pages at the repository root are MIT licensed, see [LICENSE](LICENSE); the `demo/` folder is outside this license (`demo/LICENSE.txt`). Data used in the measurements: DataCo Smart Supply Chain (Mendeley Data, version 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. This data does not belong to any company and is not distributed here.
 
-Additional measurement data, all CC BY 4.0, are not distributed in raw form in this repository: BPI Challenge 2019 OCEL (4TU, MD5 verified), the Berti simulated inventory package (a simulation, not a real company's data), Zenodo 17855209 (clay-brick OEE) and Zenodo 12636070 (M5). Attributions are in `CREDITS.md`.
+Additional measurement data, all CC BY 4.0, are not distributed in raw form here: BPI Challenge 2019 OCEL (4TU, MD5 verified), the Berti simulated inventory package (a simulation, not a real company's data), Zenodo 17855209 (clay-brick OEE) and Zenodo 12636070 (M5). Attributions are in `CREDITS.md`.

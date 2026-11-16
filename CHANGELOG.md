@@ -3,20 +3,20 @@
 Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 18–19 Ekim 2026 arasındaki sürüm satırları **tarihsel olarak sonradan yazıldı** (ilk yayın sırasında değil, sonradan bu dosyaya işlendi). 21 Ekim 2026'dan sonraki satırlar kendi tarihinde yazıldı.
 
-SHA'lar bu depodaki `git log` çıktısıdır. Kule (ölçüm ve test) SHA'ları yerel `cv-portfoy-kule` deposundandır; uzakta yoktur. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
+SHA'lar bu yayının `git log` çıktısıdır. Kule (ölçüm ve test) kayıtları iç geliştirme deposundandır; yayımlanmamıştır. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
 ## 2026-11-16 (Kule Pro 0.14.0, vitrin senkronu)
 
-Vitrin, Kule Pro 0.14.0 sürümüne göre güncellendi (KULE-SENKRON-1). Özel kaynak deposu aynı gün `51f7e8a` commit'inde ve `v0.14.0` etiketinde; bu depoya kaynak kod eklenmedi.
+Vitrin, Kule Pro 0.14.0 sürümüne göre güncellendi (KULE-SENKRON-1). Sürüm iç geliştirme deposunda aynı gün `v0.14.0` olarak etiketlendi; bu yayına kaynak kod eklenmedi.
 
-- Sürüm: 0.8.1 → 0.14.0. Ara sürümlerin özeti README'de ("Sürümler 0.8.1 → 0.14.0"); kaynak: özel deponun `CHANGELOG.md` dosyası.
+- Sürüm: 0.8.1 → 0.14.0. Ara sürümlerin özeti README'de ("Sürümler 0.8.1 → 0.14.0"); kaynak: Kule Pro'nun iç sürüm notları.
 - Sayılar yeni koşuya göre yenilendi (2026-11-15, Python 3.14.7, Node v26.13.0): Kule Python 1298 test (4 atlandı, 2 beklenen başarısızlık, 0 başarısız), orkestratör 120, Node 234; toplam 1652. Giriş sayfasındaki eski 603 / 146 değerleri de düzeltildi.
 - **Bilinen sınır:** `kanit/` klasörü (`sayilar.json`, test davranış kataloğu, SHA-256 manifesti) bu koşuya geçirilmedi; 0.8.1 koşusunun anlık görüntüsü (732 / 120 / 166, toplam 1018) olarak kaldı. 0.14.0'da eklenen yaklaşık 570 Kule testinin cümlesi katalogda yok.
 - Gerçek SAP verisiyle doğrulama yok; ölçüm bulguları değişmedi.
 
 ## 2026-11-12 (Kule Pro 0.8.1, sayı eşitleme)
 
-Sürüm numarası 0.8.1 oldu; özellik değişikliği yok. Tek koşu: Kule Python **732** test (2 beklenen başarısızlık, 0 başarısız), ajan orkestratörü 120, Node 166; toplam 1018. Önceki sayfalardaki 730 / 1016 değerleri ve kanıt paketindeki eski sayılar (603 / 146 / 869) bu koşuya göre düzeltildi. Kaynak: `kule-yayin-temiz` commit `c68daa3`. Push ve etiket yok.
+Sürüm numarası 0.8.1 oldu; özellik değişikliği yok. Tek koşu: Kule Python **732** test (2 beklenen başarısızlık, 0 başarısız), ajan orkestratörü 120, Node 166; toplam 1018. Önceki sayfalardaki 730 / 1016 değerleri ve kanıt paketindeki eski sayılar (603 / 146 / 869) bu koşuya göre düzeltildi. Kaynak: iç yayın kopyası. Push ve etiket yok.
 
 ## 2026-11-12 (sayı yenileme, sürüm numarası yok)
 
@@ -27,7 +27,7 @@ Kule kodu değişmedi. Yayın sayıları 2026-11-12 koşusuna göre güncellendi
 
 ## 2026-11-05 (geliştirme sürümü notu, sürüm numarası yok)
 
-Bu yayın kopyasında Kule kodu 0.7.0 olarak kaldı. Aşağıdakiler yalnız özel `cv-portfoy-kule` geliştirme deposundadır, yayınlanmadı, gerçek SAP verisiyle denenmedi:
+Bu yayın kopyasında Kule kodu 0.7.0 olarak kaldı. Aşağıdakiler yalnız iç geliştirme kayıtlarındadır, yayınlanmadı, gerçek SAP verisiyle denenmedi:
 
 - **`kule[pdf]` (deneysel):** metin katmanlı tedarikçi ekstresi PDF'i, beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. İsteğe bağlı kurulum, çekirdek bağımlılıksız kalır.
 - **Son 4 hafta ortalaması (aday, varsayılan değil):** talep tahmininde yedek yöntem. Sentetik ve açık veride sonuç karışık çıktı (ortalama hata kötüleşti, medyan iyileşti); üretimde açılmadı.
@@ -36,7 +36,7 @@ Bu yayın kopyasında Kule kodu 0.7.0 olarak kaldı. Aşağıdakiler yalnız öz
 
 ## 2026-11-04 (ölçüm güncellemesi, sürüm numarası yok)
 
-Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kopyasında değişmedi. Kod değişikliği (V5) `cv-portfoy-kule` deposunda, commit 4705097.
+Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kopyasında değişmedi. Kod değişikliği (V5) iç geliştirme kayıtlarındadır.
 
 ### Eklenenler
 
@@ -51,7 +51,7 @@ Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kop
 
 ### Düzeltmeler
 
-- **Ölü stok tanımı (`cv-portfoy-kule`, commit 4705097):** `stok_durumu`, dönemde sevk olmayan ve stoğu 0 olan kalemi OLU_STOK sayıyordu. Artık ölü stok yalnız `stok > 0` ve sevk yoksa. Berti'de 192 çiftteki kusur bu şekilde düzeldi; düzeltme sonrası 280 çiftte %98,9 uyuşma (KULE-V5-ezgi-2). Bu, kuralın Berti'nin kendi kuralıyla uyumunu artırdı; gerçek doğruluk değildir.
+- **Ölü stok tanımı (iç geliştirme, V5):** `stok_durumu`, dönemde sevk olmayan ve stoğu 0 olan kalemi OLU_STOK sayıyordu. Artık ölü stok yalnız `stok > 0` ve sevk yoksa. Berti'de 192 çiftteki kusur bu şekilde düzeldi; düzeltme sonrası 280 çiftte %98,9 uyuşma (KULE-V5-ezgi-2). Bu, kuralın Berti'nin kendi kuralıyla uyumunu artırdı; gerçek doğruluk değildir.
 
 ### Dürüst sınırlar
 
@@ -60,7 +60,7 @@ Commit yok. Bu satırlar yalnız belgeleri değiştirir; Kule kodu bu yayın kop
 - Berti verisi simülasyondur. Kural uyuşmaları bağımsız doğruluk değildir.
 - Etiketli sipariş anomalisi verisi yok; hiçbir modül için yanlış alarm oranı verilmedi.
 - KULE-V6 bir varyant ölçümüdür ("son 4 hafta ortalaması" seçim adayı, M5 WAPE %39,7). Kule kodunda uygulanmadı.
-- `kanit/` sayfasındaki test sayıları (559) 0.7.0 koşusuna aittir. V5 sonrası 570 test (`cv-portfoy-kule`) henüz kanıt sayfasına işlenmedi.
+- `kanit/` sayfasındaki test sayıları (559) 0.7.0 koşusuna aittir. V5 sonrası 570 test (iç geliştirme) henüz kanıt sayfasına işlenmedi.
 - Kanıt sayfası `kanit/test-katalogu.*` hâlâ v0.6.0 koşusuna ait.
 
 ## 2026-11-02 (v0.7.0)
@@ -111,7 +111,7 @@ Kule Pro 0.7.0 yerel olarak hazırlandı. Bu sürüm henüz push edilmedi ve eti
 
 - **İz görüntüleyici İngilizce düzeltmesi:** çapraz incelemede, İngilizce modda Eval sekmesinde yaklaşık 50 Türkçe metin kaldığı görüldü (değerlendirme vakaları 34'ten 123'e büyümüş, çeviri sözlüğü yeni vakaları kapsamıyordu). `assets/i18n.js` 123 vakayı kapsayacak şekilde genişletildi; gerçek tarayıcıda İngilizce Eval sekmesinde Türkçe karakterli metin 0, 375 px yatay taşma 0, TR/EN geçişi çalışıyor. Kod kimlikleri, araç/alan adları ve ham iz (`pre/code`) bilinçli olarak çevrilmedi.
 - **v0.6.0 demo güncellemesi:** statik demo (`demo/`) v0.6.0'a getirildi. Yedinci modül olarak FBL1N açık kalem mutabakatı, Sabah raporu ekranı (ilk 5 bulgu, atlanan analizler ve nedenleri), "Dünden beri" karşılaştırması (2. günü yükle düğmesi, YENİ / "N gündür açık" / "Tutar değişti" rozetleri) ve SAP dosya biçimleri notu eklendi. Veri Kule'nin sentetik deneme paketinden üretildi; demo yine statiktir, canlı API yoktur ve gerçek SAP ya da şirket verisi içermez. Özet metni "yedi modül" der (bir önceki yayında demo 6 modül gösterirken metin yanlışlıkla "yedi" demişti ve düzeltilmişti). Bağımsız denetimde gerçek tarayıcıda 49/49 kontrol geçti.
-- **v0.6.0 (Kule commit `a772940`; sayılar `sayim.py` çıktısından):** Kule Pro'ya SAP dışa aktarımlarıyla çalışan bir sabah akışı eklendi. Kaynak kod yine yayınlanmıyor; anlatım, sayılar ve sınırlar güncellendi. Sayılar `sayim.py` ve `yayin_uret.py` çıktısından alınır, elle yazılmaz.
+- **v0.6.0 (Kule iç sürümü; sayılar `sayim.py` çıktısından):** Kule Pro'ya SAP dışa aktarımlarıyla çalışan bir sabah akışı eklendi. Kaynak kod yine yayınlanmıyor; anlatım, sayılar ve sınırlar güncellendi. Sayılar `sayim.py` ve `yayin_uret.py` çıktısından alınır, elle yazılmaz.
   - **SAP biçimleri:** ALV/SE16N dışa aktarımları TR ve EN başlıklarla, UTF-8, UTF-16 (BOM'lu ve BOM'suz) ve ANSI kodlamayla, sekme, noktalı virgül, virgül ya da dikey çizgi (`|`, "Unconverted" çerçeveli liste) ayracıyla okunur. ALV üst bilgisi ve toplam satırları atlanır, sondaki eksi işareti (`12,5-`) çevrilir. `.xls` uzantılı HTML/MHTML ve Excel dosyaları sade bir mesajla reddedilir; çevrilemeyen değer tahmin edilmez, satır reddedilir. Biçimler sentetik dosyalarla sınandı; **gerçek bir SAP sisteminin çıktısıyla denenmedi** ve varsayılan kodlama ile BOM kararı birincil kaynakla kesinleşmedi. Canlı SAP bağlantısı yoktur. Raporlar: KULE-S1, S7, S12, R5, R5b.
   - **FBL1N satıcı açık kalem mutabakatı:** yedinci analiz modülü. Kurallar: vadesi geçmiş, çift açık kalem, ödenmiş görünen açık kalem, tutar uyuşmazlığı, bakiye farkı ve kısmi ödeme (S12 ile altıncı kural olarak eklendi). SAP tarafı FBL1N dışa aktarımı, karşı taraf tedarikçinin ekstresidir (Kule CSV biçimi; ekstrenin SAP karşılığı yoktur). Elle hesaplanmış sınama setlerinde bulgular tür, belge ve etki düzeyinde birebir tuttu. Raporlar: KULE-S2, R6, Q1, Q4.
   - **Sabah raporu ekranı:** SAP dosyalarını sürükleyip bırakma, başlıktan otomatik tanıma, bugünün ilk 5 bulgusu, reddedilen satırlar ve hangi SAP listesinin eksik olduğunu söyleyen kart. Rapor tarihi artık istekten (ekranın gönderdiği bugün) ya da sunucunun bugününden alınır; sabit örnek tarih yalnız bütün girdiler örnek veri olduğunda kullanılır ve ekranda etiketlidir (S9). Sentetik SAP deneme paketi tek düğmeyle yüklenir; paket 5 dosya ve 17 bilinen sorun içerir, 17/17 yakalanır, beklenmeyen bulgu 0. Raporlar: KULE-S3, S4, S8, S9, S11, Q3, Q4.
@@ -121,7 +121,7 @@ Kule Pro 0.7.0 yerel olarak hazırlandı. Bu sürüm henüz push edilmedi ve eti
   - **Ölçüm altyapısı:** yükleme işleme süresi ölçülür; kullanıcı kendi süre tahminini kaydeder (yalnız kendi adına); "bulgu doğru muydu?" işareti denetim izine yazılır; özet ucu `/v1/olcum/ozet`. ROI hesabı Kule kayıtlarından iki değeri (aylık vaka, kayıtlı süre) kaynağıyla alabilir; tek tahmin "kullanıcı tahmini" etiketli ve çeyrek aralığıyla gösterilir (S10). Raporlar: KULE-M1, M2, Q2, S8, S10.
   - **Açık veri ölçek testleri:** M5, Favorita, SECOM, AI4I ve BPI 2019 ile modüller büyük girdide koşuldu; açık veri girdileri `ACIK_VERI_DAHILI_TEST` etiketiyle çıkar, `GERCEK_VERI` ile çıkmaz. Raporlar: KULE-V1–V8, S7, S12.
   - **Eval:** 123 vaka; ölçüt/kontrol/kapsam 111/111 geçti, 12 bilinen açık gözlendi ve kapanmadı. Orkestratörde parafraz denetimi artık Analist seçeneğinden açılabiliyor. Raporlar: KULE-C2, A1, ARASTIRMA-KULE-02. Gerçek model ölçümü yeniden yapılmadı; O1 sayıları değişmedi.
-  - **Sayılar:** Kule Python 411, Node 58, orkestratör 111, toplam 580 (bir önceki sürümde 229 + 29 + 87 = 345). API 28 rota, işlem olarak sayılır (bir önceki sürümde 21). Kule SHA: `a772940`.
+  - **Sayılar:** Kule Python 411, Node 58, orkestratör 111, toplam 580 (bir önceki sürümde 229 + 29 + 87 = 345). API 28 rota, işlem olarak sayılır (bir önceki sürümde 21).
   - **Bilinen sınırlar:**
     - Gerçek SAP çıktısıyla denenmedi; biçimler sentetiktir.
     - **Sabah ekranı `.xlsx` dosyasını kabul etmez:** seçici `.csv` ve `.txt` ile sınırlıdır, `.xlsx` bırakılırsa "Farklı kaydet → CSV" uyarısıyla reddedilir. Sunucu `.xlsx` okuyabilir ama yalnız disk klasöründen. Kabul etmek bir ürün kararıdır. Rapor: KULE-R7.
@@ -146,7 +146,7 @@ Kule Pro 0.7.0 yerel olarak hazırlandı. Bu sürüm henüz push edilmedi ve eti
 ## 2026-10-22
 
 - **Düzeltme (yayın bütünlüğü, A2):** bu bölümdeki "Commit yok" işaretleri bayattır: `noindex` ve `demo/` v0.2.0 (`42c5af4`) ile zaten commit edilmişti. "--onay-ver açık kaldı" ve "eval 24/24" satırları aşağıdaki güncel hâl satırıyla geçersizdir: körlemesine onay yolu kapalıdır, bayrak yalnız senaryoya özgü özetle yazmayı açar. Eval bugün 46 vaka: ölçüt/kontrol/kapsam 41/41 geçti, 5 bilinen açık gözlendi (kaynak `ajan-orkestrasyon/ornek/eval-a3/`). Aşağıdaki eski satırlar değiştirilmedi.
-- Kule Python testleri 224 → 229 (K1). Sayım koşudan üretildi, `sayim.py` ile. Kule SHA `1d31a4f`. Rapor: PORTFOY-K1.
+- Kule Python testleri 224 → 229 (K1). Sayım koşudan üretildi, `sayim.py` ile. Rapor: PORTFOY-K1.
 - Orkestratör testleri 60 → 68 (G2, +8 regresyon testi; sayım 68/68). Rapor: PORTFOY-G2.
 - Node testleri 29 (tam ağaçta 29/29). Geçici kopyada 1 test atlanır, nedeni yazılı. Rapor: PORTFOY-K1.
 - Eval 22/24 → 24/24. İki açık ölçüte çevrildi; taban yeni adlarla yeniden yazıldı. Rapor: PORTFOY-G2.

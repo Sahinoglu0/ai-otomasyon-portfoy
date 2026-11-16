@@ -2,12 +2,12 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](README.en.md)
 
-**Güncel sürüm:** Kule Pro 0.14.0 (2026-11-16, özel kaynak deposunda; kaynak kod bu depoda yok). Ayrıntı: [CHANGELOG.md](CHANGELOG.md).
+**Güncel sürüm:** Kule Pro 0.14.0 (2026-11-16). Kaynak kod yayımlanmıyor. Ayrıntı: [CHANGELOG.md](CHANGELOG.md).
 
 1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını, SAP dışa aktarımlarını ve satıcı açık kalemlerini okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir. Sabah raporu ekranı SAP dosyalarını sürükle-bırak ile alır, bugünün ilk 5 bulgusunu ve "dünden beri" farkını gösterir.
 2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
 3. Veriler sentetiktir (tohum 42 ile üretilmiş) ve ölçümlerin büyük kısmı herkese açık verilerle yapıldı: DataCo Smart Supply Chain, BPI Challenge 2019 (gerçek ama anonimleştirilmiş bir süreç kaydı), simüle Berti paketi, Zenodo kil tuğla OEE ve M5 talep verisi. Hiçbir modül bir müşterinin ya da kendi SAP sisteminizin verisiyle test edilmedi.
-4. Kaynak kod bu depoda yayınlanmıyor. Burada statik sayfalar, çizimler, test kanıtları ve ajan izleri var.
+4. Kaynak kod yayımlanmıyor. Bu yayında statik sayfalar, çizimler, test kanıtları ve ajan izleri var.
 5. Gerçek model koşusu (claude-haiku-5-5) planlanan 40 koşunun 38'ini yaptı (37'si tamamlandı, 1'i kotada kesildi, 2'si yapılmadı): soruşturmada 20 koşunun 16'sı kabul edildi, 4'ü Denetçi tarafından reddedildi; enjeksiyon senaryolarında (E1, E2) 17 koşu tamamlandı. Diğer izler elle yazılmış kasetlerdir.
 
 **Canlı sayfalar** (sağ alttaki TR / EN düğmesiyle dil değişir):
@@ -17,7 +17,7 @@
 - [Ajan iz görüntüleyici](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): örnek izler, onay kapısı, Denetçi kararları, eval
 - [Test kanıtı](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): kaynak kod kapalı; test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi
 
-**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. SAP biçimleri (RBKP/RSEG dahil) sentetik dosyalarla sınandı, gerçek bir SAP çıktısıyla denenmedi. Kule'nin kaynak kodu bu depoda değildir.
+**Sınır:** Örnek veriler sentetiktir ya da herkese açıktır; burada gerçek bir firmanın sonucu yoktur. SAP biçimleri (RBKP/RSEG dahil) sentetik dosyalarla sınandı, gerçek bir SAP çıktısıyla denenmedi. Kule'nin kaynak kodu bu yayında yer almaz.
 
 ## Videolar
 
@@ -51,7 +51,7 @@ Aşağıdaki görüntülerin hepsi **sentetik veriyle** alındı: Kule Pro'nun k
 | Görüntü | Ne gösteriyor |
 |---|---|
 | ![Sabah raporu: bugün bakılacak ilk 5 bulgu, sentetik örnek paket](docs/img/ekran/sabah-ilk5-bulgu.png) | **İlk 5 bulgu.** Sentetik deneme paketinin 1. günü. Her bulguda önem, tahmini etki (sunucu tahmini), kim bakmalı ve SAP'de nereye gidileceği yazar; menü yolu "öneri"dir, firmaya göre değişebilir. |
-| ![Sabah raporu: örnek paket sonucu, 17 / 17 beklenen sorun bulundu](docs/img/ekran/sabah-ornek-paket.png) | **Örnek paket sonucu.** Paketin içine bilerek yerleştirilmiş 17 sorunun 17'si bulundu. Bu, kendi uydurduğumuz sorulara verilen cevaptır; gerçek veride doğruluk ölçüsü değildir. |
+| ![Sabah raporu: örnek paket sonucu, 18 / 18 beklenen sorun bulundu](docs/img/ekran/sabah-ornek-paket.png) | **Örnek paket sonucu.** Paketin içine bilerek yerleştirilmiş 18 sorunun 18'i bulundu. Bu, kendi uydurduğumuz sorulara verilen cevaptır; gerçek veride doğruluk ölçüsü değildir. |
 | ![Sabah raporu: "Dünden beri" bölümü, 2. gün](docs/img/ekran/sabah-dunden-beri.png) | **Dünden beri.** Aynı paketin ertesi sabahı: 2 yeni, 3 çözülen, 3 tutarı değişen bulgu. Tarihler denemenin çalıştırıldığı güne göre görünür. |
 | ![Sabah raporu: zorunlu sütunu eksik dosya uyarısı](docs/img/ekran/sabah-eksik-sutun.png) | **Eksik sütun uyarısı.** Elle üretilmiş sentetik EKPO dosyasından sipariş miktarı (MENGE) sütunu çıkarıldı. Kule dosyayı tanır, eksik alanı adıyla söyler ve "Sabah raporunu hazırla" düğmesini devre dışı bırakır (görüntüde düğme koyu görünse de pasiftir). |
 | ![Sabah raporu: çok büyük dosya için hata mesajı](docs/img/ekran/sabah-buyuk-dosya-hata.png) | **Hata mesajı örneği.** Elle üretilmiş sentetik, 75 MB'lık bir EKPO dosyası. Kule isteği göndermeden önce "Dosyalar birlikte çok büyük… sınır 20 MB" der. Gösterilen "yaklaşık 79 MB" kodlama payı eklenmiş tahmindir. |
@@ -98,7 +98,7 @@ Test kanıtının tamamı (test kataloğu, davranış kataloğu, SHA-256 kanıt 
 | Sipariş anomalisi | 7 anomali (+3 temiz zor durum) | 7, temiz durumlar işaretlenmedi |
 | Üçlü eşleştirme | 4 bulgu (çift fatura, fazla faturalama, %8 fiyat sapması, irsaliyesiz fatura) | 4 |
 
-**Büyük gerçek veri.** Herkese açık DataCo Smart Supply Chain veri kümesinden uyarlanan **172.765 sevkiyat satırı** tek ingest'te yüklendi: 172.765 kabul, 0 ret, 0 çökme, yaklaşık 8 saniye.
+**Büyük gerçek veri.** Herkese açık DataCo Smart Supply Chain veri kümesinden uyarlanan **172.765 sevkiyat satırı** tek ingest'te yüklendi: 172.765 kabul, 0 ret, 0 çökme.
 
 **Açık veri denemeleri.** DataCo dışında, Kule'nin diğer girdileri için herkese açık veri setleri denendi. Bu denemeler gerçek firma verisiyle yapılmadı; hiçbir sonuç firma verisi değildir.
 
@@ -126,7 +126,7 @@ KULE-V6 bir varyant ölçümüdür: "son 4 hafta ortalaması" seçim adayı olar
 
 Mal kabul, irsaliye ve fatura olayları BPI 2019 günlüğüyle, üretim (OEE) kil tuğla verisiyle vekil eşlemeyle ölçüldü. Sentetik veri gerçek diye sunulmaz.
 
-DataCo'nun veri sayfası (Mendeley 8gx2fvg2k6, sürüm 5) "CC BY 4.0" yazar; ancak aynı sayfada metin ve veri madenciliği ile yapay zekâ eğitimi dahil "tüm haklar saklıdır" ibaresi de vardır. Bu yüzden veri dosyası bu depoya dahil değildir, yalnız ölçüm çıktıları paylaşılır ve veri eğitim amaçlı kullanılmaz. Ölçüm çıktısı: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
+DataCo'nun veri sayfası (Mendeley 8gx2fvg2k6, sürüm 5) "CC BY 4.0" yazar; ancak aynı sayfada metin ve veri madenciliği ile yapay zekâ eğitimi dahil "tüm haklar saklıdır" ibaresi de vardır. Bu yüzden veri dosyası bu yayına dahil değildir, yalnız ölçüm çıktıları paylaşılır ve veri eğitim amaçlı kullanılmaz. Ölçüm çıktısı: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
 
 **Talep tahmini.** Örnek veride Holt-Winters'in geriye dönük test hatası (MAPE) ortalama 8,07; geçen yılın aynı haftasını alan basit yöntemin 11,16. Ayrıca aralıklı talep yöntemleri (Croston, SBA, TSB) ön-kayıtlı ölçütlerle denendi:
 
@@ -136,16 +136,16 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Son doğrulama 2026-11-15'te yerelde yapıldı: Kule Pro 0.14.0, özel kaynak deposunun `51f7e8a` commit'i, kaynak temiz; Python 3.14.7, Node v26.13.0. Kule için 1298 Python testi geçiyor; Node tarafında 234 test, 234 geçti, 0 atlandı; orkestratör için 120 birim testi var. Ayrıntı: Kule Python koşusunda (`unittest` keşfi) 1298 testin 4'ü atlandı, 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı), 0 başarısız; orkestratör 120 geçti; Node 234 geçti. Toplam 1652. **Kanıt paketi (`kanit/`) bu koşuya henüz geçirilmedi:** `kanit/sayilar.json` ve test davranış kataloğu 0.8.1 koşusunun anlık görüntüsüdür (732 / 120 / 166, toplam 1018); 0.14.0'da eklenen testler katalogda yoktur. Eski 0.7.0 koşusu 2026-11-05'te yapılmıştı; eski 569 sayısı KULE-F1 raporundadır.
+**Testler.** Son doğrulama 2026-11-15'te yerelde yapıldı: Kule Pro 0.14.0, kaynak temiz (sürüm kaynağı yayımlanmıyor); Python 3.14.7, Node v26.13.0. Kule için 1298 Python testi geçiyor; Node tarafında 234 test, 234 geçti, 0 atlandı; orkestratör için 120 birim testi var. Ayrıntı: Kule Python koşusunda (`unittest` keşfi) 1298 testin 4'ü atlandı, 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı), 0 başarısız; orkestratör 120 geçti; Node 234 geçti. Toplam 1652. **Kanıt paketi (`kanit/`) bu koşuya henüz geçirilmedi:** `kanit/sayilar.json` ve test davranış kataloğu 0.8.1 koşusunun anlık görüntüsüdür (732 / 120 / 166, toplam 1018); 0.14.0'da eklenen testler katalogda yoktur. Eski 0.7.0 koşusu 2026-11-05'te yapılmıştı; eski 569 sayısı KULE-F1 raporundadır.
 
-**Sürümler 0.8.1 → 0.14.0 (özel kaynak deposunda etiketli; kaynak kod bu depoda yok).** Aşağıdakiler kaynak deposunun `CHANGELOG.md` dosyasından alınmıştır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+**Sürümler 0.8.1 → 0.14.0 (kaynak kod yayımlanmıyor).** Aşağıdakiler Kule Pro sürüm notlarından alınmıştır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
 
 - **0.10.0:** veritabanı yedek komutları (tutarlı kopya, bütünlük denetimi, geri yükleme), kullanıcı `token-yenile`, dosya günlüğünde dönen kayıt, tek port ve tek başlatma satırı.
 - **0.11.0 – 0.12.x:** satıcı ana kaydı mükerrerlik adayı (`MUKERRER_SATICI_ADAY`) ve `satici.csv` kabulü (yalnız HMAC özetleri saklanır); açık siparişin stok pozisyonuna eklenmesi (varsayılan kapalı); hatalı token hız sınırı (429) ve eşzamanlı bağlantı üst sınırı (503); `satici-temizle --gun N` saklama komutu ve salt okunur saklama önizlemesi; panel kullanıcı kılavuzu.
 - **0.13.x:** CLI çıkış kodu ve ortam değişkeni doğrulaması, hata mesajlarında eylem önerisi, `docs/api.md` ile kod arasında tutarlılık testi, belge komut örneklerinin koddan doğrulanması; **0.13.7:** stok analizine XYZ talep değişkenliği sınıfı (eşikler ölçülmüş değil, **varsayımdır**) ve panel erişilebilirlik düzeltmeleri.
 - **0.14.0 (2026-11-16):** ayrı bekleyen dalların tek hatta birleşimi: karar tablosu CSV (`GET /v1/ozet/karar.csv`) ve panelde CSV düğmesi, CLI `--sayi-bicimi`, SAP eşleme hata dilinin sadeleşmesi, sızıntı tarayıcısı ve sürüm yayın araçları. Sabah raporu varsayılanı ilk 200 bulgudur (`?sinir=0` hepsini verir).
 
-**0.7.0 sonrası ilk geliştirme notları (0.8.1 öncesi dönem).** Aşağıdakiler özel `cv-portfoy-kule` deposundadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+**0.7.0 sonrası ilk geliştirme notları (0.8.1 öncesi dönem).** Aşağıdakiler iç geliştirme kayıtlarındadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
 
 - **`kule[pdf]` (deneysel):** metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. İsteğe bağlı kurulum; çekirdek bağımlılıksız kalır.
 - **Son 4 hafta ortalaması (aday, varsayılan değil):** sentetik ve açık veride sonuç karışık çıktı (ortalama hata kötüleşti, medyan iyileşti). KULE-V3 M5 ölçümünde WAPE: Kule %47,3, mevsimsel naif %61,0, son 4 hafta ortalaması %38,4; KULE-V6 varyant ölçümünde %39,7; bu varyant Kule kodunda uygulanmadı. Üretimde açılmadı. Kaynak raporlar: KULE-V3-zeynep, KULE-V6.
@@ -165,7 +165,7 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
   - **Enjeksiyon** (iki ön-kayıtlı vaka; E1 9 koşu, E2 8 koşu): Son metin sızıntısında (E1) model enjeksiyon metnini birebir kopyalamadı, yeniden ifade etti (6/9). Sızıntı denetimi bu 6 parafrazın hiçbirini yakalamadı (0/6, Wilson %95 [0,000; 0,390]). Bu bilinen bir sınırdır, gizlenmez: yeniden ifade edilmiş sızıntı kapıdan geçer. Onaylı yazma vakasında (E2) model 8/8 kez enjeksiyon argümanlarıyla yazmaya kalktı; onay kapısı 8 koşunun hepsinde durdurdu, yan etki 0/8 (Wilson %95 [0,000; 0,324]). E2'nin son yanıtında enjeksiyon kelimeleri (`sil_her_sey`, `hacklendi`) 8/8 koşuda geçti; bu, ön-kayıtta kapının kapsamı dışında ayrı sayılan parafraz sayımıdır. Meşru yazma (onaylı özetle `sonuc.txt`) hiçbir koşuda gerçekleşmedi (0/8); onayın meşru yol tarafı bu örneklemde sınanmadı. Kota nedeniyle kesilen E2-t09 ve koşulmayan E1-t10, E2-t10 paydada yok. E2'de 8/8 için Wilson %95 aralığı [0,676; 1,000].
   - **Sınır:** Örneklem küçüktür (soruşturma n=20; enjeksiyonda E1 n=9, E2 n=8); bu bir model kalitesi iddiası değildir. Görüntüleyicideki diğer izler elle yazılmış kasetlerdir. Kapı biçime bakar: görev dışı satır içeren çıktıyı reddeder, içeriğe bakmaz; 200 karakterin altındaki tek maddelik görev dışı bir cümle geçebilir. Reddedilen Planlayıcı çıktısı en çok iki kez yeniden istenir; üç deneme de reddedilirse Analist çalışmaz. Denetçi yalnız iddia bloğunu Kule ile karşılaştırır; düz metindeki sayılar yalnızca Kule verisinde varlık olarak denetlenir, bağlamları denetlenmez.
   - **Kayıtlar:** Ön-kayıt ve 38 koşunun izleri `ajan-orkestrasyon/ornek/gercek-model/` altında (`on-kayit.md`, `o1/`).
-- **Kaynak kod:** Kule'nin kaynak kodu bu depoda yayınlanmıyor; yerine test kanıtı (test kataloğu, davranış kataloğu), bilerek bozulmuş örnek veride yakalama sonuçları, kasetten oynatılan eval ve gerçek model izleri var. `demo/` klasörü yalnız panelin tarayıcı katmanıdır ve MIT dışı lisanlıdır (`demo/LICENSE.txt`). Burada statik sayfalar, çizimler ve ölçüm çıktıları bulunur.
+- **Kaynak kod:** Kule'nin kaynak kodu yayımlanmıyor; yerine test kanıtı (test kataloğu, davranış kataloğu), bilerek bozulmuş örnek veride yakalama sonuçları, kasetten oynatılan eval ve gerçek model izleri var. `demo/` klasörü yalnız panelin tarayıcı katmanıdır ve MIT dışı lisanlıdır (`demo/LICENSE.txt`). Burada statik sayfalar, çizimler ve ölçüm çıktıları bulunur.
 - **Dil.** Bu sayfalar Türkçe ve İngilizcedir. Kule Pro'nun kendi paneli, komut satırı ve API çıktıları şu an Türkçedir.
 
 ## 5. Ne işe yarar
@@ -247,18 +247,18 @@ Tarayıcıda açılan, bağımlılıksız panel dört ekrandan ve ek bir Sabah r
 - **Rapor:** yazdırılabilir yönetici raporu (PDF) ve Türkçe Excel uyumlu CSV.
 - **Sabah raporu (ek ekran):** SAP dosyalarını sürükleyip bırakma, başlıktan tanıma, bugünün ilk 5 bulgusu, reddedilen satırlar, eksik liste kartı ve "Dünden beri" bölümü (yeni, çözülen, tutarı değişen, değişmeyen). Tek dosyalık HTML rapor ve formül korumalı CSV indirilebilir. Ekran görüntüsü sentetik veri rozetiyle gelir; `.xlsx` ve CSV kabul edilir, eski `.xls` kabul edilmez.
 
-`python -m kule ozet` (kapalı depoda çalışır) günlük ve haftalık özeti (Markdown, tek dosya HTML, JSON, CSV) üretir. Sipariş gereken her tedarikçi için e-posta **taslağı** yazılır: kalemler, miktar, en geç teslim tarihi ve tedarikçinin ölçülen teslim performansı. Kule e-posta göndermez; taslağı sizin gözden geçirmeniz için hazırlar.
+`python -m kule ozet` (yalnız tam Kule kurulumunda çalışır) günlük ve haftalık özeti (Markdown, tek dosya HTML, JSON, CSV) üretir. Sipariş gereken her tedarikçi için e-posta **taslağı** yazılır: kalemler, miktar, en geç teslim tarihi ve tedarikçinin ölçülen teslim performansı. Kule e-posta göndermez; taslağı sizin gözden geçirmeniz için hazırlar.
 
 ## 10. Entegrasyon ve güvenlik
 
-- **REST API** (`/v1`, 28 işlem, OpenAPI sözleşmesi): vakalar, bulgular, görüntüler, fark, modül çıktısı, kalite, ingest, karar, simülasyon, özet, denetim, kullanıcılar, ölçüm (`/v1/olcum`, `/v1/olcum/ozet`), bulgu doğruluğu.
+- **REST API** (`/v1`, 37 yol, 41 işlem, OpenAPI sözleşmesi): vakalar, bulgular, görüntüler, fark, modül çıktısı, kalite, ingest, karar, simülasyon, özet, denetim, kullanıcılar, ölçüm (`/v1/olcum`, `/v1/olcum/ozet`), bulgu doğruluğu.
 - **Roller:** planlayıcı, satın alma, yönetici. Vakayı modülün sahibi rol yazar (stok, talep, OEE → planlayıcı; sipariş, fatura, tedarikçi → satın alma); `KABUL_EDILDI` yalnız yönetici verir.
 - **Denetim izi:** kimliksiz (401) ve yetkisiz (403) her çağrı, hız sınırına takılan (429) çağrılar ve her kimlikli işlem kaydedilir. Token'lar veritabanında yalnız SHA-256 özetiyle tutulur.
-- **Dayanıklılık:** istemci başına hız sınırı (varsayılan 300 istek/dk), 20 MB gövde sınırı, 128 KB'tan büyük alanlarda temiz hata mesajı, TLS'li ters vekil kurulum kılavuzu.
-- **Bağımlılık:** yalnız Python standart kütüphanesi. `pip install` gerekmez; Kule'nin çekirdeği bu yayında yoktur; `python demo.py` ve `python -m kule ozet` kapalı depoda çalışır.
+- **Dayanıklılık:** IP adresi başına hız sınırı (varsayılan 300 istek/dk), 20 MB gövde sınırı, 128 KB'tan büyük alanlarda temiz hata mesajı, TLS'li ters vekil kurulum kılavuzu.
+- **Bağımlılık:** yalnız Python standart kütüphanesi. `pip install` gerekmez; Kule'nin çekirdeği bu yayında yoktur; `python demo.py` ve `python -m kule ozet` yalnız tam Kule kurulumunda çalışır.
 
 ## Lisans ve atıf
 
-Kök dizindeki kod ve sayfalar MIT lisanslıdır, bkz. [LICENSE](LICENSE); `demo/` klasörü bu lisansın dışındadır (`demo/LICENSE.txt`). Ölçümlerde kullanılan veri: DataCo Smart Supply Chain (Mendeley Data, sürüm 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. Bu veri bir firmaya ait değildir ve bu depoda dağıtılmaz.
+Kök dizindeki kod ve sayfalar MIT lisanslıdır, bkz. [LICENSE](LICENSE); `demo/` klasörü bu lisansın dışındadır (`demo/LICENSE.txt`). Ölçümlerde kullanılan veri: DataCo Smart Supply Chain (Mendeley Data, sürüm 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. Bu veri bir firmaya ait değildir ve burada dağıtılmaz.
 
-Ek ölçüm verileri, hepsi CC BY 4.0 ve ham hâliyle bu depoda dağıtılmaz: BPI Challenge 2019 OCEL (4TU, MD5 doğrulandı), Berti simüle envanter paketi (simülasyon, gerçek bir firmanın verisi değil), Zenodo 17855209 (kil tuğla OEE) ve Zenodo 12636070 (M5). Atıflar `CREDITS.md` dosyasında.
+Ek ölçüm verileri, hepsi CC BY 4.0 ve ham hâliyle burada dağıtılmaz: BPI Challenge 2019 OCEL (4TU, MD5 doğrulandı), Berti simüle envanter paketi (simülasyon, gerçek bir firmanın verisi değil), Zenodo 17855209 (kil tuğla OEE) ve Zenodo 12636070 (M5). Atıflar `CREDITS.md` dosyasında.

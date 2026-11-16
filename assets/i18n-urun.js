@@ -1,4 +1,4 @@
-/* Giriş ve ürün sayfasının İngilizce karşılıkları (KULE-D1 metni). assets/i18n.js bu sözlüğü tam eşleşme olarak kullanır;
+/* Giriş ve ürün sayfasının İngilizce karşılıkları (ürün sayfası metni). assets/i18n.js bu sözlüğü tam eşleşme olarak kullanır;
    bu dosya i18n.js'ten ÖNCE yüklenir. Anahtar: metin düğümünün boşlukları sadeleştirilmiş Türkçesi. */
 window.I18N_EK = {
   /* başlık, üst bar, ortak */
@@ -189,7 +189,7 @@ window.I18N_EK = {
   "Bu sayfalar Türkçe ve İngilizce. Kule'nin paneli ve komut satırı çıktıları şu an Türkçe.":
     "These pages are in Turkish and English. The Kule panel and command-line output are currently in Turkish.",
 
-  /* ürün sayfası, VITRIN-M1 metni (yeniden kurulum, VITRIN-T3) */
+  /* ürün sayfası metni (yeniden kurulum) */
   "Ürün anlatımı": "Product overview",
   "Kule Pro, bir işletmenin stok, sipariş, mal kabul ve fatura dosyalarını okuyup bakılacak işlerin listesini çıkarır. Ne yaptığını, nasıl okunduğunu ve sayıların nereden geldiğini anlatır.":
     "Kule Pro reads a company's stock, order, goods receipt and invoice files and produces a list of work to do. It explains what it does, how files are read, and where the numbers come from.",

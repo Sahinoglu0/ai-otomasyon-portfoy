@@ -261,7 +261,7 @@ section.bolum p { margin: 0 0 var(--s3); max-width: 68ch; }
 @media (prefers-reduced-motion: reduce) { .akis li { animation: none; } }
 :root[data-hareket="azalt"] .akis li { animation: none; }
 
-/* Ürün sayfası (VITRIN-T3): tek anlatı, okunur bölümler, kart ızgarası yok */
+/* Ürün sayfası: tek anlatı, okunur bölümler, kart ızgarası yok */
 .urun-kahraman { padding: var(--s7) 0 var(--s6); }
 .urun-kahraman h1 { font: 700 clamp(30px, 4.2vw, 46px)/1.1 var(--sans); letter-spacing: -.015em; margin: var(--s2) 0 var(--s4); max-width: 22ch; }
 .urun-kahraman .dugmeler { margin: var(--s5) 0 var(--s6); }

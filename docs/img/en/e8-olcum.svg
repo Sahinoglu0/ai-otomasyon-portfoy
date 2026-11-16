@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="t d" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
-<title id="t">KULE-E8 intermittent demand measurement</title>
+<title id="t">Intermittent demand measurement</title>
 <desc id="d">Test MAPE and test coverage for naive, Holt-Winters, Croston, SBA, TSB. Holt-Winters fails the criteria; SBA passes with a thin margin.</desc>
 <rect x="0.5" y="0.5" width="959" height="429" rx="8" fill="#fbfaf6" stroke="#d8d3c7"/>
-<text x="24" y="34" font-size="18" font-weight="700" fill="#1b1d1f">KULE-E8 · intermittent demand measurement</text>
+<text x="24" y="34" font-size="18" font-weight="700" fill="#1b1d1f">Intermittent demand measurement</text>
 <text x="24" y="56" font-size="12.5" fill="#4a4e52">DataCo (public, CC BY 4.0) · zero-fill between first and last sale · 9 test products, 648 rows</text>
 
 <g font-size="13" fill="#1b1d1f">

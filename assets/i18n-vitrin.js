@@ -1,4 +1,4 @@
-/* Ana sayfa (index.html) İngilizce karşılıkları. Hero, bölüm metinleri VITRIN-M1 onaylı metinleridir (docs/agent-results/VITRIN-M1-metin-en.md);
+/* Ana sayfa (index.html) İngilizce karşılıkları. Hero, bölüm metinleri onaylanmış metinlerdir;
    karar defteri, akış ve etiket metinleri bu kartta yazıldı. assets/i18n.js bu sözlüğü tam eşleşme olarak kullanır; bu dosya i18n.js'ten ÖNCE yüklenir. */
 window.I18N_EK = Object.assign(window.I18N_EK || {}, {
   /* Üst bölüm */

@@ -2,7 +2,7 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](../README.en.md)
 
-**Güncel sürüm:** Kule Pro 0.14.0 (2026-11-16). Kaynak kod yayımlanmıyor. Ayrıntı: [CHANGELOG.md](../CHANGELOG.md).
+**Güncel sürüm:** Kule Pro 0.15.0 (2026-11-16). Kaynak kod yayımlanmıyor. Ayrıntı: [CHANGELOG.md](../CHANGELOG.md).
 
 1. Kule Pro, bir işletmenin stok, sipariş, tedarikçi ve fatura dosyalarını, SAP dışa aktarımlarını ve satıcı açık kalemlerini okur; her sabah hangi kalemin bitmek üzere olduğunu, hangi siparişte tutarsızlık bulunduğunu ve hangi tedarikçinin güvenilmez olduğunu hazır verir. Sabah raporu ekranı SAP dosyalarını sürükle-bırak ile alır, bugünün ilk 5 bulgusunu ve "dünden beri" farkını gösterir.
 2. Yanında, modüllerini araç olarak kullanan birçok ajanlı bir orkestratör çalışır. Analist'in iddia bloğuna yazdığı sayılar Kule'nin kendi hesabıyla çapraz kontrol edilir. Denetçi sınırı açık: düz metindeki sayılar yalnızca Kule verisinde var olup olmadıkları açısından denetlenir.
@@ -136,14 +136,15 @@ Smooth sınıfta SBA iki ölçütü de geçti (kapsama %77,31, MAPE %248,00 ve n
 
 **Tedarikçi skoru (örnek veri).** T-01 95,5 (A) ile T-03 36,3 (D) arasında net ayrım; T-03'ün zamanında teslimi %60, red oranı %9,29.
 
-**Testler.** Son doğrulama 2026-11-15'te yerelde yapıldı: Kule Pro 0.14.0, kaynak temiz (sürüm kaynağı yayımlanmıyor); Python 3.14.7, Node v26.13.0. Kule için 1298 Python testi geçiyor; Node tarafında 234 test, 234 geçti, 0 atlandı; orkestratör için 120 birim testi var. Ayrıntı: Kule Python koşusunda (`unittest` keşfi) 1298 testin 4'ü atlandı, 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı), 0 başarısız; orkestratör 120 geçti; Node 234 geçti. Toplam 1652. **Kanıt paketi (`kanit/`) bu koşuya henüz geçirilmedi:** `kanit/sayilar.json` ve test davranış kataloğu 0.8.1 koşusunun anlık görüntüsüdür (732 / 120 / 166, toplam 1018); 0.14.0'da eklenen testler katalogda yoktur. Eski 0.7.0 koşusu 2026-11-05'te yapılmıştı; eski 569 sayısı iç rapordadır.
+**Testler.** Son doğrulama 2026-11-16'da yerelde yapıldı: Kule Pro 0.15.0, kaynak temiz (sürüm kaynağı yayımlanmıyor); Python 3.14.7, Node v26.13.0. Kule için 1299 Python testi geçiyor; Node tarafında 263 test, 263 geçti, 0 atlandı; orkestratör için 120 birim testi var. Ayrıntı: Kule Python koşusunda (`pytest`) 1299 testin 4'ü atlandı, 2'si beklenen başarısızlık (iki hedef, henüz uygulanmadı), 0 başarısız; orkestratör 120 geçti; Node 263 geçti. Toplam 1682. **Kanıt paketi (`kanit/`) bu koşuya henüz geçirilmedi:** `kanit/sayilar.json` ve test davranış kataloğu 0.8.1 koşusunun anlık görüntüsüdür (732 / 120 / 166, toplam 1018); 0.15.0'a kadar eklenen testler katalogda yoktur. Eski 0.7.0 koşusu 2026-11-05'te yapılmıştı; eski 569 sayısı iç rapordadır.
 
-**Sürümler 0.8.1 → 0.14.0 (kaynak kod yayımlanmıyor).** Aşağıdakiler Kule Pro sürüm notlarından alınmıştır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
+**Sürümler 0.8.1 → 0.15.0 (kaynak kod yayımlanmıyor).** Aşağıdakiler Kule Pro sürüm notlarından alınmıştır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
 
 - **0.10.0:** veritabanı yedek komutları (tutarlı kopya, bütünlük denetimi, geri yükleme), kullanıcı `token-yenile`, dosya günlüğünde dönen kayıt, tek port ve tek başlatma satırı.
 - **0.11.0 – 0.12.x:** satıcı ana kaydı mükerrerlik adayı (`MUKERRER_SATICI_ADAY`) ve `satici.csv` kabulü (yalnız HMAC özetleri saklanır); açık siparişin stok pozisyonuna eklenmesi (varsayılan kapalı); hatalı token hız sınırı (429) ve eşzamanlı bağlantı üst sınırı (503); `satici-temizle --gun N` saklama komutu ve salt okunur saklama önizlemesi; panel kullanıcı kılavuzu.
 - **0.13.x:** CLI çıkış kodu ve ortam değişkeni doğrulaması, hata mesajlarında eylem önerisi, `docs/api.md` ile kod arasında tutarlılık testi, belge komut örneklerinin koddan doğrulanması; **0.13.7:** stok analizine XYZ talep değişkenliği sınıfı (eşikler ölçülmüş değil, **varsayımdır**) ve panel erişilebilirlik düzeltmeleri.
 - **0.14.0 (2026-11-16):** ayrı bekleyen dalların tek hatta birleşimi: karar tablosu CSV (`GET /v1/ozet/karar.csv`) ve panelde CSV düğmesi, CLI `--sayi-bicimi`, SAP eşleme hata dilinin sadeleşmesi, sızıntı tarayıcısı ve sürüm yayın araçları. Sabah raporu varsayılanı ilk 200 bulgudur (`?sinir=0` hepsini verir).
+- **0.15.0 (2026-11-16):** panel arayüz yenilemesi: "Sinyal" paleti (lacivert, turkuaz, turuncu sinyal), gömülü yazı tipleri (CDN yok), yumuşak geçişler ve sayaç animasyonu (`prefers-reduced-motion` ve baskıda kapalı), baskı düzeltmesi. API ve analiz kuralları değişmedi.
 
 **0.7.0 sonrası ilk geliştirme notları (0.8.1 öncesi dönem).** Aşağıdakiler iç geliştirme kayıtlarındadır, sentetik veriyle sınandı, **gerçek SAP verisiyle doğrulanmadı**:
 

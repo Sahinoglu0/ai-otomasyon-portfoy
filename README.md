@@ -2,7 +2,7 @@
 
 **Dil / Language:** Türkçe (bu sayfa) · [English](README.en.md)
 
-**Sürüm:** 0.14.0. Kaynak kod bu yayında yer almaz.
+**Sürüm:** 0.15.0. Kaynak kod bu yayında yer almaz.
 
 Kule Pro, bir işletmenin stok, sipariş, mal kabul ve fatura dosyalarını okur. Dosyayı yüklersiniz. Modüller bu verileri açık kurallarla tarar ve bakılması gereken işleri tek bir listeye koyar. Her işin yanında kimin bakacağı ve SAP'de nereye gidileceği yazar. Kararı insan verir. Varsayılan kurulumda hiçbir modül dil modeli çağırmaz.
 

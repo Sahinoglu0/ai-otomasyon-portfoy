@@ -228,17 +228,17 @@ window.I18N_EK = {
   "Test paketi, bilerek konmuş 18 hatalı bir örnek dosya içerir. Paket bu hataların 18'ini buldu ve listeye fazla bulgu eklemedi. Dosya uydurma verilerle hazırlandığı için bu sonuç, kuralların konmuş hataları yakalayabildiğini gösterir.":
     "The test suite includes a sample file with 18 deliberately planted errors. The suite found all 18 and added no extra findings. The file is invented, so the result shows that the rules catch planted errors.",
   "Ne ölçüldü": "What was measured",
-  "Toplam 1652 otomatik test var: 1298 Python testi, 120 ajan orkestratörü testi ve 234 Node testi. Bu koşuda 4 test atlandı; bu yüzden 1652 rakamı otomatik test sayısıdır, geçen test sayısı olarak okunmamalıdır.":
-    "1,652 automated tests: 1,298 Python tests, 120 agent orchestrator tests and 234 Node tests. Four tests were skipped in that run, so 1,652 is the number of automated tests, not the number that passed.",
+  "Toplam 1682 otomatik test var: 1299 Python testi, 120 ajan orkestratörü testi ve 263 Node testi. Bu koşuda 4 test atlandı; bu yüzden 1682 rakamı otomatik test sayısıdır, geçen test sayısı olarak okunmamalıdır.":
+    "1,682 automated tests: 1,299 Python tests, 120 agent orchestrator tests and 263 Node tests. Four tests were skipped in that run, so 1,682 is the number of automated tests, not the number that passed.",
   "Değerlendirme seti 123 vakadan oluşur. Dosya elle yazılmış kayıt olarak etiketlidir: model yanıtları kayıttan oynatılır, puan kodun bu yanıtlara verdiği tepkiyi ölçer, modelin kalitesini ölçmez.":
     "The evaluation set has 123 cases. It is labeled a hand-written record: model answers are replayed from a recording, so the score measures how the code responds to those answers, not the quality of the model.",
   "Açık veri: 180.519 ham satırdan 172.765'i kabul edildi. Satırlar DataCo açık veri setinden gelir ve veri seti CC BY 4.0 lisanslıdır.":
     "Open data: 172,765 rows were accepted out of 180,519 raw rows. The rows come from the DataCo open dataset, licensed under CC BY 4.0.",
-  "Bu sayılar 16 Kasım 2026 tarihli, 0.14.0 sürümüne ait koşudan alındı. Kanıt sayfasındaki sayılar daha eski bir koşuya ait; iki sayfa güncelleninceye kadar farklı sayılar görebilirsiniz.":
-    "These counts come from a run on 16 November 2026 against version 0.14.0. The evidence page still shows numbers from an earlier run, so the two pages will differ until it is updated.",
+  "Bu sayılar 16 Kasım 2026 tarihli, 0.15.0 sürümüne ait koşudan alındı. Kanıt sayfasındaki sayılar daha eski bir koşuya ait; iki sayfa güncelleninceye kadar farklı sayılar görebilirsiniz.":
+    "These counts come from a run on 16 November 2026 against version 0.15.0. The evidence page still shows numbers from an earlier run, so the two pages will differ until it is updated.",
   "Hız sınırı": "Rate limit",
-  "0.14.0 sürümünün API'si 37 yol ve 41 işlem içerir. /v1 altındaki istekler IP adresi başına dakikada 300 ile sınırlıdır. Sınırı aşan istek 429 yanıtı alır ve Retry-After başlığında ne zaman yeniden denenebileceğini görür.":
-    "Version 0.14.0 exposes 37 paths and 41 operations. Requests under /v1 are limited to 300 per minute per IP address. A request over the limit gets a 429 response with a Retry-After header that says when to retry.",
+  "0.15.0 sürümünün API'si 37 yol ve 41 işlem içerir. /v1 altındaki istekler IP adresi başına dakikada 300 ile sınırlıdır. Sınırı aşan istek 429 yanıtı alır ve Retry-After başlığında ne zaman yeniden denenebileceğini görür.":
+    "Version 0.15.0 exposes 37 paths and 41 operations. Requests under /v1 are limited to 300 per minute per IP address. A request over the limit gets a 429 response with a Retry-After header that says when to retry.",
   "Bu sınır kimlik doğrulamanın yerine geçmez. Önünde bir ters vekil sunucu varsa bütün istemciler tek IP olarak görünür ve sınır hepsine birlikte uygulanır.":
     "The limit is not a substitute for authentication. If a reverse proxy sits in front of the service, all clients appear as one IP address and share the limit.",
   "Gerçek SAP çıktısıyla henüz denenmedi": "Not yet tried on real SAP output",
@@ -267,8 +267,8 @@ window.I18N_EK = {
   /* güncel geliştirme (0.7.0 sonrası) bölümü */
   "güncel": "current",
   "Güncel geliştirme (0.7.0 sonrası)": "Current development (after 0.7.0)",
-  "Bu bölüm 0.7.0'dan sonra yapılanları anlatır. Sürümler 0.14.0'a kadar etiketlidir; kaynak kod bu sitede yayımlanmaz. Hiçbiri gerçek SAP verisiyle denenmedi.":
-    "This section describes what was done after 0.7.0. Versions up to 0.14.0 are tagged; the source code is not published on this site. None of it has been tried on real SAP data.",
+  "Bu bölüm 0.7.0'dan sonra yapılanları anlatır. Sürümler 0.15.0'a kadar etiketlidir; kaynak kod bu sitede yayımlanmaz. Hiçbiri gerçek SAP verisiyle denenmedi.":
+    "This section describes what was done after 0.7.0. Versions up to 0.15.0 are tagged; the source code is not published on this site. None of it has been tried on real SAP data.",
   "kule[pdf] (deneysel)": "kule[pdf] (experimental)",
   "Metin katmanlı tedarikçi ekstresi PDF'i beş kapıdan geçerse okunur. Yalnız tek sentetik şablonla sınandı. Kurulum isteğe bağlıdır; çekirdek bağımlılıksız kalır.":
     "A text-layer supplier statement PDF is read if it passes five gates. It has been tested only with a single synthetic template. Installation is optional; the core stays dependency-free.",

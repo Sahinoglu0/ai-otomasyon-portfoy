@@ -5,6 +5,14 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` of this publication. Kule (measurement and tests) records come from an internal development repository and are not published. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-16 (Kule Pro 0.15.0, showcase sync)
+
+The showcase was updated to Kule Pro 0.15.0. The internal development repository was tagged `v0.15.0`; no source code was added to this publication.
+
+- Version: 0.14.0 → 0.15.0. This release is a panel UI refresh: the "Signal" palette (navy, teal, orange signal), fonts embedded in the package (no CDN), soft transitions, KPI counter animation (off under `prefers-reduced-motion` and in print) and a print fix. The API and the analysis rules did not change.
+- Tests: Kule Python 1299 (4 skipped, 2 expected failures), orchestrator 120, Node 263; 1682 automated tests in total.
+- **Known limit:** the `kanit/` folder was not moved to this run; it stays a snapshot of the 0.8.1 run.
+
 ## 2026-11-16 (v0.14.2, showcase polish)
 
 Accessibility and theme fixes before publication. The Kule code did not change in this publication.

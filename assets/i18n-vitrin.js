@@ -60,7 +60,7 @@ window.I18N_EK = Object.assign(window.I18N_EK || {}, {
   /* Ölçüm */
   "Ölçüm": "Measurement",
   "Sayılar nereden geliyor": "How the numbers were produced",
-  "Ürün 1652 otomatik test, 37 yollu bir API ve 18 bilerek konmuş hatanın 18'ini bulan bir deneme paketiyle ölçüldü. Sayılar 16 Kasım 2026 koşusundan alındı. Ayrıntılar ürün sayfasında.": "Kule Pro was checked with 1,652 automated tests, a 37-path API, and a sample-file test that found 18 of 18 deliberately planted errors. The numbers come from a run on 16 November 2026. Details are on the product page.",
+  "Ürün 1682 otomatik test, 37 yollu bir API ve 18 bilerek konmuş hatanın 18'ini bulan bir deneme paketiyle ölçüldü. Sayılar 16 Kasım 2026 koşusundan alındı. Ayrıntılar ürün sayfasında.": "Kule Pro was checked with 1,682 automated tests, a 37-path API, and a sample-file test that found 18 of 18 deliberately planted errors. The numbers come from a run on 16 November 2026. Details are on the product page.",
   "Kule · Python testi": "Kule · Python tests",
   "Orkestratör · birim testi": "Orchestrator · unit tests",
   "Panel · Node testi": "Panel · Node tests",

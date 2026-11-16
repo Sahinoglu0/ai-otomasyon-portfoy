@@ -2,7 +2,7 @@
 
 **Language:** [Turkish](../README.md) · English (this page)
 
-**Current version:** Kule Pro 0.14.0 (2026-11-16). The source code is not published. Details: [CHANGELOG.en.md](../CHANGELOG.en.md).
+**Current version:** Kule Pro 0.15.0 (2026-11-16). The source code is not published. Details: [CHANGELOG.en.md](../CHANGELOG.en.md).
 
 1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
 2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
@@ -136,14 +136,15 @@ In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 again
 
 **Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
 
-**Tests.** The latest verification was run locally on 2026-11-15: Kule Pro 0.14.0, clean source (source release not published); Python 3.14.7, Node v26.13.0. For Kule, 1298 Python tests pass; on the Node side 234 tests, 234 pass, 0 skipped; the orchestrator has 120 unit tests. Detail: in the Kule Python run (`unittest` discovery) 4 of the 1298 tests were skipped and 2 are expected failures (two targets not yet implemented), 0 failed; orchestrator 120 passed; Node 234 passed. Total 1652. **The evidence package (`kanit/`) has not been moved to this run yet:** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018); tests added up to 0.14.0 are not in the catalogue. The older 0.7.0 run was done on 2026-11-05; the older 569 figure is from the internal report.
+**Tests.** The latest verification was run locally on 2026-11-16: Kule Pro 0.15.0, clean source (source release not published); Python 3.14.7, Node v26.13.0. For Kule, 1299 Python tests pass; on the Node side 263 tests, 263 pass, 0 skipped; the orchestrator has 120 unit tests. Detail: in the Kule Python run (`pytest`) 4 of the 1299 tests were skipped and 2 are expected failures (two targets not yet implemented), 0 failed; orchestrator 120 passed; Node 263 passed. Total 1682. **The evidence package (`kanit/`) has not been moved to this run yet:** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018); tests added up to 0.15.0 are not in the catalogue. The older 0.7.0 run was done on 2026-11-05; the older 569 figure is from the internal report.
 
-**Releases 0.8.1 → 0.14.0 (the source code is not published).** The following is taken from Kule Pro's release notes, was tested with synthetic data, and **was not verified with real SAP data**:
+**Releases 0.8.1 → 0.15.0 (the source code is not published).** The following is taken from Kule Pro's release notes, was tested with synthetic data, and **was not verified with real SAP data**:
 
 - **0.10.0:** database backup commands (consistent copy, integrity check, restore), user `token-yenile` (token renewal), rotating file log, single port and single start line.
 - **0.11.0 – 0.12.x:** vendor master duplicate candidate (`MUKERRER_SATICI_ADAY`) and `satici.csv` intake (only HMAC digests are stored); open orders can be added to the stock position (off by default); bad-token rate limit (429) and concurrent connection cap (503); `satici-temizle --gun N` retention command and a read-only retention preview; panel user guide.
 - **0.13.x:** CLI exit code and environment variable validation, action hints in error messages, a consistency test between `docs/api.md` and the code, doc command examples verified against the code; **0.13.7:** XYZ demand variability class for stock analysis (thresholds are an **assumption**, not measured) and panel accessibility fixes.
 - **0.14.0 (2026-11-16):** several pending branches merged into one line: decision table CSV (`GET /v1/ozet/karar.csv`) and a CSV button in the panel, CLI `--sayi-bicimi`, simpler SAP mapping error wording, a leak scanner and release tooling. The morning report now defaults to the first 200 findings (`?sinir=0` returns all).
+- **0.15.0 (2026-11-16):** panel UI refresh: "Signal" palette (navy, teal, orange signal), embedded fonts (no CDN), soft transitions and counter animation (off under `prefers-reduced-motion` and in print), print fix. The API and the analysis rules did not change.
 
 **Early notes after 0.7.0 (period before 0.8.1).** The following are in internal development records, were tested with synthetic data, and **were not verified with real SAP data**:
 

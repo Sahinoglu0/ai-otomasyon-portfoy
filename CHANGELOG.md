@@ -5,6 +5,14 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu yayının `git log` çıktısıdır. Kule (ölçüm ve test) kayıtları iç geliştirme deposundandır; yayımlanmamıştır. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-16 (Kule Pro 0.15.0, vitrin senkronu)
+
+Vitrin, Kule Pro 0.15.0 sürümüne göre güncellendi. Sürüm iç geliştirme deposunda `v0.15.0` olarak etiketlendi; bu yayına kaynak kod eklenmedi.
+
+- Sürüm: 0.14.0 → 0.15.0. Bu sürüm panel arayüz yenilemesidir: "Sinyal" paleti (lacivert, turkuaz, turuncu sinyal), pakete gömülü yazı tipleri (CDN yok), yumuşak geçişler, KPI sayaç animasyonu (`prefers-reduced-motion` ve baskıda kapalı) ve bir baskı düzeltmesi. API ve analiz kuralları değişmedi.
+- Testler: Kule Python 1299 (4 atlandı, 2 beklenen başarısızlık), orkestratör 120, Node 263; toplam 1682 otomatik test.
+- **Bilinen sınır:** `kanit/` klasörü bu koşuya geçirilmedi; 0.8.1 koşusunun anlık görüntüsü olarak kalır.
+
 ## 2026-11-16 (v0.14.2, vitrin cilası)
 
 Yayın öncesi erişilebilirlik ve tema düzeltmeleri. Kule kodu bu yayında değişmedi.

@@ -2,7 +2,7 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
-**Version:** 0.14.0. The source code is not published in this release.
+**Version:** 0.15.0. The source code is not published in this release.
 
 Kule Pro reads a company's stock, order, goods receipt and invoice files. You upload the files. Modules check the data against explicit rules and put the items that need attention into one list. Each item says who should look at it and where to go in SAP. A person makes the decision. In the default setup, no module calls a language model.
 

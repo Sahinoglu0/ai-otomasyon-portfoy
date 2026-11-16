@@ -242,3 +242,21 @@ section.bolum p { margin: 0 0 var(--s3); max-width: 68ch; }
 }
 :root[data-hareket="azalt"] .defter-liste li { animation: none; }
 :root[data-hareket="azalt"] .defter-liste li, :root[data-hareket="azalt"] .defter-liste li::before { transition: none; }
+
+/* Akış sahnesi: dosya → kural → karar. Döngü MP4 (assets/akis/akis-dongu.mp4, ~32 KB) ve poster; hareket azaltılmışsa yalnız poster. */
+.akis-sahne { margin: var(--s5) 0 0; padding: 0; }
+.akis-medya { position: relative; }
+.akis-video, .akis-poster { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: var(--r2); background: #17191b; }
+.akis-poster { display: none; }
+.akis-etiket { margin-top: var(--s3); font: 500 var(--t-sm)/1.3 var(--mono); color: var(--ink-2); letter-spacing: .02em; }
+@media (prefers-reduced-motion: reduce) { .akis-video { display: none; } .akis-poster { display: block; } }
+:root[data-hareket="azalt"] .akis-video { display: none; }
+:root[data-hareket="azalt"] .akis-poster { display: block; }
+
+/* Kaydırmayla giriş: her akış adımı görünüm alanına girerken belirir (CSS scroll-driven). Desteklemeyen tarayıcıda adımlar hep görünür. */
+@supports (animation-timeline: view()) {
+  .akis li { animation: akis-gir linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+}
+@keyframes akis-gir { from { opacity: .25; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .akis li { animation: none; } }
+:root[data-hareket="azalt"] .akis li { animation: none; }

@@ -110,8 +110,17 @@
         <span class="ds-ust">Akış</span>
         <h2 id="h-karar">Dosyadan karara</h2>
       </div>
+      <figure class="akis-sahne" data-ds-reveal>
+        <div class="akis-medya">
+          <img class="akis-poster" src="assets/akis/poster.jpg" alt="" width="960" height="540" loading="lazy">
+          <video class="akis-video" autoplay muted loop playsinline preload="metadata" poster="assets/akis/poster.jpg" width="960" height="540" aria-hidden="true">
+            <source src="assets/akis/akis-dongu.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="akis-etiket">Dosya → Kural → Karar</figcaption>
+      </figure>
       <ol class="akis" data-ds-reveal="sira">
-        <li><span class="akis-no" aria-hidden="true">1</span><b>Yükle</b><span>Dosyayı yüklersiniz.</span></li>
+        <li><span class="akis-no" aria-hidden="true">1</span><b>Yükle</b><span>Stok, sipariş, mal kabul, fatura ve SAP dışa aktarımlarını yüklersiniz; SAP çıktıları CSV ya da .xlsx olabilir.</span></li>
         <li><span class="akis-no" aria-hidden="true">2</span><b>Oku</b><span>Her satır okunur. Okunamayan satır atlanmaz; numarası ve nedeni listede görünür.</span></li>
         <li><span class="akis-no" aria-hidden="true">3</span><b>Hesapla</b><span>Yedi analiz modülü stok durumu, sipariş anomalisi, talep tahmini, tedarikçi skoru, üçlü eşleştirme, OEE ve FBL1N açık kalem mutabakatını hesaplar.</span></li>
         <li><span class="akis-no" aria-hidden="true">4</span><b>Karar</b><span>Karar motoru sipariş önerisi ve öncelik listesi çıkarır. Her bulgu, kimin bakacağıyla birlikte gelir.</span></li>
@@ -169,7 +178,7 @@
         <a class="ds-kart" href="portfoy/index.html"><span class="ds-ust">01 · ürün</span><b class="ds-kart-baslik">Kule Pro nedir? <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Ne yaptığı, nasıl çalıştığı, modülleri, neyin ölçüldüğü ve nerede durduğu.</span></a>
         <a class="ds-kart" href="demo/index.html"><span class="ds-ust">02 · demo</span><b class="ds-kart-baslik">Demoyu dene <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Kurulum gerektirmeyen statik demo, önceden hesaplanmış sentetik örnek veriyle çalışır. Canlı API yoktur.</span></a>
         <a class="ds-kart" href="ajan-orkestrasyon/iz-goruntuleyici/index.html"><span class="ds-ust">03 · izler</span><b class="ds-kart-baslik">İz görüntüleyiciyi aç <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Soruşturma akışını adım adım aç: Planlayıcı, Analist, Denetçi. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT veya KOD SATIRI.</span></a>
-        <a class="ds-kart" href="kanit/index.html"><span class="ds-ust">04 · kanıt</span><b class="ds-kart-baslik">Test kanıtını gör <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod bu depoda yayımlanmıyor; yerine bu kanıtlar var.</span></a>
+        <a class="ds-kart" href="kanit/index.html"><span class="ds-ust">04 · kanıt</span><b class="ds-kart-baslik">Test kanıtını gör <span class="ds-ok" aria-hidden="true">→</span></b><span class="ds-kart-metin">Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi.</span></a>
       </div>
     </div>
   </section>
@@ -179,7 +188,7 @@
   <div class="wrap">
     <span>Demolardaki tüm veriler sentetiktir; gerçek şirket verisi kullanılmamıştır.</span>
     <span>Statik örnek sayfa; canlı API yok.</span>
-    <span>© 2026 · MIT lisansı. <a href="demo/LICENSE.txt">demo/ klasörü</a> bu lisansın dışındadır.</span>
+    <span>© 2026 · MIT lisansı.</span>
   </div>
 </footer>
 
@@ -189,5 +198,6 @@
 <script src="assets/i18n-vitrin.js"></script>
 <script src="assets/i18n.js"></script>
 <script src="assets/defter.js"></script>
+<script src="assets/akis-sahne.js"></script>
 </body>
 </html>

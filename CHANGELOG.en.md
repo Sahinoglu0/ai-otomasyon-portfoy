@@ -41,17 +41,17 @@ No commit. These lines only change documentation. The Kule code did not change i
 ### Added
 
 - **Real open-data measurements:** the README (Turkish and English) now covers BPI Challenge 2019, the simulated Berti package, the Zenodo clay-brick OEE dataset and the M5 measurements. Each number has its source report named beside it. All results are labelled as "rule agreement" or "candidate findings"; no accuracy claim is made.
-  - `uclu_eslestirme`: 984 candidate findings on BPI 2019, 5.3 s, peak memory 537 MB (KULE-V1-ezgi).
-  - `siparis_anomali`: 0 findings on BPI 2019, but not evaluable because the six rules lack data (KULE-V1-ezgi). On Berti PO/GR, 90/90 injected deviations were caught and the 15 clean lines produced 0 false findings (KULE-V4-zeynep-3).
-  - `stok_durumu`: 96.6% rule agreement on 88 comparable pairs in Berti (KULE-V2-zeynep).
-  - `karar`: 86.4% agreement on 88 pairs in Berti; Understock sensitivity 100% (KULE-V2-zeynep).
-  - `oee`: on the clay-brick data the daily total matches the source (an algebraic identity); availability is off by +15.7 points and performance by −16.9 points (KULE-V3-zeynep).
-  - `talep_tahmini`: on M5 with 5,082 series, Kule's WAPE was 47.3%, seasonal naive 61.0%, and the last-4-week average 38.4% (KULE-V3-zeynep).
-- **RBKP/RSEG invoice mapping:** a `fatura.csv` input and a three-way matching table input were added. 569 tests pass on synthetic data. Not verified against real SAP output (KULE-F1-ezgi).
+  - `uclu_eslestirme`: 984 candidate findings on BPI 2019, 5.3 s, peak memory 537 MB (iç rapor).
+  - `siparis_anomali`: 0 findings on BPI 2019, but not evaluable because the six rules lack data (iç rapor). On Berti PO/GR, 90/90 injected deviations were caught and the 15 clean lines produced 0 false findings (iç rapor).
+  - `stok_durumu`: 96.6% rule agreement on 88 comparable pairs in Berti (iç rapor).
+  - `karar`: 86.4% agreement on 88 pairs in Berti; Understock sensitivity 100% (iç rapor).
+  - `oee`: on the clay-brick data the daily total matches the source (an algebraic identity); availability is off by +15.7 points and performance by −16.9 points (iç rapor).
+  - `talep_tahmini`: on M5 with 5,082 series, Kule's WAPE was 47.3%, seasonal naive 61.0%, and the last-4-week average 38.4% (iç rapor).
+- **RBKP/RSEG invoice mapping:** a `fatura.csv` input and a three-way matching table input were added. 569 tests pass on synthetic data. Not verified against real SAP output (iç rapor).
 
 ### Fixed
 
-- **Dead-stock definition (internal development, V5):** `stok_durumu` labelled items with zero stock and no shipments as OLU_STOK. Dead stock now requires `stok > 0` and no shipments. The defect in 192 Berti pairs was fixed; after the fix 277 of 280 pairs agree (98.9%) (KULE-V5-ezgi-2). This brings the rule closer to Berti's own rule; it is not a measure of real accuracy.
+- **Dead-stock definition (internal development, V5):** `stok_durumu` labelled items with zero stock and no shipments as OLU_STOK. Dead stock now requires `stok > 0` and no shipments. The defect in 192 Berti pairs was fixed; after the fix 277 of 280 pairs agree (98.9%) (iç rapor). This brings the rule closer to Berti's own rule; it is not a measure of real accuracy.
 
 ### Honest limits
 

@@ -11,13 +11,13 @@ Tamamlanan maddeler silinmedi; her birinin başında **Tamamlandı** yazılır v
 - **Demo için yayın kapısı.** Push öncesi kapı kontrolü `demo/` klasörünü de kapsamalı.
   **Not:** yayın kapısı kopyanın tamamını tarıyor (kontrol 4 ve 5 `demo/` dahil); demo'ya özel bir kontrol hâlâ yok.
 - **O2 bandı.** Demonun önceden hesaplanmış veri kaynağı olarak O2 bandı henüz kullanılmadı.
-- **Node testi.** Kanıt klasörü bulunmayan geçici kopyada KULE-E6 testi atlanıyor. Kanıt klasörünün yayın kopyasına alınıp alınmayacağı kararı bekliyor.
+- **Node testi.** Kanıt klasörü bulunmayan geçici kopyada bir Node testi atlanıyor. Kanıt klasörünün yayın kopyasına alınıp alınmayacağı kararı bekliyor.
 - **Eval çizimleri ve README sayıları tek kaynaktan.**
   **Tamamlandı (A2):** `yayin_uret.py` çizimleri, README sayı bloklarını ve kanıt özetlerini `eval-sonuc.json`'dan üretiyor (`--kontrol` ile denetlenir). Eval 46 vaka: 41/41 ölçüt geçti, 5 bilinen açık gözlendi.
-- **Gerçek SAP dışa aktarımıyla ilk deneme.** Anonim küçük bir liste, üç biçim (Unconverted, Text with Tabs, Spreadsheet), ilk baytlar ve kodlama/BOM kararı. Biçimler şimdiye dek yalnız sentetik dosyalarla sınandı (KULE-R5, R5b).
+- **Gerçek SAP dışa aktarımıyla ilk deneme.** Anonim küçük bir liste, üç biçim (Unconverted, Text with Tabs, Spreadsheet), ilk baytlar ve kodlama/BOM kararı. Biçimler şimdiye dek yalnız sentetik dosyalarla sınandı.
 - **Sabit rapor tarihi.** **Tamamlandı (S9, S12):** sipariş anomalisi ve FBL1N kuralları rapor tarihini istekten ya da sunucunun bugününden alıyor; sabit örnek tarih yalnız bütün girdiler örnek veri olduğunda kullanılıyor ve ekranda etiketli.
 - **ROI kayıt bağlantısındaki bayat değer.** **Tamamlandı (S10):** hesaptaki süre yeni kayıtlarla eşitleniyor, tek tahmin "kullanıcı tahmini" etiketli. Açık: kayıtlar pilot ölçümü değil; ROI "kısmen kayıtlı" diye anlatılır.
-- **Sabah ekranında `.xlsx`.** Panel `.xlsx` kabul etmiyor (yalnız `.csv`, `.txt`); sunucu yalnız disk klasöründen okuyor. Kabul etmek küçük bir değişiklik, ama bir ürün kararı (KULE-R7).
+- **Sabah ekranında `.xlsx`.** Panel `.xlsx` kabul etmiyor (yalnız `.csv`, `.txt`); sunucu yalnız disk klasöründen okuyor. Kabul etmek küçük bir değişiklik, ama bir ürün kararı.
 
 - **Kanıt paketini 0.14.0'a geçirmek.** `kanit/sayilar.json`, test davranış kataloğu ve SHA-256 manifesti 0.8.1 koşusunda (1018 test) kaldı; 0.14.0'da eklenen yaklaşık 570 Kule testinin katalog cümleleri yazılıp onaylanmalı.
 
@@ -28,7 +28,7 @@ Tamamlanan maddeler silinmedi; her birinin başında **Tamamlandı** yazılır v
 - **Kanıt klasörü izleme durumu.** Kule iç geliştirme deposunda `docs/agent-results/` izlenmiyor. Karar: izlensin mi, yayından ayrı mı tutulsun.
 - **Düz metindeki sayı bağlamı (bilinen açık).** Denetçi düz metindeki sayının bağlamını denetlemiyor. Eval'de üç açık vaka duruyor (`KACAK-duz-metin-*`). Karar: bağlam denetimi ölçüte çevrilsin mi, ayrı bir ön-kayıtla mı ölçülsün.
 - **BPI adaptörünün yeniden tasarımı.** Fatura hattı düzeltmesi (V6, V7, V9) enjekte sınamayı 20/20'ye çıkardı; ama sınamalar kendi tohumumuzla yapıldı. Bağımsız yeniden sınama ve adaptör varsayımlarının gözden geçirilmesi bekliyor; sonuç doğruluk ölçümü olarak sunulmaz.
-- **Tedarikçi ekstresinin biçimi.** Ekstre Kule CSV biçiminde; PDF ekstre OCR yok kuralıyla çelişiyor (KULE-R6). Karar: hangi ekstre biçimleri desteklensin.
+- **Tedarikçi ekstresinin biçimi.** Ekstre Kule CSV biçiminde; PDF ekstre OCR yok kuralıyla çelişiyor. Karar: hangi ekstre biçimleri desteklensin.
 
 ## Sonraki ölçümler
 
@@ -36,4 +36,4 @@ Tamamlanan maddeler silinmedi; her birinin başında **Tamamlandı** yazılır v
 - **Paraphrase sızıntısı.** Tamamlandı (eval): yeniden ifade edilmiş sızıntı iki açık vaka olarak eval'e girdi (`KACAK-enjeksiyon-anlamsal-parafraz`, `KACAK-enjeksiyon-parafraz-varsayilan-kapali`). Son yanıttaki birebir kopya kontrolü bu sınıfı yakalamıyor; bilinen açık olarak duruyor. Varsayılanda 0/6 yakalandı.
 - **Sürüm etiketi.** İlk yayın etiketi ve README cümlesi lider tarafından eklenir.
 - **Enjekte anomali duyarlılık ölçümü.** Bağımsız tohumla, kabul ölçütü önceden yazılı.
-- **Tam M5 talep koşusu.** Makinede bellek azlığı nedeniyle tamamlanamadı (KULE-V8); daha büyük bellekte yeniden koşulacak.
+- **Tam M5 talep koşusu.** Makinede bellek azlığı nedeniyle tamamlanamadı; daha büyük bellekte yeniden koşulacak.

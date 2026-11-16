@@ -3,20 +3,20 @@
 This file is kept without rewriting history. Commit dates have not been changed.
 Version lines for 18–19 October 2026 were **written retrospectively** (added to this file after the fact, not at release time). Lines dated after 21 October 2026 were written on their own date.
 
-SHAs are from `git log` in this repository. Kule (measurement and tests) SHAs come from the local `cv-portfoy-kule` repository; they do not exist on a remote. Lines marked "no commit" are in the publish copy and have not been committed yet.
+SHAs are from `git log` of this publication. Kule (measurement and tests) records come from an internal development repository and are not published. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
 ## 2026-11-16 (Kule Pro 0.14.0, showcase sync)
 
-The showcase was updated to Kule Pro 0.14.0 (KULE-SENKRON-1). The private source repository is at commit `51f7e8a` and tag `v0.14.0` the same day; no source code was added to this repository.
+The showcase was updated to Kule Pro 0.14.0 (KULE-SENKRON-1). The internal development repository was tagged `v0.14.0` the same day; no source code was added to this publication.
 
-- Version: 0.8.1 → 0.14.0. A summary of the intermediate releases is in the README ("Releases 0.8.1 → 0.14.0"); source: the private repository's `CHANGELOG.md`.
+- Version: 0.8.1 → 0.14.0. A summary of the intermediate releases is in the README ("Releases 0.8.1 → 0.14.0"); source: Kule Pro's internal release notes.
 - Numbers refreshed from the new run (2026-11-15, Python 3.14.7, Node v26.13.0): Kule Python 1298 tests (4 skipped, 2 expected failures, 0 failed), orchestrator 120, Node 234; total 1652. The older 603 / 146 figures on the landing page were corrected too.
 - **Known limit:** the `kanit/` folder (`sayilar.json`, test behaviour catalogue, SHA-256 manifest) was not moved to this run; it stays a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018). Roughly 570 Kule tests added up to 0.14.0 have no sentence in the catalogue.
 - No verification with real SAP data; measurement findings are unchanged.
 
 ## 2026-11-12 (Kule Pro 0.8.1, number sync)
 
-Version number is now 0.8.1; no feature change. Single run: Kule Python **732** tests (2 expected failures, 0 failed), agent orchestrator 120, Node 166; total 1018. Earlier 730 / 1016 figures on the pages and the older evidence-package counts (603 / 146 / 869) are corrected to this run. Source: `kule-yayin-temiz` commit `c68daa3`. No push, no tag.
+Version number is now 0.8.1; no feature change. Single run: Kule Python **732** tests (2 expected failures, 0 failed), agent orchestrator 120, Node 166; total 1018. Earlier 730 / 1016 figures on the pages and the older evidence-package counts (603 / 146 / 869) are corrected to this run. Source: internal publish copy. No push, no tag.
 
 ## 2026-11-12 (number refresh, no version number)
 
@@ -27,7 +27,7 @@ No Kule code change. Publication numbers were refreshed from the 2026-11-12 run:
 
 ## 2026-11-05 (development note, no version number)
 
-In this publish copy the Kule code stays at 0.7.0. The items below exist only in the private `cv-portfoy-kule` development repository. They are not released and were not tried on real SAP data:
+In this publish copy the Kule code stays at 0.7.0. The items below exist only in the internal development records. They are not released and were not tried on real SAP data:
 
 - **`kule[pdf]` (experimental):** a text-layer supplier statement PDF is read if it passes five gates. Tested with one synthetic template only. Optional install; the core keeps no dependencies.
 - **Four-week average (candidate, not default):** a fallback method in demand forecasting. Results on synthetic and open data were mixed (mean error got worse, median improved); not enabled in production.
@@ -36,7 +36,7 @@ In this publish copy the Kule code stays at 0.7.0. The items below exist only in
 
 ## 2026-11-04 (measurement update, no version number)
 
-No commit. These lines only change documentation. The Kule code did not change in this publish copy. The code change (V5) is in the `cv-portfoy-kule` repository, commit 4705097.
+No commit. These lines only change documentation. The Kule code did not change in this publish copy. The code change (V5) is in the internal development records.
 
 ### Added
 
@@ -51,7 +51,7 @@ No commit. These lines only change documentation. The Kule code did not change i
 
 ### Fixed
 
-- **Dead-stock definition (`cv-portfoy-kule`, commit 4705097):** `stok_durumu` labelled items with zero stock and no shipments as OLU_STOK. Dead stock now requires `stok > 0` and no shipments. The defect in 192 Berti pairs was fixed; after the fix 277 of 280 pairs agree (98.9%) (KULE-V5-ezgi-2). This brings the rule closer to Berti's own rule; it is not a measure of real accuracy.
+- **Dead-stock definition (internal development, V5):** `stok_durumu` labelled items with zero stock and no shipments as OLU_STOK. Dead stock now requires `stok > 0` and no shipments. The defect in 192 Berti pairs was fixed; after the fix 277 of 280 pairs agree (98.9%) (KULE-V5-ezgi-2). This brings the rule closer to Berti's own rule; it is not a measure of real accuracy.
 
 ### Honest limits
 
@@ -60,7 +60,7 @@ No commit. These lines only change documentation. The Kule code did not change i
 - The Berti data is a simulation. Rule-agreement figures are not independent accuracy.
 - There is no labelled sequence-anomaly data, so no false-alarm rate is given for any module.
 - KULE-V6 is a variant measurement ("last-4-week average" as a selection candidate; M5 WAPE 39.7%). It is not implemented in Kule's code.
-- The test count on the `kanit/` page (559) belongs to the 0.7.0 run. The 570 tests run after V5 (`cv-portfoy-kule`) are not yet on the evidence page.
+- The test count on the `kanit/` page (559) belongs to the 0.7.0 run. The 570 tests run after V5 (internal development) are not yet on the evidence page.
 - The `kanit/test-katalogu.*` page still belongs to the v0.6.0 run.
 
 ## 2026-11-02 (v0.7.0)
@@ -111,7 +111,7 @@ Kule Pro 0.7.0 was prepared locally. This release has not been pushed or tagged 
 
 - **Trace viewer English fix:** a cross-review found about 50 Turkish texts left in the Eval tab in English mode (evaluation cases had grown from 34 to 123 and the translation table did not cover the new ones). `assets/i18n.js` now covers all 123 cases; in a real browser the English Eval tab has 0 Turkish-character texts, 0 horizontal overflow at 375 px, and the TR/EN switch works. Code identifiers, tool/field names and the raw trace (`pre/code`) are deliberately left untranslated.
 - **v0.6.0 demo update:** the static demo (`demo/`) now matches v0.6.0. It adds FBL1N open item reconciliation as the seventh module, a morning report screen (top 5 findings, skipped analyses and why), a "since yesterday" comparison (a "load day 2" button, NEW / "open N days" / "amount changed" badges) and a note on SAP file formats. The data comes from Kule's synthetic trial package; the demo is still static, has no live API and holds no real SAP or company data. The overview text says "seven modules" (in the previous release the demo showed six modules while the text said seven by mistake; that was corrected). An independent check passed 49/49 in a real browser.
-- **v0.6.0 (Kule commit `a772940`; numbers from the `sayim.py` output):** Kule Pro gets a morning workflow built on SAP exports. The source code is still not published; the text, numbers and limits were updated. Numbers are taken from `sayim.py` and `yayin_uret.py` output, never typed by hand.
+- **v0.6.0 (Kule internal release; numbers from the `sayim.py` output):** Kule Pro gets a morning workflow built on SAP exports. The source code is still not published; the text, numbers and limits were updated. Numbers are taken from `sayim.py` and `yayin_uret.py` output, never typed by hand.
   - **SAP formats:** ALV/SE16N exports are read with Turkish and English headings, UTF-8, UTF-16 (with and without BOM) and ANSI encodings, and tab, semicolon, comma or pipe (`|`, the framed "Unconverted" list) separators. The ALV header and total rows are skipped and a trailing minus sign (`12,5-`) is converted. HTML/MHTML and Excel files with an `.xls` extension are rejected with a plain message; a value that cannot be converted is never guessed, the row is rejected. The formats were tested with synthetic files; **they were not tried on output from a real SAP system**, and the default encoding and BOM decision is not settled by a primary source. There is no live SAP connection. Reports: KULE-S1, S7, S12, R5, R5b.
   - **FBL1N vendor open-item reconciliation:** the seventh analysis module. Rules: overdue, duplicate open item, open item that looks paid, amount mismatch, balance difference, and partial payment (added as the sixth rule in S12). The SAP side is the FBL1N export; the other side is the vendor statement (Kule CSV format; the statement has no SAP counterpart). On hand-calculated test sets the findings matched by type, document and effect. Reports: KULE-S2, R6, Q1, Q4.
   - **Morning report screen:** drag and drop SAP files, automatic recognition from the header, the top 5 findings of today, rejected rows, and a card that says which SAP list is missing. The report date now comes from the request (the screen sends today's date) or from the server's today; the fixed sample date is used only when every input is sample data, and it is labelled on screen (S9). A synthetic SAP trial pack loads with one button; the pack has 5 files and 17 known issues, 17/17 are caught, 0 unexpected findings. Reports: KULE-S3, S4, S8, S9, S11, Q3, Q4.
@@ -121,7 +121,7 @@ Kule Pro 0.7.0 was prepared locally. This release has not been pushed or tagged 
   - **Measurement infrastructure:** upload processing time is measured; the user records their own time estimate (only under their own name); a "was the finding right?" mark goes to the audit trail; the summary endpoint is `/v1/olcum/ozet`. The ROI calculation can take two values from Kule records (monthly cases, recorded time) with their source; a single estimate is labelled "user estimate" and shown with its quartile range (S10). Reports: KULE-M1, M2, Q2, S8, S10.
   - **Open-data scale tests:** the modules were run on large input with M5, Favorita, SECOM, AI4I and BPI 2019; open-data inputs come out labelled `ACIK_VERI_DAHILI_TEST`, not `GERCEK_VERI`. Reports: KULE-V1–V8, S7, S12.
   - **Eval:** 123 cases; criteria/check/coverage 111/111 passed, 12 known gaps observed and not closed. The paraphrase check in the orchestrator can now be switched on from the Analyst option. Reports: KULE-C2, A1, ARASTIRMA-KULE-02. The real-model measurement was not repeated; the O1 numbers are unchanged.
-  - **Numbers:** Kule Python 411, Node 58, orchestrator 111, total 580 (previous release: 229 + 29 + 87 = 345). API 28 routes, counted as operations (previous release: 21). Kule SHA: `a772940`.
+  - **Numbers:** Kule Python 411, Node 58, orchestrator 111, total 580 (previous release: 229 + 29 + 87 = 345). API 28 routes, counted as operations (previous release: 21).
   - **Known limits:**
     - Not tried on real SAP output; the formats are synthetic.
     - **The morning screen does not accept `.xlsx` files:** the picker is limited to `.csv` and `.txt`; a dropped `.xlsx` is rejected with a "Save as → CSV" notice. The server can read `.xlsx`, but only from a disk folder. Accepting it is a product decision. Report: KULE-R7.
@@ -146,7 +146,7 @@ Kule Pro 0.7.0 was prepared locally. This release has not been pushed or tagged 
 ## 2026-10-22
 
 - **Correction (publish consistency, A2):** the "no commit" marks in this section are stale: `noindex` and `demo/` were already committed in v0.2.0 (`42c5af4`). The lines "blind approval mode remains open" and "eval 24/24" are superseded by the current-state line above: the blind approval path is closed, and the flag only opens a write with a scenario-specific summary. The eval is now 46 cases: criteria/checks/scope 41/41 passed, 5 known gaps observed (source `ajan-orkestrasyon/ornek/eval-a3/`). The older lines below are unchanged.
-- Kule Python tests 224 → 229 (K1). Counts produced from a run, via `sayim.py`. Kule SHA `1d31a4f`. Report: PORTFOY-K1.
+- Kule Python tests 224 → 229 (K1). Counts produced from a run, via `sayim.py`. Report: PORTFOY-K1.
 - Orchestrator tests 60 → 68 (G2, +8 regression tests; 68/68 run). Report: PORTFOY-G2.
 - Node tests 29 (29/29 on the full tree). One test is skipped in a temporary copy; the reason is recorded. Report: PORTFOY-K1.
 - Eval 22/24 → 24/24. Two open criteria were turned into measures; the baseline was rewritten with the new names. Report: PORTFOY-G2.

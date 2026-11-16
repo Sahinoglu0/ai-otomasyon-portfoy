@@ -13,7 +13,7 @@ Bu metin GitHub Release gövdesidir. Etiket: `v0.7.0`.
 - **Belirsiz değer önizlemesi.** `1.250` gibi iki biçimde de okunabilen değerler iki okunuşla gösterilir. Kule birini seçmez.
 - **"Kontrol edilemedi" bildirimi.** Bir sütunun tüm değerleri `x.xxx` biçimindeyse ve karşı kanıt yoksa sakin bir not çıkar. Değer değiştirilmez.
 - **Sabah ekranında `.xlsx` kabulü.** Sunucu ilk sayfayı okur. Zip64 ve şifreli `.xlsx` dosyaları kapsam dışıdır.
-- **SAP anonimleştirme aracı.** Tedarikçi, müşteri, malzeme adı ve unvan alanlarını değiştirir. Kullanıcı kendi makinesinde çalıştırır; eşleme dosyası paylaşılmamalıdır. Araç Kule kaynağındadır; bu depoda yoktur.
+- **SAP anonimleştirme aracı.** Tedarikçi, müşteri, malzeme adı ve unvan alanlarını değiştirir. Kullanıcı kendi makinesinde çalıştırır; eşleme dosyası paylaşılmamalıdır. Araç Kule kaynağındadır; bu yayında yoktur.
 - **Eşleme şablonu düzeltmeleri.** `LIFNR` tablosu EKKO, `EINDT` tablosu EKET, `MENGE` tablosu EKPO olarak düzeltildi. `MAKTX`, `EISBE` ve `VERPR` "doğrulanamadı" işaretiyle bırakıldı.
 - **Bellek kullanımı.** Talep tahmini akışlı okunur. Sentetik ölçümde (Windows 11, 3.000 M5 serisi) tepe bellek 556 MB'tan 34 MB'a indi; süre aynı kaldı (46,9 s).
 - **Düzeltmeler.** Doğru ondalık değerleri artık reddedilmiyor (ör. TR ayarında `1.000` → `1000`). Bozuk `.xlsx` için "okunamadı" uyarısı çıkıyor. Erişilebilirlik denetiminde dört orta öncelikli bulgu düzeltildi (dokunma hedefleri, hata duyurusu, kenarlık ve odak kontrastı).
@@ -39,7 +39,7 @@ Bu metin GitHub Release gövdesidir. Etiket: `v0.7.0`.
 
 ## Kurulum
 
-Bu depoda Kule'nin kaynak kodu yoktur ve bu sürümde yayınlanmadı; bu yüzden bir kurulum satırı verilmiyor. Ürün sayfası ve kanıt için: https://sahinoglu0.github.io/ai-otomasyon-portfoy/
+Bu yayında Kule'nin kaynak kodu yoktur ve bu sürümde yayınlanmadı; bu yüzden bir kurulum satırı verilmiyor. Ürün sayfası ve kanıt için: https://sahinoglu0.github.io/ai-otomasyon-portfoy/
 
 ---
 
@@ -56,7 +56,7 @@ This text is the GitHub Release body. Tag: `v0.7.0`. **Release date:** 2 Novembe
 - **Ambiguous value preview.** Values such as `1.250` that read either way are shown with both readings. Kule does not pick one.
 - **"Could not verify" note.** If every value in a column is `x.xxx` and there is no counter-evidence, a quiet note appears. Values are not changed.
 - **`.xlsx` on the morning screen.** The server reads the first sheet. Zip64 and encrypted `.xlsx` files are out of scope.
-- **SAP anonymisation tool.** Replaces supplier, customer, material name and title fields. It runs on the user's machine; do not share the mapping file. The tool lives in the Kule source, not in this repository.
+- **SAP anonymisation tool.** Replaces supplier, customer, material name and title fields. It runs on the user's machine; do not share the mapping file. The tool lives in the Kule source, not in this publication.
 - **Mapping template fixes.** `LIFNR` is EKKO, `EINDT` is EKET, `MENGE` is EKPO. `MAKTX`, `EISBE` and `VERPR` are marked as unverified.
 - **Memory use.** Demand forecasting reads in a stream. In a synthetic measurement (Windows 11, 3,000 M5 series) peak memory fell from 556 MB to 34 MB; run time stayed at 46.9 s.
 - **Fixes.** Correct decimal values are no longer rejected (e.g. `1.000` → `1000` under the TR setting). Broken `.xlsx` files get a "could not be read" message. Four medium-priority accessibility findings were fixed (touch targets, error announcement, border and focus contrast).
@@ -82,4 +82,4 @@ This text is the GitHub Release body. Tag: `v0.7.0`. **Release date:** 2 Novembe
 
 ## Install
 
-The Kule source code is not in this repository and was not published in this release, so there is no install line. Product page and evidence: https://sahinoglu0.github.io/ai-otomasyon-portfoy/
+The Kule source code is not in this publication and was not published in this release, so there is no install line. Product page and evidence: https://sahinoglu0.github.io/ai-otomasyon-portfoy/

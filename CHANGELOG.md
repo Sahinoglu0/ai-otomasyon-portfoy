@@ -5,6 +5,16 @@ Bu dosya geçmişi yeniden yazmadan tutulur. Commit tarihleri değiştirilmedi.
 
 SHA'lar bu yayının `git log` çıktısıdır. Kule (ölçüm ve test) kayıtları iç geliştirme deposundandır; yayımlanmamıştır. "Commit yok" işaretli satırlar yayın kopyasında duruyor ve henüz commit edilmedi.
 
+## 2026-11-16 (Kule Pro 0.14.1, vitrin yenilemesi)
+
+Vitrin yenilendi: sayılar kaynak sürümden yeniden doğrulandı ve çelişkiler kapatıldı. Kule kodu bu yayında değişmedi.
+
+- Analiz: 7 analiz modülü ve bir açıklama katmanı (FBL1N dahil).
+- API: 37 yol, 41 işlem. Hız sınırı IP başına dakikada 300 istek; sınırlar süreç içidir.
+- Deneme paketi: 18/18 (eski "17/17" yanlıştı).
+- Testler: Kule Python 1298 (4 atlandı, 2 beklenen başarısızlık), orkestratör 120, Node 234; toplam 1652 otomatik test.
+- Değerlendirme: 123 vaka, kasetten oynatılmış kayıttır; modelin kalitesini ölçmez.
+
 ## 2026-11-16 (Kule Pro 0.14.0, vitrin senkronu)
 
 Vitrin, Kule Pro 0.14.0 sürümüne göre güncellendi (KULE-SENKRON-1). Sürüm iç geliştirme deposunda aynı gün `v0.14.0` olarak etiketlendi; bu yayına kaynak kod eklenmedi.

@@ -5,6 +5,16 @@ Version lines for 18–19 October 2026 were **written retrospectively** (added t
 
 SHAs are from `git log` of this publication. Kule (measurement and tests) records come from an internal development repository and are not published. Lines marked "no commit" are in the publish copy and have not been committed yet.
 
+## 2026-11-16 (Kule Pro 0.14.1, showcase refresh)
+
+The showcase was refreshed: figures were re-checked against the source release and the inconsistencies were closed. The Kule code did not change in this publication.
+
+- Analysis: 7 analysis modules plus one explanation layer (FBL1N included).
+- API: 37 paths, 41 operations. Rate limit is 300 requests per minute per IP; the limit is per process.
+- Trial package: 18/18 (the earlier "17/17" was wrong).
+- Tests: Kule Python 1298 (4 skipped, 2 expected failures), orchestrator 120, Node 234; 1652 automated tests in total.
+- Evaluation: 123 cases, replayed from recordings; it measures the code's response to the recordings, not model quality.
+
 ## 2026-11-16 (Kule Pro 0.14.0, showcase sync)
 
 The showcase was updated to Kule Pro 0.14.0 (KULE-SENKRON-1). The internal development repository was tagged `v0.14.0` the same day; no source code was added to this publication.

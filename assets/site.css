@@ -260,3 +260,19 @@ section.bolum p { margin: 0 0 var(--s3); max-width: 68ch; }
 @keyframes akis-gir { from { opacity: .25; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .akis li { animation: none; } }
 :root[data-hareket="azalt"] .akis li { animation: none; }
+
+/* Ürün sayfası (VITRIN-T3): tek anlatı, okunur bölümler, kart ızgarası yok */
+.urun-kahraman { padding: var(--s7) 0 var(--s6); }
+.urun-kahraman h1 { font: 700 clamp(30px, 4.2vw, 46px)/1.1 var(--sans); letter-spacing: -.015em; margin: var(--s2) 0 var(--s4); max-width: 22ch; }
+.urun-kahraman .dugmeler { margin: var(--s5) 0 var(--s6); }
+.urun-kahraman .ekran { max-width: 880px; }
+.urun-metin { max-width: 720px; }
+.urun-metin .ekran { margin: var(--s4) 0; }
+.urun-modul-liste { list-style: none; margin: var(--s4) 0 var(--s5); padding: 0; display: grid; gap: var(--s4); }
+.urun-modul-liste li { padding-top: var(--s3); border-top: 1px solid var(--rule); }
+.urun-modul-liste .modul-ad { margin: 0 0 var(--s2); font: 600 var(--t-md)/1.3 var(--sans); }
+.urun-modul-liste p { margin: 0; }
+@media (min-width: 720px) { .urun-modul-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s6); } }
+@media (max-width: 480px) { .urun-kahraman h1 { font-size: clamp(28px, 8.4vw, 36px); } .urun-sayfa .wrap { padding: 0 var(--s4); } }
+@media (prefers-reduced-motion: reduce) { .urun-sayfa *, .urun-sayfa *::before, .urun-sayfa *::after { animation: none !important; transition: none !important; } }
+:root[data-hareket="azalt"] .urun-sayfa *, :root[data-hareket="azalt"] .urun-sayfa *::before, :root[data-hareket="azalt"] .urun-sayfa *::after { animation: none !important; transition: none !important; }

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=960, height=540">
+<title>Kule Pro · dosya → kural → karar</title>
+<script src="gsap.min.js"></script>
+<style>
+  html, body { margin: 0; background: #17191b; }
+  #akis { position: relative; width: 100%; height: 100%; overflow: hidden; background: #17191b; }
+  #inner { position: absolute; inset: 0; }
+  .blok { position: absolute; border-radius: 8px; }
+  .kart { position: absolute; border-radius: 12px; background: #202428; border: 1px solid #2d3338; }
+  .satir { position: absolute; z-index: 2; height: 34px; border-radius: 6px; background: #3a4147; }
+  .satir.isaret { background: #f0b43a; }
+  .cizgi { position: absolute; width: 2px; background: #4a5258; }
+  .elmas { position: absolute; width: 34px; height: 34px; border: 2px solid #f0b43a; background: #17191b; }
+  .halka { position: absolute; z-index: 3; border-radius: 12px; border: 2px solid #f0b43a; opacity: 0; }
+  .nokta { position: absolute; z-index: 3; width: 12px; height: 12px; border-radius: 50%; background: #4a5258; }
+  .nokta.dolu { background: #7fd1a3; }
+</style>
+</head>
+<body>
+<div id="akis" data-composition-id="akis" data-start="0" data-width="960" data-height="540" data-duration="7">
+  <div id="inner">
+
+    <!-- dosya -->
+    <div id="dosya" class="kart" style="left:90px; top:120px; width:260px; height:300px;"></div>
+    <div id="s0" class="satir" style="left:112px; top:150px; width:200px;"></div>
+    <div id="s1" class="satir isaret" style="left:112px; top:196px; width:150px;"></div>
+    <div id="s2" class="satir" style="left:112px; top:242px; width:210px;"></div>
+    <div id="s3" class="satir isaret" style="left:112px; top:288px; width:180px;"></div>
+    <div id="s4" class="satir" style="left:112px; top:334px; width:120px;"></div>
+
+    <!-- kural -->
+    <div id="kural-cizgi" class="cizgi" style="left:479px; top:110px; height:320px;"></div>
+    <div id="kural-elmas" class="elmas" style="left:463px; top:252px;"></div>
+
+    <!-- karar -->
+    <div id="karar" class="kart" style="left:610px; top:120px; width:260px; height:300px;"></div>
+    <div id="halka0" class="halka" style="left:626px; top:144px; width:220px; height:46px;"></div>
+    <div id="halka1" class="halka" style="left:626px; top:190px; width:220px; height:46px;"></div>
+    <div id="n0" class="nokta" style="left:700px; top:300px;"></div>
+    <div id="n1" class="nokta" style="left:730px; top:300px;"></div>
+    <div id="n2" class="nokta" style="left:760px; top:300px;"></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  gsap.set(["#karar", "#n0", "#n1", "#n2"], { opacity: 0 });
+
+  // 0.2–1.2 sn: dosya satırları girer
+  tl.fromTo("#dosya", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.2);
+  tl.fromTo(["#s0","#s1","#s2","#s3","#s4"], { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.12 }, 0.4);
+
+  // 1.5 sn: kural çizgisi ve elmas belirir
+  tl.fromTo("#kural-cizgi", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 1.5);
+  tl.fromTo("#kural-elmas", { opacity: 0, rotation: 0 }, { opacity: 1, rotation: 45, duration: 0.5, ease: "back.out(1.6)" }, 1.8);
+
+  // 2.4–3.4 sn: işaretsiz satırlar kuralda durur, işaretliler karara geçer
+  tl.to(["#s0","#s2","#s4"], { x: 90, opacity: 0, duration: 0.5, ease: "power1.in", stagger: 0.08 }, 2.4);
+  tl.to("#s1", { x: 520, y: -46, width: 220, duration: 0.8, ease: "power2.inOut" }, 2.6);
+  tl.to("#s3", { x: 520, y: -92, width: 220, duration: 0.8, ease: "power2.inOut" }, 2.8);
+
+  // 3.2–4.2 sn: karar kartı ve sahiplik noktaları
+  tl.fromTo("#karar", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 3.2);
+  tl.fromTo("#halka0", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, 4.0);
+  tl.fromTo("#halka1", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, 4.15);
+  tl.fromTo(["#n0","#n1","#n2"], { opacity: 0 }, { opacity: 1, duration: 0.35, stagger: 0.12, ease: "power1.out" }, 4.3);
+  tl.to("#n0", { scale: 1.4, duration: 0.25, yoyo: true, repeat: 1, ease: "power1.inOut" }, 4.8);
+
+  // 6.3–6.9 sn: sahne soluklaşır; döngü boş kareyle başlar
+  tl.to("#inner", { opacity: 0, duration: 0.6, ease: "power1.in" }, 6.3);
+
+  window.__timelines["akis"] = tl;
+</script>
+</body>
+</html>

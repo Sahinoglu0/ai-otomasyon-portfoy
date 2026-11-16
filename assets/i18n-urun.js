@@ -22,7 +22,7 @@ window.I18N_EK = {
   "Kule Pro panelinin yönetici özeti ekranı, koyu tema.": "The executive summary screen of the Kule Pro panel, dark theme.",
   "Tekrar oynat": "Replay", "Duraklat": "Pause", "Sürdür": "Resume",
   "Demolardaki tüm veriler sentetiktir; gerçek şirket verisi kullanılmamıştır.": "All demo data is synthetic; no real company data was used.",
-  "© 2026 · MIT lisansı.": "© 2026 · MIT license.", "demo/ klasörü": "The demo/ folder", "bu lisansın dışındadır.": "is outside this license.",
+  "© 2026 · MIT lisansı.": "© 2026 · MIT license.",
 
   /* sayılar */
   "modül, aynı çıktı biçimi": "modules, one output format",
@@ -167,8 +167,8 @@ window.I18N_EK = {
     "A static demo that needs no installation, using precomputed synthetic sample data. There is no live API.",
   "Soruşturma akışını adım adım açın. Her izin kaynağı rozetle belirtilir: GERÇEK MODEL KAYDI, ELLE YAZILMIŞ KAYIT ya da KOD SATIRI.":
     "Open the investigation flow step by step. Each trace's source is marked with a badge: REAL MODEL RECORD, HAND-WRITTEN RECORD, or CODE LINE.",
-  "Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi. Kaynak kod bu depoda yayımlanmıyor; yerine bu kanıtlar var.":
-    "Test counts, a behaviour catalogue, and an evidence package that can be verified with SHA-256. The source code is not published in this repository; these records are published instead.",
+  "Test sayıları, davranış kataloğu ve SHA-256 ile doğrulanabilir kanıt paketi.":
+    "Test counts, a behaviour catalogue, and an evidence package that can be verified with SHA-256.",
 
   /* 08 sss */
   "08 / sss": "08 / faq", "Sık sorulan sorular": "Frequently asked questions",

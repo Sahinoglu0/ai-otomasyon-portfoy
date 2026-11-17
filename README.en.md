@@ -2,11 +2,22 @@
 
 **Language:** [Turkish](README.md) · English (this page)
 
-**Version:** 0.15.0. The source code is not published in this release.
+**Current version:** Kule Pro 0.15.0 (2026-11-16). The source code is not published in this release. Details: [CHANGELOG.en.md](CHANGELOG.en.md).
 
-Kule Pro reads a company's stock, order, goods receipt and invoice files. You upload the files. Modules check the data against explicit rules and put the items that need attention into one list. Each item says who should look at it and where to go in SAP. A person makes the decision. In the default setup, no module calls a language model.
+1. Kule Pro reads a company's stock, order, supplier and invoice files, SAP exports and vendor open items, and has the answers ready every morning: which item is about to run out, which order has a mismatch, and which supplier cannot be relied on. The Morning report screen takes SAP files by drag and drop and shows today's top 5 findings and a "since yesterday" difference.
+2. Alongside it runs a multi-agent orchestrator that uses the tool's modules as tools. The numbers the Analyst writes into its claims block are cross-checked against Kule's own calculation. Known limit: the Auditor checks only the claims block, and numbers in plain text are checked only for whether they exist in Kule's data.
+3. The data is synthetic (generator seed 42). Most measurements use public data: DataCo Smart Supply Chain, BPI Challenge 2019 (a real but anonymised process log), a simulated Berti package, the Zenodo clay-brick OEE dataset and the M5 demand dataset. No module has been tested on a customer's data or on your own SAP system.
+4. The source code is not published in this release. What is here: static pages, diagrams, test evidence and agent traces.
+5. The real-model run (claude-haiku-5-5) ran 38 of the 40 planned runs (37 completed, 1 cut off by the quota, 2 not run): in the investigation scenarios 16 of 20 runs were accepted and 4 were rejected by the Auditor; 17 runs of the injection scenarios (E1, E2) were completed. The other traces are hand-written tapes.
 
-The measurements use synthetic data and public data. The tool has not yet been tried on a real SAP export.
+**Live pages** (the TR / EN button at the bottom right switches the language):
+
+- [Home](https://sahinoglu0.github.io/ai-otomasyon-portfoy/)
+- [Product page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/)
+- [Agent trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/): sample traces, approval gate, Auditor decisions, eval
+- [Test evidence](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/): source code is closed; test counts, behaviour catalogue and an evidence package you can verify with SHA-256
+
+**Boundary:** The sample data is synthetic or public and is not a real company's result. The SAP formats (including RBKP/RSEG) were tested with synthetic files, not with output from a real SAP system. The Kule source code is not in this release.
 
 ## Try it
 
@@ -20,9 +31,251 @@ No installation is needed. Opening the live page is enough.
 
 To run the demo from this repository, open `demo/index.html` in a browser. The demo is the browser layer of the panel, working on sample data.
 
+## Videos
+
+Two separate videos, no audio, with Turkish and English subtitles. No source code is shown; the numbers come from the measurements on this page. [Player page](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) (language switch, subtitles, download).
+
+| Introduction (2 min 45 s) | Usage (4 min 42 s) |
+|---|---|
+| [![Introduction video: what Kule Pro is](video/tanitim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) | [![Usage video: step by step](video/kullanim/poster.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/video/) |
+| What Kule Pro is, why the model never decides alone, what we measured and what we could not. [MP4 TR](video/tanitim/tanitim-tr.mp4) · [MP4 EN](video/tanitim/tanitim-en.mp4) · [subtitles](video/tanitim/tanitim-en.srt) | From setup to human approval: data loading, modules, the agent flow, the trace viewer. [MP4 TR](video/kullanim/kullanim-tr.mp4) · [MP4 EN](video/kullanim/kullanim-en.mp4) · [subtitles](video/kullanim/kullanim-en.srt) |
+
+The numbers in the videos come from measurements on public and synthetic data; nothing was measured on a real company's data.
+
+## Screenshots
+
+Taken from the live pages (light theme, 1440 px). The interface in the screenshots is Turkish; the pages have a TR / EN switch.
+
+| Agent trace viewer | Test evidence |
+|---|---|
+| [![Agent trace viewer: run summary, timeline, approval gate](docs/img/ekran/iz-goruntuleyici.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) | [![Test evidence: latest run summary and breakdown per area](docs/img/ekran/kanit.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/kanit/) |
+
+| Product page | Home |
+|---|---|
+| [![Product page](docs/img/ekran/portfoy-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/portfoy/) | [![Home page](docs/img/ekran/giris-tr.png)](https://sahinoglu0.github.io/ai-otomasyon-portfoy/) |
+
+Every trace in the viewer carries a badge that states its source: HAND-WRITTEN RECORD, REAL MODEL RECORD or CODE LINE.
+
+### Morning report screen
+
+Every image below was taken with **synthetic data**: Kule Pro's own trial package (invented files that imitate the SAP export format) and hand-made fake files. There is no data from a real company or a real SAP system, and the "ÖRNEK VERİ · SENTETİK" (SAMPLE DATA · SYNTHETIC) badge is visible in each image. They are crops taken in Chrome at 980 px width. The screen was not tried with real SAP output.
+
+| Image | What it shows |
+|---|---|
+| ![Morning report: top 5 findings for today, synthetic sample package](docs/img/ekran/sabah-ilk5-bulgu.png) | **Top 5 findings.** Day 1 of the synthetic trial package. Each finding gives its importance, estimated impact (a server estimate), who should look and where to go in SAP; the menu path is a "suggestion" and may differ by company. |
+| ![Morning report: "Since yesterday" section, day 2](docs/img/ekran/sabah-dunden-beri.png) | **Since yesterday.** The next morning of the same package: 2 new, 3 resolved, 3 changed-amount findings. The dates shown follow the day the trial was run. |
+| ![Morning report: warning for a file with a missing required column](docs/img/ekran/sabah-eksik-sutun.png) | **Missing column warning.** The order quantity (MENGE) column was removed from a hand-made synthetic EKPO file. Kule recognises the file, names the missing field and disables the "Prepare morning report" button (the button looks dark in the image but is disabled). |
+| ![Morning report: error message for a file that is too large](docs/img/ekran/sabah-buyuk-dosya-hata.png) | **Error message example.** A hand-made synthetic 75 MB EKPO file. Kule says the files are too large together (limit 20 MB) before sending anything. The "about 79 MB" shown is an estimate that includes encoding overhead. |
+
+Sample package result: all 18 issues planted in the package on purpose are found. This answers questions we wrote ourselves; it is not an accuracy figure on real data.
+
+## 1. Agent orchestrator and Auditor
+
+![Investigation flow: Planner, Analyst, Auditor; approval gate and allow-list](docs/img/en/ajan-akisi.svg)
+
+A thin multi-agent orchestrator that uses Kule's modules as tools. The core is written with the Python standard library only and contains: a state machine, step and token budgets, timeouts, retry with backoff, a tool allow-list, an approval gate for tools with side effects, and a trace that records every event.
+
+Example question: *"Why are warehouse IZM-01 and supplier T-03 critical? Produce an action plan and a draft email to the supplier."*
+
+| Role | What it does | How |
+|---|---|---|
+| Planner | Splits the question into sub-tasks | Model, no tools |
+| Analyst | Calls Kule modules as tools, interprets the findings, writes its numbers into an `iddialar` (claims) block | Model; tools `stok_sorgu` (stock query) and `tedarikci_sorgu` (supplier query) |
+| Auditor | Re-compares every claim with Kule's own calculation; rejects the Analyst if it does not match | **Code**, not a model |
+
+In the example trace the Analyst writes T-03's score as 58.0 on the first attempt, Kule calculates 36.3, the Auditor rejects it, and 36.3 is accepted on the second attempt. The idea: every number the Analyst writes in its claims block is compared with Kule's deterministic calculation, and the Analyst is rejected if it does not match. Numbers elsewhere in the text are checked only for whether Kule's data contains them; this does not verify that a number is used in the right context. In the [trace viewer](https://sahinoglu0.github.io/ai-otomasyon-portfoy/ajan-orkestrasyon/iz-goruntuleyici/) you can open the "Investigation · Analyst attempt 1" and "attempt 2" traces step by step. That example comes from a hand-written tape. The "Real model" traces in the viewer come from a single run made with a local `claude` (the 38-run measurement is in §4): on the first attempt the Analyst wrote a list of materials in the `deger` field instead of a number, and the Auditor compared it with Kule's number (3) and rejected it; on the second attempt all five claims matched Kule's calculation and were accepted. The viewer also adds four representative traces from the 38 runs: S1 accepted, S4 rejected, E1 paraphrased leak and E2 approval-gate catch. The viewer marks the source of every trace with a badge: REAL MODEL RECORD, HAND-WRITTEN TAPE or CODE LINE.
+
+## 2. Eval
+
+<!-- eval:cizim:basla -->
+![Eval: 123 cases, 111 criteria/checks/scope passed, 12 known gaps observed](docs/img/en/eval-vakalar.svg)
+<!-- eval:cizim:bitti -->
+
+The eval is replayed from tapes; it is not a measure of model quality. <!-- eval:sayi:basla -->The eval has 123 cases; **111/111** criteria, check and scope cases passed. 12 known gaps were observed and are not closed.<!-- eval:sayi:bitti --> The eval also catches two deliberately broken versions: an Auditor that accepts everything and an orchestrator with no authorisation checks.
+
+The two known gaps are listed side by side below. Neither is closed; both stay as open cases in the eval.
+
+| Gap | What happens | Measure | Eval cases |
+|---|---|---|---|
+| Context of a number in plain text | The Auditor checks only numbers in the claims block. A number used in the wrong context in plain text is accepted: "2 critical items" (actual count 3) passes while the claims block is correct, because numbers in plain text are checked only for whether they appear in Kule's data. | If closed, it becomes a criterion. | `KACAK-duz-metin-yanlis-baglam`, `KACAK-duz-metin-baska-varlik`, `KACAK-duz-metin-anlam-belirsiz` |
+| Rephrased leak | The model rephrases an injected instruction instead of copying it verbatim, and the leak check does not catch these rephrasings by default: 0/6. Paraphrase checking is off by default. | Caught 0/6 by default (Wilson 95% [0.000; 0.390]). | `KACAK-enjeksiyon-anlamsal-parafraz`, `KACAK-enjeksiyon-parafraz-varsayilan-kapali` |
+
+## 3. Test evidence and measurements
+
+Full test evidence (test catalogue, behaviour catalogue, SHA-256 evidence package): [kanit/](kanit/index.html).
+
+**Catching known errors in sample data.** The generator plants known errors; the modules find them and nothing more:
+
+| Module | Planted | Found |
+|---|---|---|
+| Order anomaly | 7 anomalies (+3 clean hard cases) | 7, clean cases not flagged |
+| Three-way match | 4 findings (duplicate invoice, over-billing, 8% price deviation, invoice without delivery note) | 4 |
+
+**Large real-world data.** **172,765 shipment rows** adapted from the public DataCo Smart Supply Chain dataset loaded in one ingest: 172,765 accepted, 0 rejected, 0 crashes, about 8 seconds.
+
+**Open-data trials.** Beyond DataCo, public datasets were tried for Kule's other inputs. These trials were not run on real company data; none of the results is company data.
+
+| Dataset | License (from the page) | What was done | Result |
+|---|---|---|---|
+| Mendeley Data *Retail Inventory Data* (9pn955p5vj, version 1) | CC BY 4.0 | A public **model sample dataset** (fields compiled from Kaggle; it is not a real company's stock record). Adapted to the `stok.csv` contract. | 30/30 rows passed ingest. `stok_durumu` **could not be measured**: the data has no shipments, and the stock codes do not match the sales data. |
+| UCI *Online Retail II* (DOI 10.24432/C5CG6D; Chen, 2012) | CC BY 4.0 | Sales invoices, **proxy-mapped**: invoice→order, country→supplier (this is not supply data). Tried only for ingest robustness. | 1,067,371 rows: 1,044,416 accepted, 22,955 rejected as inconsistent (return and cancellation rows rejected by the rules), 0 crashes, 24 s. It is **not** evidence of order anomalies or supplier scores. |
+
+**Real open-data measurements.** Each number below comes from the measurement named in its row. None of them is an accuracy measurement. "Rule agreement" shows how consistently two implementations apply the same definition; it does not show that the definition is right in the real world. Berti is a simulation, and no labelled sequence-anomaly data was available.
+
+| Module | Data (licence) | Result |
+|---|---|---|
+| `uclu_eslestirme` | BPI Challenge 2019 OCEL (4TU, CC BY 4.0; MD5 verified). 251,734 traces, 1.6 million events. | 984 candidate findings (amount effect 7,182,225), 5.3 s, peak memory 537 MB. The findings are candidates, not proof. There is no quantity field, so FATURALANMAMIS_TESLIM and FAZLA_FATURA_MIKTAR did not run. In the Item Category cross-check, the CIFT_FATURA rate is nearly the same in both categories (0.50% / 0.47%). |
+| `siparis_anomali` (BPI) | Same log | 0 findings, but **not evaluable**: the six rules need quantity, planned date and material fields that are missing. This 0 is not evidence of a clean dataset. |
+| `stok_durumu` | Berti simulated inventory package (simulation) | Before the fix: 85 of 88 comparable pairs agreed (96.6%); 357 dead-stock pairs could not be compared. Kule was labelling items with zero stock and no shipments as dead stock. In 192 pairs that was a defect, and it was fixed. After the fix: 277 of 280 pairs agreed (98.9%). The Berti label is close to Kule's own rule, so this is not independent accuracy. |
+| `karar` (Berti) | Same package | 86.4% agreement on 88 comparable pairs; Understock sensitivity 100%, Normal 0/3. |
+| `siparis_anomali` (Berti PO/GR) | Berti simulated, 438 PO lines, 94 goods receipts | On natural data, five of the six rules matched an independent reference exactly; both sides found 0 CIFT_KAYIT. Most natural findings (367 ACIK_GECIKMIS) come from random keys: only 47 of 94 goods receipts match a PO line. With injected deviations (15 lines per rule) 90/90 were caught, and the 15 clean lines produced 0 false findings. The injected deviations were deliberately clear (+50%, −50%, 10 days). |
+| `oee` (clay brick) | Zenodo 17855209, 62 days, CC BY 4.0; proxy mapping | The daily total OEE matches the source with a mean absolute error of 0.07 points; this is an algebraic identity, not validation. Availability is off by +15.7 points and performance by −16.9 points (r = 0.23 and 0.36). The components do not match the source. |
+| `talep_tahmini` (M5) | M5, Zenodo 12636070, 5,082 series, last 4 weeks held out, CC BY 4.0 | WAPE: Kule 47.3%; seasonal naive 61.0%; last-4-week average 38.4%. So Kule is worse than a simple average. It under-forecasts by 10.4% overall. The second sample (1,017 series) points the same way. |
+| `fatura.csv` (RBKP/RSEG) | None; synthetic file | 569 tests pass. Not verified against real SAP output. |
+
+There is also a variant measurement: adding "last-4-week average" as a selection candidate lowers M5 WAPE to 39.7%; adding "other unplanned downtime" to OEE did not close the availability gap (+15.7 → +15.0 points). Kule's code does not use these variants.
+
+**Still not measured.** No real SAP export (EKPO, MSEG, RBKP/RSEG included) has been tried in any module. BPI 2019 has no quantity or planned-date fields, so the six `siparis_anomali` rules did not run on it. There is no labelled sequence-anomaly data, so no false-alarm rate is given for any module. Kule does not join RBKP and RSEG; they must be combined into one file first.
+
+Goods receipt, delivery notes and invoices were measured with the BPI 2019 log; production (OEE) was measured with clay-brick data through a proxy mapping. Synthetic data is not presented as real.
+
+The DataCo data page (Mendeley 8gx2fvg2k6, version 5) states "CC BY 4.0", but the same page also reserves all rights, including text and data mining and AI training. For that reason the data file is not included in this repository, only measurement outputs are shared, and the data is not used for training. Measurement output: [olcum/veri-e1-olcum.json](olcum/veri-e1-olcum.json).
+
+**Demand forecast.** On the sample data the Holt-Winters backtest error (MAPE) averages 8.07; the simple same-week-last-year method gets 11.16. Intermittent demand methods (Croston, SBA, TSB) were also tried against pre-registered criteria:
+
+![Test MAPE and test coverage: naive, Holt-Winters, Croston, SBA, TSB](docs/img/en/e8-olcum.svg)
+
+In the smooth class SBA passed both criteria (coverage 77.31%, MAPE 248.00 against naive 250.65); the other classes could not be measured in the test window and need a separate measurement on a product-life window.
+
+**Supplier score (sample data).** A clear separation between T-01 at 95.5 (A) and T-03 at 36.3 (D); T-03 delivers on time 60% of the time with a 9.29% rejection rate.
+
+**Tests.** Latest release 0.15.0 (2026-11-16): Kule Python 1299 tests (4 skipped, 2 expected failures, 0 failed), the agent orchestrator 120, the Node panel 263 tests; 1682 automated tests in total. Source: [CHANGELOG.en.md](CHANGELOG.en.md).
+
+**The evidence package has not yet been moved to this run.** `kanit/sayilar.json` and the test behaviour catalogue are a snapshot of the 0.8.1 run (732 / 120 / 166, total 1018). Tests added after 0.14.0 are not in the catalogue. This is the same "known limit" stated in the release notes.
+
+**Release history (0.8.1 → 0.15.0).** The source code is not in this repository; the following is taken from the release notes. It was tested with synthetic data and **was not verified with real SAP data**.
+
+- **0.8.1 (2026-11-12):** version number and figures aligned; Kule Python 732 tests, orchestrator 120, Node 166; total 1018. No feature change.
+- **0.14.0 (2026-11-16):** decision table CSV (`GET /v1/ozet/karar.csv`) and a CSV button in the panel, CLI `--sayi-bicimi`, simpler SAP mapping error wording, a leak scanner, release tooling. The morning report now defaults to the first 200 findings (`?sinir=0` returns all).
+- **0.14.1 (2026-11-16):** figures re-verified against the source release. API 37 paths, 41 operations; rate limit 300 requests per minute per IP. Sample trial package 18/18 (the old "17/17" was wrong). Evaluation: 123 cases, replayed from tapes.
+- **0.14.2 (2026-11-16):** accessibility and theme fixes. The theme chosen on the home page carries over to the evidence page and is kept; the language button moved into the nav area; the tab panel was removed from the Tab order; the evidence page applies the theme before first paint.
+- **0.15.0 (2026-11-16):** panel UI refresh: the "Signal" palette (navy, teal, orange signal), fonts embedded in the package (no CDN), soft transitions, KPI counter animation (off under `prefers-reduced-motion` and in print) and a print fix. The API and the analysis rules did not change.
+
+**Open items.** No real SAP export has been tried. The evidence package stays at the 0.8.1 run. The two expected failures are still there.
+
+## 4. Scope and status
+
+- **Data.** The sample data is synthetic (seed 42); measurements were made on synthetic and public DataCo data. The ROI calculator's inputs are the user's own assumptions; two values from Kule records (monthly cases, recorded time) can be taken with their source, but the records are not a pilot measurement: time is the user's own estimate.
+- **Seed band and ROI.** Across 10 seeds (7, 42, 2026, 1, 2, 3, 11, 99, 123, 314) the total stock value ranges from 7.4 M to 45.6 M TRY (median 21.9 M TRY), so no single TRY figure is offered. Band: [`kanit/olcum-tohum-bandi.json`](kanit/olcum-tohum-bandi.json). In the ROI calculator, the user's unsourced inputs (catch rate, prevented share, cost per event) move the result by ±3% to ±8%. The stock leg is not computed unless the user enters the excess stock share, and it shows no TRY result. These are worked examples and sensitivity checks, not a company result. ROI assumptions table: [olcum/roi-varsayimlari.en.md](olcum/roi-varsayimlari.en.md).
+- **Integration.** Input is CSV and `.xlsx` files; SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are read through a mapping file: Turkish and English headings, UTF-8/UTF-16/ANSI, tab, `;`, `,` and `|` separators; the ALV header and total rows are skipped. **These formats were tested with synthetic files, not with output from a real SAP system.** The RBKP/RSEG invoice mapping was also tested only with synthetic data. The Morning report screen also accepts `.xlsx` files (first sheet is read; Zip64 and encrypted files are out of scope); old `.xls` is not read. There is no live SAP or OCR connection.
+- **API.** Designed for demo and pilot setups: roles, an audit trail and a rate limit are included; production-grade security is outside the scope of this publication.
+- **Orchestrator (real-model measurement).** With `claude-haiku-5-5` through the local `claude` CLI, 38 of 40 planned runs were recorded: 37 completed and 1 cut short by the quota. The quota ran out at model call 136. The last 2 runs were never executed. The pre-registration forbids runs after the quota, so they were not rerun.
+  - **Investigation:** 16 of 20 runs accepted, 4 rejected, 0 failed. Acceptance 80%, 95% Wilson interval [0.584; 0.919]. By scenario: S1, S2 and S3 4/4 (S3's first attempt 3/4); S4 and S5 2/4. S4 and S5 flip between accept and reject: same question, same data, different outcome.
+  - **Rejection reasons** (11 rejected attempts): number mismatch 7, format 1, off-task 1, other 2, injection compliance 0.
+  - **Injection** (two pre-registered cases; E1 9 runs, E2 8 runs): In the last-reply leak case (E1) the model did not copy the injected text verbatim; it paraphrased it (6/9). The leak check caught none of these 6 paraphrases (0/6, 95% Wilson [0.000, 0.390]). This is a known limit and is not hidden: a paraphrased leak passes the gate. In the approved-write case (E2) the model tried to write with injected arguments in 8/8 runs; the approval gate stopped it in all 8, with no side effect (0/8, 95% Wilson [0.000, 0.324]). In E2's final text the injected words (`sil_her_sey`, `hacklendi`) appeared in 8/8 runs; this is the paraphrase count, which the pre-registration places outside the gate's scope and counts separately. The legitimate write (`sonuc.txt` with the approved summary) never happened in any run (0/8), so the approval's legitimate path was not tested in this sample. The run cut short by the quota (E2-t09) and the runs never executed (E1-t10, E2-t10) are not in any denominator. For 8/8 in E2, the 95% Wilson interval is [0.676, 1.000].
+  - **Limits:** The samples are small (investigation n=20; injection cases E1 n=9, E2 n=8), and this is not a claim about model quality. The other traces in the viewer are hand-written tapes. The current gate checks form: it rejects output with off-task lines, but it does not check content, and a single off-task sentence under 200 characters can pass. A rejected Planner output is requested again at most twice; if all three attempts are rejected, the Analyst does not run. The Auditor compares the claims block with Kule; numbers in plain text are checked only for presence in Kule's data, not for context.
+  - **Records:** The pre-registration and the traces of all 38 runs are in `ajan-orkestrasyon/ornek/gercek-model/` (`on-kayit.md`, `o1/`).
+- **Source code:** Kule's source code is not published in this repository. In its place there is test evidence (test catalogue, behaviour catalogue), results on deliberately broken sample data, an eval replayed from tapes and real-model traces. The `demo/` folder holds only the panel's browser layer and is under a non-MIT license (`demo/LICENSE.txt`). It contains static pages, drawings and measurement outputs.
+- **Language.** These pages are in Turkish and English. Kule Pro's own panel, command line and API outputs are currently Turkish only.
+
+## 5. What it is for
+
+A typical day for a planner, buyer or manager:
+
+| Question | Kule's answer |
+|---|---|
+| "Which items are critical today?" | Days-of-cover status CRITICAL / DEAD_STOCK / EXCESS_STOCK and ABC class, ranked by an importance score |
+| "How much should I order, and when?" | Per-item safety stock, reorder point (ROP), economic order quantity (EOQ) and a recommended order |
+| "Is there an error in my orders or invoices?" | 7 kinds of order-vs-goods-receipt mismatch; duplicate invoice, over-billing, price deviation, invoice without delivery note |
+| "Does the vendor's open-item list match the statement?" | FBL1N open-item reconciliation: overdue, duplicate open item, open item that looks paid, amount mismatch, balance difference, partial payment |
+| "Which supplier is a problem?" | A 0–100 score from on-time delivery, rejection rate and price deviation, graded A/B/C/D |
+| "What will demand do?" | An 8-week forecast, an 80% interval and a backtest result |
+| "How efficient are my lines?" | OEE (availability × performance × quality) and a downtime Pareto |
+| "What if demand rises 20% or a supplier drops out?" | Scenario simulation: critical item count, stock-out item-days, at-risk value, yearly cost difference |
+| "What do I tell management?" | Daily and weekly executive summaries, an ROI calculator, a printable report, draft emails to suppliers |
+
+Every problem found becomes a **case**: it gets an owner, its status is tracked (open, under review, resolved, accepted) and each change is written to an audit trail. When the data is reloaded the next day, Kule shows what was fixed, what is new and what is still open.
+
+## 6. How it works
+
+![System overview: CSV input, input contract, SQLite, seven modules, CLI/REST/panel; the agent orchestrator below](docs/img/en/sistem-genel.svg)
+
+1. **Input.** CSV files exported by the company (stock, shipments, orders, goods receipts, delivery notes, demand history, supplier deliveries, production) and invoice text. `.xlsx` files are read too; Turkish-language and spaced column headers are matched automatically, for example `Malzeme No.` (material number) and `Stok Miktarı` (stock quantity). SAP-style exports (EKPO, MSEG, MARD, LIPS, FBL1N) are converted to the Kule format with a field-mapping file; in vendor reconciliation the other side is the vendor statement (Kule CSV format).
+2. **Validation.** Every row is checked against an input contract: type, required field, lower bound, allowed values, cross-field rule, duplicates. A bad row never disappears silently; it is stored with its reason and reflected in the file's **data quality score** (missing, inconsistent, duplicate, stale).
+3. **Storage.** Clean data goes to SQLite. Every run leaves a *snapshot*; the difference between two snapshots can be computed.
+4. **Analysis.** Seven modules produce the same JSON envelope (numbers, findings, warnings, the method used).
+5. **Decision.** The decision engine turns findings into an importance score by monetary impact and produces order recommendations.
+6. **Presentation.** Command line, REST API, browser panel and daily/weekly summary reports.
+
+## 7. Modules
+
+| Module | What it does | Method |
+|---|---|---|
+| Stock status (`stok_durumu`) | Days of cover; CRITICAL / DEAD_STOCK / EXCESS_STOCK; ABC class | Rule based |
+| Order anomaly (`siparis_anomali`) | 7 kinds of order–goods-receipt mismatch, ranked by importance; cancellations (102) are netted out | Rule based |
+| Demand forecast (`talep_tahmini`) | 8-week demand forecast, 80% interval, backtest | Additive Holt-Winters (52-week seasonality) |
+| Supplier score (`tedarikci_skoru`) | On-time delivery, rejection rate, price deviation → 0–100 score, A/B/C/D | Weighted rule (40% / 35% / 25%) |
+| Three-way match (`uclu_eslestirme`) | Order–delivery note–invoice: duplicate invoice, over-billing, price deviation, invoice without delivery note | Rule based; invoice lines are extracted with a regular text pattern |
+| Vendor open-item reconciliation (`fbl1n_mutabakat`) | Overdue, duplicate open item, open item that looks paid, amount mismatch, balance difference, partial payment | Rule based; SAP side FBL1N, other side the vendor statement |
+| OEE (`oee`) | Availability × performance × quality; downtime Pareto; root-cause suggestion | Calculation + rules |
+| Explanation (`aciklama`) | A Turkish summary of the module outputs | Template; optionally an OpenAI-compatible language model endpoint |
+
+By default no module calls a language model; the results come from ordinary, testable calculations. With `KULE_ACIKLAMA_SAGLAYICI=claude` the explanation layer can run through local `claude`. A language model can be used only in the optional explanation layer, and it sees aggregated summary sentences, not the raw data.
+
+## 8. Decision engine
+
+A findings list says "what happened"; the decision engine calculates "what to do". Per-item safety stock, reorder point, economic order quantity and recommended order; all assumptions (holding rate, order cost, stock-out penalty, service level) come from one settings file and can be changed.
+
+- **Calibrated prediction interval.** The 80% interval of the demand forecast initially covered 97.7% of observations (wider than needed, inflating safety stock). Calibration finds a single scale factor from older windows and tests it on unseen windows: on the sample data, test coverage goes **97.9% → 79.7%** and the interval width halves.
+- **Service level / cost curve.** How the safety stock cost and the expected stock-out cost change as the target service level rises (sample data):
+
+| Target | Safety stock value (Turkish lira) | Expected stock-out cost / year (Turkish lira) | Total cost / year (Turkish lira) |
+|---|---|---|---|
+| 90% | 2,956,921 | 1,782,526 | 2,822,732 |
+| 95% | 3,795,167 | 786,645 | 1,910,675 |
+| 99% | 5,367,577 | 127,587 | 1,408,859 |
+
+- **Scenarios.** Situations such as "demand +20%", "lead time +5 days" or "T-02 drops out" are compared side by side (sample data):
+
+| Scenario | Critical items | Stock-out item-days | At-risk value (Turkish lira) | Yearly cost difference (Turkish lira) |
+|---|---|---|---|---|
+| Today | 17 | 145.1 | 522,384 | - |
+| Demand +20% | 20 | 165.3 | 820,043 | +321,495 |
+| Lead time +5 days | 22 | 242.8 | 1,112,300 | +103,572 |
+| Demand +20% and lead time +5 days | 23 | 276.2 | 1,648,916 | +451,878 |
+
+- **Sensitivity.** Each assumption is moved by ±20% and the one that changes the decision most is shown (on the sample data, the nominal lead time).
+- **Importance score.** In a monetary ranking, critical stock findings with no money value would sink to the bottom. The importance score (0–100) combines an importance weight with a log-scaled money component; on the sample data the riskiest critical stock item, 36th by money, moves to 1st by score.
+
+## 9. Panel and reports
+
+The browser panel has no dependencies and has four screens plus a Morning report screen:
+
+- **Executive summary:** the 5 priority actions, monetary impact, risk ranking by area, demand direction. If two modules find the same order line, the amount is counted once.
+- **ROI calculator:** yearly savings as a low–high range, net and payback over holding cost, invoice leakage, delay and manual-check effort; each line's formula is spelled out with the user's own numbers.
+- **Scenario:** play with supplier score weights, stock thresholds and "what if a supplier leaves" in the browser; with default settings it gives exactly the same result as the Python modules.
+- **Report:** a printable executive report (PDF) and CSV that opens correctly in Turkish Excel.
+- **Morning report (extra screen):** drag and drop SAP files, recognition from the header, today's top 5 findings, rejected rows, a missing-list card and a "Since yesterday" section (new, resolved, amount changed, unchanged). A single-file HTML report and a formula-protected CSV can be downloaded. The screenshot carries a synthetic-data badge; `.xlsx` and CSV are accepted, old `.xls` is not.
+
+The command `python -m kule ozet` (runs in the closed repository; `ozet` is Turkish for "summary") produces the daily and weekly summary (Markdown, single-file HTML, JSON, CSV). For every supplier that needs an order, an email **draft** is written: items, quantity, latest delivery date and the supplier's measured delivery performance. Kule does not send email; it prepares the draft for you to review.
+
+## 10. Integration and security
+
+- **REST API** (`/v1`, 37 paths and 41 operations, OpenAPI contract): cases, findings, snapshots, diff, module output, quality, ingest, decision, simulation, summary, audit, users, measurement (`/v1/olcum`, `/v1/olcum/ozet`), finding accuracy.
+- **Roles:** planner, buyer, manager. The module owner's role writes a case (stock, demand, OEE → planner; orders, invoices, suppliers → buyer); only a manager can set `ACCEPTED`.
+- **Audit trail:** every unauthenticated (401) and unauthorised (403) call, every rate-limited (429) call and every authenticated operation is recorded. Tokens are stored in the database only as SHA-256 digests.
+- **Resilience:** rate limit per IP (300 requests per minute by default), a 20 MB body limit, a clean error message for fields larger than 128 KB, and a setup guide for a TLS reverse proxy.
+- **Dependencies:** the Python standard library only. No `pip install` needed. Kule's core is not in this publication: `python demo.py` and `python -m kule ozet` run in the closed repository.
+
+## License and attribution
+
+Code and pages at the repository root are MIT licensed, see [LICENSE](LICENSE); the `demo/` folder is outside this license (`demo/LICENSE.txt`). Data used in the measurements: DataCo Smart Supply Chain (Mendeley Data, version 5, DOI 10.17632/8gx2fvg2k6.5), CC BY 4.0. This data does not belong to any company and is not distributed in this repository.
+
+Additional measurement data, all CC BY 4.0, are not distributed in raw form in this repository: BPI Challenge 2019 OCEL (4TU, MD5 verified), the Berti simulated inventory package (a simulation, not a real company's data), Zenodo 17855209 (clay-brick OEE) and Zenodo 12636070 (M5).
+
 ## Documentation
 
-- [Technical detail](docs/technical-detail.md): test evidence, measurements, agent flow, modules, decision engine
+- [Technical detail](docs/technical-detail.md): additional notes and detailed sections
 - [Changelog](CHANGELOG.en.md)
 - [Security](SECURITY.md)
 - [License](LICENSE)
